@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/relationships.create.schema.json",
+  "title": "Relationships Create Response",
+  "description": "Command-specific response DTO for relationships.create.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "createResult",
+    "revision",
+    "auditEntryId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "createResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/MutationReceipt"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "auditEntryId": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "relationships.create",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

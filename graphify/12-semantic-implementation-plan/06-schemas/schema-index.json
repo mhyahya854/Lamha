@@ -1,0 +1,244 @@
+{
+  "schemas": [
+    {
+      "record_category": "ai_candidate",
+      "schema": "records/ai_candidate.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "SENSITIVE_BIOMETRIC",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "ai_task",
+      "schema": "records/ai_task.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "album",
+      "schema": "records/album.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "asset",
+      "schema": "records/asset.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "backup_manifest",
+      "schema": "records/backup_manifest.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "derivative_manifest",
+      "schema": "records/derivative_manifest.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "drive_registry",
+      "schema": "records/drive_registry.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "OPERATIONAL",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "edit_recipe",
+      "schema": "records/edit_recipe.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "event",
+      "schema": "records/event.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "export_manifest",
+      "schema": "records/export_manifest.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "face_observation",
+      "schema": "records/face_observation.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "SENSITIVE_BIOMETRIC",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "file_operation_plan",
+      "schema": "records/file_operation_plan.schema.json",
+      "authority": "TEMPORARY_TRANSACTION_AUTHORITY",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "OPERATIONAL",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "group",
+      "schema": "records/group.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "group_membership",
+      "schema": "records/group_membership.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "mind_map_projection",
+      "schema": "records/mind_map_projection.schema.json",
+      "authority": "DERIVED_REBUILDABLE",
+      "rebuild_source": "Authoritative record/media revisions named by the schema",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "model_registry",
+      "schema": "records/model_registry.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "operation_journal",
+      "schema": "records/operation_journal.schema.json",
+      "authority": "TEMPORARY_TRANSACTION_AUTHORITY",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "OPERATIONAL",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "person",
+      "schema": "records/person.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "SENSITIVE_BIOMETRIC",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "preview_index_entry",
+      "schema": "records/preview_index_entry.schema.json",
+      "authority": "DERIVED_REBUILDABLE",
+      "rebuild_source": "Authoritative record/media revisions named by the schema",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "privacy_export_recipe",
+      "schema": "records/privacy_export_recipe.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "relationship",
+      "schema": "records/relationship.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "relationship_history",
+      "schema": "records/relationship_history.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "restore_manifest",
+      "schema": "records/restore_manifest.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "OPERATIONAL",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "review_item",
+      "schema": "records/review_item.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "root_registry",
+      "schema": "records/root_registry.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "saved_view",
+      "schema": "records/saved_view.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "search_index_entry",
+      "schema": "records/search_index_entry.schema.json",
+      "authority": "DERIVED_REBUILDABLE",
+      "rebuild_source": "Authoritative record/media revisions named by the schema",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "settings",
+      "schema": "records/settings.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "tag",
+      "schema": "records/tag.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    },
+    {
+      "record_category": "trash_record",
+      "schema": "records/trash_record.schema.json",
+      "authority": "AUTHORITATIVE_FILE_RECORD",
+      "rebuild_source": "This versioned record outside SQLite",
+      "privacy": "LOCAL_USER_DATA",
+      "reviewer_status": "REVIEWED"
+    }
+  ]
+}

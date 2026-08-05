@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schema/event.schema.json",
+  "title": "Lamha event record",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "createdAt",
+    "updatedAt",
+    "revision",
+    "name",
+    "folderState"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "start": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "end": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "dateConfidence": {
+      "enum": [
+        "exact",
+        "date-only",
+        "estimated",
+        "unknown"
+      ]
+    },
+    "folderState": {
+      "enum": [
+        "manage-later",
+        "linked",
+        "managed",
+        "mixed",
+        "offline",
+        "read-only",
+        "conflict"
+      ]
+    },
+    "relativeFolderPath": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "assetIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "uniqueItems": true
+    },
+    "attendeePersonIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "uniqueItems": true
+    },
+    "parentEventId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid"
+    },
+    "childEventIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "uniqueItems": true
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": true
+}

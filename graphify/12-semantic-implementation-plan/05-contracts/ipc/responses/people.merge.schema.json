@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/people.merge.schema.json",
+  "title": "People Merge Response",
+  "description": "Command-specific response DTO for people.merge.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "mergeResult",
+    "revision",
+    "auditEntryId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "mergeResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/MutationReceipt"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "auditEntryId": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "people.merge",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

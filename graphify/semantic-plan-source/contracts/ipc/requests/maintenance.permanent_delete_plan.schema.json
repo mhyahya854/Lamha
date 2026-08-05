@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/maintenance.permanent_delete_plan.schema.json",
+  "title": "Maintenance Permanent Delete Plan Request",
+  "description": "Command-specific request DTO for maintenance.permanent_delete_plan.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "planId",
+    "confirmationToken",
+    "expectedRevision",
+    "dryRun"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "planId": {
+      "type": "string"
+    },
+    "confirmationToken": {
+      "type": "string",
+      "minLength": 8
+    },
+    "expectedRevision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "dryRun": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "maintenance.permanent_delete_plan",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schema/common.schema.json",
+  "title": "Lamha common definitions",
+  "$defs": {
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "baseRecord": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "id",
+        "createdAt",
+        "updatedAt",
+        "revision"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "$ref": "#/$defs/semver"
+        },
+        "id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "createdAt": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "updatedAt": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "sourceType",
+        "recordedAt"
+      ],
+      "properties": {
+        "sourceType": {
+          "enum": [
+            "user",
+            "filesystem",
+            "json",
+            "xmp",
+            "embedded-metadata",
+            "ai",
+            "import",
+            "recovery"
+          ]
+        },
+        "sourceId": {
+          "type": "string"
+        },
+        "recordedAt": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "details": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "dateInterval": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "end": {
+          "$ref": "#/$defs/timestamp"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

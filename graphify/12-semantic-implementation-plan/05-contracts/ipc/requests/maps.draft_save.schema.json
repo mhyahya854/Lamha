@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/maps.draft_save.schema.json",
+  "title": "Maps Draft Save Request",
+  "description": "Command-specific request DTO for maps.draft_save.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "mapId",
+    "patch",
+    "expectedRevision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "mapId": {
+      "type": "string"
+    },
+    "patch": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/StatusSnapshot"
+    },
+    "expectedRevision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "maps.draft_save",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

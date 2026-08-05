@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/maps.global_load.schema.json",
+  "title": "Maps Global Load Request",
+  "description": "Command-specific request DTO for maps.global_load.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "globalloadOptions"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "globalloadOptions": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/MapProjection"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "maps.global_load",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

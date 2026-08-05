@@ -1,0 +1,61 @@
+{
+  "sourceReviewCoverage": {
+    "explicit_requirement_decisions": 43,
+    "explicit_failure_decisions": 32,
+    "explicit_fragment_decisions": 18,
+    "explicit_package_corrections": 5,
+    "explicit_membership_corrections": 9,
+    "explicit_dependency_additions": 97,
+    "explicit_authority_decisions": 10,
+    "categorical_template_dispositions": 1199,
+    "categorical_fragment_dispositions": 14,
+    "packages_in_active_registry": 155,
+    "unreviewed_active_mappings": 0,
+    "unreviewed_memberships": 0
+  },
+  "contractAndSchemaStats": {
+    "commands": 116,
+    "commands_reclassified": 26,
+    "destructive_commands": 11,
+    "authoritative_schemas": 20,
+    "derived_schemas": 3,
+    "total_record_schemas": 23
+  },
+  "dependencyNodes": 155,
+  "dependencyEdges": 183,
+  "dependencyTypes": {
+    "REQUIRES_AI_WORKER": 4,
+    "REQUIRES_COMMAND_CONTRACT": 4,
+    "REQUIRES_COMPONENT": 8,
+    "REQUIRES_COMPONENT_DECISION": 9,
+    "REQUIRES_CONTRACT": 11,
+    "REQUIRES_DECISION": 5,
+    "REQUIRES_DERIVED_INDEX": 5,
+    "REQUIRES_FILESYSTEM_AUTHORITY": 3,
+    "REQUIRES_GRAPH_MODEL": 7,
+    "REQUIRES_IDENTITY": 6,
+    "REQUIRES_INDEX": 9,
+    "REQUIRES_MODEL_REGISTRY": 4,
+    "REQUIRES_PLATFORM_PROOF": 8,
+    "REQUIRES_PROVENANCE": 11,
+    "REQUIRES_RELEASE_GATE": 10,
+    "REQUIRES_REPLACEMENT_VERIFIED": 1,
+    "REQUIRES_REVIEW_PROTOCOL": 3,
+    "REQUIRES_RUNTIME": 8,
+    "REQUIRES_SCANNER": 2,
+    "REQUIRES_SCHEMA": 36,
+    "REQUIRES_SECURITY_BOUNDARY": 7,
+    "REQUIRES_STORAGE": 12,
+    "REQUIRES_TRANSACTION_ENGINE": 6,
+    "REQUIRES_UI_SHELL": 1,
+    "REQUIRES_WORKER": 3
+  },
+  "dependencyCycle": false,
+  "criticalPathEdgeDepth": 13,
+  "artificialAdjacencyEdges": 0,
+  "rootPackages": [
+    "WP-I0-001"
+  ],
+  "explainedRoots": 1,
+  "unexplainedRoots": 0
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/relationships.history.schema.json",
+  "title": "Relationships History Request",
+  "description": "Command-specific request DTO for relationships.history.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "historyOptions"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "historyOptions": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/StatusSnapshot"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "relationships.history",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

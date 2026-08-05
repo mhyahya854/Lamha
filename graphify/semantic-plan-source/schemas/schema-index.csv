@@ -1,0 +1,31 @@
+record_category,schema,authority,rebuild_source,privacy,reviewer_status
+ai_candidate,records/ai_candidate.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,SENSITIVE_BIOMETRIC,REVIEWED
+ai_task,records/ai_task.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+album,records/album.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+asset,records/asset.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+backup_manifest,records/backup_manifest.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+derivative_manifest,records/derivative_manifest.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+drive_registry,records/drive_registry.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,OPERATIONAL,REVIEWED
+edit_recipe,records/edit_recipe.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+event,records/event.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+export_manifest,records/export_manifest.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+face_observation,records/face_observation.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,SENSITIVE_BIOMETRIC,REVIEWED
+file_operation_plan,records/file_operation_plan.schema.json,TEMPORARY_TRANSACTION_AUTHORITY,This versioned record outside SQLite,OPERATIONAL,REVIEWED
+group,records/group.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+group_membership,records/group_membership.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+mind_map_projection,records/mind_map_projection.schema.json,DERIVED_REBUILDABLE,Authoritative record/media revisions named by the schema,LOCAL_USER_DATA,REVIEWED
+model_registry,records/model_registry.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+operation_journal,records/operation_journal.schema.json,TEMPORARY_TRANSACTION_AUTHORITY,This versioned record outside SQLite,OPERATIONAL,REVIEWED
+person,records/person.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,SENSITIVE_BIOMETRIC,REVIEWED
+preview_index_entry,records/preview_index_entry.schema.json,DERIVED_REBUILDABLE,Authoritative record/media revisions named by the schema,LOCAL_USER_DATA,REVIEWED
+privacy_export_recipe,records/privacy_export_recipe.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+relationship,records/relationship.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+relationship_history,records/relationship_history.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+restore_manifest,records/restore_manifest.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,OPERATIONAL,REVIEWED
+review_item,records/review_item.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+root_registry,records/root_registry.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+saved_view,records/saved_view.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+search_index_entry,records/search_index_entry.schema.json,DERIVED_REBUILDABLE,Authoritative record/media revisions named by the schema,LOCAL_USER_DATA,REVIEWED
+settings,records/settings.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+tag,records/tag.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED
+trash_record,records/trash_record.schema.json,AUTHORITATIVE_FILE_RECORD,This versioned record outside SQLite,LOCAL_USER_DATA,REVIEWED

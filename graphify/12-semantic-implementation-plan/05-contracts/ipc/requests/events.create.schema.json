@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/events.create.schema.json",
+  "title": "Events Create Request",
+  "description": "Command-specific request DTO for events.create.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "eventDraft"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "eventDraft": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/EventDraft"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "events.create",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

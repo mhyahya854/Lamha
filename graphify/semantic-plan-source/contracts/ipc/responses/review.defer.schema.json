@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/review.defer.schema.json",
+  "title": "Review Defer Response",
+  "description": "Command-specific response DTO for review.defer.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "deferResult",
+    "revision",
+    "auditEntryId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "deferResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/MutationReceipt"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "auditEntryId": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "review.defer",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

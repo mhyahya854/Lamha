@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/review.bulk_decide.schema.json",
+  "title": "Review Bulk Decide Response",
+  "description": "Command-specific response DTO for review.bulk_decide.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "bulkdecideResult",
+    "revision",
+    "auditEntryId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "bulkdecideResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/ReviewItem"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "auditEntryId": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "review.bulk_decide",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

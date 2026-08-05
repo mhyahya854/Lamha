@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/people.person_update.schema.json",
+  "title": "People Person Update Response",
+  "description": "Command-specific response DTO for people.person_update.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "personupdateResult",
+    "revision",
+    "auditEntryId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "personupdateResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/PersonSummary"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "auditEntryId": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "people.person_update",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

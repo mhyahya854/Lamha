@@ -1,0 +1,431 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ai/worker-protocol-v3.schema.json",
+  "$defs": {
+    "fingerprint": {
+      "type": "object",
+      "properties": {
+        "modelId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "modelVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "modelChecksum": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{32,128}$"
+        },
+        "workerBuildHash": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{32,128}$"
+        },
+        "configHash": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{32,128}$"
+        }
+      },
+      "required": [
+        "modelId",
+        "modelVersion",
+        "modelChecksum",
+        "workerBuildHash",
+        "configHash"
+      ],
+      "additionalProperties": false
+    },
+    "input": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "ASSET_PATH"
+            },
+            "rootId": {
+              "type": "string"
+            },
+            "relativePath": {
+              "type": "string"
+            },
+            "assetId": {
+              "type": "string"
+            },
+            "assetRevision": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "kind",
+            "rootId",
+            "relativePath",
+            "assetId",
+            "assetRevision"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "IMAGE_REGION"
+            },
+            "assetId": {
+              "type": "string"
+            },
+            "assetRevision": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "x": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "y": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "width": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            },
+            "height": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "kind",
+            "assetId",
+            "assetRevision",
+            "x",
+            "y",
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "candidate": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "OCR"
+            },
+            "text": {
+              "type": "string"
+            },
+            "language": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "kind",
+            "text",
+            "language",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "FACE"
+            },
+            "embeddingDigest": {
+              "type": "string"
+            },
+            "x": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "y": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "width": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            },
+            "height": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "kind",
+            "embeddingDigest",
+            "x",
+            "y",
+            "width",
+            "height",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "DUPLICATE"
+            },
+            "otherAssetId": {
+              "type": "string"
+            },
+            "similarity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "kind",
+            "otherAssetId",
+            "similarity"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "LOCATION"
+            },
+            "latitude": {
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "longitude": {
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "kind",
+            "latitude",
+            "longitude",
+            "confidence"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "TAG"
+            },
+            "namespace": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "kind",
+            "namespace",
+            "name",
+            "confidence"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "handshake"
+        },
+        "protocolVersion": {
+          "const": "3.0.0"
+        },
+        "workerBuildHash": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{32,128}$"
+        },
+        "taskKinds": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "OCR",
+              "EMBEDDING",
+              "FACE_DETECTION",
+              "FACE_EMBEDDING",
+              "DUPLICATE",
+              "LOCATION",
+              "CONTENT_TAG"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "modelRegistryDigest": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{32,128}$"
+        },
+        "maxFrameBytes": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 67108864
+        }
+      },
+      "required": [
+        "type",
+        "protocolVersion",
+        "workerBuildHash",
+        "taskKinds",
+        "modelRegistryDigest",
+        "maxFrameBytes"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "task"
+        },
+        "taskId": {
+          "type": "string"
+        },
+        "taskKind": {
+          "enum": [
+            "OCR",
+            "EMBEDDING",
+            "FACE_DETECTION",
+            "FACE_EMBEDDING",
+            "DUPLICATE",
+            "LOCATION",
+            "CONTENT_TAG"
+          ]
+        },
+        "modelId": {
+          "type": "string"
+        },
+        "input": {
+          "$ref": "#/$defs/input"
+        }
+      },
+      "required": [
+        "type",
+        "taskId",
+        "taskKind",
+        "modelId",
+        "input"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "result"
+        },
+        "taskId": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "SUCCEEDED",
+            "FAILED",
+            "CANCELLED"
+          ]
+        },
+        "candidate": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/candidate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fingerprint": {
+          "$ref": "#/$defs/fingerprint"
+        },
+        "errorCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "taskId",
+        "status",
+        "candidate",
+        "fingerprint",
+        "errorCode"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "control"
+        },
+        "taskId": {
+          "type": "string"
+        },
+        "action": {
+          "enum": [
+            "CANCEL",
+            "PAUSE",
+            "RESUME"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "taskId",
+        "action"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

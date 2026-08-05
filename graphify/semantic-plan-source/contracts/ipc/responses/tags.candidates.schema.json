@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/tags.candidates.schema.json",
+  "title": "Tags Candidates Response",
+  "description": "Command-specific response DTO for tags.candidates.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "items",
+    "nextCursor",
+    "snapshotRevision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "../../shared-definitions-v1.schema.json#/$defs/TagSummary"
+      },
+      "minItems": 0
+    },
+    "nextCursor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "snapshotRevision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "tags.candidates",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

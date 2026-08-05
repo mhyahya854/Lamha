@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/ai.start.schema.json",
+  "title": "Ai Start Request",
+  "description": "Command-specific request DTO for ai.start.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "planId",
+    "executionOptions"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "planId": {
+      "type": "string"
+    },
+    "executionOptions": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/ExecutionOptions"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "ai.start",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

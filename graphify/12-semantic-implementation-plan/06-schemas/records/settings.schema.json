@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/settings.schema.json",
+  "title": "Settings",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "theme",
+    "locale",
+    "thumbnailSize",
+    "hardwareAcceleration",
+    "reduceMotion",
+    "highContrast",
+    "telemetryEnabled",
+    "filenameTemplates"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authority": {
+      "const": "AUTHORITATIVE_FILE_RECORD"
+    },
+    "privacy": {
+      "$ref": "#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "#/$defs/ExtensionMap"
+    },
+    "theme": {
+      "enum": [
+        "SYSTEM",
+        "LIGHT",
+        "DARK"
+      ]
+    },
+    "locale": {
+      "type": "string",
+      "minLength": 2
+    },
+    "thumbnailSize": {
+      "enum": [
+        "SMALL",
+        "MEDIUM",
+        "LARGE"
+      ]
+    },
+    "hardwareAcceleration": {
+      "enum": [
+        "AUTO",
+        "CPU_ONLY",
+        "PREFER_GPU"
+      ]
+    },
+    "reduceMotion": {
+      "type": "boolean"
+    },
+    "highContrast": {
+      "type": "boolean"
+    },
+    "telemetryEnabled": {
+      "const": false
+    },
+    "filenameTemplates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/FilenameTemplate"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "AUTHORITATIVE_FILE_RECORD",
+    "privacyClassification": "LOCAL_USER_DATA",
+    "stableIdStrategy": "UUIDv7 or documented deterministic content identity",
+    "timestampSemantics": "UTC RFC3339 instants; source timezone retained in domain fields when required",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and leaves original bytes intact on failure"
+  },
+  "$defs": {
+    "FilenameTemplate": {
+      "type": "object",
+      "required": [
+        "templateId",
+        "name",
+        "pattern",
+        "collisionBehavior",
+        "extensionPolicy"
+      ],
+      "properties": {
+        "templateId": {
+          "$ref": "record-shared-v1.schema.json#/$defs/Id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "pattern": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "collisionBehavior": {
+          "enum": [
+            "REJECT",
+            "SEQUENCE",
+            "HASH_SUFFIX"
+          ]
+        },
+        "extensionPolicy": {
+          "enum": [
+            "PRESERVE",
+            "LOWERCASE",
+            "UPPERCASE"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

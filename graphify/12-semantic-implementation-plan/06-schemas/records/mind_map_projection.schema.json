@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/mind_map_projection.schema.json",
+  "title": "Mind Map Projection",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "scopeType",
+    "scopeId",
+    "sourceRecordRevisions",
+    "nodes",
+    "edges"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authority": {
+      "const": "DERIVED_REBUILDABLE"
+    },
+    "privacy": {
+      "$ref": "#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "#/$defs/ExtensionMap"
+    },
+    "scopeType": {
+      "enum": [
+        "GLOBAL",
+        "EVENT",
+        "FOLDER",
+        "PERSON",
+        "GROUP"
+      ]
+    },
+    "scopeId": {
+      "oneOf": [
+        {
+          "$ref": "record-shared-v1.schema.json#/$defs/Id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sourceRecordRevisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "recordId": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "recordId",
+          "revision"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "sourceRecordId": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "PERSON",
+              "GROUP",
+              "EVENT",
+              "FOLDER",
+              "TAG"
+            ]
+          }
+        },
+        "required": [
+          "nodeId",
+          "sourceRecordId",
+          "label",
+          "kind"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "edgeId": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "sourceRecordId": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "fromNodeId": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "toNodeId": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "kind": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "edgeId",
+          "sourceRecordId",
+          "fromNodeId",
+          "toNodeId",
+          "kind"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "DERIVED_REBUILDABLE",
+    "privacyClassification": "LOCAL_USER_DATA",
+    "stableIdStrategy": "UUIDv7 or documented deterministic content identity",
+    "timestampSemantics": "UTC RFC3339 instants; source timezone retained in domain fields when required",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and leaves original bytes intact on failure"
+  }
+}

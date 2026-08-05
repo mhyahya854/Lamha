@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/people.split.schema.json",
+  "title": "People Split Request",
+  "description": "Command-specific request DTO for people.split.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "planId",
+    "confirmationToken",
+    "expectedRevision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "planId": {
+      "type": "string"
+    },
+    "confirmationToken": {
+      "type": "string",
+      "minLength": 8
+    },
+    "expectedRevision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "people.split",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

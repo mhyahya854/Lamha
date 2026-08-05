@@ -1,0 +1,340 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/record-shared-v1.schema.json",
+  "$defs": {
+    "Id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "Timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "Revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "Hash": {
+      "type": "object",
+      "properties": {
+        "algorithm": {
+          "enum": [
+            "BLAKE3",
+            "SHA256"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{32,128}$"
+        }
+      },
+      "required": [
+        "algorithm",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "PathRef": {
+      "type": "object",
+      "properties": {
+        "rootId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "relativePath": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32768
+        },
+        "driveId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "rootId",
+        "relativePath"
+      ],
+      "additionalProperties": false
+    },
+    "Provenance": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "enum": [
+            "USER",
+            "FILESYSTEM",
+            "IMPORT",
+            "AI_PROPOSAL",
+            "MIGRATION",
+            "RECOVERY"
+          ]
+        },
+        "recordedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sourceRecordId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "modelFingerprint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 512
+        }
+      },
+      "required": [
+        "source",
+        "recordedAt"
+      ],
+      "additionalProperties": false
+    },
+    "Privacy": {
+      "type": "object",
+      "properties": {
+        "classification": {
+          "enum": [
+            "LOCAL_USER_DATA",
+            "SENSITIVE_BIOMETRIC",
+            "LOCATION",
+            "OPERATIONAL",
+            "PUBLIC_EXPORT"
+          ]
+        },
+        "exportPolicy": {
+          "enum": [
+            "ALLOW",
+            "REDACT",
+            "EXCLUDE",
+            "REVIEW"
+          ]
+        },
+        "consentState": {
+          "enum": [
+            "NOT_APPLICABLE",
+            "UNKNOWN",
+            "GRANTED",
+            "WITHDRAWN"
+          ]
+        }
+      },
+      "required": [
+        "classification",
+        "exportPolicy",
+        "consentState"
+      ],
+      "additionalProperties": false
+    },
+    "ExtensionMap": {
+      "type": "object",
+      "description": "Intentional forward-compatible scalar extension point. Keys are vendor-prefixed and values cannot contain objects or arrays.",
+      "propertyNames": {
+        "pattern": "^x-[a-z0-9][a-z0-9.-]{1,63}$"
+      },
+      "additionalProperties": {
+        "type": [
+          "string",
+          "number",
+          "integer",
+          "boolean",
+          "null"
+        ]
+      },
+      "x-lamha-approved-open-object": true,
+      "x-lamha-rationale": "Preserve unknown scalar vendor fields without hiding core product structures."
+    },
+    "Gps": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "altitudeMeters": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "source": {
+          "enum": [
+            "EMBEDDED",
+            "XMP",
+            "ASSET_JSON",
+            "USER",
+            "AI_PROPOSAL"
+          ]
+        }
+      },
+      "required": [
+        "latitude",
+        "longitude",
+        "altitudeMeters",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "Camera": {
+      "type": "object",
+      "properties": {
+        "make": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        },
+        "lens": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        },
+        "cameraOwnerPersonId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "photographerPersonIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "make",
+        "model",
+        "lens",
+        "cameraOwnerPersonId",
+        "photographerPersonIds"
+      ],
+      "additionalProperties": false
+    },
+    "BoundingBox": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "width": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "height": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "RecordHeader": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "authority": {
+          "enum": [
+            "AUTHORITATIVE_FILE_RECORD",
+            "TEMPORARY_TRANSACTION_AUTHORITY",
+            "DERIVED_REBUILDABLE"
+          ]
+        },
+        "privacy": {
+          "$ref": "#/$defs/Privacy"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "extensions": {
+          "$ref": "#/$defs/ExtensionMap"
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "revision",
+        "createdAt",
+        "updatedAt",
+        "authority",
+        "privacy",
+        "provenance",
+        "extensions"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

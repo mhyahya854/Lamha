@@ -1,0 +1,460 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/events/operation-event-v2.schema.json",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "eventVersion": {
+          "const": "2.0.0"
+        },
+        "eventType": {
+          "const": "operation.accepted"
+        },
+        "operationId": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Id"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "timestamp": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Timestamp"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "queuePosition": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "queuePosition"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "eventVersion",
+        "eventType",
+        "operationId",
+        "sequence",
+        "timestamp",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "eventVersion": {
+          "const": "2.0.0"
+        },
+        "eventType": {
+          "const": "operation.started"
+        },
+        "operationId": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Id"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "timestamp": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Timestamp"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "startedAt": {
+              "$ref": "shared-definitions-v1.schema.json#/$defs/Timestamp"
+            }
+          },
+          "required": [
+            "startedAt"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "eventVersion",
+        "eventType",
+        "operationId",
+        "sequence",
+        "timestamp",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "eventVersion": {
+          "const": "2.0.0"
+        },
+        "eventType": {
+          "const": "operation.progress"
+        },
+        "operationId": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Id"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "timestamp": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Timestamp"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "completedItems": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "totalItems": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "message": {
+              "type": "string",
+              "maxLength": 1000
+            }
+          },
+          "required": [
+            "completedItems",
+            "totalItems",
+            "message"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "eventVersion",
+        "eventType",
+        "operationId",
+        "sequence",
+        "timestamp",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "eventVersion": {
+          "const": "2.0.0"
+        },
+        "eventType": {
+          "const": "operation.warning"
+        },
+        "operationId": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Id"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "timestamp": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Timestamp"
+        },
+        "payload": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Warning"
+        }
+      },
+      "required": [
+        "eventVersion",
+        "eventType",
+        "operationId",
+        "sequence",
+        "timestamp",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "eventVersion": {
+          "const": "2.0.0"
+        },
+        "eventType": {
+          "const": "operation.committed"
+        },
+        "operationId": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Id"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "timestamp": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Timestamp"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "committedItems": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "committedAt": {
+              "$ref": "shared-definitions-v1.schema.json#/$defs/Timestamp"
+            }
+          },
+          "required": [
+            "committedItems",
+            "committedAt"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "eventVersion",
+        "eventType",
+        "operationId",
+        "sequence",
+        "timestamp",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "eventVersion": {
+          "const": "2.0.0"
+        },
+        "eventType": {
+          "const": "operation.failed"
+        },
+        "operationId": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Id"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "timestamp": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Timestamp"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "errorCode": {
+              "type": "string",
+              "pattern": "^[A-Z][A-Z0-9_]{2,63}$"
+            },
+            "retryable": {
+              "type": "boolean"
+            },
+            "recoveryRequired": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "errorCode",
+            "retryable",
+            "recoveryRequired"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "eventVersion",
+        "eventType",
+        "operationId",
+        "sequence",
+        "timestamp",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "eventVersion": {
+          "const": "2.0.0"
+        },
+        "eventType": {
+          "const": "operation.paused"
+        },
+        "operationId": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Id"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "timestamp": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Timestamp"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "safePoint": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "safePoint"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "eventVersion",
+        "eventType",
+        "operationId",
+        "sequence",
+        "timestamp",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "eventVersion": {
+          "const": "2.0.0"
+        },
+        "eventType": {
+          "const": "operation.cancelled"
+        },
+        "operationId": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Id"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "timestamp": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Timestamp"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "committedItems": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "rolledBackItems": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "committedItems",
+            "rolledBackItems"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "eventVersion",
+        "eventType",
+        "operationId",
+        "sequence",
+        "timestamp",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "eventVersion": {
+          "const": "2.0.0"
+        },
+        "eventType": {
+          "const": "operation.recovery_started"
+        },
+        "operationId": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Id"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "timestamp": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Timestamp"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "journalRevision": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "journalRevision"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "eventVersion",
+        "eventType",
+        "operationId",
+        "sequence",
+        "timestamp",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "eventVersion": {
+          "const": "2.0.0"
+        },
+        "eventType": {
+          "const": "operation.recovery_completed"
+        },
+        "operationId": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Id"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "timestamp": {
+          "$ref": "shared-definitions-v1.schema.json#/$defs/Timestamp"
+        },
+        "payload": {
+          "type": "object",
+          "properties": {
+            "recoveredItems": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "unresolvedItems": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "recoveredItems",
+            "unresolvedItems"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "eventVersion",
+        "eventType",
+        "operationId",
+        "sequence",
+        "timestamp",
+        "payload"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

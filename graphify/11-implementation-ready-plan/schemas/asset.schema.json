@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schema/asset.schema.json",
+  "title": "Lamha asset record",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "createdAt",
+    "updatedAt",
+    "revision",
+    "media"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "media": {
+      "type": "object",
+      "required": [
+        "currentRelativePath",
+        "kind",
+        "originalFilename"
+      ],
+      "properties": {
+        "currentRelativePath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "originalFilename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "photo",
+            "video",
+            "audio",
+            "other"
+          ]
+        },
+        "mimeType": {
+          "type": "string"
+        },
+        "sizeBytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "contentHash": {
+          "type": "string"
+        },
+        "quickFingerprint": {
+          "type": "string"
+        },
+        "captureTime": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "captureTimeSource": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "timezoneOffsetMinutes": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "rootId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "additionalProperties": true
+    },
+    "eventId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid"
+    },
+    "companionAssetIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "uniqueItems": true
+    },
+    "approvedMetadata": {
+      "type": "object"
+    },
+    "attribution": {
+      "type": "object",
+      "properties": {
+        "photographerId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid"
+        },
+        "cameraOwnerId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid"
+        },
+        "importerId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uuid"
+        }
+      },
+      "additionalProperties": true
+    },
+    "people": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "personId",
+          "state"
+        ],
+        "properties": {
+          "personId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "state": {
+            "enum": [
+              "visible",
+              "attendee-only",
+              "unknown"
+            ]
+          },
+          "faceRegionIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "tagAssignments": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "editRecipe": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "aiTasks": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "ai-task.schema.json"
+      }
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": true
+}

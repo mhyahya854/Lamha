@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/drive_registry.schema.json",
+  "title": "Drive Registry",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "drives"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "revision": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Revision"
+    },
+    "createdAt": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Timestamp"
+    },
+    "updatedAt": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Timestamp"
+    },
+    "authority": {
+      "const": "AUTHORITATIVE_FILE_RECORD"
+    },
+    "privacy": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "record-shared-v1.schema.json#/$defs/ExtensionMap"
+    },
+    "drives": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Drive"
+      }
+    }
+  },
+  "$defs": {
+    "Drive": {
+      "type": "object",
+      "required": [
+        "driveId",
+        "volumeIdentity",
+        "label",
+        "filesystem",
+        "lastMountPath",
+        "accessMode",
+        "status",
+        "lastSeenAt"
+      ],
+      "properties": {
+        "driveId": {
+          "$ref": "record-shared-v1.schema.json#/$defs/Id"
+        },
+        "volumeIdentity": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 256
+        },
+        "filesystem": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 64
+        },
+        "lastMountPath": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 32768
+        },
+        "accessMode": {
+          "enum": [
+            "READ_WRITE",
+            "READ_ONLY",
+            "UNAVAILABLE"
+          ]
+        },
+        "status": {
+          "enum": [
+            "CONNECTED",
+            "DISCONNECTED",
+            "IDENTITY_CONFLICT"
+          ]
+        },
+        "lastSeenAt": {
+          "$ref": "record-shared-v1.schema.json#/$defs/Timestamp"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "AUTHORITATIVE_FILE_RECORD",
+    "privacyClassification": "LOCAL_USER_DATA",
+    "stableIdStrategy": "UUIDv7 or documented deterministic identity",
+    "timestampSemantics": "UTC RFC3339 instants",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and preserves the prior valid revision on failure"
+  }
+}

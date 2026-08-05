@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/maintenance.status.schema.json",
+  "title": "Maintenance Status Request",
+  "description": "Command-specific request DTO for maintenance.status.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "statusOptions"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "statusOptions": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/StatusSnapshot"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "maintenance.status",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

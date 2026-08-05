@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/saved_view.schema.json",
+  "title": "Saved View",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "name",
+    "query",
+    "sort",
+    "layout"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "revision": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Revision"
+    },
+    "createdAt": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Timestamp"
+    },
+    "updatedAt": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Timestamp"
+    },
+    "authority": {
+      "const": "AUTHORITATIVE_FILE_RECORD"
+    },
+    "privacy": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "record-shared-v1.schema.json#/$defs/ExtensionMap"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "query": {
+      "$ref": "#/$defs/Query"
+    },
+    "sort": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/SortRule"
+      }
+    },
+    "layout": {
+      "enum": [
+        "GRID",
+        "TIMELINE",
+        "MAP",
+        "LIST"
+      ]
+    }
+  },
+  "$defs": {
+    "Query": {
+      "type": "object",
+      "required": [
+        "text",
+        "tagIds",
+        "albumIds",
+        "eventIds",
+        "personIds",
+        "mediaTypes",
+        "favorite",
+        "ratingMin"
+      ],
+      "properties": {
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 4096
+        },
+        "tagIds": {
+          "type": "array",
+          "items": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "uniqueItems": true
+        },
+        "albumIds": {
+          "type": "array",
+          "items": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "uniqueItems": true
+        },
+        "eventIds": {
+          "type": "array",
+          "items": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "uniqueItems": true
+        },
+        "personIds": {
+          "type": "array",
+          "items": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "uniqueItems": true
+        },
+        "mediaTypes": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "IMAGE",
+              "VIDEO",
+              "RAW",
+              "AUDIO_COMPANION"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "favorite": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "ratingMin": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 5
+        }
+      },
+      "additionalProperties": false
+    },
+    "SortRule": {
+      "type": "object",
+      "required": [
+        "field",
+        "direction"
+      ],
+      "properties": {
+        "field": {
+          "enum": [
+            "CAPTURE_TIME",
+            "IMPORT_TIME",
+            "FILENAME",
+            "RATING",
+            "RELEVANCE"
+          ]
+        },
+        "direction": {
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "AUTHORITATIVE_FILE_RECORD",
+    "privacyClassification": "LOCAL_USER_DATA",
+    "stableIdStrategy": "UUIDv7 or documented deterministic identity",
+    "timestampSemantics": "UTC RFC3339 instants",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and preserves the prior valid revision on failure"
+  }
+}

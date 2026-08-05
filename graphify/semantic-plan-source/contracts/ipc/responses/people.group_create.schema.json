@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/people.group_create.schema.json",
+  "title": "People Group Create Response",
+  "description": "Command-specific response DTO for people.group_create.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "groupcreateResult",
+    "revision",
+    "auditEntryId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "groupcreateResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/MutationReceipt"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "auditEntryId": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "people.group_create",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

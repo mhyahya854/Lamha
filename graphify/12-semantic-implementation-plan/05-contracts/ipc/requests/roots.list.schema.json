@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/roots.list.schema.json",
+  "title": "Roots List Request",
+  "description": "Command-specific request DTO for roots.list.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "limit",
+    "filter",
+    "sort"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 500,
+      "default": 100
+    },
+    "cursor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "filter": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/RootFilter"
+    },
+    "sort": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "field",
+          "direction"
+        ],
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "direction": {
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "roots.list",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

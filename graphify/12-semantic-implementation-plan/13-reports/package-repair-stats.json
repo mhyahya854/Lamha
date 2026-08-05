@@ -1,0 +1,12 @@
+{
+  "previousCount": 172,
+  "finalCount": 155,
+  "legacyDecisions": {
+    "KEEP_OR_REASSIGN": 113,
+    "MERGE": 59
+  },
+  "largestPackage": "WP-I3-001",
+  "largestPackageItemCount": 38,
+  "maximumCapabilityDiversity": 8,
+  "mechanicalSlicePackagesRemaining": 0
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/assets.thumbnail_request.schema.json",
+  "title": "Assets Thumbnail Request Response",
+  "description": "Command-specific response DTO for assets.thumbnail_request.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "thumbnailrequestResult",
+    "revision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "thumbnailrequestResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/PreviewResult"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "assets.thumbnail_request",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

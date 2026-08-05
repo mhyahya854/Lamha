@@ -1,0 +1,1030 @@
+{
+  "packets": [
+    {
+      "type": "PHASE",
+      "id": "I0",
+      "path": "11-model-packets/phases/I0.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I1",
+      "path": "11-model-packets/phases/I1.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I2",
+      "path": "11-model-packets/phases/I2.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I3",
+      "path": "11-model-packets/phases/I3.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I4",
+      "path": "11-model-packets/phases/I4.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I5",
+      "path": "11-model-packets/phases/I5.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I6",
+      "path": "11-model-packets/phases/I6.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I7",
+      "path": "11-model-packets/phases/I7.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I8",
+      "path": "11-model-packets/phases/I8.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I9",
+      "path": "11-model-packets/phases/I9.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I10",
+      "path": "11-model-packets/phases/I10.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I11",
+      "path": "11-model-packets/phases/I11.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I12",
+      "path": "11-model-packets/phases/I12.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I13",
+      "path": "11-model-packets/phases/I13.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I14",
+      "path": "11-model-packets/phases/I14.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "PHASE",
+      "id": "I15",
+      "path": "11-model-packets/phases/I15.md",
+      "canonicalSource": "semantic-plan-source/phases/implementation-phases.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I0-001",
+      "path": "04-work-packages/packets/WP-I0-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I0-002",
+      "path": "04-work-packages/packets/WP-I0-002.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I0-003",
+      "path": "04-work-packages/packets/WP-I0-003.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I0-004",
+      "path": "04-work-packages/packets/WP-I0-004.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I0-005",
+      "path": "04-work-packages/packets/WP-I0-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I0-006",
+      "path": "04-work-packages/packets/WP-I0-006.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I0-007",
+      "path": "04-work-packages/packets/WP-I0-007.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I0-008",
+      "path": "04-work-packages/packets/WP-I0-008.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I0-009",
+      "path": "04-work-packages/packets/WP-I0-009.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I0-010",
+      "path": "04-work-packages/packets/WP-I0-010.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I0-011",
+      "path": "04-work-packages/packets/WP-I0-011.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I1-001",
+      "path": "04-work-packages/packets/WP-I1-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I1-002",
+      "path": "04-work-packages/packets/WP-I1-002.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I1-003",
+      "path": "04-work-packages/packets/WP-I1-003.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I1-004",
+      "path": "04-work-packages/packets/WP-I1-004.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I1-005",
+      "path": "04-work-packages/packets/WP-I1-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I2-001",
+      "path": "04-work-packages/packets/WP-I2-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I2-002",
+      "path": "04-work-packages/packets/WP-I2-002.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I2-003",
+      "path": "04-work-packages/packets/WP-I2-003.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I2-004",
+      "path": "04-work-packages/packets/WP-I2-004.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I2-005",
+      "path": "04-work-packages/packets/WP-I2-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I2-007",
+      "path": "04-work-packages/packets/WP-I2-007.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I2-008",
+      "path": "04-work-packages/packets/WP-I2-008.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I2-011",
+      "path": "04-work-packages/packets/WP-I2-011.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I2-013",
+      "path": "04-work-packages/packets/WP-I2-013.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-001",
+      "path": "04-work-packages/packets/WP-I3-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-002",
+      "path": "04-work-packages/packets/WP-I3-002.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-003",
+      "path": "04-work-packages/packets/WP-I3-003.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-004",
+      "path": "04-work-packages/packets/WP-I3-004.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-005",
+      "path": "04-work-packages/packets/WP-I3-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-006",
+      "path": "04-work-packages/packets/WP-I3-006.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-007",
+      "path": "04-work-packages/packets/WP-I3-007.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-008",
+      "path": "04-work-packages/packets/WP-I3-008.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-009",
+      "path": "04-work-packages/packets/WP-I3-009.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-010",
+      "path": "04-work-packages/packets/WP-I3-010.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-011",
+      "path": "04-work-packages/packets/WP-I3-011.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-012",
+      "path": "04-work-packages/packets/WP-I3-012.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-014",
+      "path": "04-work-packages/packets/WP-I3-014.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-015",
+      "path": "04-work-packages/packets/WP-I3-015.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I3-016",
+      "path": "04-work-packages/packets/WP-I3-016.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I4-001",
+      "path": "04-work-packages/packets/WP-I4-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I4-002",
+      "path": "04-work-packages/packets/WP-I4-002.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I4-003",
+      "path": "04-work-packages/packets/WP-I4-003.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I4-004",
+      "path": "04-work-packages/packets/WP-I4-004.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I4-005",
+      "path": "04-work-packages/packets/WP-I4-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I4-006",
+      "path": "04-work-packages/packets/WP-I4-006.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I4-007",
+      "path": "04-work-packages/packets/WP-I4-007.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I4-008",
+      "path": "04-work-packages/packets/WP-I4-008.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I4-009",
+      "path": "04-work-packages/packets/WP-I4-009.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I4-010",
+      "path": "04-work-packages/packets/WP-I4-010.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I4-011",
+      "path": "04-work-packages/packets/WP-I4-011.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I4-012",
+      "path": "04-work-packages/packets/WP-I4-012.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I5-001",
+      "path": "04-work-packages/packets/WP-I5-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I5-002",
+      "path": "04-work-packages/packets/WP-I5-002.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I5-003",
+      "path": "04-work-packages/packets/WP-I5-003.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I5-004",
+      "path": "04-work-packages/packets/WP-I5-004.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I5-005",
+      "path": "04-work-packages/packets/WP-I5-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I5-006",
+      "path": "04-work-packages/packets/WP-I5-006.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I5-007",
+      "path": "04-work-packages/packets/WP-I5-007.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I5-008",
+      "path": "04-work-packages/packets/WP-I5-008.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I5-009",
+      "path": "04-work-packages/packets/WP-I5-009.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I5-010",
+      "path": "04-work-packages/packets/WP-I5-010.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I5-011",
+      "path": "04-work-packages/packets/WP-I5-011.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I5-012",
+      "path": "04-work-packages/packets/WP-I5-012.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I6-001",
+      "path": "04-work-packages/packets/WP-I6-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I6-002",
+      "path": "04-work-packages/packets/WP-I6-002.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I6-003",
+      "path": "04-work-packages/packets/WP-I6-003.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I6-004",
+      "path": "04-work-packages/packets/WP-I6-004.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I6-005",
+      "path": "04-work-packages/packets/WP-I6-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I6-006",
+      "path": "04-work-packages/packets/WP-I6-006.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I6-007",
+      "path": "04-work-packages/packets/WP-I6-007.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I6-008",
+      "path": "04-work-packages/packets/WP-I6-008.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I6-009",
+      "path": "04-work-packages/packets/WP-I6-009.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I6-010",
+      "path": "04-work-packages/packets/WP-I6-010.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I7-001",
+      "path": "04-work-packages/packets/WP-I7-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I7-002",
+      "path": "04-work-packages/packets/WP-I7-002.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I7-003",
+      "path": "04-work-packages/packets/WP-I7-003.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I7-004",
+      "path": "04-work-packages/packets/WP-I7-004.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I7-005",
+      "path": "04-work-packages/packets/WP-I7-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I7-007",
+      "path": "04-work-packages/packets/WP-I7-007.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I7-008",
+      "path": "04-work-packages/packets/WP-I7-008.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I7-009",
+      "path": "04-work-packages/packets/WP-I7-009.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I7-010",
+      "path": "04-work-packages/packets/WP-I7-010.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I7-011",
+      "path": "04-work-packages/packets/WP-I7-011.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I8-001",
+      "path": "04-work-packages/packets/WP-I8-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I8-002",
+      "path": "04-work-packages/packets/WP-I8-002.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I8-004",
+      "path": "04-work-packages/packets/WP-I8-004.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I8-005",
+      "path": "04-work-packages/packets/WP-I8-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I8-006",
+      "path": "04-work-packages/packets/WP-I8-006.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I8-007",
+      "path": "04-work-packages/packets/WP-I8-007.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I8-009",
+      "path": "04-work-packages/packets/WP-I8-009.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I8-010",
+      "path": "04-work-packages/packets/WP-I8-010.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I9-001",
+      "path": "04-work-packages/packets/WP-I9-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I9-003",
+      "path": "04-work-packages/packets/WP-I9-003.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I9-004",
+      "path": "04-work-packages/packets/WP-I9-004.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I9-005",
+      "path": "04-work-packages/packets/WP-I9-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I9-006",
+      "path": "04-work-packages/packets/WP-I9-006.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I9-007",
+      "path": "04-work-packages/packets/WP-I9-007.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I10-001",
+      "path": "04-work-packages/packets/WP-I10-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I10-002",
+      "path": "04-work-packages/packets/WP-I10-002.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I10-003",
+      "path": "04-work-packages/packets/WP-I10-003.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I10-004",
+      "path": "04-work-packages/packets/WP-I10-004.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I10-005",
+      "path": "04-work-packages/packets/WP-I10-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I10-006",
+      "path": "04-work-packages/packets/WP-I10-006.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I10-007",
+      "path": "04-work-packages/packets/WP-I10-007.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I10-008",
+      "path": "04-work-packages/packets/WP-I10-008.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I10-009",
+      "path": "04-work-packages/packets/WP-I10-009.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I10-010",
+      "path": "04-work-packages/packets/WP-I10-010.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I10-011",
+      "path": "04-work-packages/packets/WP-I10-011.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I10-012",
+      "path": "04-work-packages/packets/WP-I10-012.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I10-013",
+      "path": "04-work-packages/packets/WP-I10-013.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I10-014",
+      "path": "04-work-packages/packets/WP-I10-014.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I11-001",
+      "path": "04-work-packages/packets/WP-I11-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I11-002",
+      "path": "04-work-packages/packets/WP-I11-002.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I11-003",
+      "path": "04-work-packages/packets/WP-I11-003.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I11-004",
+      "path": "04-work-packages/packets/WP-I11-004.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I11-006",
+      "path": "04-work-packages/packets/WP-I11-006.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I11-009",
+      "path": "04-work-packages/packets/WP-I11-009.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I11-010",
+      "path": "04-work-packages/packets/WP-I11-010.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I11-011",
+      "path": "04-work-packages/packets/WP-I11-011.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I11-012",
+      "path": "04-work-packages/packets/WP-I11-012.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I12-001",
+      "path": "04-work-packages/packets/WP-I12-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I12-002",
+      "path": "04-work-packages/packets/WP-I12-002.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I12-003",
+      "path": "04-work-packages/packets/WP-I12-003.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I12-004",
+      "path": "04-work-packages/packets/WP-I12-004.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I12-005",
+      "path": "04-work-packages/packets/WP-I12-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I12-006",
+      "path": "04-work-packages/packets/WP-I12-006.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I12-007",
+      "path": "04-work-packages/packets/WP-I12-007.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I12-008",
+      "path": "04-work-packages/packets/WP-I12-008.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I12-009",
+      "path": "04-work-packages/packets/WP-I12-009.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I13-001",
+      "path": "04-work-packages/packets/WP-I13-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I13-002",
+      "path": "04-work-packages/packets/WP-I13-002.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I13-003",
+      "path": "04-work-packages/packets/WP-I13-003.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I13-005",
+      "path": "04-work-packages/packets/WP-I13-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I13-006",
+      "path": "04-work-packages/packets/WP-I13-006.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I13-007",
+      "path": "04-work-packages/packets/WP-I13-007.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I13-008",
+      "path": "04-work-packages/packets/WP-I13-008.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I13-009",
+      "path": "04-work-packages/packets/WP-I13-009.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I13-010",
+      "path": "04-work-packages/packets/WP-I13-010.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I13-011",
+      "path": "04-work-packages/packets/WP-I13-011.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I14-001",
+      "path": "04-work-packages/packets/WP-I14-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I14-002",
+      "path": "04-work-packages/packets/WP-I14-002.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I14-003",
+      "path": "04-work-packages/packets/WP-I14-003.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I14-004",
+      "path": "04-work-packages/packets/WP-I14-004.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I14-005",
+      "path": "04-work-packages/packets/WP-I14-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I14-008",
+      "path": "04-work-packages/packets/WP-I14-008.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I14-009",
+      "path": "04-work-packages/packets/WP-I14-009.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I14-010",
+      "path": "04-work-packages/packets/WP-I14-010.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I15-001",
+      "path": "04-work-packages/packets/WP-I15-001.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I15-005",
+      "path": "04-work-packages/packets/WP-I15-005.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I15-006",
+      "path": "04-work-packages/packets/WP-I15-006.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I15-007",
+      "path": "04-work-packages/packets/WP-I15-007.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I15-008",
+      "path": "04-work-packages/packets/WP-I15-008.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I15-014",
+      "path": "04-work-packages/packets/WP-I15-014.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    },
+    {
+      "type": "WORK_PACKAGE",
+      "id": "WP-I15-015",
+      "path": "04-work-packages/packets/WP-I15-015.md",
+      "canonicalSource": "semantic-plan-source/packages/work-packages.json"
+    }
+  ]
+}

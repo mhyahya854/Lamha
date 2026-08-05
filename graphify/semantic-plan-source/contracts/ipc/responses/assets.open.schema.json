@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/assets.open.schema.json",
+  "title": "Assets Open Response",
+  "description": "Command-specific response DTO for assets.open.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "openResult",
+    "revision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "openResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/PathRef"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "assets.open",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

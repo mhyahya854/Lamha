@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/scan.status.schema.json",
+  "title": "Scan Status Request",
+  "description": "Command-specific request DTO for scan.status.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "statusOptions"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "statusOptions": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/StatusSnapshot"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "scan.status",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

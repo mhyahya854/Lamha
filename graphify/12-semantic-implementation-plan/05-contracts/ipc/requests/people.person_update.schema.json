@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/people.person_update.schema.json",
+  "title": "People Person Update Request",
+  "description": "Command-specific request DTO for people.person_update.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "personId",
+    "patch",
+    "expectedRevision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "personId": {
+      "type": "string"
+    },
+    "patch": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/StatusSnapshot"
+    },
+    "expectedRevision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "people.person_update",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

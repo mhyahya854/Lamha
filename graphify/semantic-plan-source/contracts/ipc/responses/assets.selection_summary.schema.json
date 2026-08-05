@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/assets.selection_summary.schema.json",
+  "title": "Assets Selection Summary Response",
+  "description": "Command-specific response DTO for assets.selection_summary.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "selectionsummaryResult",
+    "revision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "selectionsummaryResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/AssetDetail"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "assets.selection_summary",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "legacy_normalized_items": 2338,
+  "statement_rewrites": 760,
+  "phase_remaps": 426,
+  "capability_corrections": 496,
+  "classification_corrections": 99,
+  "candidate_package_count": 154,
+  "membership_rows": 1183,
+  "dependency_edges": 84,
+  "legacy_package_reviews": 172
+}

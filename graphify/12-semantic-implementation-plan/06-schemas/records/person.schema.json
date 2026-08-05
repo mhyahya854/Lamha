@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/person.schema.json",
+  "title": "Person",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "identityState",
+    "canonicalName",
+    "aliases",
+    "profileAssetId",
+    "hidden",
+    "mergeHistory"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authority": {
+      "const": "AUTHORITATIVE_FILE_RECORD"
+    },
+    "privacy": {
+      "$ref": "#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "#/$defs/ExtensionMap"
+    },
+    "identityState": {
+      "enum": [
+        "CANDIDATE",
+        "CONFIRMED",
+        "MERGED",
+        "SPLIT"
+      ]
+    },
+    "canonicalName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 500
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 500
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "profileAssetId": {
+      "oneOf": [
+        {
+          "$ref": "record-shared-v1.schema.json#/$defs/Id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "hidden": {
+      "type": "boolean"
+    },
+    "mergeHistory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "enum": [
+              "MERGE_IN",
+              "SPLIT_OUT"
+            ]
+          },
+          "otherPersonId": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "at": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Timestamp"
+          },
+          "approvedBy": {
+            "const": "USER"
+          }
+        },
+        "required": [
+          "action",
+          "otherPersonId",
+          "at",
+          "approvedBy"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "AUTHORITATIVE_FILE_RECORD",
+    "privacyClassification": "SENSITIVE_BIOMETRIC",
+    "stableIdStrategy": "UUIDv7 or documented deterministic content identity",
+    "timestampSemantics": "UTC RFC3339 instants; source timezone retained in domain fields when required",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and leaves original bytes intact on failure"
+  }
+}

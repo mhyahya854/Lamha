@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/review.list.schema.json",
+  "title": "Review List Request",
+  "description": "Command-specific request DTO for review.list.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "limit",
+    "filter",
+    "sort"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 500,
+      "default": 100
+    },
+    "cursor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "filter": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/AssetFilter"
+    },
+    "sort": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "field",
+          "direction"
+        ],
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "direction": {
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "review.list",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

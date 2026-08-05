@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/ai_task.schema.json",
+  "title": "Ai Task",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "taskKind",
+    "assetId",
+    "assetRevision",
+    "modelId",
+    "modelVersion",
+    "modelChecksum",
+    "configHash",
+    "state",
+    "attempt",
+    "errorCode"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authority": {
+      "const": "AUTHORITATIVE_FILE_RECORD"
+    },
+    "privacy": {
+      "$ref": "#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "#/$defs/ExtensionMap"
+    },
+    "taskKind": {
+      "enum": [
+        "OCR",
+        "EMBEDDING",
+        "FACE_DETECTION",
+        "FACE_EMBEDDING",
+        "DUPLICATE",
+        "LOCATION",
+        "CONTENT_TAG"
+      ]
+    },
+    "assetId": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "assetRevision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "modelId": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "modelVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "modelChecksum": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{32,128}$"
+    },
+    "configHash": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{32,128}$"
+    },
+    "state": {
+      "enum": [
+        "QUEUED",
+        "RUNNING",
+        "PAUSED",
+        "SUCCEEDED",
+        "FAILED",
+        "CANCELLED"
+      ]
+    },
+    "attempt": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "errorCode": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "AUTHORITATIVE_FILE_RECORD",
+    "privacyClassification": "LOCAL_USER_DATA",
+    "stableIdStrategy": "UUIDv7 or documented deterministic content identity",
+    "timestampSemantics": "UTC RFC3339 instants; source timezone retained in domain fields when required",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and leaves original bytes intact on failure"
+  }
+}

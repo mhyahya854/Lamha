@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/contracts/sort-v1.schema.json",
+  "title": "Stable sort specification",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "field": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "direction": { "enum": ["ASC", "DESC"] },
+    "nulls": { "enum": ["FIRST", "LAST"] }
+  },
+  "required": ["field", "direction", "nulls"]
+}

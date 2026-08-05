@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/derivative_manifest.schema.json",
+  "title": "Derivative Manifest",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "sourceAssetId",
+    "sourceRevision",
+    "editRecipeId",
+    "exportManifestId",
+    "output",
+    "outputHash",
+    "mediaType",
+    "width",
+    "height"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "revision": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Revision"
+    },
+    "createdAt": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Timestamp"
+    },
+    "updatedAt": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Timestamp"
+    },
+    "authority": {
+      "const": "AUTHORITATIVE_FILE_RECORD"
+    },
+    "privacy": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "record-shared-v1.schema.json#/$defs/ExtensionMap"
+    },
+    "sourceAssetId": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "sourceRevision": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Revision"
+    },
+    "editRecipeId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "exportManifestId": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "output": {
+      "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+    },
+    "outputHash": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+    },
+    "mediaType": {
+      "enum": [
+        "IMAGE",
+        "VIDEO",
+        "AUDIO"
+      ]
+    },
+    "width": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "height": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    }
+  },
+  "$defs": {},
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "AUTHORITATIVE_FILE_RECORD",
+    "privacyClassification": "LOCAL_USER_DATA",
+    "stableIdStrategy": "UUIDv7 or documented deterministic identity",
+    "timestampSemantics": "UTC RFC3339 instants",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and preserves the prior valid revision on failure"
+  }
+}

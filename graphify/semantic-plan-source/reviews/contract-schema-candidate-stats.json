@@ -1,0 +1,8 @@
+{
+  "commands": 116,
+  "commands_reclassified": 26,
+  "destructive_commands": 11,
+  "authoritative_schemas": 20,
+  "derived_schemas": 3,
+  "total_record_schemas": 23
+}

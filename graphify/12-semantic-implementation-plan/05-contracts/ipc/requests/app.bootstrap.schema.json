@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/app.bootstrap.schema.json",
+  "title": "App Bootstrap Request",
+  "description": "Command-specific request DTO for app.bootstrap.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "safeMode"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "safeMode": {
+      "type": "boolean"
+    },
+    "requestedRootId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "app.bootstrap",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

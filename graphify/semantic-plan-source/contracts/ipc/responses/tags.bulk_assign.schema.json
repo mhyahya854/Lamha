@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/tags.bulk_assign.schema.json",
+  "title": "Tags Bulk Assign Response",
+  "description": "Command-specific response DTO for tags.bulk_assign.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "bulkassignResult",
+    "revision",
+    "auditEntryId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "bulkassignResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/MutationReceipt"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "auditEntryId": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "tags.bulk_assign",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

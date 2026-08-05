@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/roots.validate.schema.json",
+  "title": "Roots Validate Request",
+  "description": "Command-specific request DTO for roots.validate.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "validateOptions"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "validateOptions": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/StatusSnapshot"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "roots.validate",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

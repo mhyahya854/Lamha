@@ -1,0 +1,6 @@
+risk_id,risk,owner,mitigation,gate
+RISK-001,A component/version/licence choice is assumed before I0 evidence.,WP-I0-004,Resolve component rows and record pinned evidence before dependent work.,I0
+RISK-002,A privileged mutation bypasses Rust validation or recovery.,WP-I3-010,"Typed plan/commit contracts, capability checks, journal, and failure injection.",I3
+RISK-003,Derived SQLite data becomes the only durable knowledge copy.,WP-I3-004,Enforce entity authority and rebuild tests from versioned records.,I3
+RISK-004,Media support is deferred to the desktop shell or release packaging.,WP-I4-004,Implement decode/metadata/preview/companion behavior in I4 and verify again in I15.,I4
+RISK-005,Stale generated packets contradict reviewed source.,WP-I0-001,"Deterministic clean rendering, manifest hashes, and reference validation.",I0

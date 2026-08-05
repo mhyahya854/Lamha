@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/events.plan_split.schema.json",
+  "title": "Events Plan Split Response",
+  "description": "Command-specific response DTO for events.plan_split.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "planId",
+    "preview",
+    "conflicts"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "planId": {
+      "type": "string"
+    },
+    "preview": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/PreviewResult"
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "$ref": "../../shared-definitions-v1.schema.json#/$defs/Conflict"
+      },
+      "minItems": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "events.plan_split",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

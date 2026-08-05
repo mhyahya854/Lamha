@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/metadata.privacy_export.schema.json",
+  "title": "Metadata Privacy Export Request",
+  "description": "Command-specific request DTO for metadata.privacy_export.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "privacyexportOptions"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "privacyexportOptions": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/StatusSnapshot"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "metadata.privacy_export",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

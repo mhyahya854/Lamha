@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/export_manifest.schema.json",
+  "title": "Export Manifest",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "sourceAssetIds",
+    "sourceRevisions",
+    "recipeId",
+    "outputs",
+    "status",
+    "startedAt",
+    "completedAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "revision": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Revision"
+    },
+    "createdAt": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Timestamp"
+    },
+    "updatedAt": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Timestamp"
+    },
+    "authority": {
+      "const": "AUTHORITATIVE_FILE_RECORD"
+    },
+    "privacy": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "record-shared-v1.schema.json#/$defs/ExtensionMap"
+    },
+    "sourceAssetIds": {
+      "type": "array",
+      "items": {
+        "$ref": "record-shared-v1.schema.json#/$defs/Id"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "sourceRevisions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RevisionPin"
+      },
+      "minItems": 1
+    },
+    "recipeId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Output"
+      }
+    },
+    "status": {
+      "enum": [
+        "PLANNED",
+        "RUNNING",
+        "COMPLETED",
+        "FAILED",
+        "CANCELLED"
+      ]
+    },
+    "startedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "completedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  },
+  "$defs": {
+    "RevisionPin": {
+      "type": "object",
+      "required": [
+        "recordId",
+        "revision"
+      ],
+      "properties": {
+        "recordId": {
+          "$ref": "record-shared-v1.schema.json#/$defs/Id"
+        },
+        "revision": {
+          "$ref": "record-shared-v1.schema.json#/$defs/Revision"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Output": {
+      "type": "object",
+      "required": [
+        "derivativeId",
+        "path",
+        "hash",
+        "status"
+      ],
+      "properties": {
+        "derivativeId": {
+          "$ref": "record-shared-v1.schema.json#/$defs/Id"
+        },
+        "path": {
+          "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+        },
+        "hash": {
+          "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+        },
+        "status": {
+          "enum": [
+            "PLANNED",
+            "WRITTEN",
+            "VERIFIED",
+            "FAILED"
+          ]
+        },
+        "errorCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "AUTHORITATIVE_FILE_RECORD",
+    "privacyClassification": "LOCAL_USER_DATA",
+    "stableIdStrategy": "UUIDv7 or documented deterministic identity",
+    "timestampSemantics": "UTC RFC3339 instants",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and preserves the prior valid revision on failure"
+  }
+}

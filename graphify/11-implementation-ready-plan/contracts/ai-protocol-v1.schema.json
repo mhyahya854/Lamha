@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/contracts/ai-protocol-v1.schema.json",
+  "title": "Lamha AI worker protocol v1",
+  "type": "object",
+  "required": [
+    "protocolVersion",
+    "messageType",
+    "messageId"
+  ],
+  "properties": {
+    "protocolVersion": {
+      "const": 1
+    },
+    "messageType": {
+      "enum": [
+        "hello",
+        "helloAck",
+        "taskStart",
+        "taskProgress",
+        "taskResult",
+        "taskError",
+        "taskCancel",
+        "taskCancelled",
+        "ping",
+        "pong",
+        "shutdown"
+      ]
+    },
+    "messageId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "taskId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid"
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

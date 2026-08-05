@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/operations.get.schema.json",
+  "title": "Operations Get Request",
+  "description": "Command-specific request DTO for operations.get.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "operationId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "operationId": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "operations.get",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

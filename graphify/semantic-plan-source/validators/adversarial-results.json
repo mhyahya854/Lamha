@@ -1,0 +1,125 @@
+{
+  "fixtureCount": 12,
+  "expectedFailuresObserved": 12,
+  "status": "PASS",
+  "fixtures": [
+    {
+      "fixture": "F01_GENERATED_REPORT_FALSELY_MANUAL",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "automatically generated report labelled manual: manual-semantic-audit.md"
+      ]
+    },
+    {
+      "fixture": "F02_BLANKET_REVIEW_CERTIFICATION",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "blanket script marks every row reviewed"
+      ]
+    },
+    {
+      "fixture": "F03_GPS_FRAGMENT_CRITERION",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "fragmentary or non-observable active requirement: FIX-GPS",
+        "non-observable active requirement: FIX-GPS",
+        "criterion is only a label: FIX-GPS"
+      ]
+    },
+    {
+      "fixture": "F04_MALFORMED_CAN_FAIL_AUDIT_PARAGRAPH",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "malformed CAN-FAIL audit paragraph: CAN-FAIL-99"
+      ]
+    },
+    {
+      "fixture": "F05_STALE_CANONICAL_PACKAGE_FIELD",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "stale canonical work_package_id field: FIX-STALE-PACKAGE"
+      ]
+    },
+    {
+      "fixture": "F06_REQUIREMENT_PACKAGE_PHASE_MISMATCH",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "requirement/package phase mismatch: FIX-PHASE-MISMATCH I4 != WP-FIX-I5 I5"
+      ]
+    },
+    {
+      "fixture": "F07_HARD_CODED_ZERO_FRAGMENT_REPORT",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "reported quality metrics differ from independent computation: {'missing_parent_relationships': 0, 'missing_verification_methods': 0, 'untestable_criteria': 0, 'generic_template_records': 0, 'phase_package_mismatches': 0, 'missing_dependency_rationales': 0, 'non_observable_requirements': 0, 'missing_authority_schema_decisions': 0, 'unreviewed_mappings': 0, 'fragmentary_active_records': 0, 'stale_package_references': 0, 'unreviewed_package_memberships': 0} != {'missing_parent_relationships': 0, 'missing_verification_methods': 0, 'untestable_criteria': 0, 'generic_template_records': 0, 'phase_package_mismatches': 0, 'missing_dependency_rationales': 0, 'non_observable_requirements': 0, 'missing_authority_schema_decisions': 0, 'unreviewed_mappings': 0, 'fragmentary_active_records': 1, 'stale_package_references': 0, 'unreviewed_package_memberships': 0}",
+        "zero fragments claimed while fragmentary or non-observable records exist"
+      ]
+    },
+    {
+      "fixture": "F08_UNEXPLAINED_DAG_ROOT",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "unexplained root package: WP-FIX-ROOT",
+        "required technical prerequisite absent: WP-I11-002 <- WP-I11-001",
+        "required technical prerequisite absent: WP-I11-003 <- WP-I11-001",
+        "required technical prerequisite absent: WP-I11-009 <- WP-I11-003",
+        "required technical prerequisite absent: WP-I12-006 <- WP-I12-001",
+        "required technical prerequisite absent: WP-I12-007 <- WP-I3-014",
+        "required technical prerequisite absent: WP-I13-003 <- WP-I13-002",
+        "required technical prerequisite absent: WP-I13-007 <- WP-I13-006",
+        "required technical prerequisite absent: WP-I15-005 <- WP-I15-001",
+        "required technical prerequisite absent: WP-I15-015 <- WP-I15-008",
+        "required technical prerequisite absent: WP-I4-012 <- WP-I4-010",
+        "required technical prerequisite absent: WP-I5-006 <- WP-I3-001",
+        "required technical prerequisite absent: WP-I5-007 <- WP-I4-010",
+        "required technical prerequisite absent: WP-I5-008 <- WP-I4-008",
+        "required technical prerequisite absent: WP-I5-011 <- WP-I4-012",
+        "required technical prerequisite absent: WP-I6-005 <- WP-I6-002",
+        "required technical prerequisite absent: WP-I6-006 <- WP-I6-002",
+        "required technical prerequisite absent: WP-I7-007 <- WP-I7-004",
+        "required technical prerequisite absent: WP-I7-008 <- WP-I7-007",
+        "required technical prerequisite absent: WP-I8-005 <- WP-I8-004",
+        "required technical prerequisite absent: WP-I8-006 <- WP-I8-005",
+        "required technical prerequisite absent: WP-I9-003 <- WP-I9-001"
+      ]
+    },
+    {
+      "fixture": "F09_SAVED_VIEWS_AUTHORITY_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "durable concept lacks authority decision: AI candidate and proposal records",
+        "durable concept lacks authority decision: Derivative manifests",
+        "durable concept lacks authority decision: Drive registry",
+        "durable concept lacks authority decision: Export manifests",
+        "durable concept lacks authority decision: Filename templates",
+        "durable concept lacks authority decision: Location records",
+        "durable concept lacks authority decision: Memories",
+        "durable concept lacks authority decision: Privacy-export recipes",
+        "durable concept lacks authority decision: Restore manifests",
+        "durable concept lacks authority decision: Saved views"
+      ]
+    },
+    {
+      "fixture": "F10_I0_ARCHIVE_INSTRUCTION",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "I0 package instructs prohibited repository backup/archive/Git mutation: WP-I0-FIX"
+      ]
+    },
+    {
+      "fixture": "F11_EXTERNAL_WRITE_DESTINATION",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "write outside Graphify rejected: C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\forbidden-fixture-write.tmp"
+      ]
+    },
+    {
+      "fixture": "F12_ANONYMOUS_SCHEMA_OBJECT",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "anonymous object array: $/properties/items",
+        "untyped object: $/properties/items/items"
+      ]
+    }
+  ]
+}

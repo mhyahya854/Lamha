@@ -1,0 +1,38 @@
+[graphify extract] deep mode enabled: richer semantic extraction
+[graphify extract] --force: full re-scan, semantic cache reads skipped
+[graphify extract] scanning C:\Users\mhyah\Downloads\Code\Lamha\Codebase
+[graphify extract] --code-only: skipping 597 non-code file(s) (261 docs, 0 papers, 336 images) — no LLM extraction
+[graphify extract] found 2922 code, 0 docs, 0 papers, 0 images
+[graphify extract] 170 file(s) not classified (no supported extension or shebang), skipped: .browserslistrc, .dockerignore, .editorconfig, .gitattributes, .gitignore, .gitmodules (+164 more)
+[graphify extract] AST extraction on 2922 code files...
+  AST extraction: 100/2922 uncached files (3%) [18 workers]
+  AST extraction: 200/2922 uncached files (6%) [18 workers]
+  AST extraction: 300/2922 uncached files (10%) [18 workers]
+  AST extraction: 400/2922 uncached files (13%) [18 workers]
+  AST extraction: 500/2922 uncached files (17%) [18 workers]
+  AST extraction: 600/2922 uncached files (20%) [18 workers]
+  AST extraction: 700/2922 uncached files (23%) [18 workers]
+  AST extraction: 800/2922 uncached files (27%) [18 workers]
+  AST extraction: 900/2922 uncached files (30%) [18 workers]
+  AST extraction: 1000/2922 uncached files (34%) [18 workers]
+  AST extraction: 1100/2922 uncached files (37%) [18 workers]
+  AST extraction: 1200/2922 uncached files (41%) [18 workers]
+  AST extraction: 1300/2922 uncached files (44%) [18 workers]
+  AST extraction: 1400/2922 uncached files (47%) [18 workers]
+  AST extraction: 1500/2922 uncached files (51%) [18 workers]
+  AST extraction: 1600/2922 uncached files (54%) [18 workers]
+  AST extraction: 1700/2922 uncached files (58%) [18 workers]
+  AST extraction: 1800/2922 uncached files (61%) [18 workers]
+  AST extraction: 1900/2922 uncached files (65%) [18 workers]
+  AST extraction: 2000/2922 uncached files (68%) [18 workers]
+  AST extraction: 2100/2922 uncached files (71%) [18 workers]
+  AST extraction: 2200/2922 uncached files (75%) [18 workers]
+  AST extraction: 2300/2922 uncached files (78%) [18 workers]
+  AST extraction: 2400/2922 uncached files (82%) [18 workers]
+  AST extraction: 2500/2922 uncached files (85%) [18 workers]
+  AST extraction: 2600/2922 uncached files (88%) [18 workers]
+  AST extraction: 2700/2922 uncached files (92%) [18 workers]
+  AST extraction: 2800/2922 uncached files (95%) [18 workers]
+  AST extraction: 2900/2922 uncached files (99%) [18 workers]
+  AST extraction: 2922/2922 uncached files (100%) [18 workers]
+[graphify extract] wrote C:\Users\mhyah\AppData\Local\Temp\LamhaGraphifyRefresh-20260729-015507\graphify-out\graph.json — 34281 nodes, 69753 edges (no clustering)

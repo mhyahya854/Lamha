@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/app.settings_get.schema.json",
+  "title": "App Settings Get Response",
+  "description": "Command-specific response DTO for app.settings_get.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "settingsgetResult",
+    "revision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "settingsgetResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/StatusSnapshot"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "app.settings_get",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

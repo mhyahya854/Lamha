@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/review.get.schema.json",
+  "title": "Review Get Request",
+  "description": "Command-specific request DTO for review.get.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "reviewItemId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "reviewItemId": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "review.get",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

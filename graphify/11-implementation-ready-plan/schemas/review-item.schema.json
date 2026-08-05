@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schema/review-item.schema.json",
+  "title": "Lamha review item",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "createdAt",
+    "updatedAt",
+    "revision",
+    "kind",
+    "state",
+    "candidateFingerprint"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "kind": {
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "pending",
+        "approved",
+        "rejected",
+        "suppressed",
+        "deferred",
+        "stale",
+        "conflict",
+        "reconsidered"
+      ]
+    },
+    "candidateFingerprint": {
+      "type": "string"
+    },
+    "sourceFingerprint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "modelId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "modelVersion": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "configFingerprint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "subjectIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "candidate": {
+      "type": "object"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "decision": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": true
+}

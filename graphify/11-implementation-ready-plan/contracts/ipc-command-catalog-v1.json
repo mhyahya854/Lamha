@@ -1,0 +1,1049 @@
+{
+  "contractVersion": 1,
+  "commands": [
+    {
+      "id": "app.bootstrap",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "app.status",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "app.diagnostics_export",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "app.settings_get",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "app.settings_update",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "roots.list",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "roots.choose",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "roots.add",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "roots.remove",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "roots.validate",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "roots.reconnect",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "roots.set_access_mode",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "roots.rescan",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "assets.page",
+      "version": 1,
+      "mutating": false,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "assets.get",
+      "version": 1,
+      "mutating": false,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "assets.locate",
+      "version": 1,
+      "mutating": false,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "assets.open",
+      "version": 1,
+      "mutating": false,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "assets.selection_summary",
+      "version": 1,
+      "mutating": false,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "assets.thumbnail_request",
+      "version": 1,
+      "mutating": false,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "assets.hash_verify",
+      "version": 1,
+      "mutating": false,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "scan.plan",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "scan.start",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "scan.pause",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "scan.resume",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "scan.cancel",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "scan.status",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "scan.watcher_reconcile",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "events.create",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "events.update",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "events.plan_merge",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "events.plan_link",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "events.plan_split",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "events.plan_normalize",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "events.commit_plan",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "people.clusters_page",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "people.person_get",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "people.person_create",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "people.person_update",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "people.merge",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "people.split",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "people.hide",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "people.face_correct",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "people.group_create",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "people.group_update",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "people.membership_update",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "relationships.list",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "relationships.create",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "relationships.update",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "relationships.end",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "relationships.history",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "relationships.projection_preview",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "tags.namespaces",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "tags.candidates",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "tags.approve",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "tags.reject",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "tags.suppress",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "tags.bulk_assign",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "maps.global_load",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maps.scoped_load",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maps.draft_create",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maps.draft_save",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maps.simulate",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maps.materialize",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maps.recover",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "search.structured",
+      "version": 1,
+      "mutating": false,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "search.text",
+      "version": 1,
+      "mutating": false,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "search.ocr",
+      "version": 1,
+      "mutating": false,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "search.semantic",
+      "version": 1,
+      "mutating": false,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "search.cancel",
+      "version": 1,
+      "mutating": false,
+      "longRunning": true,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "review.list",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "review.get",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "review.approve",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "review.reject",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "review.defer",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "review.suppress",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "review.reopen",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "review.bulk_decide",
+      "version": 1,
+      "mutating": true,
+      "longRunning": false,
+      "requiresDryRun": false,
+      "requestIdRequired": true,
+      "returnsOperationId": false
+    },
+    {
+      "id": "ai.hardware_assess",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "ai.models",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "ai.plan",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "ai.start",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "ai.pause",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "ai.resume",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "ai.cancel",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "ai.retry",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "ai.invalidate",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "metadata.inspect",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "metadata.propose_update",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "metadata.apply_update",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "metadata.privacy_export",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "metadata.snapshot",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "metadata.restore",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "editing.recipe_get",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "editing.recipe_update",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "editing.render_preview",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "editing.export_plan",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "editing.export_commit",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "editing.reset",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maintenance.backup_plan",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maintenance.backup_run",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maintenance.backup_verify",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maintenance.trash_plan",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maintenance.trash_commit",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maintenance.restore_plan",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maintenance.restore_commit",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maintenance.permanent_delete_plan",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maintenance.permanent_delete_commit",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maintenance.rebuild_plan",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maintenance.rebuild_run",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "maintenance.status",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "operations.simulate",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "operations.get",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "operations.list",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "operations.recover",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "operations.rollback",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    },
+    {
+      "id": "operations.diagnostics_export",
+      "version": 1,
+      "mutating": true,
+      "longRunning": true,
+      "requiresDryRun": true,
+      "requestIdRequired": true,
+      "returnsOperationId": true
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/relationships.create.schema.json",
+  "title": "Relationships Create Request",
+  "description": "Command-specific request DTO for relationships.create.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "relationshipDraft"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "relationshipDraft": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/RelationshipDraft"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "relationships.create",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

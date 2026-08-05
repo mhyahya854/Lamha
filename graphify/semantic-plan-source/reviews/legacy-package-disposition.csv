@@ -1,0 +1,173 @@
+legacy_work_package_id,legacy_name,decision,replacement_work_package_id,review_reason,reviewer_status
+WP-I0-001,Immutable archive baseline,KEEP_OR_REASSIGN,WP-I0-001,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I0-002,Git baseline and rollback tag,KEEP_OR_REASSIGN,WP-I0-002,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I0-003,Mixed-version manifest investigation,KEEP_OR_REASSIGN,WP-I0-004,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I0-004,Toolchain inventory,KEEP_OR_REASSIGN,WP-I0-005,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I0-005,Disposable build workspace,KEEP_OR_REASSIGN,WP-I0-006,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I0-006,Frontend coupling inventory,KEEP_OR_REASSIGN,WP-I0-009,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I0-007,Outbound and commercial integration inventory,KEEP_OR_REASSIGN,WP-I0-010,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I1-001,Brand and identity inventory,KEEP_OR_REASSIGN,WP-I1-001,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I1-002,Visible UI rebrand,KEEP_OR_REASSIGN,WP-I1-002,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I1-003,Package and bundle identity,KEEP_OR_REASSIGN,WP-I1-003,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I1-004,Licence and attribution preservation,KEEP_OR_REASSIGN,WP-I1-005,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I1-005,Compatibility aliases and migrations,KEEP_OR_REASSIGN,MULTIPLE_EXPLICIT_PACKAGES,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I1-006,Rebrand consistency proof,KEEP_OR_REASSIGN,MULTIPLE_EXPLICIT_PACKAGES,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I2-001,Tauri shell bootstrap — source-boundary slice 1,MERGE,WP-I2-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I2-002,Tauri shell bootstrap — source-boundary slice 2,MERGE,WP-I2-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I2-003,Offline desktop launch,KEEP_OR_REASSIGN,WP-I2-003,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I2-004,Tauri capabilities and permissions,KEEP_OR_REASSIGN,WP-I2-004,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I2-005,Stable IPC errors,KEEP_OR_REASSIGN,WP-I2-008,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I2-006,Authentication and session cutover inventory,KEEP_OR_REASSIGN,MULTIPLE_EXPLICIT_PACKAGES,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I3-001,Authoritative record envelope,KEEP_OR_REASSIGN,WP-I3-001,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I3-002,Stable asset identity,KEEP_OR_REASSIGN,WP-I3-002,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I3-003,Root authorization model,KEEP_OR_REASSIGN,WP-I3-003,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I3-004,Path normalization and escape protection,KEEP_OR_REASSIGN,WP-I3-004,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I3-005,Sidecar read protocol,KEEP_OR_REASSIGN,WP-I3-005,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I3-006,Sidecar write protocol,KEEP_OR_REASSIGN,WP-I3-006,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I3-007,SQLite migration framework,KEEP_OR_REASSIGN,WP-I3-008,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I3-008,Derived-index rebuild contract,KEEP_OR_REASSIGN,WP-I3-009,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I3-009,Filesystem operation journal,KEEP_OR_REASSIGN,WP-I3-010,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I3-010,File-operation plan contract,KEEP_OR_REASSIGN,WP-I3-011,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I3-011,Crash recovery engine,KEEP_OR_REASSIGN,WP-I3-014,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I3-012,Settings root and drive registries,KEEP_OR_REASSIGN,WP-I3-016,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I4-001,Initial recursive scanner — source-boundary slice 1,MERGE,WP-I4-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I4-002,Initial recursive scanner — source-boundary slice 2,MERGE,WP-I4-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I4-003,Initial recursive scanner — source-boundary slice 3,MERGE,WP-I4-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I4-004,Initial recursive scanner — source-boundary slice 4,MERGE,WP-I4-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I4-005,Incremental scan and watcher reconciliation,KEEP_OR_REASSIGN,WP-I4-002,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I4-006,Media format classification,KEEP_OR_REASSIGN,WP-I4-003,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I4-007,HEIF and RAW decode pipeline,KEEP_OR_REASSIGN,WP-I4-004,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I4-008,Companion-media detection,KEEP_OR_REASSIGN,WP-I4-006,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I4-009,Content hashing and verification,KEEP_OR_REASSIGN,WP-I4-007,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I4-010,Metadata extraction — source-boundary slice 1,MERGE,WP-I4-008,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I4-011,Metadata extraction — source-boundary slice 2,MERGE,WP-I4-008,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I4-012,Metadata extraction — source-boundary slice 3,MERGE,WP-I4-008,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I4-013,Asset and path index,KEEP_OR_REASSIGN,WP-I4-010,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I4-014,Filesystem reconciliation,KEEP_OR_REASSIGN,WP-I4-011,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I4-015,Initial textual index,KEEP_OR_REASSIGN,WP-I4-012,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I5-001,Gallery grid and virtualization — source-boundary slice 1,MERGE,WP-I5-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I5-002,Gallery grid and virtualization — source-boundary slice 2,MERGE,WP-I5-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I5-003,Timeline navigation,KEEP_OR_REASSIGN,WP-I5-002,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I5-004,Image viewer — source-boundary slice 1,MERGE,WP-I5-003,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I5-005,Image viewer — source-boundary slice 2,MERGE,WP-I5-003,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I5-006,Image viewer — source-boundary slice 3,MERGE,WP-I5-003,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I5-007,Image viewer — source-boundary slice 4,MERGE,WP-I5-003,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I5-008,Image viewer — source-boundary slice 5,MERGE,WP-I5-003,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I5-009,Video viewer,KEEP_OR_REASSIGN,WP-I5-004,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I5-010,Selection and keyboard navigation,KEEP_OR_REASSIGN,WP-I5-005,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I5-011,Albums and favorites,KEEP_OR_REASSIGN,WP-I5-006,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I5-012,Memories experience,KEEP_OR_REASSIGN,WP-I5-007,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I5-013,Location and map browsing — source-boundary slice 1,MERGE,WP-I5-008,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I5-014,Location and map browsing — source-boundary slice 2,MERGE,WP-I5-008,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I5-015,Asset inspector,KEEP_OR_REASSIGN,WP-I5-009,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I5-016,Review Centre foundation — source-boundary slice 1,MERGE,WP-I5-010,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I5-017,Review Centre foundation — source-boundary slice 2,MERGE,WP-I5-010,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I5-018,Offline library parity proof,KEEP_OR_REASSIGN,WP-I5-012,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I6-001,Manage Later non-mutating scan — source-boundary slice 1,MERGE,WP-I6-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I6-002,Manage Later non-mutating scan — source-boundary slice 2,MERGE,WP-I6-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I6-003,Event authoritative records — source-boundary slice 1,MERGE,WP-I6-002,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I6-004,Event authoritative records — source-boundary slice 2,MERGE,WP-I6-002,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I6-005,Manual event creation,KEEP_OR_REASSIGN,WP-I6-003,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I6-006,Event inference proposals,KEEP_OR_REASSIGN,WP-I6-004,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I6-007,Event merge plan,KEEP_OR_REASSIGN,WP-I6-005,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I6-008,Event split and link plans,KEEP_OR_REASSIGN,WP-I6-006,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I6-009,Event naming and normalization,KEEP_OR_REASSIGN,WP-I6-007,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I6-010,Event filesystem materialization plan,KEEP_OR_REASSIGN,WP-I6-009,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I6-011,Event and Manage Later UI,KEEP_OR_REASSIGN,WP-I6-010,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I7-001,Face detection task slice,KEEP_OR_REASSIGN,WP-I7-001,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I7-002,Face candidate records,KEEP_OR_REASSIGN,WP-I7-002,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I7-003,Person identity model,KEEP_OR_REASSIGN,WP-I7-004,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I7-004,Person merge and split,KEEP_OR_REASSIGN,MULTIPLE_EXPLICIT_PACKAGES,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I7-005,Group identity model,KEEP_OR_REASSIGN,WP-I7-007,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I7-006,Temporal group memberships,KEEP_OR_REASSIGN,WP-I7-008,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I7-007,People and face privacy,KEEP_OR_REASSIGN,WP-I7-010,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I7-008,People and groups UI — source-boundary slice 1,MERGE,WP-I7-011,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I7-009,People and groups UI — source-boundary slice 2,MERGE,WP-I7-011,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I7-010,People and groups UI — source-boundary slice 3,MERGE,WP-I7-011,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I8-001,Tag records and namespaces — source-boundary slice 1,MERGE,WP-I8-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I8-002,Tag records and namespaces — source-boundary slice 2,MERGE,WP-I8-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I8-003,Tag records and namespaces — source-boundary slice 3,MERGE,WP-I8-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I8-004,Tag candidates and review,KEEP_OR_REASSIGN,WP-I8-002,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I8-005,Tag hierarchy and assignment,KEEP_OR_REASSIGN,MULTIPLE_EXPLICIT_PACKAGES,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I8-006,Relationship records — source-boundary slice 1,MERGE,WP-I8-004,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I8-007,Relationship records — source-boundary slice 2,MERGE,WP-I8-004,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I8-008,Multi-edge relationship history,KEEP_OR_REASSIGN,WP-I8-005,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I8-009,Relationship projections and views,KEEP_OR_REASSIGN,WP-I8-006,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I8-010,Photographer camera-owner importer attribution,KEEP_OR_REASSIGN,WP-I8-007,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I8-011,Relationship smart views,KEEP_OR_REASSIGN,MULTIPLE_EXPLICIT_PACKAGES,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I8-012,Relationship review and conflicts,KEEP_OR_REASSIGN,WP-I8-009,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I8-013,Relationship provenance and explanations,KEEP_OR_REASSIGN,WP-I8-010,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I9-001,Global mind map,KEEP_OR_REASSIGN,MULTIPLE_EXPLICIT_PACKAGES,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I9-002,Folder-scoped mind map,KEEP_OR_REASSIGN,WP-I9-003,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I9-003,Event mind map,KEEP_OR_REASSIGN,WP-I9-004,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I9-004,People and relationship map,KEEP_OR_REASSIGN,WP-I9-005,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I9-005,Persistent map drafts,KEEP_OR_REASSIGN,WP-I9-006,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I10-001,AI worker lifecycle — source-boundary slice 1,MERGE,WP-I10-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I10-002,AI worker lifecycle — source-boundary slice 2,MERGE,WP-I10-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I10-003,AI worker lifecycle — source-boundary slice 3,MERGE,WP-I10-001,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I10-004,Private local worker transport,KEEP_OR_REASSIGN,WP-I10-002,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I10-005,Model and component registry,KEEP_OR_REASSIGN,WP-I10-003,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I10-006,Hardware assessment,KEEP_OR_REASSIGN,WP-I10-005,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I10-007,Local AI scheduler,KEEP_OR_REASSIGN,WP-I10-006,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I10-008,AI task queue persistence,KEEP_OR_REASSIGN,WP-I10-007,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I10-009,AI progress cancellation and retry,KEEP_OR_REASSIGN,WP-I10-008,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I10-010,Local OCR — source-boundary slice 1,MERGE,WP-I10-009,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I10-011,Local OCR — source-boundary slice 2,MERGE,WP-I10-009,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I10-012,Local OCR — source-boundary slice 3,MERGE,WP-I10-009,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I10-013,Embeddings and semantic search,KEEP_OR_REASSIGN,WP-I10-010,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I10-014,Duplicate and similarity candidates,KEEP_OR_REASSIGN,WP-I10-011,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I10-015,AI review suppression and invalidation,KEEP_OR_REASSIGN,WP-I10-013,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I11-001,Authority-aware metadata editor,KEEP_OR_REASSIGN,WP-I11-001,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I11-002,Batch metadata plans,KEEP_OR_REASSIGN,WP-I11-002,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I11-003,Metadata privacy removal,KEEP_OR_REASSIGN,WP-I11-003,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I11-004,Non-destructive edit recipes,KEEP_OR_REASSIGN,WP-I11-004,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I11-005,Derivative manifests and export,KEEP_OR_REASSIGN,WP-I11-006,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I11-006,Privacy export recipes,KEEP_OR_REASSIGN,WP-I11-009,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I11-007,Metadata snapshots and restore,KEEP_OR_REASSIGN,WP-I11-010,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I12-001,External-drive registry,KEEP_OR_REASSIGN,WP-I12-001,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I12-002,Drive disconnection state machine,KEEP_OR_REASSIGN,WP-I12-002,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I12-003,Drive reconnection and identity validation,KEEP_OR_REASSIGN,WP-I12-003,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I12-004,Detached read-only experience,KEEP_OR_REASSIGN,WP-I12-004,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I12-005,Pending sidecar overlays,KEEP_OR_REASSIGN,WP-I12-005,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I12-006,Drive transaction recovery,KEEP_OR_REASSIGN,WP-I12-009,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I13-001,Backup manifest contract,KEEP_OR_REASSIGN,WP-I13-001,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I13-002,Backup execution,KEEP_OR_REASSIGN,WP-I13-002,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I13-003,Backup verification,KEEP_OR_REASSIGN,WP-I13-003,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I13-004,Restore manifest contract,KEEP_OR_REASSIGN,MULTIPLE_EXPLICIT_PACKAGES,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I13-005,Restore and collision handling,KEEP_OR_REASSIGN,WP-I13-005,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I13-006,Trash records and root trash,KEEP_OR_REASSIGN,WP-I13-006,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I13-007,SQLite index rebuild,KEEP_OR_REASSIGN,WP-I13-009,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I13-008,AI cache rebuild,KEEP_OR_REASSIGN,WP-I13-010,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I14-001,Performance fixture definitions,KEEP_OR_REASSIGN,WP-I14-001,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I14-002,Gallery and viewer performance,KEEP_OR_REASSIGN,WP-I14-003,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I14-003,Map and graph accessibility,KEEP_OR_REASSIGN,WP-I14-008,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I14-004,Background-job controls,KEEP_OR_REASSIGN,WP-I14-009,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I15-001,Windows package and clean-machine proof,KEEP_OR_REASSIGN,MULTIPLE_EXPLICIT_PACKAGES,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I15-002,Platform WebView dependencies — source-boundary slice 1,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-003,Platform WebView dependencies — source-boundary slice 2,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-004,Platform WebView dependencies — source-boundary slice 3,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-005,Platform WebView dependencies — source-boundary slice 4,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-006,Platform WebView dependencies — source-boundary slice 5,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-007,Platform WebView dependencies — source-boundary slice 6,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-008,Platform WebView dependencies — source-boundary slice 7,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-009,Platform WebView dependencies — source-boundary slice 8,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-010,Platform WebView dependencies — source-boundary slice 9,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-011,Platform WebView dependencies — source-boundary slice 10,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-012,Platform WebView dependencies — source-boundary slice 11,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-013,Platform WebView dependencies — source-boundary slice 12,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-014,Platform WebView dependencies — source-boundary slice 13,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-015,Platform WebView dependencies — source-boundary slice 14,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-016,Platform WebView dependencies — source-boundary slice 15,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-017,Runtime component licence decisions,KEEP_OR_REASSIGN,WP-I15-006,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I15-018,Integrated retained-feature parity,KEEP_OR_REASSIGN,WP-I15-008,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I15-019,Legacy server and auth eradication,KEEP_OR_REASSIGN,MULTIPLE_EXPLICIT_PACKAGES,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I15-020,PostgreSQL Redis and queue eradication,KEEP_OR_REASSIGN,MULTIPLE_EXPLICIT_PACKAGES,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I15-021,Docker and deployment eradication,KEEP_OR_REASSIGN,MULTIPLE_EXPLICIT_PACKAGES,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I15-022,Mobile and sharing eradication — source-boundary slice 1,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-023,Mobile and sharing eradication — source-boundary slice 2,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-024,Mobile and sharing eradication — source-boundary slice 3,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-025,Generated SDK and OpenAPI eradication,KEEP_OR_REASSIGN,MULTIPLE_EXPLICIT_PACKAGES,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I15-026,Final outbound-traffic verification,KEEP_OR_REASSIGN,WP-I15-014,"Title remains a candidate, but every membership and dependency is independently re-reviewed.",REVIEWED
+WP-I15-027,Final release gates and evidence — source-boundary slice 1,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-028,Final release gates and evidence — source-boundary slice 2,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED
+WP-I15-029,Final release gates and evidence — source-boundary slice 3,MERGE,MULTIPLE_EXPLICIT_PACKAGES,Mechanical source/capacity slice removed; requirements must be reviewed into an architecture-owned package.,REVIEWED

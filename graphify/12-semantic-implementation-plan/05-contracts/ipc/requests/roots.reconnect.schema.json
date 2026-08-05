@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/roots.reconnect.schema.json",
+  "title": "Roots Reconnect Request",
+  "description": "Command-specific request DTO for roots.reconnect.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "reconnectOptions"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "reconnectOptions": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/StatusSnapshot"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "roots.reconnect",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

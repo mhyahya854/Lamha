@@ -1,0 +1,2 @@
+work_package_id,root_status,root_rationale,evidence,review_status,reviewer_type,review_revision
+WP-I0-001,TRUE_ROOT,"This package only observes existing repository provenance and integrity; it requires no generated component, schema, runtime, storage, identity, or prior implementation decision.","Final blocker-removal mission sections 5 and 6",REVIEWED_CONFIRMED,AI_SEMANTIC_REVIEW,2026-08-01-final-blocker-removal

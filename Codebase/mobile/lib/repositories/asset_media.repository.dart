@@ -1,0 +1,227 @@
+import 'dart:async';
+import 'dart:io';
+
+import 'package:background_downloader/background_downloader.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/widgets.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:immich_mobile/constants/constants.dart';
+import 'package:immich_mobile/domain/models/asset/base_asset.model.dart';
+import 'package:immich_mobile/extensions/build_context_extensions.dart';
+import 'package:immich_mobile/extensions/platform_extensions.dart';
+import 'package:immich_mobile/platform/native_sync_api.g.dart';
+import 'package:immich_mobile/providers/infrastructure/platform.provider.dart';
+import 'package:immich_mobile/services/api.service.dart';
+import 'package:immich_mobile/utils/image_url_builder.dart';
+import 'package:logging/logging.dart';
+import 'package:photo_manager/photo_manager.dart';
+import 'package:share_plus/share_plus.dart';
+
+final assetMediaRepositoryProvider = Provider((ref) => AssetMediaRepository(ref.watch(nativeSyncApiProvider)));
+
+class AssetMediaRepository {
+  final NativeSyncApi _nativeSyncApi;
+  static final Logger _log = Logger("AssetMediaRepository");
+
+  const AssetMediaRepository(this._nativeSyncApi);
+
+  Future<bool> _androidSupportsTrash() async {
+    if (Platform.isAndroid) {
+      DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+      int sdkVersion = androidInfo.version.sdkInt;
+      return sdkVersion >= 31;
+    }
+    return false;
+  }
+
+  Future<List<String>> deleteAll(List<String> ids) async {
+    if (CurrentPlatform.isAndroid) {
+      if (await _androidSupportsTrash()) {
+        return PhotoManager.editor.android.moveToTrash(
+          ids.map((e) => AssetEntity(id: e, width: 1, height: 1, typeInt: 0)).toList(),
+        );
+      } else {
+        return PhotoManager.editor.deleteWithIds(ids);
+      }
+    }
+    return PhotoManager.editor.deleteWithIds(ids);
+  }
+
+  Future<bool> _restoreFromTrashById(String mediaId, int type) async {
+    try {
+      return await _nativeSyncApi.restoreFromTrashById(mediaId, type);
+    } catch (e, s) {
+      _log.warning('Error restore file from trash by Id', e, s);
+      return false;
+    }
+  }
+
+  Future<List<String>> restoreAssetsFromTrash(Iterable<LocalAsset> assets) async {
+    final restoredIds = <String>[];
+    for (final asset in assets) {
+      _log.info("Restoring from trash, localId: ${asset.id}, checksum: ${asset.checksum}");
+      final result = await _restoreFromTrashById(asset.id, asset.type.index);
+      if (result) {
+        restoredIds.add(asset.id);
+      }
+    }
+    return restoredIds;
+  }
+
+  Future<AssetEntity?> get(String id) async {
+    final entity = await AssetEntity.fromId(id);
+    return entity;
+  }
+
+  Future<String?> getOriginalFilename(String id) async {
+    final entity = await AssetEntity.fromId(id);
+    if (entity == null) {
+      return null;
+    }
+
+    try {
+      // titleAsync gets the correct original filename for some assets on iOS
+      // otherwise using the `entity.title` would return a random GUID
+      final originalFilename = await entity.titleAsync;
+      // treat empty filename as missing
+      return originalFilename.isNotEmpty ? originalFilename : null;
+    } catch (e) {
+      _log.warning("Failed to get original filename for asset: $id. Error: $e");
+      return null;
+    }
+  }
+
+  /// Deletes temporary files in parallel
+  Future<void> _cleanupTempFiles(List<File> tempFiles) async {
+    await Future.wait(
+      tempFiles.map((file) async {
+        try {
+          await file.delete();
+        } catch (e) {
+          _log.warning("Failed to delete temporary file: ${file.path}", e);
+        }
+      }),
+    );
+  }
+
+  Future<int> shareAssets(
+    List<BaseAsset> assets,
+    BuildContext context, {
+    Completer<void>? cancelCompleter,
+    void Function(double progress)? onAssetDownloadProgress,
+  }) async {
+    final downloadedXFiles = <XFile>[];
+    final tempFiles = <File>[];
+    final totalAssets = assets.length;
+    var processedAssets = 0;
+
+    void updateProgress([double currentAssetProgress = 0.0]) {
+      if (totalAssets <= 0) {
+        onAssetDownloadProgress?.call(1.0);
+        return;
+      }
+
+      final normalizedAssetProgress = currentAssetProgress.clamp(0.0, 1.0);
+      final overallProgress = ((processedAssets + normalizedAssetProgress) / totalAssets).clamp(0.0, 1.0);
+      onAssetDownloadProgress?.call(overallProgress);
+    }
+
+    updateProgress();
+
+    for (var asset in assets) {
+      if (cancelCompleter != null && cancelCompleter.isCompleted) {
+        // if cancelled, delete any temp files created so far
+        await _cleanupTempFiles(tempFiles);
+        return 0;
+      }
+
+      final localId = (asset is LocalAsset)
+          ? asset.id
+          : asset is RemoteAsset
+          ? asset.localId
+          : null;
+      if (localId != null && !asset.isEdited) {
+        File? f = await AssetEntity(id: localId, width: 1, height: 1, typeInt: 0).originFile;
+        downloadedXFiles.add(XFile(f!.path));
+        processedAssets++;
+        updateProgress();
+        if (CurrentPlatform.isIOS) {
+          tempFiles.add(f);
+        }
+      } else {
+        final remoteId = (asset is RemoteAsset) ? asset.id : asset.remoteId;
+        if (remoteId == null) {
+          _log.warning("Asset has no remote ID for sharing: $asset");
+          processedAssets++;
+          updateProgress();
+          continue;
+        }
+
+        final taskId = 'share-$remoteId-${DateTime.now().microsecondsSinceEpoch}';
+        final sanitizedFilename = asset.name.replaceAll(RegExp(r'[\\/]'), '_');
+        final task = DownloadTask(
+          taskId: taskId,
+          url: getOriginalUrlForRemoteId(remoteId, edited: asset.isEdited),
+          headers: ApiService.getRequestHeaders(),
+          filename: sanitizedFilename,
+          baseDirectory: BaseDirectory.temporary,
+          group: kShareDownloadGroup,
+          updates: Updates.statusAndProgress,
+        );
+        final statusUpdate = await FileDownloader().download(
+          task,
+          onProgress: (value) {
+            if (cancelCompleter != null && cancelCompleter.isCompleted) {
+              unawaited(FileDownloader().cancelTaskWithId(taskId));
+              return;
+            }
+            updateProgress(value);
+          },
+        );
+
+        if (cancelCompleter != null && cancelCompleter.isCompleted) {
+          await _cleanupTempFiles(tempFiles);
+          return 0;
+        }
+
+        if (statusUpdate.status == TaskStatus.complete) {
+          final filePath = await task.filePath();
+          final file = File(filePath);
+          tempFiles.add(file);
+          downloadedXFiles.add(XFile(filePath));
+          processedAssets++;
+          updateProgress();
+          continue;
+        }
+        _log.severe("Download for ${asset.name} failed with status ${statusUpdate.status}", statusUpdate.exception);
+        processedAssets++;
+        updateProgress();
+      }
+    }
+
+    if (downloadedXFiles.isEmpty) {
+      _log.warning("No asset can be retrieved for share");
+      return 0;
+    }
+
+    if (cancelCompleter != null && cancelCompleter.isCompleted) {
+      await _cleanupTempFiles(tempFiles);
+      return 0;
+    }
+
+    // we dont want to await the share result since the
+    // "preparing" dialog will not disappear until
+    final size = context.sizeData;
+    unawaited(
+      Share.shareXFiles(
+        downloadedXFiles,
+        sharePositionOrigin: Rect.fromPoints(Offset.zero, Offset(size.width / 3, size.height)),
+      ).then((result) async {
+        await _cleanupTempFiles(tempFiles);
+      }),
+    );
+
+    return downloadedXFiles.length;
+  }
+}

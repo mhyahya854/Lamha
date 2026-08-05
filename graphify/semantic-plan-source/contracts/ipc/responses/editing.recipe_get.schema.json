@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/editing.recipe_get.schema.json",
+  "title": "Editing Recipe Get Response",
+  "description": "Command-specific response DTO for editing.recipe_get.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "recipegetResult",
+    "revision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "recipegetResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/MutationReceipt"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "editing.recipe_get",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

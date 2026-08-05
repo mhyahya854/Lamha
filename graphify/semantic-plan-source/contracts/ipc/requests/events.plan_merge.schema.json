@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/events.plan_merge.schema.json",
+  "title": "Events Plan Merge Request",
+  "description": "Command-specific request DTO for events.plan_merge.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "planId",
+    "confirmationToken",
+    "expectedRevision",
+    "dryRun"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "planId": {
+      "type": "string"
+    },
+    "confirmationToken": {
+      "type": "string",
+      "minLength": 8
+    },
+    "expectedRevision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "dryRun": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "events.plan_merge",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

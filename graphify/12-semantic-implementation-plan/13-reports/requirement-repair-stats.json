@@ -1,0 +1,31 @@
+{
+  "originalSourceRows": 2083,
+  "normalizedItems": 2338,
+  "canonicalActionableRequirements": 833,
+  "activeCanonicalRecords": 1125,
+  "criteria": 601,
+  "initialFragmentaryOrNonObservable": 201,
+  "finalFragmentaryOrNonObservable": 0,
+  "initialGenericCriteria": 1214,
+  "finalGenericCriteria": 0,
+  "recordsExplicitlyRewritten": 93,
+  "phaseRemaps": 426,
+  "capabilityCorrections": 496,
+  "classificationCorrections": 99,
+  "orphanActionableRequirements": 0,
+  "remainingHumanDecisions": 0,
+  "computedQualityMetrics": {
+    "fragmentary_active_records": 0,
+    "non_observable_requirements": 0,
+    "generic_template_records": 0,
+    "untestable_criteria": 0,
+    "missing_parent_relationships": 0,
+    "missing_verification_methods": 0,
+    "phase_package_mismatches": 0,
+    "stale_package_references": 0,
+    "unreviewed_mappings": 0,
+    "unreviewed_package_memberships": 0,
+    "missing_dependency_rationales": 0,
+    "missing_authority_schema_decisions": 0
+  }
+}

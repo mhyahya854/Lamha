@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/search.semantic.schema.json",
+  "title": "Search Semantic Request",
+  "description": "Command-specific request DTO for search.semantic.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "limit",
+    "filter",
+    "sort"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 500,
+      "default": 100
+    },
+    "cursor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "filter": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/SearchFilter"
+    },
+    "sort": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "field",
+          "direction"
+        ],
+        "properties": {
+          "field": {
+            "type": "string"
+          },
+          "direction": {
+            "enum": [
+              "ASC",
+              "DESC"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "search.semantic",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

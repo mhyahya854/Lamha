@@ -1,0 +1,82 @@
+{
+  "validatorVersion": "4.0.0",
+  "status": "PASS",
+  "levels": [
+    {
+      "level": "L1_SOURCE_AND_WRITE_BOUNDARY",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L2_REQUIREMENT_SEMANTICS",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L3_EXPLICIT_SEMANTIC_MAPPING",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L4_WORK_PACKAGES",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L5_TECHNICAL_DAG",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L6_COMPONENT_DECISIONS",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L7_IPC_CONTRACTS",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L8_AUTHORITY_RECORDS_AND_SQLITE",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L9_AUDIT_AUTHENTICITY",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L10_METRICS_HONESTY",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L11_SCOPE_SAFETY",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L12_PACKETS_AND_HANDOFF",
+      "status": "PASS",
+      "errors": []
+    }
+  ],
+  "levelCount": 12,
+  "failedLevels": [],
+  "computedQualityMetrics": {
+    "fragmentary_active_records": 0,
+    "non_observable_requirements": 0,
+    "generic_template_records": 0,
+    "untestable_criteria": 0,
+    "missing_parent_relationships": 0,
+    "missing_verification_methods": 0,
+    "phase_package_mismatches": 0,
+    "stale_package_references": 0,
+    "unreviewed_mappings": 0,
+    "unreviewed_package_memberships": 0,
+    "missing_dependency_rationales": 0,
+    "missing_authority_schema_decisions": 0
+  }
+}

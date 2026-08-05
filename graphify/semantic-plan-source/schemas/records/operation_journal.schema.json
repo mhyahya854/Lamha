@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/operation_journal.schema.json",
+  "title": "Operation Journal",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "operationId",
+    "requestId",
+    "state",
+    "sequence",
+    "planHash",
+    "transitions",
+    "recoveryState"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authority": {
+      "const": "TEMPORARY_TRANSACTION_AUTHORITY"
+    },
+    "privacy": {
+      "$ref": "#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "#/$defs/ExtensionMap"
+    },
+    "operationId": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "requestId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "state": {
+      "enum": [
+        "PREPARED",
+        "STAGING",
+        "VERIFIED",
+        "COMMITTING",
+        "COMMITTED",
+        "ROLLING_BACK",
+        "ROLLED_BACK",
+        "RECOVERY_REQUIRED",
+        "FAILED"
+      ]
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "planHash": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sequence": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "at": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Timestamp"
+          },
+          "from": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1
+          },
+          "operationItemId": {
+            "oneOf": [
+              {
+                "$ref": "record-shared-v1.schema.json#/$defs/Id"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evidenceHash": {
+            "oneOf": [
+              {
+                "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "errorCode": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "sequence",
+          "at",
+          "from",
+          "to",
+          "operationItemId",
+          "evidenceHash",
+          "errorCode"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "recoveryState": {
+      "enum": [
+        "NOT_REQUIRED",
+        "REQUIRED",
+        "RUNNING",
+        "COMPLETE",
+        "FAILED"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "TEMPORARY_TRANSACTION_AUTHORITY",
+    "privacyClassification": "OPERATIONAL",
+    "stableIdStrategy": "UUIDv7 or documented deterministic content identity",
+    "timestampSemantics": "UTC RFC3339 instants; source timezone retained in domain fields when required",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and leaves original bytes intact on failure"
+  }
+}

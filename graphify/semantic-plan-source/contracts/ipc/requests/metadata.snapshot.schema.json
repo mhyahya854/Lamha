@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/metadata.snapshot.schema.json",
+  "title": "Metadata Snapshot Request",
+  "description": "Command-specific request DTO for metadata.snapshot.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "snapshotOptions"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "snapshotOptions": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/MutationReceipt"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "metadata.snapshot",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

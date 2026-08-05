@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/scan.watcher_reconcile.schema.json",
+  "title": "Scan Watcher Reconcile Response",
+  "description": "Command-specific response DTO for scan.watcher_reconcile.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "watcherreconcileResult",
+    "revision",
+    "auditEntryId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "watcherreconcileResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/MutationReceipt"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "auditEntryId": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "scan.watcher_reconcile",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

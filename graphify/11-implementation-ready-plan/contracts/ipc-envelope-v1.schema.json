@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/contracts/ipc-envelope-v1.schema.json",
+  "title": "Lamha IPC envelope v1",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/request"
+    },
+    {
+      "$ref": "#/$defs/success"
+    },
+    {
+      "$ref": "#/$defs/failure"
+    },
+    {
+      "$ref": "#/$defs/progress"
+    }
+  ],
+  "$defs": {
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "request": {
+      "type": "object",
+      "required": [
+        "requestId",
+        "command",
+        "commandVersion",
+        "payload"
+      ],
+      "properties": {
+        "requestId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "command": {
+          "type": "string"
+        },
+        "commandVersion": {
+          "const": 1
+        },
+        "payload": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "success": {
+      "type": "object",
+      "required": [
+        "requestId",
+        "result",
+        "warnings",
+        "affectedRevisions"
+      ],
+      "properties": {
+        "requestId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "result": {},
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "affectedRevisions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "failure": {
+      "type": "object",
+      "required": [
+        "requestId",
+        "error"
+      ],
+      "properties": {
+        "requestId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "error": {
+          "type": "object",
+          "required": [
+            "code",
+            "message",
+            "retryable"
+          ],
+          "properties": {
+            "code": {
+              "enum": [
+                "INVALID_ARGUMENT",
+                "NOT_FOUND",
+                "REVISION_CONFLICT",
+                "ROOT_NOT_AUTHORIZED",
+                "PATH_ESCAPE",
+                "READ_ONLY",
+                "ROOT_OFFLINE",
+                "COLLISION",
+                "INSUFFICIENT_SPACE",
+                "UNSUPPORTED_FORMAT",
+                "FUTURE_SCHEMA",
+                "CORRUPT_RECORD",
+                "TRANSACTION_IN_DOUBT",
+                "WORKER_UNAVAILABLE",
+                "TASK_CANCELLED",
+                "MODEL_UNAVAILABLE",
+                "LEGAL_COMPONENT_MISSING",
+                "INTERNAL"
+              ]
+            },
+            "message": {
+              "type": "string"
+            },
+            "retryable": {
+              "type": "boolean"
+            },
+            "details": {
+              "type": "object"
+            },
+            "reviewItemId": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "progress": {
+      "type": "object",
+      "required": [
+        "operationId",
+        "stage",
+        "completed",
+        "cancellable"
+      ],
+      "properties": {
+        "operationId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "stage": {
+          "type": "string"
+        },
+        "completed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "message": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cancellable": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

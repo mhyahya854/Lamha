@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/people.person_create.schema.json",
+  "title": "People Person Create Request",
+  "description": "Command-specific request DTO for people.person_create.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "peopleDraft"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "peopleDraft": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/PersonDraft"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "people.person_create",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

@@ -1,0 +1,29 @@
+Lamha Phase 0/1 Graphify run log
+Date: 2026-07-29 (Asia/Riyadh)
+Working directory: C:\Users\mhyah\Downloads\Code\Lamha\graphify
+Read-only target: C:\Users\mhyah\Downloads\Code\Lamha\Codebase
+Installed Graphify: 0.9.17
+
+Fresh run 1:
+  graphify extract "C:\Users\mhyah\Downloads\Code\Lamha\Codebase" --mode deep --code-only --out "C:\Users\mhyah\AppData\Local\Temp\LamhaGraphifyRefresh-20260729-015507" --no-cluster --force --timing
+  result: 2,922 detected code files; 34,281 nodes; 69,753 edges; 261 docs and 336 images skipped without semantic provider; 170 unclassified
+  captured stdout/stderr: Graphify/graphify-refresh.stdout.log and Graphify/graphify-refresh.stderr.log
+
+Fresh run 2:
+  graphify extract ..\Codebase --mode deep --code-only --out "C:\Users\mhyah\AppData\Local\Temp\LamhaGraphifyRelative-20260729-015848" --no-cluster --force --timing
+  result: 2,922 detected code files; 34,281 nodes; 69,753 edges; same basename-collision regression
+  captured stdout/stderr: Graphify/graphify-relative.stdout.log and Graphify/graphify-relative.stderr.log
+
+Acceptance decision:
+  The source manifest was byte-identical, but both fresh 0.9.17 runs lost path-qualified external-file identities and import relations.
+  Preserved raw evidence: 34,595 nodes / 70,890 edges.
+  Directed pre-curation rebuild: 34,595 nodes / 65,397 deduplicated directed relation triples.
+  Canonical directed MultiDiGraph: 40959 nodes / 94180 edges.
+  Same-endpoint relation variants intentionally preserved: 803.
+  Semantic provider/model/key: none.
+  Token/cost: 0 input, 0 output, USD 0.00.
+  Codebase writes: none.
+
+Canonical regeneration:
+  python graphify/build_canonical_outputs.py
+  output: graph.json, graph.html, GRAPH_REPORT.md, complete canonical planning maps and ledgers.

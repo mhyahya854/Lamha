@@ -1,0 +1,15 @@
+record_id,previous_statement,meaningful_word_count,disposition,source_preserved,review_status
+CAN-LAM-AI-016,"Lamha keeps AI assistance, but AI findings must be reviewable.",7,SUPERSEDED_FRAGMENT,01-EVERYTHING-WE-ARE-KEEPING.md / lines 383-383,NOT_APPLICABLE
+CAN-LAM-AI-019,AI must not silently finalize consequential classifications.,6,SUPERSEDED_FRAGMENT,01-EVERYTHING-WE-ARE-KEEPING.md / lines 397-397,NOT_APPLICABLE
+CAN-LAM-ARCH-068,The gallery must work from local files and local indexes only.,7,SUPERSEDED_FRAGMENT,01-EVERYTHING-WE-ARE-KEEPING.md / lines 666-666,NOT_APPLICABLE
+CAN-LAM-ARCH-373,Lamha must not introduce a Node/SvelteKit server runtime.,6,SUPERSEDED_FRAGMENT,03-HOW-WE-WILL-KEEP-DELETE-AND-CHANGE.md / lines 1382-1382,NOT_APPLICABLE
+CAN-LAM-ASSET-052,both sidecars must remain synchronized with the media file.,6,SUPERSEDED_FRAGMENT,01-EVERYTHING-WE-ARE-KEEPING.md / lines 628-628,NOT_APPLICABLE
+CAN-LAM-ASSET-143,Lamha must not rely only on filename.,4,SUPERSEDED_FRAGMENT,01-EVERYTHING-WE-ARE-KEEPING.md / lines 2076-2076,NOT_APPLICABLE
+CAN-LAM-EVENT-049,An event attendee may display the derived label.,6,SUPERSEDED_FRAGMENT,01-EVERYTHING-WE-ARE-KEEPING.md / lines 1216-1216,NOT_APPLICABLE
+CAN-LAM-GOV-095,Lamha must not refactor production code.,4,SUPERSEDED_FRAGMENT,03-HOW-WE-WILL-KEEP-DELETE-AND-CHANGE.md / lines 254-254,NOT_APPLICABLE
+CAN-LAM-GOV-101,Lamha must not reset uncommitted work.,4,SUPERSEDED_FRAGMENT,03-HOW-WE-WILL-KEEP-DELETE-AND-CHANGE.md / lines 260-260,NOT_APPLICABLE
+CAN-LAM-GOV-157,Lamha must not map only the master-plan features.,6,SUPERSEDED_FRAGMENT,03-HOW-WE-WILL-KEEP-DELETE-AND-CHANGE.md / lines 593-593,NOT_APPLICABLE
+CAN-LAM-GOV-293,Lamha must not run Graphify extraction yet.,5,SUPERSEDED_FRAGMENT,03-HOW-WE-WILL-KEEP-DELETE-AND-CHANGE.md / lines 1348-1348,NOT_APPLICABLE
+CAN-LAM-META-003,XMP and SQLite never silently outrank these records.,7,SUPERSEDED_FRAGMENT,01-EVERYTHING-WE-ARE-KEEPING.md / lines 63-63,NOT_APPLICABLE
+CAN-LAM-META-017,Irreplaceable user-created metadata must be stored in transparent files.,7,SUPERSEDED_FRAGMENT,01-EVERYTHING-WE-ARE-KEEPING.md / lines 362-362,NOT_APPLICABLE
+CAN-LAM-META-047,Lamha must be able to rebuild after SQLite loss.,5,SUPERSEDED_FRAGMENT,01-EVERYTHING-WE-ARE-KEEPING.md / lines 2024-2024,NOT_APPLICABLE

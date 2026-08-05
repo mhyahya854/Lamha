@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/app.settings_update.schema.json",
+  "title": "App Settings Update Request",
+  "description": "Command-specific request DTO for app.settings_update.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "settingsPatch",
+    "expectedRevision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "settingsPatch": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/SettingsPatch"
+    },
+    "expectedRevision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "app.settings_update",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

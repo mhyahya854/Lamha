@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/model_registry.schema.json",
+  "title": "Model Registry",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "componentName",
+    "version",
+    "checksum",
+    "licenceStatus",
+    "redistributionStatus",
+    "taskKinds",
+    "platforms"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authority": {
+      "const": "AUTHORITATIVE_FILE_RECORD"
+    },
+    "privacy": {
+      "$ref": "#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "#/$defs/ExtensionMap"
+    },
+    "componentName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checksum": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{32,128}$"
+    },
+    "licenceStatus": {
+      "enum": [
+        "APPROVED",
+        "PENDING",
+        "REJECTED"
+      ]
+    },
+    "redistributionStatus": {
+      "enum": [
+        "APPROVED",
+        "PENDING",
+        "PROHIBITED"
+      ]
+    },
+    "taskKinds": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "OCR",
+          "EMBEDDING",
+          "FACE_DETECTION",
+          "FACE_EMBEDDING",
+          "DUPLICATE",
+          "LOCATION",
+          "CONTENT_TAG"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "WINDOWS",
+          "MACOS",
+          "LINUX"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "AUTHORITATIVE_FILE_RECORD",
+    "privacyClassification": "LOCAL_USER_DATA",
+    "stableIdStrategy": "UUIDv7 or documented deterministic content identity",
+    "timestampSemantics": "UTC RFC3339 instants; source timezone retained in domain fields when required",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and leaves original bytes intact on failure"
+  }
+}

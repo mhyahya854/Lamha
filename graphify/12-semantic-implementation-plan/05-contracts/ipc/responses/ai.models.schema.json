@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/ai.models.schema.json",
+  "title": "Ai Models Response",
+  "description": "Command-specific response DTO for ai.models.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "modelsResult",
+    "revision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "modelsResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/StatusSnapshot"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "ai.models",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/backup_manifest.schema.json",
+  "title": "Backup Manifest",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "sourceRootIds",
+    "destinationRootId",
+    "recordEntries",
+    "mediaEntries",
+    "createdByOperationId",
+    "verifiedAt",
+    "verificationState"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authority": {
+      "const": "AUTHORITATIVE_FILE_RECORD"
+    },
+    "privacy": {
+      "$ref": "#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "#/$defs/ExtensionMap"
+    },
+    "sourceRootIds": {
+      "type": "array",
+      "items": {
+        "$ref": "record-shared-v1.schema.json#/$defs/Id"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "destinationRootId": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "recordEntries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "recordId": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "recordType": {
+            "type": "string",
+            "minLength": 1
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "path": {
+            "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+          },
+          "hash": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+          }
+        },
+        "required": [
+          "recordId",
+          "recordType",
+          "revision",
+          "path",
+          "hash"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "mediaEntries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "assetIdentityId": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "path": {
+            "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+          },
+          "sizeBytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "hash": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+          }
+        },
+        "required": [
+          "assetIdentityId",
+          "path",
+          "sizeBytes",
+          "hash"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "createdByOperationId": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "verifiedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "verificationState": {
+      "enum": [
+        "UNVERIFIED",
+        "VERIFIED",
+        "FAILED"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "AUTHORITATIVE_FILE_RECORD",
+    "privacyClassification": "LOCAL_USER_DATA",
+    "stableIdStrategy": "UUIDv7 or documented deterministic content identity",
+    "timestampSemantics": "UTC RFC3339 instants; source timezone retained in domain fields when required",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and leaves original bytes intact on failure"
+  }
+}

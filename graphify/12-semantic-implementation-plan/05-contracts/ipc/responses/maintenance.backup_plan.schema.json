@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/maintenance.backup_plan.schema.json",
+  "title": "Maintenance Backup Plan Response",
+  "description": "Command-specific response DTO for maintenance.backup_plan.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "planId",
+    "preview",
+    "conflicts"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "planId": {
+      "type": "string"
+    },
+    "preview": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/PreviewResult"
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "$ref": "../../shared-definitions-v1.schema.json#/$defs/Conflict"
+      },
+      "minItems": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "maintenance.backup_plan",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

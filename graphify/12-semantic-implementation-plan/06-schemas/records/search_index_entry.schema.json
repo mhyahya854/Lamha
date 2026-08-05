@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/search_index_entry.schema.json",
+  "title": "Search Index Entry",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "assetId",
+    "assetRevision",
+    "indexedFields",
+    "indexRevision"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authority": {
+      "const": "DERIVED_REBUILDABLE"
+    },
+    "privacy": {
+      "$ref": "#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "#/$defs/ExtensionMap"
+    },
+    "assetId": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "assetRevision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "indexedFields": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "FILENAME",
+          "METADATA",
+          "OCR",
+          "PERSON",
+          "TAG",
+          "EVENT",
+          "LOCATION",
+          "EMBEDDING"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "indexRevision": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "DERIVED_REBUILDABLE",
+    "privacyClassification": "LOCAL_USER_DATA",
+    "stableIdStrategy": "UUIDv7 or documented deterministic content identity",
+    "timestampSemantics": "UTC RFC3339 instants; source timezone retained in domain fields when required",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and leaves original bytes intact on failure"
+  }
+}

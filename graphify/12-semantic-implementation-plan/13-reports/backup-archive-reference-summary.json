@@ -1,0 +1,13 @@
+{
+  "scope": "Canonical registries, package/dependency/phase sources, and explicit I0 review decisions; rendered duplicates inherit their canonical classification.",
+  "occurrencesFound": 250,
+  "classifications": {
+    "Historical provenance only": 8,
+    "Legitimate future product backup feature": 87,
+    "Prohibited": 51,
+    "Superseded": 104
+  },
+  "activePositiveDevelopmentRepositoryBackupInstructions": 0,
+  "correctedI0Packages": 4,
+  "supersededPositiveArchiveDirectives": 2
+}

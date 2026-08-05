@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/people.person_create.schema.json",
+  "title": "People Person Create Response",
+  "description": "Command-specific response DTO for people.person_create.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "personcreateResult",
+    "revision",
+    "auditEntryId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "personcreateResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/PersonSummary"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "auditEntryId": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "people.person_create",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

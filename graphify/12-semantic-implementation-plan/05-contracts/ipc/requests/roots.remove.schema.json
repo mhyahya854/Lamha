@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/roots.remove.schema.json",
+  "title": "Roots Remove Request",
+  "description": "Command-specific request DTO for roots.remove.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "requestId",
+    "planId",
+    "confirmationToken",
+    "expectedRevision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 128
+    },
+    "planId": {
+      "type": "string"
+    },
+    "confirmationToken": {
+      "type": "string",
+      "minLength": 8
+    },
+    "expectedRevision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "roots.remove",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

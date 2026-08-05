@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/metadata.inspect.schema.json",
+  "title": "Metadata Inspect Response",
+  "description": "Command-specific response DTO for metadata.inspect.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "inspectResult",
+    "revision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "inspectResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/MutationReceipt"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "metadata.inspect",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

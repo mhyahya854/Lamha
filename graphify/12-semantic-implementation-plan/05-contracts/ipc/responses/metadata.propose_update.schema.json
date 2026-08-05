@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/metadata.propose_update.schema.json",
+  "title": "Metadata Propose Update Response",
+  "description": "Command-specific response DTO for metadata.propose_update.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "planId",
+    "preview",
+    "conflicts"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "planId": {
+      "type": "string"
+    },
+    "preview": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/PreviewResult"
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "$ref": "../../shared-definitions-v1.schema.json#/$defs/Conflict"
+      },
+      "minItems": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "metadata.propose_update",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

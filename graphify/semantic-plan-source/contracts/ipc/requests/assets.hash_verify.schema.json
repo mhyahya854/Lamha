@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/assets.hash_verify.schema.json",
+  "title": "Assets Hash Verify Request",
+  "description": "Command-specific request DTO for assets.hash_verify.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "assetId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "assetId": {
+      "type": "string"
+    },
+    "variant": {
+      "type": "string"
+    },
+    "algorithm": {
+      "enum": [
+        "BLAKE3",
+        "SHA256"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "assets.hash_verify",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

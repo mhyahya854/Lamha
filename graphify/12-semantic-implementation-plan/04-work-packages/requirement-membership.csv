@@ -1,0 +1,834 @@
+canonical_id,work_package_id,membership_rationale,reviewer_status
+CAN-FAIL-01,WP-I4-003,"Explicit failure-control decision: Approved format matrix, typed classification result, immutable originals, and companion linkage.",REVIEWED
+CAN-FAIL-02,WP-I0-011,Explicit failure-control decision: Placeholder scan plus symbol-level behavior review.,REVIEWED
+CAN-FAIL-03,WP-I2-011,Explicit failure-control decision: Typed frontend command bridge and UI-to-command integration test.,REVIEWED
+CAN-FAIL-04,WP-I3-006,"Explicit failure-control decision: Transactional sidecar write, degraded state, and reconciliation.",REVIEWED
+CAN-FAIL-05,WP-I6-009,Explicit failure-control decision: Typed materialization plan restricted to approved placement variants.,REVIEWED
+CAN-FAIL-06,WP-I7-003,"Explicit failure-control decision: Candidate record, Review Centre decision, and Rust-only authoritative commit.",REVIEWED
+CAN-FAIL-07,WP-I10-002,"Explicit failure-control decision: Non-network transport, parent-child lifecycle, listener scan, and outbound denial.",REVIEWED
+CAN-FAIL-08,WP-I3-002,Explicit failure-control decision: Write-once originalFilename field with revision validation.,REVIEWED
+CAN-FAIL-09,WP-I15-015,"Explicit failure-control decision: Replacement evidence, caller migration, dependency scan, and package gate.",REVIEWED
+CAN-FAIL-10,WP-I3-009,"Explicit failure-control decision: Authority registry, versioned records, deterministic rebuild, and comparison.",REVIEWED
+CAN-FAIL-11,WP-I6-009,Explicit failure-control decision: Linked-root access mode enforced by every materialization plan.,REVIEWED
+CAN-FAIL-12,WP-I8-007,"Explicit failure-control decision: Distinct typed fields, independent provenance, and explicit proposal workflow.",REVIEWED
+CAN-FAIL-13,WP-I6-002,Explicit failure-control decision: Distinct typed memberships and independent proposal paths.,REVIEWED
+CAN-FAIL-14,WP-I7-008,Explicit failure-control decision: Versioned temporal intervals with non-overlap validation.,REVIEWED
+CAN-FAIL-15,WP-I7-007,"Explicit failure-control decision: Typed parent reference, cycle validation, and derived tree rebuild.",REVIEWED
+CAN-FAIL-16,WP-I12-005,"Explicit failure-control decision: Detached mode, typed pending overlays, and guarded reconciliation.",REVIEWED
+CAN-FAIL-17,WP-I6-008,Explicit failure-control decision: Proposal-only inference and explicit split plan approval.,REVIEWED
+CAN-FAIL-18,WP-I10-013,"Explicit failure-control decision: Candidate fingerprint, suppression record, invalidation reasons, and preserved history.",REVIEWED
+CAN-FAIL-19,WP-I0-011,Explicit failure-control decision: Traceability ledger with applicable-gate evidence validation.,REVIEWED
+CAN-FAIL-20,WP-I3-014,"Explicit failure-control decision: Typed operation plan, prepared journal, staging, verification, rollback, and restart recovery.",REVIEWED
+CAN-FAIL-21,WP-I12-008,"Explicit failure-control decision: Typed path adapter, simulated roots, separators, permissions, and escape checks.",REVIEWED
+CAN-FAIL-22,WP-I15-014,"Explicit failure-control decision: Outbound inventory, dependency scan, listener scan, and clean offline launch.",REVIEWED
+CAN-FAIL-23,WP-I0-011,Explicit failure-control decision: Package completion or typed blocker with evidence.,REVIEWED
+CAN-FAIL-24,WP-I0-011,"Explicit failure-control decision: Evidence requirement, blocked registry, and schema/path validation.",REVIEWED
+CAN-FAIL-25,WP-I8-006,"Explicit failure-control decision: Multi-edge history schema, orthogonal certainty, and versioned projection rules.",REVIEWED
+CAN-FAIL-26,WP-I11-004,"Explicit failure-control decision: Versioned edit recipe, immutable original hash, derivative identity, and explicit export collision policy.",REVIEWED
+CAN-FAIL-27,WP-I0-011,Explicit failure-control decision: Guarded output roots and structural inventory comparison.,REVIEWED
+CAN-FAIL-28,WP-I11-001,"Explicit failure-control decision: Typed conflict record, source snapshots, authority decision, and reviewed resolution.",REVIEWED
+CAN-FAIL-29,WP-I10-007,Explicit failure-control decision: Typed AI task record and targeted invalidation rules.,REVIEWED
+CAN-FAIL-30,WP-I9-007,"Explicit failure-control decision: Persistent draft schema, simulation result, confirmed plan, and transaction journal.",REVIEWED
+CAN-FAIL-31,WP-I13-007,"Explicit failure-control decision: Trash record, staged move, restore proof, collision handling, and separate permanent-delete authorization.",REVIEWED
+CAN-FAIL-32,WP-I0-011,"Explicit failure-control decision: Package exit evidence, dependency readiness, blocker state, and explicit authority.",REVIEWED
+CAN-LAM-AI-006,WP-I3-009,Reviewed membership: the requirement is implemented by the bounded derived-index rebuild contract surface in I3.,REVIEWED
+CAN-LAM-AI-014,WP-I10-009,Explicit fragment review: Expanded a noun-only source clause into OCR indexing and staleness behavior.,REVIEWED
+CAN-LAM-AI-017,WP-I10-009,Reviewed membership: the requirement is implemented by the bounded local ocr surface in I10.,REVIEWED
+CAN-LAM-AI-018,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-AI-020,WP-I4-011,Reviewed membership: the requirement is implemented by the bounded filesystem reconciliation surface in I4.,REVIEWED
+CAN-LAM-AI-022,WP-I7-001,Reviewed membership: the requirement is implemented by the bounded face detection task slice surface in I7.,REVIEWED
+CAN-LAM-AI-023,WP-I7-001,Reviewed membership: the requirement is implemented by the bounded face detection task slice surface in I7.,REVIEWED
+CAN-LAM-AI-027,WP-I3-009,Reviewed membership: the requirement is implemented by the bounded derived-index rebuild contract surface in I3.,REVIEWED
+CAN-LAM-AI-028,WP-I10-002,Reviewed membership: the requirement is implemented by the bounded private local worker transport surface in I10.,REVIEWED
+CAN-LAM-AI-029,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-AI-030,WP-I10-009,Reviewed membership: the requirement is implemented by the bounded local ocr surface in I10.,REVIEWED
+CAN-LAM-AI-031,WP-I10-006,Reviewed membership: the requirement is implemented by the bounded local ai scheduler surface in I10.,REVIEWED
+CAN-LAM-AI-032,WP-I10-003,Reviewed membership: the requirement is implemented by the bounded model and component registry surface in I10.,REVIEWED
+CAN-LAM-AI-033,WP-I10-004,Reviewed membership: the requirement is implemented by the bounded model checksums and compatibility surface in I10.,REVIEWED
+CAN-LAM-AI-035,WP-I10-009,Reviewed membership: the requirement is implemented by the bounded local ocr surface in I10.,REVIEWED
+CAN-LAM-AI-039,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-AI-042,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-AI-043,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-AI-044,WP-I10-009,Reviewed membership: the requirement is implemented by the bounded local ocr surface in I10.,REVIEWED
+CAN-LAM-AI-045,WP-I3-002,Reviewed membership: the requirement is implemented by the bounded stable asset identity surface in I3.,REVIEWED
+CAN-LAM-AI-046,WP-I10-002,Reviewed membership: the requirement is implemented by the bounded private local worker transport surface in I10.,REVIEWED
+CAN-LAM-AI-048,WP-I1-005,Reviewed membership: the requirement is implemented by the bounded licence and attribution preservation surface in I1.,REVIEWED
+CAN-LAM-AI-076,WP-I8-002,Reviewed membership: the requirement is implemented by the bounded tag candidates and review surface in I8.,REVIEWED
+CAN-LAM-AI-081,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-AI-082,WP-I15-008,Reviewed membership: the requirement is implemented by the bounded integrated retained-feature parity surface in I15.,REVIEWED
+CAN-LAM-AI-085,WP-I10-006,Reviewed membership: the requirement is implemented by the bounded local ai scheduler surface in I10.,REVIEWED
+CAN-LAM-AI-086,WP-I10-002,Reviewed membership: the requirement is implemented by the bounded private local worker transport surface in I10.,REVIEWED
+CAN-LAM-AI-087,WP-I1-005,Reviewed membership: the requirement is implemented by the bounded licence and attribution preservation surface in I1.,REVIEWED
+CAN-LAM-ARCH-001,WP-I1-001,Reviewed membership: the requirement is implemented by the bounded brand and identity inventory surface in I1.,REVIEWED
+CAN-LAM-ARCH-014,WP-I2-013,Reviewed membership: the requirement is implemented by the bounded desktop shell smoke proof surface in I2.,REVIEWED
+CAN-LAM-ARCH-020,WP-I12-005,Pending sidecar overlay durability and conflict validation belong to the pending-overlay contract.,REVIEWED
+CAN-LAM-ARCH-021,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-ARCH-024,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-ARCH-025,WP-I8-002,Explicit fragment review: Expanded a noun-only source clause into a revisioned review workflow.,REVIEWED
+CAN-LAM-ARCH-026,WP-I9-001,Reviewed membership: the requirement is implemented by the bounded canonical knowledge-graph projection surface in I9.,REVIEWED
+CAN-LAM-ARCH-027,WP-I5-006,Explicit fragment review: Expanded a noun-only source clause into album/favorite persistence behavior.,REVIEWED
+CAN-LAM-ARCH-028,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-ARCH-029,WP-I5-007,Reviewed membership: the requirement is implemented by the bounded memories experience surface in I5.,REVIEWED
+CAN-LAM-ARCH-030,WP-I10-006,Reviewed membership: the requirement is implemented by the bounded local ai scheduler surface in I10.,REVIEWED
+CAN-LAM-ARCH-034,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-ARCH-036,WP-I6-008,Reviewed membership: the requirement is implemented by the bounded date and location boundaries surface in I6.,REVIEWED
+CAN-LAM-ARCH-037,WP-I6-009,Reviewed membership: the requirement is implemented by the bounded event filesystem materialization plan surface in I6.,REVIEWED
+CAN-LAM-ARCH-038,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-ARCH-039,WP-I8-002,Reviewed membership: the requirement is implemented by the bounded tag candidates and review surface in I8.,REVIEWED
+CAN-LAM-ARCH-040,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-ARCH-041,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-ARCH-044,WP-I6-005,Reviewed membership: the requirement is implemented by the bounded event merge plan surface in I6.,REVIEWED
+CAN-LAM-ARCH-045,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-ARCH-048,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-ARCH-049,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-ARCH-050,WP-I6-010,Reviewed membership: the requirement is implemented by the bounded event and manage later ui surface in I6.,REVIEWED
+CAN-LAM-ARCH-051,WP-I6-007,Reviewed membership: the requirement is implemented by the bounded event naming and normalization surface in I6.,REVIEWED
+CAN-LAM-ARCH-052,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-ARCH-053,WP-I6-005,Reviewed membership: the requirement is implemented by the bounded event merge plan surface in I6.,REVIEWED
+CAN-LAM-ARCH-054,WP-I6-008,Reviewed membership: the requirement is implemented by the bounded date and location boundaries surface in I6.,REVIEWED
+CAN-LAM-ARCH-055,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-ARCH-056,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-ARCH-057,WP-I3-011,Explicit fragment review: The prior viewer template treated a completed filesystem action as a UI label.,REVIEWED
+CAN-LAM-ARCH-058,WP-I3-011,Explicit fragment review: The prior viewer template omitted transaction and bundle-integrity behavior.,REVIEWED
+CAN-LAM-ARCH-061,WP-I5-002,Reviewed membership: the requirement is implemented by the bounded timeline navigation surface in I5.,REVIEWED
+CAN-LAM-ARCH-062,WP-I5-002,Reviewed membership: the requirement is implemented by the bounded timeline navigation surface in I5.,REVIEWED
+CAN-LAM-ARCH-063,WP-I5-002,Reviewed membership: the requirement is implemented by the bounded timeline navigation surface in I5.,REVIEWED
+CAN-LAM-ARCH-064,WP-I5-002,Reviewed membership: the requirement is implemented by the bounded timeline navigation surface in I5.,REVIEWED
+CAN-LAM-ARCH-065,WP-I5-005,Reviewed membership: the requirement is implemented by the bounded selection and keyboard navigation surface in I5.,REVIEWED
+CAN-LAM-ARCH-066,WP-I5-005,Reviewed membership: the requirement is implemented by the bounded selection and keyboard navigation surface in I5.,REVIEWED
+CAN-LAM-ARCH-067,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-069,WP-I5-004,Reviewed membership: the requirement is implemented by the bounded video viewer surface in I5.,REVIEWED
+CAN-LAM-ARCH-070,WP-I5-004,Reviewed membership: the requirement is implemented by the bounded video viewer surface in I5.,REVIEWED
+CAN-LAM-ARCH-071,WP-I5-005,Reviewed membership: the requirement is implemented by the bounded selection and keyboard navigation surface in I5.,REVIEWED
+CAN-LAM-ARCH-072,WP-I5-003,Reviewed membership: the requirement is implemented by the bounded image viewer surface in I5.,REVIEWED
+CAN-LAM-ARCH-073,WP-I5-003,Reviewed membership: the requirement is implemented by the bounded image viewer surface in I5.,REVIEWED
+CAN-LAM-ARCH-074,WP-I5-003,Reviewed membership: the requirement is implemented by the bounded image viewer surface in I5.,REVIEWED
+CAN-LAM-ARCH-075,WP-I5-003,Reviewed membership: the requirement is implemented by the bounded image viewer surface in I5.,REVIEWED
+CAN-LAM-ARCH-076,WP-I5-004,Reviewed membership: the requirement is implemented by the bounded video viewer surface in I5.,REVIEWED
+CAN-LAM-ARCH-077,WP-I5-003,Reviewed membership: the requirement is implemented by the bounded image viewer surface in I5.,REVIEWED
+CAN-LAM-ARCH-078,WP-I5-003,Reviewed membership: the requirement is implemented by the bounded image viewer surface in I5.,REVIEWED
+CAN-LAM-ARCH-079,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-ARCH-080,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-ARCH-081,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-ARCH-082,WP-I9-004,Reviewed membership: the requirement is implemented by the bounded event mind map surface in I9.,REVIEWED
+CAN-LAM-ARCH-083,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-ARCH-084,WP-I4-002,Reviewed membership: the requirement is implemented by the bounded incremental scan and watcher reconciliation surface in I4.,REVIEWED
+CAN-LAM-ARCH-085,WP-I4-002,Reviewed membership: the requirement is implemented by the bounded incremental scan and watcher reconciliation surface in I4.,REVIEWED
+CAN-LAM-ARCH-086,WP-I4-002,Reviewed membership: the requirement is implemented by the bounded incremental scan and watcher reconciliation surface in I4.,REVIEWED
+CAN-LAM-ARCH-087,WP-I4-009,Reviewed membership: the requirement is implemented by the bounded thumbnail and preview generation surface in I4.,REVIEWED
+CAN-LAM-ARCH-088,WP-I4-007,Reviewed membership: the requirement is implemented by the bounded content hashing and verification surface in I4.,REVIEWED
+CAN-LAM-ARCH-089,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-ARCH-090,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-ARCH-091,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-ARCH-092,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-ARCH-093,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-ARCH-094,WP-I12-003,Reviewed membership: the requirement is implemented by the bounded drive reconnection and identity validation surface in I12.,REVIEWED
+CAN-LAM-ARCH-095,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-ARCH-096,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-ARCH-097,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-ARCH-098,WP-I6-003,Reviewed membership: the requirement is implemented by the bounded manual event creation surface in I6.,REVIEWED
+CAN-LAM-ARCH-099,WP-I6-008,Reviewed membership: the requirement is implemented by the bounded date and location boundaries surface in I6.,REVIEWED
+CAN-LAM-ARCH-100,WP-I6-003,Reviewed membership: the requirement is implemented by the bounded manual event creation surface in I6.,REVIEWED
+CAN-LAM-ARCH-101,WP-I6-008,Reviewed membership: the requirement is implemented by the bounded date and location boundaries surface in I6.,REVIEWED
+CAN-LAM-ARCH-102,WP-I6-003,Reviewed membership: the requirement is implemented by the bounded manual event creation surface in I6.,REVIEWED
+CAN-LAM-ARCH-103,WP-I7-003,Reviewed membership: the requirement is implemented by the bounded face clustering and curation surface in I7.,REVIEWED
+CAN-LAM-ARCH-104,WP-I7-009,Reviewed membership: the requirement is implemented by the bounded scoped face corrections surface in I7.,REVIEWED
+CAN-LAM-ARCH-105,WP-I7-001,Reviewed membership: the requirement is implemented by the bounded face detection task slice surface in I7.,REVIEWED
+CAN-LAM-ARCH-106,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-ARCH-107,WP-I7-005,Reviewed membership: the requirement is implemented by the bounded person aliases and naming surface in I7.,REVIEWED
+CAN-LAM-ARCH-108,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-ARCH-109,WP-I7-008,Reviewed membership: the requirement is implemented by the bounded temporal group memberships surface in I7.,REVIEWED
+CAN-LAM-ARCH-110,WP-I7-010,Reviewed membership: the requirement is implemented by the bounded people and face privacy surface in I7.,REVIEWED
+CAN-LAM-ARCH-111,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-ARCH-112,WP-I7-005,Reviewed membership: the requirement is implemented by the bounded person aliases and naming surface in I7.,REVIEWED
+CAN-LAM-ARCH-113,WP-I7-008,Reviewed membership: the requirement is implemented by the bounded temporal group memberships surface in I7.,REVIEWED
+CAN-LAM-ARCH-114,WP-I7-008,Reviewed membership: the requirement is implemented by the bounded temporal group memberships surface in I7.,REVIEWED
+CAN-LAM-ARCH-115,WP-I7-008,Reviewed membership: the requirement is implemented by the bounded temporal group memberships surface in I7.,REVIEWED
+CAN-LAM-ARCH-116,WP-I7-008,Reviewed membership: the requirement is implemented by the bounded temporal group memberships surface in I7.,REVIEWED
+CAN-LAM-ARCH-119,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-ARCH-120,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-ARCH-121,WP-I7-005,Reviewed membership: the requirement is implemented by the bounded person aliases and naming surface in I7.,REVIEWED
+CAN-LAM-ARCH-125,WP-I8-004,Reviewed membership: the requirement is implemented by the bounded relationship records surface in I8.,REVIEWED
+CAN-LAM-ARCH-126,WP-I8-009,Reviewed membership: the requirement is implemented by the bounded relationship review and conflicts surface in I8.,REVIEWED
+CAN-LAM-ARCH-127,WP-I8-009,Reviewed membership: the requirement is implemented by the bounded relationship review and conflicts surface in I8.,REVIEWED
+CAN-LAM-ARCH-128,WP-I8-005,Reviewed membership: the requirement is implemented by the bounded multi-edge relationship history surface in I8.,REVIEWED
+CAN-LAM-ARCH-129,WP-I8-005,Reviewed membership: the requirement is implemented by the bounded multi-edge relationship history surface in I8.,REVIEWED
+CAN-LAM-ARCH-130,WP-I8-004,Reviewed membership: the requirement is implemented by the bounded relationship records surface in I8.,REVIEWED
+CAN-LAM-ARCH-131,WP-I8-005,Reviewed membership: the requirement is implemented by the bounded multi-edge relationship history surface in I8.,REVIEWED
+CAN-LAM-ARCH-132,WP-I8-004,Reviewed membership: the requirement is implemented by the bounded relationship records surface in I8.,REVIEWED
+CAN-LAM-ARCH-133,WP-I8-005,Reviewed membership: the requirement is implemented by the bounded multi-edge relationship history surface in I8.,REVIEWED
+CAN-LAM-ARCH-134,WP-I8-009,Reviewed membership: the requirement is implemented by the bounded relationship review and conflicts surface in I8.,REVIEWED
+CAN-LAM-ARCH-135,WP-I8-009,Reviewed membership: the requirement is implemented by the bounded relationship review and conflicts surface in I8.,REVIEWED
+CAN-LAM-ARCH-141,WP-I10-008,Reviewed membership: the requirement is implemented by the bounded ai progress cancellation and retry surface in I10.,REVIEWED
+CAN-LAM-ARCH-144,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-ARCH-147,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-ARCH-148,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-ARCH-149,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-ARCH-150,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-ARCH-151,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-ARCH-152,WP-I6-010,Reviewed membership: the requirement is implemented by the bounded event and manage later ui surface in I6.,REVIEWED
+CAN-LAM-ARCH-153,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-ARCH-154,WP-I6-010,Reviewed membership: the requirement is implemented by the bounded event and manage later ui surface in I6.,REVIEWED
+CAN-LAM-ARCH-155,WP-I6-010,Reviewed membership: the requirement is implemented by the bounded event and manage later ui surface in I6.,REVIEWED
+CAN-LAM-ARCH-156,WP-I6-010,Reviewed membership: the requirement is implemented by the bounded event and manage later ui surface in I6.,REVIEWED
+CAN-LAM-ARCH-157,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-ARCH-158,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-ARCH-159,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-ARCH-160,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-ARCH-161,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-ARCH-162,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-ARCH-163,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-ARCH-164,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-ARCH-165,WP-I8-002,Reviewed membership: the requirement is implemented by the bounded tag candidates and review surface in I8.,REVIEWED
+CAN-LAM-ARCH-168,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-169,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-170,WP-I5-010,Explicit fragment review: Expanded a button label into a persisted Review Centre transition.,REVIEWED
+CAN-LAM-ARCH-171,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-172,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-173,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-177,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ARCH-184,WP-I3-015,Reviewed membership: the requirement is implemented by the bounded revision and concurrency preconditions surface in I3.,REVIEWED
+CAN-LAM-ARCH-188,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-ARCH-191,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-192,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-ARCH-193,WP-I10-002,Reviewed membership: the requirement is implemented by the bounded private local worker transport surface in I10.,REVIEWED
+CAN-LAM-ARCH-195,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-ARCH-197,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-198,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-199,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ARCH-200,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-201,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-202,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-203,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-204,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-205,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-206,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-207,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-208,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-209,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-210,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-211,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-ARCH-212,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-213,WP-I10-008,Reviewed membership: the requirement is implemented by the bounded ai progress cancellation and retry surface in I10.,REVIEWED
+CAN-LAM-ARCH-214,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-215,WP-I10-012,Reviewed membership: the requirement is implemented by the bounded location proposals surface in I10.,REVIEWED
+CAN-LAM-ARCH-216,WP-I10-005,Reviewed membership: the requirement is implemented by the bounded hardware assessment surface in I10.,REVIEWED
+CAN-LAM-ARCH-217,WP-I10-005,Reviewed membership: the requirement is implemented by the bounded hardware assessment surface in I10.,REVIEWED
+CAN-LAM-ARCH-218,WP-I10-005,Reviewed membership: the requirement is implemented by the bounded hardware assessment surface in I10.,REVIEWED
+CAN-LAM-ARCH-219,WP-I10-005,Reviewed membership: the requirement is implemented by the bounded hardware assessment surface in I10.,REVIEWED
+CAN-LAM-ARCH-220,WP-I10-005,Reviewed membership: the requirement is implemented by the bounded hardware assessment surface in I10.,REVIEWED
+CAN-LAM-ARCH-221,WP-I10-005,Reviewed membership: the requirement is implemented by the bounded hardware assessment surface in I10.,REVIEWED
+CAN-LAM-ARCH-222,WP-I10-005,Reviewed membership: the requirement is implemented by the bounded hardware assessment surface in I10.,REVIEWED
+CAN-LAM-ARCH-224,WP-I10-013,Reviewed membership: the requirement is implemented by the bounded ai review suppression and invalidation surface in I10.,REVIEWED
+CAN-LAM-ARCH-225,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-ARCH-228,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ARCH-229,WP-I10-007,Reviewed membership: the requirement is implemented by the bounded ai task queue persistence surface in I10.,REVIEWED
+CAN-LAM-ARCH-230,WP-I10-004,Reviewed membership: the requirement is implemented by the bounded model checksums and compatibility surface in I10.,REVIEWED
+CAN-LAM-ARCH-231,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-ARCH-232,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-ARCH-233,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-ARCH-234,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-ARCH-235,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-ARCH-236,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-ARCH-237,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-ARCH-238,WP-I5-007,Reviewed membership: the requirement is implemented by the bounded memories experience surface in I5.,REVIEWED
+CAN-LAM-ARCH-239,WP-I5-005,Reviewed membership: the requirement is implemented by the bounded selection and keyboard navigation surface in I5.,REVIEWED
+CAN-LAM-ARCH-240,WP-I5-007,Reviewed membership: the requirement is implemented by the bounded memories experience surface in I5.,REVIEWED
+CAN-LAM-ARCH-241,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-ARCH-242,WP-I5-007,Reviewed membership: the requirement is implemented by the bounded memories experience surface in I5.,REVIEWED
+CAN-LAM-ARCH-243,WP-I5-007,Reviewed membership: the requirement is implemented by the bounded memories experience surface in I5.,REVIEWED
+CAN-LAM-ARCH-244,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-ARCH-245,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-ARCH-246,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-ARCH-247,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-ARCH-248,WP-I5-004,Reviewed membership: the requirement is implemented by the bounded video viewer surface in I5.,REVIEWED
+CAN-LAM-ARCH-249,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-ARCH-250,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-ARCH-251,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-ARCH-252,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-ARCH-253,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-ARCH-254,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-ARCH-255,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-ARCH-256,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-ARCH-257,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-ARCH-258,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-ARCH-259,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-ARCH-269,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-270,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-271,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-272,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-273,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-274,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-275,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-276,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-277,WP-I5-005,Reviewed membership: the requirement is implemented by the bounded selection and keyboard navigation surface in I5.,REVIEWED
+CAN-LAM-ARCH-278,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-279,WP-I3-011,Reviewed membership: the requirement is implemented by the bounded file-operation plan contract surface in I3.,REVIEWED
+CAN-LAM-ARCH-280,WP-I3-011,Reviewed membership: the requirement is implemented by the bounded file-operation plan contract surface in I3.,REVIEWED
+CAN-LAM-ARCH-281,WP-I3-011,Reviewed membership: the requirement is implemented by the bounded file-operation plan contract surface in I3.,REVIEWED
+CAN-LAM-ARCH-282,WP-I3-014,Reviewed membership: the requirement is implemented by the bounded crash recovery engine surface in I3.,REVIEWED
+CAN-LAM-ARCH-283,WP-I4-007,Reviewed membership: the requirement is implemented by the bounded content hashing and verification surface in I4.,REVIEWED
+CAN-LAM-ARCH-284,WP-I4-006,Reviewed membership: the requirement is implemented by the bounded companion-media detection surface in I4.,REVIEWED
+CAN-LAM-ARCH-291,WP-I11-003,Explicit fragment review: Expanded a noun-only privacy field into a scoped removal workflow.,REVIEWED
+CAN-LAM-ARCH-292,WP-I11-003,Reviewed membership: the requirement is implemented by the bounded metadata privacy removal surface in I11.,REVIEWED
+CAN-LAM-ARCH-293,WP-I11-003,Reviewed membership: the requirement is implemented by the bounded metadata privacy removal surface in I11.,REVIEWED
+CAN-LAM-ARCH-294,WP-I11-003,Reviewed membership: the requirement is implemented by the bounded metadata privacy removal surface in I11.,REVIEWED
+CAN-LAM-ARCH-295,WP-I11-003,Reviewed membership: the requirement is implemented by the bounded metadata privacy removal surface in I11.,REVIEWED
+CAN-LAM-ARCH-296,WP-I11-003,Reviewed membership: the requirement is implemented by the bounded metadata privacy removal surface in I11.,REVIEWED
+CAN-LAM-ARCH-297,WP-I11-003,Reviewed membership: the requirement is implemented by the bounded metadata privacy removal surface in I11.,REVIEWED
+CAN-LAM-ARCH-298,WP-I7-010,Reviewed membership: the requirement is implemented by the bounded people and face privacy surface in I7.,REVIEWED
+CAN-LAM-ARCH-299,WP-I7-010,Reviewed membership: the requirement is implemented by the bounded people and face privacy surface in I7.,REVIEWED
+CAN-LAM-ARCH-300,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-ARCH-301,WP-I3-016,Reviewed membership: the requirement is implemented by the bounded settings root and drive registries surface in I3.,REVIEWED
+CAN-LAM-ARCH-302,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ARCH-305,WP-I13-005,Reviewed membership: the requirement is implemented by the bounded restore and collision handling surface in I13.,REVIEWED
+CAN-LAM-ARCH-306,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-ARCH-307,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-ARCH-309,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-ARCH-310,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-ARCH-311,WP-I12-001,Reviewed membership: the requirement is implemented by the bounded external-drive registry surface in I12.,REVIEWED
+CAN-LAM-ARCH-312,WP-I12-001,Reviewed membership: the requirement is implemented by the bounded external-drive registry surface in I12.,REVIEWED
+CAN-LAM-ARCH-313,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-ARCH-314,WP-I12-009,Reviewed membership: the requirement is implemented by the bounded drive transaction recovery surface in I12.,REVIEWED
+CAN-LAM-ARCH-315,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-ARCH-316,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-ARCH-317,WP-I12-001,Reviewed membership: the requirement is implemented by the bounded external-drive registry surface in I12.,REVIEWED
+CAN-LAM-ARCH-318,WP-I14-003,Reviewed membership: the requirement is implemented by the bounded gallery and viewer performance surface in I14.,REVIEWED
+CAN-LAM-ARCH-319,WP-I14-003,Reviewed membership: the requirement is implemented by the bounded gallery and viewer performance surface in I14.,REVIEWED
+CAN-LAM-ARCH-320,WP-I14-003,Reviewed membership: the requirement is implemented by the bounded gallery and viewer performance surface in I14.,REVIEWED
+CAN-LAM-ARCH-325,WP-I14-009,Reviewed membership: the requirement is implemented by the bounded background-job controls surface in I14.,REVIEWED
+CAN-LAM-ARCH-326,WP-I14-009,Reviewed membership: the requirement is implemented by the bounded background-job controls surface in I14.,REVIEWED
+CAN-LAM-ARCH-332,WP-I5-001,Reviewed membership: the requirement is implemented by the bounded gallery grid and virtualization surface in I5.,REVIEWED
+CAN-LAM-ARCH-333,WP-I5-012,Reviewed membership: the requirement is implemented by the bounded offline library parity proof surface in I5.,REVIEWED
+CAN-LAM-ARCH-335,WP-I2-007,Reviewed membership: the requirement is implemented by the bounded ipc envelope and versioning surface in I2.,REVIEWED
+CAN-LAM-ARCH-345,WP-I14-003,Reviewed membership: the requirement is implemented by the bounded gallery and viewer performance surface in I14.,REVIEWED
+CAN-LAM-ARCH-346,WP-I9-001,Reviewed membership: the requirement is implemented by the bounded canonical knowledge-graph projection surface in I9.,REVIEWED
+CAN-LAM-ARCH-349,WP-I1-005,Reviewed membership: the requirement is implemented by the bounded licence and attribution preservation surface in I1.,REVIEWED
+CAN-LAM-ARCH-350,WP-I1-005,Reviewed membership: the requirement is implemented by the bounded licence and attribution preservation surface in I1.,REVIEWED
+CAN-LAM-ARCH-351,WP-I1-005,Reviewed membership: the requirement is implemented by the bounded licence and attribution preservation surface in I1.,REVIEWED
+CAN-LAM-ARCH-368,WP-I1-001,Reviewed membership: the requirement is implemented by the bounded brand and identity inventory surface in I1.,REVIEWED
+CAN-LAM-ARCH-370,WP-I2-008,Reviewed membership: the requirement is implemented by the bounded stable ipc errors surface in I2.,REVIEWED
+CAN-LAM-ARCH-374,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-ARCH-375,WP-I4-002,Reviewed membership: the requirement is implemented by the bounded incremental scan and watcher reconciliation surface in I4.,REVIEWED
+CAN-LAM-ARCH-376,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-ARCH-380,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-ARCH-381,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-ARCH-382,WP-I7-003,Reviewed membership: the requirement is implemented by the bounded face clustering and curation surface in I7.,REVIEWED
+CAN-LAM-ARCH-383,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-ARCH-384,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-ARCH-385,WP-I7-008,Reviewed membership: the requirement is implemented by the bounded temporal group memberships surface in I7.,REVIEWED
+CAN-LAM-ARCH-386,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-ARCH-387,WP-I8-006,Reviewed membership: the requirement is implemented by the bounded relationship projections and views surface in I8.,REVIEWED
+CAN-LAM-ARCH-390,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ARCH-391,WP-I8-010,Reviewed membership: the requirement is implemented by the bounded relationship provenance and explanations surface in I8.,REVIEWED
+CAN-LAM-ARCH-392,WP-I9-001,Reviewed membership: the requirement is implemented by the bounded canonical knowledge-graph projection surface in I9.,REVIEWED
+CAN-LAM-ARCH-393,WP-I9-001,Reviewed membership: the requirement is implemented by the bounded canonical knowledge-graph projection surface in I9.,REVIEWED
+CAN-LAM-ARCH-394,WP-I10-003,Reviewed membership: the requirement is implemented by the bounded model and component registry surface in I10.,REVIEWED
+CAN-LAM-ARCH-395,WP-I10-005,Reviewed membership: the requirement is implemented by the bounded hardware assessment surface in I10.,REVIEWED
+CAN-LAM-ARCH-396,WP-I10-005,Reviewed membership: the requirement is implemented by the bounded hardware assessment surface in I10.,REVIEWED
+CAN-LAM-ARCH-398,WP-I11-010,Reviewed membership: the requirement is implemented by the bounded metadata snapshots and restore surface in I11.,REVIEWED
+CAN-LAM-ARCH-399,WP-I11-002,Reviewed membership: the requirement is implemented by the bounded batch metadata plans surface in I11.,REVIEWED
+CAN-LAM-ARCH-400,WP-I12-003,Reviewed membership: the requirement is implemented by the bounded drive reconnection and identity validation surface in I12.,REVIEWED
+CAN-LAM-ARCH-401,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-ARCH-402,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-ARCH-403,WP-I12-009,Reviewed membership: the requirement is implemented by the bounded drive transaction recovery surface in I12.,REVIEWED
+CAN-LAM-ARCH-404,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-ARCH-405,WP-I13-003,Reviewed membership: the requirement is implemented by the bounded backup verification surface in I13.,REVIEWED
+CAN-LAM-ARCH-406,WP-I14-005,Reviewed membership: the requirement is implemented by the bounded accessibility semantics surface in I14.,REVIEWED
+CAN-LAM-ARCH-407,WP-I14-005,Reviewed membership: the requirement is implemented by the bounded accessibility semantics surface in I14.,REVIEWED
+CAN-LAM-ARCH-408,WP-I14-008,Reviewed membership: the requirement is implemented by the bounded map and graph accessibility surface in I14.,REVIEWED
+CAN-LAM-ARCH-409,WP-I14-005,Reviewed membership: the requirement is implemented by the bounded accessibility semantics surface in I14.,REVIEWED
+CAN-LAM-ARCH-416,WP-I4-001,Explicit fragment review: Replaced a one-word gate with an adversarial scanner acceptance test.,REVIEWED
+CAN-LAM-ARCH-417,WP-I9-006,Reviewed membership: the requirement is implemented by the bounded persistent map drafts surface in I9.,REVIEWED
+CAN-LAM-ARCH-418,WP-I9-007,Reviewed membership: the requirement is implemented by the bounded simulation and materialization surface in I9.,REVIEWED
+CAN-LAM-ARCH-425,WP-I3-006,Reviewed membership: the requirement is implemented by the bounded sidecar write protocol surface in I3.,REVIEWED
+CAN-LAM-ARCH-434,WP-I1-001,Reviewed membership: the requirement is implemented by the bounded brand and identity inventory surface in I1.,REVIEWED
+CAN-LAM-ARCH-435,WP-I1-004,Reviewed membership: the requirement is implemented by the bounded brand asset replacement surface in I1.,REVIEWED
+CAN-LAM-ARCH-436,WP-I1-004,Reviewed membership: the requirement is implemented by the bounded brand asset replacement surface in I1.,REVIEWED
+CAN-LAM-ARCH-437,WP-I1-003,Reviewed membership: the requirement is implemented by the bounded package and bundle identity surface in I1.,REVIEWED
+CAN-LAM-ARCH-438,WP-I1-003,Reviewed membership: the requirement is implemented by the bounded package and bundle identity surface in I1.,REVIEWED
+CAN-LAM-ARCH-439,WP-I1-001,Reviewed membership: the requirement is implemented by the bounded brand and identity inventory surface in I1.,REVIEWED
+CAN-LAM-ARCH-440,WP-I1-002,Reviewed membership: the requirement is implemented by the bounded visible ui rebrand surface in I1.,REVIEWED
+CAN-LAM-ARCH-441,WP-I1-005,Reviewed membership: the requirement is implemented by the bounded licence and attribution preservation surface in I1.,REVIEWED
+CAN-LAM-ARCH-442,WP-I1-001,Reviewed membership: the requirement is implemented by the bounded brand and identity inventory surface in I1.,REVIEWED
+CAN-LAM-ARCH-443,WP-I1-001,Reviewed membership: the requirement is implemented by the bounded brand and identity inventory surface in I1.,REVIEWED
+CAN-LAM-ARCH-444,WP-I0-011,Explicit fragment review: Replaced a one-word tracker gate with revisioned status behavior.,REVIEWED
+CAN-LAM-ASSET-002,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-ASSET-004,WP-I4-003,The requirement spans the approved media-class contract; HEIF/RAW decode is only one dependent implementation slice.,REVIEWED
+CAN-LAM-ASSET-013,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ASSET-018,WP-I3-008,Reviewed membership: the requirement is implemented by the bounded sqlite migration framework surface in I3.,REVIEWED
+CAN-LAM-ASSET-024,WP-I3-008,Reviewed membership: the requirement is implemented by the bounded sqlite migration framework surface in I3.,REVIEWED
+CAN-LAM-ASSET-026,WP-I8-005,Effective-dated relationship interval preservation is owned by multi-edge relationship history.,REVIEWED
+CAN-LAM-ASSET-027,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-ASSET-028,WP-I4-005,Reviewed membership: the requirement is implemented by the bounded video probing and playback assets surface in I4.,REVIEWED
+CAN-LAM-ASSET-030,WP-I5-004,Reviewed membership: the requirement is implemented by the bounded video viewer surface in I5.,REVIEWED
+CAN-LAM-ASSET-031,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ASSET-032,WP-I5-011,Reviewed membership: the requirement is implemented by the bounded saved views and filters surface in I5.,REVIEWED
+CAN-LAM-ASSET-036,WP-I6-010,Reviewed membership: the requirement is implemented by the bounded event and manage later ui surface in I6.,REVIEWED
+CAN-LAM-ASSET-037,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ASSET-038,WP-I6-008,Reviewed membership: the requirement is implemented by the bounded date and location boundaries surface in I6.,REVIEWED
+CAN-LAM-ASSET-039,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-ASSET-040,WP-I3-009,Reviewed membership: the requirement is implemented by the bounded derived-index rebuild contract surface in I3.,REVIEWED
+CAN-LAM-ASSET-042,WP-I3-002,Reviewed membership: the requirement is implemented by the bounded stable asset identity surface in I3.,REVIEWED
+CAN-LAM-ASSET-043,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-ASSET-044,WP-I3-009,Reviewed membership: the requirement is implemented by the bounded derived-index rebuild contract surface in I3.,REVIEWED
+CAN-LAM-ASSET-045,WP-I8-006,Reviewed membership: the requirement is implemented by the bounded relationship projections and views surface in I8.,REVIEWED
+CAN-LAM-ASSET-047,WP-I6-008,Unknown-date preservation and approval boundaries belong to event date and location boundaries.,REVIEWED
+CAN-LAM-ASSET-048,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-ASSET-049,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-ASSET-050,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-ASSET-055,WP-I5-004,Reviewed membership: the requirement is implemented by the bounded video viewer surface in I5.,REVIEWED
+CAN-LAM-ASSET-056,WP-I5-002,Reviewed membership: the requirement is implemented by the bounded timeline navigation surface in I5.,REVIEWED
+CAN-LAM-ASSET-057,WP-I5-003,Reviewed membership: the requirement is implemented by the bounded image viewer surface in I5.,REVIEWED
+CAN-LAM-ASSET-058,WP-I5-004,Reviewed membership: the requirement is implemented by the bounded video viewer surface in I5.,REVIEWED
+CAN-LAM-ASSET-060,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ASSET-062,WP-I6-003,Reviewed membership: the requirement is implemented by the bounded manual event creation surface in I6.,REVIEWED
+CAN-LAM-ASSET-063,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-ASSET-066,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ASSET-069,WP-I9-004,Reviewed membership: the requirement is implemented by the bounded event mind map surface in I9.,REVIEWED
+CAN-LAM-ASSET-070,WP-I6-009,Reviewed membership: the requirement is implemented by the bounded event filesystem materialization plan surface in I6.,REVIEWED
+CAN-LAM-ASSET-071,WP-I6-010,Reviewed membership: the requirement is implemented by the bounded event and manage later ui surface in I6.,REVIEWED
+CAN-LAM-ASSET-072,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-ASSET-075,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-ASSET-077,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ASSET-079,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ASSET-082,WP-I8-006,Reviewed membership: the requirement is implemented by the bounded relationship projections and views surface in I8.,REVIEWED
+CAN-LAM-ASSET-083,WP-I8-006,Reviewed membership: the requirement is implemented by the bounded relationship projections and views surface in I8.,REVIEWED
+CAN-LAM-ASSET-084,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ASSET-088,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ASSET-090,WP-I8-007,"Photographer proposals and approval are part of typed photographer, camera-owner, and importer attribution.",REVIEWED
+CAN-LAM-ASSET-091,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ASSET-092,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ASSET-094,WP-I3-002,Reviewed membership: the requirement is implemented by the bounded stable asset identity surface in I3.,REVIEWED
+CAN-LAM-ASSET-096,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ASSET-098,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-ASSET-099,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-ASSET-100,WP-I3-002,Reviewed membership: the requirement is implemented by the bounded stable asset identity surface in I3.,REVIEWED
+CAN-LAM-ASSET-106,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ASSET-107,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ASSET-108,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-ASSET-109,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-ASSET-113,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-ASSET-114,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-ASSET-115,WP-I3-002,Reviewed membership: the requirement is implemented by the bounded stable asset identity surface in I3.,REVIEWED
+CAN-LAM-ASSET-116,WP-I8-007,Reviewed membership: the requirement is implemented by the bounded photographer camera-owner importer attribution surface in I8.,REVIEWED
+CAN-LAM-ASSET-117,WP-I10-005,Reviewed membership: the requirement is implemented by the bounded hardware assessment surface in I10.,REVIEWED
+CAN-LAM-ASSET-118,WP-I10-005,Reviewed membership: the requirement is implemented by the bounded hardware assessment surface in I10.,REVIEWED
+CAN-LAM-ASSET-120,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-ASSET-121,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-ASSET-123,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-ASSET-124,WP-I3-011,Reviewed membership: the requirement is implemented by the bounded file-operation plan contract surface in I3.,REVIEWED
+CAN-LAM-ASSET-125,WP-I3-010,Reviewed membership: the requirement is implemented by the bounded filesystem operation journal surface in I3.,REVIEWED
+CAN-LAM-ASSET-126,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-ASSET-128,WP-I4-006,Reviewed membership: the requirement is implemented by the bounded companion-media detection surface in I4.,REVIEWED
+CAN-LAM-ASSET-129,WP-I4-012,Reviewed membership: the requirement is implemented by the bounded initial textual index surface in I4.,REVIEWED
+CAN-LAM-ASSET-130,WP-I4-003,Reviewed membership: the requirement is implemented by the bounded media format classification surface in I4.,REVIEWED
+CAN-LAM-ASSET-134,WP-I3-005,Reviewed membership: the requirement is implemented by the bounded sidecar read protocol surface in I3.,REVIEWED
+CAN-LAM-ASSET-137,WP-I7-010,Reviewed membership: the requirement is implemented by the bounded people and face privacy surface in I7.,REVIEWED
+CAN-LAM-ASSET-138,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-ASSET-139,WP-I13-008,Reviewed membership: the requirement is implemented by the bounded recovery records and audit surface in I13.,REVIEWED
+CAN-LAM-ASSET-140,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-ASSET-141,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-ASSET-142,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-ASSET-147,WP-I14-001,Reviewed membership: the requirement is implemented by the bounded performance fixture definitions surface in I14.,REVIEWED
+CAN-LAM-ASSET-148,WP-I1-005,Reviewed membership: the requirement is implemented by the bounded licence and attribution preservation surface in I1.,REVIEWED
+CAN-LAM-ASSET-186,WP-I3-011,Reviewed membership: the requirement is implemented by the bounded file-operation plan contract surface in I3.,REVIEWED
+CAN-LAM-ASSET-189,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-ASSET-191,WP-I11-012,Reviewed membership: the requirement is implemented by the bounded editing and mutation recovery surface in I11.,REVIEWED
+CAN-LAM-ASSET-197,WP-I3-002,Reviewed membership: the requirement is implemented by the bounded stable asset identity surface in I3.,REVIEWED
+CAN-LAM-ASSET-198,WP-I1-005,Reviewed membership: the requirement is implemented by the bounded licence and attribution preservation surface in I1.,REVIEWED
+CAN-LAM-BACKUP-002,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-BACKUP-004,WP-I3-007,Reviewed membership: the requirement is implemented by the bounded authoritative schema migrations surface in I3.,REVIEWED
+CAN-LAM-BACKUP-005,WP-I3-002,Reviewed membership: the requirement is implemented by the bounded stable asset identity surface in I3.,REVIEWED
+CAN-LAM-BACKUP-007,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-BACKUP-020,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-BACKUP-021,WP-I13-009,Reviewed membership: the requirement is implemented by the bounded sqlite index rebuild surface in I13.,REVIEWED
+CAN-LAM-BACKUP-024,WP-I13-001,Reviewed membership: the requirement is implemented by the bounded backup manifest contract surface in I13.,REVIEWED
+CAN-LAM-DELETE-002,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-DELETE-267,WP-I13-007,Explicit fragment review: Replaced a one-word removal gate with the retained confirmation behavior and deletion condition.,REVIEWED
+CAN-LAM-DELETE-285,WP-I15-015,Reusable-component preservation is a legacy replacement-verification and removal gate.,REVIEWED
+CAN-LAM-DUPLICATE-001,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-DUPLICATE-002,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-DUPLICATE-004,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-DUPLICATE-005,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-DUPLICATE-006,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-DUPLICATE-007,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-DUPLICATE-008,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-DUPLICATE-009,WP-I14-004,Reviewed membership: the requirement is implemented by the bounded ai performance and resource budgets surface in I14.,REVIEWED
+CAN-LAM-EDGE-03,WP-I4-008,Reviewed membership: the requirement is implemented by the bounded metadata extraction surface in I4.,REVIEWED
+CAN-LAM-EDGE-04,WP-I3-008,Reviewed membership: the requirement is implemented by the bounded sqlite migration framework surface in I3.,REVIEWED
+CAN-LAM-EDGE-05,WP-I12-005,Reviewed membership: the requirement is implemented by the bounded pending sidecar overlays surface in I12.,REVIEWED
+CAN-LAM-EDGE-06,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-EDGE-07,WP-I7-003,Reviewed membership: the requirement is implemented by the bounded face clustering and curation surface in I7.,REVIEWED
+CAN-LAM-EDGE-09,WP-I12-001,Reviewed membership: the requirement is implemented by the bounded external-drive registry surface in I12.,REVIEWED
+CAN-LAM-EDGE-10,WP-I3-008,Reviewed membership: the requirement is implemented by the bounded sqlite migration framework surface in I3.,REVIEWED
+CAN-LAM-EDGE-11,WP-I3-002,Reviewed membership: the requirement is implemented by the bounded stable asset identity surface in I3.,REVIEWED
+CAN-LAM-EDGE-12,WP-I13-001,Reviewed membership: the requirement is implemented by the bounded backup manifest contract surface in I13.,REVIEWED
+CAN-LAM-EDGE-13,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-EDGE-14,WP-I3-004,Reviewed membership: the requirement is implemented by the bounded path normalization and escape protection surface in I3.,REVIEWED
+CAN-LAM-EDGE-15,WP-I3-002,Reviewed membership: the requirement is implemented by the bounded stable asset identity surface in I3.,REVIEWED
+CAN-LAM-EDGE-16,WP-I6-007,Reviewed membership: the requirement is implemented by the bounded event naming and normalization surface in I6.,REVIEWED
+CAN-LAM-EDIT-001,WP-I11-009,Reviewed membership: the requirement is implemented by the bounded privacy export recipes surface in I11.,REVIEWED
+CAN-LAM-EDIT-003,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-EDIT-004,WP-I11-004,Reviewed membership: the requirement is implemented by the bounded non-destructive edit recipes surface in I11.,REVIEWED
+CAN-LAM-EDIT-005,WP-I11-004,Reviewed membership: the requirement is implemented by the bounded non-destructive edit recipes surface in I11.,REVIEWED
+CAN-LAM-EDIT-006,WP-I11-006,Reviewed membership: the requirement is implemented by the bounded derivative manifests and export surface in I11.,REVIEWED
+CAN-LAM-EDIT-007,WP-I1-005,Reviewed membership: the requirement is implemented by the bounded licence and attribution preservation surface in I1.,REVIEWED
+CAN-LAM-EDIT-013,WP-I11-009,Reviewed membership: the requirement is implemented by the bounded privacy export recipes surface in I11.,REVIEWED
+CAN-LAM-EVENT-002,WP-I6-009,Reviewed membership: the requirement is implemented by the bounded event filesystem materialization plan surface in I6.,REVIEWED
+CAN-LAM-EVENT-003,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-EVENT-004,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-EVENT-005,WP-I3-009,Reviewed membership: the requirement is implemented by the bounded derived-index rebuild contract surface in I3.,REVIEWED
+CAN-LAM-EVENT-007,WP-I6-007,Reviewed membership: the requirement is implemented by the bounded event naming and normalization surface in I6.,REVIEWED
+CAN-LAM-EVENT-008,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-EVENT-009,WP-I6-008,Reviewed membership: the requirement is implemented by the bounded date and location boundaries surface in I6.,REVIEWED
+CAN-LAM-EVENT-011,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-EVENT-012,WP-I6-003,Reviewed membership: the requirement is implemented by the bounded manual event creation surface in I6.,REVIEWED
+CAN-LAM-EVENT-013,WP-I3-002,Reviewed membership: the requirement is implemented by the bounded stable asset identity surface in I3.,REVIEWED
+CAN-LAM-EVENT-014,WP-I3-002,Reviewed membership: the requirement is implemented by the bounded stable asset identity surface in I3.,REVIEWED
+CAN-LAM-EVENT-015,WP-I5-002,Reviewed membership: the requirement is implemented by the bounded timeline navigation surface in I5.,REVIEWED
+CAN-LAM-EVENT-016,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-EVENT-017,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-EVENT-018,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-EVENT-019,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-EVENT-020,WP-I6-008,Reviewed membership: the requirement is implemented by the bounded date and location boundaries surface in I6.,REVIEWED
+CAN-LAM-EVENT-021,WP-I6-008,Reviewed membership: the requirement is implemented by the bounded date and location boundaries surface in I6.,REVIEWED
+CAN-LAM-EVENT-022,WP-I6-008,Reviewed membership: the requirement is implemented by the bounded date and location boundaries surface in I6.,REVIEWED
+CAN-LAM-EVENT-023,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-EVENT-024,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-EVENT-025,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-EVENT-026,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-EVENT-028,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-EVENT-029,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-EVENT-030,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-EVENT-031,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-EVENT-032,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-EVENT-033,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-EVENT-034,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-EVENT-038,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-EVENT-039,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-EVENT-040,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-EVENT-041,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-EVENT-042,WP-I6-009,Reviewed membership: the requirement is implemented by the bounded event filesystem materialization plan surface in I6.,REVIEWED
+CAN-LAM-EVENT-044,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-EVENT-045,WP-I6-009,Reviewed membership: the requirement is implemented by the bounded event filesystem materialization plan surface in I6.,REVIEWED
+CAN-LAM-EVENT-046,WP-I6-007,Reviewed membership: the requirement is implemented by the bounded event naming and normalization surface in I6.,REVIEWED
+CAN-LAM-EVENT-047,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-EVENT-048,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-EVENT-050,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-EVENT-051,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-EVENT-052,WP-I5-007,Reviewed membership: the requirement is implemented by the bounded memories experience surface in I5.,REVIEWED
+CAN-LAM-EVENT-053,WP-I6-008,Reviewed membership: the requirement is implemented by the bounded date and location boundaries surface in I6.,REVIEWED
+CAN-LAM-EVENT-054,WP-I6-008,Reviewed membership: the requirement is implemented by the bounded date and location boundaries surface in I6.,REVIEWED
+CAN-LAM-EVENT-055,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-EVENT-056,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-EVENT-057,WP-I6-009,Reviewed membership: the requirement is implemented by the bounded event filesystem materialization plan surface in I6.,REVIEWED
+CAN-LAM-EVENT-058,WP-I6-009,Reviewed membership: the requirement is implemented by the bounded event filesystem materialization plan surface in I6.,REVIEWED
+CAN-LAM-EVENT-059,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-EVENT-060,WP-I4-002,Reviewed membership: the requirement is implemented by the bounded incremental scan and watcher reconciliation surface in I4.,REVIEWED
+CAN-LAM-EVENT-061,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-EVENT-062,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-EVENT-063,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-EVENT-077,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-EVENT-078,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-EVENT-079,WP-I6-003,Reviewed membership: the requirement is implemented by the bounded manual event creation surface in I6.,REVIEWED
+CAN-LAM-EVENT-080,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-EVENT-083,WP-I9-004,Reviewed membership: the requirement is implemented by the bounded event mind map surface in I9.,REVIEWED
+CAN-LAM-EVENT-084,WP-I9-001,Reviewed membership: the requirement is implemented by the bounded canonical knowledge-graph projection surface in I9.,REVIEWED
+CAN-LAM-EVENT-085,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-FOLDER-001,WP-I6-004,Reviewed membership: the requirement is implemented by the bounded event inference proposals surface in I6.,REVIEWED
+CAN-LAM-FOLDER-003,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-FOLDER-004,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-FOLDER-006,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-FOLDER-007,WP-I6-009,Reviewed membership: the requirement is implemented by the bounded event filesystem materialization plan surface in I6.,REVIEWED
+CAN-LAM-FOLDER-008,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-FOLDER-009,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-FOLDER-010,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-FOLDER-011,WP-I3-012,Reviewed membership: the requirement is implemented by the bounded prepare and stage transaction surface in I3.,REVIEWED
+CAN-LAM-FOLDER-012,WP-I5-002,Reviewed membership: the requirement is implemented by the bounded timeline navigation surface in I5.,REVIEWED
+CAN-LAM-FOLDER-013,WP-I5-002,Reviewed membership: the requirement is implemented by the bounded timeline navigation surface in I5.,REVIEWED
+CAN-LAM-FOLDER-014,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-FOLDER-015,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-FOLDER-016,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-FOLDER-017,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-FOLDER-018,WP-I6-009,Reviewed membership: the requirement is implemented by the bounded event filesystem materialization plan surface in I6.,REVIEWED
+CAN-LAM-FOLDER-019,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-FOLDER-020,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-FOLDER-021,WP-I6-003,Reviewed membership: the requirement is implemented by the bounded manual event creation surface in I6.,REVIEWED
+CAN-LAM-FOLDER-023,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-FOLDER-024,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-FOLDER-025,WP-I6-009,Reviewed membership: the requirement is implemented by the bounded event filesystem materialization plan surface in I6.,REVIEWED
+CAN-LAM-FOLDER-026,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-FOLDER-027,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-FOLDER-029,WP-I6-010,Reviewed membership: the requirement is implemented by the bounded event and manage later ui surface in I6.,REVIEWED
+CAN-LAM-FOLDER-030,WP-I6-010,Reviewed membership: the requirement is implemented by the bounded event and manage later ui surface in I6.,REVIEWED
+CAN-LAM-FOLDER-031,WP-I6-003,Reviewed membership: the requirement is implemented by the bounded manual event creation surface in I6.,REVIEWED
+CAN-LAM-FOLDER-032,WP-I10-002,Reviewed membership: the requirement is implemented by the bounded private local worker transport surface in I10.,REVIEWED
+CAN-LAM-FOLDER-033,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-FOLDER-034,WP-I5-007,Reviewed membership: the requirement is implemented by the bounded memories experience surface in I5.,REVIEWED
+CAN-LAM-FOLDER-035,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-FOLDER-036,WP-I3-011,Reviewed membership: the requirement is implemented by the bounded file-operation plan contract surface in I3.,REVIEWED
+CAN-LAM-FOLDER-037,WP-I3-011,Reviewed membership: the requirement is implemented by the bounded file-operation plan contract surface in I3.,REVIEWED
+CAN-LAM-FOLDER-038,WP-I6-009,Reviewed membership: the requirement is implemented by the bounded event filesystem materialization plan surface in I6.,REVIEWED
+CAN-LAM-FOLDER-039,WP-I3-016,Reviewed membership: the requirement is implemented by the bounded settings root and drive registries surface in I3.,REVIEWED
+CAN-LAM-FOLDER-040,WP-I3-011,Reviewed membership: the requirement is implemented by the bounded file-operation plan contract surface in I3.,REVIEWED
+CAN-LAM-FOLDER-041,WP-I3-011,Reviewed membership: the requirement is implemented by the bounded file-operation plan contract surface in I3.,REVIEWED
+CAN-LAM-FOLDER-042,WP-I4-006,Reviewed membership: the requirement is implemented by the bounded companion-media detection surface in I4.,REVIEWED
+CAN-LAM-FOLDER-043,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-FOLDER-045,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-FOLDER-046,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-FOLDER-047,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-FOLDER-048,WP-I12-002,Reviewed membership: the requirement is implemented by the bounded drive disconnection state machine surface in I12.,REVIEWED
+CAN-LAM-FOLDER-049,WP-I12-003,Reviewed membership: the requirement is implemented by the bounded drive reconnection and identity validation surface in I12.,REVIEWED
+CAN-LAM-FOLDER-050,WP-I4-011,Reviewed membership: the requirement is implemented by the bounded filesystem reconciliation surface in I4.,REVIEWED
+CAN-LAM-FOLDER-051,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-FOLDER-052,WP-I12-003,Reviewed membership: the requirement is implemented by the bounded drive reconnection and identity validation surface in I12.,REVIEWED
+CAN-LAM-FOLDER-067,WP-I3-003,Reviewed membership: the requirement is implemented by the bounded root authorization model surface in I3.,REVIEWED
+CAN-LAM-FOLDER-068,WP-I6-007,Reviewed membership: the requirement is implemented by the bounded event naming and normalization surface in I6.,REVIEWED
+CAN-LAM-FOLDER-069,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-FOLDER-071,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-FOLDER-072,WP-I12-008,Reviewed membership: the requirement is implemented by the bounded cross-platform path adapters surface in I12.,REVIEWED
+CAN-LAM-FOLDER-073,WP-I15-005,Reviewed membership: the requirement is implemented by the bounded signing and notarization pipeline surface in I15.,REVIEWED
+CAN-LAM-FOLDER-076,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-FOLDER-077,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-FOLDER-078,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-GOV-018,WP-I11-010,Reviewed membership: the requirement is implemented by the bounded metadata snapshots and restore surface in I11.,REVIEWED
+CAN-LAM-GOV-052,WP-I12-009,Reviewed membership: the requirement is implemented by the bounded drive transaction recovery surface in I12.,REVIEWED
+CAN-LAM-GOV-054,WP-I12-008,Reviewed membership: the requirement is implemented by the bounded cross-platform path adapters surface in I12.,REVIEWED
+CAN-LAM-GOV-062,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-GOV-065,WP-I1-002,Reviewed membership: the requirement is implemented by the bounded visible ui rebrand surface in I1.,REVIEWED
+CAN-LAM-GOV-069,WP-I15-006,Reviewed membership: the requirement is implemented by the bounded runtime component licence decisions surface in I15.,REVIEWED
+CAN-LAM-GOV-071,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-GOV-075,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-GOV-076,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-GOV-126,WP-I4-010,Reviewed membership: the requirement is implemented by the bounded asset and path index surface in I4.,REVIEWED
+CAN-LAM-GOV-165,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-GOV-174,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-GOV-179,WP-I0-011,Explicit fragment review: Replaced a one-word extraction field with a traceability requirement.,REVIEWED
+CAN-LAM-GOV-180,WP-I0-011,Explicit fragment review: Replaced a one-word proof field with a completion invariant.,REVIEWED
+CAN-LAM-GOV-218,WP-I2-001,Reviewed membership: the requirement is implemented by the bounded tauri shell bootstrap surface in I2.,REVIEWED
+CAN-LAM-GOV-224,WP-I3-008,Reviewed membership: the requirement is implemented by the bounded sqlite migration framework surface in I3.,REVIEWED
+CAN-LAM-GOV-237,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-GOV-238,WP-I13-002,Reviewed membership: the requirement is implemented by the bounded backup execution surface in I13.,REVIEWED
+CAN-LAM-GOV-240,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-GOV-241,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-GOV-242,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-GOV-243,WP-I11-011,Reviewed membership: the requirement is implemented by the bounded edit revision conflicts surface in I11.,REVIEWED
+CAN-LAM-GOV-244,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-GOV-245,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-GOV-246,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-GOV-247,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-GOV-248,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-GOV-249,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-GOV-250,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-GOV-251,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-GOV-252,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-GOV-253,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-GOV-254,WP-I3-012,Coordinator and manifest preparation is the prepare-and-stage transaction boundary.,REVIEWED
+CAN-LAM-GOV-255,WP-I3-011,Reviewed membership: the requirement is implemented by the bounded file-operation plan contract surface in I3.,REVIEWED
+CAN-LAM-GOV-256,WP-I3-008,Reviewed membership: the requirement is implemented by the bounded sqlite migration framework surface in I3.,REVIEWED
+CAN-LAM-GOV-257,WP-I3-010,Reviewed membership: the requirement is implemented by the bounded filesystem operation journal surface in I3.,REVIEWED
+CAN-LAM-GOV-258,WP-I12-007,Reviewed membership: the requirement is implemented by the bounded cross-volume copy and verify surface in I12.,REVIEWED
+CAN-LAM-GOV-261,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-GOV-262,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-GOV-263,WP-I10-009,Reviewed membership: the requirement is implemented by the bounded local ocr surface in I10.,REVIEWED
+CAN-LAM-GOV-264,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-GOV-265,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-GOV-266,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-GOV-270,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-GOV-273,WP-I0-011,Explicit fragment review: Replaced a one-word audit category with the evidence needed for a keep decision.,REVIEWED
+CAN-LAM-GOV-274,WP-I15-015,Explicit fragment review: Replaced a one-word audit category with replacement-before-removal evidence.,REVIEWED
+CAN-LAM-GOV-292,WP-I0-001,Explicit fragment review: Expanded a short historical boundary gate into the current resolved-root integrity contract.,REVIEWED
+CAN-LAM-INV-AI-02-B,WP-I10-002,Reviewed membership: the requirement is implemented by the bounded private local worker transport surface in I10.,REVIEWED
+CAN-LAM-INV-AI-03,WP-I10-005,Reviewed membership: the requirement is implemented by the bounded hardware assessment surface in I10.,REVIEWED
+CAN-LAM-INV-AI-04,WP-I10-004,Reviewed membership: the requirement is implemented by the bounded model checksums and compatibility surface in I10.,REVIEWED
+CAN-LAM-INV-ASSET-01,WP-I2-013,Reviewed membership: the requirement is implemented by the bounded desktop shell smoke proof surface in I2.,REVIEWED
+CAN-LAM-INV-ASSET-02,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-INV-ASSET-03,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-INV-ASSET-04,WP-I13-007,Reviewed membership: the requirement is implemented by the bounded trash and permanent-delete operations surface in I13.,REVIEWED
+CAN-LAM-INV-ASSET-05,WP-I3-002,Reviewed membership: the requirement is implemented by the bounded stable asset identity surface in I3.,REVIEWED
+CAN-LAM-INV-ASSET-06,WP-I13-001,Reviewed membership: the requirement is implemented by the bounded backup manifest contract surface in I13.,REVIEWED
+CAN-LAM-INV-ASSET-07,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-INV-EVENT-01,WP-I6-007,Reviewed membership: the requirement is implemented by the bounded event naming and normalization surface in I6.,REVIEWED
+CAN-LAM-INV-EVENT-02,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-INV-EVENT-03,WP-I6-006,Reviewed membership: the requirement is implemented by the bounded event split and link plans surface in I6.,REVIEWED
+CAN-LAM-INV-FS-01,WP-I4-001,Reviewed membership: the requirement is implemented by the bounded initial recursive scanner surface in I4.,REVIEWED
+CAN-LAM-INV-META-01,WP-I4-008,Reviewed membership: the requirement is implemented by the bounded metadata extraction surface in I4.,REVIEWED
+CAN-LAM-INV-META-02,WP-I8-009,Reviewed membership: the requirement is implemented by the bounded relationship review and conflicts surface in I8.,REVIEWED
+CAN-LAM-INV-META-03,WP-I3-009,Reviewed membership: the requirement is implemented by the bounded derived-index rebuild contract surface in I3.,REVIEWED
+CAN-LAM-INV-META-04,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-INV-PERSON-01,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-INV-PERSON-02,WP-I8-005,Reviewed membership: the requirement is implemented by the bounded multi-edge relationship history surface in I8.,REVIEWED
+CAN-LAM-INV-PERSON-03,WP-I7-008,Reviewed membership: the requirement is implemented by the bounded temporal group memberships surface in I7.,REVIEWED
+CAN-LAM-LEGAL-001,WP-I1-005,Reviewed membership: the requirement is implemented by the bounded licence and attribution preservation surface in I1.,REVIEWED
+CAN-LAM-LEGAL-002,WP-I1-005,Reviewed membership: the requirement is implemented by the bounded licence and attribution preservation surface in I1.,REVIEWED
+CAN-LAM-LEGAL-010,WP-I1-001,Reviewed membership: the requirement is implemented by the bounded brand and identity inventory surface in I1.,REVIEWED
+CAN-LAM-LEGAL-013,WP-I1-005,Reviewed membership: the requirement is implemented by the bounded licence and attribution preservation surface in I1.,REVIEWED
+CAN-LAM-LEGAL-014,WP-I1-002,Reviewed membership: the requirement is implemented by the bounded visible ui rebrand surface in I1.,REVIEWED
+CAN-LAM-META-002,WP-I3-008,Reviewed membership: the requirement is implemented by the bounded sqlite migration framework surface in I3.,REVIEWED
+CAN-LAM-META-006,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-META-009,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-META-011,WP-I13-001,Reviewed membership: the requirement is implemented by the bounded backup manifest contract surface in I13.,REVIEWED
+CAN-LAM-META-012,WP-I3-008,Reviewed membership: the requirement is implemented by the bounded sqlite migration framework surface in I3.,REVIEWED
+CAN-LAM-META-013,WP-I4-008,Reviewed membership: the requirement is implemented by the bounded metadata extraction surface in I4.,REVIEWED
+CAN-LAM-META-014,WP-I4-008,Reviewed membership: the requirement is implemented by the bounded metadata extraction surface in I4.,REVIEWED
+CAN-LAM-META-015,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-META-016,WP-I3-015,Reviewed membership: the requirement is implemented by the bounded revision and concurrency preconditions surface in I3.,REVIEWED
+CAN-LAM-META-018,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-META-019,WP-I11-010,Reviewed membership: the requirement is implemented by the bounded metadata snapshots and restore surface in I11.,REVIEWED
+CAN-LAM-META-021,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-META-024,WP-I3-002,Reviewed membership: the requirement is implemented by the bounded stable asset identity surface in I3.,REVIEWED
+CAN-LAM-META-025,WP-I5-009,Reviewed membership: the requirement is implemented by the bounded asset inspector surface in I5.,REVIEWED
+CAN-LAM-META-026,WP-I4-008,Reviewed membership: the requirement is implemented by the bounded metadata extraction surface in I4.,REVIEWED
+CAN-LAM-META-029,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-META-032,WP-I3-009,Reviewed membership: the requirement is implemented by the bounded derived-index rebuild contract surface in I3.,REVIEWED
+CAN-LAM-META-033,WP-I4-008,Reviewed membership: the requirement is implemented by the bounded metadata extraction surface in I4.,REVIEWED
+CAN-LAM-META-034,WP-I10-001,Reviewed membership: the requirement is implemented by the bounded ai worker lifecycle surface in I10.,REVIEWED
+CAN-LAM-META-035,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-META-036,WP-I4-008,Reviewed membership: the requirement is implemented by the bounded metadata extraction surface in I4.,REVIEWED
+CAN-LAM-META-037,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-META-039,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-META-040,WP-I4-008,Reviewed membership: the requirement is implemented by the bounded metadata extraction surface in I4.,REVIEWED
+CAN-LAM-META-041,WP-I4-008,Reviewed membership: the requirement is implemented by the bounded metadata extraction surface in I4.,REVIEWED
+CAN-LAM-META-042,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-META-043,WP-I4-008,Reviewed membership: the requirement is implemented by the bounded metadata extraction surface in I4.,REVIEWED
+CAN-LAM-META-044,WP-I11-003,Reviewed membership: the requirement is implemented by the bounded metadata privacy removal surface in I11.,REVIEWED
+CAN-LAM-META-045,WP-I3-005,Explicit fragment review: Expanded a noun-only source clause into an authority-aware XMP read protocol.,REVIEWED
+CAN-LAM-META-046,WP-I3-008,Reviewed membership: the requirement is implemented by the bounded sqlite migration framework surface in I3.,REVIEWED
+CAN-LAM-META-048,WP-I14-002,Reviewed membership: the requirement is implemented by the bounded scan and index performance surface in I14.,REVIEWED
+CAN-LAM-META-049,WP-I4-008,Reviewed membership: the requirement is implemented by the bounded metadata extraction surface in I4.,REVIEWED
+CAN-LAM-META-050,WP-I13-009,Reviewed membership: the requirement is implemented by the bounded sqlite index rebuild surface in I13.,REVIEWED
+CAN-LAM-META-051,WP-I1-005,Reviewed membership: the requirement is implemented by the bounded licence and attribution preservation surface in I1.,REVIEWED
+CAN-LAM-META-068,WP-I3-009,Reviewed membership: the requirement is implemented by the bounded derived-index rebuild contract surface in I3.,REVIEWED
+CAN-LAM-META-070,WP-I11-003,Reviewed membership: the requirement is implemented by the bounded metadata privacy removal surface in I11.,REVIEWED
+CAN-LAM-META-071,WP-I11-001,Reviewed membership: the requirement is implemented by the bounded authority-aware metadata editor surface in I11.,REVIEWED
+CAN-LAM-META-074,WP-I13-009,Reviewed membership: the requirement is implemented by the bounded sqlite index rebuild surface in I13.,REVIEWED
+CAN-LAM-META-075,WP-I11-010,Reviewed membership: the requirement is implemented by the bounded metadata snapshots and restore surface in I11.,REVIEWED
+CAN-LAM-META-076,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-META-077,WP-I3-015,Reviewed membership: the requirement is implemented by the bounded revision and concurrency preconditions surface in I3.,REVIEWED
+CAN-LAM-PERF-001,WP-I10-005,Reviewed membership: the requirement is implemented by the bounded hardware assessment surface in I10.,REVIEWED
+CAN-LAM-PERF-002,WP-I5-007,Reviewed membership: the requirement is implemented by the bounded memories experience surface in I5.,REVIEWED
+CAN-LAM-PERF-003,WP-I5-007,Reviewed membership: the requirement is implemented by the bounded memories experience surface in I5.,REVIEWED
+CAN-LAM-PERF-004,WP-I14-010,Reviewed membership: the requirement is implemented by the bounded resource and power controls surface in I14.,REVIEWED
+CAN-LAM-PERF-005,WP-I14-005,Reviewed membership: the requirement is implemented by the bounded accessibility semantics surface in I14.,REVIEWED
+CAN-LAM-PERF-006,WP-I14-005,Reviewed membership: the requirement is implemented by the bounded accessibility semantics surface in I14.,REVIEWED
+CAN-LAM-PERF-008,WP-I14-001,Reviewed membership: the requirement is implemented by the bounded performance fixture definitions surface in I14.,REVIEWED
+CAN-LAM-PERSON-002,WP-I8-005,Reviewed membership: the requirement is implemented by the bounded multi-edge relationship history surface in I8.,REVIEWED
+CAN-LAM-PERSON-004,WP-I8-006,Reviewed membership: the requirement is implemented by the bounded relationship projections and views surface in I8.,REVIEWED
+CAN-LAM-PERSON-007,WP-I7-001,Reviewed membership: the requirement is implemented by the bounded face detection task slice surface in I7.,REVIEWED
+CAN-LAM-PERSON-008,WP-I7-003,Reviewed membership: the requirement is implemented by the bounded face clustering and curation surface in I7.,REVIEWED
+CAN-LAM-PERSON-009,WP-I7-003,Reviewed membership: the requirement is implemented by the bounded face clustering and curation surface in I7.,REVIEWED
+CAN-LAM-PERSON-010,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-011,WP-I8-004,Reviewed membership: the requirement is implemented by the bounded relationship records surface in I8.,REVIEWED
+CAN-LAM-PERSON-012,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-013,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-014,WP-I8-006,Reviewed membership: the requirement is implemented by the bounded relationship projections and views surface in I8.,REVIEWED
+CAN-LAM-PERSON-017,WP-I6-009,Reviewed membership: the requirement is implemented by the bounded event filesystem materialization plan surface in I6.,REVIEWED
+CAN-LAM-PERSON-018,WP-I6-005,Reviewed membership: the requirement is implemented by the bounded event merge plan surface in I6.,REVIEWED
+CAN-LAM-PERSON-019,WP-I6-002,Reviewed membership: the requirement is implemented by the bounded event authoritative records surface in I6.,REVIEWED
+CAN-LAM-PERSON-020,WP-I6-010,Reviewed membership: the requirement is implemented by the bounded event and manage later ui surface in I6.,REVIEWED
+CAN-LAM-PERSON-021,WP-I6-004,Reviewed membership: the requirement is implemented by the bounded event inference proposals surface in I6.,REVIEWED
+CAN-LAM-PERSON-022,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-PERSON-023,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-PERSON-024,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-PERSON-025,WP-I3-001,Reviewed membership: the requirement is implemented by the bounded authoritative record envelope surface in I3.,REVIEWED
+CAN-LAM-PERSON-026,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-027,WP-I7-003,Reviewed membership: the requirement is implemented by the bounded face clustering and curation surface in I7.,REVIEWED
+CAN-LAM-PERSON-028,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-029,WP-I6-001,Reviewed membership: the requirement is implemented by the bounded manage later non-mutating scan surface in I6.,REVIEWED
+CAN-LAM-PERSON-030,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-PERSON-031,WP-I6-003,Reviewed membership: the requirement is implemented by the bounded manual event creation surface in I6.,REVIEWED
+CAN-LAM-PERSON-032,WP-I6-003,Reviewed membership: the requirement is implemented by the bounded manual event creation surface in I6.,REVIEWED
+CAN-LAM-PERSON-033,WP-I7-003,Reviewed membership: the requirement is implemented by the bounded face clustering and curation surface in I7.,REVIEWED
+CAN-LAM-PERSON-034,WP-I7-003,Reviewed membership: the requirement is implemented by the bounded face clustering and curation surface in I7.,REVIEWED
+CAN-LAM-PERSON-035,WP-I7-009,Reviewed membership: the requirement is implemented by the bounded scoped face corrections surface in I7.,REVIEWED
+CAN-LAM-PERSON-036,WP-I7-009,Reviewed membership: the requirement is implemented by the bounded scoped face corrections surface in I7.,REVIEWED
+CAN-LAM-PERSON-037,WP-I7-009,Reviewed membership: the requirement is implemented by the bounded scoped face corrections surface in I7.,REVIEWED
+CAN-LAM-PERSON-038,WP-I7-009,Reviewed membership: the requirement is implemented by the bounded scoped face corrections surface in I7.,REVIEWED
+CAN-LAM-PERSON-039,WP-I7-009,Reviewed membership: the requirement is implemented by the bounded scoped face corrections surface in I7.,REVIEWED
+CAN-LAM-PERSON-040,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-041,WP-I7-003,Reviewed membership: the requirement is implemented by the bounded face clustering and curation surface in I7.,REVIEWED
+CAN-LAM-PERSON-043,WP-I7-008,Reviewed membership: the requirement is implemented by the bounded temporal group memberships surface in I7.,REVIEWED
+CAN-LAM-PERSON-044,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-045,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-046,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-047,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-048,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-049,WP-I7-008,Reviewed membership: the requirement is implemented by the bounded temporal group memberships surface in I7.,REVIEWED
+CAN-LAM-PERSON-050,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-051,WP-I7-008,Active and historical group membership conflicts belong to temporal group memberships.,REVIEWED
+CAN-LAM-PERSON-055,WP-I7-002,Reviewed membership: the requirement is implemented by the bounded face candidate records surface in I7.,REVIEWED
+CAN-LAM-PERSON-056,WP-I8-004,Reviewed membership: the requirement is implemented by the bounded relationship records surface in I8.,REVIEWED
+CAN-LAM-PERSON-057,WP-I8-004,Reviewed membership: the requirement is implemented by the bounded relationship records surface in I8.,REVIEWED
+CAN-LAM-PERSON-059,WP-I8-004,Reviewed membership: the requirement is implemented by the bounded relationship records surface in I8.,REVIEWED
+CAN-LAM-PERSON-060,WP-I8-004,Reviewed membership: the requirement is implemented by the bounded relationship records surface in I8.,REVIEWED
+CAN-LAM-PERSON-061,WP-I8-004,Reviewed membership: the requirement is implemented by the bounded relationship records surface in I8.,REVIEWED
+CAN-LAM-PERSON-062,WP-I7-008,Reviewed membership: the requirement is implemented by the bounded temporal group memberships surface in I7.,REVIEWED
+CAN-LAM-PERSON-063,WP-I6-010,Reviewed membership: the requirement is implemented by the bounded event and manage later ui surface in I6.,REVIEWED
+CAN-LAM-PERSON-064,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-PERSON-065,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-PERSON-066,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-PERSON-067,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-PERSON-068,WP-I8-001,Reviewed membership: the requirement is implemented by the bounded tag records and namespaces surface in I8.,REVIEWED
+CAN-LAM-PERSON-073,WP-I8-006,Reviewed membership: the requirement is implemented by the bounded relationship projections and views surface in I8.,REVIEWED
+CAN-LAM-PERSON-077,WP-I8-006,Reviewed membership: the requirement is implemented by the bounded relationship projections and views surface in I8.,REVIEWED
+CAN-LAM-PERSON-078,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-082,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-083,WP-I8-004,Reviewed membership: the requirement is implemented by the bounded relationship records surface in I8.,REVIEWED
+CAN-LAM-PERSON-084,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-085,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-086,WP-I10-012,Reviewed membership: the requirement is implemented by the bounded location proposals surface in I10.,REVIEWED
+CAN-LAM-PERSON-087,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-PERSON-088,WP-I5-007,Reviewed membership: the requirement is implemented by the bounded memories experience surface in I5.,REVIEWED
+CAN-LAM-PERSON-089,WP-I5-007,Reviewed membership: the requirement is implemented by the bounded memories experience surface in I5.,REVIEWED
+CAN-LAM-PERSON-090,WP-I5-007,Reviewed membership: the requirement is implemented by the bounded memories experience surface in I5.,REVIEWED
+CAN-LAM-PERSON-091,WP-I10-011,Reviewed membership: the requirement is implemented by the bounded duplicate and similarity candidates surface in I10.,REVIEWED
+CAN-LAM-PERSON-092,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-PERSON-093,WP-I7-010,Reviewed membership: the requirement is implemented by the bounded people and face privacy surface in I7.,REVIEWED
+CAN-LAM-PERSON-094,WP-I7-010,Reviewed membership: the requirement is implemented by the bounded people and face privacy surface in I7.,REVIEWED
+CAN-LAM-PERSON-095,WP-I8-004,Reviewed membership: the requirement is implemented by the bounded relationship records surface in I8.,REVIEWED
+CAN-LAM-PERSON-096,WP-I7-010,Reviewed membership: the requirement is implemented by the bounded people and face privacy surface in I7.,REVIEWED
+CAN-LAM-PERSON-097,WP-I7-004,Reviewed membership: the requirement is implemented by the bounded person identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-098,WP-I14-010,Reviewed membership: the requirement is implemented by the bounded resource and power controls surface in I14.,REVIEWED
+CAN-LAM-PERSON-100,WP-I7-011,Reviewed membership: the requirement is implemented by the bounded people and groups ui surface in I7.,REVIEWED
+CAN-LAM-PERSON-121,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-PERSON-128,WP-I7-001,Reviewed membership: the requirement is implemented by the bounded face detection task slice surface in I7.,REVIEWED
+CAN-LAM-SEARCH-001,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-SEARCH-002,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-SEARCH-003,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-SEARCH-004,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-SEARCH-005,WP-I7-007,Reviewed membership: the requirement is implemented by the bounded group identity model surface in I7.,REVIEWED
+CAN-LAM-SEARCH-006,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-SEARCH-007,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-SEARCH-008,WP-I5-006,Reviewed membership: the requirement is implemented by the bounded albums and favorites surface in I5.,REVIEWED
+CAN-LAM-SEARCH-009,WP-I5-008,Reviewed membership: the requirement is implemented by the bounded location and map browsing surface in I5.,REVIEWED
+CAN-LAM-SEARCH-011,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-SEARCH-012,WP-I5-010,Reviewed membership: the requirement is implemented by the bounded review centre foundation surface in I5.,REVIEWED
+CAN-LAM-SEARCH-013,WP-I10-010,Reviewed membership: the requirement is implemented by the bounded embeddings and semantic search surface in I10.,REVIEWED
+CAN-LAM-TEST-020,WP-I0-011,Explicit fragment review: Replaced a one-word risk field with a risk-to-test traceability gate.,REVIEWED
+CAN-LAM-TEST-021,WP-I0-011,Explicit fragment review: Expanded a short completion warning into an observable package transition rule.,REVIEWED
+CAN-LAM-TRANSACTION-001,WP-I3-010,Reviewed membership: the requirement is implemented by the bounded filesystem operation journal surface in I3.,REVIEWED
+CAN-LAM-TRANSACTION-002,WP-I3-010,Reviewed membership: the requirement is implemented by the bounded filesystem operation journal surface in I3.,REVIEWED
+CAN-LAM-TRANSACTION-012,WP-I12-006,Reviewed membership: the requirement is implemented by the bounded root and asset relinking surface in I12.,REVIEWED
+CAN-LAM-TRASH-002,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-TRASH-003,WP-I13-011,Reviewed membership: the requirement is implemented by the bounded backup restore rebuild disaster drill surface in I13.,REVIEWED
+CAN-LAM-TRASH-004,WP-I3-002,Reviewed membership: the requirement is implemented by the bounded stable asset identity surface in I3.,REVIEWED
+CAN-MISSION-I0-001,WP-I0-001,Explicit reviewed membership: WP-I0-001 owns the read-only repository provenance and integrity baseline.,REVIEWED
+CAN-MISSION-I0-002,WP-I0-002,Explicit reviewed membership: WP-I0-002 owns read-only Git-state inspection and prohibits Git mutation.,REVIEWED
+CAN-MISSION-I0-003,WP-I0-003,Explicit reviewed membership: WP-I0-003 owns the existing-file SHA-256 manifest without archive creation.,REVIEWED
+CAN-MISSION-I0-004,WP-I0-004,Reviewed membership: the requirement is implemented by the bounded mixed-version manifest investigation surface in I0.,REVIEWED
+CAN-MISSION-I0-005,WP-I0-006,Explicit reviewed membership: WP-I0-006 defines later build-output isolation without creating a repository copy.,REVIEWED
+CAN-MISSION-I0-006,WP-I0-005,Reviewed membership: the requirement is implemented by the bounded toolchain inventory surface in I0.,REVIEWED
+CAN-MISSION-I0-007,WP-I0-007,Reviewed membership: the requirement is implemented by the bounded baseline build and test attempts surface in I0.,REVIEWED
+CAN-MISSION-I0-008,WP-I0-008,Reviewed membership: the requirement is implemented by the bounded missing fixture classification surface in I0.,REVIEWED
+CAN-MISSION-I0-009,WP-I0-009,Reviewed membership: the requirement is implemented by the bounded frontend coupling inventory surface in I0.,REVIEWED
+CAN-MISSION-I0-010,WP-I0-010,Reviewed membership: the requirement is implemented by the bounded outbound and commercial integration inventory surface in I0.,REVIEWED
+CAN-MISSION-I0-011,WP-I0-011,Explicit reviewed membership: WP-I0-011 enforces active-plan read/write boundaries and external integrity proof.,REVIEWED
+CAN-MISSION-I14-001,WP-I14-005,Reviewed membership: the requirement is implemented by the bounded accessibility semantics surface in I14.,REVIEWED
+CAN-MISSION-I14-002,WP-I14-008,Reviewed membership: the requirement is implemented by the bounded map and graph accessibility surface in I14.,REVIEWED
+CAN-MISSION-I14-003,WP-I14-005,Reviewed membership: the requirement is implemented by the bounded accessibility semantics surface in I14.,REVIEWED
+CAN-MISSION-I14-004,WP-I14-005,Reviewed membership: the requirement is implemented by the bounded accessibility semantics surface in I14.,REVIEWED
+CAN-MISSION-I15-001,WP-I15-001,Reviewed membership: the requirement is implemented by the bounded cross-platform packages and clean-machine proof surface in I15.,REVIEWED
+CAN-MISSION-I15-002,WP-I15-007,Reviewed membership: the requirement is implemented by the bounded sbom and third-party notices surface in I15.,REVIEWED
+CAN-MISSION-I15-003,WP-I15-014,Reviewed membership: the requirement is implemented by the bounded final outbound-traffic verification surface in I15.,REVIEWED
+CAN-SECTION-0120,WP-I11-010,"The parent primary phase is I11 and covers metadata snapshots, privacy export, and non-destructive mutation; an I3 identity package contradicted the reviewed phase.",REVIEWED

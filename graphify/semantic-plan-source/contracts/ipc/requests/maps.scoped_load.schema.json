@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/maps.scoped_load.schema.json",
+  "title": "Maps Scoped Load Request",
+  "description": "Command-specific request DTO for maps.scoped_load.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "scopedloadOptions"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "scopedloadOptions": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/MapProjection"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "maps.scoped_load",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

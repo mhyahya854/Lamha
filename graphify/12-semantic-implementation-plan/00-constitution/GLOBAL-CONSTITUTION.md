@@ -1,0 +1,3 @@
+# Lamha implementation constitution
+
+The reviewed semantic registries under `graphify/semantic-plan-source` are the only planning authority. The application codebase is read-only during planning. Implement one dependency-ready work package per bounded commit. Rust owns privileged filesystem, process, persistence, and capability enforcement. Originals are never silently overwritten; durable user knowledge is versioned outside rebuildable SQLite indexes. Mutations require typed contracts, validation, authorization, journaling, deterministic recovery, and focused failure tests. A package is complete only with its stated evidence and exit gate.

@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "renderCount": 2,
+  "firstManifestSha256": "7f5426a4e5cd11567437a9ca4bd71a526277dd6e495c5cb438e4f6ed29df3a6b",
+  "secondManifestSha256": "7f5426a4e5cd11567437a9ca4bd71a526277dd6e495c5cb438e4f6ed29df3a6b",
+  "fileHashesIdentical": true,
+  "manifestIdentical": true
+}

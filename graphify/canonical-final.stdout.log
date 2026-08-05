@@ -1,0 +1,4 @@
+Graph has 39486 nodes (above 5000 limit). Building aggregated community view...
+graph.html written (aggregated: 1320 community nodes, 5210 cross-community edges)
+Tip: run with --obsidian for full node-level detail.
+{"files": 3697, "requirements": 610, "features": 24, "nodes": 39486, "edges": 80285, "directed": true}

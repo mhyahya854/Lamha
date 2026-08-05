@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/maintenance.backup_verify.schema.json",
+  "title": "Maintenance Backup Verify Response",
+  "description": "Command-specific response DTO for maintenance.backup_verify.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "operationId",
+    "status"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "operationId": {
+      "type": "string",
+      "pattern": "^op_[A-Za-z0-9_-]+$"
+    },
+    "status": {
+      "enum": [
+        "ACCEPTED",
+        "RUNNING",
+        "PAUSED",
+        "CANCELLED",
+        "FAILED",
+        "COMMITTED",
+        "RECOVERY_REQUIRED"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "maintenance.backup_verify",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

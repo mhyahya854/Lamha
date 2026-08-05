@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/relationships.projection_preview.schema.json",
+  "title": "Relationships Projection Preview Request",
+  "description": "Command-specific request DTO for relationships.projection_preview.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "projectionpreviewOptions"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "projectionpreviewOptions": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/PreviewResult"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "relationships.projection_preview",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

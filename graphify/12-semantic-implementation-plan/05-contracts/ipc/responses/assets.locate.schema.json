@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/assets.locate.schema.json",
+  "title": "Assets Locate Response",
+  "description": "Command-specific response DTO for assets.locate.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "locateResult",
+    "revision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "locateResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/PathRef"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "assets.locate",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

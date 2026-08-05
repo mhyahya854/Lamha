@@ -1,0 +1,2002 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/shared-definitions-v1.schema.json",
+  "$defs": {
+    "Id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "Timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "Revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "RequestId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "PathRef": {
+      "type": "object",
+      "properties": {
+        "rootId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "relativePath": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32768
+        },
+        "expectedDriveId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "rootId",
+        "relativePath"
+      ],
+      "additionalProperties": false
+    },
+    "PageRequest": {
+      "type": "object",
+      "properties": {
+        "cursor": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2048
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 500
+        }
+      },
+      "required": [
+        "cursor",
+        "limit"
+      ],
+      "additionalProperties": false
+    },
+    "PageInfo": {
+      "type": "object",
+      "properties": {
+        "nextCursor": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2048
+        },
+        "snapshotRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "returned": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "nextCursor",
+        "snapshotRevision",
+        "returned"
+      ],
+      "additionalProperties": false
+    },
+    "SortSpec": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "enum": [
+            "CAPTURED_AT",
+            "CREATED_AT",
+            "UPDATED_AT",
+            "FILENAME",
+            "TITLE",
+            "RELEVANCE"
+          ]
+        },
+        "direction": {
+          "enum": [
+            "ASC",
+            "DESC"
+          ]
+        },
+        "nulls": {
+          "enum": [
+            "FIRST",
+            "LAST"
+          ]
+        }
+      },
+      "required": [
+        "field",
+        "direction",
+        "nulls"
+      ],
+      "additionalProperties": false
+    },
+    "Conflict": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "enum": [
+            "REVISION",
+            "PATH",
+            "COLLISION",
+            "AUTHORITY",
+            "MISSING",
+            "FORMAT"
+          ]
+        },
+        "recordId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "recoverable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "recoverable"
+      ],
+      "additionalProperties": false
+    },
+    "Warning": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]{2,63}$"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "recordId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "OperationHandle": {
+      "type": "object",
+      "properties": {
+        "operationId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "state": {
+          "enum": [
+            "ACCEPTED",
+            "RUNNING",
+            "PAUSED",
+            "CANCELLING",
+            "COMMITTED",
+            "FAILED",
+            "CANCELLED",
+            "RECOVERY_REQUIRED"
+          ]
+        },
+        "acceptedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "cancellable": {
+          "type": "boolean"
+        },
+        "resumeSupported": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "operationId",
+        "requestId",
+        "state",
+        "acceptedAt",
+        "cancellable",
+        "resumeSupported"
+      ],
+      "additionalProperties": false
+    },
+    "MutationReceipt": {
+      "type": "object",
+      "properties": {
+        "entityId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "state": {
+          "enum": [
+            "CREATED",
+            "UPDATED",
+            "DELETED",
+            "CONFIRMED",
+            "UNCHANGED"
+          ]
+        },
+        "committedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Warning"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "entityId",
+        "revision",
+        "state",
+        "committedAt",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    "StatusSnapshot": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "enum": [
+            "READY",
+            "DEGRADED",
+            "BUSY",
+            "PAUSED",
+            "DISCONNECTED",
+            "RECOVERY_REQUIRED"
+          ]
+        },
+        "snapshotRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Warning"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "state",
+        "snapshotRevision",
+        "observedAt",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    "RootFilter": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "CONNECTED",
+            "DISCONNECTED",
+            "READ_ONLY",
+            "READ_WRITE",
+            null
+          ]
+        },
+        "includeUnavailable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "state",
+        "includeUnavailable"
+      ],
+      "additionalProperties": false
+    },
+    "RootSummary": {
+      "type": "object",
+      "properties": {
+        "rootId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "path": {
+          "$ref": "#/$defs/PathRef"
+        },
+        "accessMode": {
+          "enum": [
+            "READ_ONLY",
+            "READ_WRITE"
+          ]
+        },
+        "state": {
+          "enum": [
+            "CONNECTED",
+            "DISCONNECTED",
+            "MISMATCHED",
+            "PERMISSION_DENIED"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "rootId",
+        "displayName",
+        "path",
+        "accessMode",
+        "state",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "AssetFilter": {
+      "type": "object",
+      "properties": {
+        "rootIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "mediaTypes": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "IMAGE",
+              "VIDEO",
+              "AUDIO"
+            ]
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "capturedFrom": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "capturedTo": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "favorite": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "reviewStates": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "NONE",
+              "OPEN",
+              "DEFERRED",
+              "RESOLVED"
+            ]
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "missingOnly": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "rootIds",
+        "mediaTypes",
+        "capturedFrom",
+        "capturedTo",
+        "favorite",
+        "reviewStates",
+        "missingOnly"
+      ],
+      "additionalProperties": false
+    },
+    "AssetListItem": {
+      "type": "object",
+      "properties": {
+        "assetId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "identityId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "rootId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "filename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mediaType": {
+          "enum": [
+            "IMAGE",
+            "VIDEO",
+            "AUDIO"
+          ]
+        },
+        "mimeType": {
+          "type": "string",
+          "pattern": "^[^/]+/[^/]+$"
+        },
+        "capturedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "width": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "height": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "durationMs": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "favorite": {
+          "type": "boolean"
+        },
+        "previewRevision": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "integrityState": {
+          "enum": [
+            "VERIFIED",
+            "STALE",
+            "MISSING",
+            "MISMATCH",
+            "UNKNOWN"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "assetId",
+        "identityId",
+        "rootId",
+        "filename",
+        "mediaType",
+        "mimeType",
+        "capturedAt",
+        "width",
+        "height",
+        "durationMs",
+        "favorite",
+        "previewRevision",
+        "integrityState",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "AssetDetail": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "$ref": "#/$defs/AssetListItem"
+        },
+        "primaryPath": {
+          "$ref": "#/$defs/PathRef"
+        },
+        "fileSizeBytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "contentHash": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-fA-F0-9]{32,128}$"
+        },
+        "camera": {
+          "$ref": "#/$defs/CameraMetadata"
+        },
+        "gps": {
+          "$ref": "#/$defs/GpsMetadata"
+        },
+        "tagIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "albumIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "eventIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "personIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "sidecars": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SidecarSummary"
+          },
+          "minItems": 0
+        },
+        "companions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CompanionSummary"
+          },
+          "minItems": 0
+        },
+        "privacyState": {
+          "enum": [
+            "PRIVATE",
+            "EXPORT_REDACT",
+            "EXPORT_ALLOWED"
+          ]
+        }
+      },
+      "required": [
+        "summary",
+        "primaryPath",
+        "fileSizeBytes",
+        "contentHash",
+        "camera",
+        "gps",
+        "tagIds",
+        "albumIds",
+        "eventIds",
+        "personIds",
+        "sidecars",
+        "companions",
+        "privacyState"
+      ],
+      "additionalProperties": false
+    },
+    "CameraMetadata": {
+      "type": "object",
+      "properties": {
+        "make": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        },
+        "lens": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 255
+        },
+        "iso": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "aperture": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "exposureSeconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "focalLengthMm": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cameraOwner": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 500
+        }
+      },
+      "required": [
+        "make",
+        "model",
+        "lens",
+        "iso",
+        "aperture",
+        "exposureSeconds",
+        "focalLengthMm",
+        "cameraOwner"
+      ],
+      "additionalProperties": false
+    },
+    "GpsMetadata": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": -180,
+          "maximum": 180
+        },
+        "altitudeMeters": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "source": {
+          "enum": [
+            "EMBEDDED",
+            "XMP",
+            "ASSET_JSON",
+            "USER",
+            "AI_PROPOSAL",
+            "NONE"
+          ]
+        }
+      },
+      "required": [
+        "latitude",
+        "longitude",
+        "altitudeMeters",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "SidecarSummary": {
+      "type": "object",
+      "properties": {
+        "sidecarId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "kind": {
+          "enum": [
+            "ASSET_JSON",
+            "XMP",
+            "EXTERNAL_XMP"
+          ]
+        },
+        "path": {
+          "$ref": "#/$defs/PathRef"
+        },
+        "state": {
+          "enum": [
+            "HEALTHY",
+            "MISSING",
+            "CORRUPT",
+            "FUTURE_VERSION",
+            "PENDING_OVERLAY"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "sidecarId",
+        "kind",
+        "path",
+        "state",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "CompanionSummary": {
+      "type": "object",
+      "properties": {
+        "assetId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "kind": {
+          "enum": [
+            "LIVE_PHOTO_IMAGE",
+            "LIVE_PHOTO_VIDEO",
+            "RAW",
+            "JPEG_RENDER",
+            "MOTION_PHOTO"
+          ]
+        },
+        "bundleRole": {
+          "enum": [
+            "PRIMARY",
+            "COMPANION"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "assetId",
+        "kind",
+        "bundleRole",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "SearchFilter": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "$ref": "#/$defs/AssetFilter"
+        },
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 1000
+        },
+        "ocr": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 1000
+        },
+        "personIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "tagIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "eventIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "locationRadius": {
+          "$ref": "#/$defs/LocationRadius"
+        }
+      },
+      "required": [
+        "asset",
+        "text",
+        "ocr",
+        "personIds",
+        "tagIds",
+        "eventIds",
+        "locationRadius"
+      ],
+      "additionalProperties": false
+    },
+    "LocationRadius": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "radiusMeters": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1000000
+        }
+      },
+      "required": [
+        "latitude",
+        "longitude",
+        "radiusMeters"
+      ],
+      "additionalProperties": false
+    },
+    "SearchHit": {
+      "type": "object",
+      "properties": {
+        "asset": {
+          "$ref": "#/$defs/AssetListItem"
+        },
+        "score": {
+          "type": "number",
+          "minimum": 0
+        },
+        "matchedFields": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "FILENAME",
+              "METADATA",
+              "OCR",
+              "PERSON",
+              "TAG",
+              "EVENT",
+              "LOCATION",
+              "EMBEDDING"
+            ]
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "explanation": {
+          "type": "string",
+          "maxLength": 2000
+        }
+      },
+      "required": [
+        "asset",
+        "score",
+        "matchedFields",
+        "explanation"
+      ],
+      "additionalProperties": false
+    },
+    "EventDraft": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "startAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timeZone": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "location": {
+          "$ref": "#/$defs/GpsMetadata"
+        },
+        "assetIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "attendeePersonIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "photographerPersonIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "expectedRevision": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "title",
+        "startAt",
+        "endAt",
+        "timeZone",
+        "assetIds"
+      ],
+      "additionalProperties": false
+    },
+    "EventSummary": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "startAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "assetCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reviewState": {
+          "enum": [
+            "DRAFT",
+            "PROPOSED",
+            "CONFIRMED",
+            "CONFLICT"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "eventId",
+        "title",
+        "startAt",
+        "endAt",
+        "assetCount",
+        "reviewState",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "PersonDraft": {
+      "type": "object",
+      "properties": {
+        "canonicalName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "profileAssetId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "expectedRevision": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "canonicalName",
+        "aliases",
+        "hidden"
+      ],
+      "additionalProperties": false
+    },
+    "PersonSummary": {
+      "type": "object",
+      "properties": {
+        "personId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "canonicalName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "profileAssetId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "confirmedFaceCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "personId",
+        "canonicalName",
+        "aliases",
+        "profileAssetId",
+        "hidden",
+        "confirmedFaceCount",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "RelationshipDraft": {
+      "type": "object",
+      "properties": {
+        "fromPersonId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "toPersonId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "relationshipType": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "certainty": {
+          "enum": [
+            "SURE",
+            "NOT_SURE"
+          ]
+        },
+        "effectiveFrom": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "effectiveTo": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 4000
+        },
+        "expectedRevision": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "fromPersonId",
+        "toPersonId",
+        "relationshipType",
+        "certainty"
+      ],
+      "additionalProperties": false
+    },
+    "RelationshipSummary": {
+      "type": "object",
+      "properties": {
+        "relationshipId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "fromPersonId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "toPersonId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "relationshipType": {
+          "type": "string"
+        },
+        "certainty": {
+          "enum": [
+            "SURE",
+            "NOT_SURE"
+          ]
+        },
+        "status": {
+          "enum": [
+            "ACTIVE",
+            "FORMER"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "relationshipId",
+        "fromPersonId",
+        "toPersonId",
+        "relationshipType",
+        "certainty",
+        "status",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "SettingsPatch": {
+      "type": "object",
+      "properties": {
+        "theme": {
+          "enum": [
+            "SYSTEM",
+            "LIGHT",
+            "DARK"
+          ]
+        },
+        "locale": {
+          "type": "string",
+          "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+        },
+        "thumbnailSize": {
+          "enum": [
+            "SMALL",
+            "MEDIUM",
+            "LARGE"
+          ]
+        },
+        "hardwareAcceleration": {
+          "enum": [
+            "AUTO",
+            "CPU_ONLY",
+            "PREFER_GPU"
+          ]
+        },
+        "reduceMotion": {
+          "type": "boolean"
+        },
+        "highContrast": {
+          "type": "boolean"
+        },
+        "telemetryEnabled": {
+          "const": false
+        }
+      },
+      "required": [],
+      "additionalProperties": false,
+      "title": "Settings patch"
+    },
+    "ExecutionOptions": {
+      "type": "object",
+      "properties": {
+        "dryRun": {
+          "type": "boolean"
+        },
+        "confirmedPlanId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "collisionPolicy": {
+          "enum": [
+            "FAIL",
+            "RENAME",
+            "REVIEW",
+            "SKIP"
+          ]
+        },
+        "companionPolicy": {
+          "const": "ATOMIC_LOGICAL_BUNDLE"
+        }
+      },
+      "required": [
+        "dryRun",
+        "confirmedPlanId",
+        "collisionPolicy",
+        "companionPolicy"
+      ],
+      "additionalProperties": false
+    },
+    "OperationPlanOptions": {
+      "type": "object",
+      "properties": {
+        "rootId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "assetIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "destination": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PathRef"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "collisionPolicy": {
+          "enum": [
+            "FAIL",
+            "RENAME",
+            "REVIEW",
+            "SKIP"
+          ]
+        },
+        "includeCompanions": {
+          "const": true
+        }
+      },
+      "required": [
+        "rootId",
+        "assetIds",
+        "destination",
+        "collisionPolicy",
+        "includeCompanions"
+      ],
+      "additionalProperties": false
+    },
+    "OperationPlan": {
+      "type": "object",
+      "properties": {
+        "planId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "state": {
+          "enum": [
+            "PREVIEW",
+            "CONFIRMED",
+            "EXPIRED",
+            "COMMITTED"
+          ]
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "operationCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sourceBytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "requiredBytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "collisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Conflict"
+          },
+          "minItems": 0
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Warning"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "planId",
+        "requestId",
+        "state",
+        "expiresAt",
+        "operationCount",
+        "sourceBytes",
+        "requiredBytes",
+        "collisions",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    "PreviewResult": {
+      "type": "object",
+      "properties": {
+        "previewId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "sourceRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mimeType": {
+          "type": "string",
+          "pattern": "^[^/]+/[^/]+$"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "durationMs": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cachePath": {
+          "$ref": "#/$defs/PathRef"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Warning"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "previewId",
+        "sourceRevision",
+        "mimeType",
+        "width",
+        "height",
+        "durationMs",
+        "cachePath",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    "AIResult": {
+      "type": "object",
+      "properties": {
+        "candidateId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "taskId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "candidateType": {
+          "enum": [
+            "OCR",
+            "FACE",
+            "DUPLICATE",
+            "LOCATION",
+            "TAG",
+            "EMBEDDING"
+          ]
+        },
+        "assetId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "assetRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "modelId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "modelVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "modelChecksum": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{32,128}$"
+        },
+        "reviewState": {
+          "enum": [
+            "PROPOSED",
+            "APPROVED",
+            "REJECTED",
+            "DEFERRED",
+            "SUPPRESSED"
+          ]
+        }
+      },
+      "required": [
+        "candidateId",
+        "taskId",
+        "candidateType",
+        "assetId",
+        "assetRevision",
+        "confidence",
+        "modelId",
+        "modelVersion",
+        "modelChecksum",
+        "reviewState"
+      ],
+      "additionalProperties": false
+    },
+    "ReviewItem": {
+      "type": "object",
+      "properties": {
+        "reviewItemId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "candidateId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "candidateType": {
+          "enum": [
+            "OCR",
+            "FACE",
+            "DUPLICATE",
+            "LOCATION",
+            "TAG",
+            "EVENT",
+            "RELATIONSHIP",
+            "METADATA_CONFLICT"
+          ]
+        },
+        "state": {
+          "enum": [
+            "OPEN",
+            "APPROVED",
+            "REJECTED",
+            "DEFERRED",
+            "SUPPRESSED"
+          ]
+        },
+        "assetIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "reviewItemId",
+        "candidateId",
+        "candidateType",
+        "state",
+        "assetIds",
+        "summary",
+        "createdAt",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "ExportPlan": {
+      "type": "object",
+      "properties": {
+        "plan": {
+          "$ref": "#/$defs/OperationPlan"
+        },
+        "destinationRootId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "assetIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "privacyRecipeId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "derivativePolicy": {
+          "enum": [
+            "ORIGINAL",
+            "EDITED_DERIVATIVE",
+            "PRIVACY_REDACTED"
+          ]
+        }
+      },
+      "required": [
+        "plan",
+        "destinationRootId",
+        "assetIds",
+        "privacyRecipeId",
+        "derivativePolicy"
+      ],
+      "additionalProperties": false
+    },
+    "BackupRequest": {
+      "type": "object",
+      "properties": {
+        "destinationRootId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "sourceRootIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "includeMedia": {
+          "type": "boolean"
+        },
+        "includeAuthoritativeRecords": {
+          "const": true
+        },
+        "expectedManifestRevision": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "required": [
+        "destinationRootId",
+        "sourceRootIds",
+        "includeMedia",
+        "includeAuthoritativeRecords",
+        "expectedManifestRevision"
+      ],
+      "additionalProperties": false
+    },
+    "RestoreRequest": {
+      "type": "object",
+      "properties": {
+        "backupManifestId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "destinationRootId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "collisionPolicy": {
+          "enum": [
+            "FAIL",
+            "RENAME",
+            "REVIEW",
+            "SKIP"
+          ]
+        },
+        "verifyBeforeCommit": {
+          "const": true
+        }
+      },
+      "required": [
+        "backupManifestId",
+        "destinationRootId",
+        "collisionPolicy",
+        "verifyBeforeCommit"
+      ],
+      "additionalProperties": false
+    },
+    "TrashResult": {
+      "type": "object",
+      "properties": {
+        "operationId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "trashedAssetIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "trashRootId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "recoverableUntil": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Warning"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "operationId",
+        "trashedAssetIds",
+        "trashRootId",
+        "recoverableUntil",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    "MapDraft": {
+      "type": "object",
+      "properties": {
+        "scopeType": {
+          "enum": [
+            "GLOBAL",
+            "EVENT",
+            "FOLDER",
+            "PERSON",
+            "GROUP"
+          ]
+        },
+        "scopeId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nodeIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "expectedRevision": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "required": [
+        "scopeType",
+        "scopeId",
+        "title",
+        "nodeIds",
+        "expectedRevision"
+      ],
+      "additionalProperties": false
+    },
+    "MapProjection": {
+      "type": "object",
+      "properties": {
+        "projectionId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "scopeType": {
+          "enum": [
+            "GLOBAL",
+            "EVENT",
+            "FOLDER",
+            "PERSON",
+            "GROUP"
+          ]
+        },
+        "scopeId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "nodeCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "edgeCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sourceRevision": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "projectionId",
+        "scopeType",
+        "scopeId",
+        "nodeCount",
+        "edgeCount",
+        "sourceRevision"
+      ],
+      "additionalProperties": false
+    },
+    "TagSummary": {
+      "type": "object",
+      "properties": {
+        "tagId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+        },
+        "namespace": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parentTagId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "tagId",
+        "namespace",
+        "name",
+        "parentTagId",
+        "revision"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

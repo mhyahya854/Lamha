@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/ai.cancel.schema.json",
+  "title": "Ai Cancel Response",
+  "description": "Command-specific response DTO for ai.cancel.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "cancelResult",
+    "revision",
+    "auditEntryId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "cancelResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/MutationReceipt"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "auditEntryId": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "ai.cancel",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

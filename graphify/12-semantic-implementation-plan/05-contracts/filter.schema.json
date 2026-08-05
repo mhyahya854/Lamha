@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/contracts/filter-v1.schema.json",
+  "title": "Typed list filter",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "expression": { "type": ["string", "null"], "maxLength": 2048 },
+    "rootIds": { "type": "array", "items": { "$ref": "./shared-definitions-v1.schema.json#/$defs/Id" }, "uniqueItems": true },
+    "mediaTypes": { "type": "array", "items": { "enum": ["IMAGE", "VIDEO", "AUDIO", "OTHER"] }, "uniqueItems": true },
+    "states": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 128 }, "uniqueItems": true }
+  },
+  "required": ["expression", "rootIds", "mediaTypes", "states"]
+}

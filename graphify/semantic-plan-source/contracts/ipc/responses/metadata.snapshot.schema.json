@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/metadata.snapshot.schema.json",
+  "title": "Metadata Snapshot Response",
+  "description": "Command-specific response DTO for metadata.snapshot.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "snapshotResult",
+    "revision",
+    "auditEntryId"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "snapshotResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/MutationReceipt"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "auditEntryId": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "metadata.snapshot",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

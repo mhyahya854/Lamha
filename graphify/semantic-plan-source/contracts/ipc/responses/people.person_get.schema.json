@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/people.person_get.schema.json",
+  "title": "People Person Get Response",
+  "description": "Command-specific response DTO for people.person_get.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "persongetResult",
+    "revision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "persongetResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/PersonSummary"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "people.person_get",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

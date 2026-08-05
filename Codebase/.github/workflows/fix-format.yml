@@ -1,0 +1,55 @@
+name: Fix formatting
+
+on:
+  pull_request:
+    types: [labeled]
+
+permissions: {}
+
+jobs:
+  fix-formatting:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.label.name == 'fix:formatting' }}
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - id: token
+        uses: immich-app/devtools/actions/create-workflow-token@caa599d954228439ea3e8ce1c3328f41ab120ee6 # create-workflow-token-action-v2.0.0
+        with:
+          client-id: ${{ secrets.PUSH_O_MATIC_APP_CLIENT_ID }}
+          private-key: ${{ secrets.PUSH_O_MATIC_APP_KEY }}
+
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          persist-credentials: true
+          token: ${{ steps.token.outputs.token }}
+
+      - name: Setup Mise
+        uses: immich-app/devtools/actions/use-mise@7b8610a904d57da241e4ddba17fa62b62b15aed4 # use-mise-action-v2.0.2
+        with:
+          github_token: ${{ steps.token.outputs.token }}
+
+      - name: Fix formatting
+        run: pnpm --recursive install && pnpm run --recursive --if-present --parallel format:fix
+
+      - name: Commit and push
+        uses: EndBug/add-and-commit@290ea2c423ad77ca9c62ae0f5b224379612c0321 # v10.0.0
+        with:
+          default_author: github_actions
+          message: 'chore: fix formatting'
+
+      - name: Remove label
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        if: always()
+        with:
+          github-token: ${{ steps.generate-token.outputs.token }}
+          script: |
+            github.rest.issues.removeLabel({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: 'fix:formatting'
+            })

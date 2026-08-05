@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/contracts/cursor-v1.schema.json",
+  "title": "Cursor page request",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "cursor": { "type": ["string", "null"], "maxLength": 4096 },
+    "limit": { "type": "integer", "minimum": 1, "maximum": 500, "default": 100 }
+  },
+  "required": ["cursor", "limit"]
+}

@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schema/operation.schema.json",
+  "title": "Lamha operation journal",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "createdAt",
+    "updatedAt",
+    "revision",
+    "operationKind",
+    "state",
+    "steps"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "operationKind": {
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "planned",
+        "prepared",
+        "staging",
+        "ready-to-commit",
+        "committing",
+        "committed",
+        "cleaned",
+        "cancelled",
+        "rolled-back",
+        "recovery-required",
+        "conflict",
+        "failed-safe"
+      ]
+    },
+    "requestId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "appVersion": {
+      "type": "string"
+    },
+    "rootIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "stepId",
+          "kind",
+          "state"
+        ],
+        "properties": {
+          "stepId": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "details": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "rollbackSteps": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": true
+}

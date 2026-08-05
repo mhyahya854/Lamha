@@ -1,0 +1,6 @@
+[graphify timing] detect: 51.2s
+  warning: 128 source file(s) produced zero nodes and are absent from the graph: devcontainer.json, devcontainer.json, extensions.json, launch.json, _category_.json (+123 more). A re-run will retry them (empties are no longer cached); if it persists, please report the file(s) (#1666).
+[graphify timing] AST extract: 98.1s
+[graphify timing] semantic extract: 0.8s
+[graphify timing] write: 0.7s
+[graphify timing] total: 153.1s

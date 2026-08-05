@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/assets.hash_verify.schema.json",
+  "title": "Assets Hash Verify Response",
+  "description": "Command-specific response DTO for assets.hash_verify.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "hashverifyResult",
+    "revision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "hashverifyResult": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/AssetDetail"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "assets.hash_verify",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

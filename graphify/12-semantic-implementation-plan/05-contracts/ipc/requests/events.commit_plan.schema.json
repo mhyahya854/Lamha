@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/events.commit_plan.schema.json",
+  "title": "Events Commit Plan Request",
+  "description": "Command-specific request DTO for events.commit_plan.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "subjectIds",
+    "planOptions",
+    "dryRun"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "subjectIds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "planOptions": {
+      "$ref": "../../shared-definitions-v1.schema.json#/$defs/OperationPlanOptions"
+    },
+    "dryRun": {
+      "const": true
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "events.commit_plan",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

@@ -1,0 +1,1580 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/file_operation_plan.schema.json",
+  "title": "File Operation Plan",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "requestId",
+    "state",
+    "expiresAt",
+    "operations",
+    "confirmation",
+    "totalSourceBytes",
+    "requiredDestinationBytes"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authority": {
+      "const": "TEMPORARY_TRANSACTION_AUTHORITY"
+    },
+    "privacy": {
+      "$ref": "#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "#/$defs/ExtensionMap"
+    },
+    "requestId": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "state": {
+      "enum": [
+        "PREVIEW",
+        "CONFIRMED",
+        "EXPIRED",
+        "COMMITTED",
+        "RECOVERY_REQUIRED"
+      ]
+    },
+    "expiresAt": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Timestamp"
+    },
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "MOVE"
+              },
+              "operationItemId": {
+                "$ref": "record-shared-v1.schema.json#/$defs/Id"
+              },
+              "assetIdentityId": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "source": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "destination": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "authorizedRootIds": {
+                "type": "array",
+                "items": {
+                  "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "expectedSourceRevision": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "expectedHash": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "collisionPolicy": {
+                "enum": [
+                  "FAIL",
+                  "RENAME",
+                  "REVIEW",
+                  "SKIP"
+                ]
+              },
+              "companionPolicy": {
+                "const": "ATOMIC_LOGICAL_BUNDLE"
+              },
+              "staging": {
+                "type": "object",
+                "properties": {
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "path": {
+                    "oneOf": [
+                      {
+                        "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "flushRequired": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "required",
+                  "path",
+                  "flushRequired"
+                ],
+                "additionalProperties": false
+              },
+              "rollback": {
+                "type": "object",
+                "properties": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "strategy": {
+                    "enum": [
+                      "RESTORE_SOURCE",
+                      "REMOVE_DESTINATION",
+                      "RESTORE_TRASH",
+                      "REWRITE_PRIOR_SIDECAR",
+                      "NONE"
+                    ]
+                  }
+                },
+                "required": [
+                  "supported",
+                  "strategy"
+                ],
+                "additionalProperties": false
+              },
+              "recovery": {
+                "type": "object",
+                "properties": {
+                  "journalRequired": {
+                    "const": true
+                  },
+                  "resumeStrategy": {
+                    "enum": [
+                      "RETRY_IDEMPOTENT_STEP",
+                      "ROLL_BACK",
+                      "USER_REVIEW"
+                    ]
+                  }
+                },
+                "required": [
+                  "journalRequired",
+                  "resumeStrategy"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "operationItemId",
+              "assetIdentityId",
+              "source",
+              "destination",
+              "authorizedRootIds",
+              "expectedSourceRevision",
+              "expectedHash",
+              "collisionPolicy",
+              "companionPolicy",
+              "staging",
+              "rollback",
+              "recovery"
+            ],
+            "additionalProperties": false,
+            "title": "Move"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "RENAME"
+              },
+              "operationItemId": {
+                "$ref": "record-shared-v1.schema.json#/$defs/Id"
+              },
+              "assetIdentityId": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "source": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "destination": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "authorizedRootIds": {
+                "type": "array",
+                "items": {
+                  "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "expectedSourceRevision": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "expectedHash": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "collisionPolicy": {
+                "enum": [
+                  "FAIL",
+                  "RENAME",
+                  "REVIEW",
+                  "SKIP"
+                ]
+              },
+              "companionPolicy": {
+                "const": "ATOMIC_LOGICAL_BUNDLE"
+              },
+              "staging": {
+                "type": "object",
+                "properties": {
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "path": {
+                    "oneOf": [
+                      {
+                        "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "flushRequired": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "required",
+                  "path",
+                  "flushRequired"
+                ],
+                "additionalProperties": false
+              },
+              "rollback": {
+                "type": "object",
+                "properties": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "strategy": {
+                    "enum": [
+                      "RESTORE_SOURCE",
+                      "REMOVE_DESTINATION",
+                      "RESTORE_TRASH",
+                      "REWRITE_PRIOR_SIDECAR",
+                      "NONE"
+                    ]
+                  }
+                },
+                "required": [
+                  "supported",
+                  "strategy"
+                ],
+                "additionalProperties": false
+              },
+              "recovery": {
+                "type": "object",
+                "properties": {
+                  "journalRequired": {
+                    "const": true
+                  },
+                  "resumeStrategy": {
+                    "enum": [
+                      "RETRY_IDEMPOTENT_STEP",
+                      "ROLL_BACK",
+                      "USER_REVIEW"
+                    ]
+                  }
+                },
+                "required": [
+                  "journalRequired",
+                  "resumeStrategy"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "operationItemId",
+              "assetIdentityId",
+              "source",
+              "destination",
+              "authorizedRootIds",
+              "expectedSourceRevision",
+              "expectedHash",
+              "collisionPolicy",
+              "companionPolicy",
+              "staging",
+              "rollback",
+              "recovery"
+            ],
+            "additionalProperties": false,
+            "title": "Rename"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "COPY"
+              },
+              "operationItemId": {
+                "$ref": "record-shared-v1.schema.json#/$defs/Id"
+              },
+              "assetIdentityId": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "source": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "destination": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "authorizedRootIds": {
+                "type": "array",
+                "items": {
+                  "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "expectedSourceRevision": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "expectedHash": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "collisionPolicy": {
+                "enum": [
+                  "FAIL",
+                  "RENAME",
+                  "REVIEW",
+                  "SKIP"
+                ]
+              },
+              "companionPolicy": {
+                "const": "ATOMIC_LOGICAL_BUNDLE"
+              },
+              "staging": {
+                "type": "object",
+                "properties": {
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "path": {
+                    "oneOf": [
+                      {
+                        "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "flushRequired": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "required",
+                  "path",
+                  "flushRequired"
+                ],
+                "additionalProperties": false
+              },
+              "rollback": {
+                "type": "object",
+                "properties": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "strategy": {
+                    "enum": [
+                      "RESTORE_SOURCE",
+                      "REMOVE_DESTINATION",
+                      "RESTORE_TRASH",
+                      "REWRITE_PRIOR_SIDECAR",
+                      "NONE"
+                    ]
+                  }
+                },
+                "required": [
+                  "supported",
+                  "strategy"
+                ],
+                "additionalProperties": false
+              },
+              "recovery": {
+                "type": "object",
+                "properties": {
+                  "journalRequired": {
+                    "const": true
+                  },
+                  "resumeStrategy": {
+                    "enum": [
+                      "RETRY_IDEMPOTENT_STEP",
+                      "ROLL_BACK",
+                      "USER_REVIEW"
+                    ]
+                  }
+                },
+                "required": [
+                  "journalRequired",
+                  "resumeStrategy"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "operationItemId",
+              "assetIdentityId",
+              "source",
+              "destination",
+              "authorizedRootIds",
+              "expectedSourceRevision",
+              "expectedHash",
+              "collisionPolicy",
+              "companionPolicy",
+              "staging",
+              "rollback",
+              "recovery"
+            ],
+            "additionalProperties": false,
+            "title": "Copy"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "DELETE_TO_TRASH"
+              },
+              "operationItemId": {
+                "$ref": "record-shared-v1.schema.json#/$defs/Id"
+              },
+              "assetIdentityId": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "source": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "destination": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "authorizedRootIds": {
+                "type": "array",
+                "items": {
+                  "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "expectedSourceRevision": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "expectedHash": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "collisionPolicy": {
+                "enum": [
+                  "FAIL",
+                  "RENAME",
+                  "REVIEW",
+                  "SKIP"
+                ]
+              },
+              "companionPolicy": {
+                "const": "ATOMIC_LOGICAL_BUNDLE"
+              },
+              "staging": {
+                "type": "object",
+                "properties": {
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "path": {
+                    "oneOf": [
+                      {
+                        "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "flushRequired": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "required",
+                  "path",
+                  "flushRequired"
+                ],
+                "additionalProperties": false
+              },
+              "rollback": {
+                "type": "object",
+                "properties": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "strategy": {
+                    "enum": [
+                      "RESTORE_SOURCE",
+                      "REMOVE_DESTINATION",
+                      "RESTORE_TRASH",
+                      "REWRITE_PRIOR_SIDECAR",
+                      "NONE"
+                    ]
+                  }
+                },
+                "required": [
+                  "supported",
+                  "strategy"
+                ],
+                "additionalProperties": false
+              },
+              "recovery": {
+                "type": "object",
+                "properties": {
+                  "journalRequired": {
+                    "const": true
+                  },
+                  "resumeStrategy": {
+                    "enum": [
+                      "RETRY_IDEMPOTENT_STEP",
+                      "ROLL_BACK",
+                      "USER_REVIEW"
+                    ]
+                  }
+                },
+                "required": [
+                  "journalRequired",
+                  "resumeStrategy"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "operationItemId",
+              "assetIdentityId",
+              "source",
+              "destination",
+              "authorizedRootIds",
+              "expectedSourceRevision",
+              "expectedHash",
+              "collisionPolicy",
+              "companionPolicy",
+              "staging",
+              "rollback",
+              "recovery"
+            ],
+            "additionalProperties": false,
+            "title": "Delete To Trash"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "RESTORE"
+              },
+              "operationItemId": {
+                "$ref": "record-shared-v1.schema.json#/$defs/Id"
+              },
+              "assetIdentityId": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "source": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "destination": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "authorizedRootIds": {
+                "type": "array",
+                "items": {
+                  "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "expectedSourceRevision": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "expectedHash": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "collisionPolicy": {
+                "enum": [
+                  "FAIL",
+                  "RENAME",
+                  "REVIEW",
+                  "SKIP"
+                ]
+              },
+              "companionPolicy": {
+                "const": "ATOMIC_LOGICAL_BUNDLE"
+              },
+              "staging": {
+                "type": "object",
+                "properties": {
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "path": {
+                    "oneOf": [
+                      {
+                        "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "flushRequired": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "required",
+                  "path",
+                  "flushRequired"
+                ],
+                "additionalProperties": false
+              },
+              "rollback": {
+                "type": "object",
+                "properties": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "strategy": {
+                    "enum": [
+                      "RESTORE_SOURCE",
+                      "REMOVE_DESTINATION",
+                      "RESTORE_TRASH",
+                      "REWRITE_PRIOR_SIDECAR",
+                      "NONE"
+                    ]
+                  }
+                },
+                "required": [
+                  "supported",
+                  "strategy"
+                ],
+                "additionalProperties": false
+              },
+              "recovery": {
+                "type": "object",
+                "properties": {
+                  "journalRequired": {
+                    "const": true
+                  },
+                  "resumeStrategy": {
+                    "enum": [
+                      "RETRY_IDEMPOTENT_STEP",
+                      "ROLL_BACK",
+                      "USER_REVIEW"
+                    ]
+                  }
+                },
+                "required": [
+                  "journalRequired",
+                  "resumeStrategy"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "operationItemId",
+              "assetIdentityId",
+              "source",
+              "destination",
+              "authorizedRootIds",
+              "expectedSourceRevision",
+              "expectedHash",
+              "collisionPolicy",
+              "companionPolicy",
+              "staging",
+              "rollback",
+              "recovery"
+            ],
+            "additionalProperties": false,
+            "title": "Restore"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "SIDECAR_WRITE"
+              },
+              "operationItemId": {
+                "$ref": "record-shared-v1.schema.json#/$defs/Id"
+              },
+              "assetIdentityId": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "source": {
+                "type": "null"
+              },
+              "destination": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "authorizedRootIds": {
+                "type": "array",
+                "items": {
+                  "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "expectedSourceRevision": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "expectedHash": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "collisionPolicy": {
+                "enum": [
+                  "FAIL",
+                  "RENAME",
+                  "REVIEW",
+                  "SKIP"
+                ]
+              },
+              "companionPolicy": {
+                "const": "ATOMIC_LOGICAL_BUNDLE"
+              },
+              "staging": {
+                "type": "object",
+                "properties": {
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "path": {
+                    "oneOf": [
+                      {
+                        "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "flushRequired": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "required",
+                  "path",
+                  "flushRequired"
+                ],
+                "additionalProperties": false
+              },
+              "rollback": {
+                "type": "object",
+                "properties": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "strategy": {
+                    "enum": [
+                      "RESTORE_SOURCE",
+                      "REMOVE_DESTINATION",
+                      "RESTORE_TRASH",
+                      "REWRITE_PRIOR_SIDECAR",
+                      "NONE"
+                    ]
+                  }
+                },
+                "required": [
+                  "supported",
+                  "strategy"
+                ],
+                "additionalProperties": false
+              },
+              "recovery": {
+                "type": "object",
+                "properties": {
+                  "journalRequired": {
+                    "const": true
+                  },
+                  "resumeStrategy": {
+                    "enum": [
+                      "RETRY_IDEMPOTENT_STEP",
+                      "ROLL_BACK",
+                      "USER_REVIEW"
+                    ]
+                  }
+                },
+                "required": [
+                  "journalRequired",
+                  "resumeStrategy"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "operationItemId",
+              "assetIdentityId",
+              "source",
+              "destination",
+              "authorizedRootIds",
+              "expectedSourceRevision",
+              "expectedHash",
+              "collisionPolicy",
+              "companionPolicy",
+              "staging",
+              "rollback",
+              "recovery"
+            ],
+            "additionalProperties": false,
+            "title": "Sidecar Write"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "DIRECTORY_CREATE"
+              },
+              "operationItemId": {
+                "$ref": "record-shared-v1.schema.json#/$defs/Id"
+              },
+              "assetIdentityId": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "source": {
+                "type": "null"
+              },
+              "destination": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "authorizedRootIds": {
+                "type": "array",
+                "items": {
+                  "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "expectedSourceRevision": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "expectedHash": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "collisionPolicy": {
+                "enum": [
+                  "FAIL",
+                  "RENAME",
+                  "REVIEW",
+                  "SKIP"
+                ]
+              },
+              "companionPolicy": {
+                "const": "ATOMIC_LOGICAL_BUNDLE"
+              },
+              "staging": {
+                "type": "object",
+                "properties": {
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "path": {
+                    "oneOf": [
+                      {
+                        "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "flushRequired": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "required",
+                  "path",
+                  "flushRequired"
+                ],
+                "additionalProperties": false
+              },
+              "rollback": {
+                "type": "object",
+                "properties": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "strategy": {
+                    "enum": [
+                      "RESTORE_SOURCE",
+                      "REMOVE_DESTINATION",
+                      "RESTORE_TRASH",
+                      "REWRITE_PRIOR_SIDECAR",
+                      "NONE"
+                    ]
+                  }
+                },
+                "required": [
+                  "supported",
+                  "strategy"
+                ],
+                "additionalProperties": false
+              },
+              "recovery": {
+                "type": "object",
+                "properties": {
+                  "journalRequired": {
+                    "const": true
+                  },
+                  "resumeStrategy": {
+                    "enum": [
+                      "RETRY_IDEMPOTENT_STEP",
+                      "ROLL_BACK",
+                      "USER_REVIEW"
+                    ]
+                  }
+                },
+                "required": [
+                  "journalRequired",
+                  "resumeStrategy"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "operationItemId",
+              "assetIdentityId",
+              "source",
+              "destination",
+              "authorizedRootIds",
+              "expectedSourceRevision",
+              "expectedHash",
+              "collisionPolicy",
+              "companionPolicy",
+              "staging",
+              "rollback",
+              "recovery"
+            ],
+            "additionalProperties": false,
+            "title": "Directory Create"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "EXPORT"
+              },
+              "operationItemId": {
+                "$ref": "record-shared-v1.schema.json#/$defs/Id"
+              },
+              "assetIdentityId": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "source": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "destination": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "authorizedRootIds": {
+                "type": "array",
+                "items": {
+                  "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "expectedSourceRevision": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "expectedHash": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "collisionPolicy": {
+                "enum": [
+                  "FAIL",
+                  "RENAME",
+                  "REVIEW",
+                  "SKIP"
+                ]
+              },
+              "companionPolicy": {
+                "const": "ATOMIC_LOGICAL_BUNDLE"
+              },
+              "staging": {
+                "type": "object",
+                "properties": {
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "path": {
+                    "oneOf": [
+                      {
+                        "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "flushRequired": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "required",
+                  "path",
+                  "flushRequired"
+                ],
+                "additionalProperties": false
+              },
+              "rollback": {
+                "type": "object",
+                "properties": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "strategy": {
+                    "enum": [
+                      "RESTORE_SOURCE",
+                      "REMOVE_DESTINATION",
+                      "RESTORE_TRASH",
+                      "REWRITE_PRIOR_SIDECAR",
+                      "NONE"
+                    ]
+                  }
+                },
+                "required": [
+                  "supported",
+                  "strategy"
+                ],
+                "additionalProperties": false
+              },
+              "recovery": {
+                "type": "object",
+                "properties": {
+                  "journalRequired": {
+                    "const": true
+                  },
+                  "resumeStrategy": {
+                    "enum": [
+                      "RETRY_IDEMPOTENT_STEP",
+                      "ROLL_BACK",
+                      "USER_REVIEW"
+                    ]
+                  }
+                },
+                "required": [
+                  "journalRequired",
+                  "resumeStrategy"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "operationItemId",
+              "assetIdentityId",
+              "source",
+              "destination",
+              "authorizedRootIds",
+              "expectedSourceRevision",
+              "expectedHash",
+              "collisionPolicy",
+              "companionPolicy",
+              "staging",
+              "rollback",
+              "recovery"
+            ],
+            "additionalProperties": false,
+            "title": "Export"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "BACKUP_COPY"
+              },
+              "operationItemId": {
+                "$ref": "record-shared-v1.schema.json#/$defs/Id"
+              },
+              "assetIdentityId": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "source": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "destination": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "authorizedRootIds": {
+                "type": "array",
+                "items": {
+                  "$ref": "record-shared-v1.schema.json#/$defs/Id"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "expectedSourceRevision": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
+              "expectedHash": {
+                "oneOf": [
+                  {
+                    "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "collisionPolicy": {
+                "enum": [
+                  "FAIL",
+                  "RENAME",
+                  "REVIEW",
+                  "SKIP"
+                ]
+              },
+              "companionPolicy": {
+                "const": "ATOMIC_LOGICAL_BUNDLE"
+              },
+              "staging": {
+                "type": "object",
+                "properties": {
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "path": {
+                    "oneOf": [
+                      {
+                        "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "flushRequired": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "required",
+                  "path",
+                  "flushRequired"
+                ],
+                "additionalProperties": false
+              },
+              "rollback": {
+                "type": "object",
+                "properties": {
+                  "supported": {
+                    "type": "boolean"
+                  },
+                  "strategy": {
+                    "enum": [
+                      "RESTORE_SOURCE",
+                      "REMOVE_DESTINATION",
+                      "RESTORE_TRASH",
+                      "REWRITE_PRIOR_SIDECAR",
+                      "NONE"
+                    ]
+                  }
+                },
+                "required": [
+                  "supported",
+                  "strategy"
+                ],
+                "additionalProperties": false
+              },
+              "recovery": {
+                "type": "object",
+                "properties": {
+                  "journalRequired": {
+                    "const": true
+                  },
+                  "resumeStrategy": {
+                    "enum": [
+                      "RETRY_IDEMPOTENT_STEP",
+                      "ROLL_BACK",
+                      "USER_REVIEW"
+                    ]
+                  }
+                },
+                "required": [
+                  "journalRequired",
+                  "resumeStrategy"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "kind",
+              "operationItemId",
+              "assetIdentityId",
+              "source",
+              "destination",
+              "authorizedRootIds",
+              "expectedSourceRevision",
+              "expectedHash",
+              "collisionPolicy",
+              "companionPolicy",
+              "staging",
+              "rollback",
+              "recovery"
+            ],
+            "additionalProperties": false,
+            "title": "Backup Copy"
+          }
+        ]
+      }
+    },
+    "confirmation": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "confirmedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "confirmedPlanHash": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-fA-F0-9]{32,128}$"
+        }
+      },
+      "required": [
+        "required",
+        "confirmedAt",
+        "confirmedPlanHash"
+      ],
+      "additionalProperties": false
+    },
+    "totalSourceBytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "requiredDestinationBytes": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "TEMPORARY_TRANSACTION_AUTHORITY",
+    "privacyClassification": "OPERATIONAL",
+    "stableIdStrategy": "UUIDv7 or documented deterministic content identity",
+    "timestampSemantics": "UTC RFC3339 instants; source timezone retained in domain fields when required",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and leaves original bytes intact on failure"
+  }
+}

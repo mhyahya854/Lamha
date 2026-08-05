@@ -1,0 +1,431 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/asset.schema.json",
+  "title": "Asset",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "identityId",
+    "rootId",
+    "primaryPath",
+    "originalFilename",
+    "extension",
+    "mediaType",
+    "mimeType",
+    "fileSizeBytes",
+    "contentHash",
+    "captureTime",
+    "filesystemTimes",
+    "dimensions",
+    "durationMs",
+    "camera",
+    "gps",
+    "sidecars",
+    "companions",
+    "eventIds",
+    "visiblePersonIds",
+    "tagIds",
+    "albumIds",
+    "favorite",
+    "rating",
+    "reviewState",
+    "editRecipeId",
+    "derivatives",
+    "integrityState"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authority": {
+      "const": "AUTHORITATIVE_FILE_RECORD"
+    },
+    "privacy": {
+      "$ref": "#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "#/$defs/ExtensionMap"
+    },
+    "identityId": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "rootId": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "primaryPath": {
+      "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+    },
+    "originalFilename": {
+      "type": "string",
+      "minLength": 1
+    },
+    "extension": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9]{1,16}$"
+    },
+    "mediaType": {
+      "enum": [
+        "IMAGE",
+        "VIDEO",
+        "AUDIO"
+      ]
+    },
+    "mimeType": {
+      "type": "string",
+      "pattern": "^[^/]+/[^/]+$"
+    },
+    "fileSizeBytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "contentHash": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+    },
+    "captureTime": {
+      "type": "object",
+      "properties": {
+        "instant": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "localValue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "timeZone": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "enum": [
+            "EMBEDDED",
+            "XMP",
+            "ASSET_JSON",
+            "FILESYSTEM",
+            "USER",
+            "UNKNOWN"
+          ]
+        }
+      },
+      "required": [
+        "instant",
+        "localValue",
+        "timeZone",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "filesystemTimes": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "modifiedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "createdAt",
+        "modifiedAt",
+        "observedAt"
+      ],
+      "additionalProperties": false
+    },
+    "dimensions": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "height": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "orientation": {
+          "enum": [
+            "NORMAL",
+            "ROTATE_90",
+            "ROTATE_180",
+            "ROTATE_270",
+            "MIRROR_HORIZONTAL",
+            "MIRROR_VERTICAL",
+            "UNKNOWN"
+          ]
+        }
+      },
+      "required": [
+        "width",
+        "height",
+        "orientation"
+      ],
+      "additionalProperties": false
+    },
+    "durationMs": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "camera": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Camera"
+    },
+    "gps": {
+      "oneOf": [
+        {
+          "$ref": "record-shared-v1.schema.json#/$defs/Gps"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sidecars": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sidecarId": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "kind": {
+            "enum": [
+              "ASSET_JSON",
+              "XMP",
+              "EXTERNAL_XMP"
+            ]
+          },
+          "path": {
+            "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+          },
+          "state": {
+            "enum": [
+              "HEALTHY",
+              "MISSING",
+              "CORRUPT",
+              "FUTURE_VERSION",
+              "PENDING_OVERLAY"
+            ]
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "sidecarId",
+          "kind",
+          "path",
+          "state",
+          "revision"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "companions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "assetId": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "kind": {
+            "enum": [
+              "LIVE_PHOTO_IMAGE",
+              "LIVE_PHOTO_VIDEO",
+              "RAW",
+              "JPEG_RENDER",
+              "MOTION_PHOTO"
+            ]
+          },
+          "role": {
+            "enum": [
+              "PRIMARY",
+              "COMPANION"
+            ]
+          }
+        },
+        "required": [
+          "assetId",
+          "kind",
+          "role"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "eventIds": {
+      "type": "array",
+      "items": {
+        "$ref": "record-shared-v1.schema.json#/$defs/Id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "visiblePersonIds": {
+      "type": "array",
+      "items": {
+        "$ref": "record-shared-v1.schema.json#/$defs/Id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "tagIds": {
+      "type": "array",
+      "items": {
+        "$ref": "record-shared-v1.schema.json#/$defs/Id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "albumIds": {
+      "type": "array",
+      "items": {
+        "$ref": "record-shared-v1.schema.json#/$defs/Id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "favorite": {
+      "type": "boolean"
+    },
+    "rating": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 5
+    },
+    "reviewState": {
+      "enum": [
+        "NONE",
+        "OPEN",
+        "DEFERRED",
+        "RESOLVED"
+      ]
+    },
+    "editRecipeId": {
+      "oneOf": [
+        {
+          "$ref": "record-shared-v1.schema.json#/$defs/Id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "derivatives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "derivativeId": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Id"
+          },
+          "kind": {
+            "enum": [
+              "THUMBNAIL",
+              "PREVIEW",
+              "EDITED_EXPORT",
+              "PRIVACY_EXPORT"
+            ]
+          },
+          "sourceRevision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "path": {
+            "$ref": "record-shared-v1.schema.json#/$defs/PathRef"
+          },
+          "contentHash": {
+            "$ref": "record-shared-v1.schema.json#/$defs/Hash"
+          }
+        },
+        "required": [
+          "derivativeId",
+          "kind",
+          "sourceRevision",
+          "path",
+          "contentHash"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "integrityState": {
+      "enum": [
+        "VERIFIED",
+        "STALE",
+        "MISSING",
+        "HASH_MISMATCH",
+        "SIDECAR_CONFLICT",
+        "RECOVERY_REQUIRED"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "AUTHORITATIVE_FILE_RECORD",
+    "privacyClassification": "LOCAL_USER_DATA",
+    "stableIdStrategy": "UUIDv7 or documented deterministic content identity",
+    "timestampSemantics": "UTC RFC3339 instants; source timezone retained in domain fields when required",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and leaves original bytes intact on failure"
+  }
+}

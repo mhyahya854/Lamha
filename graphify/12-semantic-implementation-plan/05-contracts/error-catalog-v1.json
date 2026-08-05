@@ -1,0 +1,157 @@
+{
+  "contractVersion": "1.0.0",
+  "errors": [
+    {
+      "code": "INVALID_REQUEST",
+      "humanSafeMessage": "Invalid Request",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": false,
+      "recoverySuggestion": "Correct the highlighted fields.",
+      "userActionRequired": true
+    },
+    {
+      "code": "CAPABILITY_DENIED",
+      "humanSafeMessage": "Capability Denied",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": false,
+      "recoverySuggestion": "Grant only the required Tauri capability.",
+      "userActionRequired": true
+    },
+    {
+      "code": "PERMISSION_DENIED",
+      "humanSafeMessage": "Permission Denied",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": true,
+      "recoverySuggestion": "Review filesystem permission or choose another authorized root.",
+      "userActionRequired": true
+    },
+    {
+      "code": "PATH_ESCAPE",
+      "humanSafeMessage": "Path Escape",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": false,
+      "recoverySuggestion": "Choose a path contained by an authorized root.",
+      "userActionRequired": true
+    },
+    {
+      "code": "REVISION_CONFLICT",
+      "humanSafeMessage": "Revision Conflict",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": true,
+      "recoverySuggestion": "Reload the latest revision and review the proposed change.",
+      "userActionRequired": false
+    },
+    {
+      "code": "IDEMPOTENCY_CONFLICT",
+      "humanSafeMessage": "Idempotency Conflict",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": false,
+      "recoverySuggestion": "Reuse a request ID only for the byte-equivalent request.",
+      "userActionRequired": true
+    },
+    {
+      "code": "DRIVE_DISCONNECTED",
+      "humanSafeMessage": "Drive Disconnected",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": true,
+      "recoverySuggestion": "Reconnect the expected drive or keep the operation paused.",
+      "userActionRequired": true
+    },
+    {
+      "code": "DRIVE_IDENTITY_MISMATCH",
+      "humanSafeMessage": "Drive Identity Mismatch",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": false,
+      "recoverySuggestion": "Reconnect the original volume or explicitly relink after review.",
+      "userActionRequired": true
+    },
+    {
+      "code": "CORRUPT_SIDECAR",
+      "humanSafeMessage": "Corrupt Sidecar",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": false,
+      "recoverySuggestion": "Open recovery review; preserve the corrupt bytes and last good backup.",
+      "userActionRequired": true
+    },
+    {
+      "code": "UNSUPPORTED_FORMAT",
+      "humanSafeMessage": "Unsupported Format",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": false,
+      "recoverySuggestion": "Install/choose a reviewed decoder or retain the original without mutation.",
+      "userActionRequired": true
+    },
+    {
+      "code": "MODEL_UNAVAILABLE",
+      "humanSafeMessage": "Model Unavailable",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": true,
+      "recoverySuggestion": "Install or select a compatible locally verified model.",
+      "userActionRequired": true
+    },
+    {
+      "code": "OPERATION_CANCELLED",
+      "humanSafeMessage": "Operation Cancelled",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": false,
+      "recoverySuggestion": "Inspect committed items; resume only with the same plan and revision.",
+      "userActionRequired": true
+    },
+    {
+      "code": "PREVIEW_REQUIRED",
+      "humanSafeMessage": "Preview Required",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": false,
+      "recoverySuggestion": "Generate and inspect a current preview.",
+      "userActionRequired": true
+    },
+    {
+      "code": "CONFIRMATION_REQUIRED",
+      "humanSafeMessage": "Confirmation Required",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": false,
+      "recoverySuggestion": "Explicitly confirm the exact current plan.",
+      "userActionRequired": true
+    },
+    {
+      "code": "PARTIAL_COMMIT_RECOVERY_REQUIRED",
+      "humanSafeMessage": "Partial Commit Recovery Required",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": false,
+      "recoverySuggestion": "Run recovery before any conflicting operation.",
+      "userActionRequired": true
+    },
+    {
+      "code": "INSUFFICIENT_SPACE",
+      "humanSafeMessage": "Insufficient Space",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": true,
+      "recoverySuggestion": "Free space or choose another staged destination.",
+      "userActionRequired": false
+    },
+    {
+      "code": "HASH_MISMATCH",
+      "humanSafeMessage": "Hash Mismatch",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": false,
+      "recoverySuggestion": "Quarantine the staged copy and preserve the source.",
+      "userActionRequired": true
+    },
+    {
+      "code": "OPERATION_NOT_FOUND",
+      "humanSafeMessage": "Operation Not Found",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": false,
+      "recoverySuggestion": "Refresh operation state and diagnostics.",
+      "userActionRequired": true
+    },
+    {
+      "code": "SCHEMA_VERSION_UNSUPPORTED",
+      "humanSafeMessage": "Schema Version Unsupported",
+      "diagnosticDetails": "Structured local-only details with paths redacted by default.",
+      "retryable": false,
+      "recoverySuggestion": "Use a compatible version; never overwrite future-version data.",
+      "userActionRequired": true
+    }
+  ]
+}

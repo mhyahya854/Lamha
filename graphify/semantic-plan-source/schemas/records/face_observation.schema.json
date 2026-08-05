@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/records/face_observation.schema.json",
+  "title": "Face Observation",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "createdAt",
+    "updatedAt",
+    "authority",
+    "privacy",
+    "provenance",
+    "extensions",
+    "assetId",
+    "assetRevision",
+    "boundingBox",
+    "embeddingDigest",
+    "modelId",
+    "modelVersion",
+    "confidence",
+    "candidatePersonId",
+    "confirmedPersonId",
+    "reviewState",
+    "approvedBy"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authority": {
+      "const": "AUTHORITATIVE_FILE_RECORD"
+    },
+    "privacy": {
+      "$ref": "#/$defs/Privacy"
+    },
+    "provenance": {
+      "$ref": "#/$defs/Provenance"
+    },
+    "extensions": {
+      "$ref": "#/$defs/ExtensionMap"
+    },
+    "assetId": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "assetRevision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "boundingBox": {
+      "$ref": "record-shared-v1.schema.json#/$defs/BoundingBox"
+    },
+    "embeddingDigest": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "modelId": {
+      "$ref": "record-shared-v1.schema.json#/$defs/Id"
+    },
+    "modelVersion": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "candidatePersonId": {
+      "oneOf": [
+        {
+          "$ref": "record-shared-v1.schema.json#/$defs/Id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "confirmedPersonId": {
+      "oneOf": [
+        {
+          "$ref": "record-shared-v1.schema.json#/$defs/Id"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reviewState": {
+      "enum": [
+        "PROPOSED",
+        "CONFIRMED",
+        "REJECTED",
+        "SUPPRESSED"
+      ]
+    },
+    "approvedBy": {
+      "enum": [
+        "NONE",
+        "USER"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha": {
+    "authority": "AUTHORITATIVE_FILE_RECORD",
+    "privacyClassification": "SENSITIVE_BIOMETRIC",
+    "stableIdStrategy": "UUIDv7 or documented deterministic content identity",
+    "timestampSemantics": "UTC RFC3339 instants; source timezone retained in domain fields when required",
+    "unknownFieldPolicy": "Core unknown fields rejected; scalar x-* extensions preserved",
+    "migrationPolicy": "Monotonic versioned migration writes a new file atomically and leaves original bytes intact on failure"
+  }
+}
