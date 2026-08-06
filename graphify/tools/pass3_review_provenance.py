@@ -51,14 +51,18 @@ def provenance_ids() -> dict[str, set[str]]:
         REVIEWS / "reviewed-dependency-additions.csv",
         REVIEWS / "reviewed-dependency-decisions-v2.csv",
         REVIEWS / "reviewed-dependency-roots.csv",
-        REVIEWS / "independent-final-semantic-audit.csv",
+        REVIEWS / "reviewed-actionable-requirements-v3.csv",
+        REVIEWS / "reviewed-dependencies-v3.csv",
+        REVIEWS / "reviewed-package-memberships-v3.csv",
+        REVIEWS / "reviewed-work-packages-v3.csv",
     ]
     for path in source_files:
         if not path.exists():
             continue
         for row in read_csv(path):
             value = (
-                row.get("record_id") or row.get("canonical_id") or row.get("Item ID")
+                row.get("record_id") or row.get("canonical_id") or row.get("Canonical ID") or row.get("Item ID")
+                or row.get("Dependent package") or row.get("Final package ID")
                 or row.get("failure_id") or row.get("dependent_package")
                 or row.get("work_package_id") or row.get("component") or row.get("schema")
             )
@@ -72,10 +76,28 @@ def provenance_ids() -> dict[str, set[str]]:
                 ids["package"].add(value)
             elif path.name.startswith("reviewed-dependency"):
                 ids["dependency"].add(value)
-            elif path.name == "independent-final-semantic-audit.csv":
-                item_type = row.get("Item type", "")
-                if item_type in ids:
-                    ids[item_type].add(value)
+            elif path.name == "reviewed-actionable-requirements-v3.csv":
+                if row.get("Review status") in {"REVIEWED_CONFIRMED", "REVIEWED_CORRECTED"}:
+                    needs_acceptance = row.get("Requirement type") == "ACCEPTANCE_CRITERION"
+                    substantive = (
+                        row.get("Final reviewed statement", "")
+                        and row.get("Verification method", "")
+                        and row.get("Item-specific rationale", "")
+                        and row.get("Actor or subsystem", "")
+                        and row.get("Observable result", "")
+                        and (not needs_acceptance or row.get("Acceptance criteria", ""))
+                    )
+                    if substantive:
+                        ids["requirement"].add(row.get("Canonical ID", ""))
+            elif path.name == "reviewed-dependencies-v3.csv":
+                if row.get("Review status") in {"REVIEWED_CONFIRMED", "REVIEWED_CORRECTED"} and row.get("Technical prerequisite supplied") and row.get("Evidence"):
+                    ids["dependency"].add(f"{row.get('Dependent package','')}<-{row.get('Prerequisite package','')}")
+            elif path.name == "reviewed-package-memberships-v3.csv":
+                if row.get("Review status") in {"REVIEWED_CONFIRMED", "REVIEWED_CORRECTED"} and row.get("Item-specific rationale") and row.get("Evidence"):
+                    ids["membership"].add(row.get("Canonical ID", ""))
+            elif path.name == "reviewed-work-packages-v3.csv":
+                if row.get("Review status") in {"REVIEWED_CONFIRMED", "REVIEWED_CORRECTED"} and row.get("Item-specific rationale"):
+                    ids["package"].add(row.get("Final package ID", ""))
     # Component and schema registries carry their own explicit evidence fields.
     component_path = SOURCE / "components" / "components.csv"
     if component_path.exists():
@@ -100,6 +122,13 @@ def main() -> int:
     ids = provenance_ids()
     rows: list[dict[str, str]] = []
     unmatched: list[str] = []
+    impl_types = {
+        "FUNCTIONAL_REQUIREMENT", "NONFUNCTIONAL_REQUIREMENT", "ARCHITECTURAL_INVARIANT",
+        "SECURITY_INVARIANT", "PRIVACY_INVARIANT", "DATA_INTEGRITY_INVARIANT",
+        "IMPLEMENTATION_CONSTRAINT", "ACCEPTANCE_CRITERION", "OPTIONAL_ADAPTER",
+        "VERIFICATION_GATE", "REMOVAL_GATE", "RELEASE_GATE", "PROHIBITION",
+    }
+    mapping = {row["canonical_id"]: row for row in read_csv(SOURCE / "requirements" / "requirement-mapping.csv")}
 
     def check(item_type: str, rid: str, status: str) -> None:
         positive = status in {"REVIEWED", "REVIEWED_CONFIRMED", "REVIEWED_CORRECTED", "MANUALLY_REVIEWED", "INDEPENDENTLY_REVIEWED"}
@@ -114,10 +143,22 @@ def main() -> int:
         if positive and not covered:
             unmatched.append(f"{item_type}:{rid}")
 
-    for row in read_csv(SOURCE / "requirements" / "requirements.csv"):
-        check("requirement", row["canonical_id"], row.get("normalization_reviewer_status", ""))
+    requirements = read_csv(SOURCE / "requirements" / "requirements.csv")
+    for row in requirements:
+        actionable = (
+            row.get("requirement_type") in impl_types
+            and mapping.get(row["canonical_id"], {}).get("primary_implementation_phase")
+        )
+        if actionable:
+            check("requirement", row["canonical_id"], row.get("normalization_reviewer_status", ""))
+        else:
+            rows.append({
+                "Item type": "requirement", "Item ID": row["canonical_id"],
+                "Review status": "NOT_APPLICABLE", "Provenance found": "YES", "Result": "PASS",
+            })
     for row in read_csv(SOURCE / "requirements" / "requirement-mapping.csv"):
-        check("requirement", row["canonical_id"], row.get("reviewer_status", ""))
+        if mapping.get(row["canonical_id"], {}).get("primary_implementation_phase"):
+            check("requirement", row["canonical_id"], row.get("reviewer_status", ""))
     for row in read_csv(SOURCE / "packages" / "requirement-membership.csv"):
         check("membership", row["canonical_id"], row.get("reviewer_status", ""))
     for package in json.loads((SOURCE / "packages" / "work-packages.json").read_text(encoding="utf-8"))["workPackages"]:

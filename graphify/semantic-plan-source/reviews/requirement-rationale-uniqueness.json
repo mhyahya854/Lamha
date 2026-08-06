@@ -1,0 +1,9 @@
+{
+  "totalReviewedRows": 723,
+  "uniqueNormalizedRationales": 723,
+  "duplicateRationaleGroups": [],
+  "affectedRequirementIds": [],
+  "acceptedJustifiedDuplicates": 0,
+  "unjustifiedDuplicates": 0,
+  "finalStatus": "PASS"
+}

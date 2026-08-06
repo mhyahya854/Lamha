@@ -42,6 +42,10 @@ def head_membership() -> dict[str, str]:
 
 def main() -> int:
     rows: list[dict[str, str]] = []
+    v3_path = REVIEWS / "reviewed-actionable-requirements-v3.csv"
+    v3_by_id: dict[str, dict[str, str]] = {}
+    if v3_path.exists():
+        v3_by_id = {row["Canonical ID"]: row for row in read_csv(v3_path)}
 
     def add(item_type: str, item_id: str, candidate: str, final: str, judgement: str, evidence: str, reason: str, correction: str, concern: str) -> None:
         rows.append({
@@ -61,15 +65,26 @@ def main() -> int:
     previous_pkg = head_membership()
 
     for row in read_csv(SOURCE / "requirements" / "requirements.csv"):
+        rid = row["canonical_id"]
+        v3 = v3_by_id.get(rid)
+        positive = v3 and v3.get("Review status") in {"REVIEWED_CONFIRMED", "REVIEWED_CORRECTED"}
+        if positive:
+            judgement = v3.get("Review decision", "CONFIRMED")
+            reason = v3.get("Item-specific rationale", "")
+            concern = v3.get("Remaining concern", "")
+        else:
+            judgement = "REVIEW_REQUIRED"
+            reason = "Awaiting item-specific Pass A review; no substantive v3 decision is recorded."
+            concern = "Not yet individually reviewed under Pass A"
         add(
-            "requirement", row["canonical_id"],
+            "requirement", rid,
             row.get("source_text", "") or row.get("title", ""),
             row.get("statement", ""),
-            "PASS" if row.get("supersession_status") == "ACTIVE" else "NOT_ACTIVE",
+            judgement,
             f"source_section={row.get('source_section','')}; source_locator={row.get('source_locator','')}",
-            "Independent final semantic audit confirms the reviewed statement, classification, capability, phase, and traceability.",
-            "NO" if row.get("normalization_status") == "NORMALIZED" else "YES",
-            "",
+            reason,
+            "NO",
+            concern,
         )
     for row in read_csv(SOURCE / "packages" / "requirement-membership.csv"):
         add(

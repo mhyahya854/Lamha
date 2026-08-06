@@ -1,0 +1,19 @@
+{
+  "layer": 3,
+  "sha256": "5e31a63f580fc4ce2aae8f32b42446b0151e8098d866906a8143965c572cefa3",
+  "files": [
+    "12-semantic-implementation-plan/13-reports/final-content-manifest.json",
+    "12-semantic-implementation-plan/13-reports/final-100-percent-certification.json",
+    "12-semantic-implementation-plan/12-validators/validator-results.json",
+    "12-semantic-implementation-plan/12-validators/adversarial-results.json",
+    "12-semantic-implementation-plan/13-reports/pass-b-independent-evidence-authenticity.json",
+    "12-semantic-implementation-plan/11-model-packets/packet-manifest.json",
+    "semantic-plan-source/components/components.csv",
+    "semantic-plan-source/packages/dependencies.csv",
+    "12-semantic-implementation-plan/14-handoff/START-HERE.md",
+    "semantic-plan-source/packages/work-packages.json"
+  ],
+  "excluded": [
+    "13-reports/final-release-envelope.json"
+  ]
+}

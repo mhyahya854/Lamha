@@ -1,0 +1,16 @@
+{
+  "totalActionableRows": 723,
+  "lastCompletedCanonicalId": "CAN-SECTION-0120",
+  "completedReviews": 723,
+  "confirmed": 723,
+  "corrected": 0,
+  "split": 0,
+  "merged": 0,
+  "reclassified": 0,
+  "superseded": 0,
+  "blocked": 0,
+  "remaining": 0,
+  "untestableCriteriaRemaining": 0,
+  "nonObservableRequirementsRemaining": 0,
+  "lastSuccessfulValidatorCheckpoint": "L16_REQUIREMENT_LEDGER PASS; L14_REVIEW_PROVENANCE fails only for 200 dependency rows outside Pass A scope"
+}

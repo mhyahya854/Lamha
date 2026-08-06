@@ -1,0 +1,11 @@
+{
+  "packagesChecked": 155,
+  "existingPathsVerified": 134,
+  "plannedNewPaths": 0,
+  "decisionPackagePaths": 10,
+  "notApplicablePackages": 11,
+  "invalidPaths": 0,
+  "inventedPaths": 0,
+  "missingPathStrategies": 0,
+  "finalStatus": "PASS"
+}

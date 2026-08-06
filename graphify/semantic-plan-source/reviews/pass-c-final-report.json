@@ -1,0 +1,53 @@
+{
+  "component_count": 17,
+  "completed_component_decisions": 17,
+  "pending_component_decisions": 0,
+  "pending_licence_decisions": 0,
+  "pending_redistribution_decisions": 0,
+  "components_without_version_rule": 0,
+  "components_without_decision_package": 0,
+  "consumer_dependency_gaps": 0,
+  "generic_component_rationales": 0,
+  "component_review_provenance_gaps": 0,
+  "dependency_cycles": 0,
+  "missing_component_adversarial_classes": 0,
+  "selected_components": [
+    "Tauri",
+    "Rust toolchain",
+    "Node/package-manager toolchain",
+    "Svelte/SvelteKit",
+    "SQLite Rust library (rusqlite)",
+    "Pure-Rust metadata parsers",
+    "Rust image crate",
+    "ONNX Runtime",
+    "OCR model/runtime",
+    "Embedding model/runtime",
+    "Face model/runtime",
+    "Tauri bundler + platform signing"
+  ],
+  "replaced_components": [
+    "Python runtime or alternative AI host",
+    "ExifTool subprocess"
+  ],
+  "optional_components": [
+    "FFmpeg",
+    "RAW decoder"
+  ],
+  "rejected_components": [
+    "Python runtime or alternative AI host"
+  ],
+  "platform_provided_components": [
+    "HEIF decoder",
+    "Platform WebView dependencies"
+  ],
+  "final_dependency_count": 240,
+  "root_packages": [
+    "WP-I0-001"
+  ],
+  "cycles": 0,
+  "component_adversarial_result": "64/64 PASS",
+  "L19_result": "PASS",
+  "external_integrity_result": "PASS 0/0/0/0",
+  "remaining_genuine_blockers": [],
+  "declaration": "PASS C COMPLETE — ALL COMPONENT AND LICENCE DECISIONS FINALIZED"
+}

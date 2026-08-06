@@ -1,0 +1,9 @@
+{
+  "fixturesExecuted": 56,
+  "requiredClasses": 56,
+  "missingRequiredFailureClasses": 0,
+  "unexpectedFixturePasses": 0,
+  "wrongFailureReasons": 0,
+  "maskedFailureReasons": 0,
+  "status": "PASS"
+}

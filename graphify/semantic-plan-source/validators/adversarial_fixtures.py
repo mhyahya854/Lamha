@@ -1,4 +1,4 @@
-"""Forty-eight negative fixtures proving every final-blocker regression is rejected."""
+"""Sixty-four negative fixtures proving every final-blocker regression is rejected."""
 
 from __future__ import annotations
 
@@ -455,6 +455,74 @@ def run() -> dict[str, object]:
         {"firstCompletePackageHash": "hash"},
     )
 
+    missing_v3_errors = validator.check_v3_requirement_ledger(
+        [requirement_row("FIX-REQ", "When the fixture runs, the system must return a typed result.")],
+        {"FIX-REQ": {"primary_implementation_phase": "I5"}},
+        [],
+    )
+
+    generic_v3_errors = validator.check_v3_requirement_ledger(
+        [requirement_row("FIX-REQ", "When the fixture runs, the system must return a typed result.")],
+        {"FIX-REQ": {"primary_implementation_phase": "I5"}},
+        [{
+            "Canonical ID": "FIX-REQ", "Review status": "REVIEWED_CONFIRMED",
+            "Final reviewed statement": "When the fixture runs, the system must return a typed result.",
+            "Verification method": "fixture", "Item-specific rationale": "Reviewed.",
+            "Actor or subsystem": "fixture", "Observable result": "typed result", "Acceptance criteria": "given when then",
+        }],
+    )
+
+    id_only_v3_errors = validator.check_v3_requirement_ledger(
+        [requirement_row("FIX-REQ", "When the fixture runs, the system must return a typed result.")],
+        {"FIX-REQ": {"primary_implementation_phase": "I5"}},
+        [{
+            "Canonical ID": "FIX-REQ", "Review status": "REVIEWED_CONFIRMED",
+            "Final reviewed statement": "", "Verification method": "", "Item-specific rationale": "",
+            "Actor or subsystem": "", "Observable result": "", "Acceptance criteria": "",
+        }],
+    )
+
+    with tempfile.TemporaryDirectory() as tmp3:
+        fake_tools = Path(tmp3)
+        (fake_tools / "pass3_independent_semantic_audit.py").write_text(
+            "for row in rows:\n    row[\"reviewer_status\"] = \"REVIEWED\"\n",
+            encoding="utf-8",
+        )
+        allowlist_errors = validator.check_active_scripts_for_automatic_certification(fake_tools)
+
+    empty_member_errors = validator.check_pass_b_independent_evidence([], [], [], [], [])
+    empty_contract_errors = validator.check_pass_b_independent_evidence([{}], [], [], [], [])
+    empty_test_errors = validator.check_pass_b_independent_evidence([{}], [{}], [], [], [])
+    missing_i3_errors = validator.check_pass_b_independent_evidence(
+        [],
+        [{"Package ID": "X", "Verification status": "VERIFIED", "Evidence": "source", "Item-specific rationale": "a"*50}],
+        [{"Package ID": "X", "Verification status": "VERIFIED", "Evidence": "source", "Item-specific rationale": "a"*50}],
+        [{"Package ID": "X", "Verification status": "VERIFIED", "Evidence": "source", "Item-specific rationale": "a"*50}],
+        [{"Package ID": "X", "Verification status": "VERIFIED", "Evidence": "source", "Item-specific rationale": "a"*50}],
+    )
+    # Missing WP-I3-001 genuine member reassessment is represented by an
+    # empty member ledger; the member ledger must contain all WP-I3-001 members.
+
+    def component_row(**overrides) -> dict[str, str]:
+        base = {
+            "component": "FIX-COMP", "final_status": "SELECTED", "version_status": "RESOLVED",
+            "licence_status": "APPROVED", "redistribution_status": "BUNDLED_SOURCE",
+            "decision_package": "WP-I0-001", "version_rule": "pinned from lockfile",
+            "reason": "a" * 60, "consumer_packages": "WP-I0-001",
+        }
+        base.update(overrides)
+        return base
+
+    edge = [{"work_package_id": "WP-I0-001", "prerequisite_work_package_id": "WP-I0-001"}]
+    c_pending = validator.check_component_licence_completeness([component_row(final_status="PENDING")], edge)
+    c_licence = validator.check_component_licence_completeness([component_row(licence_status="PENDING")], edge)
+    c_redist = validator.check_component_licence_completeness([component_row(redistribution_status="")], edge)
+    c_decision = validator.check_component_licence_completeness([component_row(decision_package="")], edge)
+    c_version = validator.check_component_licence_completeness([component_row(version_rule="")], edge)
+    c_generic = validator.check_component_licence_completeness([component_row(reason="Reviewed.")], edge)
+    c_consumer = validator.check_component_licence_completeness([component_row(consumer_packages="WP-I2-001")], edge)
+    c_rejected = validator.check_component_licence_completeness([component_row(final_status="REJECTED", consumer_packages="WP-I2-001")], edge)
+
     cases = [
         ("F01_GENERATED_REPORT_FALSELY_MANUAL", *contains(manual_errors, "automatically generated report labelled manual")),
         ("F02_BLANKET_REVIEW_CERTIFICATION", *contains(blanket_errors, "blanket script marks every row reviewed")),
@@ -504,6 +572,22 @@ def run() -> dict[str, object]:
         ("F46_SUPERSEDED_ACTIVE_HANDOFF", *contains(superseded_handoff_errors, "active handoff points to superseded phase")),
         ("F47_NON_DETERMINISTIC_FINAL_EVIDENCE", *contains(determinism_errors, "determinism evidence mismatch")),
         ("F48_CONSOLE_SUCCESS_WITHOUT_PERSISTED_DECLARATION", *contains(readiness_errors, "persisted readiness declaration missing or incorrect")),
+        ("F49_MISSING_V3_REQUIREMENT_REVIEW", *contains(missing_v3_errors, "actionable requirement missing v3 review row")),
+        ("F50_GENERIC_V3_RATIONALE", *contains(generic_v3_errors, "v3 rationale too short")),
+        ("F51_ID_ONLY_V3_PROVENANCE", *contains(id_only_v3_errors, "lacks substantive fields")),
+        ("F52_ACTIVE_SCRIPT_ALLOWLIST_REMOVED", *contains(allowlist_errors, "automatic positive review certification")),
+        ("F53_GENERATED_MEMBER_EVIDENCE_ACCEPTED", *contains(empty_member_errors, "independent member verification ledger is empty")),
+        ("F54_GENERATED_CONTRACT_SCHEMA_EVIDENCE_ACCEPTED", *contains(empty_contract_errors, "independent contract/schema verification ledger is empty")),
+        ("F55_GENERATED_TEST_EXIT_EVIDENCE_ACCEPTED", *contains(empty_test_errors, "independent test verification ledger is empty")),
+        ("F56_WP_I3_001_UNCHANGED_WITHOUT_REASSESSMENT", *contains(missing_i3_errors, "independent member verification ledger is empty")),
+        ("F57_COMPONENT_PENDING", *contains(c_pending, "component decision pending")),
+        ("F58_COMPONENT_LICENCE_PENDING", *contains(c_licence, "component licence pending")),
+        ("F59_COMPONENT_REDISTRIBUTION_MISSING", *contains(c_redist, "component redistribution missing")),
+        ("F60_COMPONENT_DECISION_PACKAGE_MISSING", *contains(c_decision, "component decision package missing")),
+        ("F61_COMPONENT_VERSION_RULE_MISSING", *contains(c_version, "component version rule missing")),
+        ("F62_COMPONENT_RATIONALE_GENERIC", *contains(c_generic, "component rationale generic")),
+        ("F63_COMPONENT_CONSUMER_MISSING_DEPENDENCY", *contains(c_consumer, "component consumer lacks decision dependency")),
+        ("F64_REJECTED_COMPONENT_STILL_CONSUMED", *contains(c_rejected, "rejected component still has consumers")),
     ]
     results = [
         {

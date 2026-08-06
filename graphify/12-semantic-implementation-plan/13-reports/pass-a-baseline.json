@@ -1,0 +1,17 @@
+{
+  "pass": "A",
+  "canonicalRows": 2338,
+  "activeRows": 1124,
+  "actionableRows": 723,
+  "v3Rows": 723,
+  "positiveReviews": 0,
+  "reviewRequired": 723,
+  "blockers": [
+    "No substantive v3 decisions recorded",
+    "723 actionable requirements remain REVIEW_REQUIRED",
+    "160 untestable criteria metric remains",
+    "1 non-observable requirement metric remains",
+    "Blanket PASS removed from requirement audit",
+    "Provenance now fails for 591 positive requirement statuses without v3 substance"
+  ]
+}

@@ -933,7 +933,12 @@ def recompute_quality_metrics(
     membership: list[dict[str, str]], packages: list[dict[str, object]],
     edges: list[dict[str, str]], schema_index: list[dict[str, str]], authority: list[dict[str, str]],
 ) -> dict[str, int]:
-    active = [row for row in requirements if row["supersession_status"] == "ACTIVE" and row["requirement_type"] in IMPLEMENTATION_TYPES]
+    active = [
+        row for row in requirements
+        if row["supersession_status"] == "ACTIVE"
+        and row["requirement_type"] in IMPLEMENTATION_TYPES
+        and mappings[row["canonical_id"]]["primary_implementation_phase"]
+    ]
     package_phase = {str(row["work_package_id"]): str(row["implementation_phase"]) for row in packages}
     phase_mismatches = sum(mappings[row["canonical_id"]]["primary_implementation_phase"] != package_phase.get(row["work_package_id"]) for row in membership)
     required_concepts = {"Saved views", "Memories", "Location records", "Export manifests", "Restore manifests", "Privacy-export recipes", "Filename templates", "Drive registry", "Derivative manifests", "AI candidate and proposal records"}
@@ -952,7 +957,11 @@ def recompute_quality_metrics(
         "fragmentary_active_records": sum(len(meaningful_words(row["statement"])) < 8 for row in active),
         "non_observable_requirements": sum(not OBSERVABLE.search(row["statement"]) for row in active),
         "generic_template_records": sum(bool(GENERIC_TEMPLATE.search(row["statement"].strip())) for row in active),
-        "untestable_criteria": sum(row["requirement_type"] == "ACCEPTANCE_CRITERION" and (not re.search(r"\b(given|when)\b", row["statement"], re.I) or not OBSERVABLE.search(row["statement"])) for row in active),
+        "untestable_criteria": sum(
+            row["requirement_type"] == "ACCEPTANCE_CRITERION"
+            and (not re.search(r"\b(given|when)\b", row["statement"] + " " + row.get("acceptance_criteria", ""), re.I) or not OBSERVABLE.search(row["statement"] + " " + row.get("acceptance_criteria", "")))
+            for row in active
+        ),
         "missing_parent_relationships": sum(row["requirement_type"] == "ACCEPTANCE_CRITERION" and not row["parent_requirement_id"] for row in active),
         "missing_verification_methods": sum(not row["verification_method"] for row in active),
         "phase_package_mismatches": phase_mismatches,
@@ -999,17 +1008,220 @@ def check_review_provenance(coverage: dict[str, object]) -> list[str]:
 
 def check_active_scripts_for_automatic_certification(tools_dir: Path) -> list[str]:
     errors: list[str] = []
-    allowed = {"pass1_apply_v2_decisions.py", "pass1_render_v2_registry.py", "pass2_rebuild.py", "pass2_semantic_consistency.py", "pass2c_impact_audit.py", "pass2c_package_review.py", "pass3_independent_semantic_audit.py"}
     pattern = re.compile(
         r"setdefault\(['\"](?:review_status|reviewer_status)['\"]\s*,\s*['\"]REVIEWED"
         r"|\[['\"](?:review_status|reviewer_status)['\"]\]\s*=\s*['\"]REVIEWED['\"]",
     )
     for path in sorted(tools_dir.glob("*.py")):
-        if path.name in allowed or "superseded" in str(path):
+        if "superseded" in str(path):
             continue
         text = path.read_text(encoding="utf-8")
         if pattern.search(text):
             errors.append(f"automatic positive review certification: {path.name}")
+    return errors
+
+
+def check_v3_requirement_ledger(
+    requirements: list[dict[str, str]],
+    mappings: dict[str, dict[str, str]],
+    v3_rows: list[dict[str, str]],
+) -> list[str]:
+    errors: list[str] = []
+    impl_types = {
+        "FUNCTIONAL_REQUIREMENT", "NONFUNCTIONAL_REQUIREMENT", "ARCHITECTURAL_INVARIANT",
+        "SECURITY_INVARIANT", "PRIVACY_INVARIANT", "DATA_INTEGRITY_INVARIANT",
+        "IMPLEMENTATION_CONSTRAINT", "ACCEPTANCE_CRITERION", "OPTIONAL_ADAPTER",
+        "VERIFICATION_GATE", "REMOVAL_GATE", "RELEASE_GATE", "PROHIBITION",
+    }
+    v3_by_id = {row.get("Canonical ID", ""): row for row in v3_rows}
+    for row in requirements:
+        rid = row["canonical_id"]
+        if row.get("supersession_status") != "ACTIVE" or row.get("requirement_type") not in impl_types:
+            continue
+        if not mappings.get(rid, {}).get("primary_implementation_phase"):
+            continue
+        v3 = v3_by_id.get(rid)
+        if not v3:
+            errors.append(f"actionable requirement missing v3 review row: {rid}")
+            continue
+        status = v3.get("Review status", "")
+        if status not in {"REVIEWED_CONFIRMED", "REVIEWED_CORRECTED"}:
+            errors.append(f"actionable requirement not positively reviewed: {rid}")
+            continue
+        substantive = (
+            v3.get("Final reviewed statement")
+            and v3.get("Verification method")
+            and v3.get("Item-specific rationale")
+            and v3.get("Actor or subsystem")
+            and v3.get("Observable result")
+        )
+        if v3.get("Requirement type") == "ACCEPTANCE_CRITERION" and not v3.get("Acceptance criteria"):
+            substantive = False
+        if not substantive:
+            errors.append(f"actionable requirement v3 review lacks substantive fields: {rid}")
+        rationale = v3.get("Item-specific rationale", "")
+        if len(rationale) < 40:
+            errors.append(f"actionable requirement v3 rationale too short: {rid}")
+    return errors
+
+
+def check_pass_b_ledgers(
+    packages: list[dict[str, object]],
+    membership: list[dict[str, str]],
+    dependencies: list[dict[str, str]],
+    package_reviews: list[dict[str, str]],
+    membership_reviews: list[dict[str, str]],
+    dependency_reviews: list[dict[str, str]],
+) -> list[str]:
+    errors: list[str] = []
+    package_review_by_id = {row.get("Final package ID", ""): row for row in package_reviews}
+    membership_review_by_id = {row.get("Canonical ID", ""): row for row in membership_reviews}
+    dependency_review_by_key = {
+        f"{row.get('Dependent package','')}<-{row.get('Prerequisite package','')}": row
+        for row in dependency_reviews
+    }
+    for package in packages:
+        pid = str(package["work_package_id"])
+        row = package_review_by_id.get(pid)
+        if not row:
+            errors.append(f"package missing Pass B review: {pid}")
+        elif row.get("Review status") != "REVIEWED_CONFIRMED":
+            errors.append(f"package Pass B review not confirmed: {pid}")
+    for row in membership:
+        review = membership_review_by_id.get(row["canonical_id"])
+        if not review or review.get("Review status") != "REVIEWED_CONFIRMED":
+            errors.append(f"membership Pass B review not confirmed: {row['canonical_id']}")
+    for edge in dependencies:
+        key = f"{edge['work_package_id']}<-{edge['prerequisite_work_package_id']}"
+        review = dependency_review_by_key.get(key)
+        if not review or review.get("Review status") != "REVIEWED_CONFIRMED":
+            errors.append(f"dependency Pass B review not confirmed: {key}")
+    return errors
+
+
+def check_pass_b_architecture_completeness(
+    plan_root: Path,
+    packages: list[dict[str, object]],
+    memberships: list[dict[str, str]],
+) -> list[str]:
+    errors: list[str] = []
+    required = {
+        "reviewed-work-package-members-v1.csv": "13-reports/reviewed-work-package-members-v1.csv",
+        "pass-b-large-package-review.csv": "13-reports/pass-b-large-package-review.csv",
+        "pass-b-multi-capability-member-review.csv": "13-reports/pass-b-multi-capability-member-review.csv",
+        "reviewed-package-contract-schema-verification-v1.csv": "13-reports/reviewed-package-contract-schema-verification-v1.csv",
+        "reviewed-package-test-verification-v1.csv": "13-reports/reviewed-package-test-verification-v1.csv",
+        "reviewed-package-exit-gates-v1.csv": "13-reports/reviewed-package-exit-gates-v1.csv",
+        "pass-b-adversarial-results.json": "13-reports/pass-b-adversarial-results.json",
+    }
+    for label, rel in required.items():
+        path = plan_root / rel
+        if not path.exists() or path.stat().st_size == 0:
+            errors.append(f"Pass B architecture artifact missing or empty: {label}")
+    adversarial = plan_root / "13-reports" / "pass-b-adversarial-results.json"
+    if adversarial.exists():
+        data = read_json(adversarial)
+        if int(data.get("missingRequiredFailureClasses", -1)) != 0:
+            errors.append(f"Pass B missing required adversarial classes: {data.get('missingRequiredFailureClasses')}")
+        if data.get("status") != "PASS":
+            errors.append("Pass B adversarial suite is not complete")
+    i3_members = [m for m in memberships if m["work_package_id"] == "WP-I3-001"]
+    if i3_members:
+        member_review = plan_root / "13-reports" / "reviewed-work-package-members-v1.csv"
+        if member_review.exists():
+            rows = read_csv(member_review)
+            i3_reviewed = {r["Canonical ID"] for r in rows if r.get("Package ID") == "WP-I3-001"}
+            if len(i3_reviewed) != len(i3_members):
+                errors.append(f"WP-I3-001 member review incomplete: {len(i3_reviewed)}/{len(i3_members)}")
+    return errors
+
+
+def check_pass_b_independent_evidence(
+    member_rows: list[dict[str, str]],
+    contract_rows: list[dict[str, str]],
+    test_rows: list[dict[str, str]],
+    exit_rows: list[dict[str, str]],
+    decision_rows: list[dict[str, str]],
+) -> list[str]:
+    errors: list[str] = []
+    groups = [
+        ("member", member_rows),
+        ("contract/schema", contract_rows),
+        ("test", test_rows),
+        ("exit-gate", exit_rows),
+        ("package-decision", decision_rows),
+    ]
+    for label, rows in groups:
+        if not rows:
+            errors.append(f"independent {label} verification ledger is empty")
+            continue
+        for row in rows:
+            if row.get("Verification status") not in {"VERIFIED", "CORRECTED", "MOVED"}:
+                errors.append(f"independent {label} row not verified: {row.get('Package ID', row.get('Canonical ID', ''))}")
+            evidence = row.get("Evidence sources", "") or row.get("Evidence", "")
+            if not evidence:
+                errors.append(f"independent {label} row lacks evidence source: {row.get('Package ID', row.get('Canonical ID', ''))}")
+            rationale = row.get("Item-specific rationale", "")
+            if len(rationale) < 40:
+                errors.append(f"independent {label} row rationale too short: {row.get('Package ID', row.get('Canonical ID', ''))}")
+    return errors
+
+
+def check_component_licence_completeness(
+    components: list[dict[str, str]],
+    dependencies: list[dict[str, str]],
+) -> list[str]:
+    errors: list[str] = []
+    pending_statuses = {
+        "PENDING", "PENDING_I0_INVENTORY", "PENDING_REPOSITORY_PROOF", "PENDING_OPTIONAL",
+        "OS_COMPONENT_REVIEW_PENDING", "BUILD_ONLY_PENDING", "BUNDLED_SOURCE_PENDING",
+    }
+    approved_licences = {"APPROVED", "APPROVED_WITH_NOTICE", "APPROVED_BUILD_ONLY", "PLATFORM_PROVIDED", "OPTIONAL_NOT_BUNDLED", "REJECTED"}
+    edges = {(d["work_package_id"], d["prerequisite_work_package_id"]) for d in dependencies}
+    for component in components:
+        name = component.get("component", "")
+        if component.get("final_status", "") in pending_statuses or component.get("version_status", "") in pending_statuses:
+            errors.append(f"component decision pending: {name}")
+        if component.get("licence_status", "") not in approved_licences or component.get("licence_status", "") in pending_statuses:
+            errors.append(f"component licence pending or invalid: {name}")
+        if not component.get("redistribution_status", ""):
+            errors.append(f"component redistribution missing: {name}")
+        if not component.get("decision_package", ""):
+            errors.append(f"component decision package missing: {name}")
+        if not component.get("version_rule", ""):
+            errors.append(f"component version rule missing: {name}")
+        if len(component.get("reason", "")) < 40:
+            errors.append(f"component rationale generic: {name}")
+        consumers = [x.strip() for x in component.get("consumer_packages", "").split(";") if x.strip()]
+        for consumer in consumers:
+            if (consumer, component.get("decision_package", "")) not in edges:
+                errors.append(f"component consumer lacks decision dependency: {consumer} -> {component.get('decision_package')}")
+        if component.get("final_status") == "REJECTED" and consumers:
+            errors.append(f"rejected component still has consumers: {name}")
+    return errors
+
+
+def check_final_100_percent_certification(plan_root: Path) -> list[str]:
+    errors: list[str] = []
+    expected = "FULL IMPLEMENTATION PLANNING 100% COMPLETE \u2014 WP-I0-001 MAY BEGIN"
+    old = "IMPLEMENTATION-READY PLANNING COMPLETE \u2014 I0 MAY BEGIN"
+    cert_path = plan_root / "13-reports" / "final-100-percent-certification.json"
+    cert = read_json(cert_path) if cert_path.exists() else {}
+    if cert.get("status") != "PASS" or cert.get("readiness_declaration") != expected:
+        errors.append("final 100% certification report missing or incorrect")
+    if cert.get("implementation_planning_100_percent_complete") is not True:
+        errors.append("final certification implementation_planning flag is not true")
+    if cert.get("remaining_blockers"):
+        errors.append("final certification has remaining blockers")
+    handoff = (plan_root / "14-handoff" / "START-HERE.md").read_text(encoding="utf-8")
+    if expected not in handoff:
+        errors.append("handoff does not contain the final 100% declaration")
+    if old in handoff:
+        errors.append("old readiness declaration remains active in handoff")
+    proof_path = plan_root / "13-reports" / "final-determinism-proof.json"
+    proof = read_json(proof_path) if proof_path.exists() else {}
+    if proof.get("status") != "PASS":
+        errors.append("final determinism proof did not pass")
     return errors
 
 
@@ -1165,6 +1377,38 @@ def run() -> dict[str, object]:
     determinism_report = read_json(determinism_path) if determinism_path.exists() else {}
     handoff_text = (PLAN / "14-handoff" / "START-HERE.md").read_text(encoding="utf-8")
     level("L15_PERSISTED_READINESS", check_persisted_readiness_declaration(readiness_report, handoff_text, determinism_report))
+    v3_path = PLAN / "13-reports" / "reviewed-actionable-requirements-v3.csv"
+    v3_rows = read_csv(v3_path) if v3_path.exists() else []
+    level("L16_REQUIREMENT_LEDGER", check_v3_requirement_ledger(requirements, mappings, v3_rows))
+    pkg_review_path = PLAN / "13-reports" / "reviewed-work-packages-v3.csv"
+    mem_review_path = PLAN / "13-reports" / "reviewed-package-memberships-v3.csv"
+    dep_review_path = PLAN / "13-reports" / "reviewed-dependencies-v3.csv"
+    pkg_reviews = read_csv(pkg_review_path) if pkg_review_path.exists() else []
+    mem_reviews = read_csv(mem_review_path) if mem_review_path.exists() else []
+    dep_reviews = read_csv(dep_review_path) if dep_review_path.exists() else []
+    level("L17_PASS_B_LEDGER", check_pass_b_ledgers(packages, membership, edges, pkg_reviews, mem_reviews, dep_reviews))
+    v2_files = {
+        "independently-verified-package-members-v2.csv": "13-reports/independently-verified-package-members-v2.csv",
+        "independently-verified-package-contracts-v2.csv": "13-reports/independently-verified-package-contracts-v2.csv",
+        "independently-verified-package-tests-v2.csv": "13-reports/independently-verified-package-tests-v2.csv",
+        "independently-verified-package-exit-gates-v2.csv": "13-reports/independently-verified-package-exit-gates-v2.csv",
+        "independently-verified-package-decisions-v2.csv": "13-reports/independently-verified-package-decisions-v2.csv",
+    }
+    v2_rows = {name: (read_csv(PLAN / rel) if (PLAN / rel).exists() else []) for name, rel in v2_files.items()}
+    level(
+        "L18_PASS_B_ARCHITECTURE_COMPLETENESS",
+        check_pass_b_architecture_completeness(PLAN, packages, membership)
+        + check_pass_b_independent_evidence(
+            v2_rows["independently-verified-package-members-v2.csv"],
+            v2_rows["independently-verified-package-contracts-v2.csv"],
+            v2_rows["independently-verified-package-tests-v2.csv"],
+            v2_rows["independently-verified-package-exit-gates-v2.csv"],
+            v2_rows["independently-verified-package-decisions-v2.csv"],
+        ),
+    )
+    component_rows = read_csv(PLAN / "10-component-manifest" / "components.csv")
+    level("L19_COMPONENT_AND_LICENCE_COMPLETENESS", check_component_licence_completeness(component_rows, edges))
+    level("L20_FINAL_100_PERCENT_PLANNING_CERTIFICATION", check_final_100_percent_certification(PLAN))
     computed = recompute_quality_metrics(requirements, mappings, membership, packages, edges, schema_index, authority)
     metric_report = read_json(PLAN / "13-reports" / "requirement-repair-stats.json")
     level("L10_METRICS_HONESTY", check_metrics_honesty(metric_report, computed, builder_text))

@@ -1,0 +1,138 @@
+{
+  "mission": "FINAL NON-CIRCULAR 100% PLANNING COMPLETION",
+  "counts": {
+    "canonicalRows": 2338,
+    "activeRows": 1124,
+    "actionableRows": 723
+  },
+  "qualityMetrics": {
+    "fragmentary_active_records": 0,
+    "non_observable_requirements": 1,
+    "generic_template_records": 0,
+    "untestable_criteria": 160,
+    "missing_parent_relationships": 0,
+    "missing_verification_methods": 0,
+    "phase_package_mismatches": 0,
+    "stale_package_references": 0,
+    "unreviewed_mappings": 0,
+    "unreviewed_package_memberships": 0,
+    "missing_dependency_rationales": 0,
+    "missing_authority_schema_decisions": 0
+  },
+  "packages": {
+    "packageCount": 155,
+    "genericObjectives": 114,
+    "genericDeliverables": 114,
+    "genericTests": 114,
+    "genericExclusions": 117,
+    "genericContracts": 117,
+    "genericExitGates": 114,
+    "packagesWithImplementationPathField": 0,
+    "largePackages": [
+      "WP-I10-011",
+      "WP-I3-001",
+      "WP-I6-002"
+    ],
+    "multiCapabilityPackages": [
+      "WP-I0-011",
+      "WP-I10-011",
+      "WP-I11-010",
+      "WP-I14-003",
+      "WP-I14-013",
+      "WP-I3-001",
+      "WP-I3-006",
+      "WP-I3-008",
+      "WP-I3-009",
+      "WP-I3-011",
+      "WP-I3-015",
+      "WP-I4-001",
+      "WP-I4-008",
+      "WP-I5-006",
+      "WP-I5-007",
+      "WP-I5-010",
+      "WP-I5-013",
+      "WP-I6-002",
+      "WP-I6-007",
+      "WP-I6-008",
+      "WP-I6-009",
+      "WP-I7-007",
+      "WP-I7-010",
+      "WP-I8-001",
+      "WP-I8-002",
+      "WP-I8-006",
+      "WP-I8-007"
+    ],
+    "wp_i3_001_member_count": 31
+  },
+  "memberships": {
+    "count": 723
+  },
+  "dependencies": {
+    "count": 200
+  },
+  "components": {
+    "count": 17,
+    "pendingVersionOrLicence": 17,
+    "pendingLicence": 17,
+    "statuses": [
+      [
+        "PENDING",
+        "PENDING"
+      ],
+      [
+        "PENDING_I0_INVENTORY",
+        "PENDING"
+      ],
+      [
+        "PENDING_OPTIONAL",
+        "PENDING"
+      ],
+      [
+        "PENDING_PLATFORM_INVENTORY",
+        "OS_COMPONENT_REVIEW_PENDING"
+      ],
+      [
+        "PENDING_REPOSITORY_PROOF",
+        "PENDING"
+      ]
+    ]
+  },
+  "reviewSystem": {
+    "independentAuditRows": 3579,
+    "genericPassRationales": 2338,
+    "provenanceCheckedRows": 5917,
+    "provenanceUnmatched": 0,
+    "provenanceSubstanceCheck": false,
+    "validatorAllowlist": true,
+    "adversarialFixtureCount": 48,
+    "validatorStatus": "PASS"
+  },
+  "determinism": {
+    "status": "PASS",
+    "includedFileCount": 529,
+    "excludedFiles": [
+      "13-reports/final-package-determinism.json",
+      "13-reports/pass1-external-final.json",
+      "13-reports/pass2c-external-readonly-final.json",
+      "13-reports/pass3-certification-report.json",
+      "13-reports/pass3-external-readonly-final.json",
+      "PLAN-MANIFEST.json"
+    ],
+    "threeLayerStructure": false
+  },
+  "remainingBlockers": [
+    "Automatic PASS judgements remain in pass3_independent_semantic_audit.py",
+    "Review provenance is ID-presence-based, not substance-based",
+    "Active review-writing scripts are allowlisted in the automatic-certification scanner",
+    "All 155 packages have not been individually reviewed",
+    "WP-I3-001 (31 members) has not been split or member-reviewed",
+    "Generic package wording remains in objectives/deliverables/tests/exclusions/contracts/exit gates",
+    "Implementation paths are not defined for packages",
+    "All component/licence decisions remain pending",
+    "Requirement quality metrics are not all zero",
+    "Three-layer non-circular determinism is not implemented",
+    "Certification report and determinism evidence are excluded from the current determinism hash",
+    "Exact package-to-Codebase maps do not exist",
+    "Final declaration is still the superseded readiness string"
+  ]
+}

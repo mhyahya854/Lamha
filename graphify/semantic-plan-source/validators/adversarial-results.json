@@ -1,6 +1,6 @@
 {
-  "fixtureCount": 48,
-  "expectedFailuresObserved": 48,
+  "fixtureCount": 64,
+  "expectedFailuresObserved": 64,
   "status": "PASS",
   "fixtures": [
     {
@@ -475,6 +475,139 @@
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
         "persisted readiness declaration missing or incorrect"
+      ]
+    },
+    {
+      "fixture": "F49_MISSING_V3_REQUIREMENT_REVIEW",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "actionable requirement missing v3 review row: FIX-REQ"
+      ]
+    },
+    {
+      "fixture": "F50_GENERIC_V3_RATIONALE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "actionable requirement v3 rationale too short: FIX-REQ"
+      ]
+    },
+    {
+      "fixture": "F51_ID_ONLY_V3_PROVENANCE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "actionable requirement v3 review lacks substantive fields: FIX-REQ",
+        "actionable requirement v3 rationale too short: FIX-REQ"
+      ]
+    },
+    {
+      "fixture": "F52_ACTIVE_SCRIPT_ALLOWLIST_REMOVED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "automatic positive review certification: pass3_independent_semantic_audit.py"
+      ]
+    },
+    {
+      "fixture": "F53_GENERATED_MEMBER_EVIDENCE_ACCEPTED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "independent member verification ledger is empty",
+        "independent contract/schema verification ledger is empty",
+        "independent test verification ledger is empty",
+        "independent exit-gate verification ledger is empty",
+        "independent package-decision verification ledger is empty"
+      ]
+    },
+    {
+      "fixture": "F54_GENERATED_CONTRACT_SCHEMA_EVIDENCE_ACCEPTED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "independent member row not verified: ",
+        "independent member row lacks evidence source: ",
+        "independent member row rationale too short: ",
+        "independent contract/schema verification ledger is empty",
+        "independent test verification ledger is empty",
+        "independent exit-gate verification ledger is empty",
+        "independent package-decision verification ledger is empty"
+      ]
+    },
+    {
+      "fixture": "F55_GENERATED_TEST_EXIT_EVIDENCE_ACCEPTED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "independent member row not verified: ",
+        "independent member row lacks evidence source: ",
+        "independent member row rationale too short: ",
+        "independent contract/schema row not verified: ",
+        "independent contract/schema row lacks evidence source: ",
+        "independent contract/schema row rationale too short: ",
+        "independent test verification ledger is empty",
+        "independent exit-gate verification ledger is empty",
+        "independent package-decision verification ledger is empty"
+      ]
+    },
+    {
+      "fixture": "F56_WP_I3_001_UNCHANGED_WITHOUT_REASSESSMENT",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "independent member verification ledger is empty"
+      ]
+    },
+    {
+      "fixture": "F57_COMPONENT_PENDING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "component decision pending: FIX-COMP"
+      ]
+    },
+    {
+      "fixture": "F58_COMPONENT_LICENCE_PENDING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "component licence pending or invalid: FIX-COMP"
+      ]
+    },
+    {
+      "fixture": "F59_COMPONENT_REDISTRIBUTION_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "component redistribution missing: FIX-COMP"
+      ]
+    },
+    {
+      "fixture": "F60_COMPONENT_DECISION_PACKAGE_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "component decision package missing: FIX-COMP",
+        "component consumer lacks decision dependency: WP-I0-001 -> "
+      ]
+    },
+    {
+      "fixture": "F61_COMPONENT_VERSION_RULE_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "component version rule missing: FIX-COMP"
+      ]
+    },
+    {
+      "fixture": "F62_COMPONENT_RATIONALE_GENERIC",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "component rationale generic: FIX-COMP"
+      ]
+    },
+    {
+      "fixture": "F63_COMPONENT_CONSUMER_MISSING_DEPENDENCY",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "component consumer lacks decision dependency: WP-I2-001 -> WP-I0-001"
+      ]
+    },
+    {
+      "fixture": "F64_REJECTED_COMPONENT_STILL_CONSUMED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "component consumer lacks decision dependency: WP-I2-001 -> WP-I0-001",
+        "rejected component still has consumers: FIX-COMP"
       ]
     }
   ]

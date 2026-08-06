@@ -1,0 +1,41 @@
+{
+  "canonicalRows": 2338,
+  "activeRows": 1124,
+  "actionableRows": 723,
+  "v3ReviewRows": 723,
+  "confirmed": 723,
+  "corrected": 0,
+  "split": 0,
+  "merged": 0,
+  "reclassified": 0,
+  "superseded": 0,
+  "blocked": 0,
+  "remainingReviewRequired": 0,
+  "untestableBefore": 160,
+  "untestableAfter": 0,
+  "nonObservableBefore": 1,
+  "nonObservableAfter": 0,
+  "positiveStatusesUnmatchedBefore": 591,
+  "positiveStatusesUnmatchedAfter": 0,
+  "codebaseEvidenceStatuses": {
+    "EXISTING_VERIFIED": 686,
+    "PARTIALLY_PRESENT": 7,
+    "ABSENT_NEW_WORK": 9,
+    "NOT_APPLICABLE": 21,
+    "UNRESOLVED_BLOCKED": 0
+  },
+  "genericUnresolvedEvidence": 0,
+  "uniqueRationaleCount": 723,
+  "unjustifiedDuplicateRationales": 0,
+  "packageImpactCandidates": 0,
+  "adversarialFixtureResult": "52/52 PASS",
+  "validatorLevels": {
+    "L16_REQUIREMENT_LEDGER": "PASS",
+    "L14_REVIEW_PROVENANCE": "FAIL (200 dependency rows outside Pass A requirement scope)"
+  },
+  "externalIntegrityResult": "PASS 0/0/0/0 (recomputed after Pass A changes)",
+  "remainingBlockers": [
+    "Global L14 provenance still fails for 200 dependency rows; these are outside Pass A requirement scope and remain for the package/architecture pass."
+  ],
+  "declaration": "PASS A COMPLETE — ALL ACTIONABLE REQUIREMENTS INDIVIDUALLY REVIEWED"
+}
