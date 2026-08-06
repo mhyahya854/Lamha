@@ -20,18 +20,18 @@
     },
     {
       "path": "02-requirements/canonical-registry.csv",
-      "bytes": 3899959,
-      "sha256": "7176beb45d1a90151eb2afa2997f738c850cae30aad2c94dc12c129a18a420e8"
+      "bytes": 3902454,
+      "sha256": "c5c25955f297dd5049438477c5329b9be66ec2afebc0e02f6d2a935afd1a2946"
     },
     {
       "path": "02-requirements/canonical-registry.jsonl",
-      "bytes": 6044512,
-      "sha256": "84adb8532309718e15ff6f78c49cb1806df0a68eca098860eddddb0d5a32cbe8"
+      "bytes": 6047924,
+      "sha256": "1c7cff64ff43851a8f64bab05c6802eaf9bcc9f11c24344dfcb0b38d04722722"
     },
     {
       "path": "02-requirements/requirement-taxonomy.json",
       "bytes": 1059,
-      "sha256": "6c672f2eb2b65a9a453e4c3be5cbddbda92df06d8222e73da4df2cd450158c1f"
+      "sha256": "132f1dd98daa646f1e7f47c9403174fbf4486620f6dfb7b2e8d00789f29d4228"
     },
     {
       "path": "02-requirements/source-row-dispositions.csv",
@@ -51,12 +51,12 @@
     {
       "path": "03-phases/phase-load-report.csv",
       "bytes": 183,
-      "sha256": "77e1c610605778c520f7684dc8d5699bb795954cefecd5d4e3b79fa3cc917182"
+      "sha256": "02c864d7fdaa11d3f1ba47f0a87270ee45e77f6ede093c7b4406b5e90cf09f6f"
     },
     {
       "path": "03-phases/reviewed-requirement-mapping.csv",
-      "bytes": 461110,
-      "sha256": "3ed2ba8edf42c356e736da74283b1b7a58abd92868aab2459e85c63ccb4c870d"
+      "bytes": 461238,
+      "sha256": "3e889e8cead1bdb78e29ee9893467ac8786bcfddf37a05ee6681a6a8dbf520fb"
     },
     {
       "path": "04-work-packages/dependencies.csv",
@@ -160,8 +160,8 @@
     },
     {
       "path": "04-work-packages/packets/WP-I10-003.md",
-      "bytes": 3256,
-      "sha256": "1e4c6a792d9c7edb7cd150bf017f72b659609f52efadf6afe6827b659fb6bfde"
+      "bytes": 4108,
+      "sha256": "3a1ac512bf4e603781ad783d3c3b138c0fbcbad5d025cdd40b921a113f7602e7"
     },
     {
       "path": "04-work-packages/packets/WP-I10-004.md",
@@ -845,8 +845,8 @@
     },
     {
       "path": "04-work-packages/requirement-membership.csv",
-      "bytes": 316039,
-      "sha256": "a2597d12d0fcb89884a958e63cb83981bdddac09622761cea5f568ffea0cc50b"
+      "bytes": 316253,
+      "sha256": "231b527faf2050920c6d4168bcbb640404bdeb77bc486a8ba2bc73cf66a4d629"
     },
     {
       "path": "04-work-packages/work-packages.csv",
@@ -855,8 +855,8 @@
     },
     {
       "path": "04-work-packages/work-packages.json",
-      "bytes": 535700,
-      "sha256": "a8e8806336252122f73a73d600fb6d050a923fa1968bcca2da5b8a981779772a"
+      "bytes": 535724,
+      "sha256": "c832610977a4a084eef046e56def768cfdad93f0b48ee8d6094949397f88fa28"
     },
     {
       "path": "05-contracts/ai-worker-protocol-v3.schema.json",
@@ -2260,8 +2260,8 @@
     },
     {
       "path": "10-component-manifest/components.csv",
-      "bytes": 13225,
-      "sha256": "8b9a828be2e56e390a08d26f8ca246c7624202f05942d1f826d34bb61ed84697"
+      "bytes": 14348,
+      "sha256": "20067615055c2a15a2c503ec528db4f87ea4a1763792b1ad88591b00d90ab4d9"
     },
     {
       "path": "10-component-manifest/README.md",
@@ -2370,8 +2370,8 @@
     },
     {
       "path": "12-validators/adversarial_fixtures.py",
-      "bytes": 35261,
-      "sha256": "68de3c7a9ec8695940d9fb8f25c007d74c933d32558481ca27539b112e24f6c8"
+      "bytes": 40262,
+      "sha256": "75b6cb84b85ebeaf5413dcf86a544bf44506b5bb46a9d2de098adfb43213a265"
     },
     {
       "path": "12-validators/packet_smoke_tests.py",
@@ -2380,8 +2380,8 @@
     },
     {
       "path": "12-validators/validate_plan.py",
-      "bytes": 86474,
-      "sha256": "74b259b3ab34d6408710d43135e44e384d617781675157fd59010ecb576d4682"
+      "bytes": 90219,
+      "sha256": "ec299ae47e23b87b1ab9c72cd6b9fcdd60c586711e9092b988207ef7304ec9fc"
     },
     {
       "path": "12-validators/validator-results.json",
@@ -2397,6 +2397,11 @@
       "path": "12-validators/verify_external_boundary.py",
       "bytes": 5060,
       "sha256": "fb60289ec147df41e92676bb669325c3860afdb1e47c0cb48784344519af1482"
+    },
+    {
+      "path": "13-reports/ai-model-override-amendment.json",
+      "bytes": 2752,
+      "sha256": "da48950f62feccf6172cccd7c442e928a422a69bb9400926bb92395a937cd006"
     },
     {
       "path": "13-reports/backup-archive-reference-classification.csv",
@@ -2426,17 +2431,17 @@
     {
       "path": "13-reports/final-100-percent-certification.json",
       "bytes": 613,
-      "sha256": "37c08ec62a870c6b1f206277995c44e48fba75203ddd7f779e6eba52fec5204c"
+      "sha256": "dfcfe60c01ebe6749ac705170d6bcd9b053efa47bd3f8099305704674754f265"
     },
     {
       "path": "13-reports/final-content-manifest.json",
-      "bytes": 31238,
-      "sha256": "dfb21a96790c332a5c1f66b3d8dc428f87b3a50e16d71baa358b9b90661eca87"
+      "bytes": 31336,
+      "sha256": "9a8905c3482668de3d1ebe7a65d3b33a6a97b170661fa504ab76d25ed0b2a090"
     },
     {
       "path": "13-reports/final-determinism-proof.json",
       "bytes": 459,
-      "sha256": "821a443a40ae98a415f3994eaf171388a13dc6a0d40b845f5af8693428e92767"
+      "sha256": "e59c4d3308824c7fdd551ee9c5bbceaf0ed9bb5d6612adfd361ffaa712949825"
     },
     {
       "path": "13-reports/final-package-determinism.json",
@@ -2451,7 +2456,7 @@
     {
       "path": "13-reports/final-release-envelope.json",
       "bytes": 900,
-      "sha256": "b0660948cc4703b646ef3124463d87458d120f8453197e722b56f10d2d0b6c25"
+      "sha256": "6ba58699c5eec529290725df129cfc15a177c0530e845701471ee9bed4f60a69"
     },
     {
       "path": "13-reports/generated-fragment-disposition-report.csv",
@@ -2661,7 +2666,7 @@
     {
       "path": "13-reports/pass3-external-readonly-final.json",
       "bytes": 705957,
-      "sha256": "5094c94987266381eaa5531320034160cd4206ba8e49a2d8f89008903dc572b0"
+      "sha256": "865ea247fe0432b5c060da6d6752ab395e9d80061554a385d9d42a41c0767c43"
     },
     {
       "path": "13-reports/pass3-legacy-template-reproduction.csv",
@@ -2676,7 +2681,7 @@
     {
       "path": "13-reports/phase-package-reconciliation.json",
       "bytes": 139,
-      "sha256": "5f08a9acf341de97212bd7b1fc14a0af438771e010efe313bffcd556acbb9c63"
+      "sha256": "a9a93e5743e4db7e8d72d6190ff052dd155242170594eaed823eb74946fecd28"
     },
     {
       "path": "13-reports/regeneration-stats.json",
@@ -2691,7 +2696,7 @@
     {
       "path": "13-reports/requirement-repair-stats.json",
       "bytes": 975,
-      "sha256": "73c1496ec31b51c0eac9a7ed16f48abc2f2c442aa979664a77fa1352781552dc"
+      "sha256": "78b27b1d487385078c2845609dc42add94c2ba60534889ecd47654818e611597"
     },
     {
       "path": "13-reports/review-coverage.json",
@@ -2710,8 +2715,8 @@
     },
     {
       "path": "13-reports/reviewed-actionable-requirements-v3.csv",
-      "bytes": 2017073,
-      "sha256": "b8cca0e05c6e5f31c61c8f407d4f97279358fd82fae0589ae75d81d20c052dfc"
+      "bytes": 2021333,
+      "sha256": "2911b4e35cb0fc399ee2bca0bc924612cbb3c7cab60cc5a46991cea03d1be9d4"
     },
     {
       "path": "13-reports/reviewed-change-audit.csv",

@@ -1,7 +1,7 @@
 {
   "layer": 1,
-  "sha256": "cd7ccdc02514aadd8087f991838746ae7b7e9409f302b40a6a402b11078de564",
-  "fileCount": 562,
+  "sha256": "aa85ae11cdbd06d66166d31980b47fc2a3c4f2f0729121d81ed9cdbbbf16c97b",
+  "fileCount": 564,
   "files": [
     "00-constitution/GLOBAL-CONSTITUTION.md",
     "01-decisions/ADR-0001-reviewed-registries.md",
@@ -482,11 +482,13 @@
     "12-validators/validator-results.json",
     "12-validators/verify_determinism.py",
     "12-validators/verify_external_boundary.py",
+    "13-reports/ai-model-override-amendment.json",
     "13-reports/backup-archive-reference-classification.csv",
     "13-reports/backup-archive-reference-summary.json",
     "13-reports/command-flag-review.csv",
     "13-reports/contract-schema-candidate-stats.json",
     "13-reports/external-readonly-baseline.json",
+    "13-reports/final-determinism-proof.json",
     "13-reports/final-package-determinism.json",
     "13-reports/final-planning-gap-baseline.json",
     "13-reports/generated-fragment-disposition-report.csv",

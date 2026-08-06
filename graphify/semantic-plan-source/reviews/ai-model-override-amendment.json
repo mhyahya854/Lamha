@@ -1,0 +1,40 @@
+{
+  "requirement_id": "CAN-LAM-AI-090",
+  "requirement_text": "Lamha MUST NOT prevent a user from selecting a stronger or higher-accuracy local AI model solely because estimated processing time is long or the hardware is weaker than recommended. After verifying that the model is technically compatible with the device, Lamha MUST show estimated processing time, memory use, storage use, power and thermal impact, and available acceleration. The user MUST be allowed to continue immediately, schedule the job, process selected folders only, or choose a lighter model. Lamha MAY block the model only for a hard technical incompatibility, including insufficient safe memory, insufficient storage, unsupported model operations, unsupported runtime/provider, invalid or corrupted model files, or unresolved licensing restrictions.",
+  "acceptance_criteria": "Given a weaker laptop, when a stronger compatible model is listed, then it remains selectable and estimated duration/resource impact are shown; long duration alone never creates a hard block; insufficient safe memory, insufficient storage, unsupported operations, invalid model files, and licensing restrictions create hard blocks with exact reasons; user override, scheduling, selected-folder scope, pause/resume, and no silent substitution are supported; quantized variants are distinct; model/version/checksum/licence provenance is preserved; model changes invalidate affected derived AI results.",
+  "verification_method": "Run the AI model override amendment fixtures: compatibility listing, weak-hardware offer, slow-selectable, estimate display, user override, scheduling, selected folders, pause/resume, hard-block reasons, no silent substitution, quantized identity, provenance, and invalidation checks.",
+  "affected_packages": [
+    "WP-I10-003",
+    "WP-I10-005",
+    "WP-I10-006",
+    "WP-I10-008",
+    "WP-I10-013"
+  ],
+  "contract_concepts": [
+    "selected_model_id",
+    "recommended_model_id",
+    "selection_source",
+    "user_override",
+    "compatibility_status",
+    "hard_block_reason",
+    "estimated_duration",
+    "estimated_memory",
+    "estimated_storage",
+    "processing_mode",
+    "scheduled_start",
+    "pause_on_battery",
+    "selected_scope"
+  ],
+  "planned_commands": [
+    "ai.models.list_compatible",
+    "ai.models.select",
+    "ai.models.estimates",
+    "ai.models.override",
+    "ai.jobs.schedule",
+    "ai.jobs.pause",
+    "ai.jobs.resume",
+    "ai.jobs.scope"
+  ],
+  "component_model_selection_rule": "The default recommendation may depend on detected hardware, but every stronger model that passes the hard compatibility gate remains manually selectable. Estimated slowness alone must not make the model unavailable.",
+  "status": "APPROVED_AMENDMENT"
+}

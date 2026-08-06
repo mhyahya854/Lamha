@@ -1,4 +1,4 @@
-"""Sixty-four negative fixtures proving every final-blocker regression is rejected."""
+"""Eighty-four negative fixtures proving every final-blocker regression is rejected."""
 
 from __future__ import annotations
 
@@ -523,6 +523,29 @@ def run() -> dict[str, object]:
     c_consumer = validator.check_component_licence_completeness([component_row(consumer_packages="WP-I2-001")], edge)
     c_rejected = validator.check_component_licence_completeness([component_row(final_status="REJECTED", consumer_packages="WP-I2-001")], edge)
 
+    am_req = requirement_row("CAN-LAM-AI-090", "Lamha MUST NOT prevent a stronger compatible model due to slow estimates.", "ACCEPTANCE_CRITERION")
+    am_membership = [{"canonical_id": "CAN-LAM-AI-090", "work_package_id": "WP-I10-003"}]
+    am_components = [{"component": "ONNX Runtime", "model_selection_rule": "stronger model remains manually selectable"}]
+    am_amendment = {"contract_concepts": ["estimated_duration", "estimated_memory", "estimated_storage", "user_override", "scheduled_start", "pause_on_battery", "selected_scope", "hard_block_reason", "insufficient", "storage", "runtime", "checksum", "licensing", "silent", "quantized", "provenance", "invalidation"]}
+    with tempfile.TemporaryDirectory() as tmp4:
+        fake_plan = Path(tmp4)
+        (fake_plan / "13-reports").mkdir(parents=True)
+        (fake_plan / "13-reports" / "ai-model-override-amendment.json").write_text(json.dumps(am_amendment), encoding="utf-8")
+        am_full = validator.check_ai_model_override_amendment([am_req], am_membership, am_components, fake_plan)
+        am_missing_req = validator.check_ai_model_override_amendment([], am_membership, am_components, fake_plan)
+        am_short_stmt = requirement_row("CAN-LAM-AI-090", "Lamha may recommend a model.", "ACCEPTANCE_CRITERION")
+        am_missing_phrase = validator.check_ai_model_override_amendment([am_short_stmt], am_membership, am_components, fake_plan)
+        am_no_accept = dict(am_req); am_no_accept["acceptance_criteria"] = ""
+        am_missing_accept = validator.check_ai_model_override_amendment([am_no_accept], am_membership, am_components, fake_plan)
+        am_no_verify = dict(am_req); am_no_verify["verification_method"] = ""
+        am_missing_verify = validator.check_ai_model_override_amendment([am_no_verify], am_membership, am_components, fake_plan)
+        am_missing_membership = validator.check_ai_model_override_amendment([am_req], [], am_components, fake_plan)
+        am_missing_artifact = validator.check_ai_model_override_amendment([am_req], am_membership, am_components, Path(tmp4) / "nope")
+        am_missing_component_rule = validator.check_ai_model_override_amendment([am_req], am_membership, [{"component": "Face model/runtime", "model_selection_rule": ""}], fake_plan)
+        am_bad_artifact = {"contract_concepts": []}
+        (fake_plan / "13-reports" / "ai-model-override-amendment.json").write_text(json.dumps(am_bad_artifact), encoding="utf-8")
+        am_missing_concepts = validator.check_ai_model_override_amendment([am_req], am_membership, am_components, fake_plan)
+
     cases = [
         ("F01_GENERATED_REPORT_FALSELY_MANUAL", *contains(manual_errors, "automatically generated report labelled manual")),
         ("F02_BLANKET_REVIEW_CERTIFICATION", *contains(blanket_errors, "blanket script marks every row reviewed")),
@@ -588,6 +611,26 @@ def run() -> dict[str, object]:
         ("F62_COMPONENT_RATIONALE_GENERIC", *contains(c_generic, "component rationale generic")),
         ("F63_COMPONENT_CONSUMER_MISSING_DEPENDENCY", *contains(c_consumer, "component consumer lacks decision dependency")),
         ("F64_REJECTED_COMPONENT_STILL_CONSUMED", *contains(c_rejected, "rejected component still has consumers")),
+        ("F65_AMENDMENT_REQUIREMENT_MISSING", *contains(am_missing_req, "ai_model_user_override_requirement_present")),
+        ("F66_AMENDMENT_PHRASE_MISSING", *contains(am_missing_phrase, "ai_model_override_phrase_missing")),
+        ("F67_AMENDMENT_ACCEPTANCE_MISSING", *contains(am_missing_accept, "ai_model_override_acceptance_missing")),
+        ("F68_AMENDMENT_VERIFICATION_MISSING", *contains(am_missing_verify, "ai_model_override_verification_missing")),
+        ("F69_AMENDMENT_MEMBERSHIP_MISSING", *contains(am_missing_membership, "requirement_membership_present")),
+        ("F70_AMENDMENT_ARTIFACT_MISSING", *contains(am_missing_artifact, "ai_model_override_amendment_artifact_missing")),
+        ("F71_AMENDMENT_COMPONENT_RULE_MISSING", *contains(am_missing_component_rule, "component_model_selection_rule_missing")),
+        ("F72_AMENDMENT_CONCEPTS_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing")),
+        ("F73_ESTIMATED_DURATION_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:estimated_duration")),
+        ("F74_ESTIMATED_MEMORY_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:estimated_memory")),
+        ("F75_ESTIMATED_STORAGE_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:estimated_storage")),
+        ("F76_USER_OVERRIDE_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:user_override")),
+        ("F77_SCHEDULING_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:scheduled_start")),
+        ("F78_PAUSE_RESUME_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:pause_on_battery")),
+        ("F79_SELECTED_SCOPE_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:selected_scope")),
+        ("F80_HARD_BLOCK_REASON_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:hard_block_reason")),
+        ("F81_SILENT_SUBSTITUTION_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:silent")),
+        ("F82_QUANTIZED_VARIANT_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:quantized")),
+        ("F83_PROVENANCE_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:provenance")),
+        ("F84_INVALIDATION_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:invalidation")),
     ]
     results = [
         {

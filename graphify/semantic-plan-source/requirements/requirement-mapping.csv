@@ -2337,3 +2337,4 @@ CAN-SECTION-0233,Search and OCR,,I10;I15,,I15,,Not applicable: generated broad t
 CAN-SECTION-0234,Search and OCR,,I10;I15,,I15,,Not applicable: generated broad template is superseded and cannot own implementation.,NOT_APPLICABLE,NOT_APPLICABLE,Search and OCR,I10
 CAN-SECTION-0235,"Backup, trash, restore and rebuild",,I3;I15,,I15,,Not applicable: generated broad template is superseded and cannot own implementation.,NOT_APPLICABLE,NOT_APPLICABLE,Local data authority,I3
 CAN-SECTION-0236,"Backup, trash, restore and rebuild",,I3;I15,,I15,,Not applicable: generated broad template is superseded and cannot own implementation.,NOT_APPLICABLE,NOT_APPLICABLE,Local data authority,I3
+CAN-LAM-AI-090,Local AI worker,I10,I11;I15,,I15,,AI model override amendment; Local AI worker in I10.,REVIEWED_CORRECTED,NONE,,

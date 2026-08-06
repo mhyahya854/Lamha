@@ -819,6 +819,7 @@
     "root_evidence": "",
     "included_requirement_ids": [
       "CAN-LAM-AI-032",
+      "CAN-LAM-AI-090",
       "CAN-LAM-ARCH-394"
     ],
     "technical_dependencies": [

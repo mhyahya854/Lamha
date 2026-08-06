@@ -1225,6 +1225,63 @@ def check_final_100_percent_certification(plan_root: Path) -> list[str]:
     return errors
 
 
+def check_ai_model_override_amendment(
+    requirements: list[dict[str, str]],
+    membership: list[dict[str, str]],
+    components: list[dict[str, str]],
+    plan_root: Path,
+) -> list[str]:
+    errors: list[str] = []
+    rid = "CAN-LAM-AI-090"
+    req = next((r for r in requirements if r["canonical_id"] == rid), None)
+    if not req:
+        errors.append("ai_model_user_override_requirement_present:false")
+        return errors
+    stmt = req.get("statement", "")
+    required_phrases = ["MUST NOT prevent", "compatible", "estimated processing time", "user MUST be allowed", "hard technical incompatibility"]
+    for phrase in required_phrases:
+        if phrase not in stmt:
+            errors.append(f"ai_model_override_phrase_missing:{phrase}")
+    if not req.get("acceptance_criteria") or "Given a weaker laptop" not in req.get("acceptance_criteria", ""):
+        errors.append("ai_model_override_acceptance_missing")
+    if not req.get("verification_method"):
+        errors.append("ai_model_override_verification_missing")
+    if not any(m["canonical_id"] == rid for m in membership):
+        errors.append("requirement_membership_present:false")
+    amendment = plan_root / "13-reports" / "ai-model-override-amendment.json"
+    if not amendment.exists():
+        errors.append("ai_model_override_amendment_artifact_missing")
+    else:
+        data = read_json(amendment)
+        text = json.dumps(data, ensure_ascii=False)
+        required_concepts = [
+            "estimated_duration", "estimated_memory", "estimated_storage", "user_override",
+            "scheduled_start", "pause_on_battery", "selected_scope", "hard_block_reason",
+            "insufficient", "storage", "runtime", "checksum", "licensing",
+            "silent", "quantized", "provenance", "invalidation",
+        ]
+        for concept in required_concepts:
+            if concept not in text:
+                errors.append(f"ai_model_override_concept_missing:{concept}")
+    for component in components:
+        if component.get("component") in ("ONNX Runtime", "OCR model/runtime", "Embedding model/runtime", "Face model/runtime", "Python runtime or alternative AI host"):
+            if "stronger model" not in component.get("model_selection_rule", ""):
+                errors.append(f"component_model_selection_rule_missing:{component.get('component')}")
+    if "schedule" not in stmt and "scheduled_start" not in json.dumps(read_json(amendment) if amendment.exists() else {}, ensure_ascii=False):
+        errors.append("ai_model_override_scheduling_missing")
+    if "pause" not in stmt and "pause_on_battery" not in json.dumps(read_json(amendment) if amendment.exists() else {}, ensure_ascii=False):
+        errors.append("ai_model_override_pause_resume_missing")
+    if "selected folders" not in stmt and "selected_scope" not in json.dumps(read_json(amendment) if amendment.exists() else {}, ensure_ascii=False):
+        errors.append("ai_model_override_selected_scope_missing")
+    if "silently switch" not in stmt and "silent" not in json.dumps(read_json(amendment) if amendment.exists() else {}, ensure_ascii=False):
+        errors.append("ai_model_override_silent_substitution_prohibited:false")
+    if "quantized" not in stmt and "quantized" not in json.dumps(read_json(amendment) if amendment.exists() else {}, ensure_ascii=False):
+        errors.append("ai_model_override_quantized_variant_missing")
+    if "provenance" not in stmt and "provenance" not in json.dumps(read_json(amendment) if amendment.exists() else {}, ensure_ascii=False):
+        errors.append("ai_model_override_provenance_missing")
+    return errors
+
+
 def check_review_artifact(name: str, text: str) -> list[str]:
     if "manual" in name.casefold() and ("generated" in text.casefold() or "automated" in text.casefold()):
         return [f"automatically generated report labelled manual: {name}"]
@@ -1409,6 +1466,7 @@ def run() -> dict[str, object]:
     component_rows = read_csv(PLAN / "10-component-manifest" / "components.csv")
     level("L19_COMPONENT_AND_LICENCE_COMPLETENESS", check_component_licence_completeness(component_rows, edges))
     level("L20_FINAL_100_PERCENT_PLANNING_CERTIFICATION", check_final_100_percent_certification(PLAN))
+    level("L21_AI_MODEL_OVERRIDE_AMENDMENT", check_ai_model_override_amendment(requirements, membership, component_rows, PLAN))
     computed = recompute_quality_metrics(requirements, mappings, membership, packages, edges, schema_index, authority)
     metric_report = read_json(PLAN / "13-reports" / "requirement-repair-stats.json")
     level("L10_METRICS_HONESTY", check_metrics_honesty(metric_report, computed, builder_text))
