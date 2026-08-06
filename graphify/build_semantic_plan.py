@@ -544,6 +544,7 @@ if __name__ == "__main__":
     raise SystemExit(main())
 """)
     copy_tree(SOURCE / "validators", PLAN / "12-validators")
+    copy_tree(SOURCE / "handoff-gpt", PLAN / "14-handoff")
 
     copy_tree(SOURCE / "reviews", PLAN / "13-reports")
     actionable_ids = {row["canonical_id"] for row in memberships}

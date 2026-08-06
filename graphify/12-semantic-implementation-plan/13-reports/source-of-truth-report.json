@@ -1,0 +1,37 @@
+{
+  "report": "Source-of-truth hierarchy and consistency",
+  "authoritative_layers": [
+    "Original source plans and source clauses",
+    "Reviewed requirement ledger (reviewed-actionable-requirements-v3.csv)",
+    "Final canonical requirements (requirements.csv)",
+    "Package, membership, dependency, and implementation-map ledgers",
+    "Component and licence ledger (components.csv)",
+    "IPC command registry",
+    "JSON Schema registry and authority records",
+    "SQLite planning artifacts",
+    "Reviewed Pass B evidence ledgers",
+    "AI model override amendment artifacts",
+    "GPT-5.6 reviewer handoff sources"
+  ],
+  "generated_layers": [
+    "12-semantic-implementation-plan/02-requirements",
+    "12-semantic-implementation-plan/03-phases",
+    "12-semantic-implementation-plan/04-work-packages (registry, membership, dependencies, packets)",
+    "12-semantic-implementation-plan/05-contracts",
+    "12-semantic-implementation-plan/06-schemas",
+    "12-semantic-implementation-plan/07-sqlite",
+    "12-semantic-implementation-plan/10-component-manifest",
+    "12-semantic-implementation-plan/11-model-packets",
+    "12-semantic-implementation-plan/12-validators",
+    "12-semantic-implementation-plan/13-reports",
+    "12-semantic-implementation-plan/14-handoff"
+  ],
+  "generation_direction": "Authoritative semantic-plan-source renders one-way into 12-semantic-implementation-plan via build_semantic_plan.py; final_certification.py, pass3_determinism.py, and generate_gpt_handoff.py persist derived evidence.",
+  "conflict_rule": "Authoritative sources win. Review reports never override the records they validate. Generated packets never override authoritative registries. Any mismatch fails the validator and the source-of-truth report.",
+  "final_consistency_status": "PASS",
+  "source_of_truth_consistency": "PASS",
+  "conflicting_authoritative_records": 0,
+  "stale_generated_records": 0,
+  "mismatches": [],
+  "evidence": "Byte-for-byte source/rendered comparison plus validator L12/L13/L14/L15/L16/L17/L18/L19/L20/L21 all PASS."
+}

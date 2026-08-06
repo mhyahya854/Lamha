@@ -523,6 +523,44 @@ def run() -> dict[str, object]:
     c_generic = validator.check_component_licence_completeness([component_row(reason="Reviewed.")], edge)
     c_consumer = validator.check_component_licence_completeness([component_row(consumer_packages="WP-I2-001")], edge)
     c_rejected = validator.check_component_licence_completeness([component_row(final_status="REJECTED", consumer_packages="WP-I2-001")], edge)
+    c_self_consumer = validator.check_component_licence_completeness([component_row(consumer_packages="WP-I0-001")], edge)
+
+    old_declaration_errors = validator.check_persisted_readiness_declaration(
+        {
+            "status": "PASS",
+            "readiness_declaration": "IMPLEMENTATION-READY PLANNING COMPLETE \u2014 I0 MAY BEGIN",
+            "implementation_ready": True,
+            "first_allowed_package": "WP-I0-001",
+            "remaining_blockers": [],
+            "final_package_hash": "hash",
+        },
+        "IMPLEMENTATION-READY PLANNING COMPLETE \u2014 I0 MAY BEGIN",
+        {"firstCompletePackageHash": "hash"},
+    )
+
+    missing_dep_review_errors = validator.check_pass_b_ledgers(
+        [{"work_package_id": "WP-FIX-ROOT2", "implementation_phase": "I0"}],
+        [{"canonical_id": "FIX-MEMBER2", "work_package_id": "WP-FIX-ROOT2"}],
+        [{"work_package_id": "WP-FIX-ROOT2", "prerequisite_work_package_id": "WP-FIX-PREREQ"}],
+        [{"Final package ID": "WP-FIX-ROOT2", "Review status": "REVIEWED_CONFIRMED"}],
+        [{"Canonical ID": "FIX-MEMBER2", "Review status": "REVIEWED_CONFIRMED"}],
+        [],
+    )
+    missing_member_review_errors = validator.check_pass_b_ledgers(
+        [{"work_package_id": "WP-FIX-ROOT2", "implementation_phase": "I0"}],
+        [{"canonical_id": "FIX-MEMBER2", "work_package_id": "WP-FIX-ROOT2"}],
+        [],
+        [{"Final package ID": "WP-FIX-ROOT2", "Review status": "REVIEWED_CONFIRMED"}],
+        [],
+        [],
+    )
+    short_independent_rationale_errors = validator.check_pass_b_independent_evidence(
+        [{
+            "Package ID": "WP-FIX-EV", "Verification status": "VERIFIED",
+            "Evidence": "source registry", "Item-specific rationale": "Reviewed.",
+        }],
+        [], [], [], [],
+    )
 
     am_req = requirement_row("CAN-LAM-AI-090", "Lamha MUST NOT prevent a stronger compatible model due to slow estimates.", "ACCEPTANCE_CRITERION")
     am_membership = [{"canonical_id": "CAN-LAM-AI-090", "work_package_id": "WP-I10-003"}]
@@ -685,6 +723,11 @@ def run() -> dict[str, object]:
         ("F62_COMPONENT_RATIONALE_GENERIC", *contains(c_generic, "component rationale generic")),
         ("F63_COMPONENT_CONSUMER_MISSING_DEPENDENCY", *contains(c_consumer, "component consumer lacks decision dependency")),
         ("F64_REJECTED_COMPONENT_STILL_CONSUMED", *contains(c_rejected, "rejected component still has consumers")),
+        ("F72_COMPONENT_DECISION_SELF_CONSUMER", *contains(c_self_consumer, "lists its own decision package as a consumer")),
+        ("F73_PERSISTED_OLD_DECLARATION", *contains(old_declaration_errors, "persisted readiness declaration missing or incorrect")),
+        ("F74_MISSING_DEPENDENCY_REVIEW", *contains(missing_dep_review_errors, "dependency Pass B review not confirmed")),
+        ("F75_MISSING_MEMBERSHIP_REVIEW", *contains(missing_member_review_errors, "membership Pass B review not confirmed")),
+        ("F76_SHORT_INDEPENDENT_RATIONALE", *contains(short_independent_rationale_errors, "rationale too short")),
         ("F65_AMENDMENT_REQUIREMENT_MISSING", *contains(am_missing_req, "ai_model_user_override_requirement_present")),
         ("F66_AMENDMENT_PHRASE_MISSING", *contains(am_missing_phrase, "ai_model_override_phrase_missing")),
         ("F67_AMENDMENT_ACCEPTANCE_MISSING", *contains(am_missing_accept, "ai_model_override_acceptance_missing")),

@@ -799,8 +799,8 @@
     "cohesion_rationale": "The package is bounded to the model and component registry architectural surface and its direct contracts, records, and tests.",
     "reviewer_status": "REVIEWED",
     "deliverables": "Model registry entries with identity/version/checksum/licence; compatibility gate with hard-block reasons; recommendation and override records; estimates for duration/memory/storage/acceleration; scheduling and selected-folder scope; provenance preservation; no silent substitution; quantized variants as distinct entries.",
-    "contracts_affected": "ai.models.list_compatible; ai.models.select; ai.models.estimates; ai.models.override; ai.jobs.schedule; ai.jobs.pause; ai.jobs.resume; ai.jobs.scope",
-    "schemas_affected": "model_registry; model_compatibility; model_selection; model_provenance",
+    "contracts_affected": "CAN-LAM-AI-032, CAN-LAM-AI-090, CAN-LAM-ARCH-394: ai.models.list_compatible; ai.models.select; ai.models.estimates; ai.models.override; ai.jobs.schedule; ai.jobs.pause; ai.jobs.resume; ai.jobs.scope",
+    "schemas_affected": "CAN-LAM-AI-032, CAN-LAM-AI-090, CAN-LAM-ARCH-394: model_registry; model_compatibility; model_selection; model_provenance",
     "tests": "Amendment fixtures: slow-compatible-selectable, estimates-shown, user-override, scheduling, selected-folders, pause/resume, hard-block reasons (memory/storage/runtime/checksum/licence), silent-substitution-prohibited, quantized-distinct, provenance-preserved, model-change-invalidates-derived-results.",
     "failure_cases": "Hard incompatibility blocks with exact reason; long duration never blocks; silent substitution never occurs; corrupted/checksum-invalid model blocks; licensing restriction blocks; failed estimates return typed error without blocking compatible selection.",
     "rollback_or_recovery": "No partial authoritative state; use the package-specific transaction/recovery contract for mutations.",
@@ -2981,11 +2981,6 @@
     ],
     "technical_dependencies": [
       {
-        "prerequisite_work_package_id": "WP-I15-005",
-        "dependency_type": "REQUIRES_COMPONENT_DECISION",
-        "technical_rationale": "WP-I15-001 consumes the finalized Installer/signing tools decision owned by WP-I15-005."
-      },
-      {
         "prerequisite_work_package_id": "WP-I15-006",
         "dependency_type": "REQUIRES_COMPONENT_DECISION",
         "technical_rationale": "Cross-platform packaging waits for final component/version/licence decisions."
@@ -3030,7 +3025,13 @@
     "included_requirement_ids": [
       "CAN-LAM-FOLDER-073"
     ],
-    "technical_dependencies": []
+    "technical_dependencies": [
+      {
+        "prerequisite_work_package_id": "WP-I15-001",
+        "dependency_type": "REQUIRES_RELEASE_GATE",
+        "technical_rationale": "Signing and notarization operate on the verified cross-platform package outputs."
+      }
+    ]
   },
   {
     "work_package_id": "WP-I15-006",
@@ -3111,11 +3112,6 @@
         "prerequisite_work_package_id": "WP-I15-001",
         "dependency_type": "REQUIRES_RELEASE_GATE",
         "technical_rationale": "The SBOM must describe the exact clean-machine package contents."
-      },
-      {
-        "prerequisite_work_package_id": "WP-I15-005",
-        "dependency_type": "REQUIRES_COMPONENT_DECISION",
-        "technical_rationale": "WP-I15-007 consumes the finalized Installer/signing tools decision owned by WP-I15-005."
       },
       {
         "prerequisite_work_package_id": "WP-I15-006",

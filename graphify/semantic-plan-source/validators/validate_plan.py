@@ -428,7 +428,7 @@ def check_persisted_readiness_declaration(
     determinism: dict[str, object],
 ) -> list[str]:
     errors: list[str] = []
-    expected = "IMPLEMENTATION-READY PLANNING COMPLETE \u2014 I0 MAY BEGIN"
+    expected = "FULL IMPLEMENTATION PLANNING 100% COMPLETE \u2014 WP-I0-001 MAY BEGIN"
     if report.get("status") != "PASS":
         errors.append(f"persisted certification status is not PASS: {report.get('status')}")
     if report.get("readiness_declaration") != expected:
@@ -1196,6 +1196,8 @@ def check_component_licence_completeness(
         for consumer in consumers:
             if (consumer, component.get("decision_package", "")) not in edges:
                 errors.append(f"component consumer lacks decision dependency: {consumer} -> {component.get('decision_package')}")
+        if component.get("decision_package", "") in consumers:
+            errors.append(f"component lists its own decision package as a consumer: {name}")
         if component.get("final_status") == "REJECTED" and consumers:
             errors.append(f"rejected component still has consumers: {name}")
     return errors

@@ -1,6 +1,6 @@
 {
-  "fixtureCount": 64,
-  "expectedFailuresObserved": 64,
+  "fixtureCount": 115,
+  "expectedFailuresObserved": 115,
   "status": "PASS",
   "fixtures": [
     {
@@ -474,7 +474,8 @@
       "fixture": "F48_CONSOLE_SUCCESS_WITHOUT_PERSISTED_DECLARATION",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "persisted readiness declaration missing or incorrect"
+        "persisted readiness declaration missing or incorrect",
+        "active handoff does not contain the persisted readiness declaration"
       ]
     },
     {
@@ -556,21 +557,24 @@
       "fixture": "F57_COMPONENT_PENDING",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "component decision pending: FIX-COMP"
+        "component decision pending: FIX-COMP",
+        "component lists its own decision package as a consumer: FIX-COMP"
       ]
     },
     {
       "fixture": "F58_COMPONENT_LICENCE_PENDING",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "component licence pending or invalid: FIX-COMP"
+        "component licence pending or invalid: FIX-COMP",
+        "component lists its own decision package as a consumer: FIX-COMP"
       ]
     },
     {
       "fixture": "F59_COMPONENT_REDISTRIBUTION_MISSING",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "component redistribution missing: FIX-COMP"
+        "component redistribution missing: FIX-COMP",
+        "component lists its own decision package as a consumer: FIX-COMP"
       ]
     },
     {
@@ -585,14 +589,16 @@
       "fixture": "F61_COMPONENT_VERSION_RULE_MISSING",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "component version rule missing: FIX-COMP"
+        "component version rule missing: FIX-COMP",
+        "component lists its own decision package as a consumer: FIX-COMP"
       ]
     },
     {
       "fixture": "F62_COMPONENT_RATIONALE_GENERIC",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "component rationale generic: FIX-COMP"
+        "component rationale generic: FIX-COMP",
+        "component lists its own decision package as a consumer: FIX-COMP"
       ]
     },
     {
@@ -608,6 +614,737 @@
       "validatorErrors": [
         "component consumer lacks decision dependency: WP-I2-001 -> WP-I0-001",
         "rejected component still has consumers: FIX-COMP"
+      ]
+    },
+    {
+      "fixture": "F72_COMPONENT_DECISION_SELF_CONSUMER",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "component lists its own decision package as a consumer: FIX-COMP"
+      ]
+    },
+    {
+      "fixture": "F73_PERSISTED_OLD_DECLARATION",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "persisted readiness declaration missing or incorrect",
+        "active handoff does not contain the persisted readiness declaration"
+      ]
+    },
+    {
+      "fixture": "F74_MISSING_DEPENDENCY_REVIEW",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "dependency Pass B review not confirmed: WP-FIX-ROOT2<-WP-FIX-PREREQ"
+      ]
+    },
+    {
+      "fixture": "F75_MISSING_MEMBERSHIP_REVIEW",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "membership Pass B review not confirmed: FIX-MEMBER2"
+      ]
+    },
+    {
+      "fixture": "F76_SHORT_INDEPENDENT_RATIONALE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "independent member row rationale too short: WP-FIX-EV",
+        "independent contract/schema verification ledger is empty",
+        "independent test verification ledger is empty",
+        "independent exit-gate verification ledger is empty",
+        "independent package-decision verification ledger is empty"
+      ]
+    },
+    {
+      "fixture": "F65_AMENDMENT_REQUIREMENT_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_user_override_requirement_present:false"
+      ]
+    },
+    {
+      "fixture": "F66_AMENDMENT_PHRASE_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:MUST NOT prevent",
+        "ai_model_override_phrase_missing:compatible",
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:selected_model_id",
+        "ai_model_override_concept_missing:recommended_model_id",
+        "ai_model_override_concept_missing:selection_source",
+        "ai_model_override_concept_missing:compatibility_status",
+        "ai_model_override_concept_missing:processing_mode",
+        "ai_model_override_command_missing:ai.models.list_compatible",
+        "ai_model_override_command_missing:ai.models.select",
+        "ai_model_override_command_missing:ai.models.estimates",
+        "ai_model_override_command_missing:ai.models.override",
+        "ai_model_override_command_missing:ai.jobs.schedule",
+        "ai_model_override_command_missing:ai.jobs.pause",
+        "ai_model_override_command_missing:ai.jobs.resume",
+        "ai_model_override_command_missing:ai.jobs.scope",
+        "ai_model_override_rule_missing:slow_processing_alone_is_not_a_hard_block",
+        "ai_model_override_rule_missing:stronger_compatible_model_remains_selectable",
+        "ai_model_override_rule_missing:recommendation_is_not_prohibition",
+        "ai_model_override_rule_missing:silent_model_substitution_is_prohibited",
+        "ai_model_override_rule_missing:quantized_variant_has_distinct_identity",
+        "ai_model_override_rule_missing:selected_model_provenance_is_persisted",
+        "ai_model_override_rule_missing:model_change_invalidates_derived_results",
+        "ai_model_override_hard_block_reason_missing:insufficient_safe_memory",
+        "ai_model_override_hard_block_reason_missing:insufficient_storage",
+        "ai_model_override_hard_block_reason_missing:unsupported_model_operations",
+        "ai_model_override_hard_block_reason_missing:unsupported_runtime_or_provider",
+        "ai_model_override_hard_block_reason_missing:invalid_or_corrupted_model",
+        "ai_model_override_hard_block_reason_missing:checksum_failure",
+        "ai_model_override_hard_block_reason_missing:unresolved_licensing_restriction",
+        "component_model_selection_rule_missing:ONNX Runtime:stronger_compatible_models_manually_selectable",
+        "component_model_selection_rule_missing:ONNX Runtime:slow_estimates_do_not_block",
+        "component_model_selection_rule_missing:ONNX Runtime:hard_incompatibility_may_block",
+        "component_model_selection_rule_missing:ONNX Runtime:no_silent_fallback",
+        "component_model_selection_rule_missing:ONNX Runtime:provenance_required",
+        "component_model_selection_rule_missing:ONNX Runtime",
+        "ai_model_override_affected_package_unexplained:WP-I10-003",
+        "ai_model_override_affected_package_unexplained:WP-I10-005",
+        "ai_model_override_affected_package_unexplained:WP-I10-006",
+        "ai_model_override_affected_package_unexplained:WP-I10-008",
+        "ai_model_override_affected_package_unexplained:WP-I10-013"
+      ]
+    },
+    {
+      "fixture": "F67_AMENDMENT_ACCEPTANCE_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:selected_model_id",
+        "ai_model_override_concept_missing:recommended_model_id",
+        "ai_model_override_concept_missing:selection_source",
+        "ai_model_override_concept_missing:compatibility_status",
+        "ai_model_override_concept_missing:processing_mode",
+        "ai_model_override_command_missing:ai.models.list_compatible",
+        "ai_model_override_command_missing:ai.models.select",
+        "ai_model_override_command_missing:ai.models.estimates",
+        "ai_model_override_command_missing:ai.models.override",
+        "ai_model_override_command_missing:ai.jobs.schedule",
+        "ai_model_override_command_missing:ai.jobs.pause",
+        "ai_model_override_command_missing:ai.jobs.resume",
+        "ai_model_override_command_missing:ai.jobs.scope",
+        "ai_model_override_rule_missing:slow_processing_alone_is_not_a_hard_block",
+        "ai_model_override_rule_missing:stronger_compatible_model_remains_selectable",
+        "ai_model_override_rule_missing:recommendation_is_not_prohibition",
+        "ai_model_override_rule_missing:silent_model_substitution_is_prohibited",
+        "ai_model_override_rule_missing:quantized_variant_has_distinct_identity",
+        "ai_model_override_rule_missing:selected_model_provenance_is_persisted",
+        "ai_model_override_rule_missing:model_change_invalidates_derived_results",
+        "ai_model_override_hard_block_reason_missing:insufficient_safe_memory",
+        "ai_model_override_hard_block_reason_missing:insufficient_storage",
+        "ai_model_override_hard_block_reason_missing:unsupported_model_operations",
+        "ai_model_override_hard_block_reason_missing:unsupported_runtime_or_provider",
+        "ai_model_override_hard_block_reason_missing:invalid_or_corrupted_model",
+        "ai_model_override_hard_block_reason_missing:checksum_failure",
+        "ai_model_override_hard_block_reason_missing:unresolved_licensing_restriction",
+        "component_model_selection_rule_missing:ONNX Runtime:stronger_compatible_models_manually_selectable",
+        "component_model_selection_rule_missing:ONNX Runtime:slow_estimates_do_not_block",
+        "component_model_selection_rule_missing:ONNX Runtime:hard_incompatibility_may_block",
+        "component_model_selection_rule_missing:ONNX Runtime:no_silent_fallback",
+        "component_model_selection_rule_missing:ONNX Runtime:provenance_required",
+        "component_model_selection_rule_missing:ONNX Runtime",
+        "ai_model_override_affected_package_unexplained:WP-I10-003",
+        "ai_model_override_affected_package_unexplained:WP-I10-005",
+        "ai_model_override_affected_package_unexplained:WP-I10-006",
+        "ai_model_override_affected_package_unexplained:WP-I10-008",
+        "ai_model_override_affected_package_unexplained:WP-I10-013"
+      ]
+    },
+    {
+      "fixture": "F68_AMENDMENT_VERIFICATION_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_verification_missing",
+        "ai_model_override_concept_missing:selected_model_id",
+        "ai_model_override_concept_missing:recommended_model_id",
+        "ai_model_override_concept_missing:selection_source",
+        "ai_model_override_concept_missing:compatibility_status",
+        "ai_model_override_concept_missing:processing_mode",
+        "ai_model_override_command_missing:ai.models.list_compatible",
+        "ai_model_override_command_missing:ai.models.select",
+        "ai_model_override_command_missing:ai.models.estimates",
+        "ai_model_override_command_missing:ai.models.override",
+        "ai_model_override_command_missing:ai.jobs.schedule",
+        "ai_model_override_command_missing:ai.jobs.pause",
+        "ai_model_override_command_missing:ai.jobs.resume",
+        "ai_model_override_command_missing:ai.jobs.scope",
+        "ai_model_override_rule_missing:slow_processing_alone_is_not_a_hard_block",
+        "ai_model_override_rule_missing:stronger_compatible_model_remains_selectable",
+        "ai_model_override_rule_missing:recommendation_is_not_prohibition",
+        "ai_model_override_rule_missing:silent_model_substitution_is_prohibited",
+        "ai_model_override_rule_missing:quantized_variant_has_distinct_identity",
+        "ai_model_override_rule_missing:selected_model_provenance_is_persisted",
+        "ai_model_override_rule_missing:model_change_invalidates_derived_results",
+        "ai_model_override_hard_block_reason_missing:insufficient_safe_memory",
+        "ai_model_override_hard_block_reason_missing:insufficient_storage",
+        "ai_model_override_hard_block_reason_missing:unsupported_model_operations",
+        "ai_model_override_hard_block_reason_missing:unsupported_runtime_or_provider",
+        "ai_model_override_hard_block_reason_missing:invalid_or_corrupted_model",
+        "ai_model_override_hard_block_reason_missing:checksum_failure",
+        "ai_model_override_hard_block_reason_missing:unresolved_licensing_restriction",
+        "component_model_selection_rule_missing:ONNX Runtime:stronger_compatible_models_manually_selectable",
+        "component_model_selection_rule_missing:ONNX Runtime:slow_estimates_do_not_block",
+        "component_model_selection_rule_missing:ONNX Runtime:hard_incompatibility_may_block",
+        "component_model_selection_rule_missing:ONNX Runtime:no_silent_fallback",
+        "component_model_selection_rule_missing:ONNX Runtime:provenance_required",
+        "component_model_selection_rule_missing:ONNX Runtime",
+        "ai_model_override_affected_package_unexplained:WP-I10-003",
+        "ai_model_override_affected_package_unexplained:WP-I10-005",
+        "ai_model_override_affected_package_unexplained:WP-I10-006",
+        "ai_model_override_affected_package_unexplained:WP-I10-008",
+        "ai_model_override_affected_package_unexplained:WP-I10-013"
+      ]
+    },
+    {
+      "fixture": "F69_AMENDMENT_MEMBERSHIP_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "requirement_membership_present:false",
+        "ai_model_override_concept_missing:selected_model_id",
+        "ai_model_override_concept_missing:recommended_model_id",
+        "ai_model_override_concept_missing:selection_source",
+        "ai_model_override_concept_missing:compatibility_status",
+        "ai_model_override_concept_missing:processing_mode",
+        "ai_model_override_command_missing:ai.models.list_compatible",
+        "ai_model_override_command_missing:ai.models.select",
+        "ai_model_override_command_missing:ai.models.estimates",
+        "ai_model_override_command_missing:ai.models.override",
+        "ai_model_override_command_missing:ai.jobs.schedule",
+        "ai_model_override_command_missing:ai.jobs.pause",
+        "ai_model_override_command_missing:ai.jobs.resume",
+        "ai_model_override_command_missing:ai.jobs.scope",
+        "ai_model_override_rule_missing:slow_processing_alone_is_not_a_hard_block",
+        "ai_model_override_rule_missing:stronger_compatible_model_remains_selectable",
+        "ai_model_override_rule_missing:recommendation_is_not_prohibition",
+        "ai_model_override_rule_missing:silent_model_substitution_is_prohibited",
+        "ai_model_override_rule_missing:quantized_variant_has_distinct_identity",
+        "ai_model_override_rule_missing:selected_model_provenance_is_persisted",
+        "ai_model_override_rule_missing:model_change_invalidates_derived_results",
+        "ai_model_override_hard_block_reason_missing:insufficient_safe_memory",
+        "ai_model_override_hard_block_reason_missing:insufficient_storage",
+        "ai_model_override_hard_block_reason_missing:unsupported_model_operations",
+        "ai_model_override_hard_block_reason_missing:unsupported_runtime_or_provider",
+        "ai_model_override_hard_block_reason_missing:invalid_or_corrupted_model",
+        "ai_model_override_hard_block_reason_missing:checksum_failure",
+        "ai_model_override_hard_block_reason_missing:unresolved_licensing_restriction",
+        "component_model_selection_rule_missing:ONNX Runtime:stronger_compatible_models_manually_selectable",
+        "component_model_selection_rule_missing:ONNX Runtime:slow_estimates_do_not_block",
+        "component_model_selection_rule_missing:ONNX Runtime:hard_incompatibility_may_block",
+        "component_model_selection_rule_missing:ONNX Runtime:no_silent_fallback",
+        "component_model_selection_rule_missing:ONNX Runtime:provenance_required",
+        "component_model_selection_rule_missing:ONNX Runtime",
+        "ai_model_override_affected_package_unexplained:WP-I10-003",
+        "ai_model_override_affected_package_unexplained:WP-I10-005",
+        "ai_model_override_affected_package_unexplained:WP-I10-006",
+        "ai_model_override_affected_package_unexplained:WP-I10-008",
+        "ai_model_override_affected_package_unexplained:WP-I10-013"
+      ]
+    },
+    {
+      "fixture": "F70_AMENDMENT_ARTIFACT_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_amendment_artifact_missing"
+      ]
+    },
+    {
+      "fixture": "F71_AMENDMENT_COMPONENT_RULE_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:selected_model_id",
+        "ai_model_override_concept_missing:recommended_model_id",
+        "ai_model_override_concept_missing:selection_source",
+        "ai_model_override_concept_missing:compatibility_status",
+        "ai_model_override_concept_missing:processing_mode",
+        "ai_model_override_command_missing:ai.models.list_compatible",
+        "ai_model_override_command_missing:ai.models.select",
+        "ai_model_override_command_missing:ai.models.estimates",
+        "ai_model_override_command_missing:ai.models.override",
+        "ai_model_override_command_missing:ai.jobs.schedule",
+        "ai_model_override_command_missing:ai.jobs.pause",
+        "ai_model_override_command_missing:ai.jobs.resume",
+        "ai_model_override_command_missing:ai.jobs.scope",
+        "ai_model_override_rule_missing:slow_processing_alone_is_not_a_hard_block",
+        "ai_model_override_rule_missing:stronger_compatible_model_remains_selectable",
+        "ai_model_override_rule_missing:recommendation_is_not_prohibition",
+        "ai_model_override_rule_missing:silent_model_substitution_is_prohibited",
+        "ai_model_override_rule_missing:quantized_variant_has_distinct_identity",
+        "ai_model_override_rule_missing:selected_model_provenance_is_persisted",
+        "ai_model_override_rule_missing:model_change_invalidates_derived_results",
+        "ai_model_override_hard_block_reason_missing:insufficient_safe_memory",
+        "ai_model_override_hard_block_reason_missing:insufficient_storage",
+        "ai_model_override_hard_block_reason_missing:unsupported_model_operations",
+        "ai_model_override_hard_block_reason_missing:unsupported_runtime_or_provider",
+        "ai_model_override_hard_block_reason_missing:invalid_or_corrupted_model",
+        "ai_model_override_hard_block_reason_missing:checksum_failure",
+        "ai_model_override_hard_block_reason_missing:unresolved_licensing_restriction",
+        "component_model_selection_rule_missing:Face model/runtime:stronger_compatible_models_manually_selectable",
+        "component_model_selection_rule_missing:Face model/runtime:slow_estimates_do_not_block",
+        "component_model_selection_rule_missing:Face model/runtime:hard_incompatibility_may_block",
+        "component_model_selection_rule_missing:Face model/runtime:no_silent_fallback",
+        "component_model_selection_rule_missing:Face model/runtime:provenance_required",
+        "component_model_selection_rule_missing:Face model/runtime",
+        "ai_model_override_affected_package_unexplained:WP-I10-003",
+        "ai_model_override_affected_package_unexplained:WP-I10-005",
+        "ai_model_override_affected_package_unexplained:WP-I10-006",
+        "ai_model_override_affected_package_unexplained:WP-I10-008",
+        "ai_model_override_affected_package_unexplained:WP-I10-013"
+      ]
+    },
+    {
+      "fixture": "F90_INDEPENDENT_CONCEPT_selected_model_id",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:selected_model_id"
+      ]
+    },
+    {
+      "fixture": "F91_INDEPENDENT_CONCEPT_recommended_model_id",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:recommended_model_id"
+      ]
+    },
+    {
+      "fixture": "F92_INDEPENDENT_CONCEPT_selection_source",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:selection_source"
+      ]
+    },
+    {
+      "fixture": "F93_INDEPENDENT_CONCEPT_user_override",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:user_override"
+      ]
+    },
+    {
+      "fixture": "F94_INDEPENDENT_CONCEPT_compatibility_status",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:compatibility_status"
+      ]
+    },
+    {
+      "fixture": "F95_INDEPENDENT_CONCEPT_hard_block_reason",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:hard_block_reason"
+      ]
+    },
+    {
+      "fixture": "F96_INDEPENDENT_CONCEPT_estimated_duration",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:estimated_duration"
+      ]
+    },
+    {
+      "fixture": "F97_INDEPENDENT_CONCEPT_estimated_memory",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:estimated_memory"
+      ]
+    },
+    {
+      "fixture": "F98_INDEPENDENT_CONCEPT_estimated_storage",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:estimated_storage"
+      ]
+    },
+    {
+      "fixture": "F99_INDEPENDENT_CONCEPT_processing_mode",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:processing_mode"
+      ]
+    },
+    {
+      "fixture": "F100_INDEPENDENT_CONCEPT_scheduled_start",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:scheduled_start"
+      ]
+    },
+    {
+      "fixture": "F101_INDEPENDENT_CONCEPT_pause_on_battery",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:pause_on_battery"
+      ]
+    },
+    {
+      "fixture": "F102_INDEPENDENT_CONCEPT_selected_scope",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_concept_missing:selected_scope"
+      ]
+    },
+    {
+      "fixture": "F98_INDEPENDENT_COMMAND_ai.models.list_compatible",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_command_missing:ai.models.list_compatible"
+      ]
+    },
+    {
+      "fixture": "F99_INDEPENDENT_COMMAND_ai.models.select",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_command_missing:ai.models.select"
+      ]
+    },
+    {
+      "fixture": "F100_INDEPENDENT_COMMAND_ai.models.estimates",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_command_missing:ai.models.estimates"
+      ]
+    },
+    {
+      "fixture": "F101_INDEPENDENT_COMMAND_ai.models.override",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_command_missing:ai.models.override"
+      ]
+    },
+    {
+      "fixture": "F102_INDEPENDENT_COMMAND_ai.jobs.schedule",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_command_missing:ai.jobs.schedule"
+      ]
+    },
+    {
+      "fixture": "F103_INDEPENDENT_COMMAND_ai.jobs.pause",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_command_missing:ai.jobs.pause"
+      ]
+    },
+    {
+      "fixture": "F104_INDEPENDENT_COMMAND_ai.jobs.resume",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_command_missing:ai.jobs.resume"
+      ]
+    },
+    {
+      "fixture": "F105_INDEPENDENT_COMMAND_ai.jobs.scope",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_command_missing:ai.jobs.scope"
+      ]
+    },
+    {
+      "fixture": "F106_INDEPENDENT_RULE_slow_processing_alone_is_not_a_hard_block",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_rule_missing:slow_processing_alone_is_not_a_hard_block"
+      ]
+    },
+    {
+      "fixture": "F107_INDEPENDENT_RULE_stronger_compatible_model_remains_selectable",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_rule_missing:stronger_compatible_model_remains_selectable"
+      ]
+    },
+    {
+      "fixture": "F108_INDEPENDENT_RULE_recommendation_is_not_prohibition",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_rule_missing:recommendation_is_not_prohibition"
+      ]
+    },
+    {
+      "fixture": "F109_INDEPENDENT_RULE_silent_model_substitution_is_prohibited",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_rule_missing:silent_model_substitution_is_prohibited"
+      ]
+    },
+    {
+      "fixture": "F110_INDEPENDENT_RULE_quantized_variant_has_distinct_identity",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_rule_missing:quantized_variant_has_distinct_identity"
+      ]
+    },
+    {
+      "fixture": "F111_INDEPENDENT_RULE_selected_model_provenance_is_persisted",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_rule_missing:selected_model_provenance_is_persisted"
+      ]
+    },
+    {
+      "fixture": "F112_INDEPENDENT_RULE_model_change_invalidates_derived_results",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_rule_missing:model_change_invalidates_derived_results"
+      ]
+    },
+    {
+      "fixture": "F113_INDEPENDENT_HARD_insufficient_safe_memory",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_hard_block_reason_missing:insufficient_safe_memory"
+      ]
+    },
+    {
+      "fixture": "F114_INDEPENDENT_HARD_insufficient_storage",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_hard_block_reason_missing:insufficient_storage"
+      ]
+    },
+    {
+      "fixture": "F115_INDEPENDENT_HARD_unsupported_model_operations",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_hard_block_reason_missing:unsupported_model_operations"
+      ]
+    },
+    {
+      "fixture": "F116_INDEPENDENT_HARD_unsupported_runtime_or_provider",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_hard_block_reason_missing:unsupported_runtime_or_provider"
+      ]
+    },
+    {
+      "fixture": "F117_INDEPENDENT_HARD_invalid_or_corrupted_model",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_hard_block_reason_missing:invalid_or_corrupted_model"
+      ]
+    },
+    {
+      "fixture": "F118_INDEPENDENT_HARD_checksum_failure",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_hard_block_reason_missing:checksum_failure"
+      ]
+    },
+    {
+      "fixture": "F119_INDEPENDENT_HARD_unresolved_licensing_restriction",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_model_override_hard_block_reason_missing:unresolved_licensing_restriction"
+      ]
+    },
+    {
+      "fixture": "F120_INDEPENDENT_PACKET_OBJECTIVE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_override_packet_objective_missing_requirement"
+      ]
+    },
+    {
+      "fixture": "F121_INDEPENDENT_PACKET_CONTRACTS",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_override_packet_contracts_missing_requirement"
+      ]
+    },
+    {
+      "fixture": "F122_INDEPENDENT_PACKET_TESTS",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_override_packet_tests_missing_requirement"
+      ]
+    },
+    {
+      "fixture": "F123_INDEPENDENT_PACKET_EXIT",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_phrase_missing:estimated processing time",
+        "ai_model_override_phrase_missing:user MUST be allowed",
+        "ai_model_override_phrase_missing:hard technical incompatibility",
+        "ai_model_override_acceptance_missing",
+        "ai_override_packet_exit_gate_missing_requirement"
       ]
     }
   ]

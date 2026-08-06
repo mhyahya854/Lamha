@@ -73,6 +73,36 @@
       "errors": []
     },
     {
+      "level": "L16_REQUIREMENT_LEDGER",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L17_PASS_B_LEDGER",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L18_PASS_B_ARCHITECTURE_COMPLETENESS",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L19_COMPONENT_AND_LICENCE_COMPLETENESS",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L20_FINAL_100_PERCENT_PLANNING_CERTIFICATION",
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "level": "L21_AI_MODEL_OVERRIDE_AMENDMENT",
+      "status": "PASS",
+      "errors": []
+    },
+    {
       "level": "L10_METRICS_HONESTY",
       "status": "PASS",
       "errors": []
@@ -93,13 +123,13 @@
       "errors": []
     }
   ],
-  "levelCount": 18,
+  "levelCount": 24,
   "failedLevels": [],
   "computedQualityMetrics": {
     "fragmentary_active_records": 0,
-    "non_observable_requirements": 1,
+    "non_observable_requirements": 0,
     "generic_template_records": 0,
-    "untestable_criteria": 160,
+    "untestable_criteria": 0,
     "missing_parent_relationships": 0,
     "missing_verification_methods": 0,
     "phase_package_mismatches": 0,

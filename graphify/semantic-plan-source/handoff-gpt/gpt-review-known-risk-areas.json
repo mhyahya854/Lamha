@@ -1,0 +1,57 @@
+{
+  "known_risk_areas": [
+    {
+      "id": "RISK-PACKET-STALENESS",
+      "area": "Generated package packets can drift from the membership ledger",
+      "mitigation": "L12 packet membership currency check; L21 WP-I10-003 structural check; rebuild from authoritative work-packages.json",
+      "history": "WP-I10-003 previously described two requirements while owning three; corrected and regression-tested"
+    },
+    {
+      "id": "RISK-STRUCTURAL-VALIDATION",
+      "area": "Validators could pass on keyword presence instead of structure",
+      "mitigation": "L21 validates structured amendment fields; validator-audit stage 9 of the pre-GPT audit",
+      "history": "L21 was substring-based; rewritten to structured validation"
+    },
+    {
+      "id": "RISK-FIXTURE-MUTATION-SHARING",
+      "area": "Adversarial fixtures could share one mutation across many purposes",
+      "mitigation": "Every fixture copies a valid baseline, applies one mutation, and asserts one intended error",
+      "history": "Amendment fixtures previously reused one empty artifact; replaced with independent fixtures"
+    },
+    {
+      "id": "RISK-COMPONENT-OWNERSHIP",
+      "area": "Component decision ownership can contradict the technical DAG",
+      "mitigation": "L5 required technical edges; L19 consumer dependency and self-consumer checks",
+      "history": "Installer/signing tools ownership moved from WP-I15-005 to WP-I15-001 to match the reviewed order"
+    },
+    {
+      "id": "RISK-REVIEW-COVERAGE",
+      "area": "New memberships or dependencies can lack Pass B review rows",
+      "mitigation": "L17 requires REVIEWED_CONFIRMED rows for every membership and dependency",
+      "history": "CAN-LAM-AI-090 and 20 component-decision edges lacked review rows; added"
+    },
+    {
+      "id": "RISK-INDEPENDENT-EVIDENCE",
+      "area": "Independent verification rows can lack item-specific rationale",
+      "mitigation": "L18 requires >=40 character item-specific rationale per row",
+      "history": "465 contract/test/exit-gate rows lacked the rationale column; enriched"
+    },
+    {
+      "id": "RISK-DECLARATION-DRIFT",
+      "area": "Certification pipelines can persist the superseded declaration or stale counts",
+      "mitigation": "L15 and L20 enforce the exact new declaration; pass3_persist_certification.py computes counts from authoritative data",
+      "history": "Pass 3 pipeline wrote the old declaration and hardcoded pre-amendment counts; corrected"
+    },
+    {
+      "id": "RISK-AI-MODEL-OVERRIDE",
+      "area": "The stronger-model override amendment must propagate everywhere",
+      "mitigation": "L21 checks the amendment object, component rules, packet sections, and membership",
+      "history": "Amendment propagated into WP-I10-003 objective, contracts, schemas, tests, exit gate"
+    }
+  ],
+  "deferred_claims": [
+    "Exact AI checkpoint selection is deferred to model-registry work packages.",
+    "Final serialized IPC field names are deferred to Phase 1 schema naming.",
+    "Exact crate and toolchain versions are resolved by I0 inventory packages."
+  ]
+}

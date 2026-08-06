@@ -1,0 +1,56 @@
+{
+  "environment": {
+    "powershell": "$env:PYTHONDONTWRITEBYTECODE = \"1\"; Set-Location 'C:\\Users\\mhyah\\Downloads\\Code\\Lamha'",
+    "notes": "Only graphify/ is writable. Codebase/ is read-only. No installs, builds of the product, lockfile changes, backups, or archives."
+  },
+  "commands": [
+    {
+      "step": "Rebuild the plan from authoritative sources",
+      "command": "python graphify\\build_semantic_plan.py",
+      "expect": "status rendered; requirements 2339; packages 155"
+    },
+    {
+      "step": "Run the full validator",
+      "command": "python graphify\\12-semantic-implementation-plan\\12-validators\\validate_plan.py --write-results",
+      "expect": "status PASS; failedLevels []"
+    },
+    {
+      "step": "Run the adversarial suite",
+      "command": "python graphify\\12-semantic-implementation-plan\\12-validators\\adversarial_fixtures.py",
+      "expect": "status PASS; every fixture EXPECTED_FAILURE_OBSERVED"
+    },
+    {
+      "step": "Run deterministic certification twice",
+      "command": "python graphify\\tools\\final_certification.py",
+      "expect": "layer_1_first_hash == layer_1_second_hash; layer_3_first_hash == layer_3_second_hash; status PASS"
+    },
+    {
+      "step": "Verify external integrity",
+      "command": "python graphify\\tools\\pass3_external_integrity.py",
+      "expect": "added 0; removed 0; modified 0; renamed 0"
+    },
+    {
+      "step": "Verify Git state",
+      "command": "git rev-parse HEAD; git ls-remote origin refs/heads/main; git status --short",
+      "expect": "local HEAD equals remote main; working tree clean"
+    },
+    {
+      "step": "Verify 1:1 tree comparison",
+      "command": "git ls-tree -r HEAD graphify; git ls-tree -r origin/main graphify",
+      "expect": "identical path lists and blob hashes"
+    },
+    {
+      "step": "Verify declaration persistence",
+      "command": "Select-String -Path graphify\\12-semantic-implementation-plan\\13-reports\\final-100-percent-certification.json,graphify\\12-semantic-implementation-plan\\14-handoff\\START-HERE.md -Pattern 'FULL IMPLEMENTATION PLANNING 100% COMPLETE'",
+      "expect": "exact declaration present in both files"
+    }
+  ],
+  "prohibited": [
+    "git add .",
+    "git add -A",
+    "git commit --amend",
+    "git push --force",
+    "git push --force-with-lease",
+    "Any write outside graphify/"
+  ]
+}

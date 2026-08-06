@@ -24,13 +24,13 @@
     "total_record_schemas": 23
   },
   "dependencyNodes": 155,
-  "dependencyEdges": 240,
+  "dependencyEdges": 239,
   "dependencyTypes": {
     "REQUIRES_AI_WORKER": 4,
     "REQUIRES_AUTHORITY_MODEL": 1,
     "REQUIRES_COMMAND_CONTRACT": 4,
     "REQUIRES_COMPONENT": 8,
-    "REQUIRES_COMPONENT_DECISION": 50,
+    "REQUIRES_COMPONENT_DECISION": 48,
     "REQUIRES_CONTRACT": 11,
     "REQUIRES_DECISION": 5,
     "REQUIRES_DERIVED_INDEX": 5,
@@ -41,7 +41,7 @@
     "REQUIRES_MODEL_REGISTRY": 4,
     "REQUIRES_PLATFORM_PROOF": 12,
     "REQUIRES_PROVENANCE": 11,
-    "REQUIRES_RELEASE_GATE": 9,
+    "REQUIRES_RELEASE_GATE": 10,
     "REQUIRES_REPLACEMENT_VERIFIED": 1,
     "REQUIRES_REVIEW_PROTOCOL": 5,
     "REQUIRES_RUNTIME": 9,
@@ -57,9 +57,8 @@
   "criticalPathEdgeDepth": 14,
   "artificialAdjacencyEdges": 0,
   "rootPackages": [
-    "WP-I0-001",
-    "WP-I15-005"
+    "WP-I0-001"
   ],
   "explainedRoots": 1,
-  "unexplainedRoots": 1
+  "unexplainedRoots": 0
 }

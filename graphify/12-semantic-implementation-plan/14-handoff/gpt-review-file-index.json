@@ -1,0 +1,131 @@
+{
+  "purpose": "Source-of-truth mapping for the GPT-5.6 independent review.",
+  "generation_direction": "Authoritative sources under semantic-plan-source render one-way into 12-semantic-implementation-plan via build_semantic_plan.py.",
+  "conflict_rule": "Authoritative sources win. Review reports never override the records they validate. Generated packets never override authoritative registries.",
+  "entries": [
+    {
+      "artifact": "Master Plan source clauses",
+      "authoritative_source": "graphify/Master Plan",
+      "generated": "semantic-plan-source/requirements/source-row-dispositions.csv",
+      "generator": "pass1_apply_v2_decisions.py (historical)",
+      "validation_check": "L2_REQUIREMENT_SEMANTICS, L2B_PASS1_SEMANTIC_REHABILITATION"
+    },
+    {
+      "artifact": "Canonical requirements",
+      "authoritative_source": "semantic-plan-source/requirements/requirements.csv",
+      "generated": "12-semantic-implementation-plan/02-requirements/canonical-registry.csv",
+      "generator": "build_semantic_plan.py",
+      "validation_check": "L2_REQUIREMENT_SEMANTICS, L16_REQUIREMENT_LEDGER"
+    },
+    {
+      "artifact": "Requirement mapping",
+      "authoritative_source": "semantic-plan-source/requirements/requirement-mapping.csv",
+      "generated": "12-semantic-implementation-plan/03-phases/reviewed-requirement-mapping.csv",
+      "generator": "build_semantic_plan.py",
+      "validation_check": "L3_EXPLICIT_SEMANTIC_MAPPING"
+    },
+    {
+      "artifact": "Requirement reviews",
+      "authoritative_source": "semantic-plan-source/reviews/reviewed-actionable-requirements-v3.csv",
+      "generated": "12-semantic-implementation-plan/13-reports/reviewed-actionable-requirements-v3.csv",
+      "generator": "pass_a_review_workflow.py (historical)",
+      "validation_check": "L16_REQUIREMENT_LEDGER"
+    },
+    {
+      "artifact": "Work packages",
+      "authoritative_source": "semantic-plan-source/packages/work-packages.json",
+      "generated": "12-semantic-implementation-plan/04-work-packages/work-packages.json",
+      "generator": "build_semantic_plan.py",
+      "validation_check": "L4_WORK_PACKAGES, L4B_PASS2_PACKAGE_SEMANTICS"
+    },
+    {
+      "artifact": "Requirement memberships",
+      "authoritative_source": "semantic-plan-source/packages/requirement-membership.csv",
+      "generated": "12-semantic-implementation-plan/04-work-packages/requirement-membership.csv",
+      "generator": "build_semantic_plan.py",
+      "validation_check": "L4_WORK_PACKAGES, L17_PASS_B_LEDGER"
+    },
+    {
+      "artifact": "Dependencies",
+      "authoritative_source": "semantic-plan-source/packages/dependencies.csv",
+      "generated": "12-semantic-implementation-plan/04-work-packages/dependencies.csv",
+      "generator": "build_semantic_plan.py",
+      "validation_check": "L5_TECHNICAL_DAG, L17_PASS_B_LEDGER"
+    },
+    {
+      "artifact": "Components and licences",
+      "authoritative_source": "semantic-plan-source/components/components.csv",
+      "generated": "12-semantic-implementation-plan/10-component-manifest/components.csv",
+      "generator": "build_semantic_plan.py",
+      "validation_check": "L6_COMPONENT_DECISIONS, L19_COMPONENT_AND_LICENCE_COMPLETENESS, L21_AI_MODEL_OVERRIDE_AMENDMENT"
+    },
+    {
+      "artifact": "IPC contracts",
+      "authoritative_source": "semantic-plan-source/contracts/ipc-command-registry-v3.json",
+      "generated": "12-semantic-implementation-plan/05-contracts/ipc-command-registry-v3.json",
+      "generator": "build_semantic_plan.py",
+      "validation_check": "L7_IPC_CONTRACTS"
+    },
+    {
+      "artifact": "Schemas",
+      "authoritative_source": "semantic-plan-source/schemas/",
+      "generated": "12-semantic-implementation-plan/06-schemas/",
+      "generator": "build_semantic_plan.py",
+      "validation_check": "L8_AUTHORITY_RECORDS_AND_SQLITE"
+    },
+    {
+      "artifact": "SQLite model",
+      "authoritative_source": "semantic-plan-source/sqlite/001_initial.sql",
+      "generated": "12-semantic-implementation-plan/07-sqlite/001_initial.sql",
+      "generator": "build_semantic_plan.py",
+      "validation_check": "L8_AUTHORITY_RECORDS_AND_SQLITE"
+    },
+    {
+      "artifact": "Package packets",
+      "authoritative_source": "semantic-plan-source/packages/work-packages.json plus membership and command registries",
+      "generated": "12-semantic-implementation-plan/04-work-packages/packets/WP-*.md",
+      "generator": "build_semantic_plan.py render_package_packet",
+      "validation_check": "L12_PACKETS_AND_HANDOFF, L21_AI_MODEL_OVERRIDE_AMENDMENT"
+    },
+    {
+      "artifact": "Validators",
+      "authoritative_source": "semantic-plan-source/validators/validate_plan.py",
+      "generated": "12-semantic-implementation-plan/12-validators/validate_plan.py",
+      "generator": "build_semantic_plan.py copy_tree",
+      "validation_check": "L13_META_VALIDATION_EXECUTION"
+    },
+    {
+      "artifact": "Adversarial fixtures",
+      "authoritative_source": "semantic-plan-source/validators/adversarial_fixtures.py",
+      "generated": "12-semantic-implementation-plan/12-validators/adversarial_fixtures.py",
+      "generator": "build_semantic_plan.py copy_tree",
+      "validation_check": "L13_META_VALIDATION_EXECUTION"
+    },
+    {
+      "artifact": "AI model override amendment",
+      "authoritative_source": "semantic-plan-source/reviews/ai-model-override-amendment.json",
+      "generated": "12-semantic-implementation-plan/13-reports/ai-model-override-amendment.json",
+      "generator": "build_semantic_plan.py copy_tree",
+      "validation_check": "L21_AI_MODEL_OVERRIDE_AMENDMENT"
+    },
+    {
+      "artifact": "Final certification",
+      "authoritative_source": "tools/final_certification.py and tools/pass3_persist_certification.py",
+      "generated": "12-semantic-implementation-plan/13-reports/final-100-percent-certification.json",
+      "generator": "final_certification.py",
+      "validation_check": "L20_FINAL_100_PERCENT_PLANNING_CERTIFICATION"
+    },
+    {
+      "artifact": "GPT reviewer handoff",
+      "authoritative_source": "semantic-plan-source/handoff-gpt/",
+      "generated": "12-semantic-implementation-plan/14-handoff/",
+      "generator": "build_semantic_plan.py plus generate_gpt_handoff.py",
+      "validation_check": "L12_PACKETS_AND_HANDOFF"
+    }
+  ],
+  "required": {
+    "generated_files_without_known_source": 0,
+    "generated_files_without_generator": 0,
+    "generated_files_certifying_themselves": 0
+  }
+}

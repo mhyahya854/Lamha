@@ -1,7 +1,6 @@
 {
   "nodes": [
     "WP-I0-001",
-    "WP-I15-005",
     "WP-I0-002",
     "WP-I0-003",
     "WP-I0-004",
@@ -64,6 +63,7 @@
     "WP-I3-010",
     "WP-I3-016",
     "WP-I14-014",
+    "WP-I15-005",
     "WP-I15-007",
     "WP-I14-004",
     "WP-I10-008",
@@ -3014,26 +3014,14 @@
       "artificial_adjacency": "false"
     },
     {
-      "work_package_id": "WP-I15-001",
-      "prerequisite_work_package_id": "WP-I15-005",
-      "dependency_type": "REQUIRES_COMPONENT_DECISION",
-      "technical_rationale": "WP-I15-001 consumes the finalized Installer/signing tools decision owned by WP-I15-005.",
-      "evidence": "Pass C component ledger; component Installer/signing tools.",
+      "work_package_id": "WP-I15-005",
+      "prerequisite_work_package_id": "WP-I15-001",
+      "dependency_type": "REQUIRES_RELEASE_GATE",
+      "technical_rationale": "Signing and notarization operate on the verified cross-platform package outputs.",
+      "evidence": "Package build outputs",
       "review_status": "REVIEWED_CONFIRMED",
-      "reviewer_type": "PASS_C_DEPENDENCY_REVIEWER",
-      "review_revision": "2026-08-06-pass-c",
-      "reviewer_status": "REVIEWED",
-      "artificial_adjacency": "false"
-    },
-    {
-      "work_package_id": "WP-I15-007",
-      "prerequisite_work_package_id": "WP-I15-005",
-      "dependency_type": "REQUIRES_COMPONENT_DECISION",
-      "technical_rationale": "WP-I15-007 consumes the finalized Installer/signing tools decision owned by WP-I15-005.",
-      "evidence": "Pass C component ledger; component Installer/signing tools.",
-      "review_status": "REVIEWED_CONFIRMED",
-      "reviewer_type": "PASS_C_DEPENDENCY_REVIEWER",
-      "review_revision": "2026-08-06-pass-c",
+      "reviewer_type": "PASS_B_DEPENDENCY_REVIEWER",
+      "review_revision": "2026-08-06-pass-b",
       "reviewer_status": "REVIEWED",
       "artificial_adjacency": "false"
     }

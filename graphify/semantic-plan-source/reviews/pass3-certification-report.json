@@ -1,19 +1,19 @@
 {
   "report": "Pass 3 independent final certification",
   "status": "PASS",
-  "readiness_declaration": "IMPLEMENTATION-READY PLANNING COMPLETE — I0 MAY BEGIN",
+  "readiness_declaration": "FULL IMPLEMENTATION PLANNING 100% COMPLETE — WP-I0-001 MAY BEGIN",
   "implementation_ready": true,
   "first_allowed_package": "WP-I0-001",
   "remaining_blockers": [],
-  "final_package_hash": "7a0315ceaae457288479ed0180aad5b872d9bfed4fc8adcea5525a9ae088a497",
+  "final_package_hash": "c4297ec8f3a33b711b89acb61ae25c84a825779d75342a619e583e06771a72c4",
   "requirementCounts": {
-    "totalCanonicalRows": 2338,
-    "activeRows": 1124,
-    "actionableImplementationRows": 723
+    "totalCanonicalRows": 2339,
+    "activeRows": 1125,
+    "actionableImplementationRows": 724
   },
   "templateMatches": 0,
   "reviewProvenance": {
-    "checkedRows": 5917,
+    "checkedRows": 4302,
     "unmatchedPositiveRows": 0,
     "unmatched": []
   },
@@ -22,10 +22,10 @@
     "largestPackage": "WP-I3-001",
     "largestPackageRequirementCount": 31,
     "multiCapabilityExceptions": 27,
-    "membershipCount": 723
+    "membershipCount": 724
   },
   "dependencies": {
-    "edgeCount": 200,
+    "edgeCount": 239,
     "rootPackages": [
       "WP-I0-001"
     ],
@@ -39,18 +39,18 @@
   },
   "components": {
     "componentCount": 17,
-    "pendingLicenceDecisions": 16,
+    "pendingLicenceDecisions": 0,
     "blockingPackagesPlaced": true
   },
   "adversarial": {
-    "fixtureCount": 48,
-    "expectedFailuresObserved": 48,
+    "fixtureCount": 115,
+    "expectedFailuresObserved": 115,
     "status": "PASS"
   },
   "determinism": {
-    "firstCompletePackageHash": "7a0315ceaae457288479ed0180aad5b872d9bfed4fc8adcea5525a9ae088a497",
-    "secondCompletePackageHash": "7a0315ceaae457288479ed0180aad5b872d9bfed4fc8adcea5525a9ae088a497",
-    "includedFileCount": 529,
+    "firstCompletePackageHash": "c4297ec8f3a33b711b89acb61ae25c84a825779d75342a619e583e06771a72c4",
+    "secondCompletePackageHash": "c4297ec8f3a33b711b89acb61ae25c84a825779d75342a619e583e06771a72c4",
+    "includedFileCount": 571,
     "missingFiles": [],
     "mismatchedFiles": [],
     "excludedFiles": [

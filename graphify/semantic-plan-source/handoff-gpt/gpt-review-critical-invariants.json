@@ -1,0 +1,28 @@
+{
+  "invariants": {
+    "write_boundary": "Only graphify/ may change; Codebase/ is read-only; no backups, archives, repository copies, builds, tests, installs, or lockfile changes.",
+    "single_root": "WP-I0-001 is the only root package and is strictly read-only; it must not start another package automatically.",
+    "dag_acyclic": "The dependency graph has zero cycles; every dependency has a PASS B reviewed row.",
+    "declaration": "The only active readiness declaration is 'FULL IMPLEMENTATION PLANNING 100% COMPLETE \u2014 WP-I0-001 MAY BEGIN'; the old declaration is superseded everywhere active.",
+    "membership_currency": "Every package packet agrees exactly with the requirement-membership ledger in count, objective, contracts, tests, and exit gate.",
+    "component_dependency": "Every component consumer depends on the component decision package; no component lists its own decision package as a consumer; no rejected component has consumers.",
+    "review_provenance": "Every actionable requirement, membership, and dependency has a REVIEWED_CONFIRMED row with item-specific rationale.",
+    "determinism": "Layer 1 and Layer 3 hashes each match across two runs; no volatile timestamp enters deterministic artifacts.",
+    "external_integrity": "Added/removed/modified/renamed outside Graphify are all zero.",
+    "structural_validation": "L21 validates structured amendment objects, not substring presence in JSON dumps.",
+    "no_false_certification": "Saved PASS text is never trusted alone; every validator level re-executes its checks.",
+    "administrative_block": "Implementation remains blocked pending GPT-5.6 independent review."
+  },
+  "required_zero_values": {
+    "pending_component_decisions": 0,
+    "pending_licence_decisions": 0,
+    "pending_redistribution_decisions": 0,
+    "dependency_cycles": 0,
+    "stale_references": 0,
+    "generic_package_placeholders": 0,
+    "missing_required_failure_classes": 0,
+    "unexpected_fixture_passes": 0,
+    "wrong_failure_reasons": 0,
+    "masked_failure_reasons": 0
+  }
+}
