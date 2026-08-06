@@ -1,0 +1,34 @@
+{
+  "report": "Pass 2 semantic capability/phase consistency checkpoint",
+  "auditFile": "semantic-capability-phase-consistency-audit.csv",
+  "auditRows": 755,
+  "reviewedConfirmed": 608,
+  "reviewedCorrected": 147,
+  "mandatoryCorrections": {
+    "CAN-LAM-FOLDER-032": {
+      "correctedCapability": "Libraries and storage",
+      "correctedPhase": "I5",
+      "correctedPackage": "WP-I5-015",
+      "reason": "Read-only OS file-manager reveal action; no filesystem mutation or root authorization."
+    },
+    "CAN-LAM-ARCH-193": {
+      "correctedCapability": "Editing",
+      "correctedPhase": "I11",
+      "correctedPackage": "WP-I11-006",
+      "reason": "20.6 Inspector capabilities and legacy Editing/WP-I11-005 evidence identify asset-metadata export, not AI worker data."
+    }
+  },
+  "validator": {
+    "L4C_SEMANTIC_CAPABILITY_PHASE_CONSISTENCY": "PASS",
+    "L7_IPC_CONTRACTS": "PASS",
+    "L8_AUTHORITY_RECORDS_AND_SQLITE": "PASS",
+    "metaValidationRuntime": "C:\\Users\\mhyah\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+    "metaValidationLibrary": "jsonschema 4.26.0",
+    "environmentalStatus": "EXECUTED"
+  },
+  "pass2State": {
+    "membershipRows": 723,
+    "packageCount": 155,
+    "remainingPhasePackageMismatches": 0
+  }
+}

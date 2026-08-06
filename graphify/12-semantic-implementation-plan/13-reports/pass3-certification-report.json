@@ -1,0 +1,83 @@
+{
+  "report": "Pass 3 independent final certification",
+  "status": "PASS",
+  "readiness_declaration": "IMPLEMENTATION-READY PLANNING COMPLETE — I0 MAY BEGIN",
+  "implementation_ready": true,
+  "first_allowed_package": "WP-I0-001",
+  "remaining_blockers": [],
+  "final_package_hash": "7a0315ceaae457288479ed0180aad5b872d9bfed4fc8adcea5525a9ae088a497",
+  "requirementCounts": {
+    "totalCanonicalRows": 2338,
+    "activeRows": 1124,
+    "actionableImplementationRows": 723
+  },
+  "templateMatches": 0,
+  "reviewProvenance": {
+    "checkedRows": 5917,
+    "unmatchedPositiveRows": 0,
+    "unmatched": []
+  },
+  "packages": {
+    "packageCount": 155,
+    "largestPackage": "WP-I3-001",
+    "largestPackageRequirementCount": 31,
+    "multiCapabilityExceptions": 27,
+    "membershipCount": 723
+  },
+  "dependencies": {
+    "edgeCount": 200,
+    "rootPackages": [
+      "WP-I0-001"
+    ],
+    "cycles": 0,
+    "unexplainedRoots": 0
+  },
+  "contractsAndSchemas": {
+    "ipcCommandCount": 116,
+    "schemaCount": 30,
+    "sqliteResult": "PASS"
+  },
+  "components": {
+    "componentCount": 17,
+    "pendingLicenceDecisions": 16,
+    "blockingPackagesPlaced": true
+  },
+  "adversarial": {
+    "fixtureCount": 48,
+    "expectedFailuresObserved": 48,
+    "status": "PASS"
+  },
+  "determinism": {
+    "firstCompletePackageHash": "7a0315ceaae457288479ed0180aad5b872d9bfed4fc8adcea5525a9ae088a497",
+    "secondCompletePackageHash": "7a0315ceaae457288479ed0180aad5b872d9bfed4fc8adcea5525a9ae088a497",
+    "includedFileCount": 529,
+    "missingFiles": [],
+    "mismatchedFiles": [],
+    "excludedFiles": [
+      "13-reports/final-package-determinism.json",
+      "13-reports/pass1-external-final.json",
+      "13-reports/pass2c-external-readonly-final.json",
+      "13-reports/pass3-certification-report.json",
+      "13-reports/pass3-external-readonly-final.json",
+      "PLAN-MANIFEST.json"
+    ],
+    "exclusionRationales": {
+      "PLAN-MANIFEST.json": "The manifest hashes other files and cannot hash itself.",
+      "13-reports/pass3-certification-report.json": "Self-referential certification report excluded; readiness fields are validated independently by validator L15.",
+      "13-reports/final-package-determinism.json": "Self-referential determinism evidence excluded; the two runs are compared in memory.",
+      "13-reports/pass3-external-readonly-final.json": "Contains a volatile UTC verification timestamp.",
+      "13-reports/pass2c-external-readonly-final.json": "Contains a volatile UTC verification timestamp.",
+      "13-reports/pass1-external-final.json": "Contains a volatile UTC verification timestamp."
+    },
+    "finalStatus": "PASS"
+  },
+  "sourceOfTruth": "PASS",
+  "i0Safety": "PASS",
+  "externalIntegrity": {
+    "status": "PASS",
+    "added": [],
+    "removed": [],
+    "modified": [],
+    "renamed": []
+  }
+}

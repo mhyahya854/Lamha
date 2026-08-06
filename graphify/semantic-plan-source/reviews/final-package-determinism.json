@@ -1,0 +1,24 @@
+{
+  "firstCompletePackageHash": "7a0315ceaae457288479ed0180aad5b872d9bfed4fc8adcea5525a9ae088a497",
+  "secondCompletePackageHash": "7a0315ceaae457288479ed0180aad5b872d9bfed4fc8adcea5525a9ae088a497",
+  "includedFileCount": 529,
+  "missingFiles": [],
+  "mismatchedFiles": [],
+  "excludedFiles": [
+    "13-reports/final-package-determinism.json",
+    "13-reports/pass1-external-final.json",
+    "13-reports/pass2c-external-readonly-final.json",
+    "13-reports/pass3-certification-report.json",
+    "13-reports/pass3-external-readonly-final.json",
+    "PLAN-MANIFEST.json"
+  ],
+  "exclusionRationales": {
+    "PLAN-MANIFEST.json": "The manifest hashes other files and cannot hash itself.",
+    "13-reports/pass3-certification-report.json": "Self-referential certification report excluded; readiness fields are validated independently by validator L15.",
+    "13-reports/final-package-determinism.json": "Self-referential determinism evidence excluded; the two runs are compared in memory.",
+    "13-reports/pass3-external-readonly-final.json": "Contains a volatile UTC verification timestamp.",
+    "13-reports/pass2c-external-readonly-final.json": "Contains a volatile UTC verification timestamp.",
+    "13-reports/pass1-external-final.json": "Contains a volatile UTC verification timestamp."
+  },
+  "finalStatus": "PASS"
+}

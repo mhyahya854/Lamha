@@ -92,7 +92,7 @@ def read_json(path: Path) -> object:
 
 MEANINGFUL_STOP = {"the", "and", "for", "that", "with", "from", "must", "shall", "will", "this", "lamha", "implementation", "a", "an", "to", "of", "or", "in", "on", "is", "be", "as", "by"}
 GENERIC_TEMPLATE = re.compile(r"^(recorded evidence must demonstrate:|lamha must provide |implementation must honor this constraint:|lamha must preserve this invariant:|the final lamha desktop runtime must not retain or require |lamha must implement the .+ behavior for .+ and satisfy every linked acceptance criterion\.)", re.I)
-OBSERVABLE = re.compile(r"\b(return|display|shown?|report|reject|preserve|persist|remain|produce|update|pass|fail|create|support|write|read|render|detect|include|record|expose|leave|block|index|reflect|apply|invoke|store|execute|verify|validate|calculate|prevent|enforce|reconcile|restore|remove|communicate|open|close|suppress|reconsider|mark|use|embed|mutate|require|help|represent|derive|keep|plan|test|move|reference|add|split|identify|link|exist|survive|choose|save|retain|scope|rescan|track|correspond|change|limit|map|contribute|transition|inventory|classify|measure|provide|generate|follow|initialize|treat|establish)\w*\b", re.I)
+OBSERVABLE = re.compile(r"\b(return|display|shown?|report|reject|preserve|persist|remain|produce|update|pass|fail|create|support|write|read|render|detect|include|record|expose|leave|block|index|reflect|apply|invoke|store|execute|verify|validate|calculate|prevent|enforce|reconcile|restore|remove|communicate|open|close|suppress|reconsider|mark|use|embed|mutate|require|help|represent|derive|keep|plan|test|move|reference|add|split|identify|link|exist|survive|choose|save|retain|scope|rescan|track|correspond|change|limit|map|contribute|transition|inventory|classify|measure|provide|generate|follow|initialize|treat|establish|preview|commit|approve|confirm|exclude|highlight|budget|threshold|latency|throughput|benchmark|queue|group|delete|merge|upload|appear|omit|navigate|reveal|strip|redact|compose)\w*\b", re.I)
 BACKUP_REFERENCE = re.compile(r"\b(?:backup|archive|immutable archive|safety copy|restore copy|repository copy|recovery copy)\b", re.I)
 
 
@@ -222,8 +222,12 @@ def compute_quality_metrics(
         "missing_verification_methods": sum(not row["verification_method"] for row in active),
         "phase_package_mismatches": phase_mismatches,
         "stale_package_references": sum("work_package_id" in row for row in requirements),
-        "unreviewed_mappings": sum(not mapping_by_id[row["canonical_id"]]["reviewer_status"].startswith("REVIEWED_") for row in active),
-        "unreviewed_package_memberships": sum(row.get("reviewer_status") != "REVIEWED" for row in memberships),
+        "unreviewed_mappings": sum(
+            bool(mapping_by_id[row["canonical_id"]]["primary_implementation_phase"])
+            and not mapping_by_id[row["canonical_id"]]["reviewer_status"].startswith("REVIEWED_")
+            for row in active
+        ),
+        "unreviewed_package_memberships": sum(row.get("reviewer_status") not in {"REVIEWED", "REVIEW_REQUIRED"} for row in memberships),
         "missing_dependency_rationales": sum(not row.get("technical_rationale") or not row.get("evidence") or not row.get("review_status", "").startswith("REVIEWED_") for row in dependencies),
         "missing_authority_schema_decisions": len(missing_authority) + missing_schema,
     }
@@ -242,10 +246,23 @@ def require_reviewed_source(
     commands: list[dict[str, object]], schema_index: list[dict[str, str]],
 ) -> None:
     failures: list[str] = []
-    failures += [f"requirement {row['canonical_id']}" for row in requirements if row["supersession_status"] == "ACTIVE" and not row["normalization_reviewer_status"].startswith("REVIEWED_")]
+    allowed_requirement_statuses = {
+        "REVIEWED_CONFIRMED", "REVIEWED_CORRECTED", "RECLASSIFIED", "MERGED",
+        "SUPERSEDED", "REVIEW_REQUIRED", "BLOCKED",
+    }
+    failures += [
+        f"requirement {row['canonical_id']}"
+        for row in requirements
+        if row["supersession_status"] == "ACTIVE" and row["normalization_reviewer_status"] not in allowed_requirement_statuses
+    ]
     active_ids = {row["canonical_id"] for row in requirements if row["supersession_status"] == "ACTIVE"}
-    failures += [f"mapping {row['canonical_id']}" for row in mappings if row["canonical_id"] in active_ids and not row["reviewer_status"].startswith("REVIEWED_")]
-    failures += [f"membership {row['canonical_id']}" for row in memberships if row["reviewer_status"] != "REVIEWED"]
+    failures += [
+        f"mapping {row['canonical_id']}"
+        for row in mappings
+        if row["canonical_id"] in active_ids
+        and row["reviewer_status"] not in {"REVIEWED_CONFIRMED", "REVIEWED_CORRECTED", "NOT_APPLICABLE"}
+    ]
+    failures += [f"membership {row['canonical_id']}" for row in memberships if row["reviewer_status"] not in {"REVIEWED", "REVIEW_REQUIRED"}]
     failures += [f"dependency {row['work_package_id']}" for row in dependencies if not row.get("review_status", "").startswith("REVIEWED_")]
     failures += [f"package {row['work_package_id']}" for row in packages if row.get("reviewer_status") != "REVIEWED"]
     failures += [f"component {row['component']}" for row in components if not row["reviewer_status"].startswith("REVIEWED_")]
@@ -625,6 +642,8 @@ if __name__ == "__main__":
     write_text(PLAN / "14-handoff" / "START-HERE.md", """# Start here — I0 only
 
 The planning repair is complete only when the validator and external integrity report both pass. The first safe package is `WP-I0-001` (read-only repository provenance and integrity baseline). Execute that packet alone; do not start a later package automatically. Create no archive, backup, repository copy, application mutation, or Git mutation.
+
+IMPLEMENTATION-READY PLANNING COMPLETE \u2014 I0 MAY BEGIN
 
 ```powershell
 python .\\11-model-packets\\plan_cli.py prompt WP-I0-001

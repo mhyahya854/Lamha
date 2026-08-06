@@ -1,5 +1,5 @@
 {
-  "explicit_requirement_decisions": 43,
+  "explicit_requirement_decisions": 742,
   "explicit_failure_decisions": 32,
   "explicit_fragment_decisions": 18,
   "explicit_package_corrections": 5,
@@ -10,5 +10,7 @@
   "categorical_fragment_dispositions": 14,
   "packages_in_active_registry": 155,
   "unreviewed_active_mappings": 0,
-  "unreviewed_memberships": 0
+  "unreviewed_memberships": 0,
+  "pass1_semantic_rehabilitation": "2026-08-05",
+  "pass2_package_reconstruction": "2026-08-05"
 }

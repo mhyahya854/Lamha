@@ -1,0 +1,52 @@
+{
+  "report": "Pass 2C package architecture re-certification after semantic corrections",
+  "correctedRecordsAudited": 162,
+  "correctedRecordsWithPackageChangeFromHead": 151,
+  "packagesAffected": 30,
+  "membershipRows": 723,
+  "authoredMembershipMoves": 90,
+  "packageCount": 155,
+  "dependencyEdges": 200,
+  "dependencyEdgesAddedInPass2C": 1,
+  "packagesOver20Requirements": 3,
+  "multiCapabilityPackages": 27,
+  "rootPackages": [
+    "WP-I0-001"
+  ],
+  "cycleResult": "NONE",
+  "unexplainedRoots": 0,
+  "validator": {
+    "status": "PASS",
+    "failedLevels": [],
+    "L4C_SEMANTIC_CAPABILITY_PHASE_CONSISTENCY": "PASS",
+    "L12_PACKETS_AND_HANDOFF": "PASS",
+    "L13_META_VALIDATION_EXECUTION": "PASS"
+  },
+  "l7l8": {
+    "status": "PASS",
+    "runtime": "C:\\Users\\mhyah\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+    "jsonschema": "4.26.0",
+    "metaValidationExecuted": true
+  },
+  "adversarial": {
+    "fixtureCount": 43,
+    "expectedFailuresObserved": 43,
+    "status": "PASS"
+  },
+  "externalIntegrity": {
+    "baselineFileCount": 3697,
+    "finalFileCount": 3697,
+    "added": 0,
+    "removed": 0,
+    "modified": 0,
+    "renamed": 0,
+    "status": "PASS"
+  },
+  "artifacts": {
+    "impactAudit": "semantic-correction-package-impact-audit.csv",
+    "packageArchitectureReview": "pass2c-package-architecture-review.csv",
+    "semanticAudit": "semantic-capability-phase-consistency-audit.csv",
+    "externalIntegrityBaseline": "pass2c-external-readonly-baseline.json",
+    "externalIntegrityFinal": "pass2c-external-readonly-final.json"
+  }
+}

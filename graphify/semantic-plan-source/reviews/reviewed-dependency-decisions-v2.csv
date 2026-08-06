@@ -1,0 +1,201 @@
+dependent_package,prerequisite_package,dependency_type,technical_rationale,evidence,review_status
+WP-I0-002,WP-I0-001,REQUIRES_PROVENANCE,Git-state inspection uses the resolved repository identity and read-only boundary established by the provenance baseline.,I0 provenance and Git-state package boundaries,REVIEWED_CORRECTED
+WP-I0-003,WP-I0-001,REQUIRES_PROVENANCE,The repository hash manifest requires the resolved roots and exclusion boundary from the provenance baseline.,I0 integrity baseline,REVIEWED_CORRECTED
+WP-I0-004,WP-I0-001,REQUIRES_PROVENANCE,Manifest conflict analysis requires the existing-file inventory and repository identity before comparing declarations.,I0 manifest investigation,REVIEWED_CORRECTED
+WP-I0-005,WP-I0-004,REQUIRES_DECISION,Toolchain inventory must interpret the reviewed manifest and lockfile conflicts rather than assume a toolchain.,Toolchain and mixed-version packages,REVIEWED_CORRECTED
+WP-I0-006,WP-I0-001,REQUIRES_PROVENANCE,Build-output isolation rules require the read-only repository provenance and integrity boundary to be recorded first; no repository copy or build is created by either package.,Prior curated dependency source: Build-output isolation rules require the read-only repository provenance and integrity boundary to be recorded first; no repository copy or build is created by either package.,REVIEWED_CORRECTED
+WP-I0-007,WP-I0-004,REQUIRES_PLATFORM_PROOF,Build proof requires resolution of manifest and lockfile version conflicts.,Prior curated dependency source: Build proof requires resolution of manifest and lockfile version conflicts.,REVIEWED_CORRECTED
+WP-I0-007,WP-I0-005,REQUIRES_RUNTIME,A baseline build requires the repository-declared toolchain inventory.,Prior curated dependency source: A baseline build requires the repository-declared toolchain inventory.,REVIEWED_CORRECTED
+WP-I0-008,WP-I0-001,REQUIRES_PROVENANCE,Missing-fixture classification requires the complete existing-file inventory to distinguish absence from an excluded path.,I0 fixture classification,REVIEWED_CORRECTED
+WP-I0-009,WP-I0-001,REQUIRES_PROVENANCE,Frontend coupling inventory requires the resolved read-only repository corpus and exact current paths.,I0 frontend inventory,REVIEWED_CORRECTED
+WP-I0-010,WP-I0-001,REQUIRES_PROVENANCE,Outbound and commercial integration inventory requires the complete resolved repository corpus.,I0 outbound inventory,REVIEWED_CORRECTED
+WP-I0-011,WP-I0-001,REQUIRES_PROVENANCE,Active-plan authority adoption depends on the proven read/write boundary and repository identity.,I0 plan authority,REVIEWED_CORRECTED
+WP-I1-001,WP-I0-001,REQUIRES_PROVENANCE,Brand inventory must inspect the proven existing corpus before any visible or package identity changes.,Brand inventory scope,REVIEWED_CORRECTED
+WP-I1-002,WP-I1-001,REQUIRES_DECISION,Visible rebranding requires the reviewed brand and identity inventory.,Brand decision boundary,REVIEWED_CORRECTED
+WP-I1-003,WP-I1-001,REQUIRES_DECISION,Package and bundle identity must use the same reviewed canonical brand identity.,Package identity decision,REVIEWED_CORRECTED
+WP-I1-004,WP-I1-001,REQUIRES_DECISION,Brand asset replacement requires the approved asset inventory and canonical identity.,Brand asset inventory,REVIEWED_CORRECTED
+WP-I1-005,WP-I1-001,REQUIRES_PROVENANCE,Licence and attribution preservation requires the complete brand and legal-file inventory.,Legal and attribution inventory,REVIEWED_CORRECTED
+WP-I10-001,WP-I2-007,REQUIRES_SECURITY_BOUNDARY,"Rust owns worker launch, transport, and cancellation.","Prior curated dependency source: Rust owns worker launch, transport, and cancellation.",REVIEWED_CORRECTED
+WP-I10-002,WP-I10-001,REQUIRES_AI_WORKER,Private local transport requires the Rust-owned worker lifecycle and cancellation authority.,AI worker protocol,REVIEWED_CORRECTED
+WP-I10-003,WP-I0-005,REQUIRES_COMPONENT_DECISION,Runtime/model feasibility starts from the I0 component inventory.,Prior curated dependency source: Runtime/model feasibility starts from the I0 component inventory.,REVIEWED_CORRECTED
+WP-I10-004,WP-I10-003,REQUIRES_MODEL_REGISTRY,Model checksums and compatibility are properties of versioned model registry entries.,Model registry schema,REVIEWED_CORRECTED
+WP-I10-005,WP-I10-003,REQUIRES_MODEL_REGISTRY,Hardware assessment evaluates the runtime requirements declared by model registry entries.,Model registry component requirements,REVIEWED_CORRECTED
+WP-I10-006,WP-I10-001,REQUIRES_AI_WORKER,The local scheduler requires a supervised worker lifecycle and typed cancellation.,AI worker lifecycle,REVIEWED_CORRECTED
+WP-I10-007,WP-I10-001,REQUIRES_WORKER,Task state is enforced by the owned worker lifecycle.,Prior curated dependency source: Task state is enforced by the owned worker lifecycle.,REVIEWED_CORRECTED
+WP-I10-008,WP-I10-007,REQUIRES_SCHEMA,"Progress, retry, and cancellation require durable per-task queue identity and state.",AI task schema,REVIEWED_CORRECTED
+WP-I10-009,WP-I10-003,REQUIRES_COMPONENT_DECISION,OCR requires an approved model/runtime component.,Prior curated dependency source: OCR requires an approved model/runtime component.,REVIEWED_CORRECTED
+WP-I10-010,WP-I10-001,REQUIRES_WORKER,Semantic search consumes embeddings from the owned local worker.,Prior curated dependency source: Semantic search consumes embeddings from the owned local worker.,REVIEWED_CORRECTED
+WP-I10-010,WP-I10-003,REQUIRES_COMPONENT_DECISION,Embeddings require an approved model/runtime component.,Prior curated dependency source: Embeddings require an approved model/runtime component.,REVIEWED_CORRECTED
+WP-I10-011,WP-I3-002,REQUIRES_SCHEMA,Duplicate candidates reference stable asset identities and hashes.,Prior curated dependency source: Duplicate candidates reference stable asset identities and hashes.,REVIEWED_CORRECTED
+WP-I10-012,WP-I10-003,REQUIRES_MODEL_REGISTRY,"Location proposals must pin the selected model, version, and compatibility evidence.",AI candidate and model schemas,REVIEWED_CORRECTED
+WP-I10-013,WP-I5-010,REQUIRES_REVIEW_PROTOCOL,AI suppression and invalidation require the Review Centre decision states and history semantics.,Review item and AI candidate schemas,REVIEWED_CORRECTED
+WP-I11-001,WP-I3-006,REQUIRES_STORAGE,Metadata mutation persists via the safe sidecar protocol.,Prior curated dependency source: Metadata mutation persists via the safe sidecar protocol.,REVIEWED_CORRECTED
+WP-I11-001,WP-I3-011,REQUIRES_CONTRACT,Mutating batches require previewed operation plans.,Prior curated dependency source: Mutating batches require previewed operation plans.,REVIEWED_CORRECTED
+WP-I11-002,WP-I11-001,REQUIRES_COMMAND_CONTRACT,Batch metadata plans require the authority-aware editor command and conflict model.,Metadata editor contract,REVIEWED_CORRECTED
+WP-I11-003,WP-I11-001,REQUIRES_SCHEMA,Metadata privacy removal must read authority and provenance before planning field removal.,Metadata authority editor,REVIEWED_CORRECTED
+WP-I11-004,WP-I3-001,REQUIRES_SCHEMA,Non-destructive edits are versioned authoritative recipes.,Prior curated dependency source: Non-destructive edits are versioned authoritative recipes.,REVIEWED_CORRECTED
+WP-I11-006,WP-I11-004,REQUIRES_SCHEMA,Edited-copy export reads the revisioned non-destructive edit recipe record to materialize the output.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I11-006,WP-I3-012,REQUIRES_STORAGE,Derivative export uses the filesystem transaction protocol.,Prior curated dependency source: Derivative export uses the filesystem transaction protocol.,REVIEWED_CORRECTED
+WP-I11-009,WP-I11-003,REQUIRES_SCHEMA,Privacy export recipes require the reviewed privacy-removal field and preservation semantics.,Privacy export recipe schema,REVIEWED_CORRECTED
+WP-I11-010,WP-I3-006,REQUIRES_STORAGE,Metadata snapshots and restore require the transactional sidecar write protocol.,Sidecar write and snapshot schemas,REVIEWED_CORRECTED
+WP-I11-011,WP-I3-015,REQUIRES_TRANSACTION_ENGINE,Edit revision conflicts require record revision and optimistic concurrency preconditions.,Revision precondition contract,REVIEWED_CORRECTED
+WP-I11-012,WP-I3-014,REQUIRES_TRANSACTION_ENGINE,Editing recovery requires the durable crash recovery engine and journal terminal states.,Crash recovery engine,REVIEWED_CORRECTED
+WP-I12-001,WP-I3-003,REQUIRES_SECURITY_BOUNDARY,Drive identity extends the authorized-root model.,Prior curated dependency source: Drive identity extends the authorized-root model.,REVIEWED_CORRECTED
+WP-I12-004,WP-I12-001,REQUIRES_STORAGE,Detached experience uses the external-drive registry records.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I12-004,WP-I4-010,REQUIRES_INDEX,Detached browsing resolves records from the asset and path index.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I12-005,WP-I12-004,REQUIRES_STORAGE,Pending sidecar overlays are the durable write path exposed by detached read-only mode.,Pending overlay authority,REVIEWED_CORRECTED
+WP-I12-006,WP-I12-001,REQUIRES_IDENTITY,Root and asset relinking require stable drive identity independent of mount path.,Drive registry schema,REVIEWED_CORRECTED
+WP-I12-007,WP-I3-014,REQUIRES_TRANSACTION_ENGINE,"Cross-volume copy-and-verify requires durable staging, verification, and crash recovery.",Filesystem transaction engine,REVIEWED_CORRECTED
+WP-I12-008,WP-I3-004,REQUIRES_FILESYSTEM_AUTHORITY,Cross-platform adapters must enforce normalized paths and root escape protection.,Path normalization and escape tests,REVIEWED_CORRECTED
+WP-I12-009,WP-I12-007,REQUIRES_TRANSACTION_ENGINE,Drive transaction recovery replays cross-volume copy-and-verify states after disconnection.,Cross-volume transaction states,REVIEWED_CORRECTED
+WP-I13-001,WP-I3-001,REQUIRES_SCHEMA,Backup manifests inventory authoritative record revisions.,Prior curated dependency source: Backup manifests inventory authoritative record revisions.,REVIEWED_CORRECTED
+WP-I13-002,WP-I13-001,REQUIRES_SCHEMA,Backup execution consumes an approved manifest.,Prior curated dependency source: Backup execution consumes an approved manifest.,REVIEWED_CORRECTED
+WP-I13-002,WP-I3-012,REQUIRES_STORAGE,"Backup copies use staged, verified filesystem operations.","Prior curated dependency source: Backup copies use staged, verified filesystem operations.",REVIEWED_CORRECTED
+WP-I13-003,WP-I13-002,REQUIRES_STORAGE,Backup verification requires completed backup outputs and their manifest hashes.,Backup manifest and execution,REVIEWED_CORRECTED
+WP-I13-005,WP-I13-003,REQUIRES_STORAGE,Restore requires a verified backup set.,Prior curated dependency source: Restore requires a verified backup set.,REVIEWED_CORRECTED
+WP-I13-005,WP-I3-011,REQUIRES_CONTRACT,Restore collisions and effects are previewed as an operation plan.,Prior curated dependency source: Restore collisions and effects are previewed as an operation plan.,REVIEWED_CORRECTED
+WP-I13-006,WP-I3-010,REQUIRES_STORAGE,Trash operations journal through the filesystem operation journal.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I13-006,WP-I3-011,REQUIRES_CONTRACT,Trash is a planned reversible move of a logical asset bundle.,Prior curated dependency source: Trash is a planned reversible move of a logical asset bundle.,REVIEWED_CORRECTED
+WP-I13-006,WP-I3-012,REQUIRES_TRANSACTION_ENGINE,Reversible trash commits through the prepare/stage transaction engine.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I13-008,WP-I3-014,REQUIRES_TRANSACTION_ENGINE,Recovery records and audit derive from durable operation and crash-recovery states.,Operation journal and recovery engine,REVIEWED_CORRECTED
+WP-I13-009,WP-I3-009,REQUIRES_DERIVED_INDEX,SQLite rebuild executes the previously defined derived-index rebuild contract and authority map.,Derived-index rebuild contract,REVIEWED_CORRECTED
+WP-I13-010,WP-I10-003,REQUIRES_COMPONENT,AI cache rebuild regenerates projections from the reviewed model registry.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I13-010,WP-I10-007,REQUIRES_MODEL_REGISTRY,AI cache rebuild requires task provenance and model compatibility to decide valid recomputation.,AI task and model registry,REVIEWED_CORRECTED
+WP-I13-010,WP-I13-009,REQUIRES_INDEX,AI cache rebuild uses the SQLite index rebuild contract.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I13-011,WP-I3-009,REQUIRES_INDEX,Full rebuild uses the authoritative-to-derived rebuild contract.,Prior curated dependency source: Full rebuild uses the authoritative-to-derived rebuild contract.,REVIEWED_CORRECTED
+WP-I14-001,WP-I0-007,REQUIRES_PLATFORM_PROOF,Performance comparisons require a recorded baseline harness.,Prior curated dependency source: Performance comparisons require a recorded baseline harness.,REVIEWED_CORRECTED
+WP-I14-003,WP-I14-001,REQUIRES_PLATFORM_PROOF,Gallery and viewer performance requires the reviewed scale fixtures and measurement protocol.,Performance fixture definitions,REVIEWED_CORRECTED
+WP-I14-003,WP-I5-001,REQUIRES_COMPONENT,Gallery performance measures the production virtualized gallery rather than a synthetic component.,Gallery component,REVIEWED_CORRECTED
+WP-I14-004,WP-I10-006,REQUIRES_AI_WORKER,AI resource budgets measure the production scheduler and worker lifecycle.,AI scheduler,REVIEWED_CORRECTED
+WP-I14-004,WP-I14-001,REQUIRES_PLATFORM_PROOF,AI performance and resource budgets require the reviewed fixture sizes and measurement protocol.,Performance fixture definitions,REVIEWED_CORRECTED
+WP-I14-005,WP-I2-002,REQUIRES_UI_SHELL,Accessibility semantics apply to the real static frontend.,Prior curated dependency source: Accessibility semantics apply to the real static frontend.,REVIEWED_CORRECTED
+WP-I14-009,WP-I10-008,REQUIRES_COMMAND_CONTRACT,"Background-job controls require typed progress, cancellation, and retry behavior.",AI progress commands,REVIEWED_CORRECTED
+WP-I14-010,WP-I10-005,REQUIRES_PLATFORM_PROOF,Resource and power controls require the hardware assessment and provider capability results.,Hardware assessment,REVIEWED_CORRECTED
+WP-I14-011,WP-I14-001,REQUIRES_PLATFORM_PROOF,Scheduling budgets are measured against the reviewed performance fixtures.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I14-011,WP-I4-009,REQUIRES_COMPONENT,Thumbnail scheduling consumes the reviewed preview-generation component.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I14-012,WP-I10-008,REQUIRES_RUNTIME,Cancellation latency applies to AI worker progress and retry state.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I14-012,WP-I14-001,REQUIRES_PLATFORM_PROOF,Responsiveness budgets reference the reviewed fixture definitions.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I14-013,WP-I14-001,REQUIRES_PLATFORM_PROOF,Accessibility fixtures reuse the reviewed fixture harness.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I14-013,WP-I2-001,REQUIRES_UI_SHELL,Accessibility semantics apply to the real Tauri desktop shell surfaces.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I14-013,WP-I9-001,REQUIRES_GRAPH_MODEL,Graph accessibility renders the canonical knowledge-graph projection.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I14-014,WP-I14-001,REQUIRES_PLATFORM_PROOF,Evidence collection reuses the declared performance fixtures.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I14-014,WP-I15-001,REQUIRES_PLATFORM_PROOF,Per-platform evidence follows the cross-platform package proof requirements.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I15-001,WP-I15-006,REQUIRES_COMPONENT_DECISION,Cross-platform packaging waits for final component/version/licence decisions.,Prior curated dependency source: Cross-platform packaging waits for final component/version/licence decisions.,REVIEWED_CORRECTED
+WP-I15-001,WP-I2-013,REQUIRES_PLATFORM_PROOF,Release packaging requires a proven desktop launch path.,Prior curated dependency source: Release packaging requires a proven desktop launch path.,REVIEWED_CORRECTED
+WP-I15-005,WP-I15-001,REQUIRES_RELEASE_GATE,Signing and notarization operate on the verified cross-platform package outputs.,Package build outputs,REVIEWED_CORRECTED
+WP-I15-006,WP-I0-005,REQUIRES_DECISION,Runtime component licence decisions require exact selected toolchain and component versions.,Toolchain and component inventory,REVIEWED_CORRECTED
+WP-I15-007,WP-I15-001,REQUIRES_RELEASE_GATE,The SBOM must describe the exact clean-machine package contents.,Cross-platform package outputs,REVIEWED_CORRECTED
+WP-I15-007,WP-I15-006,REQUIRES_COMPONENT,"The SBOM and notices require final reviewed component identities, versions, and licence decisions.",Component licence manifest,REVIEWED_CORRECTED
+WP-I15-008,WP-I15-001,REQUIRES_RELEASE_GATE,Integrated retained-feature parity runs against the final cross-platform package shape.,Clean-machine package proof,REVIEWED_CORRECTED
+WP-I15-008,WP-I5-012,REQUIRES_RELEASE_GATE,Integrated parity requires the offline library parity surface.,Offline library parity,REVIEWED_CORRECTED
+WP-I15-008,WP-I6-010,REQUIRES_RELEASE_GATE,Integrated parity includes event and Manage Later workflows.,Event UI package,REVIEWED_CORRECTED
+WP-I15-008,WP-I7-011,REQUIRES_RELEASE_GATE,"Integrated parity includes people, group, and face curation workflows.",People UI package,REVIEWED_CORRECTED
+WP-I15-014,WP-I0-010,REQUIRES_PROVENANCE,Final outbound verification compares runtime observations against the baseline outbound integration inventory.,Outbound inventory,REVIEWED_CORRECTED
+WP-I15-014,WP-I7-010,REQUIRES_RELEASE_GATE,Final outbound verification includes the AI privacy and deletion surface.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I15-015,WP-I15-008,REQUIRES_REPLACEMENT_VERIFIED,Legacy removal requires integrated retained-feature parity and migrated-caller proof before source deletion.,Prior curated dependency source: Legacy removal requires integrated retained-feature parity and migrated-caller proof before source deletion.,REVIEWED_CORRECTED
+WP-I15-015,WP-I15-014,REQUIRES_RELEASE_GATE,Legacy service and network-path removal requires final outbound and listener verification evidence.,Prior curated dependency source: Legacy service and network-path removal requires final outbound and listener verification evidence.,REVIEWED_CORRECTED
+WP-I2-001,WP-I0-005,REQUIRES_RUNTIME,The Rust/Tauri shell cannot be selected or compiled before toolchain proof.,Prior curated dependency source: The Rust/Tauri shell cannot be selected or compiled before toolchain proof.,REVIEWED_CORRECTED
+WP-I2-002,WP-I0-004,REQUIRES_RUNTIME,Static packaging depends on a reconciled frontend toolchain.,Prior curated dependency source: Static packaging depends on a reconciled frontend toolchain.,REVIEWED_CORRECTED
+WP-I2-003,WP-I2-001,REQUIRES_RUNTIME,Offline launch requires a bootstrapped desktop runtime.,Prior curated dependency source: Offline launch requires a bootstrapped desktop runtime.,REVIEWED_CORRECTED
+WP-I2-003,WP-I2-002,REQUIRES_RUNTIME,Offline launch requires static frontend artifacts.,Prior curated dependency source: Offline launch requires static frontend artifacts.,REVIEWED_CORRECTED
+WP-I2-004,WP-I2-001,REQUIRES_COMPONENT,Tauri capabilities and permissions require a bootstrapped shell and concrete command surface.,Tauri shell architecture,REVIEWED_CORRECTED
+WP-I2-005,WP-I2-007,REQUIRES_COMMAND_CONTRACT,Local settings bootstrap must use the versioned IPC envelope and typed error contract.,IPC envelope and settings commands,REVIEWED_CORRECTED
+WP-I2-007,WP-I2-001,REQUIRES_RUNTIME,Typed commands require the Rust command host.,Prior curated dependency source: Typed commands require the Rust command host.,REVIEWED_CORRECTED
+WP-I2-008,WP-I2-007,REQUIRES_CONTRACT,Stable errors are part of the versioned IPC envelope.,Prior curated dependency source: Stable errors are part of the versioned IPC envelope.,REVIEWED_CORRECTED
+WP-I2-011,WP-I2-007,REQUIRES_CONTRACT,The frontend bridge is generated from approved IPC contracts.,Prior curated dependency source: The frontend bridge is generated from approved IPC contracts.,REVIEWED_CORRECTED
+WP-I2-013,WP-I2-003,REQUIRES_PLATFORM_PROOF,Shell smoke proof exercises the packaged local launch path.,Prior curated dependency source: Shell smoke proof exercises the packaged local launch path.,REVIEWED_CORRECTED
+WP-I3-001,WP-I2-007,REQUIRES_COMMAND_CONTRACT,Authoritative records exposed through the desktop boundary require the stable versioned IPC envelope.,Record envelope and IPC versioning,REVIEWED_CORRECTED
+WP-I3-002,WP-I3-001,REQUIRES_SCHEMA,Stable asset identity is an authoritative versioned record.,Prior curated dependency source: Stable asset identity is an authoritative versioned record.,REVIEWED_CORRECTED
+WP-I3-003,WP-I2-004,REQUIRES_SECURITY_BOUNDARY,Root authority is enforced inside the granted Tauri capability.,Prior curated dependency source: Root authority is enforced inside the granted Tauri capability.,REVIEWED_CORRECTED
+WP-I3-004,WP-I3-003,REQUIRES_SECURITY_BOUNDARY,Containment and reparse checks require an authorized-root model.,Prior curated dependency source: Containment and reparse checks require an authorized-root model.,REVIEWED_CORRECTED
+WP-I3-005,WP-I3-001,REQUIRES_SCHEMA,Sidecar parsing targets a versioned record envelope.,Prior curated dependency source: Sidecar parsing targets a versioned record envelope.,REVIEWED_CORRECTED
+WP-I3-006,WP-I3-005,REQUIRES_SCHEMA,Safe writes preserve and round-trip fields understood by the reader.,Prior curated dependency source: Safe writes preserve and round-trip fields understood by the reader.,REVIEWED_CORRECTED
+WP-I3-007,WP-I3-001,REQUIRES_SCHEMA,Authoritative schema migrations require the closed record envelope and revision semantics.,Record envelope schema,REVIEWED_CORRECTED
+WP-I3-008,WP-I3-001,REQUIRES_SCHEMA,Derived tables must trace to authoritative record fields.,Prior curated dependency source: Derived tables must trace to authoritative record fields.,REVIEWED_CORRECTED
+WP-I3-009,WP-I3-008,REQUIRES_INDEX,Rebuild proof executes the migration-owned derived schema.,Prior curated dependency source: Rebuild proof executes the migration-owned derived schema.,REVIEWED_CORRECTED
+WP-I3-010,WP-I3-003,REQUIRES_FILESYSTEM_AUTHORITY,The operation journal must validate every target against authorized root identity before recording mutation state.,Root authorization and journal contract,REVIEWED_CORRECTED
+WP-I3-011,WP-I3-002,REQUIRES_SCHEMA,Operation preconditions use stable asset identities and revisions.,Prior curated dependency source: Operation preconditions use stable asset identities and revisions.,REVIEWED_CORRECTED
+WP-I3-011,WP-I3-003,REQUIRES_SECURITY_BOUNDARY,Every operation plan is scoped to an authorized root.,Prior curated dependency source: Every operation plan is scoped to an authorized root.,REVIEWED_CORRECTED
+WP-I3-012,WP-I3-004,REQUIRES_SECURITY_BOUNDARY,Staging paths must pass containment and reparse checks.,Prior curated dependency source: Staging paths must pass containment and reparse checks.,REVIEWED_CORRECTED
+WP-I3-012,WP-I3-011,REQUIRES_CONTRACT,Staging executes a validated operation plan.,Prior curated dependency source: Staging executes a validated operation plan.,REVIEWED_CORRECTED
+WP-I3-014,WP-I3-010,REQUIRES_TRANSACTION_ENGINE,Crash recovery replays or rolls back durable operation-journal states by transaction identity.,Operation journal recovery states,REVIEWED_CORRECTED
+WP-I3-015,WP-I3-001,REQUIRES_SCHEMA,Revision and concurrency preconditions require stable record identity and monotonic revision fields.,Authoritative record envelope,REVIEWED_CORRECTED
+WP-I3-016,WP-I3-003,REQUIRES_FILESYSTEM_AUTHORITY,Settings root and drive registries must store only validated authorized root identities.,Root authorization model,REVIEWED_CORRECTED
+WP-I4-001,WP-I3-002,REQUIRES_SCHEMA,Discovered files require stable asset identities.,Prior curated dependency source: Discovered files require stable asset identities.,REVIEWED_CORRECTED
+WP-I4-001,WP-I3-003,REQUIRES_SECURITY_BOUNDARY,Scanning is limited to authorized roots.,Prior curated dependency source: Scanning is limited to authorized roots.,REVIEWED_CORRECTED
+WP-I4-001,WP-I3-008,REQUIRES_INDEX,The scanner publishes only to the migration-owned derived index.,Prior curated dependency source: The scanner publishes only to the migration-owned derived index.,REVIEWED_CORRECTED
+WP-I4-002,WP-I4-001,REQUIRES_INDEX,Watcher reconciliation reuses scanner identity and indexing rules.,Prior curated dependency source: Watcher reconciliation reuses scanner identity and indexing rules.,REVIEWED_CORRECTED
+WP-I4-003,WP-I4-001,REQUIRES_STORAGE,Format classification operates on safely discovered media.,Prior curated dependency source: Format classification operates on safely discovered media.,REVIEWED_CORRECTED
+WP-I4-004,WP-I4-003,REQUIRES_COMPONENT_DECISION,HEIF/RAW decoding requires a classified format and reviewed decoder choice.,Prior curated dependency source: HEIF/RAW decoding requires a classified format and reviewed decoder choice.,REVIEWED_CORRECTED
+WP-I4-005,WP-I4-003,REQUIRES_COMPONENT_DECISION,Video probing requires a classified format and reviewed runtime choice.,Prior curated dependency source: Video probing requires a classified format and reviewed runtime choice.,REVIEWED_CORRECTED
+WP-I4-006,WP-I3-002,REQUIRES_SCHEMA,Companion bundles join stable asset identities.,Prior curated dependency source: Companion bundles join stable asset identities.,REVIEWED_CORRECTED
+WP-I4-006,WP-I4-003,REQUIRES_STORAGE,Companion detection uses classified container and naming evidence.,Prior curated dependency source: Companion detection uses classified container and naming evidence.,REVIEWED_CORRECTED
+WP-I4-007,WP-I4-001,REQUIRES_SCANNER,Content hashes are created from scanner-discovered assets after path authorization and media classification.,Initial scanner asset discovery,REVIEWED_CORRECTED
+WP-I4-008,WP-I3-005,REQUIRES_SCHEMA,Extraction precedence must account for durable sidecars.,Prior curated dependency source: Extraction precedence must account for durable sidecars.,REVIEWED_CORRECTED
+WP-I4-008,WP-I4-003,REQUIRES_COMPONENT_DECISION,Metadata extraction depends on format-aware reviewed tooling.,Prior curated dependency source: Metadata extraction depends on format-aware reviewed tooling.,REVIEWED_CORRECTED
+WP-I4-009,WP-I3-002,REQUIRES_SCHEMA,Derivative keys include stable asset identity and revision.,Prior curated dependency source: Derivative keys include stable asset identity and revision.,REVIEWED_CORRECTED
+WP-I4-009,WP-I4-003,REQUIRES_COMPONENT_DECISION,Preview generation dispatches to format-specific decoders.,Prior curated dependency source: Preview generation dispatches to format-specific decoders.,REVIEWED_CORRECTED
+WP-I4-010,WP-I3-008,REQUIRES_INDEX,Path lookup uses the derived SQLite schema.,Prior curated dependency source: Path lookup uses the derived SQLite schema.,REVIEWED_CORRECTED
+WP-I4-011,WP-I4-002,REQUIRES_INDEX,Reconciliation consumes scanner/watcher observations.,Prior curated dependency source: Reconciliation consumes scanner/watcher observations.,REVIEWED_CORRECTED
+WP-I4-012,WP-I4-010,REQUIRES_DERIVED_INDEX,The textual index requires stable asset and path index entries as its rebuild source.,Asset/path and search index schemas,REVIEWED_CORRECTED
+WP-I5-001,WP-I4-009,REQUIRES_INDEX,The gallery needs revisioned preview records.,Prior curated dependency source: The gallery needs revisioned preview records.,REVIEWED_CORRECTED
+WP-I5-001,WP-I4-010,REQUIRES_INDEX,The gallery pages through the derived asset index.,Prior curated dependency source: The gallery pages through the derived asset index.,REVIEWED_CORRECTED
+WP-I5-002,WP-I4-010,REQUIRES_DERIVED_INDEX,Timeline navigation requires capture-time and stable asset rows from the derived asset index.,Timeline index query,REVIEWED_CORRECTED
+WP-I5-003,WP-I4-004,REQUIRES_RUNTIME,Image viewing depends on supported image/RAW decode paths.,Prior curated dependency source: Image viewing depends on supported image/RAW decode paths.,REVIEWED_CORRECTED
+WP-I5-004,WP-I4-005,REQUIRES_RUNTIME,Video viewing depends on probe and playback assets.,Prior curated dependency source: Video viewing depends on probe and playback assets.,REVIEWED_CORRECTED
+WP-I5-005,WP-I5-001,REQUIRES_COMPONENT,Selection and keyboard navigation operate on the virtualized gallery item and focus model.,Gallery component boundary,REVIEWED_CORRECTED
+WP-I5-006,WP-I3-001,REQUIRES_SCHEMA,Albums and favorites require versioned authoritative records before UI state can persist.,Album schema and asset references,REVIEWED_CORRECTED
+WP-I5-007,WP-I4-010,REQUIRES_DERIVED_INDEX,Memories are derived from stable asset capture metadata and current event/curation sources.,Memory authority decision,REVIEWED_CORRECTED
+WP-I5-008,WP-I4-008,REQUIRES_SCHEMA,Location and map browsing require typed coordinates with provenance from metadata extraction.,Asset/event Gps structures,REVIEWED_CORRECTED
+WP-I5-010,WP-I2-007,REQUIRES_CONTRACT,Review actions cross the typed Rust command boundary.,Prior curated dependency source: Review actions cross the typed Rust command boundary.,REVIEWED_CORRECTED
+WP-I5-011,WP-I4-012,REQUIRES_DERIVED_INDEX,Saved views require the local text/filter index and an explicit authoritative saved-view schema.,Saved-view authority registry,REVIEWED_CORRECTED
+WP-I5-012,WP-I5-001,REQUIRES_RELEASE_GATE,Offline library parity proof requires the production gallery surface and its local data path.,Offline gallery parity,REVIEWED_CORRECTED
+WP-I5-012,WP-I5-010,REQUIRES_RELEASE_GATE,Offline parity includes the Review Centre using authoritative local records.,Review Centre parity,REVIEWED_CORRECTED
+WP-I5-013,WP-I3-002,REQUIRES_IDENTITY,Open asset navigation resolves the stable asset identity.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I5-013,WP-I5-010,REQUIRES_REVIEW_PROTOCOL,Navigation reads review items whose decision records are owned by review-state mutations.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I5-013,WP-I6-002,REQUIRES_SCHEMA,Open event navigation reads the reviewed event record.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I5-013,WP-I7-004,REQUIRES_SCHEMA,Open person navigation reads the reviewed person profile.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I5-014,WP-I5-010,REQUIRES_REVIEW_PROTOCOL,Queue filters read review item state produced by review-state mutations.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I5-015,WP-I3-003,REQUIRES_FILESYSTEM_AUTHORITY,Reveal validates the path against the authorized-root model before opening.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I5-015,WP-I4-010,REQUIRES_INDEX,Filesystem reveal resolves the current path from the asset and path index.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I5-016,WP-I3-002,REQUIRES_IDENTITY,Detail loading resolves assets and bundles by stable identity.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I5-016,WP-I3-005,REQUIRES_SCHEMA,Detail loading reads sidecars through the reviewed sidecar read protocol.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I5-017,WP-I11-001,REQUIRES_AUTHORITY_MODEL,Viewer mutations persist through the authority-aware metadata editor.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I5-017,WP-I3-006,REQUIRES_SCHEMA,Viewer mutations write through the reviewed sidecar write protocol.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I6-001,WP-I4-001,REQUIRES_SCANNER,Manage Later inspection requires the non-mutating scanner and typed scan outcomes.,Scanner contract and Manage Later,REVIEWED_CORRECTED
+WP-I6-002,WP-I3-001,REQUIRES_SCHEMA,Events are authoritative versioned records.,Prior curated dependency source: Events are authoritative versioned records.,REVIEWED_CORRECTED
+WP-I6-003,WP-I6-002,REQUIRES_SCHEMA,Creation persists an event record.,Prior curated dependency source: Creation persists an event record.,REVIEWED_CORRECTED
+WP-I6-004,WP-I4-010,REQUIRES_INDEX,Inference queries indexed timestamps and locations.,Prior curated dependency source: Inference queries indexed timestamps and locations.,REVIEWED_CORRECTED
+WP-I6-004,WP-I6-002,REQUIRES_SCHEMA,Inference produces reviewable event drafts.,Prior curated dependency source: Inference produces reviewable event drafts.,REVIEWED_CORRECTED
+WP-I6-005,WP-I6-002,REQUIRES_SCHEMA,"Event merge plans require authoritative event identity, membership, and revision records.",Event schema,REVIEWED_CORRECTED
+WP-I6-006,WP-I6-002,REQUIRES_SCHEMA,Event split and link plans require authoritative event identity and membership revisions.,Event schema,REVIEWED_CORRECTED
+WP-I6-007,WP-I6-002,REQUIRES_SCHEMA,Event naming and normalization use authoritative event dates and stable identity.,Event record naming inputs,REVIEWED_CORRECTED
+WP-I6-008,WP-I6-002,REQUIRES_SCHEMA,Date and location boundaries propose changes against versioned event records.,Event temporal/location fields,REVIEWED_CORRECTED
+WP-I6-009,WP-I3-011,REQUIRES_CONTRACT,Materialization must first produce a filesystem plan.,Prior curated dependency source: Materialization must first produce a filesystem plan.,REVIEWED_CORRECTED
+WP-I6-009,WP-I6-002,REQUIRES_SCHEMA,Filesystem effects preserve the approved event revision.,Prior curated dependency source: Filesystem effects preserve the approved event revision.,REVIEWED_CORRECTED
+WP-I6-010,WP-I6-002,REQUIRES_COMPONENT,Event and Manage Later UI requires authoritative event records and typed commands.,Event UI data source,REVIEWED_CORRECTED
+WP-I7-001,WP-I10-001,REQUIRES_WORKER,Detection runs only through the owned local worker lifecycle.,Prior curated dependency source: Detection runs only through the owned local worker lifecycle.,REVIEWED_CORRECTED
+WP-I7-001,WP-I10-003,REQUIRES_COMPONENT_DECISION,Detection requires a reviewed model/runtime record.,Prior curated dependency source: Detection requires a reviewed model/runtime record.,REVIEWED_CORRECTED
+WP-I7-002,WP-I3-002,REQUIRES_SCHEMA,Face observations refer to stable asset revisions.,Prior curated dependency source: Face observations refer to stable asset revisions.,REVIEWED_CORRECTED
+WP-I7-002,WP-I5-010,REQUIRES_CONTRACT,Face results enter the review system as candidates.,Prior curated dependency source: Face results enter the review system as candidates.,REVIEWED_CORRECTED
+WP-I7-003,WP-I7-002,REQUIRES_SCHEMA,Clustering operates on persisted candidate observations.,Prior curated dependency source: Clustering operates on persisted candidate observations.,REVIEWED_CORRECTED
+WP-I7-004,WP-I7-002,REQUIRES_SCHEMA,Confirmed identities link reviewed face observations.,Prior curated dependency source: Confirmed identities link reviewed face observations.,REVIEWED_CORRECTED
+WP-I7-005,WP-I7-004,REQUIRES_IDENTITY,Person aliases and naming require stable person identity and revision ownership.,Person identity schema,REVIEWED_CORRECTED
+WP-I7-007,WP-I7-004,REQUIRES_IDENTITY,Group identity references stable person identities and cannot precede their authority model.,Person/group schemas,REVIEWED_CORRECTED
+WP-I7-008,WP-I7-007,REQUIRES_IDENTITY,Temporal group memberships require stable group identities and cycle-safe hierarchy.,Group membership schema,REVIEWED_CORRECTED
+WP-I7-009,WP-I7-002,REQUIRES_REVIEW_PROTOCOL,Scoped face corrections operate on persisted face candidates and preserve decision provenance.,Face candidate records,REVIEWED_CORRECTED
+WP-I7-010,WP-I10-001,REQUIRES_AI_WORKER,AI privacy controls delete and rebuild worker-owned projections.,Pass 2 technical DAG review; explicit technical prerequisite.,REVIEWED_CORRECTED
+WP-I7-010,WP-I7-004,REQUIRES_IDENTITY,People and face privacy requires stable subject identity for scoped removal and visibility decisions.,Person identity and privacy classifications,REVIEWED_CORRECTED
+WP-I7-011,WP-I7-004,REQUIRES_COMPONENT,People and groups UI requires authoritative person identity and typed group references.,People UI data source,REVIEWED_CORRECTED
+WP-I8-001,WP-I3-001,REQUIRES_SCHEMA,Tag records and namespaces require the common authoritative record envelope.,Tag schema,REVIEWED_CORRECTED
+WP-I8-002,WP-I8-001,REQUIRES_REVIEW_PROTOCOL,Tag candidates require stable tag identity before review decisions can approve assignments.,Tag and review-item schemas,REVIEWED_CORRECTED
+WP-I8-004,WP-I7-004,REQUIRES_SCHEMA,Relationship endpoints are stable person IDs.,Prior curated dependency source: Relationship endpoints are stable person IDs.,REVIEWED_CORRECTED
+WP-I8-005,WP-I8-004,REQUIRES_GRAPH_MODEL,Multi-edge history requires authoritative relationship-edge identities and revisions.,Relationship and history schemas,REVIEWED_CORRECTED
+WP-I8-006,WP-I8-005,REQUIRES_GRAPH_MODEL,Relationship projections and views derive only from versioned multi-edge history and approved rules.,Relationship projection rule,REVIEWED_CORRECTED
+WP-I8-007,WP-I7-004,REQUIRES_IDENTITY,Photographer and camera-owner attribution requires stable person identities and distinct role fields.,Attribution authority decision,REVIEWED_CORRECTED
+WP-I8-009,WP-I5-010,REQUIRES_CONTRACT,Relationship proposals use typed review transitions.,Prior curated dependency source: Relationship proposals use typed review transitions.,REVIEWED_CORRECTED
+WP-I8-010,WP-I8-004,REQUIRES_GRAPH_MODEL,Relationship provenance explanations require authoritative edge records and source evidence.,Relationship record provenance,REVIEWED_CORRECTED
+WP-I9-001,WP-I8-004,REQUIRES_SCHEMA,Mind maps project canonical relationship records.,Prior curated dependency source: Mind maps project canonical relationship records.,REVIEWED_CORRECTED
+WP-I9-004,WP-I9-001,REQUIRES_GRAPH_MODEL,Event maps require canonical graph projection identity before event nodes and links render.,Knowledge-graph projection schema,REVIEWED_CORRECTED
+WP-I9-006,WP-I3-001,REQUIRES_SCHEMA,Saved map drafts require durable versioned records.,Prior curated dependency source: Saved map drafts require durable versioned records.,REVIEWED_CORRECTED
+WP-I9-007,WP-I3-011,REQUIRES_CONTRACT,Map materialization emits a filesystem plan before mutation.,Prior curated dependency source: Map materialization emits a filesystem plan before mutation.,REVIEWED_CORRECTED

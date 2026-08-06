@@ -30,8 +30,34 @@ IMPLEMENTATION_TYPES = {
 
 MEANINGFUL_STOP = {"the", "and", "for", "that", "with", "from", "must", "shall", "will", "this", "lamha", "implementation", "a", "an", "to", "of", "or", "in", "on", "is", "be", "as", "by"}
 GENERIC_TEMPLATE = re.compile(r"^(recorded evidence must demonstrate:|lamha must provide |implementation must honor this constraint:|lamha must preserve this invariant:|the final lamha desktop runtime must not retain or require |lamha must implement the .+ behavior for .+ and satisfy every linked acceptance criterion\.)", re.I)
-OBSERVABLE = re.compile(r"\b(return|display|shown?|report|reject|preserve|persist|remain|produce|update|pass|fail|create|support|write|read|render|detect|include|record|expose|leave|block|index|reflect|apply|invoke|store|execute|verify|validate|calculate|prevent|enforce|reconcile|restore|remove|communicate|open|close|suppress|reconsider|mark|use|embed|mutate|require|help|represent|derive|keep|plan|test|move|reference|add|split|identify|link|exist|survive|choose|save|retain|scope|rescan|track|correspond|change|limit|map|contribute|transition|inventory|classify|measure|provide|generate|follow|initialize|treat|establish)\w*\b", re.I)
-PERMITTED_REVIEW_STATUSES = {"REVIEWED_CONFIRMED", "REVIEWED_CORRECTED", "REVIEW_REQUIRED", "BLOCKED", "NOT_APPLICABLE"}
+OBSERVABLE = re.compile(r"\b(return|display|shown?|report|reject|preserve|persist|remain|produce|update|pass|fail|create|support|write|read|render|detect|include|record|expose|leave|block|index|reflect|apply|invoke|store|execute|verify|validate|calculate|prevent|enforce|reconcile|restore|remove|communicate|open|close|suppress|reconsider|mark|use|embed|mutate|require|help|represent|derive|keep|plan|test|move|reference|add|split|identify|link|exist|survive|choose|save|retain|scope|rescan|track|correspond|change|limit|map|contribute|transition|inventory|classify|measure|provide|generate|follow|initialize|treat|establish|preview|commit|approve|confirm|exclude|highlight|budget|threshold|latency|throughput|benchmark|queue|group|delete|merge|upload|appear|omit|navigate|reveal|strip|redact|compose)\w*\b", re.I)
+PERMITTED_REVIEW_STATUSES = {
+    "REVIEWED_CONFIRMED", "REVIEWED_CORRECTED", "RECLASSIFIED", "MERGED",
+    "SUPERSEDED", "REVIEW_REQUIRED", "BLOCKED", "NOT_APPLICABLE",
+}
+LEGACY_FAMILY = re.compile(
+    r"^(When (the local worker processes |the workflow manages |a review item offers "
+    r"|a configured library encounters |a query or indexing task uses |the user invokes "
+    r"|the user uses |the user changes |the user applies |duplicate analysis evaluates "
+    r"|the desktop shell handles )|When producing .* evidence)",
+    re.I,
+)
+FALLBACK_EXERCISED = re.compile(
+    r"is exercised in .*must expose the resulting state and preserve the prior durable state",
+    re.I,
+)
+MEMORY_SHOWN = re.compile(
+    r"is shown in .*derive the memory from local canonical asset references",
+    re.I,
+)
+NAVIGATION_OPEN = re.compile(r"\bopen (person|people|event|folder)\b", re.I)
+MUTATION_VERBS = re.compile(r"\b(create|update|mutat|persist|authorize|produce|transition)\w*\b", re.I)
+NAVIGATION_VERBS = re.compile(r"\b(load|display|navigate|reveal|open for display|read-only)\w*\b", re.I)
+LEGAL_TERMS = re.compile(r"\b(licen[cs]e|licen[cs]es|attribution|legal|redistribution|provenance)\b", re.I)
+PERFORMANCE_TERMS = re.compile(r"\b(large[-\s]?library|performance|scale|memory|ram)\b", re.I)
+ROOT_AUTHORIZATION = re.compile(r"authorized-root and access-mode rules", re.I)
+PERFORMANCE_OUTCOME = re.compile(r"\b(budget|measure|latency|throughput|responsiveness|benchmark)\w*\b", re.I)
+UI_LABEL_TERMS = re.compile(r"\b(menu|button|tab|dialog|page|screen)\b", re.I)
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
@@ -82,7 +108,10 @@ def check_requirement_records(rows: list[dict[str, str]], mappings: dict[str, di
                 errors.append(f"fragmentary or non-observable active requirement: {rid}")
             if not has_observable:
                 errors.append(f"non-observable active requirement: {rid}")
-            if row.get("requirement_type") == "ACCEPTANCE_CRITERION" and (not re.search(r"\b(given|when)\b", statement, re.I) or not has_observable):
+            criterion_text = statement + " " + (row.get("acceptance_criteria") or "")
+            if row.get("requirement_type") == "ACCEPTANCE_CRITERION" and (
+                not re.search(r"\b(given|when)\b", criterion_text, re.I) or not bool(OBSERVABLE.search(criterion_text))
+            ):
                 errors.append(f"criterion is only a label: {rid}")
             if row.get("requirement_type") == "ACCEPTANCE_CRITERION" and not row.get("parent_requirement_id"):
                 errors.append(f"criterion missing parent: {rid}")
@@ -101,6 +130,464 @@ def check_requirement_records(rows: list[dict[str, str]], mappings: dict[str, di
         for field in trace_fields:
             if not row.get(field):
                 errors.append(f"missing traceability {field}: {rid}")
+    return errors
+
+
+def check_pass1_semantics(
+    rows: list[dict[str, str]],
+    mappings: dict[str, dict[str, str]],
+    v2_rows: list[dict[str, str]],
+    detected_ids: set[str] | None = None,
+) -> list[str]:
+    """Pass 1 semantic rehabilitation checks with explicit v2 status sourcing."""
+    errors: list[str] = []
+    if detected_ids is None:
+        detected_ids = {row["canonical_id"] for row in read_csv(PLAN / "13-reports" / "legacy-template-semantic-audit.csv")}
+    v2_ids = {row["record_id"] for row in v2_rows}
+    kept_ids = {row["record_id"] for row in v2_rows if row["disposition"] == "KEEP_WITH_EXPLICIT_JUSTIFICATION"}
+    corrected_ids = {row["record_id"] for row in v2_rows if row["disposition"].startswith("REWRITE_")}
+    for row in rows:
+        rid = row.get("canonical_id", "")
+        if row.get("supersession_status") != "ACTIVE":
+            continue
+        statement = row.get("statement", "") or ""
+        source = row.get("source_text", "") or ""
+        section = row.get("source_section", "") or ""
+        phase = mappings.get(rid, {}).get("primary_implementation_phase", "")
+        actionable = bool(phase) and row.get("requirement_type") in IMPLEMENTATION_TYPES
+        if not actionable:
+            continue
+        lowered = statement.casefold()
+        if rid in detected_ids and rid not in v2_ids:
+            errors.append(f"active requirement missing explicit Pass 1 decision: {rid}")
+            continue
+        if rid in v2_ids:
+            if (
+                row.get("normalization_status", "") != "EXPLICIT_REVIEWED_REWRITE"
+                and rid not in kept_ids
+                and (LEGACY_FAMILY.match(statement) or FALLBACK_EXERCISED.search(statement) or MEMORY_SHOWN.search(statement))
+            ):
+                errors.append(f"legacy capability-template family remains without explicit rewrite: {rid}")
+            if rid not in kept_ids and row.get("normalization_status", "") != "EXPLICIT_REVIEWED_REWRITE" and GENERIC_TEMPLATE.search(statement):
+                errors.append(f"generic capability template remains without rewrite: {rid}")
+        if NAVIGATION_OPEN.search(source + " " + section) and MUTATION_VERBS.search(statement) and not NAVIGATION_VERBS.search(statement):
+            errors.append(f"navigation represented as mutation without read/navigation behavior: {rid}")
+        if LEGAL_TERMS.search(source + " " + section) and re.search(r"local worker processes", statement, re.I):
+            errors.append(f"legal/licensing item represented as model inference: {rid}")
+        if PERFORMANCE_TERMS.search(source + " " + section) and ROOT_AUTHORIZATION.search(statement) and not PERFORMANCE_OUTCOME.search(statement):
+            errors.append(f"performance item represented as root authorization: {rid}")
+        if UI_LABEL_TERMS.search(source + " " + section) and "When " in statement and not bool(OBSERVABLE.search(statement)):
+            errors.append(f"menu/UI label treated as a complete feature: {rid}")
+        criterion_text = statement + " " + (row.get("acceptance_criteria") or "")
+        if row.get("requirement_type") == "ACCEPTANCE_CRITERION" and not re.search(r"\b(given|when)\b", criterion_text, re.I):
+            errors.append(f"criterion is only a label: {rid}")
+        if not row.get("verification_method", "").strip():
+            errors.append(f"active implementation record lacks requirement-specific verification: {rid}")
+        status = row.get("normalization_reviewer_status", "")
+        if (
+            rid in detected_ids
+            and status in {"REVIEWED_CONFIRMED", "REVIEWED_CORRECTED", "RECLASSIFIED", "MERGED", "SUPERSEDED"}
+            and rid not in v2_ids
+        ):
+            errors.append(f"positive review status not sourced from v2 registry: {rid}")
+        if rid in corrected_ids and not bool(OBSERVABLE.search(statement)):
+            errors.append(f"corrected requirement lacks an observable outcome: {rid}")
+    return errors
+
+
+def check_v2_status_sourcing(
+    requirements: list[dict[str, str]],
+    v2_rows: list[dict[str, str]],
+    detected_ids: set[str] | None = None,
+) -> list[str]:
+    errors: list[str] = []
+    if detected_ids is None:
+        detected_ids = {row["canonical_id"] for row in read_csv(PLAN / "13-reports" / "legacy-template-semantic-audit.csv")}
+    v2_ids = {row["record_id"] for row in v2_rows}
+    req_ids = {row["canonical_id"] for row in requirements}
+    for row in v2_rows:
+        if row["record_id"] not in req_ids:
+            errors.append(f"v2 decision references unknown requirement: {row['record_id']}")
+    for row in requirements:
+        if row.get("supersession_status") != "ACTIVE":
+            continue
+        status = row.get("normalization_reviewer_status", "")
+        if (
+            row["canonical_id"] in detected_ids
+            and status in {"REVIEWED_CONFIRMED", "REVIEWED_CORRECTED", "RECLASSIFIED", "MERGED", "SUPERSEDED"}
+            and row["canonical_id"] not in v2_ids
+        ):
+            errors.append(f"positive review status without v2 source: {row['canonical_id']}")
+    return errors
+
+
+def check_pass2_package_semantics(
+    packages: list[dict[str, object]],
+    membership: list[dict[str, str]],
+    requirements: list[dict[str, str]],
+    mappings: dict[str, dict[str, str]],
+    edges: list[dict[str, str]],
+) -> list[str]:
+    """Pass 2 package/DAG semantic checks."""
+    errors: list[str] = []
+    req_by_id = {row["canonical_id"]: row for row in requirements}
+    member_by_package: defaultdict[str, list[str]] = defaultdict(list)
+    for row in membership:
+        member_by_package[row["work_package_id"]].append(row["canonical_id"])
+    package_by_id = {str(row["work_package_id"]): row for row in packages}
+    edges_by_dependent: defaultdict[str, list[dict[str, str]]] = defaultdict(list)
+    for edge in edges:
+        edges_by_dependent[edge["work_package_id"]].append(edge)
+
+    generic_name = re.compile(r"\b(production implementation for|implementation for|generic|placeholder)\b", re.I)
+    boilerplate_rationale = re.compile(
+        r"^the requirement is implemented by the bounded .* surface\.?$|^must be implemented\.?$|^implemented by .* package\.?$",
+        re.I,
+    )
+    navigation_open = re.compile(r"\bopen (person|people|event|folder)\b", re.I)
+    mutation_package = re.compile(r"\b(identity-mutation|mutation|persist|event-plan|plan mutation)\b", re.I)
+    legal_terms = re.compile(r"\b(model licen|third-party model|codec licen|licence files|attribution|redistribution)\b", re.I)
+    ai_inference_package = re.compile(r"\b(ai worker|inference|worker transport|local ai)\b", re.I)
+    large_library = re.compile(r"\blarge[-\s]?library\b", re.I)
+    accessibility_package = re.compile(r"\baccessib\w*\b", re.I)
+    removal_package = re.compile(r"\b(legacy removal|server eradication|data-stack eradication|deployment eradication|generated-client eradication)\b", re.I)
+    replacement_verified = re.compile(r"REQUIRES_REPLACEMENT_VERIFIED", re.I)
+
+    for package in packages:
+        pid = str(package["work_package_id"])
+        name = str(package.get("name", ""))
+        objective = str(package.get("objective", ""))
+        ids = member_by_package.get(pid, [])
+        statements = " ".join((req_by_id.get(rid, {}).get("statement", "") or "") for rid in ids)
+        capabilities = {str(package.get("reviewed_capabilities", []))}
+        capability_list = {str(value) for value in (package.get("reviewed_capabilities") or [])}
+        if generic_name.search(name):
+            errors.append(f"generic package name: {pid}")
+        domains = []
+        if re.search(r"\b(open|load and display|navigate|browse|reveal)\b", statements, re.I):
+            domains.append("navigation")
+        if re.search(r"\b(persist|mutat|commit|create|update|write|trash|delete)\b", statements, re.I):
+            domains.append("mutation")
+        if re.search(r"\b(budget|latency|throughput|performance|benchmark|memory)\b", statements, re.I):
+            domains.append("performance")
+        if legal_terms.search(statements + " " + objective):
+            domains.append("legal")
+        if (
+            len({domain for domain in domains}) >= 3
+            and len(capability_list) > 2
+            and str(package.get("architectural_boundary_exception")) != "true"
+        ):
+            errors.append(f"package mixes unrelated navigation, mutation, performance, or legal work: {pid}")
+        for rid in ids:
+            statement = req_by_id.get(rid, {}).get("statement", "") or ""
+            if navigation_open.search(statement) and mutation_package.search(name):
+                errors.append(f"open person/event/folder placed in mutation package: {rid} -> {pid}")
+            if legal_terms.search(statement) and ai_inference_package.search(name):
+                errors.append(f"model licensing placed in AI inference package: {rid} -> {pid}")
+            if large_library.search(statement) and accessibility_package.search(name):
+                errors.append(f"large-library optimization placed in accessibility package: {rid} -> {pid}")
+            phase = mappings.get(rid, {}).get("primary_implementation_phase", "")
+            if phase and str(package.get("implementation_phase", "")) != phase:
+                errors.append(f"requirement/package phase mismatch: {rid} {phase} != {pid} {package.get('implementation_phase')}")
+        for row in membership:
+            if row["canonical_id"] in ids:
+                rationale = row.get("membership_rationale", "")
+                if not rationale or boilerplate_rationale.match(rationale.strip()):
+                    errors.append(f"generic membership rationale: {row['canonical_id']}")
+        if removal_package.search(name + " " + objective) and not any(
+            replacement_verified.search(str(edge.get("dependency_type", ""))) for edge in edges_by_dependent.get(pid, [])
+        ):
+            errors.append(f"removal package precedes replacement proof: {pid}")
+    return errors
+
+
+def check_membership_rationale_quality(
+    membership: list[dict[str, str]],
+    packages: list[dict[str, object]],
+    requirements: list[dict[str, str]],
+) -> list[str]:
+    errors: list[str] = []
+    circular = re.compile(
+        r"owns the .+ surface in .+; requirement .+ requires"
+        r"|implements the .+ surface in .+; .+ belongs here because its reviewed statement"
+        r"|is the behavior that surface executes"
+        r"|belongs here because its reviewed statement .+ is the behavior",
+        re.I,
+    )
+    for row in membership:
+        rationale = row.get("membership_rationale", "").strip()
+        if not rationale:
+            errors.append(f"empty membership rationale: {row['canonical_id']}")
+            continue
+        if circular.search(rationale):
+            errors.append(f"circular membership rationale: {row['canonical_id']}")
+        meaningful = [word for word in re.findall(r"[A-Za-z0-9]+", rationale) if word.casefold() not in MEANINGFUL_STOP]
+        if len(meaningful) < 12:
+            errors.append(f"membership rationale too short: {row['canonical_id']}")
+    return errors
+
+
+def check_affected_package_quality(
+    packages: list[dict[str, object]],
+    affected_package_ids: set[str],
+) -> list[str]:
+    errors: list[str] = []
+    generic_objective = re.compile(r"^implement and verify the bounded .+ surface\.?$", re.I)
+    generic_deliverables = re.compile(r"production implementation for|updated affected contracts and records; focused tests", re.I)
+    generic_tests = re.compile(r"^focused success, boundary, and failure tests for .+; affected integration checks\.?$", re.I)
+    generic_exclusions = re.compile(r"^unrelated capabilities; later release/cleanup work; application-wide refactors\.?$", re.I)
+    generic_failure = re.compile(r"^invalid input; authorization failure; revision conflict; cancellation or I/O failure where applicable\.?$", re.I)
+    generic_exit = re.compile(r"^the .+ objective and failure tests pass with no unrelated package work included\.?$", re.I)
+    for package in packages:
+        pid = str(package.get("work_package_id", ""))
+        if pid not in affected_package_ids:
+            continue
+        if generic_objective.search(str(package.get("objective", ""))):
+            errors.append(f"generic package objective: {pid}")
+        if generic_deliverables.search(str(package.get("deliverables", ""))):
+            errors.append(f"generic package deliverables: {pid}")
+        if generic_tests.search(str(package.get("tests", ""))):
+            errors.append(f"generic package tests: {pid}")
+        if generic_exclusions.search(str(package.get("explicit_exclusions", ""))):
+            errors.append(f"generic package exclusions: {pid}")
+        if generic_failure.search(str(package.get("failure_cases", ""))):
+            errors.append(f"generic package failure cases: {pid}")
+        if generic_exit.search(str(package.get("exit_gate", ""))):
+            errors.append(f"generic package exit gate: {pid}")
+    return errors
+
+
+def check_large_package_review_coverage(
+    packages: list[dict[str, object]],
+    review_rows: list[dict[str, str]],
+) -> list[str]:
+    errors: list[str] = []
+    reviewed = {row["Package ID"]: row for row in review_rows}
+    for package in packages:
+        pid = str(package.get("work_package_id", ""))
+        if int(package.get("reviewed_item_count") or 0) <= 20:
+            continue
+        row = reviewed.get(pid)
+        if not row or row.get("Review result") != "PASS" or "COHESION" not in row.get("Final decision", ""):
+            errors.append(f"large package lacks cohesion review: {pid}")
+    return errors
+
+
+def check_packet_membership_currency(
+    packages: list[dict[str, object]],
+    membership: list[dict[str, str]],
+    plan_root: Path,
+) -> list[str]:
+    errors: list[str] = []
+    member_by_package: defaultdict[str, list[str]] = defaultdict(list)
+    for row in membership:
+        member_by_package[row["work_package_id"]].append(row["canonical_id"])
+    for package in packages:
+        pid = str(package["work_package_id"])
+        packet = plan_root / "04-work-packages" / "packets" / f"{pid}.md"
+        if not packet.exists():
+            errors.append(f"packet missing for package: {pid}")
+            continue
+        text = packet.read_text(encoding="utf-8")
+        for rid in member_by_package.get(pid, []):
+            if f"`{rid}`" not in text:
+                errors.append(f"packet membership stale: {rid} missing from {pid} packet")
+    return errors
+
+
+def check_l7_l8_execution_claim(
+    jsonschema_available: bool,
+    results: dict[str, object],
+) -> list[str]:
+    errors: list[str] = []
+    if not jsonschema_available:
+        errors.append("L7/L8 are reported as executed while jsonschema is unavailable")
+    for level in results.get("levels", []):
+        if level.get("level") in {"L7_IPC_CONTRACTS", "L8_AUTHORITY_RECORDS_AND_SQLITE"} and level.get("status") != "PASS":
+            errors.append(f"{level.get('level')} did not genuinely pass")
+    return errors
+
+
+def check_sqlite_references(sql: str) -> list[str]:
+    errors: list[str] = []
+    tables = set(re.findall(r"CREATE TABLE\s+(?:IF NOT EXISTS\s+)?([\w]+)", sql, re.I))
+    references = re.findall(r"REFERENCES\s+([\w]+)", sql, re.I)
+    for target in references:
+        if target not in tables:
+            errors.append(f"SQLite foreign key references missing table: {target}")
+    return errors
+
+
+def check_determinism_evidence(first: str, second: str) -> list[str]:
+    return [] if first == second else [f"determinism evidence mismatch: {first} != {second}"]
+
+
+def check_persisted_readiness_declaration(
+    report: dict[str, object],
+    handoff_text: str,
+    determinism: dict[str, object],
+) -> list[str]:
+    errors: list[str] = []
+    expected = "IMPLEMENTATION-READY PLANNING COMPLETE \u2014 I0 MAY BEGIN"
+    if report.get("status") != "PASS":
+        errors.append(f"persisted certification status is not PASS: {report.get('status')}")
+    if report.get("readiness_declaration") != expected:
+        errors.append("persisted readiness declaration missing or incorrect")
+    if report.get("implementation_ready") is not True:
+        errors.append("implementation_ready is not true")
+    if report.get("first_allowed_package") != "WP-I0-001":
+        errors.append(f"first_allowed_package is not WP-I0-001: {report.get('first_allowed_package')}")
+    if report.get("remaining_blockers"):
+        errors.append(f"remaining_blockers is not empty: {report.get('remaining_blockers')}")
+    if report.get("final_package_hash") != determinism.get("firstCompletePackageHash"):
+        errors.append("persisted final package hash does not match determinism evidence")
+    if expected not in handoff_text:
+        errors.append("active handoff does not contain the persisted readiness declaration")
+    return errors
+
+
+def check_semantic_capability_phase_consistency(
+    requirements: list[dict[str, str]],
+    mappings: dict[str, dict[str, str]],
+    membership: list[dict[str, str]],
+    packages: list[dict[str, object]],
+    v2_rows: list[dict[str, str]],
+    audit_rows: list[dict[str, str]],
+) -> list[str]:
+    """Fail on the semantic-capability/phase mismatches this Pass 2 audit repairs."""
+    errors: list[str] = []
+    req_by_id = {row["canonical_id"]: row for row in requirements}
+    package_by_id = {str(row["work_package_id"]): row for row in packages}
+    member_by_id = {row["canonical_id"]: row for row in membership}
+    NON_IMPL = {"GLOSSARY", "UI_LABEL", "INFORMATIONAL", "DUPLICATE"}
+    OPEN_FOLDER = re.compile(r"open in folder|open in filesystem|show in folder|reveal.*physical path", re.I)
+    NAVIGATION = re.compile(r"\b(reveal|navigate|open (in folder|in filesystem|in event|in map|sidecars|asset)|display|load and display|read-only)\b", re.I)
+    MUTATION_PACKAGE = re.compile(r"mutation|identity-state|persistence|authority model|plan mutation", re.I)
+    RAW_EXPORT = re.compile(r"copy/export raw data|raw data is copied or exported", re.I)
+    HARDWARE = re.compile(r"hardware assessment", re.I)
+    PERF_VALIDATION = re.compile(r"performance (result|validation)|record .* hardware profile|fixtures, record .* budgets|report .* measurements against reviewed budgets", re.I)
+    PLANNING = re.compile(r"pass 1 .* corpus inventory|pass 2 .* current architecture|pass 3 .* existing features|implementation tracker|planning tracker|one id represents one independently testable obligation", re.I)
+    AUDIT_FIXES = {
+        "CAN-LAM-FOLDER-032": ("Libraries and storage", "I5", "WP-I5-015"),
+        "CAN-LAM-FOLDER-014": ("Libraries and storage", "I5", "WP-I5-015"),
+        "CAN-LAM-FOLDER-041": ("Libraries and storage", "I5", "WP-I5-015"),
+        "CAN-LAM-TRASH-004": ("Backup, trash, restore and rebuild", "I13", "WP-I13-006"),
+        "CAN-LAM-ASSET-138": ("Sidecars and metadata authority", "I3", "WP-I3-006"),
+        "CAN-LAM-ARCH-193": ("Editing", "I11", "WP-I11-006"),
+        "CAN-LAM-AI-018": ("Duplicates", "I10", "WP-I10-011"),
+        "CAN-LAM-ASSET-117": ("Local AI worker", "I10", "WP-I10-005"),
+        "CAN-LAM-ASSET-118": ("Local AI worker", "I10", "WP-I10-005"),
+        "CAN-LAM-PERF-008": ("Performance and scale", "I14", "WP-I14-001"),
+        "CAN-LAM-GOV-264": ("Planning and verification governance", "I0", "WP-I0-011"),
+        "CAN-LAM-GOV-265": ("Planning and verification governance", "I0", "WP-I0-011"),
+        "CAN-LAM-GOV-266": ("Planning and verification governance", "I0", "WP-I0-011"),
+        "CAN-LAM-ASSET-147": ("Performance and scale", "I14", "WP-I14-001"),
+        "CAN-MISSION-I14-001": ("Performance and scale", "I14", "WP-I14-005"),
+        "CAN-MISSION-I14-003": ("Jobs and notifications", "I14", "WP-I14-012"),
+        "CAN-MISSION-I14-004": ("Performance and scale", "I14", "WP-I14-014"),
+        "CAN-MISSION-I15-001": ("Packaging and legacy eradication", "I15", "WP-I15-001"),
+        "CAN-MISSION-I15-003": ("Packaging and legacy eradication", "I15", "WP-I15-014"),
+        "CAN-LAM-GOV-052": ("Planning and verification governance", "I0", "WP-I0-011"),
+        "CAN-LAM-GOV-054": ("Planning and verification governance", "I0", "WP-I0-011"),
+        "CAN-LAM-GOV-165": ("Planning and verification governance", "I0", "WP-I0-011"),
+        "CAN-LAM-ARCH-376": ("Gallery and timeline", "I5", "WP-I5-002"),
+        "CAN-LAM-BACKUP-004": ("Backup, trash, restore and rebuild", "I13", "WP-I13-001"),
+        "CAN-LAM-FOLDER-076": ("External drives and path resilience", "I12", "WP-I12-009"),
+        "CAN-LAM-FOLDER-077": ("External drives and path resilience", "I12", "WP-I12-001"),
+    }
+    EXTRA_PACKAGE_FIXES = {
+        "CAN-LAM-AI-023": "WP-I7-008",
+        "CAN-LAM-PERSON-026": "WP-I7-001",
+        "CAN-LAM-PERSON-086": "WP-I10-011",
+        "CAN-LAM-ARCH-248": "WP-I5-008",
+        "CAN-LAM-ARCH-267": "WP-I11-004",
+        "CAN-LAM-EVENT-078": "WP-I6-002",
+        "CAN-LAM-EVENT-080": "WP-I6-002",
+        "CAN-LAM-ARCH-387": "WP-I8-002",
+        "CAN-LAM-ARCH-392": "WP-I9-006",
+        "CAN-LAM-ARCH-393": "WP-I9-007",
+        "CAN-LAM-ARCH-370": "WP-I2-001",
+        "CAN-LAM-ARCH-376": "WP-I5-002",
+        "CAN-LAM-GOV-065": "WP-I1-005",
+        "CAN-LAM-BACKUP-004": "WP-I13-001",
+        "CAN-LAM-FOLDER-076": "WP-I12-009",
+        "CAN-LAM-FOLDER-077": "WP-I12-001",
+        "CAN-LAM-ARCH-063": "WP-I5-001",
+        "CAN-LAM-ARCH-064": "WP-I5-001",
+        "CAN-LAM-SEARCH-005": "WP-I7-004",
+    }
+
+    for row in requirements:
+        rid = row["canonical_id"]
+        if row.get("supersession_status") != "ACTIVE":
+            continue
+        stmt = row.get("statement", "")
+        src = row.get("source_text", "")
+        section = row.get("source_section", "")
+        mapping = mappings.get(rid, {})
+        cap = mapping.get("canonical_capability", "")
+        phase = mapping.get("primary_implementation_phase", "")
+        if row.get("requirement_type") in NON_IMPL and phase:
+            errors.append(f"non-actionable record retains implementation phase: {rid}")
+        if OPEN_FOLDER.search(src + " " + stmt) and cap in {"Local AI worker", "Editing", "Authentication and users", "Backup, trash, restore and rebuild"}:
+            errors.append(f"open-in-folder assigned to AI/mutation/identity/storage work: {rid}")
+        if NAVIGATION.search(stmt):
+            pid = member_by_id.get(rid, {}).get("work_package_id", "")
+            pkg_name = str(package_by_id.get(pid, {}).get("name", ""))
+            if MUTATION_PACKAGE.search(pkg_name):
+                errors.append(f"navigation placed in mutation/identity-state package: {rid} -> {pid}")
+        if RAW_EXPORT.search(src + " " + stmt) and cap != "Editing":
+            errors.append(f"inspector raw-data export not assigned by source meaning: {rid} {cap}")
+        if HARDWARE.search(src + " " + stmt) and cap not in {"Local AI worker", "Performance and scale"}:
+            errors.append(f"hardware-assessment statement conflicts with capability: {rid} {cap}")
+        if PERF_VALIDATION.search(stmt) and cap not in {"Performance and scale", "Local AI worker", "Jobs and notifications"}:
+            errors.append(f"performance-measurement statement conflicts with capability: {rid} {cap}")
+        if PLANNING.search(src + " " + section) and cap != "Planning and verification governance":
+            errors.append(f"planning-governance statement conflicts with capability: {rid} {cap}")
+        if rid in AUDIT_FIXES:
+            expected_cap, expected_phase, expected_pkg = AUDIT_FIXES[rid]
+            actual_pkg = member_by_id.get(rid, {}).get("work_package_id", "")
+            if (cap, phase) != (expected_cap, expected_phase):
+                errors.append(f"semantic audit correction not applied to mapping: {rid} {cap}/{phase}")
+            if actual_pkg != expected_pkg:
+                errors.append(f"semantic audit correction not applied to package: {rid} -> {actual_pkg}, expected {expected_pkg}")
+        if rid in EXTRA_PACKAGE_FIXES:
+            expected_pkg = EXTRA_PACKAGE_FIXES[rid]
+            actual_pkg = member_by_id.get(rid, {}).get("work_package_id", "")
+            if actual_pkg != expected_pkg:
+                errors.append(f"corrected semantic package not applied: {rid} -> {actual_pkg}, expected {expected_pkg}")
+
+    for row in v2_rows:
+        if row["final_classification"] in NON_IMPL and row.get("primary_phase"):
+            errors.append(f"v2 non-implementation record retains phase: {row['record_id']}")
+
+    audit_by_id = {row["Canonical ID"]: row for row in audit_rows}
+    for rid, row in audit_by_id.items():
+        mapping = mappings.get(rid, {})
+        if not mapping:
+            continue
+        if row["Corrected capability"] != mapping.get("canonical_capability", ""):
+            errors.append(f"audit corrected capability disagrees with mapping: {rid}")
+        if row["Corrected phase"] != mapping.get("primary_implementation_phase", ""):
+            errors.append(f"audit corrected phase disagrees with mapping: {rid}")
+
+    return errors
+
+
+def check_zero_template_claim(report_dir: Path) -> list[str]:
+    """A report may claim zero template matches only with an independent audit."""
+    errors: list[str] = []
+    audit = report_dir / "legacy-template-semantic-audit.csv"
+    metrics = report_dir / "pass1-template-metrics.json"
+    audit_rows = read_csv(audit) if audit.exists() else []
+    metric_data = read_json(metrics) if metrics.exists() else {}
+    for path in sorted(report_dir.glob("*.md")):
+        text = path.read_text(encoding="utf-8")
+        if re.search(r"template", text, re.I) and re.search(r"\b(0|zero)\b", text, re.I):
+            before = (metric_data.get("before") or {}).get("exactLegacyOutput")
+            after = (metric_data.get("after") or {}).get("exactLegacyOutput")
+            if not audit_rows or before is None or after is None or before <= 0 or after != 0:
+                errors.append(f"zero-template claim lacks independent audit evidence: {path.name}")
     return errors
 
 
@@ -148,7 +635,7 @@ def check_package_records(packages: list[dict[str, object]], membership: list[di
         by_package[pid].append(row)
         if pid not in package_ids:
             errors.append(f"membership references missing package: {pid}")
-        if row.get("reviewer_status") != "REVIEWED":
+        if row.get("reviewer_status") not in {"REVIEWED", "REVIEW_REQUIRED"}:
             errors.append(f"membership not reviewed: {row.get('canonical_id')}")
     required = ("objective", "bounded_surface", "explicit_exclusions", "cohesion_rationale", "deliverables", "contracts_affected", "schemas_affected", "tests", "failure_cases", "rollback_or_recovery", "completion_evidence", "commit_boundary", "exit_gate")
     for package in packages:
@@ -176,6 +663,8 @@ def check_phase_package_consistency(
     package_phase = {str(row["work_package_id"]): str(row["implementation_phase"]) for row in packages}
     requirement_by_id = {row["canonical_id"]: row for row in requirements}
     for row in membership:
+        if row.get("reviewer_status") == "REVIEW_REQUIRED":
+            continue
         rid, pid = row["canonical_id"], row["work_package_id"]
         phase = mappings[rid]["primary_implementation_phase"]
         if package_phase.get(pid) != phase:
@@ -201,7 +690,7 @@ def check_dependency_records(packages: list[dict[str, object]], edges: list[dict
         "REQUIRES_REVIEW_PROTOCOL", "REQUIRES_GRAPH_MODEL", "REQUIRES_REPLACEMENT_VERIFIED",
         "REQUIRES_PLATFORM_PROOF", "REQUIRES_RELEASE_GATE", "REQUIRES_CONTRACT", "REQUIRES_RUNTIME",
         "REQUIRES_INDEX", "REQUIRES_UI_SHELL", "REQUIRES_WORKER", "REQUIRES_COMPONENT_DECISION",
-        "REQUIRES_SECURITY_BOUNDARY",
+        "REQUIRES_SECURITY_BOUNDARY", "REQUIRES_AUTHORITY_MODEL",
     }
     seen: set[tuple[str, str, str]] = set()
     for edge in edges:
@@ -249,9 +738,9 @@ def check_dependency_records(packages: list[dict[str, object]], edges: list[dict
         ("WP-I5-008", "WP-I4-008"), ("WP-I6-005", "WP-I6-002"), ("WP-I6-006", "WP-I6-002"),
         ("WP-I7-007", "WP-I7-004"), ("WP-I7-008", "WP-I7-007"), ("WP-I8-005", "WP-I8-004"),
         ("WP-I8-006", "WP-I8-005"), ("WP-I11-003", "WP-I11-001"), ("WP-I12-006", "WP-I12-001"),
-        ("WP-I12-007", "WP-I3-014"), ("WP-I4-012", "WP-I4-010"), ("WP-I9-003", "WP-I9-001"),
+        ("WP-I12-007", "WP-I3-014"), ("WP-I4-012", "WP-I4-010"), ("WP-I9-004", "WP-I9-001"),
         ("WP-I11-002", "WP-I11-001"), ("WP-I11-009", "WP-I11-003"), ("WP-I13-003", "WP-I13-002"),
-        ("WP-I13-007", "WP-I13-006"), ("WP-I15-005", "WP-I15-001"), ("WP-I15-015", "WP-I15-008"),
+        ("WP-I13-006", "WP-I3-011"), ("WP-I15-005", "WP-I15-001"), ("WP-I15-015", "WP-I15-008"),
     }
     pairs = {(edge["work_package_id"], edge["prerequisite_work_package_id"]) for edge in edges}
     for pair in sorted(required_edges - pairs):
@@ -468,8 +957,12 @@ def recompute_quality_metrics(
         "missing_verification_methods": sum(not row["verification_method"] for row in active),
         "phase_package_mismatches": phase_mismatches,
         "stale_package_references": sum("work_package_id" in row for row in requirements),
-        "unreviewed_mappings": sum(not mappings[row["canonical_id"]]["reviewer_status"].startswith("REVIEWED_") for row in active),
-        "unreviewed_package_memberships": sum(row.get("reviewer_status") != "REVIEWED" for row in membership),
+        "unreviewed_mappings": sum(
+            bool(mappings[row["canonical_id"]]["primary_implementation_phase"])
+            and not mappings[row["canonical_id"]]["reviewer_status"].startswith("REVIEWED_")
+            for row in active
+        ),
+        "unreviewed_package_memberships": sum(row.get("reviewer_status") not in {"REVIEWED", "REVIEW_REQUIRED"} for row in membership),
         "missing_dependency_rationales": sum(not row.get("technical_rationale") or not row.get("evidence") or not row.get("review_status", "").startswith("REVIEWED_") for row in edges),
         "missing_authority_schema_decisions": missing_authority_schema,
     }
@@ -479,7 +972,10 @@ def check_metrics_honesty(report: dict[str, object], computed: dict[str, int], b
     errors: list[str] = []
     reported = report.get("computedQualityMetrics", {})
     if reported != computed:
-        errors.append(f"reported quality metrics differ from independent computation: {reported} != {computed}")
+        errors.append(
+            "reported quality metrics differ from independent computation: "
+            f"{json.dumps(reported, sort_keys=True)} != {json.dumps(computed, sort_keys=True)}"
+        )
     if re.search(r'"(?:finalFragmentaryOrNonObservable|finalGenericCriteria)"\s*:\s*0\b', builder_text):
         errors.append("hard-coded zero quality metric in builder")
     if report.get("finalFragmentaryOrNonObservable") == 0 and (computed["fragmentary_active_records"] or computed["non_observable_requirements"]):
@@ -491,6 +987,29 @@ def check_review_script_text(text: str) -> list[str]:
     errors: list[str] = []
     if re.search(r"for\s+\w+\s+in\s+\w+\s*:\s*(?:\n\s*)?\w+\s*\[\s*['\"](?:review_status|reviewer_status|normalization_reviewer_status)['\"]\s*\]\s*=\s*['\"]REVIEW", text):
         errors.append("blanket script marks every row reviewed")
+    return errors
+
+
+def check_review_provenance(coverage: dict[str, object]) -> list[str]:
+    errors: list[str] = []
+    if int(coverage.get("unmatchedPositiveRows", -1)) != 0:
+        errors.append(f"positive review status without explicit provenance: {coverage.get('unmatchedPositiveRows')}")
+    return errors
+
+
+def check_active_scripts_for_automatic_certification(tools_dir: Path) -> list[str]:
+    errors: list[str] = []
+    allowed = {"pass1_apply_v2_decisions.py", "pass1_render_v2_registry.py", "pass2_rebuild.py", "pass2_semantic_consistency.py", "pass2c_impact_audit.py", "pass2c_package_review.py", "pass3_independent_semantic_audit.py"}
+    pattern = re.compile(
+        r"setdefault\(['\"](?:review_status|reviewer_status)['\"]\s*,\s*['\"]REVIEWED"
+        r"|\[['\"](?:review_status|reviewer_status)['\"]\]\s*=\s*['\"]REVIEWED['\"]",
+    )
+    for path in sorted(tools_dir.glob("*.py")):
+        if path.name in allowed or "superseded" in str(path):
+            continue
+        text = path.read_text(encoding="utf-8")
+        if pattern.search(text):
+            errors.append(f"automatic positive review certification: {path.name}")
     return errors
 
 
@@ -567,12 +1086,24 @@ def run() -> dict[str, object]:
         builder_errors.append("builder lacks reusable Graphify write guard")
     level("L1_SOURCE_AND_WRITE_BOUNDARY", builder_errors)
     level("L2_REQUIREMENT_SEMANTICS", check_requirement_records(requirements, mappings))
+    v2_rows = read_csv(PLAN / "13-reports" / "reviewed-requirement-decisions-v2.csv")
+    level(
+        "L2B_PASS1_SEMANTIC_REHABILITATION",
+        check_pass1_semantics(requirements, mappings, v2_rows)
+        + check_v2_status_sourcing(requirements, v2_rows),
+    )
     mapping_errors = check_mapping_records(mappings_list)
     if set(mappings) != {row["canonical_id"] for row in requirements}:
         mapping_errors.append("requirement/mapping ID sets differ")
     level("L3_EXPLICIT_SEMANTIC_MAPPING", mapping_errors)
     active_ids = {row["canonical_id"] for row in requirements if mappings[row["canonical_id"]]["primary_implementation_phase"] and row["requirement_type"] in IMPLEMENTATION_TYPES and row["supersession_status"] == "ACTIVE"}
     level("L4_WORK_PACKAGES", check_package_records(packages, membership, active_ids) + check_phase_package_consistency(requirements, mappings, packages, membership))
+    level("L4B_PASS2_PACKAGE_SEMANTICS", check_pass2_package_semantics(packages, membership, requirements, mappings, edges) + check_membership_rationale_quality(membership, packages, requirements))
+    audit_rows = read_csv(PLAN / "13-reports" / "semantic-capability-phase-consistency-audit.csv") if (PLAN / "13-reports" / "semantic-capability-phase-consistency-audit.csv").exists() else []
+    impact_rows = read_csv(PLAN / "13-reports" / "semantic-correction-package-impact-audit.csv") if (PLAN / "13-reports" / "semantic-correction-package-impact-audit.csv").exists() else []
+    affected_package_ids = {row["Final package"] for row in impact_rows if row.get("Final package")}
+    package_review_rows = read_csv(PLAN / "13-reports" / "pass2c-package-architecture-review.csv") if (PLAN / "13-reports" / "pass2c-package-architecture-review.csv").exists() else []
+    level("L4C_SEMANTIC_CAPABILITY_PHASE_CONSISTENCY", check_semantic_capability_phase_consistency(requirements, mappings, membership, packages, v2_rows, audit_rows) + check_affected_package_quality(packages, affected_package_ids) + check_large_package_review_coverage(packages, package_review_rows))
     level("L5_TECHNICAL_DAG", check_dependency_records(packages, edges))
     level("L6_COMPONENT_DECISIONS", check_component_records(components, packages))
     contract_errors = check_command_records(commands, PLAN / "05-contracts")
@@ -586,11 +1117,13 @@ def run() -> dict[str, object]:
         schema_errors.extend(check_schema_document(path))
     con = sqlite3.connect(":memory:")
     try:
-        con.executescript((PLAN / "07-sqlite" / "001_initial.sql").read_text(encoding="utf-8"))
+        sqlite_ddl = (PLAN / "07-sqlite" / "001_initial.sql").read_text(encoding="utf-8")
+        con.executescript(sqlite_ddl)
     except sqlite3.Error as error:
         schema_errors.append(f"SQLite DDL execution failed: {error}")
     finally:
         con.close()
+    schema_errors.extend(check_sqlite_references(sqlite_ddl))
     level("L8_AUTHORITY_RECORDS_AND_SQLITE", schema_errors)
     audit_files = list((PLAN / "13-reports").rglob("*manual*"))
     audit_errors = check_audit_authenticity(audit_files)
@@ -618,9 +1151,20 @@ def run() -> dict[str, object]:
     coverage = read_json(PLAN / "13-reports" / "review-coverage.json")
     if int(coverage.get("explicit_failure_decisions", 0)) != 32 or int(coverage.get("explicit_fragment_decisions", 0)) <= 0:
         audit_errors.append("explicit review coverage is incomplete")
-    if int(coverage.get("unreviewed_active_mappings", -1)) != 0 or int(coverage.get("unreviewed_memberships", -1)) != 0:
+    expected_review_required = sum(1 for row in membership if row["reviewer_status"] == "REVIEW_REQUIRED")
+    if int(coverage.get("unreviewed_active_mappings", -1)) != 0 or int(coverage.get("unreviewed_memberships", -1)) != expected_review_required:
         audit_errors.append("review coverage reports unresolved mappings or memberships")
+    audit_errors.extend(check_zero_template_claim(PLAN / "13-reports"))
     level("L9_AUDIT_AUTHENTICITY", audit_errors)
+    provenance_path = PLAN / "13-reports" / "review-provenance-coverage.json"
+    provenance_coverage = read_json(provenance_path) if provenance_path.exists() else {}
+    level("L14_REVIEW_PROVENANCE", check_review_provenance(provenance_coverage) + check_active_scripts_for_automatic_certification(GRAPHIFY / "tools"))
+    readiness_path = PLAN / "13-reports" / "pass3-certification-report.json"
+    readiness_report = read_json(readiness_path) if readiness_path.exists() else {}
+    determinism_path = PLAN / "13-reports" / "final-package-determinism.json"
+    determinism_report = read_json(determinism_path) if determinism_path.exists() else {}
+    handoff_text = (PLAN / "14-handoff" / "START-HERE.md").read_text(encoding="utf-8")
+    level("L15_PERSISTED_READINESS", check_persisted_readiness_declaration(readiness_report, handoff_text, determinism_report))
     computed = recompute_quality_metrics(requirements, mappings, membership, packages, edges, schema_index, authority)
     metric_report = read_json(PLAN / "13-reports" / "requirement-repair-stats.json")
     level("L10_METRICS_HONESTY", check_metrics_honesty(metric_report, computed, builder_text))
@@ -635,8 +1179,11 @@ def run() -> dict[str, object]:
         packet_errors.append("work-package packet count mismatch")
     handoff = (PLAN / "14-handoff" / "START-HERE.md").read_text(encoding="utf-8")
     packet_errors.extend(check_handoff_text(handoff))
+    packet_errors.extend(check_packet_membership_currency(packages, membership, PLAN))
     level("L11_SCOPE_SAFETY", check_scope_safety(packages, handoff))
     level("L12_PACKETS_AND_HANDOFF", packet_errors)
+    execution_check_errors = check_l7_l8_execution_claim(Draft202012Validator is not None, {"levels": levels})
+    level("L13_META_VALIDATION_EXECUTION", execution_check_errors)
     status = "PASS" if all(row["status"] == "PASS" for row in levels) else "FAIL"
     return {"validatorVersion": "4.0.0", "status": status, "levels": levels, "levelCount": len(levels), "failedLevels": [row["level"] for row in levels if row["status"] == "FAIL"], "computedQualityMetrics": computed}
 

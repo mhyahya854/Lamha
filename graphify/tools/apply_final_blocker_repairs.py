@@ -591,10 +591,10 @@ def apply_reviewed_dependency_additions() -> None:
     ]
     for row in dependencies:
         row.setdefault("evidence", f"Prior curated dependency source: {row['technical_rationale']}")
-        row.setdefault("review_status", "REVIEWED_CONFIRMED")
+        row.setdefault("review_status", "REVIEW_REQUIRED")
         row.setdefault("reviewer_type", "PRIOR_CURATED_SOURCE")
         row.setdefault("review_revision", "pre-final-blocker-removal")
-        row["reviewer_status"] = "REVIEWED"
+        row["reviewer_status"] = "REVIEW_REQUIRED"
         row["artificial_adjacency"] = "false"
     by_key = {(row["work_package_id"], row["prerequisite_work_package_id"], row["dependency_type"]): row for row in dependencies}
     for decision in read_csv(REVIEWS / "reviewed-dependency-additions.csv"):

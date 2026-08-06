@@ -1,6 +1,6 @@
 {
-  "fixtureCount": 12,
-  "expectedFailuresObserved": 12,
+  "fixtureCount": 48,
+  "expectedFailuresObserved": 48,
   "status": "PASS",
   "fixtures": [
     {
@@ -51,7 +51,7 @@
       "fixture": "F07_HARD_CODED_ZERO_FRAGMENT_REPORT",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "reported quality metrics differ from independent computation: {'untestable_criteria': 0, 'unreviewed_package_memberships': 0, 'fragmentary_active_records': 0, 'generic_template_records': 0, 'missing_verification_methods': 0, 'missing_parent_relationships': 0, 'unreviewed_mappings': 0, 'missing_dependency_rationales': 0, 'phase_package_mismatches': 0, 'stale_package_references': 0, 'non_observable_requirements': 0, 'missing_authority_schema_decisions': 0} != {'untestable_criteria': 0, 'unreviewed_package_memberships': 0, 'fragmentary_active_records': 1, 'generic_template_records': 0, 'missing_verification_methods': 0, 'missing_parent_relationships': 0, 'unreviewed_mappings': 0, 'missing_dependency_rationales': 0, 'phase_package_mismatches': 0, 'stale_package_references': 0, 'non_observable_requirements': 0, 'missing_authority_schema_decisions': 0}",
+        "reported quality metrics differ from independent computation: {\"fragmentary_active_records\": 0, \"generic_template_records\": 0, \"missing_authority_schema_decisions\": 0, \"missing_dependency_rationales\": 0, \"missing_parent_relationships\": 0, \"missing_verification_methods\": 0, \"non_observable_requirements\": 0, \"phase_package_mismatches\": 0, \"stale_package_references\": 0, \"unreviewed_mappings\": 0, \"unreviewed_package_memberships\": 0, \"untestable_criteria\": 0} != {\"fragmentary_active_records\": 1, \"generic_template_records\": 0, \"missing_authority_schema_decisions\": 0, \"missing_dependency_rationales\": 0, \"missing_parent_relationships\": 0, \"missing_verification_methods\": 0, \"non_observable_requirements\": 0, \"phase_package_mismatches\": 0, \"stale_package_references\": 0, \"unreviewed_mappings\": 0, \"unreviewed_package_memberships\": 0, \"untestable_criteria\": 0}",
         "zero fragments claimed while fragmentary or non-observable records exist"
       ]
     },
@@ -59,14 +59,14 @@
       "fixture": "F08_UNEXPLAINED_DAG_ROOT",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "unexplained root package: WP-FIX-ROOT",
+        "unexplained root package: WP-FIX-ROOT2",
         "required technical prerequisite absent: WP-I11-002 <- WP-I11-001",
         "required technical prerequisite absent: WP-I11-003 <- WP-I11-001",
         "required technical prerequisite absent: WP-I11-009 <- WP-I11-003",
         "required technical prerequisite absent: WP-I12-006 <- WP-I12-001",
         "required technical prerequisite absent: WP-I12-007 <- WP-I3-014",
         "required technical prerequisite absent: WP-I13-003 <- WP-I13-002",
-        "required technical prerequisite absent: WP-I13-007 <- WP-I13-006",
+        "required technical prerequisite absent: WP-I13-006 <- WP-I3-011",
         "required technical prerequisite absent: WP-I15-005 <- WP-I15-001",
         "required technical prerequisite absent: WP-I15-015 <- WP-I15-008",
         "required technical prerequisite absent: WP-I4-012 <- WP-I4-010",
@@ -80,7 +80,7 @@
         "required technical prerequisite absent: WP-I7-008 <- WP-I7-007",
         "required technical prerequisite absent: WP-I8-005 <- WP-I8-004",
         "required technical prerequisite absent: WP-I8-006 <- WP-I8-005",
-        "required technical prerequisite absent: WP-I9-003 <- WP-I9-001"
+        "required technical prerequisite absent: WP-I9-004 <- WP-I9-001"
       ]
     },
     {
@@ -119,6 +119,362 @@
       "validatorErrors": [
         "anonymous object array: $/properties/items",
         "untyped object: $/properties/items/items"
+      ]
+    },
+    {
+      "fixture": "F13_LEGACY_FAMILY_REMAINS",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "legacy capability-template family remains without explicit rewrite: FIX-PASS1",
+        "legal/licensing item represented as model inference: FIX-PASS1"
+      ]
+    },
+    {
+      "fixture": "F14_NAVIGATION_AS_MUTATION",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "navigation represented as mutation without read/navigation behavior: FIX-PASS1"
+      ]
+    },
+    {
+      "fixture": "F15_LEGAL_AS_INFERENCE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "legacy capability-template family remains without explicit rewrite: FIX-PASS1",
+        "legal/licensing item represented as model inference: FIX-PASS1"
+      ]
+    },
+    {
+      "fixture": "F16_PERFORMANCE_AS_ROOT",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "legacy capability-template family remains without explicit rewrite: FIX-PASS1",
+        "performance item represented as root authorization: FIX-PASS1"
+      ]
+    },
+    {
+      "fixture": "F17_MENU_LABEL_AS_FEATURE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "menu/UI label treated as a complete feature: FIX-PASS1",
+        "corrected requirement lacks an observable outcome: FIX-PASS1"
+      ]
+    },
+    {
+      "fixture": "F18_POSITIVE_STATUS_UNSOURCED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "positive review status without v2 source: FIX-UNSOURCED"
+      ]
+    },
+    {
+      "fixture": "F19_ZERO_TEMPLATE_CLAIM",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "zero-template claim lacks independent audit evidence: template-report.md"
+      ]
+    },
+    {
+      "fixture": "F20_VERIFICATION_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "active implementation record lacks requirement-specific verification: FIX-PASS1"
+      ]
+    },
+    {
+      "fixture": "F21_OPEN_PERSON_IN_MUTATION",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "open person/event/folder placed in mutation package: FIX-OPEN-PERSON -> WP-FIX-MUT"
+      ]
+    },
+    {
+      "fixture": "F22_OPEN_EVENT_IN_PLAN_MUTATION",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "open person/event/folder placed in mutation package: FIX-OPEN-EVENT -> WP-FIX-EV"
+      ]
+    },
+    {
+      "fixture": "F23_MODEL_LICENSING_IN_AI_INFERENCE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "model licensing placed in AI inference package: FIX-LICENSING -> WP-FIX-AI"
+      ]
+    },
+    {
+      "fixture": "F24_LARGE_LIBRARY_IN_ACCESSIBILITY",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "large-library optimization placed in accessibility package: FIX-LARGE -> WP-FIX-ACC"
+      ]
+    },
+    {
+      "fixture": "F25_MIXED_PACKAGE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "package mixes unrelated navigation, mutation, performance, or legal work: WP-FIX-MIX",
+        "open person/event/folder placed in mutation package: FIX-M-NAV -> WP-FIX-MIX"
+      ]
+    },
+    {
+      "fixture": "F26_PACKAGE_TITLE_MISMATCH",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "generic package name: WP-FIX-TITLE",
+        "requirement/package phase mismatch: FIX-OPEN-PERSON I7 != WP-FIX-TITLE I5"
+      ]
+    },
+    {
+      "fixture": "F27_GENERIC_MEMBERSHIP_RATIONALE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "generic membership rationale: FIX-OPEN-PERSON"
+      ]
+    },
+    {
+      "fixture": "F28_ADJACENCY_DEPENDENCY",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "artificial adjacency dependency: WP-FIX-B <- WP-FIX-A",
+        "dependency lacks evidence: WP-FIX-B <- WP-FIX-A",
+        "unexplained root package: WP-FIX-A",
+        "required technical prerequisite absent: WP-I11-002 <- WP-I11-001",
+        "required technical prerequisite absent: WP-I11-003 <- WP-I11-001",
+        "required technical prerequisite absent: WP-I11-009 <- WP-I11-003",
+        "required technical prerequisite absent: WP-I12-006 <- WP-I12-001",
+        "required technical prerequisite absent: WP-I12-007 <- WP-I3-014",
+        "required technical prerequisite absent: WP-I13-003 <- WP-I13-002",
+        "required technical prerequisite absent: WP-I13-006 <- WP-I3-011",
+        "required technical prerequisite absent: WP-I15-005 <- WP-I15-001",
+        "required technical prerequisite absent: WP-I15-015 <- WP-I15-008",
+        "required technical prerequisite absent: WP-I4-012 <- WP-I4-010",
+        "required technical prerequisite absent: WP-I5-006 <- WP-I3-001",
+        "required technical prerequisite absent: WP-I5-007 <- WP-I4-010",
+        "required technical prerequisite absent: WP-I5-008 <- WP-I4-008",
+        "required technical prerequisite absent: WP-I5-011 <- WP-I4-012",
+        "required technical prerequisite absent: WP-I6-005 <- WP-I6-002",
+        "required technical prerequisite absent: WP-I6-006 <- WP-I6-002",
+        "required technical prerequisite absent: WP-I7-007 <- WP-I7-004",
+        "required technical prerequisite absent: WP-I7-008 <- WP-I7-007",
+        "required technical prerequisite absent: WP-I8-005 <- WP-I8-004",
+        "required technical prerequisite absent: WP-I8-006 <- WP-I8-005",
+        "required technical prerequisite absent: WP-I9-004 <- WP-I9-001"
+      ]
+    },
+    {
+      "fixture": "F29_REQUIRED_SCHEMA_DEPENDENCY_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "unexplained root package: WP-FIX-ROOT",
+        "required technical prerequisite absent: WP-I11-002 <- WP-I11-001",
+        "required technical prerequisite absent: WP-I11-003 <- WP-I11-001",
+        "required technical prerequisite absent: WP-I11-009 <- WP-I11-003",
+        "required technical prerequisite absent: WP-I12-006 <- WP-I12-001",
+        "required technical prerequisite absent: WP-I12-007 <- WP-I3-014",
+        "required technical prerequisite absent: WP-I13-003 <- WP-I13-002",
+        "required technical prerequisite absent: WP-I13-006 <- WP-I3-011",
+        "required technical prerequisite absent: WP-I15-005 <- WP-I15-001",
+        "required technical prerequisite absent: WP-I15-015 <- WP-I15-008",
+        "required technical prerequisite absent: WP-I4-012 <- WP-I4-010",
+        "required technical prerequisite absent: WP-I5-006 <- WP-I3-001",
+        "required technical prerequisite absent: WP-I5-007 <- WP-I4-010",
+        "required technical prerequisite absent: WP-I5-008 <- WP-I4-008",
+        "required technical prerequisite absent: WP-I5-011 <- WP-I4-012",
+        "required technical prerequisite absent: WP-I6-005 <- WP-I6-002",
+        "required technical prerequisite absent: WP-I6-006 <- WP-I6-002",
+        "required technical prerequisite absent: WP-I7-007 <- WP-I7-004",
+        "required technical prerequisite absent: WP-I7-008 <- WP-I7-007",
+        "required technical prerequisite absent: WP-I8-005 <- WP-I8-004",
+        "required technical prerequisite absent: WP-I8-006 <- WP-I8-005",
+        "required technical prerequisite absent: WP-I9-004 <- WP-I9-001"
+      ]
+    },
+    {
+      "fixture": "F30_UNEXPLAINED_ROOT",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "unexplained root package: WP-FIX-ROOT2",
+        "required technical prerequisite absent: WP-I11-002 <- WP-I11-001",
+        "required technical prerequisite absent: WP-I11-003 <- WP-I11-001",
+        "required technical prerequisite absent: WP-I11-009 <- WP-I11-003",
+        "required technical prerequisite absent: WP-I12-006 <- WP-I12-001",
+        "required technical prerequisite absent: WP-I12-007 <- WP-I3-014",
+        "required technical prerequisite absent: WP-I13-003 <- WP-I13-002",
+        "required technical prerequisite absent: WP-I13-006 <- WP-I3-011",
+        "required technical prerequisite absent: WP-I15-005 <- WP-I15-001",
+        "required technical prerequisite absent: WP-I15-015 <- WP-I15-008",
+        "required technical prerequisite absent: WP-I4-012 <- WP-I4-010",
+        "required technical prerequisite absent: WP-I5-006 <- WP-I3-001",
+        "required technical prerequisite absent: WP-I5-007 <- WP-I4-010",
+        "required technical prerequisite absent: WP-I5-008 <- WP-I4-008",
+        "required technical prerequisite absent: WP-I5-011 <- WP-I4-012",
+        "required technical prerequisite absent: WP-I6-005 <- WP-I6-002",
+        "required technical prerequisite absent: WP-I6-006 <- WP-I6-002",
+        "required technical prerequisite absent: WP-I7-007 <- WP-I7-004",
+        "required technical prerequisite absent: WP-I7-008 <- WP-I7-007",
+        "required technical prerequisite absent: WP-I8-005 <- WP-I8-004",
+        "required technical prerequisite absent: WP-I8-006 <- WP-I8-005",
+        "required technical prerequisite absent: WP-I9-004 <- WP-I9-001"
+      ]
+    },
+    {
+      "fixture": "F31_PHASE_MISMATCH",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "requirement/package phase mismatch: FIX-PHASE I4 != WP-FIX-PKG I5"
+      ]
+    },
+    {
+      "fixture": "F32_REMOVAL_BEFORE_REPLACEMENT",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "removal package precedes replacement proof: WP-FIX-REM"
+      ]
+    },
+    {
+      "fixture": "F33_OPEN_FOLDER_IN_AI_WORK",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "open-in-folder assigned to AI/mutation/identity/storage work: FIX-OPEN-FOLDER"
+      ]
+    },
+    {
+      "fixture": "F34_RAW_EXPORT_BY_KEYWORD",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "inspector raw-data export not assigned by source meaning: FIX-RAW Local AI worker"
+      ]
+    },
+    {
+      "fixture": "F35_PERFORMANCE_VALIDATION_IN_FEATURE_PACKAGE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "performance-measurement statement conflicts with capability: FIX-PERFVAL Asset viewer"
+      ]
+    },
+    {
+      "fixture": "F36_PLANNING_GOVERNANCE_IN_PRODUCT_PACKAGE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "planning-governance statement conflicts with capability: FIX-PLAN Map and location"
+      ]
+    },
+    {
+      "fixture": "F37_NON_ACTIONABLE_RECORD_RETAINS_PHASE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "non-actionable record retains implementation phase: FIX-GLOSS"
+      ]
+    },
+    {
+      "fixture": "F38_CORRECTED_REQUIREMENT_REMAINS_IN_OLD_PACKAGE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "semantic audit correction not applied to package: CAN-LAM-FOLDER-032 -> WP-I10-002, expected WP-I5-015"
+      ]
+    },
+    {
+      "fixture": "F39_GENERIC_MEMBERSHIP_RATIONALE_NEW",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "circular membership rationale: FIX-RATIONAL"
+      ]
+    },
+    {
+      "fixture": "F40_LARGE_PACKAGE_LACKS_COHESION_REVIEW",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "large package lacks cohesion review: WP-FIX-LARGE2"
+      ]
+    },
+    {
+      "fixture": "F41_DEPENDENCY_CYCLE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "dependency cycle detected",
+        "required technical prerequisite absent: WP-I11-002 <- WP-I11-001",
+        "required technical prerequisite absent: WP-I11-003 <- WP-I11-001",
+        "required technical prerequisite absent: WP-I11-009 <- WP-I11-003",
+        "required technical prerequisite absent: WP-I12-006 <- WP-I12-001",
+        "required technical prerequisite absent: WP-I12-007 <- WP-I3-014",
+        "required technical prerequisite absent: WP-I13-003 <- WP-I13-002",
+        "required technical prerequisite absent: WP-I13-006 <- WP-I3-011",
+        "required technical prerequisite absent: WP-I15-005 <- WP-I15-001",
+        "required technical prerequisite absent: WP-I15-015 <- WP-I15-008",
+        "required technical prerequisite absent: WP-I4-012 <- WP-I4-010",
+        "required technical prerequisite absent: WP-I5-006 <- WP-I3-001",
+        "required technical prerequisite absent: WP-I5-007 <- WP-I4-010",
+        "required technical prerequisite absent: WP-I5-008 <- WP-I4-008",
+        "required technical prerequisite absent: WP-I5-011 <- WP-I4-012",
+        "required technical prerequisite absent: WP-I6-005 <- WP-I6-002",
+        "required technical prerequisite absent: WP-I6-006 <- WP-I6-002",
+        "required technical prerequisite absent: WP-I7-007 <- WP-I7-004",
+        "required technical prerequisite absent: WP-I7-008 <- WP-I7-007",
+        "required technical prerequisite absent: WP-I8-005 <- WP-I8-004",
+        "required technical prerequisite absent: WP-I8-006 <- WP-I8-005",
+        "required technical prerequisite absent: WP-I9-004 <- WP-I9-001"
+      ]
+    },
+    {
+      "fixture": "F42_PACKET_STALE_MEMBERSHIP",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "packet membership stale: FIX-MEMBER missing from WP-FIX-PKT packet"
+      ]
+    },
+    {
+      "fixture": "F43_L7_L8_CLAIM_WITHOUT_EXECUTION",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "L7/L8 are reported as executed while jsonschema is unavailable"
+      ]
+    },
+    {
+      "fixture": "F44_MISSING_COMPONENT_DECISION",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "component missing owning_phase: FIX-COMP",
+        "component missing decision_package: FIX-COMP",
+        "component missing blocking_work_package: FIX-COMP",
+        "component missing required_before_packages: FIX-COMP",
+        "component missing version_status: FIX-COMP",
+        "component missing licence_status: FIX-COMP",
+        "component missing redistribution_status: FIX-COMP",
+        "component missing platform_impact: FIX-COMP",
+        "component missing packaging_impact: FIX-COMP",
+        "component missing alternatives: FIX-COMP",
+        "component missing final_decision_evidence: FIX-COMP",
+        "component missing reviewer_status: FIX-COMP"
+      ]
+    },
+    {
+      "fixture": "F45_INVALID_SQLITE_REFERENCE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "SQLite foreign key references missing table: missing"
+      ]
+    },
+    {
+      "fixture": "F46_SUPERSEDED_ACTIVE_HANDOFF",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "active handoff does not point to first I0 package",
+        "active handoff points to superseded phase"
+      ]
+    },
+    {
+      "fixture": "F47_NON_DETERMINISTIC_FINAL_EVIDENCE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "determinism evidence mismatch: hash-a != hash-b"
+      ]
+    },
+    {
+      "fixture": "F48_CONSOLE_SUCCESS_WITHOUT_PERSISTED_DECLARATION",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "persisted readiness declaration missing or incorrect"
       ]
     }
   ]

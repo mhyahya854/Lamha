@@ -1,0 +1,31 @@
+{
+  "v2Decisions": 742,
+  "rewrittenAsRequirement": 85,
+  "rewrittenAsAcceptanceCriterion": 458,
+  "reclassified": 188,
+  "superseded": 1,
+  "keptWithJustification": 10,
+  "capabilityChanges": 13,
+  "phaseChanges": 10,
+  "packageReviewRequiredMemberships": [
+    "CAN-LAM-AI-086",
+    "CAN-LAM-ARCH-042",
+    "CAN-LAM-ARCH-043",
+    "CAN-LAM-ARCH-267",
+    "CAN-LAM-ARCH-406",
+    "CAN-LAM-EDGE-06",
+    "CAN-LAM-EDGE-14",
+    "CAN-LAM-GOV-076",
+    "CAN-LAM-GOV-174",
+    "CAN-LAM-GOV-270",
+    "CAN-LAM-META-023",
+    "CAN-LAM-PERF-001",
+    "CAN-LAM-PERF-004",
+    "CAN-LAM-PERF-005",
+    "CAN-LAM-PERSON-045",
+    "CAN-LAM-PERSON-046",
+    "CAN-LAM-PERSON-047",
+    "CAN-LAM-PERSON-048"
+  ],
+  "activeImplementationMemberships": 719
+}

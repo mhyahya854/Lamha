@@ -1,0 +1,17 @@
+{
+  "previousPackageCount": 155,
+  "finalPackageCount": 155,
+  "packagesKept": 119,
+  "packagesRenamed": 0,
+  "packagesSplit": 2,
+  "packagesMerged": 9,
+  "packagesRebuilt": 34,
+  "packagesRemoved": 0,
+  "membershipRows": 723,
+  "membershipMoves": 90,
+  "previousEdgeCount": 199,
+  "finalEdgeCount": 200,
+  "rootCandidates": [
+    "WP-I0-001"
+  ]
+}

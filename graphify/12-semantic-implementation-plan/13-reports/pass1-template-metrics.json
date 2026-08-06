@@ -1,0 +1,17 @@
+{
+  "before": {
+    "detectedRecords": 742,
+    "exactLegacyOutput": 732,
+    "familyPatternMatches": 523
+  },
+  "after": {
+    "activeRecords": 1124,
+    "exactLegacyOutput": 0,
+    "familyPatternMatches": 2,
+    "familyByPattern": {
+      "user_applies": 2
+    },
+    "fragmentaryLabelStatements": 167
+  },
+  "method": "Independent reproduction of the superseded criterion_statement oracle plus structural family rules over the final active registry."
+}

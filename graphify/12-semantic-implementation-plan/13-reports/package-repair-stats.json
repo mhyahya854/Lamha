@@ -6,7 +6,7 @@
     "MERGE": 59
   },
   "largestPackage": "WP-I3-001",
-  "largestPackageItemCount": 38,
-  "maximumCapabilityDiversity": 8,
+  "largestPackageItemCount": 31,
+  "maximumCapabilityDiversity": 5,
   "mechanicalSlicePackagesRemaining": 0
 }

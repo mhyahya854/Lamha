@@ -226,7 +226,7 @@ def close_schema(command_id: str, schema: dict[str, object], side: str) -> dict[
         elif anonymous_array:
             properties[field] = {"type": "array", "items": ref(field_ref(command_id, field, side)), "minItems": value.get("minItems", 0)}
     schema["additionalProperties"] = False
-    schema["x-lamha-review"] = {"status": "REVIEWED", "commandId": command_id, "side": side, "openObjectExceptions": []}
+    schema["x-lamha-review"] = {"status": "REVIEW_REQUIRED", "commandId": command_id, "side": side, "openObjectExceptions": []}
     return schema
 
 
@@ -268,7 +268,7 @@ def write_contracts() -> tuple[int, int, int]:
             "revisionPrecondition": revision_rule,
             "workPackageId": package_for(command_id, packages),
             "classificationRationale": f"Individually reviewed: readOnly={str(read_only).lower()}, authority={'none' if read_only else ('derived' if command_id in DERIVED_MUTATION else 'authoritative/filesystem')}, duration={duration}, dry-run={str(dry_required).lower()}, cancellation={cancellation}.",
-            "reviewerStatus": "REVIEWED_CORRECTED" if changed else "REVIEWED_CONFIRMED",
+            "reviewerStatus": "REVIEW_REQUIRED",
         })
         command["progressEvents"] = ["operation.accepted", "operation.started", "operation.progress", "operation.warning", "operation.committed", "operation.failed"] if operation else []
         domain = command_id.split(".", 1)[0]
@@ -441,7 +441,7 @@ def write_records() -> tuple[int, int, int]:
     for name, schema in schemas.items():
         write_json(RECORDS / "records" / f"{name}.schema.json", schema)
         authority = str(schema["x-lamha"]["authority"])
-        index.append({"record_category": name, "schema": f"records/{name}.schema.json", "authority": authority, "rebuild_source": "Authoritative record/media revisions named by the schema" if authority == "DERIVED_REBUILDABLE" else "This versioned record outside SQLite", "privacy": schema["x-lamha"]["privacyClassification"], "reviewer_status": "REVIEWED"})
+        index.append({"record_category": name, "schema": f"records/{name}.schema.json", "authority": authority, "rebuild_source": "Authoritative record/media revisions named by the schema" if authority == "DERIVED_REBUILDABLE" else "This versioned record outside SQLite", "privacy": schema["x-lamha"]["privacyClassification"], "reviewer_status": "REVIEW_REQUIRED"})
     write_csv(RECORDS / "schema-index.csv", index, list(index[0]))
     write_json(RECORDS / "schema-index.json", index)
 
