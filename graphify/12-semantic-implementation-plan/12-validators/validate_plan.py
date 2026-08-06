@@ -1248,37 +1248,64 @@ def check_ai_model_override_amendment(
         errors.append("ai_model_override_verification_missing")
     if not any(m["canonical_id"] == rid for m in membership):
         errors.append("requirement_membership_present:false")
-    amendment = plan_root / "13-reports" / "ai-model-override-amendment.json"
-    if not amendment.exists():
+    amendment_path = plan_root / "13-reports" / "ai-model-override-amendment.json"
+    if not amendment_path.exists():
         errors.append("ai_model_override_amendment_artifact_missing")
-    else:
-        data = read_json(amendment)
-        text = json.dumps(data, ensure_ascii=False)
-        required_concepts = [
-            "estimated_duration", "estimated_memory", "estimated_storage", "user_override",
-            "scheduled_start", "pause_on_battery", "selected_scope", "hard_block_reason",
-            "insufficient", "storage", "runtime", "checksum", "licensing",
-            "silent", "quantized", "provenance", "invalidation",
-        ]
-        for concept in required_concepts:
-            if concept not in text:
-                errors.append(f"ai_model_override_concept_missing:{concept}")
+        return errors
+    amendment = read_json(amendment_path)
+    concepts = amendment.get("contract_concepts", [])
+    required_concepts = ["selected_model_id","recommended_model_id","selection_source","user_override","compatibility_status","hard_block_reason","estimated_duration","estimated_memory","estimated_storage","processing_mode","scheduled_start","pause_on_battery","selected_scope"]
+    for concept in required_concepts:
+        if concept not in concepts:
+            errors.append(f"ai_model_override_concept_missing:{concept}")
+    commands = amendment.get("planned_commands", [])
+    required_commands = ["ai.models.list_compatible","ai.models.select","ai.models.estimates","ai.models.override","ai.jobs.schedule","ai.jobs.pause","ai.jobs.resume","ai.jobs.scope"]
+    for command in required_commands:
+        if command not in commands:
+            errors.append(f"ai_model_override_command_missing:{command}")
+    rules = amendment.get("behavioural_rules", {})
+    required_rules = ["slow_processing_alone_is_not_a_hard_block","stronger_compatible_model_remains_selectable","recommendation_is_not_prohibition","silent_model_substitution_is_prohibited","quantized_variant_has_distinct_identity","selected_model_provenance_is_persisted","model_change_invalidates_derived_results"]
+    for rule in required_rules:
+        if rules.get(rule) is not True:
+            errors.append(f"ai_model_override_rule_missing:{rule}")
+    hard = amendment.get("hard_block_reasons", [])
+    required_hard = ["insufficient_safe_memory","insufficient_storage","unsupported_model_operations","unsupported_runtime_or_provider","invalid_or_corrupted_model","checksum_failure","unresolved_licensing_restriction"]
+    for reason in required_hard:
+        if reason not in hard:
+            errors.append(f"ai_model_override_hard_block_reason_missing:{reason}")
+    comp_rules = amendment.get("components", {})
+    required_component_meanings = ["stronger_compatible_models_manually_selectable","slow_estimates_do_not_block","hard_incompatibility_may_block","no_silent_fallback","provenance_required"]
     for component in components:
-        if component.get("component") in ("ONNX Runtime", "OCR model/runtime", "Embedding model/runtime", "Face model/runtime", "Python runtime or alternative AI host"):
-            if "stronger model" not in component.get("model_selection_rule", ""):
-                errors.append(f"component_model_selection_rule_missing:{component.get('component')}")
-    if "schedule" not in stmt and "scheduled_start" not in json.dumps(read_json(amendment) if amendment.exists() else {}, ensure_ascii=False):
-        errors.append("ai_model_override_scheduling_missing")
-    if "pause" not in stmt and "pause_on_battery" not in json.dumps(read_json(amendment) if amendment.exists() else {}, ensure_ascii=False):
-        errors.append("ai_model_override_pause_resume_missing")
-    if "selected folders" not in stmt and "selected_scope" not in json.dumps(read_json(amendment) if amendment.exists() else {}, ensure_ascii=False):
-        errors.append("ai_model_override_selected_scope_missing")
-    if "silently switch" not in stmt and "silent" not in json.dumps(read_json(amendment) if amendment.exists() else {}, ensure_ascii=False):
-        errors.append("ai_model_override_silent_substitution_prohibited:false")
-    if "quantized" not in stmt and "quantized" not in json.dumps(read_json(amendment) if amendment.exists() else {}, ensure_ascii=False):
-        errors.append("ai_model_override_quantized_variant_missing")
-    if "provenance" not in stmt and "provenance" not in json.dumps(read_json(amendment) if amendment.exists() else {}, ensure_ascii=False):
-        errors.append("ai_model_override_provenance_missing")
+        name = component.get("component", "")
+        if name not in ("ONNX Runtime", "OCR model/runtime", "Embedding model/runtime", "Face model/runtime", "Python runtime or alternative AI host"):
+            continue
+        entry = comp_rules.get(name, {})
+        for meaning in required_component_meanings:
+            if entry.get(meaning) is not True:
+                errors.append(f"component_model_selection_rule_missing:{name}:{meaning}")
+        rule = component.get("model_selection_rule", "")
+        if "manually selectable" not in rule or "slow" not in rule:
+            errors.append(f"component_model_selection_rule_missing:{name}")
+    affected = amendment.get("affected_packages", {})
+    for pid in ("WP-I10-003", "WP-I10-005", "WP-I10-006", "WP-I10-008", "WP-I10-013"):
+        entry = affected.get(pid)
+        if not entry or not entry.get("impact_type") or not entry.get("reason"):
+            errors.append(f"ai_model_override_affected_package_unexplained:{pid}")
+    packet = plan_root / "04-work-packages" / "packets" / "WP-I10-003.md"
+    if packet.exists():
+        text = packet.read_text(encoding="utf-8")
+        if "Canonical requirements (3)" not in text or "2 requirements" in text:
+            errors.append("ai_override_packet_requirement_count_stale")
+        if "CAN-LAM-AI-090" not in text.split("## Canonical requirements")[0]:
+            errors.append("ai_override_packet_objective_missing_requirement")
+        contracts_section = text.split("## Contracts and schemas")[1].split("## Delivery and proof")[0] if "## Contracts and schemas" in text and "## Delivery and proof" in text else ""
+        if "CAN-LAM-AI-090" not in contracts_section:
+            errors.append("ai_override_packet_contracts_missing_requirement")
+        delivery_section = text.split("## Delivery and proof")[1].split("Exit gate")[0] if "## Delivery and proof" in text and "Exit gate" in text else ""
+        if "CAN-LAM-AI-090" not in delivery_section and "slow-compatible-selectable" not in delivery_section:
+            errors.append("ai_override_packet_tests_missing_requirement")
+        if "CAN-LAM-AI-090" not in text.split("Exit gate")[-1]:
+            errors.append("ai_override_packet_exit_gate_missing_requirement")
     return errors
 
 

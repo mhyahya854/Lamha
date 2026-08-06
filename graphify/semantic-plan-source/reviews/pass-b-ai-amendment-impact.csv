@@ -1,0 +1,6 @@
+package_id,impact_type,exact_reason,contracts_affected,schemas_affected,tests_affected,dependency_change,membership_change,final_status
+WP-I10-003,PRIMARY_MEMBERSHIP,"Owns model identity, compatibility, selection, and provenance.",ai.models.*; ai.jobs.*,model_registry; model_compatibility; model_selection; model_provenance,amendment fixture suite,none,CAN-LAM-AI-090 added,REVIEWED
+WP-I10-005,HARDWARE_ESTIMATES,Provides hardware metrics used for compatibility and estimates.,ai.hardware_assess,hardware_assessment,estimate and compatibility fixtures,none,none,REVIEWED
+WP-I10-006,SCHEDULING,Executes scheduled/selected-folder jobs.,ai.jobs.schedule; ai.jobs.scope,job scheduling records,scheduling/scope fixtures,none,none,REVIEWED
+WP-I10-008,PROGRESS_AND_CANCEL,Implements pause/resume/cancel and progress.,ai.jobs.pause; ai.jobs.resume,progress records,pause/resume fixtures,none,none,REVIEWED
+WP-I10-013,INVALIDATION,Invalidates derived AI results when selected model changes.,ai.invalidate,invalidation records,invalidation fixtures,none,none,REVIEWED

@@ -160,8 +160,8 @@
     },
     {
       "path": "04-work-packages/packets/WP-I10-003.md",
-      "bytes": 4108,
-      "sha256": "3a1ac512bf4e603781ad783d3c3b138c0fbcbad5d025cdd40b921a113f7602e7"
+      "bytes": 4476,
+      "sha256": "96d859dd8d9544d3fedcf684a5fc8d24bfe5d6f8aeade9fae4bdce127c66dbaf"
     },
     {
       "path": "04-work-packages/packets/WP-I10-004.md",
@@ -850,13 +850,13 @@
     },
     {
       "path": "04-work-packages/work-packages.csv",
-      "bytes": 59371,
-      "sha256": "788333ea5196180102b2114a69fec19546c37c321195d496cf12457214df62cb"
+      "bytes": 59594,
+      "sha256": "4f766fb142e64aa33814b6f4c45d2c8ca121aefe5ed9c8cdc8d86b5b53f7fa00"
     },
     {
       "path": "04-work-packages/work-packages.json",
-      "bytes": 535724,
-      "sha256": "c832610977a4a084eef046e56def768cfdad93f0b48ee8d6094949397f88fa28"
+      "bytes": 536092,
+      "sha256": "eb7dee240484eec63d435c8404acf43c5ae8fd8bfab318dda09d997ce7c17eff"
     },
     {
       "path": "05-contracts/ai-worker-protocol-v3.schema.json",
@@ -2250,8 +2250,8 @@
     },
     {
       "path": "08-testing/work-package-test-matrix.csv",
-      "bytes": 93246,
-      "sha256": "5143be93fb532edf320e43a1a5f1a02d0bdac24142eb59b214c5ac4ca56eb315"
+      "bytes": 93599,
+      "sha256": "1f8f6a88a8b0546d6e52e5c53e02268c549bde0305e61c4bc32cb80193904fe6"
     },
     {
       "path": "09-risks/risk-register.csv",
@@ -2285,8 +2285,8 @@
     },
     {
       "path": "11-model-packets/phases/I10.md",
-      "bytes": 4239,
-      "sha256": "3aad6d8226c0b9eaac7004c73db90e9c47a2603939a194dcaacb38c42a1284c3"
+      "bytes": 4323,
+      "sha256": "bc42fe4a79c5b18faa349338f28b9c078173291fc8f48e1e304f976bbc691d2c"
     },
     {
       "path": "11-model-packets/phases/I11.md",
@@ -2370,8 +2370,8 @@
     },
     {
       "path": "12-validators/adversarial_fixtures.py",
-      "bytes": 40262,
-      "sha256": "75b6cb84b85ebeaf5413dcf86a544bf44506b5bb46a9d2de098adfb43213a265"
+      "bytes": 46854,
+      "sha256": "c59e945b997952ea9ababb92b7c42bf8e93b1fd82390f13ee812a156d494d839"
     },
     {
       "path": "12-validators/packet_smoke_tests.py",
@@ -2380,8 +2380,8 @@
     },
     {
       "path": "12-validators/validate_plan.py",
-      "bytes": 90219,
-      "sha256": "ec299ae47e23b87b1ab9c72cd6b9fcdd60c586711e9092b988207ef7304ec9fc"
+      "bytes": 92346,
+      "sha256": "45ce327c7abe76cc7d69e5c9410ec1e0eee2df360885cd28024d2b9b9c4f3747"
     },
     {
       "path": "12-validators/validator-results.json",
@@ -2400,8 +2400,8 @@
     },
     {
       "path": "13-reports/ai-model-override-amendment.json",
-      "bytes": 2752,
-      "sha256": "da48950f62feccf6172cccd7c442e928a422a69bb9400926bb92395a937cd006"
+      "bytes": 4721,
+      "sha256": "ed38508881fd5d4b5d0be220ebe90735d050fe09a8c978d5f18d68a5cc2243ae"
     },
     {
       "path": "13-reports/backup-archive-reference-classification.csv",
@@ -2431,17 +2431,17 @@
     {
       "path": "13-reports/final-100-percent-certification.json",
       "bytes": 613,
-      "sha256": "dfcfe60c01ebe6749ac705170d6bcd9b053efa47bd3f8099305704674754f265"
+      "sha256": "af52f038c0b83cfaab41003fedb59faba92f28f80dd7a25cfbbc483f26edd361"
     },
     {
       "path": "13-reports/final-content-manifest.json",
-      "bytes": 31336,
-      "sha256": "9a8905c3482668de3d1ebe7a65d3b33a6a97b170661fa504ab76d25ed0b2a090"
+      "bytes": 31385,
+      "sha256": "6d6c1500e5f27ac8c3f207ad0d7f8af3e28d9c548bfd0695957e24622aa2c8e6"
     },
     {
       "path": "13-reports/final-determinism-proof.json",
       "bytes": 459,
-      "sha256": "e59c4d3308824c7fdd551ee9c5bbceaf0ed9bb5d6612adfd361ffaa712949825"
+      "sha256": "e985c550703438ab7e78a75b540e903d8523ad45e1b9a6a7c7dfc284b39ddca8"
     },
     {
       "path": "13-reports/final-package-determinism.json",
@@ -2456,7 +2456,7 @@
     {
       "path": "13-reports/final-release-envelope.json",
       "bytes": 900,
-      "sha256": "6ba58699c5eec529290725df129cfc15a177c0530e845701471ee9bed4f60a69"
+      "sha256": "72ce1c8c8d78bfe28ee4fe6d41c9c623fe00abc871b4f8ce650031046fab99a0"
     },
     {
       "path": "13-reports/generated-fragment-disposition-report.csv",
@@ -2552,6 +2552,11 @@
       "path": "13-reports/pass-b-adversarial-results.json",
       "bytes": 201,
       "sha256": "502582c5b1acfebd4044f850f5c5798c993241772634faffc628bacac689db32"
+    },
+    {
+      "path": "13-reports/pass-b-ai-amendment-impact.csv",
+      "bytes": 1059,
+      "sha256": "bdeeb360f7206fa2eb1a4cf6fcbf3afce7fbbf665f72952269d70320f9eed624"
     },
     {
       "path": "13-reports/pass-b-codebase-map-verification.json",
@@ -2666,7 +2671,7 @@
     {
       "path": "13-reports/pass3-external-readonly-final.json",
       "bytes": 705957,
-      "sha256": "865ea247fe0432b5c060da6d6752ab395e9d80061554a385d9d42a41c0767c43"
+      "sha256": "e0cc13f5acdf0443f3b2123f4b27bf61524c893bf2c641e964d3d193bd96f481"
     },
     {
       "path": "13-reports/pass3-legacy-template-reproduction.csv",

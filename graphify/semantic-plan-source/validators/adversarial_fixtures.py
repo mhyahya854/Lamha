@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.util
+import copy
 import json
 import sys
 import tempfile
@@ -544,7 +545,80 @@ def run() -> dict[str, object]:
         am_missing_component_rule = validator.check_ai_model_override_amendment([am_req], am_membership, [{"component": "Face model/runtime", "model_selection_rule": ""}], fake_plan)
         am_bad_artifact = {"contract_concepts": []}
         (fake_plan / "13-reports" / "ai-model-override-amendment.json").write_text(json.dumps(am_bad_artifact), encoding="utf-8")
-        am_missing_concepts = validator.check_ai_model_override_amendment([am_req], am_membership, am_components, fake_plan)
+    am_missing_concepts = validator.check_ai_model_override_amendment([am_req], am_membership, am_components, fake_plan)
+
+    def valid_amendment():
+        return {
+            "contract_concepts": ["selected_model_id","recommended_model_id","selection_source","user_override","compatibility_status","hard_block_reason","estimated_duration","estimated_memory","estimated_storage","processing_mode","scheduled_start","pause_on_battery","selected_scope"],
+            "planned_commands": ["ai.models.list_compatible","ai.models.select","ai.models.estimates","ai.models.override","ai.jobs.schedule","ai.jobs.pause","ai.jobs.resume","ai.jobs.scope"],
+            "behavioural_rules": {k: True for k in ["slow_processing_alone_is_not_a_hard_block","stronger_compatible_model_remains_selectable","recommendation_is_not_prohibition","silent_model_substitution_is_prohibited","quantized_variant_has_distinct_identity","selected_model_provenance_is_persisted","model_change_invalidates_derived_results"]},
+            "hard_block_reasons": ["insufficient_safe_memory","insufficient_storage","unsupported_model_operations","unsupported_runtime_or_provider","invalid_or_corrupted_model","checksum_failure","unresolved_licensing_restriction"],
+            "components": {name: {k: True for k in ["stronger_compatible_models_manually_selectable","slow_estimates_do_not_block","hard_incompatibility_may_block","no_silent_fallback","provenance_required"]} for name in ["ONNX Runtime","OCR model/runtime","Embedding model/runtime","Face model/runtime","Python runtime or alternative AI host"]},
+            "affected_packages": {pid: {"impact_type": "X", "reason": "R"} for pid in ["WP-I10-003","WP-I10-005","WP-I10-006","WP-I10-008","WP-I10-013"]},
+        }
+
+    def valid_packet_text():
+        return ("# WP-I10-003\n\nObjective: CAN-LAM-AI-090\n\n## Canonical requirements (3)\n\nCAN-LAM-AI-032\nCAN-LAM-AI-090\nCAN-LAM-ARCH-394\n\n"
+                "## Contracts and schemas\n\nCAN-LAM-AI-090\n\n## Delivery and proof\n\nCAN-LAM-AI-090 slow-compatible-selectable\n\n"
+                "Exit gate\n\nCAN-LAM-AI-090\n")
+
+    amendment_extra = []
+    concepts = ["selected_model_id","recommended_model_id","selection_source","user_override","compatibility_status","hard_block_reason","estimated_duration","estimated_memory","estimated_storage","processing_mode","scheduled_start","pause_on_battery","selected_scope"]
+    for idx, concept in enumerate(concepts):
+        with tempfile.TemporaryDirectory() as td:
+            rootp = Path(td)
+            (rootp / "13-reports").mkdir(parents=True)
+            (rootp / "04-work-packages" / "packets").mkdir(parents=True)
+            bad = valid_amendment(); bad["contract_concepts"] = [c for c in concepts if c != concept]
+            (rootp / "13-reports" / "ai-model-override-amendment.json").write_text(json.dumps(bad), encoding="utf-8")
+            (rootp / "04-work-packages" / "packets" / "WP-I10-003.md").write_text(valid_packet_text(), encoding="utf-8")
+            errs = validator.check_ai_model_override_amendment([am_req], am_membership, [{"component":"ONNX Runtime","model_selection_rule":"manually selectable slow"}], rootp)
+            amendment_extra.append((f"F{90+idx}_INDEPENDENT_CONCEPT_{concept}", *contains(errs, f"ai_model_override_concept_missing:{concept}")))
+    for idx, command in enumerate(["ai.models.list_compatible","ai.models.select","ai.models.estimates","ai.models.override","ai.jobs.schedule","ai.jobs.pause","ai.jobs.resume","ai.jobs.scope"]):
+        with tempfile.TemporaryDirectory() as td:
+            rootp = Path(td)
+            (rootp / "13-reports").mkdir(parents=True)
+            (rootp / "04-work-packages" / "packets").mkdir(parents=True)
+            bad = valid_amendment(); bad["planned_commands"] = [c for c in bad["planned_commands"] if c != command]
+            (rootp / "13-reports" / "ai-model-override-amendment.json").write_text(json.dumps(bad), encoding="utf-8")
+            (rootp / "04-work-packages" / "packets" / "WP-I10-003.md").write_text(valid_packet_text(), encoding="utf-8")
+            errs = validator.check_ai_model_override_amendment([am_req], am_membership, [{"component":"ONNX Runtime","model_selection_rule":"manually selectable slow"}], rootp)
+            amendment_extra.append((f"F{98+idx}_INDEPENDENT_COMMAND_{command}", *contains(errs, f"ai_model_override_command_missing:{command}")))
+    for idx, rule in enumerate(["slow_processing_alone_is_not_a_hard_block","stronger_compatible_model_remains_selectable","recommendation_is_not_prohibition","silent_model_substitution_is_prohibited","quantized_variant_has_distinct_identity","selected_model_provenance_is_persisted","model_change_invalidates_derived_results"]):
+        with tempfile.TemporaryDirectory() as td:
+            rootp = Path(td)
+            (rootp / "13-reports").mkdir(parents=True)
+            (rootp / "04-work-packages" / "packets").mkdir(parents=True)
+            bad = valid_amendment(); bad["behavioural_rules"][rule] = False
+            (rootp / "13-reports" / "ai-model-override-amendment.json").write_text(json.dumps(bad), encoding="utf-8")
+            (rootp / "04-work-packages" / "packets" / "WP-I10-003.md").write_text(valid_packet_text(), encoding="utf-8")
+            errs = validator.check_ai_model_override_amendment([am_req], am_membership, [{"component":"ONNX Runtime","model_selection_rule":"manually selectable slow"}], rootp)
+            amendment_extra.append((f"F{106+idx}_INDEPENDENT_RULE_{rule}", *contains(errs, f"ai_model_override_rule_missing:{rule}")))
+    for idx, reason in enumerate(["insufficient_safe_memory","insufficient_storage","unsupported_model_operations","unsupported_runtime_or_provider","invalid_or_corrupted_model","checksum_failure","unresolved_licensing_restriction"]):
+        with tempfile.TemporaryDirectory() as td:
+            rootp = Path(td)
+            (rootp / "13-reports").mkdir(parents=True)
+            (rootp / "04-work-packages" / "packets").mkdir(parents=True)
+            bad = valid_amendment(); bad["hard_block_reasons"] = [r for r in bad["hard_block_reasons"] if r != reason]
+            (rootp / "13-reports" / "ai-model-override-amendment.json").write_text(json.dumps(bad), encoding="utf-8")
+            (rootp / "04-work-packages" / "packets" / "WP-I10-003.md").write_text(valid_packet_text(), encoding="utf-8")
+            errs = validator.check_ai_model_override_amendment([am_req], am_membership, [{"component":"ONNX Runtime","model_selection_rule":"manually selectable slow"}], rootp)
+            amendment_extra.append((f"F{113+idx}_INDEPENDENT_HARD_{reason}", *contains(errs, f"ai_model_override_hard_block_reason_missing:{reason}")))
+    for idx, mutation in enumerate([
+        ("OBJECTIVE", valid_packet_text().replace("Objective: CAN-LAM-AI-090", "Objective: CAN-LAM-AI-032")),
+        ("CONTRACTS", valid_packet_text().replace("## Contracts and schemas\n\nCAN-LAM-AI-090", "## Contracts and schemas\n\nCAN-LAM-AI-032")),
+        ("TESTS", valid_packet_text().replace("CAN-LAM-AI-090 slow-compatible-selectable", "CAN-LAM-AI-032")),
+        ("EXIT", valid_packet_text().replace("Exit gate\n\nCAN-LAM-AI-090", "Exit gate\n\nCAN-LAM-AI-032")),
+    ]):
+        with tempfile.TemporaryDirectory() as td:
+            rootp = Path(td)
+            (rootp / "13-reports").mkdir(parents=True)
+            (rootp / "04-work-packages" / "packets").mkdir(parents=True)
+            (rootp / "13-reports" / "ai-model-override-amendment.json").write_text(json.dumps(valid_amendment()), encoding="utf-8")
+            (rootp / "04-work-packages" / "packets" / "WP-I10-003.md").write_text(mutation[1], encoding="utf-8")
+            errs = validator.check_ai_model_override_amendment([am_req], am_membership, [{"component":"ONNX Runtime","model_selection_rule":"manually selectable slow"}], rootp)
+            expected = "ai_override_packet_objective_missing_requirement" if mutation[0]=="OBJECTIVE" else "ai_override_packet_contracts_missing_requirement" if mutation[0]=="CONTRACTS" else "ai_override_packet_tests_missing_requirement" if mutation[0]=="TESTS" else "ai_override_packet_exit_gate_missing_requirement"
+            amendment_extra.append((f"F{120+idx}_INDEPENDENT_PACKET_{mutation[0]}", *contains(errs, expected)))
 
     cases = [
         ("F01_GENERATED_REPORT_FALSELY_MANUAL", *contains(manual_errors, "automatically generated report labelled manual")),
@@ -618,20 +692,8 @@ def run() -> dict[str, object]:
         ("F69_AMENDMENT_MEMBERSHIP_MISSING", *contains(am_missing_membership, "requirement_membership_present")),
         ("F70_AMENDMENT_ARTIFACT_MISSING", *contains(am_missing_artifact, "ai_model_override_amendment_artifact_missing")),
         ("F71_AMENDMENT_COMPONENT_RULE_MISSING", *contains(am_missing_component_rule, "component_model_selection_rule_missing")),
-        ("F72_AMENDMENT_CONCEPTS_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing")),
-        ("F73_ESTIMATED_DURATION_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:estimated_duration")),
-        ("F74_ESTIMATED_MEMORY_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:estimated_memory")),
-        ("F75_ESTIMATED_STORAGE_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:estimated_storage")),
-        ("F76_USER_OVERRIDE_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:user_override")),
-        ("F77_SCHEDULING_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:scheduled_start")),
-        ("F78_PAUSE_RESUME_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:pause_on_battery")),
-        ("F79_SELECTED_SCOPE_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:selected_scope")),
-        ("F80_HARD_BLOCK_REASON_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:hard_block_reason")),
-        ("F81_SILENT_SUBSTITUTION_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:silent")),
-        ("F82_QUANTIZED_VARIANT_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:quantized")),
-        ("F83_PROVENANCE_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:provenance")),
-        ("F84_INVALIDATION_MISSING", *contains(am_missing_concepts, "ai_model_override_concept_missing:invalidation")),
     ]
+    cases = cases + amendment_extra
     results = [
         {
             "fixture": name,
