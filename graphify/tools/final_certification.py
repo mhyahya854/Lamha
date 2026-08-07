@@ -7,6 +7,22 @@ On any failure it writes ``status: FAIL`` with the exact blockers and returns
 a non-zero exit code.  Saved PASS text is never trusted: every required input
 is re-read, re-hashed, and structurally re-verified from raw evidence.
 
+Crash/interruption safety
+-------------------------
+
+* A stale PASS is invalidated at the very beginning of the run.
+* Before the Stage 2 final certification validation completes, the persisted
+  certification is always ``status: PROVISIONAL`` with the
+  ``NOT CERTIFIED - IMPLEMENTATION BLOCKED`` declaration,
+  ``implementation_planning_100_percent_complete: false``,
+  ``first_allowed_package: null``, the remaining blocker
+  ``final certification validation has not completed``, and the determinism
+  plus final-validation gates recorded as ``PENDING``.
+* Final records are built entirely in memory, validated, written to temporary
+  files inside Graphify, fsynced, and atomically replaced.  The PASS
+  certification is published last, so an interruption at any earlier point
+  leaves only a blocked provisional state on disk.
+
 Execution sequence (non-circular two-stage design)
 --------------------------------------------------
 
@@ -23,15 +39,16 @@ Execution sequence (non-circular two-stage design)
    is checked for existence/readability and hashed, source/rendered equality
    is recomputed, external integrity is parsed structurally, and the full
    Graphify SHA manifest is recomputed and compared to the saved manifest.
-5. The provisional Layer 1/2/3 artifacts are written, then
-   ``validate_plan.py --write-results`` runs again: L20 now independently
-   verifies every pre-certification evidence item and the final artifacts.
+5. The provisional Layer 1/2/3 artifacts are written with PROVISIONAL
+   semantics, then ``validate_plan.py --write-results`` runs again: L20 now
+   independently verifies every pre-certification evidence item and the final
+   artifacts while the persisted state remains NOT CERTIFIED.
 6. Final certification validation: the resulting validator report is parsed
-   structurally again, the final Layer 1/2/3 artifacts are rewritten against
-   the final tree, and a read-only full validator run re-verifies the final
-   artifacts without mutating the tree.
-
-Only after steps 4-6 all pass is the readiness declaration published.
+   structurally again, the final Layer 1/2/3 artifacts are built in memory
+   against the final tree, verified in memory, and atomically published with
+   the PASS certification last.
+7. A read-only full validator run re-verifies the published artifacts without
+   mutating the tree; any failure immediately invalidates the PASS.
 """
 
 from __future__ import annotations
@@ -55,8 +72,13 @@ VALIDATOR = VALIDATORS / "validate_plan.py"
 ADVERSARIAL = VALIDATORS / "adversarial_fixtures.py"
 HANDOFF_GENERATOR = GRAPHIFY / "tools" / "generate_gpt_handoff.py"
 
+CERTIFICATION = "final-100-percent-certification.json"
+CONTENT_MANIFEST = "final-content-manifest.json"
+RELEASE_ENVELOPE = "final-release-envelope.json"
+DETERMINISM_PROOF = "final-determinism-proof.json"
+
 sys.path.insert(0, str(GRAPHIFY / "tools"))
-from write_guard import write_json  # noqa: E402
+from write_guard import guard_write_path, write_json  # noqa: E402
 from certification_gates import (  # noqa: E402
     CERTIFICATION_GATES,
     DECLARATION,
@@ -65,6 +87,8 @@ from certification_gates import (  # noqa: E402
     LAYER3_EXCLUDED,
     LAYER3_EXCLUSION_RATIONALES,
     NOT_CERTIFIED_DECLARATION,
+    PROVISIONAL_BLOCKER,
+    PROVISIONAL_PENDING_GATES,
     compute_expected_evidence_arrays,
     compute_full_graphify_manifest,
     compute_layer1,
@@ -74,9 +98,13 @@ from certification_gates import (  # noqa: E402
     read_json,
     verify_adversarial_report,
     verify_authoritative_source_coverage,
+    verify_cert_hash_agreements,
+    verify_certificate_gate_states,
     verify_certification_tool_coverage,
+    verify_exact_exclusion_set,
     verify_external_integrity_report,
     verify_full_graphify_manifest,
+    verify_layer3_membership,
     verify_required_files,
     verify_validator_report,
 )
@@ -147,8 +175,8 @@ def certification_payload(
     }
 
 
-def write_layer1_manifest(layer1: dict[str, object]) -> None:
-    manifest = {
+def build_layer1_manifest(layer1: dict[str, object]) -> dict[str, object]:
+    return {
         "layer": 1,
         "sha256": layer1.get("sha256"),
         "fileCount": layer1.get("fileCount"),
@@ -157,12 +185,10 @@ def write_layer1_manifest(layer1: dict[str, object]) -> None:
         "excluded": sorted(LAYER1_EXCLUDED),
         "exclusionRationales": LAYER1_EXCLUSION_RATIONALES,
     }
-    write_json(REPORTS / "final-content-manifest.json", manifest)
-    write_json(REVIEWS / "final-content-manifest.json", manifest)
 
 
-def write_envelope(layer3: dict[str, object], mismatched_files: list[str]) -> None:
-    envelope = {
+def build_envelope(layer3: dict[str, object], mismatched_files: list[str]) -> dict[str, object]:
+    return {
         "layer": 3,
         "sha256": layer3.get("sha256"),
         "fileCount": layer3.get("fileCount"),
@@ -174,17 +200,15 @@ def write_envelope(layer3: dict[str, object], mismatched_files: list[str]) -> No
         "excluded": sorted(LAYER3_EXCLUDED),
         "exclusionRationales": LAYER3_EXCLUSION_RATIONALES,
     }
-    write_json(REPORTS / "final-release-envelope.json", envelope)
-    write_json(REVIEWS / "final-release-envelope.json", envelope)
 
 
-def write_determinism_proof(
+def build_determinism_proof(
     first: tuple[str, str],
     second: tuple[str, str],
     evidence: dict[str, object],
-    passing: bool,
-) -> None:
-    proof = {
+    status: str,
+) -> dict[str, object]:
+    return {
         "layer1FirstHash": first[0],
         "layer1SecondHash": second[0],
         "layer3FirstHash": first[1],
@@ -198,10 +222,31 @@ def write_determinism_proof(
             **LAYER3_EXCLUSION_RATIONALES,
             **LAYER1_EXCLUSION_RATIONALES,
         },
-        "status": "PASS" if passing else "FAIL",
+        "status": status,
     }
-    write_json(REPORTS / "final-determinism-proof.json", proof)
-    write_json(REVIEWS / "final-determinism-proof.json", proof)
+
+
+def write_layer1_manifest(layer1: dict[str, object]) -> None:
+    manifest = build_layer1_manifest(layer1)
+    write_json(REPORTS / CONTENT_MANIFEST, manifest)
+    write_json(REVIEWS / CONTENT_MANIFEST, manifest)
+
+
+def write_envelope(layer3: dict[str, object], mismatched_files: list[str]) -> None:
+    envelope = build_envelope(layer3, mismatched_files)
+    write_json(REPORTS / RELEASE_ENVELOPE, envelope)
+    write_json(REVIEWS / RELEASE_ENVELOPE, envelope)
+
+
+def write_determinism_proof(
+    first: tuple[str, str],
+    second: tuple[str, str],
+    evidence: dict[str, object],
+    status: str,
+) -> None:
+    proof = build_determinism_proof(first, second, evidence, status)
+    write_json(REPORTS / DETERMINISM_PROOF, proof)
+    write_json(REVIEWS / DETERMINISM_PROOF, proof)
 
 
 def write_failure_certification(blockers: list[str]) -> None:
@@ -222,15 +267,80 @@ def write_failure_certification(blockers: list[str]) -> None:
         validator_summary={"status": "FAIL"},
         adversarial_summary={"status": "FAIL"},
     )
-    write_json(REPORTS / "final-100-percent-certification.json", cert)
-    write_json(REVIEWS / "final-100-percent-certification.json", cert)
+    write_json(REPORTS / CERTIFICATION, cert)
+    write_json(REVIEWS / CERTIFICATION, cert)
     write_layer1_manifest(layer1)
     write_envelope(layer3, evidence.get("mismatchedFiles", []))
     write_determinism_proof(
         (str(layer1.get("sha256")), str(layer3.get("sha256"))),
         (str(layer1.get("sha256")), str(layer3.get("sha256"))),
         evidence,
-        passing=False,
+        status="FAIL",
+    )
+
+
+def write_blocked_artifacts(blockers: list[str], gates: dict[str, str]) -> None:
+    """Persist PROVISIONAL / NOT CERTIFIED artifacts (never PASS semantics)."""
+    evidence = compute_expected_evidence_arrays(GRAPHIFY)
+    evidence["hashes"] = compute_required_file_evidence(GRAPHIFY)["hashes"]
+    layer1 = compute_layer1(GRAPHIFY)
+    full_manifest = compute_full_graphify_manifest(GRAPHIFY)
+    layer3 = compute_layer3(GRAPHIFY)
+    cert = certification_payload(
+        status="PROVISIONAL",
+        blockers=blockers,
+        gates=gates,
+        layer1=layer1,
+        required_evidence=evidence,
+        full_manifest=full_manifest,
+        external_summary={"status": "PENDING"},
+        validator_summary={"status": "PENDING"},
+        adversarial_summary={"status": "PENDING"},
+    )
+    write_layer1_manifest(layer1)
+    write_json(REPORTS / CERTIFICATION, cert)
+    write_json(REVIEWS / CERTIFICATION, cert)
+    write_envelope(layer3, evidence.get("mismatchedFiles", []))
+    write_determinism_proof(
+        (str(layer1.get("sha256")), str(layer3.get("sha256"))),
+        (str(layer1.get("sha256")), str(layer3.get("sha256"))),
+        evidence,
+        status="PROVISIONAL",
+    )
+
+
+def write_provisional_artifacts(
+    evidence: dict[str, object],
+    layer1: dict[str, object],
+    full_manifest: dict[str, object],
+    validator_summary: dict[str, object],
+    adversarial_summary: dict[str, object],
+) -> None:
+    """Persist the pre-Stage-2 provisional artifacts (NOT CERTIFIED)."""
+    gates = {gate: "PASS" for gate in CERTIFICATION_GATES}
+    for gate in PROVISIONAL_PENDING_GATES:
+        gates[gate] = "PENDING"
+    cert = certification_payload(
+        status="PROVISIONAL",
+        blockers=[PROVISIONAL_BLOCKER],
+        gates=gates,
+        layer1=layer1,
+        required_evidence=evidence,
+        full_manifest=full_manifest,
+        external_summary={"status": "PASS", "added": 0, "removed": 0, "modified": 0, "renamed": 0},
+        validator_summary=validator_summary,
+        adversarial_summary=adversarial_summary,
+    )
+    write_layer1_manifest(layer1)
+    write_json(REPORTS / CERTIFICATION, cert)
+    write_json(REVIEWS / CERTIFICATION, cert)
+    layer3 = compute_layer3(GRAPHIFY)
+    write_envelope(layer3, evidence.get("mismatchedFiles", []))
+    write_determinism_proof(
+        (str(layer1["sha256"]), str(layer3["sha256"])),
+        (str(layer1["sha256"]), str(layer3["sha256"])),
+        evidence,
+        status="PROVISIONAL",
     )
 
 
@@ -250,9 +360,116 @@ def summarize_adversarial(report: dict[str, object]) -> dict[str, object]:
     }
 
 
+def serialized_json_bytes(value: object) -> bytes:
+    """Exact bytes ``write_json`` persists, so in-memory digests match disk."""
+    return (json.dumps(value, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+
+
+def atomic_write_bytes(path: pathlib.Path, data: bytes) -> None:
+    target = guard_write_path(path)
+    temp = guard_write_path(target.with_name(target.name + ".cert-tmp"))
+    with temp.open("wb") as stream:
+        stream.write(data)
+        stream.flush()
+        os.fsync(stream.fileno())
+    os.replace(temp, target)
+
+
+def cleanup_temp_files() -> None:
+    for directory in (REPORTS, REVIEWS):
+        if not directory.exists():
+            continue
+        for path in directory.glob("*.cert-tmp"):
+            try:
+                path.unlink()
+            except OSError:
+                pass
+
+
+def atomic_publish(
+    cert: dict[str, object],
+    manifest: dict[str, object],
+    envelope: dict[str, object],
+    proof: dict[str, object],
+) -> None:
+    """Atomically replace the final artifacts; publish the PASS cert LAST."""
+    manifest_bytes = serialized_json_bytes(manifest)
+    envelope_bytes = serialized_json_bytes(envelope)
+    proof_bytes = serialized_json_bytes(proof)
+    cert_bytes = serialized_json_bytes(cert)
+    writes = [
+        (REPORTS / CONTENT_MANIFEST, manifest_bytes),
+        (REVIEWS / CONTENT_MANIFEST, manifest_bytes),
+        (REPORTS / RELEASE_ENVELOPE, envelope_bytes),
+        (REVIEWS / RELEASE_ENVELOPE, envelope_bytes),
+        (REPORTS / DETERMINISM_PROOF, proof_bytes),
+        (REVIEWS / DETERMINISM_PROOF, proof_bytes),
+        # The canonical PASS certification is the final operation.
+        (REVIEWS / CERTIFICATION, cert_bytes),
+        (REPORTS / CERTIFICATION, cert_bytes),
+    ]
+    for path, data in writes:
+        atomic_write_bytes(path, data)
+
+
+def verify_final_records_in_memory(
+    cert: dict[str, object],
+    manifest: dict[str, object],
+    envelope: dict[str, object],
+    proof: dict[str, object],
+    full_manifest_digest: object,
+    full_manifest_count: object,
+) -> list[str]:
+    errors: list[str] = []
+    errors.extend(verify_certificate_gate_states(cert))
+    errors.extend(verify_layer3_membership(envelope))
+    errors.extend(
+        verify_exact_exclusion_set(manifest, "excluded", LAYER1_EXCLUDED, "exclusionRationales", "layer1")
+    )
+    errors.extend(
+        verify_exact_exclusion_set(envelope, "excluded", LAYER3_EXCLUDED, "exclusionRationales", "layer3")
+    )
+    errors.extend(
+        verify_exact_exclusion_set(
+            proof,
+            "excluded",
+            LAYER1_EXCLUDED | LAYER3_EXCLUDED,
+            "exclusionRationales",
+            "layer1_layer3",
+        )
+    )
+    errors.extend(verify_cert_hash_agreements(cert, manifest, envelope, proof))
+    if cert.get("status") != "PASS":
+        errors.append("final certification status is not PASS")
+    if cert.get("readiness_declaration") != DECLARATION:
+        errors.append("final 100% certification declaration missing or incorrect")
+    if cert.get("implementation_planning_100_percent_complete") is not True:
+        errors.append("final certification implementation_planning flag is not true")
+    if cert.get("first_allowed_package") != "WP-I0-001":
+        errors.append("final certification first_allowed_package is not WP-I0-001")
+    if cert.get("remaining_blockers"):
+        errors.append("final certification has remaining blockers")
+    if proof.get("status") != "PASS":
+        errors.append("final determinism proof did not pass")
+    if (
+        cert.get("fullGraphifyManifestDigest") != full_manifest_digest
+        or cert.get("fullGraphifyManifestFileCount") != full_manifest_count
+    ):
+        errors.append("certification full Graphify manifest digest or count mismatch")
+    return errors
+
+
 def main() -> int:
     blockers: list[str] = []
     try:
+        # Invalidate any stale PASS immediately.  No gate is marked PASS before
+        # it has executed successfully.
+        cleanup_temp_files()
+        write_blocked_artifacts(
+            [PROVISIONAL_BLOCKER],
+            {gate: "NOT_RUN" for gate in CERTIFICATION_GATES},
+        )
+
         # Stage 0 -- deterministic rebuild and pre-certification evidence.
         run(BUILDER)
         run(VALIDATOR, "--write-results", "--pre-certification")
@@ -285,7 +502,6 @@ def main() -> int:
             print(json.dumps({"status": "FAIL", "remaining_blockers": blockers}, indent=2, ensure_ascii=False))
             return 1
 
-        gates = {gate: "PASS" for gate in CERTIFICATION_GATES}
         evidence = compute_expected_evidence_arrays(GRAPHIFY)
         evidence["hashes"] = compute_required_file_evidence(GRAPHIFY)["hashes"]
         if evidence["missingFiles"] or evidence["mismatchedFiles"] or evidence["unexpectedFiles"]:
@@ -299,31 +515,15 @@ def main() -> int:
             return 1
 
         # Provisional artifacts: written so the stage-2 L20 run can verify the
-        # final certification evidence without circularity.  Layer 3 is
-        # computed after the Layer 1 manifest and certification are written so
-        # the recorded digest covers the exact committed files.
+        # final certification evidence without circularity.  The persisted
+        # state is PROVISIONAL / NOT CERTIFIED until the final publication.
         layer1 = compute_layer1(GRAPHIFY)
-        cert = certification_payload(
-            status="PASS",
-            blockers=[],
-            gates=gates,
-            layer1=layer1,
-            required_evidence=evidence,
-            full_manifest=recomputed_manifest,
-            external_summary={"status": "PASS", "added": 0, "removed": 0, "modified": 0, "renamed": 0},
-            validator_summary=summarize_validator(validator_report),
-            adversarial_summary=summarize_adversarial(adversarial_report),
-        )
-        write_layer1_manifest(layer1)
-        write_json(REPORTS / "final-100-percent-certification.json", cert)
-        write_json(REVIEWS / "final-100-percent-certification.json", cert)
-        layer3 = compute_layer3(GRAPHIFY)
-        write_envelope(layer3, evidence["mismatchedFiles"])
-        write_determinism_proof(
-            (str(layer1["sha256"]), str(layer3["sha256"])),
-            (str(layer1["sha256"]), str(layer3["sha256"])),
+        write_provisional_artifacts(
             evidence,
-            passing=True,
+            layer1,
+            recomputed_manifest,
+            summarize_validator(validator_report),
+            summarize_adversarial(adversarial_report),
         )
 
         # Stage 2 -- final certification validation: L20 independently verifies
@@ -339,15 +539,25 @@ def main() -> int:
             print(json.dumps({"status": "FAIL", "remaining_blockers": blockers}, indent=2, ensure_ascii=False))
             return 1
 
-        # Final certification artifacts against the final tree (validator
-        # results now reflect the full L20 validation).
+        # Build the final records entirely in memory over the final tree.
         final_layer1 = compute_layer1(GRAPHIFY)
         final_evidence = compute_expected_evidence_arrays(GRAPHIFY)
         final_evidence["hashes"] = compute_required_file_evidence(GRAPHIFY)["hashes"]
+        if final_evidence["missingFiles"] or final_evidence["mismatchedFiles"] or final_evidence["unexpectedFiles"]:
+            blockers = sorted(
+                set(final_evidence["missingFiles"])
+                | set(final_evidence["mismatchedFiles"])
+                | set(final_evidence["unexpectedFiles"])
+            )
+            write_failure_certification(blockers)
+            print(json.dumps({"status": "FAIL", "remaining_blockers": blockers}, indent=2, ensure_ascii=False))
+            return 1
+
+        final_gates = {gate: "PASS" for gate in CERTIFICATION_GATES}
         final_cert = certification_payload(
             status="PASS",
             blockers=[],
-            gates=gates,
+            gates=final_gates,
             layer1=final_layer1,
             required_evidence=final_evidence,
             full_manifest=recomputed_manifest,
@@ -355,32 +565,53 @@ def main() -> int:
             validator_summary=summarize_validator(final_validator_report),
             adversarial_summary=summarize_adversarial(adversarial_report),
         )
-        write_layer1_manifest(final_layer1)
-        write_json(REPORTS / "final-100-percent-certification.json", final_cert)
-        write_json(REVIEWS / "final-100-percent-certification.json", final_cert)
-        final_layer3 = compute_layer3(GRAPHIFY)
-        write_envelope(final_layer3, final_evidence["mismatchedFiles"])
+        final_manifest = build_layer1_manifest(final_layer1)
+        final_cert_bytes = serialized_json_bytes(final_cert)
+        final_manifest_bytes = serialized_json_bytes(final_manifest)
+        layer3_overrides = {
+            f"12-semantic-implementation-plan/13-reports/{CERTIFICATION}": final_cert_bytes,
+            f"12-semantic-implementation-plan/13-reports/{CONTENT_MANIFEST}": final_manifest_bytes,
+        }
 
-        # Two in-memory Layer 1/3 runs over the final tree; both must agree.
+        # Two in-memory Layer 1/3 runs over the final records; both must agree.
         first_layer1 = compute_layer1(GRAPHIFY)
-        first_layer3 = compute_layer3(GRAPHIFY)
+        first_layer3 = compute_layer3(GRAPHIFY, overrides=layer3_overrides)
         second_layer1 = compute_layer1(GRAPHIFY)
-        second_layer3 = compute_layer3(GRAPHIFY)
+        second_layer3 = compute_layer3(GRAPHIFY, overrides=layer3_overrides)
         stable = (
             first_layer1["sha256"] == second_layer1["sha256"]
             and first_layer3["sha256"] == second_layer3["sha256"]
         )
-        write_determinism_proof(
+        final_envelope = build_envelope(first_layer3, final_evidence["mismatchedFiles"])
+        final_proof = build_determinism_proof(
             (str(first_layer1["sha256"]), str(first_layer3["sha256"])),
             (str(second_layer1["sha256"]), str(second_layer3["sha256"])),
             final_evidence,
-            passing=stable,
+            status="PASS",
         )
         if not stable:
             blockers = ["layer1 or layer3 hashes differ between certification runs"]
             write_failure_certification(blockers)
             print(json.dumps({"status": "FAIL", "remaining_blockers": blockers}, indent=2, ensure_ascii=False))
             return 1
+
+        in_memory_errors = verify_final_records_in_memory(
+            final_cert,
+            final_manifest,
+            final_envelope,
+            final_proof,
+            recomputed_manifest.get("digest"),
+            recomputed_manifest.get("file_count"),
+        )
+        if in_memory_errors:
+            blockers = sorted(set(in_memory_errors))
+            write_failure_certification(blockers)
+            print(json.dumps({"status": "FAIL", "remaining_blockers": blockers}, indent=2, ensure_ascii=False))
+            return 1
+
+        # Atomic publication; the PASS certification is the last operation.
+        atomic_publish(final_cert, final_manifest, final_envelope, final_proof)
+        cleanup_temp_files()
 
         # Stage 3 -- read-only full validator run against the FINAL artifacts
         # (no writes), so L20 independently confirms what is committed.
@@ -392,8 +623,8 @@ def main() -> int:
             print(json.dumps({"status": "FAIL", "remaining_blockers": blockers}, indent=2, ensure_ascii=False))
             return 1
 
-        final_cert = read_json(REPORTS / "final-100-percent-certification.json")
-        final_proof = read_json(REPORTS / "final-determinism-proof.json")
+        final_cert = read_json(REPORTS / CERTIFICATION)
+        final_proof = read_json(REPORTS / DETERMINISM_PROOF)
         print(json.dumps({
             "status": "PASS",
             "readiness_declaration": DECLARATION,
@@ -423,6 +654,8 @@ def main() -> int:
         write_failure_certification(blockers)
         print(json.dumps({"status": "FAIL", "remaining_blockers": blockers}, indent=2, ensure_ascii=False))
         return 1
+    finally:
+        cleanup_temp_files()
 
 
 if __name__ == "__main__":

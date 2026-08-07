@@ -17,7 +17,7 @@
     {
       "step": "Run the adversarial suite",
       "command": "python graphify\\12-semantic-implementation-plan\\12-validators\\adversarial_fixtures.py",
-      "expect": "status PASS; every fixture EXPECTED_FAILURE_OBSERVED"
+      "expect": "status PASS; 153 fixtures; every fixture EXPECTED_FAILURE_OBSERVED"
     },
     {
       "step": "Run pre-certification validation",
@@ -33,6 +33,16 @@
       "step": "Run deterministic gated certification",
       "command": "python graphify\\tools\\final_certification.py",
       "expect": "PASS written only after every gate passes; layer1FirstHash == layer1SecondHash; layer3FirstHash == layer3SecondHash; missingFiles []; mismatchedFiles []; unexpectedFiles []; unexplainedExclusions []; exit 0"
+    },
+    {
+      "step": "Simulate the provisional / interrupted certification state",
+      "command": "python graphify\\tools\\simulate_provisional_certification.py",
+      "expect": "status PASS; initial-blocked and provisional records are status PROVISIONAL with the NOT CERTIFIED declaration, implementation_planning_100_percent_complete false, first_allowed_package null, and the final-validation blocker; final record is status PASS with every certification gate PASS and WP-I0-001 authorized only at the end"
+    },
+    {
+      "step": "Verify no PASS certificate contains a PENDING or NOT_RUN gate",
+      "command": "python graphify\\tools\\final_certification.py; python graphify\\12-semantic-implementation-plan\\12-validators\\validate_plan.py",
+      "expect": "L20 rejects any PASS certificate with an incomplete gate (final_pass_published_before_all_gates_complete); the certified record carries all nine gates PASS"
     },
     {
       "step": "Verify external integrity",

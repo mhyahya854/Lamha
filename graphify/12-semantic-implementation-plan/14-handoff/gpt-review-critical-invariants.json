@@ -12,6 +12,9 @@
     "structural_validation": "L21 validates structured amendment objects, not substring presence in JSON dumps.",
     "no_false_certification": "Saved PASS text is never trusted alone; every validator level re-executes its checks.",
     "gated_certification": "A PASS final certification is written only after every prerequisite gate completes and L20 independently re-verifies all evidence; missing Layer 3 files, hardcoded empty arrays, hash mismatches, and unexplained exclusions fail the certification.",
+    "provisional_not_certified": "Every persisted certification state before the final atomic publication is status PROVISIONAL with the NOT CERTIFIED / IMPLEMENTATION BLOCKED declaration, implementation_planning_100_percent_complete false, first_allowed_package null, the final-validation blocker, and the determinism plus final-validation gates PENDING; a PASS certificate with any PENDING or NOT_RUN gate is rejected (final_pass_published_before_all_gates_complete).",
+    "layer3_exact_membership": "Layer 3 files, fileHashes keys, and fileCount exactly equal the canonical LAYER3_FILES in deterministic sorted order; missing canonical members, unexpected members, and file/hash key disagreements fail with layer3_canonical_member_missing, layer3_unexpected_member, and layer3_file_hash_membership_mismatch.",
+    "strict_exclusion_sets": "Layer 1, Layer 3, and full-manifest excluded sets must exactly equal their canonical exclusion sets and every exclusion must carry a non-empty specific rationale; missing fields, missing/unexpected members, and missing/empty/generic rationales fail.",
     "administrative_block": "Implementation remains blocked pending GPT-5.6 independent review."
   },
   "required_zero_values": {

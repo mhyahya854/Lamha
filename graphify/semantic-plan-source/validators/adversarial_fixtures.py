@@ -845,7 +845,7 @@ def run() -> dict[str, object]:
     # F133: add an unexplained exclusion.
     unexplained = {"excluded": ["13-reports/final-release-envelope.json"], "exclusionRationales": {}}
     unexplained_errors = gates.verify_exclusion_rationales(unexplained, "excluded", "exclusionRationales")
-    cert_fixture_errors.append(("F133_UNEXPLAINED_EXCLUSION", *contains(unexplained_errors, "unexplained exclusion")))
+    cert_fixture_errors.append(("F133_UNEXPLAINED_EXCLUSION", *contains(unexplained_errors, "exclusion_rationale_missing")))
 
     # F134: hardcode missingFiles=[] while a required file is absent.
     packet_manifest_again = validator.PLAN / "11-model-packets" / "packet-manifest.json"
@@ -865,6 +865,313 @@ def run() -> dict[str, object]:
     incomplete_gates = {"pre_certification_validator": "PASS"}
     incomplete_gate_errors = gates.verify_certification_gates_recorded({"certificationGates": incomplete_gates})
     cert_fixture_errors.append(("F135_PASS_BEFORE_GATES_COMPLETE", *contains(incomplete_gate_errors, "certification gate not completed")))
+
+    # ------------------------------------------------------------------
+    # Certification-integrity closure fixtures (F136-F153).  Each starts from
+    # a valid in-memory baseline, applies exactly one mutation, produces the
+    # intended error, and restores the baseline (fixtures never touch disk).
+    # ------------------------------------------------------------------
+    cert_integrity_fixture_errors: list[tuple[str, bool, list[str]]] = []
+
+    def valid_cert_record(provisional: bool = False) -> dict[str, object]:
+        gates_state = {name: "PASS" for name in gates.CERTIFICATION_GATES}
+        if provisional:
+            for name in gates.PROVISIONAL_PENDING_GATES:
+                gates_state[name] = "PENDING"
+        return {
+            "status": "PROVISIONAL" if provisional else "PASS",
+            "certificationGates": gates_state,
+            "readiness_declaration": gates.NOT_CERTIFIED_DECLARATION if provisional else gates.DECLARATION,
+            "implementation_planning_100_percent_complete": not provisional,
+            "first_allowed_package": None if provisional else "WP-I0-001",
+            "remaining_blockers": [gates.PROVISIONAL_BLOCKER] if provisional else [],
+        }
+
+    def valid_envelope_record() -> dict[str, object]:
+        return {
+            "layer": 3,
+            "sha256": "0" * 64,
+            "fileCount": len(gates.LAYER3_FILES),
+            "files": sorted(gates.LAYER3_FILES),
+            "fileHashes": {rel: "0" * 64 for rel in sorted(gates.LAYER3_FILES)},
+            "missingFiles": [],
+            "unexpectedFiles": [],
+            "mismatchedFiles": [],
+            "excluded": sorted(gates.LAYER3_EXCLUDED),
+            "exclusionRationales": dict(gates.LAYER3_EXCLUSION_RATIONALES),
+        }
+
+    def valid_manifest_record() -> dict[str, object]:
+        return {
+            "excluded": sorted(gates.LAYER1_EXCLUDED),
+            "exclusionRationales": dict(gates.LAYER1_EXCLUSION_RATIONALES),
+        }
+
+    def valid_full_manifest_record() -> dict[str, object]:
+        return {
+            "excluded": sorted(gates.SHA_MANIFEST_EXCLUDED),
+            "exclusion_rationales": dict(gates.SHA_MANIFEST_EXCLUSION_RATIONALES),
+        }
+
+    def checked_fixture(name: str, baseline: object, verify, mutate, expected: str) -> None:
+        baseline_errors = verify(copy.deepcopy(baseline))
+        if baseline_errors:
+            cert_integrity_fixture_errors.append(
+                (name, False, ["fixture baseline is not valid: " + "; ".join(baseline_errors)])
+            )
+            return
+        mutated = mutate(copy.deepcopy(baseline))
+        observed, errors = contains(verify(mutated), expected)
+        cert_integrity_fixture_errors.append((name, observed, errors))
+
+    # F136: provisional certification carries status=PASS before final validation.
+    checked_fixture(
+        "F136_PROVISIONAL_CERT_WITH_PASS_STATUS",
+        valid_cert_record(provisional=True),
+        gates.verify_certificate_gate_states,
+        lambda record: {**record, "status": "PASS"},
+        "final_pass_published_before_all_gates_complete",
+    )
+
+    # F137: final_certification_validation=PASS before Stage 2 runs.
+    def premature_final_gate(record: dict[str, object]) -> dict[str, object]:
+        record["certificationGates"]["final_certification_validation"] = "PASS"
+        return record
+
+    checked_fixture(
+        "F137_FINAL_GATE_PASS_BEFORE_STAGE2",
+        valid_cert_record(provisional=True),
+        gates.verify_certificate_gate_states,
+        premature_final_gate,
+        "provisional_gate_premature",
+    )
+
+    # F138: an interrupted run leaves an old PASS certification active.
+    def interrupted_pass(record: dict[str, object]) -> dict[str, object]:
+        record["certificationGates"]["layer3_determinism"] = "PENDING"
+        return record
+
+    checked_fixture(
+        "F138_INTERRUPTED_RUN_LEAVES_PASS_ACTIVE",
+        valid_cert_record(provisional=False),
+        gates.verify_certificate_gate_states,
+        interrupted_pass,
+        "final_pass_published_before_all_gates_complete",
+    )
+
+    # F139: final publication occurs before all gates complete.
+    def unpublished_gate(record: dict[str, object]) -> dict[str, object]:
+        record["certificationGates"]["adversarial_fixtures"] = "NOT_RUN"
+        return record
+
+    checked_fixture(
+        "F139_PUBLICATION_BEFORE_ALL_GATES_COMPLETE",
+        valid_cert_record(provisional=False),
+        gates.verify_certificate_gate_states,
+        unpublished_gate,
+        "final_pass_published_before_all_gates_complete",
+    )
+
+    # F140: one canonical Layer 3 member removed from files and fileHashes.
+    removed_layer3_member = sorted(gates.LAYER3_FILES)[0]
+
+    def remove_canonical_member(record: dict[str, object]) -> dict[str, object]:
+        record["files"] = [rel for rel in record["files"] if rel != removed_layer3_member]
+        record["fileHashes"] = {
+            rel: digest for rel, digest in record["fileHashes"].items() if rel != removed_layer3_member
+        }
+        return record
+
+    checked_fixture(
+        "F140_LAYER3_CANONICAL_MEMBER_REMOVED",
+        valid_envelope_record(),
+        gates.verify_layer3_membership,
+        remove_canonical_member,
+        "layer3_canonical_member_missing",
+    )
+
+    # F141: one unexpected Layer 3 file added.
+    unexpected_layer3_member = "12-semantic-implementation-plan/13-reports/unexpected-layer3.json"
+
+    def add_unexpected_member(record: dict[str, object]) -> dict[str, object]:
+        record["files"] = sorted(record["files"] + [unexpected_layer3_member])
+        record["fileHashes"][unexpected_layer3_member] = "0" * 64
+        return record
+
+    checked_fixture(
+        "F141_LAYER3_UNEXPECTED_MEMBER_ADDED",
+        valid_envelope_record(),
+        gates.verify_layer3_membership,
+        add_unexpected_member,
+        "layer3_unexpected_member",
+    )
+
+    # F142: correct file count but a canonical member replaced by an unexpected one.
+    def swap_canonical_member(record: dict[str, object]) -> dict[str, object]:
+        record["files"] = sorted(
+            [unexpected_layer3_member if rel == removed_layer3_member else rel for rel in record["files"]]
+        )
+        record["fileHashes"].pop(removed_layer3_member, None)
+        record["fileHashes"][unexpected_layer3_member] = "0" * 64
+        return record
+
+    swap_errors = gates.verify_layer3_membership(swap_canonical_member(copy.deepcopy(valid_envelope_record())))
+    cert_integrity_fixture_errors.append(
+        (
+            "F142_LAYER3_COUNT_OK_BUT_CANONICAL_MEMBER_MISSING",
+            contains(swap_errors, "layer3_canonical_member_missing")[0]
+            and contains(swap_errors, "layer3_unexpected_member")[0],
+            swap_errors,
+        )
+    )
+
+    # F143: file appears in files but not in fileHashes.
+    def drop_hash_key(record: dict[str, object]) -> dict[str, object]:
+        record["fileHashes"].pop(removed_layer3_member, None)
+        return record
+
+    checked_fixture(
+        "F143_LAYER3_FILE_WITHOUT_HASH",
+        valid_envelope_record(),
+        gates.verify_layer3_membership,
+        drop_hash_key,
+        "layer3_file_hash_membership_mismatch",
+    )
+
+    # F144: file appears in fileHashes but not in files.
+    def drop_file_entry(record: dict[str, object]) -> dict[str, object]:
+        record["files"] = [rel for rel in record["files"] if rel != removed_layer3_member]
+        return record
+
+    checked_fixture(
+        "F144_LAYER3_HASH_WITHOUT_FILE",
+        valid_envelope_record(),
+        gates.verify_layer3_membership,
+        drop_file_entry,
+        "layer3_file_hash_membership_mismatch",
+    )
+
+    # F145: Layer 3 ordering differs from canonical deterministic ordering.
+    checked_fixture(
+        "F145_LAYER3_ORDER_DIFFERS",
+        valid_envelope_record(),
+        gates.verify_layer3_membership,
+        lambda record: {**record, "files": sorted(gates.LAYER3_FILES, reverse=True)},
+        "layer3_file_order_mismatch",
+    )
+
+    # F146: Layer 1 excluded field missing.
+    checked_fixture(
+        "F146_LAYER1_EXCLUDED_MISSING",
+        valid_manifest_record(),
+        lambda record: gates.verify_exact_exclusion_set(
+            record, "excluded", gates.LAYER1_EXCLUDED, "exclusionRationales", "layer1"
+        ),
+        lambda record: {key: value for key, value in record.items() if key != "excluded"},
+        "layer1_exclusion_set_mismatch",
+    )
+
+    # F147: Layer 3 excluded field missing.
+    checked_fixture(
+        "F147_LAYER3_EXCLUDED_MISSING",
+        valid_envelope_record(),
+        lambda record: gates.verify_exact_exclusion_set(
+            record, "excluded", gates.LAYER3_EXCLUDED, "exclusionRationales", "layer3"
+        ),
+        lambda record: {key: value for key, value in record.items() if key != "excluded"},
+        "layer3_exclusion_set_mismatch",
+    )
+
+    # F148: full-manifest excluded field missing.
+    checked_fixture(
+        "F148_FULL_MANIFEST_EXCLUDED_MISSING",
+        valid_full_manifest_record(),
+        lambda record: gates.verify_exact_exclusion_set(
+            record, "excluded", gates.SHA_MANIFEST_EXCLUDED, "exclusion_rationales", "full_manifest"
+        ),
+        lambda record: {key: value for key, value in record.items() if key != "excluded"},
+        "full_manifest_exclusion_set_mismatch",
+    )
+
+    # F149: one required Layer 1 exclusion removed.
+    removed_layer1_exclusion = sorted(gates.LAYER1_EXCLUDED)[0]
+
+    def remove_layer1_exclusion(record: dict[str, object]) -> dict[str, object]:
+        record["excluded"] = [rel for rel in record["excluded"] if rel != removed_layer1_exclusion]
+        return record
+
+    checked_fixture(
+        "F149_LAYER1_REQUIRED_EXCLUSION_REMOVED",
+        valid_manifest_record(),
+        lambda record: gates.verify_exact_exclusion_set(
+            record, "excluded", gates.LAYER1_EXCLUDED, "exclusionRationales", "layer1"
+        ),
+        remove_layer1_exclusion,
+        "layer1_exclusion_set_mismatch",
+    )
+
+    # F150: one unauthorized Layer 3 exclusion added.
+    unauthorized_exclusion = "13-reports/not-a-real-exclusion.json"
+
+    def add_layer3_exclusion(record: dict[str, object]) -> dict[str, object]:
+        record["excluded"] = sorted(record["excluded"] + [unauthorized_exclusion])
+        record["exclusionRationales"][unauthorized_exclusion] = "Specific unauthorized exclusion for the fixture."
+        return record
+
+    checked_fixture(
+        "F150_LAYER3_UNAUTHORIZED_EXCLUSION_ADDED",
+        valid_envelope_record(),
+        lambda record: gates.verify_exact_exclusion_set(
+            record, "excluded", gates.LAYER3_EXCLUDED, "exclusionRationales", "layer3"
+        ),
+        add_layer3_exclusion,
+        "layer3_exclusion_set_mismatch",
+    )
+
+    # F151: one exclusion rationale removed.
+    def remove_rationale(record: dict[str, object]) -> dict[str, object]:
+        record["exclusionRationales"].pop(removed_layer1_exclusion, None)
+        return record
+
+    checked_fixture(
+        "F151_EXCLUSION_RATIONALE_REMOVED",
+        valid_manifest_record(),
+        lambda record: gates.verify_exact_exclusion_set(
+            record, "excluded", gates.LAYER1_EXCLUDED, "exclusionRationales", "layer1"
+        ),
+        remove_rationale,
+        "exclusion_rationale_missing",
+    )
+
+    # F152: one exclusion rationale emptied.
+    def empty_rationale(record: dict[str, object]) -> dict[str, object]:
+        record["exclusionRationales"][removed_layer1_exclusion] = ""
+        return record
+
+    checked_fixture(
+        "F152_EXCLUSION_RATIONALE_EMPTY",
+        valid_manifest_record(),
+        lambda record: gates.verify_exact_exclusion_set(
+            record, "excluded", gates.LAYER1_EXCLUDED, "exclusionRationales", "layer1"
+        ),
+        empty_rationale,
+        "exclusion_rationale_missing",
+    )
+
+    # F153: one exclusion rationale is generic rather than specific.
+    def generic_rationale(record: dict[str, object]) -> dict[str, object]:
+        record["exclusionRationales"][removed_layer1_exclusion] = "excluded"
+        return record
+
+    checked_fixture(
+        "F153_EXCLUSION_RATIONALE_GENERIC",
+        valid_manifest_record(),
+        lambda record: gates.verify_exact_exclusion_set(
+            record, "excluded", gates.LAYER1_EXCLUDED, "exclusionRationales", "layer1"
+        ),
+        generic_rationale,
+        "exclusion_rationale_not_specific",
+    )
 
     cases = [
         ("F01_GENERATED_REPORT_FALSELY_MANUAL", *contains(manual_errors, "automatically generated report labelled manual")),
@@ -944,7 +1251,7 @@ def run() -> dict[str, object]:
         ("F70_AMENDMENT_ARTIFACT_MISSING", *contains(am_missing_artifact, "ai_model_override_amendment_artifact_missing")),
         ("F71_AMENDMENT_COMPONENT_RULE_MISSING", *contains(am_missing_component_rule, "component_model_selection_rule_missing")),
     ]
-    cases = cases + amendment_extra + cert_fixture_errors
+    cases = cases + amendment_extra + cert_fixture_errors + cert_integrity_fixture_errors
     results = [
         {
             "fixture": name,

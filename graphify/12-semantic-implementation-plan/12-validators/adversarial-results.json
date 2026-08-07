@@ -1,6 +1,6 @@
 {
-  "fixtureCount": 135,
-  "expectedFailuresObserved": 135,
+  "fixtureCount": 153,
+  "expectedFailuresObserved": 153,
   "status": "PASS",
   "fixtures": [
     {
@@ -1358,10 +1358,75 @@
       "fixture": "F117_NONEXISTENT_LAYER3_LIST_ENTRY",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/11-model-packets/packet-manifest.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/12-validators/adversarial-results.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/12-validators/validator-results.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/13-reports/final-100-percent-certification.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/13-reports/final-content-manifest.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/13-reports/pass-b-independent-evidence-authenticity.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/13-reports/source-of-truth-report.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/14-handoff/GPT-5.6-INDEPENDENT-REVIEW-HANDOFF.md",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/14-handoff/START-HERE.md",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/14-handoff/gpt-review-counts.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/14-handoff/gpt-review-critical-invariants.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/14-handoff/gpt-review-file-index.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/14-handoff/gpt-review-known-risk-areas.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/14-handoff/gpt-review-sha-manifest.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/14-handoff/gpt-review-validation-commands.json",
+        "layer3_canonical_member_missing: build_semantic_plan.py",
+        "layer3_canonical_member_missing: semantic-plan-source/components/components.csv",
+        "layer3_canonical_member_missing: semantic-plan-source/contracts/ipc-command-registry-v3.json",
+        "layer3_canonical_member_missing: semantic-plan-source/handoff-gpt/gpt-review-sha-manifest.json",
+        "layer3_canonical_member_missing: semantic-plan-source/packages/dependencies.csv",
+        "layer3_canonical_member_missing: semantic-plan-source/packages/requirement-membership.csv",
+        "layer3_canonical_member_missing: semantic-plan-source/packages/work-packages.json",
+        "layer3_canonical_member_missing: semantic-plan-source/requirements/requirement-mapping.csv",
+        "layer3_canonical_member_missing: semantic-plan-source/requirements/requirements.csv",
+        "layer3_canonical_member_missing: semantic-plan-source/reviews/source-of-truth-report.json",
+        "layer3_canonical_member_missing: semantic-plan-source/schemas/schema-index.csv",
+        "layer3_canonical_member_missing: semantic-plan-source/validators/adversarial_fixtures.py",
+        "layer3_canonical_member_missing: semantic-plan-source/validators/validate_plan.py",
+        "layer3_canonical_member_missing: tools/certification_gates.py",
+        "layer3_canonical_member_missing: tools/final_certification.py",
+        "layer3_canonical_member_missing: tools/generate_gpt_handoff.py",
+        "layer3_unexpected_member: 12-semantic-implementation-plan/does-not-exist.json",
+        "layer3_file_order_mismatch: envelope files are not canonical deterministic sorted order",
+        "layer3_file_hash_membership_mismatch: fileHashes keys differ from canonical Layer 3 files",
+        "layer3_file_hash_membership_mismatch: files and fileHashes keys differ",
+        "layer3_file_count_mismatch: envelope fileCount 1 != canonical 31",
         "layer 3 listed file missing: 12-semantic-implementation-plan/does-not-exist.json",
-        "layer 3 listed file not hashed: 12-semantic-implementation-plan/does-not-exist.json",
-        "layer 3 envelope digest does not match recomputation",
-        "layer 3 envelope file count mismatch"
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/13-reports/final-content-manifest.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/13-reports/final-100-percent-certification.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/12-validators/validator-results.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/12-validators/adversarial-results.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/13-reports/pass-b-independent-evidence-authenticity.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/13-reports/source-of-truth-report.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/11-model-packets/packet-manifest.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/14-handoff/START-HERE.md",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/14-handoff/GPT-5.6-INDEPENDENT-REVIEW-HANDOFF.md",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/14-handoff/gpt-review-counts.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/14-handoff/gpt-review-critical-invariants.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/14-handoff/gpt-review-file-index.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/14-handoff/gpt-review-known-risk-areas.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/14-handoff/gpt-review-sha-manifest.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/14-handoff/gpt-review-validation-commands.json",
+        "layer 3 canonical file not hashed: semantic-plan-source/handoff-gpt/gpt-review-sha-manifest.json",
+        "layer 3 canonical file not hashed: semantic-plan-source/requirements/requirements.csv",
+        "layer 3 canonical file not hashed: semantic-plan-source/requirements/requirement-mapping.csv",
+        "layer 3 canonical file not hashed: semantic-plan-source/packages/work-packages.json",
+        "layer 3 canonical file not hashed: semantic-plan-source/packages/requirement-membership.csv",
+        "layer 3 canonical file not hashed: semantic-plan-source/packages/dependencies.csv",
+        "layer 3 canonical file not hashed: semantic-plan-source/components/components.csv",
+        "layer 3 canonical file not hashed: semantic-plan-source/contracts/ipc-command-registry-v3.json",
+        "layer 3 canonical file not hashed: semantic-plan-source/schemas/schema-index.csv",
+        "layer 3 canonical file not hashed: semantic-plan-source/validators/validate_plan.py",
+        "layer 3 canonical file not hashed: semantic-plan-source/validators/adversarial_fixtures.py",
+        "layer 3 canonical file not hashed: semantic-plan-source/reviews/source-of-truth-report.json",
+        "layer 3 canonical file not hashed: build_semantic_plan.py",
+        "layer 3 canonical file not hashed: tools/final_certification.py",
+        "layer 3 canonical file not hashed: tools/certification_gates.py",
+        "layer 3 canonical file not hashed: tools/generate_gpt_handoff.py",
+        "layer 3 envelope digest does not match recomputation"
       ]
     },
     {
@@ -1475,7 +1540,7 @@
       "fixture": "F133_UNEXPLAINED_EXCLUSION",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "unexplained exclusion: 13-reports/final-release-envelope.json"
+        "exclusion_rationale_missing: 13-reports/final-release-envelope.json"
       ]
     },
     {
@@ -1483,11 +1548,8 @@
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
         "certification missingFiles disagrees with real files",
-        "certification unexpectedFiles disagrees with real files",
-        "proof missingFiles disagrees with real files",
-        "proof unexpectedFiles disagrees with real files",
         "envelope missingFiles disagrees with real files",
-        "envelope unexpectedFiles disagrees with real files"
+        "proof missingFiles disagrees with real files"
       ]
     },
     {
@@ -1502,6 +1564,144 @@
         "certification gate not completed: layer1_determinism",
         "certification gate not completed: layer3_determinism",
         "certification gate not completed: final_certification_validation"
+      ]
+    },
+    {
+      "fixture": "F136_PROVISIONAL_CERT_WITH_PASS_STATUS",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "final_pass_published_before_all_gates_complete: layer1_determinism=PENDING",
+        "final_pass_published_before_all_gates_complete: layer3_determinism=PENDING",
+        "final_pass_published_before_all_gates_complete: final_certification_validation=PENDING"
+      ]
+    },
+    {
+      "fixture": "F137_FINAL_GATE_PASS_BEFORE_STAGE2",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "provisional_gate_premature: final_certification_validation=PASS"
+      ]
+    },
+    {
+      "fixture": "F138_INTERRUPTED_RUN_LEAVES_PASS_ACTIVE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "final_pass_published_before_all_gates_complete: layer3_determinism=PENDING"
+      ]
+    },
+    {
+      "fixture": "F139_PUBLICATION_BEFORE_ALL_GATES_COMPLETE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "final_pass_published_before_all_gates_complete: adversarial_fixtures=NOT_RUN"
+      ]
+    },
+    {
+      "fixture": "F140_LAYER3_CANONICAL_MEMBER_REMOVED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/11-model-packets/packet-manifest.json",
+        "layer3_file_order_mismatch: envelope files are not canonical deterministic sorted order",
+        "layer3_file_hash_membership_mismatch: fileHashes keys differ from canonical Layer 3 files"
+      ]
+    },
+    {
+      "fixture": "F141_LAYER3_UNEXPECTED_MEMBER_ADDED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "layer3_unexpected_member: 12-semantic-implementation-plan/13-reports/unexpected-layer3.json",
+        "layer3_file_order_mismatch: envelope files are not canonical deterministic sorted order",
+        "layer3_file_hash_membership_mismatch: fileHashes keys differ from canonical Layer 3 files"
+      ]
+    },
+    {
+      "fixture": "F142_LAYER3_COUNT_OK_BUT_CANONICAL_MEMBER_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/11-model-packets/packet-manifest.json",
+        "layer3_unexpected_member: 12-semantic-implementation-plan/13-reports/unexpected-layer3.json",
+        "layer3_file_order_mismatch: envelope files are not canonical deterministic sorted order",
+        "layer3_file_hash_membership_mismatch: fileHashes keys differ from canonical Layer 3 files"
+      ]
+    },
+    {
+      "fixture": "F143_LAYER3_FILE_WITHOUT_HASH",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "layer3_file_hash_membership_mismatch: fileHashes keys differ from canonical Layer 3 files",
+        "layer3_file_hash_membership_mismatch: files and fileHashes keys differ"
+      ]
+    },
+    {
+      "fixture": "F144_LAYER3_HASH_WITHOUT_FILE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/11-model-packets/packet-manifest.json",
+        "layer3_file_order_mismatch: envelope files are not canonical deterministic sorted order",
+        "layer3_file_hash_membership_mismatch: files and fileHashes keys differ"
+      ]
+    },
+    {
+      "fixture": "F145_LAYER3_ORDER_DIFFERS",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "layer3_file_order_mismatch: envelope files are not canonical deterministic sorted order"
+      ]
+    },
+    {
+      "fixture": "F146_LAYER1_EXCLUDED_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "layer1_exclusion_set_mismatch: excluded missing or wrong type"
+      ]
+    },
+    {
+      "fixture": "F147_LAYER3_EXCLUDED_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "layer3_exclusion_set_mismatch: excluded missing or wrong type"
+      ]
+    },
+    {
+      "fixture": "F148_FULL_MANIFEST_EXCLUDED_MISSING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "full_manifest_exclusion_set_mismatch: excluded missing or wrong type"
+      ]
+    },
+    {
+      "fixture": "F149_LAYER1_REQUIRED_EXCLUSION_REMOVED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "layer1_exclusion_set_mismatch: missing 13-reports/final-100-percent-certification.json"
+      ]
+    },
+    {
+      "fixture": "F150_LAYER3_UNAUTHORIZED_EXCLUSION_ADDED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "layer3_exclusion_set_mismatch: unexpected 13-reports/not-a-real-exclusion.json"
+      ]
+    },
+    {
+      "fixture": "F151_EXCLUSION_RATIONALE_REMOVED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "exclusion_rationale_missing: 13-reports/final-100-percent-certification.json"
+      ]
+    },
+    {
+      "fixture": "F152_EXCLUSION_RATIONALE_EMPTY",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "exclusion_rationale_missing: 13-reports/final-100-percent-certification.json"
+      ]
+    },
+    {
+      "fixture": "F153_EXCLUSION_RATIONALE_GENERIC",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "exclusion_rationale_not_specific: 13-reports/final-100-percent-certification.json"
       ]
     }
   ]

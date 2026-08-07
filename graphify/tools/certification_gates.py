@@ -19,6 +19,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -35,6 +36,23 @@ REVIEWS = SOURCE / "reviews"
 
 DECLARATION = "FULL IMPLEMENTATION PLANNING 100% COMPLETE \u2014 WP-I0-001 MAY BEGIN"
 NOT_CERTIFIED_DECLARATION = "NOT CERTIFIED \u2014 IMPLEMENTATION BLOCKED"
+PROVISIONAL_BLOCKER = "final certification validation has not completed"
+
+# Gates that remain PENDING on a provisional certification written before the
+# Stage 2 final certification validation has completed.
+PROVISIONAL_PENDING_GATES = (
+    "layer1_determinism",
+    "layer3_determinism",
+    "final_certification_validation",
+)
+
+# Rationales that do not explain why a specific path is excluded.
+GENERIC_EXCLUSION_RATIONALE = re.compile(
+    r"^(excluded|n/?a|none|no reason|generic|because|why|self[- ]referential|"
+    r"volatile( timestamp)?|generated( output)?|cannot hash itself|"
+    r"not applicable|unknown|see above|as above)$",
+    re.I,
+)
 
 REQUIRED_VALIDATOR_LEVELS = [
     "L1_SOURCE_AND_WRITE_BOUNDARY",
@@ -365,11 +383,15 @@ def verify_full_graphify_manifest(graphify_root: Path = GRAPHIFY) -> list[str]:
     if saved_paths[0].exists():
         errors.extend(verify_saved_manifest_matches_recomputation(read_json(saved_paths[0]), recomputed))
         saved = read_json(saved_paths[0])
-        excluded = saved.get("excluded") or []
-        rationales = saved.get("exclusion_rationales") or {}
-        for rel in excluded:
-            if not rationales.get(rel):
-                errors.append(f"unexplained full-manifest exclusion: {rel}")
+        errors.extend(
+            verify_exact_exclusion_set(
+                saved,
+                "excluded",
+                SHA_MANIFEST_EXCLUDED,
+                "exclusion_rationales",
+                "full_manifest",
+            )
+        )
     if saved_paths[0].exists() and saved_paths[1].exists():
         if saved_paths[0].read_bytes() != saved_paths[1].read_bytes():
             errors.append("full Graphify SHA manifest source/rendered copies differ")
@@ -682,53 +704,112 @@ def verify_required_files(graphify_root: Path = GRAPHIFY) -> list[str]:
     return errors
 
 
-def compute_layer3(graphify_root: Path = GRAPHIFY, rels: list[str] | None = None) -> dict[str, object]:
-    plan = graphify_root / "12-semantic-implementation-plan"
+def compute_layer3(
+    graphify_root: Path = GRAPHIFY,
+    rels: list[str] | None = None,
+    overrides: dict[str, bytes] | None = None,
+) -> dict[str, object]:
+    """Deterministic Layer 3 digest over the canonical membership.
+
+    ``overrides`` maps canonical relative paths to the exact bytes that will be
+    published, so the final publication can compute the envelope digest over
+    in-memory final artifacts before anything is atomically replaced.
+    """
     selected = sorted(rels or LAYER3_FILES)
+    overrides = overrides or {}
     hasher = hashlib.sha256()
     file_hashes: dict[str, str] = {}
     missing: list[str] = []
     unreadable: list[str] = []
-    hashed: list[str] = []
     for rel in selected:
-        path = graphify_root / rel
-        if not path.exists():
-            missing.append(rel)
-            continue
-        try:
-            digest = sha256_file(path)
-        except OSError:
-            unreadable.append(rel)
-            continue
+        if rel in overrides:
+            digest = sha256_bytes(overrides[rel])
+        else:
+            path = graphify_root / rel
+            if not path.exists():
+                missing.append(rel)
+                continue
+            try:
+                digest = sha256_file(path)
+            except OSError:
+                unreadable.append(rel)
+                continue
         file_hashes[rel] = digest
         hasher.update(rel.encode("utf-8"))
         hasher.update(digest.encode("utf-8"))
-        hashed.append(rel)
     return {
         "sha256": hasher.hexdigest(),
-        "fileCount": len(hashed),
-        "files": hashed,
+        "fileCount": len(file_hashes),
+        "files": selected,
         "fileHashes": file_hashes,
         "missingFiles": sorted(missing),
         "unreadableFiles": sorted(unreadable),
-        "unexpectedFiles": sorted(set(selected) - set(hashed)),
+        "unexpectedFiles": sorted(set(selected) - set(LAYER3_FILES)),
     }
 
 
-def verify_layer3_envelope(graphify_root: Path, envelope: Any) -> list[str]:
+def verify_layer3_membership(envelope: Any) -> list[str]:
+    """Exact Layer 3 membership contract, independent of the on-disk tree.
+
+    Requires ``files == sorted(LAYER3_FILES)``, exact ``fileHashes`` keys, and
+    the canonical count, so a self-consistent smaller envelope can never pass.
+    """
     errors: list[str] = []
     if not isinstance(envelope, dict):
         return ["layer 3 envelope is malformed"]
     listed = envelope.get("files")
     if not isinstance(listed, list):
-        return ["layer 3 envelope files list missing"]
+        errors.append("layer3_file_membership_mismatch: layer 3 envelope files list missing")
+        listed = []
+    else:
+        canonical = set(LAYER3_FILES)
+        if set(listed) != canonical:
+            for rel in sorted(canonical - set(listed)):
+                errors.append(f"layer3_canonical_member_missing: {rel}")
+            for rel in sorted(set(listed) - canonical):
+                errors.append(f"layer3_unexpected_member: {rel}")
+        if listed != sorted(LAYER3_FILES):
+            errors.append("layer3_file_order_mismatch: envelope files are not canonical deterministic sorted order")
     file_hashes = envelope.get("fileHashes")
     if not isinstance(file_hashes, dict):
-        errors.append("layer 3 envelope per-file hashes missing")
+        errors.append("layer3_file_hash_membership_mismatch: layer 3 envelope per-file hashes missing")
         file_hashes = {}
+    else:
+        if set(file_hashes.keys()) != set(LAYER3_FILES):
+            errors.append("layer3_file_hash_membership_mismatch: fileHashes keys differ from canonical Layer 3 files")
+        if isinstance(listed, list) and set(listed) != set(file_hashes.keys()):
+            errors.append("layer3_file_hash_membership_mismatch: files and fileHashes keys differ")
+    if envelope.get("fileCount") != len(LAYER3_FILES):
+        errors.append(
+            f"layer3_file_count_mismatch: envelope fileCount {envelope.get('fileCount')} "
+            f"!= canonical {len(LAYER3_FILES)}"
+        )
+    return errors
+
+
+def verify_layer3_envelope(graphify_root: Path, envelope: Any) -> list[str]:
+    """Full Layer 3 verification over the canonical membership and the tree."""
+    errors: list[str] = verify_layer3_membership(envelope)
+    if not isinstance(envelope, dict):
+        return errors
+    listed = envelope.get("files")
+    file_hashes = envelope.get("fileHashes")
+    if not isinstance(listed, list):
+        listed = []
+    if not isinstance(file_hashes, dict):
+        file_hashes = {}
+    for rel in listed:
+        path = graphify_root / rel
+        if not path.exists():
+            errors.append(f"layer 3 listed file missing: {rel}")
+            continue
+        try:
+            sha256_file(path)
+        except OSError:
+            errors.append(f"layer 3 listed file unreadable: {rel}")
     hasher = hashlib.sha256()
     hashed: list[str] = []
-    for rel in listed:
+    for rel in sorted(LAYER3_FILES):
         path = graphify_root / rel
         if not path.exists():
             errors.append(f"layer 3 listed file missing: {rel}")
@@ -743,16 +824,13 @@ def verify_layer3_envelope(graphify_root: Path, envelope: Any) -> list[str]:
         hasher.update(rel.encode("utf-8"))
         hasher.update(digest.encode("utf-8"))
         hashed.append(rel)
-    for rel in file_hashes:
-        if rel not in listed:
-            errors.append(f"layer 3 hashed file not listed: {rel}")
-    for rel in listed:
+    for rel in LAYER3_FILES:
+        if rel not in file_hashes:
+            errors.append(f"layer 3 canonical file not hashed: {rel}")
         if rel not in hashed:
-            errors.append(f"layer 3 listed file not hashed: {rel}")
+            errors.append(f"layer 3 canonical file missing from digest: {rel}")
     if envelope.get("sha256") != hasher.hexdigest():
         errors.append("layer 3 envelope digest does not match recomputation")
-    if envelope.get("fileCount") != len(hashed):
-        errors.append("layer 3 envelope file count mismatch")
     return errors
 
 
@@ -774,18 +852,52 @@ def verify_cert_hash_agreements(cert: Any, manifest: Any, envelope: Any, proof: 
 
 
 def verify_exclusion_rationales(record: Any, excluded_key: str, rationale_key: str) -> list[str]:
+    """Strict exclusion-rationale verification.
+
+    A missing/malformed ``excluded`` field, a missing rationale, an empty
+    rationale, or a generic non-specific rationale is an error.
+    """
     errors: list[str] = []
     if not isinstance(record, dict):
         return ["exclusion evidence is malformed"]
     excluded = record.get(excluded_key)
     if not isinstance(excluded, list):
-        return []
+        errors.append(f"{excluded_key} exclusion set missing or wrong type")
+        excluded = []
     rationales = record.get(rationale_key)
     if not isinstance(rationales, dict):
+        errors.append(f"{rationale_key} exclusion rationales missing or wrong type")
         rationales = {}
     for rel in excluded:
-        if not rationales.get(rel):
-            errors.append(f"unexplained exclusion: {rel}")
+        rationale = rationales.get(rel)
+        if not isinstance(rationale, str) or not rationale.strip():
+            errors.append(f"exclusion_rationale_missing: {rel}")
+        elif len(rationale.strip()) < 10 or GENERIC_EXCLUSION_RATIONALE.match(rationale.strip()):
+            errors.append(f"exclusion_rationale_not_specific: {rel}")
+    return errors
+
+
+def verify_exact_exclusion_set(
+    record: Any,
+    excluded_key: str,
+    canonical: frozenset[str],
+    rationale_key: str,
+    label: str,
+) -> list[str]:
+    """Require the exact canonical exclusion set plus strict rationales."""
+    errors: list[str] = []
+    if not isinstance(record, dict):
+        return ["exclusion evidence is malformed"]
+    excluded = record.get(excluded_key)
+    if not isinstance(excluded, list):
+        errors.append(f"{label}_exclusion_set_mismatch: {excluded_key} missing or wrong type")
+        return errors
+    actual = set(excluded)
+    for rel in sorted(canonical - actual):
+        errors.append(f"{label}_exclusion_set_mismatch: missing {rel}")
+    for rel in sorted(actual - canonical):
+        errors.append(f"{label}_exclusion_set_mismatch: unexpected {rel}")
+    errors.extend(verify_exclusion_rationales(record, excluded_key, rationale_key))
     return errors
 
 
@@ -799,6 +911,42 @@ def verify_certification_gates_recorded(cert: Any) -> list[str]:
     for gate in CERTIFICATION_GATES:
         if gates.get(gate) != "PASS":
             errors.append(f"certification gate not completed: {gate}")
+    return errors
+
+
+def verify_certificate_gate_states(cert: Any) -> list[str]:
+    """Verify recorded certification gates reflect the actual execution state.
+
+    A PASS certificate must have every gate PASS.  A provisional certificate
+    (written before the Stage 2 final certification validation completes) must
+    have the six pre-certification gates PASS and the determinism and final
+    validation gates PENDING.  Unknown gates are rejected.
+    """
+    errors: list[str] = []
+    if not isinstance(cert, dict):
+        return ["certification record is malformed"]
+    gates = cert.get("certificationGates")
+    if not isinstance(gates, dict):
+        return ["certification gates record missing"]
+    for gate in gates:
+        if gate not in CERTIFICATION_GATES:
+            errors.append(f"certification gate unknown: {gate}")
+    status = cert.get("status")
+    if status == "PASS":
+        for gate in CERTIFICATION_GATES:
+            if gates.get(gate) != "PASS":
+                errors.append(
+                    f"final_pass_published_before_all_gates_complete: {gate}={gates.get(gate)}"
+                )
+    elif status == "PROVISIONAL":
+        for gate in CERTIFICATION_GATES:
+            if gate in PROVISIONAL_PENDING_GATES:
+                if gates.get(gate) != "PENDING":
+                    errors.append(f"provisional_gate_premature: {gate}={gates.get(gate)}")
+            elif gates.get(gate) != "PASS":
+                errors.append(f"provisional gate not completed: {gate}={gates.get(gate)}")
+    else:
+        errors.append(f"certification status is not PASS or PROVISIONAL: {status}")
     return errors
 
 
@@ -821,7 +969,10 @@ def compute_expected_evidence_arrays(graphify_root: Path = GRAPHIFY) -> dict[str
 def verify_evidence_arrays_against_files(graphify_root: Path, cert: Any, envelope: Any, proof: Any) -> list[str]:
     errors: list[str] = []
     expected = compute_expected_evidence_arrays(graphify_root)
-    for record_name, record in (("certification", cert), ("proof", proof), ("envelope", envelope)):
+    records: list[tuple[str, Any]] = [("certification", cert), ("envelope", envelope)]
+    if proof is not None:
+        records.append(("proof", proof))
+    for record_name, record in records:
         if not isinstance(record, dict):
             errors.append(f"{record_name} evidence record is malformed")
             continue
@@ -839,7 +990,13 @@ def verify_evidence_arrays_against_files(graphify_root: Path, cert: Any, envelop
 
 
 def verify_certification_artifacts(graphify_root: Path = GRAPHIFY) -> list[str]:
-    """Full independent final-certification validation (the L20 contract)."""
+    """Full independent final-certification validation (the L20 contract).
+
+    Status-aware: a PROVISIONAL certificate must carry the NOT CERTIFIED
+    declaration with the determinism and final-validation gates PENDING; a PASS
+    certificate must carry the final declaration with every gate PASS, a PASS
+    determinism proof, and no remaining blockers.
+    """
     plan = graphify_root / "12-semantic-implementation-plan"
     reports = plan / "13-reports"
     cert_path = reports / "final-100-percent-certification.json"
@@ -847,20 +1004,24 @@ def verify_certification_artifacts(graphify_root: Path = GRAPHIFY) -> list[str]:
     envelope_path = reports / "final-release-envelope.json"
     proof_path = reports / "final-determinism-proof.json"
     errors: list[str] = []
-    if not cert_path.exists() or not manifest_path.exists() or not envelope_path.exists() or not proof_path.exists():
-        errors.append("final 100% certification evidence missing")
+    missing_evidence = [
+        path.relative_to(graphify_root).as_posix()
+        for path in (cert_path, manifest_path, envelope_path)
+        if not path.exists()
+    ]
+    if missing_evidence:
+        errors.append("final 100% certification evidence missing: " + ", ".join(missing_evidence))
         return errors
     cert = read_json(cert_path)
     manifest = read_json(manifest_path)
     envelope = read_json(envelope_path)
-    proof = read_json(proof_path)
+    proof = read_json(proof_path) if proof_path.exists() else None
     validator_report = read_json(plan / "12-validators" / "validator-results.json")
     adversarial_report = read_json(plan / "12-validators" / "adversarial-results.json")
 
     errors.extend(verify_validator_report(validator_report))
     errors.extend(verify_adversarial_report(adversarial_report))
     errors.extend(verify_layer3_envelope(graphify_root, envelope))
-    errors.extend(verify_cert_hash_agreements(cert, manifest, envelope, proof))
     errors.extend(verify_external_integrity_report(graphify_root))
     errors.extend(verify_full_graphify_manifest(graphify_root))
     recomputed_manifest = compute_full_graphify_manifest(graphify_root)
@@ -868,20 +1029,28 @@ def verify_certification_artifacts(graphify_root: Path = GRAPHIFY) -> list[str]:
     errors.extend(verify_authoritative_source_coverage(graphify_root, manifest_entries))
     errors.extend(verify_certification_tool_coverage(graphify_root, manifest_entries))
     errors.extend(verify_evidence_arrays_against_files(graphify_root, cert, envelope, proof))
-    errors.extend(verify_exclusion_rationales(envelope, "excluded", "exclusionRationales"))
-    errors.extend(verify_exclusion_rationales(proof, "excluded", "exclusionRationales"))
-    errors.extend(verify_exclusion_rationales(manifest, "excluded", "exclusionRationales"))
-    errors.extend(verify_certification_gates_recorded(cert))
+    errors.extend(
+        verify_exact_exclusion_set(manifest, "excluded", LAYER1_EXCLUDED, "exclusionRationales", "layer1")
+    )
+    errors.extend(
+        verify_exact_exclusion_set(envelope, "excluded", LAYER3_EXCLUDED, "exclusionRationales", "layer3")
+    )
+    errors.extend(verify_certificate_gate_states(cert))
+    if proof is not None:
+        errors.extend(verify_cert_hash_agreements(cert, manifest, envelope, proof))
+        errors.extend(
+            verify_exact_exclusion_set(
+                proof,
+                "excluded",
+                LAYER1_EXCLUDED | LAYER3_EXCLUDED,
+                "exclusionRationales",
+                "layer1_layer3",
+            )
+        )
+    if cert.get("layer1Hash") != manifest.get("sha256"):
+        errors.append("certification layer1 hash differs from content manifest")
 
-    expected = DECLARATION
-    if cert.get("status") != "PASS":
-        errors.append("final 100% certification status is not PASS")
-    if cert.get("readiness_declaration") != expected:
-        errors.append("final 100% certification declaration missing or incorrect")
-    if cert.get("implementation_planning_100_percent_complete") is not True:
-        errors.append("final certification implementation_planning flag is not true")
-    if cert.get("remaining_blockers"):
-        errors.append("final certification has remaining blockers")
+    status = cert.get("status")
     if cert.get("fullGraphifyManifestDigest") != recomputed_manifest.get("digest") or cert.get("fullGraphifyManifestFileCount") != recomputed_manifest.get("file_count"):
         errors.append("certification full Graphify manifest digest or count mismatch")
     required_evidence = compute_required_file_evidence(graphify_root)
@@ -889,7 +1058,31 @@ def verify_certification_artifacts(graphify_root: Path = GRAPHIFY) -> list[str]:
         errors.append("certification required-file hashes disagree with real files")
     if cert.get("requiredFileCount") != len(required_evidence["hashes"]):
         errors.append("certification required-file count mismatch")
-    handoff = plan / "14-handoff" / "START-HERE.md"
-    if handoff.exists() and expected not in handoff.read_text(encoding="utf-8"):
-        errors.append("handoff does not contain the final 100% declaration")
+
+    if status == "PASS":
+        if cert.get("readiness_declaration") != DECLARATION:
+            errors.append("final 100% certification declaration missing or incorrect")
+        if cert.get("implementation_planning_100_percent_complete") is not True:
+            errors.append("final certification implementation_planning flag is not true")
+        if cert.get("first_allowed_package") != "WP-I0-001":
+            errors.append("final certification first_allowed_package is not WP-I0-001")
+        if cert.get("remaining_blockers"):
+            errors.append("final certification has remaining blockers")
+        if proof is None or proof.get("status") != "PASS":
+            errors.append("final determinism proof did not pass")
+        handoff = plan / "14-handoff" / "START-HERE.md"
+        if handoff.exists() and DECLARATION not in handoff.read_text(encoding="utf-8"):
+            errors.append("handoff does not contain the final 100% declaration")
+    elif status == "PROVISIONAL":
+        if cert.get("readiness_declaration") != NOT_CERTIFIED_DECLARATION:
+            errors.append("provisional certification declaration is not NOT CERTIFIED")
+        if cert.get("implementation_planning_100_percent_complete") is not False:
+            errors.append("provisional certification implementation_planning flag is not false")
+        if cert.get("first_allowed_package") is not None:
+            errors.append("provisional certification authorizes a first package")
+        blockers = cert.get("remaining_blockers")
+        if not isinstance(blockers, list) or PROVISIONAL_BLOCKER not in blockers:
+            errors.append("provisional certification lacks final-validation blocker")
+        if proof is not None and proof.get("status") == "PASS":
+            errors.append("provisional certification has a PASS determinism proof")
     return errors

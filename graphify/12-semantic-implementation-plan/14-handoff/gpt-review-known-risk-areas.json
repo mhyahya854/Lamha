@@ -53,6 +53,24 @@
       "area": "Final certification could declare PASS from saved text without proving prerequisites",
       "mitigation": "Gated certification writes PASS only after every gate passes; every required file is hashed; Layer 3 membership is verified file-by-file; the full Graphify SHA manifest is recomputed and compared; L20 independently re-verifies all evidence from raw files",
       "history": "Previous final_certification.py wrote PASS unconditionally, skipped missing Layer 3 files, hardcoded empty evidence arrays, did not bind authoritative sources, and L20 trusted saved PASS text; corrected and regression-tested with 20 new fixtures (F116-F135)"
+    },
+    {
+      "id": "RISK-PROVISIONAL-PASS-CRASH",
+      "area": "A provisional certification could survive a process interruption with final PASS semantics",
+      "mitigation": "Every persisted state before the final atomic publication is status PROVISIONAL with the NOT CERTIFIED declaration, implementation_planning_100_percent_complete false, first_allowed_package null, the final-validation blocker, and the determinism and final-validation gates PENDING; stale PASS is invalidated at run start; final records are built in memory, validated, written to temp files, fsynced, atomically replaced, and the PASS certification is published last",
+      "history": "Provisional certification previously used status PASS with all gates PASS before Stage 2 completed; defect PROVISIONAL_PASS_CAN_SURVIVE_PROCESS_INTERRUPTION closed with fixtures F136-F139"
+    },
+    {
+      "id": "RISK-LAYER3-SELF-DEFINED-MEMBERSHIP",
+      "area": "Layer 3 envelope membership could be made self-consistent while omitting canonical files",
+      "mitigation": "Layer 3 verification requires set(envelope.files) == set(LAYER3_FILES), canonical deterministic sorted ordering, set(envelope.fileHashes.keys()) == set(LAYER3_FILES), and envelope.fileCount == len(LAYER3_FILES); every canonical file must exist, be readable, be hashed, match its recorded hash, and contribute to the digest",
+      "history": "verify_layer3_envelope() verified only envelope-listed files; defect LAYER3_CAN_OMIT_CANONICAL_MEMBER closed with fixtures F140-F145"
+    },
+    {
+      "id": "RISK-EXCLUSION-SET-NOT-STRICT",
+      "area": "Missing or malformed exclusion sets could pass certification without exact canonical membership or rationales",
+      "mitigation": "Exact canonical exclusion sets are required for Layer 1, Layer 3, and the full Graphify SHA manifest; every exclusion must have a non-empty specific rationale; missing fields, missing/unexpected members, and missing/empty/generic rationales fail",
+      "history": "Exclusion validation tolerated missing/malformed excluded fields; defect CERTIFICATION_EXCLUSION_SET_NOT_STRICT closed with fixtures F146-F153"
     }
   ],
   "deferred_claims": [

@@ -2370,8 +2370,8 @@
     },
     {
       "path": "12-validators/adversarial_fixtures.py",
-      "bytes": 62027,
-      "sha256": "f6b1d5e4b602af5a945d7b9b1ccfe99cc4d3ce1826695aa81f5870a83d2abd7e"
+      "bytes": 74469,
+      "sha256": "85f3138f3cd00f0a2a01afada8bb1ce18f185f1acb64ed09546803bdb67c8b4e"
     },
     {
       "path": "12-validators/packet_smoke_tests.py",
@@ -2380,8 +2380,8 @@
     },
     {
       "path": "12-validators/validate_plan.py",
-      "bytes": 93296,
-      "sha256": "a3f98734ddd5d59ff74ca0b0e49a0cb11eaea2c095da66c6bc74c958e38b407a"
+      "bytes": 92820,
+      "sha256": "6a36604135cc12299c8cceb77bdf598c7f7b1971632c32dbc6125e1d62333a54"
     },
     {
       "path": "12-validators/validator-results.json",
@@ -2430,18 +2430,18 @@
     },
     {
       "path": "13-reports/final-100-percent-certification.json",
-      "bytes": 6651,
-      "sha256": "eb6c033b4d3db3a9eddf6719c503b3630cb3e491a92afef3d259edc656059904"
+      "bytes": 6541,
+      "sha256": "e6a10e5cc8f2b515664936e03c12e13fd8ee40e5ef7f3ed24c108ba7a1dc4d8a"
     },
     {
       "path": "13-reports/final-content-manifest.json",
       "bytes": 101440,
-      "sha256": "67d4f81c20bc2971b4a7273d29af4b6d36e5577db90b38bae31a69956b223b29"
+      "sha256": "2fdc5edde130482e56e0c938c2c72d905fd6fdbd6b47df6fe19c4e5d171bd5c6"
     },
     {
       "path": "13-reports/final-determinism-proof.json",
-      "bytes": 2878,
-      "sha256": "9f71e74fb1d083a527904f414d1662fbd9a9350bc1d633a1225e4b6e4a71772e"
+      "bytes": 2885,
+      "sha256": "0f3e927113dc6ab0c54e15a04341e46f4c82532da32c62a1d225e2972769272d"
     },
     {
       "path": "13-reports/final-package-determinism.json",
@@ -2456,7 +2456,7 @@
     {
       "path": "13-reports/final-release-envelope.json",
       "bytes": 7700,
-      "sha256": "ec57c34c7579c46eaf23e35b75d6ddff642e054a3b787368d4b04019e85dc510"
+      "sha256": "d2ff061dbc07dc83e3c138aed5801b300ff168e2468020f6f76b1cd6e358ea2d"
     },
     {
       "path": "13-reports/generated-fragment-disposition-report.csv",
@@ -2671,7 +2671,7 @@
     {
       "path": "13-reports/pass3-external-readonly-final.json",
       "bytes": 705957,
-      "sha256": "9f12bb61989fd4cf848afaa10af4af647f10098098726d5b10908efc077ba05a"
+      "sha256": "1ff0ab932f9b4600a81897c029b8a7c07583855c1625a5023435cc3af8bd07ea"
     },
     {
       "path": "13-reports/pass3-legacy-template-reproduction.csv",
@@ -2850,18 +2850,18 @@
     },
     {
       "path": "14-handoff/GPT-5.6-INDEPENDENT-REVIEW-HANDOFF.md",
-      "bytes": 12197,
-      "sha256": "f5f80c2db254bd223d42faef90e30b41d52030f834ea5c6623a89d0495590905"
+      "bytes": 17371,
+      "sha256": "a5f65fb5ef6d1f43f1bb52135d7ec289c8dde31081d8ae8b264adf5ab9c54d96"
     },
     {
       "path": "14-handoff/gpt-review-counts.json",
       "bytes": 856,
-      "sha256": "0f0af64972687b12a9fd90d716cb759a37a2a4b6ff1c9a60b56ab83729b696fb"
+      "sha256": "7eb2d805fb2264bef709c5091302e8ce46e88acfc7c18102e4ff4ebee4c1c80f"
     },
     {
       "path": "14-handoff/gpt-review-critical-invariants.json",
-      "bytes": 2328,
-      "sha256": "10723cdce4318b599e38c941cf9542c6c8011a362cec6d47c4c4341a841d3472"
+      "bytes": 3424,
+      "sha256": "dae279d1705d92d848d29fe132eee7e5f15bbc368afc8e97de77ef93e6262f4c"
     },
     {
       "path": "14-handoff/gpt-review-file-index.json",
@@ -2870,18 +2870,18 @@
     },
     {
       "path": "14-handoff/gpt-review-known-risk-areas.json",
-      "bytes": 3811,
-      "sha256": "f9d7a45beb4e2cb7ed737ddab9295954e7dcd141ba081aa32892bff3bf7d0732"
+      "bytes": 5955,
+      "sha256": "ca857bf7bd35ac07743f34930a2aeffa8a7490181c819e17df1ede936703a385"
     },
     {
       "path": "14-handoff/gpt-review-sha-manifest.json",
-      "bytes": 419613,
-      "sha256": "e5ceb802e2b802d96e5af00fdf58eb1d330871c14eee834e1562b7cc2ee91758"
+      "bytes": 419732,
+      "sha256": "a1a797a97134586e7b8ce77ded2d0b07c682b713087d75743d06c8e4b8a7e9ea"
     },
     {
       "path": "14-handoff/gpt-review-validation-commands.json",
-      "bytes": 3138,
-      "sha256": "d020f45892feaf9a13be15f081e73c4fd0bf3ea9e63b59e34cc3b419b5c950d9"
+      "bytes": 4087,
+      "sha256": "0e2b63beb144da2e6b51c05659e0a5488dc26feeee257cfcfabeeab6f25b14b5"
     },
     {
       "path": "14-handoff/START-HERE.md",

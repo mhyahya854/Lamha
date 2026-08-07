@@ -97,6 +97,25 @@ computed twice and must match. The Layer 2 certification report is hashed by
 Layer 3, and the Layer 1 manifest excludes itself plus explicitly documented
 volatile timestamp files.
 
+## How to simulate the provisional / interrupted state
+
+```powershell
+python graphify\tools\simulate_provisional_certification.py
+```
+
+The simulation is read-only. It rebuilds the provisional record in memory,
+confirms it is `status: PROVISIONAL` with the
+`NOT CERTIFIED â€” IMPLEMENTATION BLOCKED` declaration,
+`implementation_planning_100_percent_complete: false`,
+`first_allowed_package: null` (WP-I0-001 not authorized), the blocker
+`final certification validation has not completed`, and the determinism plus
+final-validation gates `PENDING`. It then confirms the completed PASS record
+exists only after every gate is recorded PASS. The real certification pipeline
+invalidates any stale PASS at the start of every run, keeps every pre-publication
+persisted state NOT CERTIFIED, and publishes the PASS certification as the last
+atomic operation, so an interruption at any earlier point cannot leave a false
+PASS on disk.
+
 ## How to verify external integrity
 
 ```powershell
@@ -185,6 +204,54 @@ adversarial report, Layer 1 manifest, certification report, release envelope,
   manifest, and L20 independently re-verifies every artifact from raw
   evidence.
 
+## Final certification-integrity closure (last DeepSeek pass)
+
+Three remaining certification-integrity weaknesses were found and closed:
+
+1. **Provisional PASS was not crash-safe.** The provisional certification
+   written before the Stage 2 final certification validation used
+   `status: PASS` with every gate `PASS`, so a process interruption after the
+   provisional write could leave a false PASS on disk. Defect:
+   `PROVISIONAL_PASS_CAN_SURVIVE_PROCESS_INTERRUPTION`.
+   Correction: every persisted state before the final atomic publication is
+   `status: PROVISIONAL` with `readiness_declaration: NOT CERTIFIED â€” IMPLEMENTATION BLOCKED`,
+   `implementation_planning_100_percent_complete: false`,
+   `first_allowed_package: null`, the remaining blocker
+   `final certification validation has not completed`, and the determinism plus
+   final-validation gates `PENDING`. A stale PASS is invalidated at the start
+   of certification. Final records are built in memory, validated, written to
+   temporary files, fsynced, atomically replaced, and the PASS certification is
+   published last. L20 rejects any PASS certificate with a PENDING or
+   NOT_RUN gate (`final_pass_published_before_all_gates_complete`) and rejects
+   any provisional certificate that claims a final gate prematurely.
+2. **Layer 3 membership was self-defined.** `verify_layer3_envelope()` verified
+   only the files listed in the envelope, so a smaller self-consistent envelope
+   could omit a canonical member. Defect:
+   `LAYER3_CANONICAL_OMIT_CANONICAL_MEMBER` (recorded as
+   `LAYER3_CAN_OMIT_CANONICAL_MEMBER`).
+   Correction: Layer 3 verification requires
+   `set(envelope.files) == set(LAYER3_FILES)`, canonical deterministic sorted
+   ordering, `set(envelope.fileHashes.keys()) == set(LAYER3_FILES)`, and
+   `envelope.fileCount == len(LAYER3_FILES)`. Every canonical Layer 3 file must
+   exist, be readable, be hashed, match its recorded hash, and contribute to
+   the Layer 3 digest. Missing canonical members produce
+   `layer3_canonical_member_missing`, unexpected members produce
+   `layer3_unexpected_member`, and file/hash key disagreements produce
+   `layer3_file_hash_membership_mismatch`.
+3. **Exclusion sets were not strictly verified.** Missing or malformed
+   `excluded` fields were tolerated. Defect:
+   `CERTIFICATION_EXCLUSION_SET_NOT_STRICT`.
+   Correction: exact canonical exclusion sets are required for Layer 1
+   (`set(manifest.excluded) == set(LAYER1_EXCLUDED)`), Layer 3
+   (`set(envelope.excluded) == set(LAYER3_EXCLUDED)`), and the full Graphify
+   SHA manifest (`set(saved.excluded) == set(SHA_MANIFEST_EXCLUDED)`). Every
+   exclusion must carry a non-empty, specific rationale
+   (`exclusion_rationale_missing` / `exclusion_rationale_not_specific`).
+
+The adversarial suite now contains 153 fixtures (F01-F153), including
+independent one-mutation fixtures for the provisional/crash state, exact
+Layer 3 membership, and strict exclusion sets.
+
 ## Amendments added
 
 - `CAN-LAM-AI-090` (AI model override): weaker hardware may select stronger
@@ -236,6 +303,25 @@ Do not trust the DeepSeek PASS result. Attempt to disprove the certification:
     or alter `gpt-review-sha-manifest.json`, add an unexplained exclusion, or
     hand-write a PASS certification with empty evidence arrays. Each attempt
     must fail the certification with a non-zero exit code.
+12. Interrupt the certification conceptually between stages: run
+    `final_certification.py` far enough to produce the provisional record,
+    inspect `final-100-percent-certification.json`, and confirm it is
+    `status: PROVISIONAL` with the NOT CERTIFIED declaration, no authorized
+    first package, and the determinism and final-validation gates PENDING.
+    Never accept a PASS certificate that was published before its final gate
+    completed.
+13. Remove one canonical Layer 3 member from `final-release-envelope.json`
+    (from both `files` and `fileHashes`) and confirm the certification and L20
+    reject it with `layer3_canonical_member_missing` and a non-zero exit code.
+14. Modify the Layer 1, Layer 3, or full-manifest exclusion sets (remove a
+    required exclusion, add an unauthorized exclusion, drop or empty a
+    rationale) and confirm the certification and L20 reject the tampered set
+    with `layer1_exclusion_set_mismatch`, `layer3_exclusion_set_mismatch`,
+    `full_manifest_exclusion_set_mismatch`, or `exclusion_rationale_missing`.
+
+Do not trust the resulting PASS: re-run the build, every validator level,
+every adversarial fixture, and the deterministic certification from the
+committed sources, and treat any successful disproof as a blocking defect.
 
 The internal certification declaration is:
 
