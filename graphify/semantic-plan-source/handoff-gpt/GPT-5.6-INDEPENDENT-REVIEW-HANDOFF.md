@@ -72,13 +72,30 @@ prohibited and rejected.
 ## How to verify determinism
 
 ```powershell
+python graphify\build_semantic_plan.py
+python graphify\12-semantic-implementation-plan\12-validators\validate_plan.py --write-results --pre-certification
+python graphify\12-semantic-implementation-plan\12-validators\adversarial_fixtures.py
+python graphify\tools\generate_gpt_handoff.py
 python graphify\tools\final_certification.py
 ```
 
-The final certification computes Layer 1 (content manifest) and Layer 3
-(release envelope) hashes twice and requires both pairs to match. The Layer 2
-certification report is hashed by Layer 3, and the Layer 1 manifest excludes
-itself plus explicitly documented volatile timestamp files.
+The final certification is gated and uses a non-circular two-stage design:
+
+1. **Pre-certification validation** runs first: the plan is rebuilt, all
+   non-final-certification validator levels execute (`--pre-certification`),
+   the adversarial suite runs, and then the full Graphify SHA manifest and
+   handoff counts are regenerated over the current evidence.
+2. **Final certification validation** runs after the certification artifacts
+   exist: L20 independently re-verifies every required file, validator level,
+   adversarial fixture, hash agreement, source/rendered pair, external
+   integrity report, exclusion, and full-tree manifest recomputation.
+
+The certification may write `status: PASS` only after every gate passes. On
+any failure it writes `status: FAIL` with the exact blockers and exits
+non-zero. Layer 1 (content manifest) and Layer 3 (release envelope) hashes are
+computed twice and must match. The Layer 2 certification report is hashed by
+Layer 3, and the Layer 1 manifest excludes itself plus explicitly documented
+volatile timestamp files.
 
 ## How to verify external integrity
 
@@ -101,6 +118,17 @@ the membership. L12 and L21 enforce this mechanically.
 
 - Re-run the build, validator, adversarial suite, and determinism from the
   committed sources instead of trusting saved PASS text.
+- Never accept a PASS certification that was written before its prerequisite
+  gates completed. The certification must record every completed gate and the
+  validator must independently re-verify each gate's evidence.
+- Verify that the final certification requires and hashes every required file,
+  fails on any missing Layer 3 member, records per-file hashes, and calculates
+  `missingFiles`, `mismatchedFiles`, `unexpectedFiles`, and
+  `unexplainedExclusions` from real results rather than hardcoding empty
+  arrays.
+- Verify that authoritative sources under `semantic-plan-source/` and the
+  certification tools are covered by the full Graphify SHA manifest and that
+  the saved manifest matches an independent recomputation.
 - Confirm the certification report and handoff carry the exact declaration
   `FULL IMPLEMENTATION PLANNING 100% COMPLETE — WP-I0-001 MAY BEGIN` and that
   the old declaration `IMPLEMENTATION-READY PLANNING COMPLETE — I0 MAY BEGIN`
@@ -145,6 +173,17 @@ adversarial report, Layer 1 manifest, certification report, release envelope,
   per-package rationales.
 - Persisted readiness: the Pass 3 certification pipeline still wrote the old
   declaration and hardcoded pre-amendment counts; both were corrected.
+- Final certification false-pass path: the previous
+  `tools/final_certification.py` wrote `status: PASS` unconditionally before
+  any gate ran, silently skipped missing Layer 3 files (`if path.exists()`),
+  hardcoded `missingFiles: []` / `mismatchedFiles: []` /
+  `unexplainedExclusions: []`, did not bind authoritative
+  `semantic-plan-source/` inputs to the proof, and L20 trusted the saved PASS
+  text without independently checking any evidence. The certification is now
+  gated, all required files are hashed, Layer 3 membership is verified
+  file-by-file, authoritative sources are bound through the full Graphify
+  manifest, and L20 independently re-verifies every artifact from raw
+  evidence.
 
 ## Amendments added
 
@@ -190,6 +229,13 @@ Do not trust the DeepSeek PASS result. Attempt to disprove the certification:
 8. Try to find a generated output that disagrees with its authoritative source.
 9. Try to find any write, build, cache, or Git mutation outside `graphify/`.
 10. Report every successful disproof as a genuine blocking defect.
+11. Try to break the corrected certification again: remove a required Layer 3
+    file, add a nonexistent Layer 3 entry, mutate a validator or adversarial
+    report, change an authoritative source without rebuilding, force a
+    non-zero external-integrity field, tamper with any recorded hash, delete
+    or alter `gpt-review-sha-manifest.json`, add an unexplained exclusion, or
+    hand-write a PASS certification with empty evidence arrays. Each attempt
+    must fail the certification with a non-zero exit code.
 
 The internal certification declaration is:
 

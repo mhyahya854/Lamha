@@ -47,6 +47,12 @@
       "area": "The stronger-model override amendment must propagate everywhere",
       "mitigation": "L21 checks the amendment object, component rules, packet sections, and membership",
       "history": "Amendment propagated into WP-I10-003 objective, contracts, schemas, tests, exit gate"
+    },
+    {
+      "id": "RISK-FINAL-CERTIFICATION-FALSE-PASS",
+      "area": "Final certification could declare PASS from saved text without proving prerequisites",
+      "mitigation": "Gated certification writes PASS only after every gate passes; every required file is hashed; Layer 3 membership is verified file-by-file; the full Graphify SHA manifest is recomputed and compared; L20 independently re-verifies all evidence from raw files",
+      "history": "Previous final_certification.py wrote PASS unconditionally, skipped missing Layer 3 files, hardcoded empty evidence arrays, did not bind authoritative sources, and L20 trusted saved PASS text; corrected and regression-tested with 20 new fixtures (F116-F135)"
     }
   ],
   "deferred_claims": [

@@ -11,6 +11,7 @@
     "external_integrity": "Added/removed/modified/renamed outside Graphify are all zero.",
     "structural_validation": "L21 validates structured amendment objects, not substring presence in JSON dumps.",
     "no_false_certification": "Saved PASS text is never trusted alone; every validator level re-executes its checks.",
+    "gated_certification": "A PASS final certification is written only after every prerequisite gate completes and L20 independently re-verifies all evidence; missing Layer 3 files, hardcoded empty arrays, hash mismatches, and unexplained exclusions fail the certification.",
     "administrative_block": "Implementation remains blocked pending GPT-5.6 independent review."
   },
   "required_zero_values": {

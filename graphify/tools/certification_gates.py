@@ -1,0 +1,895 @@
+"""Shared read-only gate verification for the final planning certification.
+
+These functions are used by:
+
+* ``tools/final_certification.py`` -- the authoritative gated certification
+  process (stage 1 pre-certification validation and the final certification
+  validation stage).
+* ``semantic-plan-source/validators/validate_plan.py`` -- L20, which
+  independently re-verifies every final artifact from raw evidence and never
+  trusts saved PASS text.
+* ``semantic-plan-source/validators/adversarial_fixtures.py`` -- the negative
+  fixtures that prove each final-certification weakness is rejected.
+
+Every function in this module is read-only and deterministic.
+"""
+
+from __future__ import annotations
+
+import csv
+import hashlib
+import json
+from collections import Counter, defaultdict
+from pathlib import Path
+from typing import Any
+
+
+GRAPHIFY = Path(__file__).resolve().parents[1]
+PLAN = GRAPHIFY / "12-semantic-implementation-plan"
+SOURCE = GRAPHIFY / "semantic-plan-source"
+REPORTS = PLAN / "13-reports"
+VALIDATORS = PLAN / "12-validators"
+HANDOFF_PLAN = PLAN / "14-handoff"
+HANDOFF_SOURCE = SOURCE / "handoff-gpt"
+REVIEWS = SOURCE / "reviews"
+
+DECLARATION = "FULL IMPLEMENTATION PLANNING 100% COMPLETE \u2014 WP-I0-001 MAY BEGIN"
+NOT_CERTIFIED_DECLARATION = "NOT CERTIFIED \u2014 IMPLEMENTATION BLOCKED"
+
+REQUIRED_VALIDATOR_LEVELS = [
+    "L1_SOURCE_AND_WRITE_BOUNDARY",
+    "L2_REQUIREMENT_SEMANTICS",
+    "L2B_PASS1_SEMANTIC_REHABILITATION",
+    "L3_EXPLICIT_SEMANTIC_MAPPING",
+    "L4_WORK_PACKAGES",
+    "L4B_PASS2_PACKAGE_SEMANTICS",
+    "L4C_SEMANTIC_CAPABILITY_PHASE_CONSISTENCY",
+    "L5_TECHNICAL_DAG",
+    "L6_COMPONENT_DECISIONS",
+    "L7_IPC_CONTRACTS",
+    "L8_AUTHORITY_RECORDS_AND_SQLITE",
+    "L9_AUDIT_AUTHENTICITY",
+    "L10_METRICS_HONESTY",
+    "L11_SCOPE_SAFETY",
+    "L12_PACKETS_AND_HANDOFF",
+    "L13_META_VALIDATION_EXECUTION",
+    "L14_REVIEW_PROVENANCE",
+    "L15_PERSISTED_READINESS",
+    "L16_REQUIREMENT_LEDGER",
+    "L17_PASS_B_LEDGER",
+    "L18_PASS_B_ARCHITECTURE_COMPLETENESS",
+    "L19_COMPONENT_AND_LICENCE_COMPLETENESS",
+    "L20_FINAL_100_PERCENT_PLANNING_CERTIFICATION",
+    "L21_AI_MODEL_OVERRIDE_AMENDMENT",
+]
+
+# Every required final input.  The minimum set mandated by the mission plus
+# the relevant source-of-truth, external-integrity, and GPT-handoff reports
+# and the active planning builders/certification tools.
+REQUIRED_FILES = [
+    # Rendered validation evidence.
+    "12-semantic-implementation-plan/12-validators/validator-results.json",
+    "12-semantic-implementation-plan/12-validators/adversarial-results.json",
+    # Source-of-truth report (rendered and authoritative copies).
+    "12-semantic-implementation-plan/13-reports/source-of-truth-report.json",
+    "semantic-plan-source/reviews/source-of-truth-report.json",
+    # Independent Pass B authenticity evidence.
+    "12-semantic-implementation-plan/13-reports/pass-b-independent-evidence-authenticity.json",
+    # External integrity evidence (final report and its baseline).
+    "12-semantic-implementation-plan/13-reports/pass3-external-readonly-final.json",
+    "12-semantic-implementation-plan/13-reports/pass3-external-readonly-baseline.json",
+    # Model packets and active handoff.
+    "12-semantic-implementation-plan/11-model-packets/packet-manifest.json",
+    "12-semantic-implementation-plan/14-handoff/START-HERE.md",
+    # GPT reviewer handoff (rendered and authoritative copies).
+    "12-semantic-implementation-plan/14-handoff/GPT-5.6-INDEPENDENT-REVIEW-HANDOFF.md",
+    "12-semantic-implementation-plan/14-handoff/gpt-review-counts.json",
+    "12-semantic-implementation-plan/14-handoff/gpt-review-critical-invariants.json",
+    "12-semantic-implementation-plan/14-handoff/gpt-review-file-index.json",
+    "12-semantic-implementation-plan/14-handoff/gpt-review-known-risk-areas.json",
+    "12-semantic-implementation-plan/14-handoff/gpt-review-sha-manifest.json",
+    "12-semantic-implementation-plan/14-handoff/gpt-review-validation-commands.json",
+    "semantic-plan-source/handoff-gpt/GPT-5.6-INDEPENDENT-REVIEW-HANDOFF.md",
+    "semantic-plan-source/handoff-gpt/gpt-review-counts.json",
+    "semantic-plan-source/handoff-gpt/gpt-review-critical-invariants.json",
+    "semantic-plan-source/handoff-gpt/gpt-review-file-index.json",
+    "semantic-plan-source/handoff-gpt/gpt-review-known-risk-areas.json",
+    "semantic-plan-source/handoff-gpt/gpt-review-sha-manifest.json",
+    "semantic-plan-source/handoff-gpt/gpt-review-validation-commands.json",
+    # Authoritative planning sources.
+    "semantic-plan-source/requirements/requirements.csv",
+    "semantic-plan-source/requirements/requirement-mapping.csv",
+    "semantic-plan-source/packages/work-packages.json",
+    "semantic-plan-source/packages/requirement-membership.csv",
+    "semantic-plan-source/packages/dependencies.csv",
+    "semantic-plan-source/components/components.csv",
+    "semantic-plan-source/contracts/ipc-command-registry-v3.json",
+    "semantic-plan-source/schemas/schema-index.csv",
+    "semantic-plan-source/validators/validate_plan.py",
+    "semantic-plan-source/validators/adversarial_fixtures.py",
+    # Active planning builders, certification tools, and handoff generators.
+    "build_semantic_plan.py",
+    "tools/final_certification.py",
+    "tools/certification_gates.py",
+    "tools/generate_gpt_handoff.py",
+]
+
+# Full-Graphify SHA manifest exclusions.  Shared with
+# tools/generate_gpt_handoff.py so the generator and the certification
+# verifier can never drift apart.
+SHA_MANIFEST_EXCLUDED = frozenset({
+    # The manifest itself (source and rendered copies).
+    "semantic-plan-source/handoff-gpt/gpt-review-sha-manifest.json",
+    "12-semantic-implementation-plan/14-handoff/gpt-review-sha-manifest.json",
+    # Volatile timestamped external-integrity finals.
+    "12-semantic-implementation-plan/13-reports/pass1-external-final.json",
+    "12-semantic-implementation-plan/13-reports/pass2c-external-readonly-final.json",
+    "12-semantic-implementation-plan/13-reports/pass3-external-readonly-final.json",
+    "semantic-plan-source/reviews/pass1-external-final.json",
+    "semantic-plan-source/reviews/pass2c-external-readonly-final.json",
+    "semantic-plan-source/reviews/pass3-external-readonly-final.json",
+    # Self-referential certification artifacts verified by the two-run
+    # deterministic certification instead of by this manifest.
+    "12-semantic-implementation-plan/PLAN-MANIFEST.json",
+    "12-semantic-implementation-plan/13-reports/final-content-manifest.json",
+    "12-semantic-implementation-plan/13-reports/final-100-percent-certification.json",
+    "12-semantic-implementation-plan/13-reports/final-release-envelope.json",
+    "12-semantic-implementation-plan/13-reports/final-determinism-proof.json",
+    "semantic-plan-source/reviews/final-content-manifest.json",
+    "semantic-plan-source/reviews/final-100-percent-certification.json",
+    "semantic-plan-source/reviews/final-release-envelope.json",
+    "semantic-plan-source/reviews/final-determinism-proof.json",
+    "semantic-plan-source/reviews/final-package-determinism.json",
+    "12-semantic-implementation-plan/13-reports/final-package-determinism.json",
+    "semantic-plan-source/reviews/pass3-certification-report.json",
+    "12-semantic-implementation-plan/13-reports/pass3-certification-report.json",
+    # Regenerated validation evidence bound by Layer 3 and the certification's
+    # required-file manifest instead of the full-tree manifest.
+    "12-semantic-implementation-plan/12-validators/validator-results.json",
+    "12-semantic-implementation-plan/12-validators/adversarial-results.json",
+    "semantic-plan-source/validators/validator-results.json",
+    "semantic-plan-source/validators/adversarial-results.json",
+})
+
+SHA_MANIFEST_EXCLUSION_RATIONALES = {
+    "semantic-plan-source/handoff-gpt/gpt-review-sha-manifest.json": "The manifest cannot hash itself.",
+    "12-semantic-implementation-plan/14-handoff/gpt-review-sha-manifest.json": "Rendered copy of the manifest itself.",
+    "12-semantic-implementation-plan/13-reports/pass1-external-final.json": "Contains volatile verification timestamp.",
+    "12-semantic-implementation-plan/13-reports/pass2c-external-readonly-final.json": "Contains volatile verification timestamp.",
+    "12-semantic-implementation-plan/13-reports/pass3-external-readonly-final.json": "Contains volatile verification timestamp.",
+    "semantic-plan-source/reviews/pass1-external-final.json": "Source copy of the volatile external-integrity final.",
+    "semantic-plan-source/reviews/pass2c-external-readonly-final.json": "Source copy of the volatile external-integrity final.",
+    "semantic-plan-source/reviews/pass3-external-readonly-final.json": "Source copy of the volatile external-integrity final.",
+    "12-semantic-implementation-plan/PLAN-MANIFEST.json": "Manifest of generated outputs that cannot hash itself.",
+    "12-semantic-implementation-plan/13-reports/final-content-manifest.json": "Layer 1 manifest; verified by the two-run deterministic certification.",
+    "12-semantic-implementation-plan/13-reports/final-100-percent-certification.json": "Layer 2 certification; verified by the two-run deterministic certification.",
+    "12-semantic-implementation-plan/13-reports/final-release-envelope.json": "Layer 3 envelope; verified by the two-run deterministic certification.",
+    "12-semantic-implementation-plan/13-reports/final-determinism-proof.json": "Records the Layer 1/3 hashes and cannot be hashed without circularity.",
+    "semantic-plan-source/reviews/final-content-manifest.json": "Source copy of the Layer 1 manifest.",
+    "semantic-plan-source/reviews/final-100-percent-certification.json": "Source copy of the Layer 2 certification.",
+    "semantic-plan-source/reviews/final-release-envelope.json": "Source copy of the Layer 3 envelope.",
+    "semantic-plan-source/reviews/final-determinism-proof.json": "Source copy of the determinism proof.",
+    "semantic-plan-source/reviews/final-package-determinism.json": "Pass 3 determinism evidence; converges during certification.",
+    "12-semantic-implementation-plan/13-reports/final-package-determinism.json": "Pass 3 determinism evidence; converges during certification.",
+    "semantic-plan-source/reviews/pass3-certification-report.json": "Pass 3 certification report; validated independently by L15.",
+    "12-semantic-implementation-plan/13-reports/pass3-certification-report.json": "Pass 3 certification report; validated independently by L15.",
+    "12-semantic-implementation-plan/12-validators/validator-results.json": "Regenerated by every validation pass; bound by Layer 3 and the certification required-file manifest.",
+    "12-semantic-implementation-plan/12-validators/adversarial-results.json": "Regenerated by every validation pass; bound by Layer 3 and the certification required-file manifest.",
+    "semantic-plan-source/validators/validator-results.json": "Source mirror of the regenerated validation evidence; bound by the rendered Layer 3 copy.",
+    "semantic-plan-source/validators/adversarial-results.json": "Source mirror of the regenerated validation evidence; bound by the rendered Layer 3 copy.",
+}
+
+# Layer 1 (final-content-manifest.json) exclusions relative to PLAN.
+LAYER1_EXCLUDED = frozenset({
+    "PLAN-MANIFEST.json",
+    "13-reports/final-content-manifest.json",
+    "13-reports/final-100-percent-certification.json",
+    "13-reports/final-release-envelope.json",
+    "13-reports/final-determinism-proof.json",
+    "13-reports/pass3-external-readonly-final.json",
+    "13-reports/pass2c-external-readonly-final.json",
+    "13-reports/pass1-external-final.json",
+})
+
+LAYER1_EXCLUSION_RATIONALES = {
+    "PLAN-MANIFEST.json": "Manifest cannot hash itself.",
+    "13-reports/final-content-manifest.json": "Layer 1 manifest cannot hash itself.",
+    "13-reports/final-100-percent-certification.json": "Layer 2 certification report is hashed by Layer 3, not itself.",
+    "13-reports/final-release-envelope.json": "Layer 3 envelope cannot hash itself.",
+    "13-reports/final-determinism-proof.json": "Records the Layer 1/3 hashes and cannot be hashed without circularity; verified by the two in-memory runs.",
+    "13-reports/pass3-external-readonly-final.json": "Contains volatile verification timestamp.",
+    "13-reports/pass2c-external-readonly-final.json": "Contains volatile verification timestamp.",
+    "13-reports/pass1-external-final.json": "Contains volatile verification timestamp.",
+}
+
+# Layer 3 (final-release-envelope.json) membership.  Every listed file is
+# actually hashed; a missing listed file fails certification.
+LAYER3_FILES = [
+    "12-semantic-implementation-plan/13-reports/final-content-manifest.json",
+    "12-semantic-implementation-plan/13-reports/final-100-percent-certification.json",
+    "12-semantic-implementation-plan/12-validators/validator-results.json",
+    "12-semantic-implementation-plan/12-validators/adversarial-results.json",
+    "12-semantic-implementation-plan/13-reports/pass-b-independent-evidence-authenticity.json",
+    "12-semantic-implementation-plan/13-reports/source-of-truth-report.json",
+    "12-semantic-implementation-plan/11-model-packets/packet-manifest.json",
+    "12-semantic-implementation-plan/14-handoff/START-HERE.md",
+    "12-semantic-implementation-plan/14-handoff/GPT-5.6-INDEPENDENT-REVIEW-HANDOFF.md",
+    "12-semantic-implementation-plan/14-handoff/gpt-review-counts.json",
+    "12-semantic-implementation-plan/14-handoff/gpt-review-critical-invariants.json",
+    "12-semantic-implementation-plan/14-handoff/gpt-review-file-index.json",
+    "12-semantic-implementation-plan/14-handoff/gpt-review-known-risk-areas.json",
+    "12-semantic-implementation-plan/14-handoff/gpt-review-sha-manifest.json",
+    "12-semantic-implementation-plan/14-handoff/gpt-review-validation-commands.json",
+    "semantic-plan-source/handoff-gpt/gpt-review-sha-manifest.json",
+    "semantic-plan-source/requirements/requirements.csv",
+    "semantic-plan-source/requirements/requirement-mapping.csv",
+    "semantic-plan-source/packages/work-packages.json",
+    "semantic-plan-source/packages/requirement-membership.csv",
+    "semantic-plan-source/packages/dependencies.csv",
+    "semantic-plan-source/components/components.csv",
+    "semantic-plan-source/contracts/ipc-command-registry-v3.json",
+    "semantic-plan-source/schemas/schema-index.csv",
+    "semantic-plan-source/validators/validate_plan.py",
+    "semantic-plan-source/validators/adversarial_fixtures.py",
+    "semantic-plan-source/reviews/source-of-truth-report.json",
+    "build_semantic_plan.py",
+    "tools/final_certification.py",
+    "tools/certification_gates.py",
+    "tools/generate_gpt_handoff.py",
+]
+
+LAYER3_EXCLUDED = frozenset({
+    "12-semantic-implementation-plan/13-reports/final-release-envelope.json",
+    "12-semantic-implementation-plan/13-reports/final-determinism-proof.json",
+    "12-semantic-implementation-plan/13-reports/pass3-external-readonly-final.json",
+    "12-semantic-implementation-plan/13-reports/pass2c-external-readonly-final.json",
+    "12-semantic-implementation-plan/13-reports/pass1-external-final.json",
+})
+
+LAYER3_EXCLUSION_RATIONALES = {
+    "12-semantic-implementation-plan/13-reports/final-release-envelope.json": "Layer 3 envelope cannot hash itself.",
+    "12-semantic-implementation-plan/13-reports/final-determinism-proof.json": "Records the Layer 3 digest and cannot be hashed without circularity; verified by the two in-memory runs and L20.",
+    "12-semantic-implementation-plan/13-reports/pass3-external-readonly-final.json": "Contains volatile verification timestamp; validated structurally and hashed in the certification required-file manifest.",
+    "12-semantic-implementation-plan/13-reports/pass2c-external-readonly-final.json": "Contains volatile verification timestamp.",
+    "12-semantic-implementation-plan/13-reports/pass1-external-final.json": "Contains volatile verification timestamp.",
+}
+
+# Gates that must all be recorded as PASS before a PASS certification may be
+# written or published.
+CERTIFICATION_GATES = [
+    "pre_certification_validator",
+    "adversarial_fixtures",
+    "required_files",
+    "source_rendered_equality",
+    "external_integrity",
+    "full_graphify_manifest",
+    "layer1_determinism",
+    "layer3_determinism",
+    "final_certification_validation",
+]
+
+
+def read_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def read_csv(path: Path) -> list[dict[str, str]]:
+    with path.open(encoding="utf-8-sig", newline="") as stream:
+        return list(csv.DictReader(stream))
+
+
+def sha256_bytes(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def sha256_file(path: Path) -> str:
+    return sha256_bytes(path.read_bytes())
+
+
+def compute_layer1(graphify_root: Path = GRAPHIFY) -> dict[str, object]:
+    """Deterministic Layer 1 digest over the rendered plan tree."""
+    plan = graphify_root / "12-semantic-implementation-plan"
+    entries: list[tuple[str, Path]] = []
+    for path in sorted(plan.rglob("*")):
+        if not path.is_file() or "__pycache__" in path.parts:
+            continue
+        rel = path.relative_to(plan).as_posix()
+        if rel in LAYER1_EXCLUDED:
+            continue
+        entries.append((rel, path))
+    hasher = hashlib.sha256()
+    file_hashes: dict[str, str] = {}
+    for rel, path in entries:
+        digest = sha256_file(path)
+        file_hashes[rel] = digest
+        hasher.update(rel.encode("utf-8"))
+        hasher.update(digest.encode("utf-8"))
+    return {
+        "sha256": hasher.hexdigest(),
+        "fileCount": len(entries),
+        "files": [rel for rel, _ in entries],
+        "fileHashes": file_hashes,
+    }
+
+
+def compute_full_graphify_manifest(graphify_root: Path = GRAPHIFY) -> dict[str, object]:
+    """Recompute the full-Graphify SHA manifest exactly as the generator does."""
+    entries: list[tuple[str, Path]] = []
+    for path in sorted(graphify_root.rglob("*")):
+        if not path.is_file() or "__pycache__" in path.parts:
+            continue
+        rel = path.relative_to(graphify_root).as_posix()
+        if rel in SHA_MANIFEST_EXCLUDED:
+            continue
+        entries.append((rel, path))
+    hasher = hashlib.sha256()
+    file_hashes: dict[str, str] = {}
+    for rel, path in entries:
+        digest = sha256_file(path)
+        file_hashes[rel] = digest
+        hasher.update(rel.encode("utf-8"))
+        hasher.update(digest.encode("utf-8"))
+    return {
+        "digest": hasher.hexdigest(),
+        "file_count": len(entries),
+        "files": file_hashes,
+    }
+
+
+def verify_saved_manifest_matches_recomputation(
+    saved: Any,
+    recomputed: dict[str, object],
+) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(saved, dict):
+        return ["full Graphify SHA manifest is malformed"]
+    if saved.get("digest") != recomputed.get("digest"):
+        errors.append("full Graphify SHA manifest digest does not match recomputation")
+    if saved.get("file_count") != recomputed.get("file_count"):
+        errors.append("full Graphify SHA manifest file count does not match recomputation")
+    if saved.get("files") != recomputed.get("files"):
+        errors.append("full Graphify SHA manifest file hashes do not match recomputation")
+    return errors
+
+
+def verify_full_graphify_manifest(graphify_root: Path = GRAPHIFY) -> list[str]:
+    errors: list[str] = []
+    saved_paths = [
+        graphify_root / "12-semantic-implementation-plan" / "14-handoff" / "gpt-review-sha-manifest.json",
+        graphify_root / "semantic-plan-source" / "handoff-gpt" / "gpt-review-sha-manifest.json",
+    ]
+    for saved_path in saved_paths:
+        if not saved_path.exists():
+            errors.append(f"missing full Graphify SHA manifest: {saved_path.relative_to(graphify_root).as_posix()}")
+    recomputed = compute_full_graphify_manifest(graphify_root)
+    if saved_paths[0].exists():
+        errors.extend(verify_saved_manifest_matches_recomputation(read_json(saved_paths[0]), recomputed))
+        saved = read_json(saved_paths[0])
+        excluded = saved.get("excluded") or []
+        rationales = saved.get("exclusion_rationales") or {}
+        for rel in excluded:
+            if not rationales.get(rel):
+                errors.append(f"unexplained full-manifest exclusion: {rel}")
+    if saved_paths[0].exists() and saved_paths[1].exists():
+        if saved_paths[0].read_bytes() != saved_paths[1].read_bytes():
+            errors.append("full Graphify SHA manifest source/rendered copies differ")
+    return errors
+
+
+def verify_authoritative_source_coverage(graphify_root: Path = GRAPHIFY, entries: dict[str, str] | None = None) -> list[str]:
+    if entries is None:
+        entries = compute_full_graphify_manifest(graphify_root)["files"]
+    errors: list[str] = []
+    manifest_self_paths = {
+        "semantic-plan-source/handoff-gpt/gpt-review-sha-manifest.json",
+        "12-semantic-implementation-plan/14-handoff/gpt-review-sha-manifest.json",
+    }
+    for rel in REQUIRED_FILES:
+        if rel in manifest_self_paths:
+            # The full-Graphify manifest cannot hash itself; both copies are
+            # bound by the Layer 3 envelope and the required-file manifest.
+            continue
+        if rel.startswith("semantic-plan-source/") or rel.startswith("tools/") or rel == "build_semantic_plan.py":
+            if rel not in entries:
+                errors.append(f"authoritative source not covered by full integrity manifest: {rel}")
+    return errors
+
+
+def verify_certification_tool_coverage(graphify_root: Path = GRAPHIFY, entries: dict[str, str] | None = None) -> list[str]:
+    if entries is None:
+        entries = compute_full_graphify_manifest(graphify_root)["files"]
+    errors: list[str] = []
+    for rel in (
+        "tools/final_certification.py",
+        "tools/certification_gates.py",
+        "build_semantic_plan.py",
+        "semantic-plan-source/validators/validate_plan.py",
+        "semantic-plan-source/validators/adversarial_fixtures.py",
+    ):
+        if rel not in entries:
+            errors.append(f"certification tool not covered by final integrity evidence: {rel}")
+    return errors
+
+
+def verify_validator_report(report: Any, require_l20_note: str | None = None) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(report, dict):
+        return ["validator report is malformed"]
+    if report.get("status") != "PASS":
+        errors.append("validator status is not PASS")
+    levels = report.get("levels")
+    if not isinstance(levels, list):
+        errors.append("validator report has no levels list")
+        return errors
+    if report.get("levelCount") != len(levels):
+        errors.append(f"validator levelCount mismatch: {report.get('levelCount')} != {len(levels)}")
+    seen = Counter(
+        level.get("level") for level in levels if isinstance(level, dict)
+    )
+    for name in REQUIRED_VALIDATOR_LEVELS:
+        count = seen.get(name, 0)
+        if count == 0:
+            errors.append(f"validator missing level: {name}")
+        elif count > 1:
+            errors.append(f"validator duplicate level: {name}")
+    for level in levels:
+        if not isinstance(level, dict):
+            errors.append("validator level entry is malformed")
+            continue
+        if level.get("status") != "PASS":
+            errors.append(f"validator level not PASS: {level.get('level')}")
+        if level.get("errors"):
+            errors.append(f"validator level has errors: {level.get('level')}")
+    failed = report.get("failedLevels")
+    if isinstance(failed, list) and failed:
+        errors.append("validator failedLevels is not empty")
+    if require_l20_note is not None:
+        l20 = next(
+            (level for level in levels if isinstance(level, dict) and level.get("level") == "L20_FINAL_100_PERCENT_PLANNING_CERTIFICATION"),
+            None,
+        )
+        if not isinstance(l20, dict):
+            errors.append("validator report missing L20 level")
+        elif l20.get("note") != require_l20_note:
+            errors.append(f"validator L20 state note mismatch: expected {require_l20_note}")
+    return errors
+
+
+def verify_adversarial_report(report: Any) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(report, dict):
+        return ["adversarial report is malformed"]
+    if report.get("status") != "PASS":
+        errors.append("adversarial status is not PASS")
+    count = report.get("fixtureCount")
+    observed = report.get("expectedFailuresObserved")
+    fixtures = report.get("fixtures")
+    if not isinstance(count, int) or count <= 0:
+        errors.append("adversarial fixtureCount is not a positive integer")
+    if not isinstance(fixtures, list):
+        errors.append("adversarial report has no fixtures list")
+        return errors
+    if isinstance(count, int) and count != len(fixtures):
+        errors.append(f"adversarial fixtureCount mismatch: {count} != {len(fixtures)}")
+    if observed != count:
+        errors.append(f"adversarial expectedFailuresObserved mismatch: {observed} != {count}")
+    names: list[str] = []
+    for fixture in fixtures:
+        if not isinstance(fixture, dict):
+            errors.append("adversarial fixture entry is malformed")
+            continue
+        if fixture.get("status") != "EXPECTED_FAILURE_OBSERVED":
+            errors.append(f"adversarial fixture did not observe expected failure: {fixture.get('fixture')}")
+        if not fixture.get("validatorErrors"):
+            errors.append(f"adversarial fixture has no validator errors: {fixture.get('fixture')}")
+        names.append(fixture.get("fixture", ""))
+    for duplicate in sorted({name for name in names if names.count(name) > 1}):
+        errors.append(f"adversarial fixture name duplicated: {duplicate}")
+    return errors
+
+
+def verify_external_integrity_comparison(final: Any) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(final, dict):
+        return ["external integrity report is malformed"]
+    comparison = final.get("comparison")
+    if not isinstance(comparison, dict):
+        errors.append("external integrity comparison field missing")
+        return errors
+    if comparison.get("status") != "PASS":
+        errors.append("external integrity status is not PASS")
+    for key in ("added", "removed", "modified", "renamed"):
+        value = comparison.get(key)
+        if not isinstance(value, list):
+            errors.append(f"external integrity {key} field missing")
+        elif value:
+            errors.append(f"external integrity {key} is not zero")
+    return errors
+
+
+def verify_external_integrity_report(graphify_root: Path = GRAPHIFY) -> list[str]:
+    errors: list[str] = []
+    final_path = graphify_root / "12-semantic-implementation-plan" / "13-reports" / "pass3-external-readonly-final.json"
+    baseline_path = graphify_root / "12-semantic-implementation-plan" / "13-reports" / "pass3-external-readonly-baseline.json"
+    if not final_path.exists():
+        return ["external integrity final report missing"]
+    if not baseline_path.exists():
+        errors.append("external integrity baseline report missing")
+    final = read_json(final_path)
+    errors.extend(verify_external_integrity_comparison(final))
+    files = final.get("files")
+    if not isinstance(files, list):
+        errors.append("external integrity files list missing")
+    elif final.get("fileCount") != len(files):
+        errors.append("external integrity file count mismatch")
+    if baseline_path.exists():
+        baseline = read_json(baseline_path)
+        if isinstance(files, list) and baseline.get("file_count") != final.get("fileCount"):
+            errors.append("external integrity baseline/final scope counts differ")
+        base_paths = {row.get("path") for row in (baseline.get("files") or []) if isinstance(row, dict)}
+        final_paths = {row.get("path") for row in (files or []) if isinstance(row, dict)}
+        if base_paths and final_paths and base_paths != final_paths:
+            errors.append("external integrity baseline/final scopes differ")
+        baseline_reference = final.get("baselinePath")
+        if baseline_reference and not (graphify_root / str(baseline_reference)).exists():
+            errors.append("external integrity baseline path does not resolve")
+    return errors
+
+
+def source_rendered_pairs(graphify_root: Path = GRAPHIFY) -> list[tuple[Path, Path, str]]:
+    source = graphify_root / "semantic-plan-source"
+    plan = graphify_root / "12-semantic-implementation-plan"
+    pairs: list[tuple[Path, Path, str]] = [
+        (source / "requirements" / "requirements.csv", plan / "02-requirements" / "canonical-registry.csv", "requirements.csv"),
+        (source / "requirements" / "requirement-mapping.csv", plan / "03-phases" / "reviewed-requirement-mapping.csv", "requirement-mapping.csv"),
+        (source / "packages" / "requirement-membership.csv", plan / "04-work-packages" / "requirement-membership.csv", "requirement-membership.csv"),
+        (source / "packages" / "dependencies.csv", plan / "04-work-packages" / "dependencies.csv", "dependencies.csv"),
+        (source / "components" / "components.csv", plan / "10-component-manifest" / "components.csv", "components.csv"),
+        (source / "contracts" / "ipc-command-registry-v3.json", plan / "05-contracts" / "ipc-command-registry-v3.json", "ipc-command-registry-v3.json"),
+        (source / "schemas" / "schema-index.csv", plan / "06-schemas" / "schema-index.csv", "schema-index.csv"),
+        (source / "validators" / "validate_plan.py", plan / "12-validators" / "validate_plan.py", "validate_plan.py"),
+        (source / "validators" / "adversarial_fixtures.py", plan / "12-validators" / "adversarial_fixtures.py", "adversarial_fixtures.py"),
+        (source / "reviews" / "source-of-truth-report.json", plan / "13-reports" / "source-of-truth-report.json", "source-of-truth-report.json"),
+    ]
+    for source_path in sorted((source / "reviews").rglob("*")):
+        if source_path.is_file() and "superseded" not in source_path.parts:
+            rel = source_path.relative_to(source / "reviews")
+            pairs.append((source_path, plan / "13-reports" / rel, f"reviews/{rel.as_posix()}"))
+    for source_path in sorted((source / "handoff-gpt").rglob("*")):
+        if source_path.is_file():
+            rel = source_path.relative_to(source / "handoff-gpt")
+            pairs.append((source_path, plan / "14-handoff" / rel, f"handoff-gpt/{rel.as_posix()}"))
+    return pairs
+
+
+def verify_source_rendered_pairs(pairs: list[tuple[Path, Path, str]]) -> list[str]:
+    mismatches: list[str] = []
+    for source_path, rendered_path, label in pairs:
+        if not source_path.exists() or not rendered_path.exists():
+            mismatches.append(f"{label}: missing rendered copy")
+            continue
+        try:
+            if source_path.read_bytes() != rendered_path.read_bytes():
+                mismatches.append(f"{label}: source/rendered bytes differ")
+        except OSError as error:
+            mismatches.append(f"{label}: unreadable ({error})")
+    return mismatches
+
+
+def verify_work_package_semantic_agreement(graphify_root: Path = GRAPHIFY) -> list[str]:
+    mismatches: list[str] = []
+    source_path = graphify_root / "semantic-plan-source" / "packages" / "work-packages.json"
+    rendered_path = graphify_root / "12-semantic-implementation-plan" / "04-work-packages" / "work-packages.json"
+    if not source_path.exists() or not rendered_path.exists():
+        return ["work-packages.json: missing source or rendered copy"]
+    source_packages = read_json(source_path)["workPackages"]
+    rendered_packages = read_json(rendered_path)
+    source_ids = {str(row["work_package_id"]) for row in source_packages}
+    rendered_ids = {str(row["work_package_id"]) for row in rendered_packages}
+    if source_ids != rendered_ids:
+        mismatches.append("work-packages.json: package ID sets differ")
+    for row in rendered_packages:
+        pid = str(row.get("work_package_id"))
+        if pid not in source_ids:
+            continue
+        base = {key: value for key, value in row.items() if key not in ("included_requirement_ids", "technical_dependencies")}
+        source_row = next(item for item in source_packages if str(item["work_package_id"]) == pid)
+        if base != source_row:
+            mismatches.append(f"work-packages.json: enriched row differs for {pid}")
+    return mismatches
+
+
+def verify_packet_semantic_agreement(graphify_root: Path = GRAPHIFY) -> list[str]:
+    mismatches: list[str] = []
+    source = graphify_root / "semantic-plan-source"
+    plan = graphify_root / "12-semantic-implementation-plan"
+    manifest_path = plan / "11-model-packets" / "packet-manifest.json"
+    if manifest_path.exists():
+        manifest = read_json(manifest_path)
+        for row in manifest.get("packets", []):
+            packet_path = plan / str(row.get("path", ""))
+            if not packet_path.exists():
+                mismatches.append(f"packet missing: {row.get('path')}")
+    packages_path = source / "packages" / "work-packages.json"
+    membership_path = source / "packages" / "requirement-membership.csv"
+    dependencies_path = source / "packages" / "dependencies.csv"
+    if packages_path.exists() and membership_path.exists():
+        packages = read_json(packages_path)["workPackages"]
+        memberships = read_csv(membership_path)
+        member_by_package: defaultdict[str, list[str]] = defaultdict(list)
+        for row in memberships:
+            member_by_package[row["work_package_id"]].append(row["canonical_id"])
+        for package in packages:
+            pid = str(package["work_package_id"])
+            packet = plan / "04-work-packages" / "packets" / f"{pid}.md"
+            if not packet.exists():
+                mismatches.append(f"packet missing for package: {pid}")
+                continue
+            text = packet.read_text(encoding="utf-8")
+            for rid in member_by_package.get(pid, []):
+                if f"`{rid}`" not in text:
+                    mismatches.append(f"packet membership stale: {rid} missing from {pid} packet")
+    if dependencies_path.exists():
+        edges = read_csv(dependencies_path)
+        dependents_by_package: defaultdict[str, list[str]] = defaultdict(list)
+        for edge in edges:
+            dependents_by_package[edge["prerequisite_work_package_id"]].append(edge["work_package_id"])
+        for pid, dependents in dependents_by_package.items():
+            packet = plan / "04-work-packages" / "packets" / f"{pid}.md"
+            if not packet.exists():
+                continue
+            text = packet.read_text(encoding="utf-8")
+            section = text.split("## Direct dependents", 1)[1] if "## Direct dependents" in text else ""
+            section = section.split("\n## ", 1)[0]
+            for target in dependents:
+                if f"`{target}`" not in section:
+                    mismatches.append(f"packet direct dependents stale: {target} missing from {pid} packet")
+    return mismatches
+
+
+def compute_source_rendered_mismatches(graphify_root: Path = GRAPHIFY) -> list[str]:
+    return (
+        verify_source_rendered_pairs(source_rendered_pairs(graphify_root))
+        + verify_work_package_semantic_agreement(graphify_root)
+        + verify_packet_semantic_agreement(graphify_root)
+    )
+
+
+def compute_required_file_evidence(graphify_root: Path = GRAPHIFY) -> dict[str, object]:
+    missing: list[str] = []
+    unreadable: list[str] = []
+    hashes: dict[str, str] = {}
+    for rel in REQUIRED_FILES:
+        path = graphify_root / rel
+        if not path.exists():
+            missing.append(rel)
+            continue
+        try:
+            hashes[rel] = sha256_file(path)
+        except OSError:
+            unreadable.append(rel)
+    return {
+        "missingFiles": sorted(missing),
+        "unreadableFiles": sorted(unreadable),
+        "hashes": {rel: hashes[rel] for rel in sorted(hashes)},
+    }
+
+
+def verify_required_files(graphify_root: Path = GRAPHIFY) -> list[str]:
+    evidence = compute_required_file_evidence(graphify_root)
+    errors = [f"missing required file: {rel}" for rel in evidence["missingFiles"]]
+    errors += [f"unreadable required file: {rel}" for rel in evidence["unreadableFiles"]]
+    return errors
+
+
+def compute_layer3(graphify_root: Path = GRAPHIFY, rels: list[str] | None = None) -> dict[str, object]:
+    plan = graphify_root / "12-semantic-implementation-plan"
+    selected = sorted(rels or LAYER3_FILES)
+    hasher = hashlib.sha256()
+    file_hashes: dict[str, str] = {}
+    missing: list[str] = []
+    unreadable: list[str] = []
+    hashed: list[str] = []
+    for rel in selected:
+        path = graphify_root / rel
+        if not path.exists():
+            missing.append(rel)
+            continue
+        try:
+            digest = sha256_file(path)
+        except OSError:
+            unreadable.append(rel)
+            continue
+        file_hashes[rel] = digest
+        hasher.update(rel.encode("utf-8"))
+        hasher.update(digest.encode("utf-8"))
+        hashed.append(rel)
+    return {
+        "sha256": hasher.hexdigest(),
+        "fileCount": len(hashed),
+        "files": hashed,
+        "fileHashes": file_hashes,
+        "missingFiles": sorted(missing),
+        "unreadableFiles": sorted(unreadable),
+        "unexpectedFiles": sorted(set(selected) - set(hashed)),
+    }
+
+
+def verify_layer3_envelope(graphify_root: Path, envelope: Any) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(envelope, dict):
+        return ["layer 3 envelope is malformed"]
+    listed = envelope.get("files")
+    if not isinstance(listed, list):
+        return ["layer 3 envelope files list missing"]
+    file_hashes = envelope.get("fileHashes")
+    if not isinstance(file_hashes, dict):
+        errors.append("layer 3 envelope per-file hashes missing")
+        file_hashes = {}
+    hasher = hashlib.sha256()
+    hashed: list[str] = []
+    for rel in listed:
+        path = graphify_root / rel
+        if not path.exists():
+            errors.append(f"layer 3 listed file missing: {rel}")
+            continue
+        try:
+            digest = sha256_file(path)
+        except OSError:
+            errors.append(f"layer 3 listed file unreadable: {rel}")
+            continue
+        if rel in file_hashes and file_hashes.get(rel) != digest:
+            errors.append(f"layer 3 listed file hash mismatch: {rel}")
+        hasher.update(rel.encode("utf-8"))
+        hasher.update(digest.encode("utf-8"))
+        hashed.append(rel)
+    for rel in file_hashes:
+        if rel not in listed:
+            errors.append(f"layer 3 hashed file not listed: {rel}")
+    for rel in listed:
+        if rel not in hashed:
+            errors.append(f"layer 3 listed file not hashed: {rel}")
+    if envelope.get("sha256") != hasher.hexdigest():
+        errors.append("layer 3 envelope digest does not match recomputation")
+    if envelope.get("fileCount") != len(hashed):
+        errors.append("layer 3 envelope file count mismatch")
+    return errors
+
+
+def verify_cert_hash_agreements(cert: Any, manifest: Any, envelope: Any, proof: Any) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(cert, dict) or not isinstance(manifest, dict) or not isinstance(envelope, dict) or not isinstance(proof, dict):
+        return ["certification hash agreement evidence is malformed"]
+    if cert.get("layer1Hash") != manifest.get("sha256"):
+        errors.append("certification layer1 hash differs from content manifest")
+    if proof.get("layer1FirstHash") != proof.get("layer1SecondHash"):
+        errors.append("layer 1 hashes differ between certification runs")
+    if proof.get("layer1FirstHash") != manifest.get("sha256"):
+        errors.append("proof layer1 hash differs from content manifest")
+    if proof.get("layer3FirstHash") != proof.get("layer3SecondHash"):
+        errors.append("layer 3 hashes differ between certification runs")
+    if proof.get("layer3FirstHash") != envelope.get("sha256"):
+        errors.append("proof layer3 hash differs from release envelope")
+    return errors
+
+
+def verify_exclusion_rationales(record: Any, excluded_key: str, rationale_key: str) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(record, dict):
+        return ["exclusion evidence is malformed"]
+    excluded = record.get(excluded_key)
+    if not isinstance(excluded, list):
+        return []
+    rationales = record.get(rationale_key)
+    if not isinstance(rationales, dict):
+        rationales = {}
+    for rel in excluded:
+        if not rationales.get(rel):
+            errors.append(f"unexplained exclusion: {rel}")
+    return errors
+
+
+def verify_certification_gates_recorded(cert: Any) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(cert, dict):
+        return ["certification record is malformed"]
+    gates = cert.get("certificationGates")
+    if not isinstance(gates, dict):
+        return ["certification gates record missing"]
+    for gate in CERTIFICATION_GATES:
+        if gates.get(gate) != "PASS":
+            errors.append(f"certification gate not completed: {gate}")
+    return errors
+
+
+def compute_expected_evidence_arrays(graphify_root: Path = GRAPHIFY) -> dict[str, object]:
+    """The arrays the certification must record, recomputed from real files."""
+    required = compute_required_file_evidence(graphify_root)
+    layer3 = compute_layer3(graphify_root)
+    source_mismatches = compute_source_rendered_mismatches(graphify_root)
+    missing = sorted(set(required["missingFiles"]) | set(layer3["missingFiles"]))
+    mismatched = sorted(set(source_mismatches))
+    unexpected = sorted(set(layer3["unexpectedFiles"]))
+    return {
+        "missingFiles": missing,
+        "mismatchedFiles": mismatched,
+        "unexpectedFiles": unexpected,
+        "sourceRenderedMismatches": mismatched,
+    }
+
+
+def verify_evidence_arrays_against_files(graphify_root: Path, cert: Any, envelope: Any, proof: Any) -> list[str]:
+    errors: list[str] = []
+    expected = compute_expected_evidence_arrays(graphify_root)
+    for record_name, record in (("certification", cert), ("proof", proof), ("envelope", envelope)):
+        if not isinstance(record, dict):
+            errors.append(f"{record_name} evidence record is malformed")
+            continue
+        for key in ("missingFiles", "mismatchedFiles", "unexpectedFiles"):
+            actual = record.get(key)
+            if not isinstance(actual, list):
+                errors.append(f"{record_name} {key} field missing")
+            elif sorted(actual) != expected.get(key):
+                errors.append(f"{record_name} {key} disagrees with real files")
+        actual_srm = record.get("sourceRenderedMismatches")
+        if isinstance(record, dict) and "sourceRenderedMismatches" in record:
+            if not isinstance(actual_srm, list) or sorted(actual_srm) != expected.get("sourceRenderedMismatches"):
+                errors.append(f"{record_name} sourceRenderedMismatches disagrees with real files")
+    return errors
+
+
+def verify_certification_artifacts(graphify_root: Path = GRAPHIFY) -> list[str]:
+    """Full independent final-certification validation (the L20 contract)."""
+    plan = graphify_root / "12-semantic-implementation-plan"
+    reports = plan / "13-reports"
+    cert_path = reports / "final-100-percent-certification.json"
+    manifest_path = reports / "final-content-manifest.json"
+    envelope_path = reports / "final-release-envelope.json"
+    proof_path = reports / "final-determinism-proof.json"
+    errors: list[str] = []
+    if not cert_path.exists() or not manifest_path.exists() or not envelope_path.exists() or not proof_path.exists():
+        errors.append("final 100% certification evidence missing")
+        return errors
+    cert = read_json(cert_path)
+    manifest = read_json(manifest_path)
+    envelope = read_json(envelope_path)
+    proof = read_json(proof_path)
+    validator_report = read_json(plan / "12-validators" / "validator-results.json")
+    adversarial_report = read_json(plan / "12-validators" / "adversarial-results.json")
+
+    errors.extend(verify_validator_report(validator_report))
+    errors.extend(verify_adversarial_report(adversarial_report))
+    errors.extend(verify_layer3_envelope(graphify_root, envelope))
+    errors.extend(verify_cert_hash_agreements(cert, manifest, envelope, proof))
+    errors.extend(verify_external_integrity_report(graphify_root))
+    errors.extend(verify_full_graphify_manifest(graphify_root))
+    recomputed_manifest = compute_full_graphify_manifest(graphify_root)
+    manifest_entries = recomputed_manifest["files"]
+    errors.extend(verify_authoritative_source_coverage(graphify_root, manifest_entries))
+    errors.extend(verify_certification_tool_coverage(graphify_root, manifest_entries))
+    errors.extend(verify_evidence_arrays_against_files(graphify_root, cert, envelope, proof))
+    errors.extend(verify_exclusion_rationales(envelope, "excluded", "exclusionRationales"))
+    errors.extend(verify_exclusion_rationales(proof, "excluded", "exclusionRationales"))
+    errors.extend(verify_exclusion_rationales(manifest, "excluded", "exclusionRationales"))
+    errors.extend(verify_certification_gates_recorded(cert))
+
+    expected = DECLARATION
+    if cert.get("status") != "PASS":
+        errors.append("final 100% certification status is not PASS")
+    if cert.get("readiness_declaration") != expected:
+        errors.append("final 100% certification declaration missing or incorrect")
+    if cert.get("implementation_planning_100_percent_complete") is not True:
+        errors.append("final certification implementation_planning flag is not true")
+    if cert.get("remaining_blockers"):
+        errors.append("final certification has remaining blockers")
+    if cert.get("fullGraphifyManifestDigest") != recomputed_manifest.get("digest") or cert.get("fullGraphifyManifestFileCount") != recomputed_manifest.get("file_count"):
+        errors.append("certification full Graphify manifest digest or count mismatch")
+    required_evidence = compute_required_file_evidence(graphify_root)
+    if cert.get("requiredFiles") != required_evidence["hashes"]:
+        errors.append("certification required-file hashes disagree with real files")
+    if cert.get("requiredFileCount") != len(required_evidence["hashes"]):
+        errors.append("certification required-file count mismatch")
+    handoff = plan / "14-handoff" / "START-HERE.md"
+    if handoff.exists() and expected not in handoff.read_text(encoding="utf-8"):
+        errors.append("handoff does not contain the final 100% declaration")
+    return errors

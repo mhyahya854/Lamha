@@ -95,7 +95,8 @@
     {
       "level": "L20_FINAL_100_PERCENT_PLANNING_CERTIFICATION",
       "status": "PASS",
-      "errors": []
+      "errors": [],
+      "note": "final_certification_validation_complete"
     },
     {
       "level": "L21_AI_MODEL_OVERRIDE_AMENDMENT",

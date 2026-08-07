@@ -12,7 +12,7 @@
     {
       "step": "Run the full validator",
       "command": "python graphify\\12-semantic-implementation-plan\\12-validators\\validate_plan.py --write-results",
-      "expect": "status PASS; failedLevels []"
+      "expect": "status PASS; failedLevels []; L20 independently verifies final certification evidence (stage 2; the pre-certification stage runs with --pre-certification)"
     },
     {
       "step": "Run the adversarial suite",
@@ -20,9 +20,19 @@
       "expect": "status PASS; every fixture EXPECTED_FAILURE_OBSERVED"
     },
     {
-      "step": "Run deterministic certification twice",
+      "step": "Run pre-certification validation",
+      "command": "python graphify\\12-semantic-implementation-plan\\12-validators\\validate_plan.py --write-results --pre-certification",
+      "expect": "status PASS; L20 deferred to the final certification validation stage"
+    },
+    {
+      "step": "Regenerate derived handoff evidence",
+      "command": "python graphify\\tools\\generate_gpt_handoff.py",
+      "expect": "gpt-review-sha-manifest.json recomputed over the current evidence; source-of-truth report regenerated"
+    },
+    {
+      "step": "Run deterministic gated certification",
       "command": "python graphify\\tools\\final_certification.py",
-      "expect": "layer_1_first_hash == layer_1_second_hash; layer_3_first_hash == layer_3_second_hash; status PASS"
+      "expect": "PASS written only after every gate passes; layer1FirstHash == layer1SecondHash; layer3FirstHash == layer3SecondHash; missingFiles []; mismatchedFiles []; unexpectedFiles []; unexplainedExclusions []; exit 0"
     },
     {
       "step": "Verify external integrity",

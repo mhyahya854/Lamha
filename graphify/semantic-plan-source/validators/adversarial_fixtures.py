@@ -1,4 +1,4 @@
-"""Eighty-four negative fixtures proving every final-blocker regression is rejected."""
+"""Negative fixtures proving every final-blocker regression is rejected."""
 
 from __future__ import annotations
 
@@ -17,6 +17,7 @@ SPEC = importlib.util.spec_from_file_location("lamha_validator", HERE / "validat
 validator = importlib.util.module_from_spec(SPEC)
 assert SPEC.loader is not None
 SPEC.loader.exec_module(validator)
+from tools import certification_gates as gates  # noqa: E402
 
 
 def contains(errors: list[str], expected: str) -> tuple[bool, list[str]]:
@@ -658,6 +659,213 @@ def run() -> dict[str, object]:
             expected = "ai_override_packet_objective_missing_requirement" if mutation[0]=="OBJECTIVE" else "ai_override_packet_contracts_missing_requirement" if mutation[0]=="CONTRACTS" else "ai_override_packet_tests_missing_requirement" if mutation[0]=="TESTS" else "ai_override_packet_exit_gate_missing_requirement"
             amendment_extra.append((f"F{120+idx}_INDEPENDENT_PACKET_{mutation[0]}", *contains(errs, expected)))
 
+    # ------------------------------------------------------------------
+    # Final-certification gate fixtures (F116-F135).  Each begins from a valid
+    # baseline, applies exactly one mutation, produces the intended error, and
+    # restores the baseline afterward.
+    # ------------------------------------------------------------------
+    cert_fixture_errors: list[tuple[str, bool, list[str]]] = []
+
+    def valid_validator_report() -> dict[str, object]:
+        return {
+            "status": "PASS",
+            "levelCount": len(gates.REQUIRED_VALIDATOR_LEVELS),
+            "levels": [{"level": name, "status": "PASS", "errors": []} for name in gates.REQUIRED_VALIDATOR_LEVELS],
+            "failedLevels": [],
+        }
+
+    def valid_adversarial_report() -> dict[str, object]:
+        return {
+            "status": "PASS",
+            "fixtureCount": 1,
+            "expectedFailuresObserved": 1,
+            "fixtures": [{"fixture": "F-BASE", "status": "EXPECTED_FAILURE_OBSERVED", "validatorErrors": ["expected"]}],
+        }
+
+    # F116: remove one required Layer 3 file.
+    packet_manifest = validator.PLAN / "11-model-packets" / "packet-manifest.json"
+    packet_backup = None
+    try:
+        if packet_manifest.exists():
+            packet_backup = packet_manifest.with_name(packet_manifest.name + ".fixture-backup")
+            packet_manifest.rename(packet_backup)
+        missing_errors = gates.verify_required_files(validator.GRAPHIFY)
+        cert_fixture_errors.append(("F116_MISSING_REQUIRED_LAYER3_FILE", *contains(missing_errors, "missing required file")))
+    finally:
+        if packet_backup is not None and packet_backup.exists() and not packet_manifest.exists():
+            packet_backup.rename(packet_manifest)
+
+    # F117: put a nonexistent file in the Layer 3 file list.
+    envelope_nonexistent = {
+        "layer": 3,
+        "sha256": "0" * 64,
+        "fileCount": 1,
+        "files": ["12-semantic-implementation-plan/does-not-exist.json"],
+        "fileHashes": {},
+    }
+    envelope_list_errors = gates.verify_layer3_envelope(validator.GRAPHIFY, envelope_nonexistent)
+    cert_fixture_errors.append(("F117_NONEXISTENT_LAYER3_LIST_ENTRY", *contains(envelope_list_errors, "layer 3 listed file missing")))
+
+    # F118: set validator top-level status to FAIL.
+    validator_fail = valid_validator_report()
+    validator_fail["status"] = "FAIL"
+    validator_fail_errors = gates.verify_validator_report(validator_fail)
+    cert_fixture_errors.append(("F118_VALIDATOR_TOP_LEVEL_FAIL", *contains(validator_fail_errors, "validator status is not PASS")))
+
+    # F119: leave validator PASS but add one failed level.
+    validator_failed_level = valid_validator_report()
+    validator_failed_level["levels"] = list(validator_failed_level["levels"]) + [
+        {"level": "L99_FAKE", "status": "FAIL", "errors": []}
+    ]
+    validator_failed_level["levelCount"] = len(validator_failed_level["levels"])
+    failed_level_errors = gates.verify_validator_report(validator_failed_level)
+    cert_fixture_errors.append(("F119_VALIDATOR_FAILED_LEVEL_ADDED", *contains(failed_level_errors, "validator level not PASS")))
+
+    # F120: leave status PASS but add one non-empty level error.
+    validator_level_error = valid_validator_report()
+    validator_level_error["levels"] = list(validator_level_error["levels"])
+    validator_level_error["levels"][0]["errors"] = ["synthetic level error"]
+    level_error_errors = gates.verify_validator_report(validator_level_error)
+    cert_fixture_errors.append(("F120_VALIDATOR_LEVEL_ERROR_ADDED", *contains(level_error_errors, "validator level has errors")))
+
+    # F121: remove one required validator level.
+    validator_removed = valid_validator_report()
+    validator_removed["levels"] = [
+        level for level in validator_removed["levels"]
+        if level["level"] != "L20_FINAL_100_PERCENT_PLANNING_CERTIFICATION"
+    ]
+    validator_removed["levelCount"] = len(validator_removed["levels"])
+    removed_level_errors = gates.verify_validator_report(validator_removed)
+    cert_fixture_errors.append(("F121_VALIDATOR_REQUIRED_LEVEL_REMOVED", *contains(removed_level_errors, "validator missing level")))
+
+    # F122: duplicate one validator level.
+    validator_duplicate = valid_validator_report()
+    validator_duplicate["levels"] = list(validator_duplicate["levels"]) + [
+        {"level": "L1_SOURCE_AND_WRITE_BOUNDARY", "status": "PASS", "errors": []}
+    ]
+    validator_duplicate["levelCount"] = len(validator_duplicate["levels"])
+    duplicate_level_errors = gates.verify_validator_report(validator_duplicate)
+    cert_fixture_errors.append(("F122_VALIDATOR_LEVEL_DUPLICATED", *contains(duplicate_level_errors, "validator duplicate level")))
+
+    # F123: set adversarial status to FAIL.
+    adversarial_fail = valid_adversarial_report()
+    adversarial_fail["status"] = "FAIL"
+    adversarial_fail_errors = gates.verify_adversarial_report(adversarial_fail)
+    cert_fixture_errors.append(("F123_ADVERSARIAL_STATUS_FAIL", *contains(adversarial_fail_errors, "adversarial status is not PASS")))
+
+    # F124: make expectedFailuresObserved != fixtureCount.
+    adversarial_count_mismatch = valid_adversarial_report()
+    adversarial_count_mismatch["expectedFailuresObserved"] = 0
+    adversarial_count_errors = gates.verify_adversarial_report(adversarial_count_mismatch)
+    cert_fixture_errors.append(("F124_ADVERSARIAL_COUNT_MISMATCH", *contains(adversarial_count_errors, "expectedFailuresObserved mismatch")))
+
+    # F125: add one fixture with EXPECTED_FAILURE_MISSED.
+    adversarial_missed = valid_adversarial_report()
+    adversarial_missed["fixtures"] = list(adversarial_missed["fixtures"]) + [
+        {"fixture": "F-SYNTHETIC-MISSED", "status": "EXPECTED_FAILURE_MISSED", "validatorErrors": []}
+    ]
+    adversarial_missed["fixtureCount"] = 2
+    missed_errors = gates.verify_adversarial_report(adversarial_missed)
+    cert_fixture_errors.append(("F125_ADVERSARIAL_EXPECTED_FAILURE_MISSED", *contains(missed_errors, "did not observe expected failure")))
+
+    # F126: make an authoritative/rendered pair differ (rendered side mutated).
+    rendered_pair = gates.source_rendered_pairs(validator.GRAPHIFY)[0]
+    pair_source, pair_rendered, pair_label = rendered_pair
+    if pair_source.exists() and pair_rendered.exists():
+        original_rendered = pair_rendered.read_bytes()
+        try:
+            pair_rendered.write_bytes(original_rendered + b"\nsynthetic rendered mutation")
+            pair_mismatch_errors = gates.verify_source_rendered_pairs([(pair_source, pair_rendered, pair_label)])
+        finally:
+            pair_rendered.write_bytes(original_rendered)
+    else:
+        pair_mismatch_errors = ["source/rendered baseline missing"]
+    cert_fixture_errors.append(("F126_SOURCE_RENDERED_MISMATCH", *contains(pair_mismatch_errors, "source/rendered bytes differ")))
+
+    # F127: change an authoritative source without rebuilding generated output.
+    source_pair = gates.source_rendered_pairs(validator.GRAPHIFY)[1]
+    source_file, source_rendered, source_label = source_pair
+    if source_file.exists() and source_rendered.exists():
+        original_source = source_file.read_bytes()
+        try:
+            source_file.write_bytes(original_source + b"\nsynthetic source mutation")
+            source_mismatch_errors = gates.verify_source_rendered_pairs([(source_file, source_rendered, source_label)])
+        finally:
+            source_file.write_bytes(original_source)
+    else:
+        source_mismatch_errors = ["source/rendered baseline missing"]
+    cert_fixture_errors.append(("F127_SOURCE_CHANGED_WITHOUT_REBUILD", *contains(source_mismatch_errors, "source/rendered bytes differ")))
+
+    # F128: set external integrity modified count to 1.
+    external_modified = {
+        "comparison": {"status": "PASS", "added": [], "removed": [], "modified": ["Codebase/README.md"], "renamed": []},
+    }
+    external_modified_errors = gates.verify_external_integrity_comparison(external_modified)
+    cert_fixture_errors.append(("F128_EXTERNAL_INTEGRITY_MODIFIED", *contains(external_modified_errors, "external integrity modified is not zero")))
+
+    # F129: make certificate Layer 1 hash differ from manifest.
+    cert_hash_bad = {"layer1Hash": "a" * 64}
+    manifest_hash = {"sha256": "b" * 64}
+    envelope_hash = {"sha256": "c" * 64}
+    proof_consistent = {"layer1FirstHash": "b" * 64, "layer1SecondHash": "b" * 64, "layer3FirstHash": "c" * 64, "layer3SecondHash": "c" * 64}
+    cert_manifest_mismatch_errors = gates.verify_cert_hash_agreements(cert_hash_bad, manifest_hash, envelope_hash, proof_consistent)
+    cert_fixture_errors.append(("F129_CERT_MANIFEST_HASH_MISMATCH", *contains(cert_manifest_mismatch_errors, "certification layer1 hash differs from content manifest")))
+
+    # F130: make proof Layer 3 hash differ from envelope.
+    cert_hash_ok = {"layer1Hash": "b" * 64}
+    proof_layer3_bad = {"layer1FirstHash": "b" * 64, "layer1SecondHash": "b" * 64, "layer3FirstHash": "d" * 64, "layer3SecondHash": "d" * 64}
+    proof_envelope_mismatch_errors = gates.verify_cert_hash_agreements(cert_hash_ok, manifest_hash, envelope_hash, proof_layer3_bad)
+    cert_fixture_errors.append(("F130_PROOF_ENVELOPE_HASH_MISMATCH", *contains(proof_envelope_mismatch_errors, "proof layer3 hash differs from release envelope")))
+
+    # F131: remove the broad Graphify SHA manifest.
+    gpt_manifest_path = validator.PLAN / "14-handoff" / "gpt-review-sha-manifest.json"
+    gpt_manifest_backup = None
+    try:
+        if gpt_manifest_path.exists():
+            gpt_manifest_backup = gpt_manifest_path.with_name(gpt_manifest_path.name + ".fixture-backup")
+            gpt_manifest_path.rename(gpt_manifest_backup)
+        gpt_manifest_errors = gates.verify_full_graphify_manifest(validator.GRAPHIFY)
+        cert_fixture_errors.append(("F131_GPT_MANIFEST_REMOVED", *contains(gpt_manifest_errors, "missing full Graphify SHA manifest")))
+    finally:
+        if gpt_manifest_backup is not None and gpt_manifest_backup.exists() and not gpt_manifest_path.exists():
+            gpt_manifest_backup.rename(gpt_manifest_path)
+
+    # F132: make the saved broad manifest differ from recomputation.
+    saved_manifest_path = validator.PLAN / "14-handoff" / "gpt-review-sha-manifest.json"
+    if saved_manifest_path.exists():
+        saved_manifest = gates.read_json(saved_manifest_path)
+        mutated_manifest = dict(saved_manifest)
+        mutated_manifest["digest"] = "0" * 64
+        recomputed_manifest = gates.compute_full_graphify_manifest(validator.GRAPHIFY)
+        manifest_mismatch_errors = gates.verify_saved_manifest_matches_recomputation(mutated_manifest, recomputed_manifest)
+    else:
+        manifest_mismatch_errors = ["full Graphify SHA manifest baseline missing"]
+    cert_fixture_errors.append(("F132_GPT_MANIFEST_RECOMPUTE_MISMATCH", *contains(manifest_mismatch_errors, "digest does not match recomputation")))
+
+    # F133: add an unexplained exclusion.
+    unexplained = {"excluded": ["13-reports/final-release-envelope.json"], "exclusionRationales": {}}
+    unexplained_errors = gates.verify_exclusion_rationales(unexplained, "excluded", "exclusionRationales")
+    cert_fixture_errors.append(("F133_UNEXPLAINED_EXCLUSION", *contains(unexplained_errors, "unexplained exclusion")))
+
+    # F134: hardcode missingFiles=[] while a required file is absent.
+    packet_manifest_again = validator.PLAN / "11-model-packets" / "packet-manifest.json"
+    packet_backup_again = None
+    try:
+        if packet_manifest_again.exists():
+            packet_backup_again = packet_manifest_again.with_name(packet_manifest_again.name + ".fixture-backup-2")
+            packet_manifest_again.rename(packet_backup_again)
+        empty_claims = {"missingFiles": [], "mismatchedFiles": [], "unexpectedFiles": []}
+        hardcoded_empty_errors = gates.verify_evidence_arrays_against_files(validator.GRAPHIFY, empty_claims, dict(empty_claims), dict(empty_claims))
+        cert_fixture_errors.append(("F134_HARDCODED_EMPTY_MISSING_FILES", *contains(hardcoded_empty_errors, "missingFiles disagrees with real files")))
+    finally:
+        if packet_backup_again is not None and packet_backup_again.exists() and not packet_manifest_again.exists():
+            packet_backup_again.rename(packet_manifest_again)
+
+    # F135: attempt to write PASS before prerequisite gates finish.
+    incomplete_gates = {"pre_certification_validator": "PASS"}
+    incomplete_gate_errors = gates.verify_certification_gates_recorded({"certificationGates": incomplete_gates})
+    cert_fixture_errors.append(("F135_PASS_BEFORE_GATES_COMPLETE", *contains(incomplete_gate_errors, "certification gate not completed")))
+
     cases = [
         ("F01_GENERATED_REPORT_FALSELY_MANUAL", *contains(manual_errors, "automatically generated report labelled manual")),
         ("F02_BLANKET_REVIEW_CERTIFICATION", *contains(blanket_errors, "blanket script marks every row reviewed")),
@@ -736,7 +944,7 @@ def run() -> dict[str, object]:
         ("F70_AMENDMENT_ARTIFACT_MISSING", *contains(am_missing_artifact, "ai_model_override_amendment_artifact_missing")),
         ("F71_AMENDMENT_COMPONENT_RULE_MISSING", *contains(am_missing_component_rule, "component_model_selection_rule_missing")),
     ]
-    cases = cases + amendment_extra
+    cases = cases + amendment_extra + cert_fixture_errors
     results = [
         {
             "fixture": name,

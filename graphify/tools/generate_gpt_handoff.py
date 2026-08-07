@@ -18,6 +18,11 @@ from collections import deque
 from pathlib import Path
 
 sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from certification_gates import (  # noqa: E402
+    SHA_MANIFEST_EXCLUDED,
+    SHA_MANIFEST_EXCLUSION_RATIONALES,
+)
 
 GRAPHIFY = Path(__file__).resolve().parents[1]
 SOURCE = GRAPHIFY / "semantic-plan-source"
@@ -27,35 +32,6 @@ HANDOFF_PLAN = PLAN / "14-handoff"
 
 DECLARATION = "FULL IMPLEMENTATION PLANNING 100% COMPLETE \u2014 WP-I0-001 MAY BEGIN"
 HANDOFF_DECLARATION = "DEEPSEEK PRE-GPT PLANNING REVIEW COMPLETE \u2014 AWAITING GPT-5.6 INDEPENDENT REVIEW"
-
-SHA_MANIFEST_EXCLUDED = {
-    # The manifest itself (source and rendered copies).
-    "semantic-plan-source/handoff-gpt/gpt-review-sha-manifest.json",
-    "12-semantic-implementation-plan/14-handoff/gpt-review-sha-manifest.json",
-    # Volatile timestamped external-integrity finals.
-    "12-semantic-implementation-plan/13-reports/pass1-external-final.json",
-    "12-semantic-implementation-plan/13-reports/pass2c-external-readonly-final.json",
-    "12-semantic-implementation-plan/13-reports/pass3-external-readonly-final.json",
-    "semantic-plan-source/reviews/pass1-external-final.json",
-    "semantic-plan-source/reviews/pass2c-external-readonly-final.json",
-    "semantic-plan-source/reviews/pass3-external-readonly-final.json",
-    # Self-referential certification artifacts verified by the two-run
-    # deterministic certification instead of by this manifest.
-    "12-semantic-implementation-plan/PLAN-MANIFEST.json",
-    "12-semantic-implementation-plan/13-reports/final-content-manifest.json",
-    "12-semantic-implementation-plan/13-reports/final-100-percent-certification.json",
-    "12-semantic-implementation-plan/13-reports/final-release-envelope.json",
-    "12-semantic-implementation-plan/13-reports/final-determinism-proof.json",
-    "semantic-plan-source/reviews/final-content-manifest.json",
-    "semantic-plan-source/reviews/final-100-percent-certification.json",
-    "semantic-plan-source/reviews/final-release-envelope.json",
-    "semantic-plan-source/reviews/final-determinism-proof.json",
-    "semantic-plan-source/reviews/final-package-determinism.json",
-    "12-semantic-implementation-plan/13-reports/final-package-determinism.json",
-    "semantic-plan-source/reviews/pass3-certification-report.json",
-    "12-semantic-implementation-plan/13-reports/pass3-certification-report.json",
-}
-
 
 def read_csv(path: Path) -> list[dict[str, str]]:
     with path.open(encoding="utf-8-sig", newline="") as stream:
@@ -164,29 +140,7 @@ def sha_manifest() -> dict[str, object]:
         "file_count": len(files),
         "files": entries,
         "excluded": sorted(SHA_MANIFEST_EXCLUDED),
-        "exclusion_rationales": {
-            "semantic-plan-source/handoff-gpt/gpt-review-sha-manifest.json": "The manifest cannot hash itself.",
-            "12-semantic-implementation-plan/14-handoff/gpt-review-sha-manifest.json": "Rendered copy of the manifest itself.",
-            "12-semantic-implementation-plan/13-reports/pass1-external-final.json": "Contains volatile verification timestamp.",
-            "12-semantic-implementation-plan/13-reports/pass2c-external-readonly-final.json": "Contains volatile verification timestamp.",
-            "12-semantic-implementation-plan/13-reports/pass3-external-readonly-final.json": "Contains volatile verification timestamp.",
-            "semantic-plan-source/reviews/pass1-external-final.json": "Source copy of the volatile external-integrity final.",
-            "semantic-plan-source/reviews/pass2c-external-readonly-final.json": "Source copy of the volatile external-integrity final.",
-            "semantic-plan-source/reviews/pass3-external-readonly-final.json": "Source copy of the volatile external-integrity final.",
-            "12-semantic-implementation-plan/PLAN-MANIFEST.json": "Manifest of generated outputs that cannot hash itself.",
-            "12-semantic-implementation-plan/13-reports/final-content-manifest.json": "Layer 1 manifest; verified by the two-run deterministic certification.",
-            "12-semantic-implementation-plan/13-reports/final-100-percent-certification.json": "Layer 2 certification; verified by the two-run deterministic certification.",
-            "12-semantic-implementation-plan/13-reports/final-release-envelope.json": "Layer 3 envelope; verified by the two-run deterministic certification.",
-            "12-semantic-implementation-plan/13-reports/final-determinism-proof.json": "Records the Layer 1/3 hashes and cannot be hashed without circularity.",
-            "semantic-plan-source/reviews/final-content-manifest.json": "Source copy of the Layer 1 manifest.",
-            "semantic-plan-source/reviews/final-100-percent-certification.json": "Source copy of the Layer 2 certification.",
-            "semantic-plan-source/reviews/final-release-envelope.json": "Source copy of the Layer 3 envelope.",
-            "semantic-plan-source/reviews/final-determinism-proof.json": "Source copy of the determinism proof.",
-            "semantic-plan-source/reviews/final-package-determinism.json": "Pass 3 determinism evidence; converges during certification.",
-            "12-semantic-implementation-plan/13-reports/final-package-determinism.json": "Pass 3 determinism evidence; converges during certification.",
-            "semantic-plan-source/reviews/pass3-certification-report.json": "Pass 3 certification report; validated independently by L15.",
-            "12-semantic-implementation-plan/13-reports/pass3-certification-report.json": "Pass 3 certification report; validated independently by L15.",
-        },
+        "exclusion_rationales": SHA_MANIFEST_EXCLUSION_RATIONALES,
     }
 
 

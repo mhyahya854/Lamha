@@ -1,6 +1,6 @@
 {
-  "fixtureCount": 115,
-  "expectedFailuresObserved": 115,
+  "fixtureCount": 135,
+  "expectedFailuresObserved": 135,
   "status": "PASS",
   "fixtures": [
     {
@@ -1345,6 +1345,163 @@
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
         "ai_override_packet_exit_gate_missing_requirement"
+      ]
+    },
+    {
+      "fixture": "F116_MISSING_REQUIRED_LAYER3_FILE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "missing required file: 12-semantic-implementation-plan/11-model-packets/packet-manifest.json"
+      ]
+    },
+    {
+      "fixture": "F117_NONEXISTENT_LAYER3_LIST_ENTRY",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "layer 3 listed file missing: 12-semantic-implementation-plan/does-not-exist.json",
+        "layer 3 listed file not hashed: 12-semantic-implementation-plan/does-not-exist.json",
+        "layer 3 envelope digest does not match recomputation",
+        "layer 3 envelope file count mismatch"
+      ]
+    },
+    {
+      "fixture": "F118_VALIDATOR_TOP_LEVEL_FAIL",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "validator status is not PASS"
+      ]
+    },
+    {
+      "fixture": "F119_VALIDATOR_FAILED_LEVEL_ADDED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "validator level not PASS: L99_FAKE"
+      ]
+    },
+    {
+      "fixture": "F120_VALIDATOR_LEVEL_ERROR_ADDED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "validator level has errors: L1_SOURCE_AND_WRITE_BOUNDARY"
+      ]
+    },
+    {
+      "fixture": "F121_VALIDATOR_REQUIRED_LEVEL_REMOVED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "validator missing level: L20_FINAL_100_PERCENT_PLANNING_CERTIFICATION"
+      ]
+    },
+    {
+      "fixture": "F122_VALIDATOR_LEVEL_DUPLICATED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "validator duplicate level: L1_SOURCE_AND_WRITE_BOUNDARY"
+      ]
+    },
+    {
+      "fixture": "F123_ADVERSARIAL_STATUS_FAIL",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "adversarial status is not PASS"
+      ]
+    },
+    {
+      "fixture": "F124_ADVERSARIAL_COUNT_MISMATCH",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "adversarial expectedFailuresObserved mismatch: 0 != 1"
+      ]
+    },
+    {
+      "fixture": "F125_ADVERSARIAL_EXPECTED_FAILURE_MISSED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "adversarial expectedFailuresObserved mismatch: 1 != 2",
+        "adversarial fixture did not observe expected failure: F-SYNTHETIC-MISSED",
+        "adversarial fixture has no validator errors: F-SYNTHETIC-MISSED"
+      ]
+    },
+    {
+      "fixture": "F126_SOURCE_RENDERED_MISMATCH",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "requirements.csv: source/rendered bytes differ"
+      ]
+    },
+    {
+      "fixture": "F127_SOURCE_CHANGED_WITHOUT_REBUILD",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "requirement-mapping.csv: source/rendered bytes differ"
+      ]
+    },
+    {
+      "fixture": "F128_EXTERNAL_INTEGRITY_MODIFIED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "external integrity modified is not zero"
+      ]
+    },
+    {
+      "fixture": "F129_CERT_MANIFEST_HASH_MISMATCH",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "certification layer1 hash differs from content manifest"
+      ]
+    },
+    {
+      "fixture": "F130_PROOF_ENVELOPE_HASH_MISMATCH",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "proof layer3 hash differs from release envelope"
+      ]
+    },
+    {
+      "fixture": "F131_GPT_MANIFEST_REMOVED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "missing full Graphify SHA manifest: 12-semantic-implementation-plan/14-handoff/gpt-review-sha-manifest.json"
+      ]
+    },
+    {
+      "fixture": "F132_GPT_MANIFEST_RECOMPUTE_MISMATCH",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "full Graphify SHA manifest digest does not match recomputation"
+      ]
+    },
+    {
+      "fixture": "F133_UNEXPLAINED_EXCLUSION",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "unexplained exclusion: 13-reports/final-release-envelope.json"
+      ]
+    },
+    {
+      "fixture": "F134_HARDCODED_EMPTY_MISSING_FILES",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "certification missingFiles disagrees with real files",
+        "certification unexpectedFiles disagrees with real files",
+        "proof missingFiles disagrees with real files",
+        "proof unexpectedFiles disagrees with real files",
+        "envelope missingFiles disagrees with real files",
+        "envelope unexpectedFiles disagrees with real files"
+      ]
+    },
+    {
+      "fixture": "F135_PASS_BEFORE_GATES_COMPLETE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "certification gate not completed: adversarial_fixtures",
+        "certification gate not completed: required_files",
+        "certification gate not completed: source_rendered_equality",
+        "certification gate not completed: external_integrity",
+        "certification gate not completed: full_graphify_manifest",
+        "certification gate not completed: layer1_determinism",
+        "certification gate not completed: layer3_determinism",
+        "certification gate not completed: final_certification_validation"
       ]
     }
   ]
