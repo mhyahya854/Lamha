@@ -126,6 +126,12 @@ def run() -> dict[str, object]:
         guard_errors: list[str] = []
     except ValueError as error:
         guard_errors = [str(error)]
+    # The guard error embeds the absolute checkout path, which would make the
+    # regenerated evidence machine-specific.  Normalize it so adversarial
+    # results (and therefore Layer 1/3 digests) reproduce identically from any
+    # checkout path.
+    repo_root = str(validator.GRAPHIFY.parent.resolve())
+    guard_errors = [error.replace(repo_root, "<REPO_ROOT>") for error in guard_errors]
 
     anonymous_errors = validator.scan_open_objects({
         "type": "object", "properties": {

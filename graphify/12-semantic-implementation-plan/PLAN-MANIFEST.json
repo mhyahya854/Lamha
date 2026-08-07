@@ -2235,8 +2235,8 @@
     },
     {
       "path": "07-sqlite/entity-authority.csv",
-      "bytes": 5669,
-      "sha256": "2e46e0cd7d5025a36d656008009f3583f5516a83c604cba0809929682aa06068"
+      "bytes": 5621,
+      "sha256": "e419db58ecbfc8b3375193dc29790b9a12a64bf0f9eb8208bb75fe09eec5d7e0"
     },
     {
       "path": "07-sqlite/README.md",
@@ -2370,8 +2370,8 @@
     },
     {
       "path": "12-validators/adversarial_fixtures.py",
-      "bytes": 74469,
-      "sha256": "85f3138f3cd00f0a2a01afada8bb1ce18f185f1acb64ed09546803bdb67c8b4e"
+      "bytes": 74865,
+      "sha256": "d32e67f696ef0db84bb070c98557e22fdbe7558c57f28bb50077ddb30018fee5"
     },
     {
       "path": "12-validators/packet_smoke_tests.py",
@@ -2415,8 +2415,8 @@
     },
     {
       "path": "13-reports/command-flag-review.csv",
-      "bytes": 47739,
-      "sha256": "a930eb6b7cfd63a1f0f98d068c017f109a1b689a4821d3d80326ff90012c82d1"
+      "bytes": 47622,
+      "sha256": "1355df9b43410ada058266876ca22b835cd7e9b51bcb8cccabf0dfc750b2f14f"
     },
     {
       "path": "13-reports/contract-schema-candidate-stats.json",
@@ -2425,23 +2425,23 @@
     },
     {
       "path": "13-reports/external-readonly-baseline.json",
-      "bytes": 1016176,
-      "sha256": "dc62e6d7086cfcb00f29a74066adb43cb90c4474bde2ba0500e64d48fed7ca49"
+      "bytes": 997683,
+      "sha256": "2c23f8401318d63281045b3d1777aca7390fea65a75eb0df20024cde69826c76"
     },
     {
       "path": "13-reports/final-100-percent-certification.json",
       "bytes": 6541,
-      "sha256": "e6a10e5cc8f2b515664936e03c12e13fd8ee40e5ef7f3ed24c108ba7a1dc4d8a"
+      "sha256": "75c1f92de619e943e31f3be2783ae88ce443216588c91396f941aa43ad1766dd"
     },
     {
       "path": "13-reports/final-content-manifest.json",
       "bytes": 101440,
-      "sha256": "2fdc5edde130482e56e0c938c2c72d905fd6fdbd6b47df6fe19c4e5d171bd5c6"
+      "sha256": "95361e2fa3996f5b60cd78f3c41fab6808635a4ad9d7dbd80f4e8f1212499fa4"
     },
     {
       "path": "13-reports/final-determinism-proof.json",
       "bytes": 2885,
-      "sha256": "0f3e927113dc6ab0c54e15a04341e46f4c82532da32c62a1d225e2972769272d"
+      "sha256": "bf2c9e7bb1b777f5b616390b4565a1033701b774af68c4b7d39218850941e76d"
     },
     {
       "path": "13-reports/final-package-determinism.json",
@@ -2456,7 +2456,7 @@
     {
       "path": "13-reports/final-release-envelope.json",
       "bytes": 7700,
-      "sha256": "d2ff061dbc07dc83e3c138aed5801b300ff168e2468020f6f76b1cd6e358ea2d"
+      "sha256": "f678ccef410a399a6baae6c188046bc65eddeed2c433618bb02d9d56866da8b3"
     },
     {
       "path": "13-reports/generated-fragment-disposition-report.csv",
@@ -2510,8 +2510,8 @@
     },
     {
       "path": "13-reports/legacy-package-disposition.csv",
-      "bytes": 31659,
-      "sha256": "de4c949d9528746e50b4b78f9a1df7883c53011178340e82e9fe4455f3aefa04"
+      "bytes": 31486,
+      "sha256": "3e9284f4348ebd1491acd962bb0bdc8f004f80f340a4cdda29cbb6eb7472f24b"
     },
     {
       "path": "13-reports/legacy-template-semantic-audit.csv",
@@ -2876,7 +2876,7 @@
     {
       "path": "14-handoff/gpt-review-sha-manifest.json",
       "bytes": 419732,
-      "sha256": "a1a797a97134586e7b8ce77ded2d0b07c682b713087d75743d06c8e4b8a7e9ea"
+      "sha256": "d5ef298528699298a0de1d4dd0f90fa92da470d12d031fa9393482529699e352"
     },
     {
       "path": "14-handoff/gpt-review-validation-commands.json",

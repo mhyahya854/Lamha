@@ -110,7 +110,7 @@
       "fixture": "F11_EXTERNAL_WRITE_DESTINATION",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "write outside Graphify rejected: C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\forbidden-fixture-write.tmp"
+        "write outside Graphify rejected: <REPO_ROOT>\\forbidden-fixture-write.tmp"
       ]
     },
     {
