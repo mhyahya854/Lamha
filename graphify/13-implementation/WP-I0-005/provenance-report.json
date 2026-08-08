@@ -1,0 +1,46 @@
+{
+  "packageId": "WP-I0-005",
+  "packetPath": "12-semantic-implementation-plan/04-work-packages/packets/WP-I0-005.md",
+  "packetSha256": "cbee9a88dd5dbe61a63f74b68f38ec0640f57d3c9152305db117a281a0e70209",
+  "ownedRequirements": [
+    "CAN-MISSION-I0-006"
+  ],
+  "selection": {
+    "rule": "explicit authorization from WP-I0-004, confirmed by deterministic READY sorting",
+    "readyPackages": [
+      "WP-I0-005",
+      "WP-I0-006",
+      "WP-I0-008",
+      "WP-I0-009",
+      "WP-I0-010",
+      "WP-I0-011",
+      "WP-I1-001",
+      "WP-I2-002"
+    ],
+    "explicitAuthorizationRecordPath": "13-implementation/WP-I0-004/adversarial-review.md",
+    "explicitAuthorizationRecordSha256": "632e048e72fc283c0acd8d2ffd4e930ff5c80ad82dea90bc32c0d16a407f29f0",
+    "startSha": "ec60527cb8738a60a0eb70087285ec4658d70fb8",
+    "startRemoteSha": "ec60527cb8738a60a0eb70087285ec4658d70fb8"
+  },
+  "prerequisite": {
+    "packageId": "WP-I0-004",
+    "dependencyType": "REQUIRES_DECISION",
+    "summaryPath": "13-implementation/WP-I0-004/package-summary.json",
+    "summarySha256": "e452d635d61470ec51fa5d29df5db16574d93d461acd922d68b44a4ed7c77397",
+    "summaryStatus": "PASS",
+    "reviewPath": "13-implementation/WP-I0-004/adversarial-review.md",
+    "investigationPath": "13-implementation/WP-I0-004/mixed-version-investigation.json"
+  },
+  "writeBoundary": "graphify/13-implementation/WP-I0-005/** only through graphify/tools/write_guard.py",
+  "readOnlyPaths": [
+    "Codebase/**",
+    "graphify/12-semantic-implementation-plan/**",
+    "graphify/13-implementation/WP-I0-004/**",
+    ".git metadata through read-only commands"
+  ],
+  "prohibitedPaths": [
+    "Codebase/** writes",
+    "later-package implementation/tests/dependencies",
+    "repository copies, archives, backups, builds, caches, generated code"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "scope": "WP-I0-005 evidence plus outside-Graphify Git state and all inventoried manifest hashes",
+  "addedOrModifiedOutsideGraphify": [],
+  "manifestFingerprintBefore": "54974a809e9b641dcfa12c692617232c7b9d82b3926d46f1d321e715f5c39377",
+  "manifestFingerprintAfter": "54974a809e9b641dcfa12c692617232c7b9d82b3926d46f1d321e715f5c39377",
+  "archiveBackupCopyBuildCacheInstallOrGeneratedArtifacts": [],
+  "status": "PASS"
+}

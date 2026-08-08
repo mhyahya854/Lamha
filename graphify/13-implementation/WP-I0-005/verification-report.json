@@ -1,0 +1,1785 @@
+{
+  "focused": {
+    "wp_i0_005_success": "PASS",
+    "coverageFixtures": {
+      "independentManifestOracle": {
+        "method": "broad manifest-family scan plus source-derived devcontainer, mandatory xcconfig, Podfile, and Gradle reference resolution; production is_manifest is not called",
+        "candidateCount": 189,
+        "candidates": {
+          "Codebase/.devcontainer/devcontainer.json": "standard-toolchain-manifest-name",
+          "Codebase/.devcontainer/mobile/container-compose-overrides.yml": "referenced-by-devcontainer-dockerComposeFile",
+          "Codebase/.devcontainer/mobile/devcontainer.json": "standard-toolchain-manifest-name",
+          "Codebase/.devcontainer/server/container-compose-overrides.yml": "referenced-by-devcontainer-dockerComposeFile",
+          "Codebase/.dockerignore": "standard-toolchain-manifest-name",
+          "Codebase/.editorconfig": "standard-toolchain-manifest-name",
+          "Codebase/.github/.prettierignore": "standard-toolchain-manifest-name",
+          "Codebase/.github/mise.toml": "standard-toolchain-manifest-name",
+          "Codebase/.github/package.json": "standard-toolchain-manifest-name",
+          "Codebase/.github/workflows/auto-close.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/build-mobile.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/cache-cleanup.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/check-openapi.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/cli.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/close-duplicates.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/codeql-analysis.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/docker.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/docs-build.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/docs-deploy.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/docs-destroy.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/fix-format.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/merge-translations.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/org-pr-require-conventional-commit.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/org-zizmor.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/pr-label-validation.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/pr-labeler.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/prepare-release.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/preview-label.yaml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/sdk.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/static_analysis.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/test.yml": "ci-toolchain-workflow-family",
+          "Codebase/.github/workflows/weblate-lock.yml": "ci-toolchain-workflow-family",
+          "Codebase/.gitmodules": "standard-toolchain-manifest-name",
+          "Codebase/.nvmrc": "standard-toolchain-manifest-name",
+          "Codebase/.pnpmfile.cjs": "standard-toolchain-manifest-name",
+          "Codebase/.prettierrc": "standard-toolchain-manifest-name",
+          "Codebase/.vscode/extensions.json": "editor-toolchain-config-family",
+          "Codebase/.vscode/launch.json": "editor-toolchain-config-family",
+          "Codebase/.vscode/settings.json": "editor-toolchain-config-family",
+          "Codebase/Makefile": "standard-toolchain-manifest-name",
+          "Codebase/deployment/.env": "standard-toolchain-manifest-name",
+          "Codebase/deployment/mise.lock": "standard-toolchain-manifest-name",
+          "Codebase/deployment/mise.toml": "standard-toolchain-manifest-name",
+          "Codebase/deployment/modules/cloudflare/docs-release/.terraform.lock.hcl": "standard-toolchain-manifest-name",
+          "Codebase/deployment/modules/cloudflare/docs-release/config.tf": "terraform-terragrunt-manifest-family",
+          "Codebase/deployment/modules/cloudflare/docs-release/domain.tf": "terraform-terragrunt-manifest-family",
+          "Codebase/deployment/modules/cloudflare/docs-release/providers.tf": "terraform-terragrunt-manifest-family",
+          "Codebase/deployment/modules/cloudflare/docs-release/remote-state.tf": "terraform-terragrunt-manifest-family",
+          "Codebase/deployment/modules/cloudflare/docs-release/terragrunt.hcl": "terraform-terragrunt-manifest-family",
+          "Codebase/deployment/modules/cloudflare/docs-release/variables.tf": "terraform-terragrunt-manifest-family",
+          "Codebase/deployment/modules/cloudflare/docs/.terraform.lock.hcl": "standard-toolchain-manifest-name",
+          "Codebase/deployment/modules/cloudflare/docs/config.tf": "terraform-terragrunt-manifest-family",
+          "Codebase/deployment/modules/cloudflare/docs/domain.tf": "terraform-terragrunt-manifest-family",
+          "Codebase/deployment/modules/cloudflare/docs/locals.tf": "terraform-terragrunt-manifest-family",
+          "Codebase/deployment/modules/cloudflare/docs/providers.tf": "terraform-terragrunt-manifest-family",
+          "Codebase/deployment/modules/cloudflare/docs/remote-state.tf": "terraform-terragrunt-manifest-family",
+          "Codebase/deployment/modules/cloudflare/docs/terragrunt.hcl": "terraform-terragrunt-manifest-family",
+          "Codebase/deployment/modules/cloudflare/docs/variables.tf": "terraform-terragrunt-manifest-family",
+          "Codebase/deployment/state.hcl": "terraform-terragrunt-manifest-family",
+          "Codebase/docker/docker-compose.dev.yml": "compose-extends-file",
+          "Codebase/docker/docker-compose.prod.yml": "compose-manifest-family",
+          "Codebase/docker/docker-compose.rootless.yml": "compose-manifest-family",
+          "Codebase/docker/docker-compose.yml": "compose-manifest-family",
+          "Codebase/docker/example.env": "standard-toolchain-manifest-name",
+          "Codebase/docker/hwaccel.ml.yml": "media-acceleration-manifest-family",
+          "Codebase/docker/hwaccel.transcoding.yml": "media-acceleration-manifest-family",
+          "Codebase/docs/.prettierignore": "standard-toolchain-manifest-name",
+          "Codebase/docs/.prettierrc": "standard-toolchain-manifest-name",
+          "Codebase/docs/babel.config.js": "node-build-tool-config-family",
+          "Codebase/docs/docusaurus.config.js": "node-build-tool-config-family",
+          "Codebase/docs/mise.lock": "standard-toolchain-manifest-name",
+          "Codebase/docs/mise.toml": "standard-toolchain-manifest-name",
+          "Codebase/docs/package.json": "standard-toolchain-manifest-name",
+          "Codebase/docs/tailwind.config.js": "node-build-tool-config-family",
+          "Codebase/docs/tsconfig.json": "node-build-tool-config-family",
+          "Codebase/e2e/.prettierignore": "standard-toolchain-manifest-name",
+          "Codebase/e2e/.prettierrc": "standard-toolchain-manifest-name",
+          "Codebase/e2e/docker-compose.dev.yml": "compose-manifest-family",
+          "Codebase/e2e/docker-compose.yml": "compose-manifest-family",
+          "Codebase/e2e/eslint.config.mjs": "node-build-tool-config-family",
+          "Codebase/e2e/mise.toml": "standard-toolchain-manifest-name",
+          "Codebase/e2e/package.json": "standard-toolchain-manifest-name",
+          "Codebase/e2e/playwright.config.ts": "node-build-tool-config-family",
+          "Codebase/e2e/tsconfig.json": "node-build-tool-config-family",
+          "Codebase/e2e/vitest.config.ts": "node-build-tool-config-family",
+          "Codebase/e2e/vitest.maintenance.config.ts": "node-build-tool-config-family",
+          "Codebase/machine-learning/.dockerignore": "standard-toolchain-manifest-name",
+          "Codebase/machine-learning/.python-version": "standard-toolchain-manifest-name",
+          "Codebase/machine-learning/Dockerfile": "docker-build-manifest-family",
+          "Codebase/machine-learning/ann/build.sh": "content-qualified-compiler-toolchain-script",
+          "Codebase/machine-learning/ann/export/build-converter.sh": "content-qualified-compiler-toolchain-script",
+          "Codebase/machine-learning/ann/export/download-armnn.sh": "content-qualified-version-bearing-tool-script",
+          "Codebase/machine-learning/ann/export/env.yaml": "content-qualified-conda-environment-manifest",
+          "Codebase/machine-learning/mise.lock": "standard-toolchain-manifest-name",
+          "Codebase/machine-learning/mise.toml": "standard-toolchain-manifest-name",
+          "Codebase/machine-learning/pyproject.toml": "standard-toolchain-manifest-name",
+          "Codebase/machine-learning/uv.lock": "standard-toolchain-manifest-name",
+          "Codebase/mise.lock": "standard-toolchain-manifest-name",
+          "Codebase/mise.toml": "standard-toolchain-manifest-name",
+          "Codebase/mobile/.metadata": "standard-toolchain-manifest-name",
+          "Codebase/mobile/.vscode/settings.json": "editor-toolchain-config-family",
+          "Codebase/mobile/analysis_options.yaml": "standard-toolchain-manifest-name",
+          "Codebase/mobile/android/Gemfile": "standard-toolchain-manifest-name",
+          "Codebase/mobile/android/Gemfile.lock": "standard-toolchain-manifest-name",
+          "Codebase/mobile/android/app/CMakeLists.txt": "standard-toolchain-manifest-name",
+          "Codebase/mobile/android/app/build.gradle": "gradle-build-manifest-family",
+          "Codebase/mobile/android/build.gradle": "gradle-build-manifest-family",
+          "Codebase/mobile/android/fastlane/Appfile": "standard-toolchain-manifest-name",
+          "Codebase/mobile/android/fastlane/Fastfile": "standard-toolchain-manifest-name",
+          "Codebase/mobile/android/gradle.properties": "standard-toolchain-manifest-name",
+          "Codebase/mobile/android/gradle/libs.versions.toml": "standard-toolchain-manifest-name",
+          "Codebase/mobile/android/gradle/wrapper/gradle-wrapper.properties": "standard-toolchain-manifest-name",
+          "Codebase/mobile/android/settings.gradle": "gradle-build-manifest-family",
+          "Codebase/mobile/build.yaml": "standard-toolchain-manifest-name",
+          "Codebase/mobile/dcm_global.yaml": "standard-toolchain-manifest-name",
+          "Codebase/mobile/devtools_options.yaml": "standard-toolchain-manifest-name",
+          "Codebase/mobile/flutter_native_splash.yaml": "standard-toolchain-manifest-name",
+          "Codebase/mobile/ios/Flutter/AppFrameworkInfo.plist": "standard-toolchain-manifest-name",
+          "Codebase/mobile/ios/Flutter/Debug.xcconfig": "xcode-base-configuration-reference",
+          "Codebase/mobile/ios/Flutter/Release.xcconfig": "xcode-base-configuration-reference",
+          "Codebase/mobile/ios/Gemfile": "standard-toolchain-manifest-name",
+          "Codebase/mobile/ios/Podfile": "standard-toolchain-manifest-name",
+          "Codebase/mobile/ios/Podfile.lock": "xcode-inputPaths",
+          "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj": "standard-toolchain-manifest-name",
+          "Codebase/mobile/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved": "standard-toolchain-manifest-name",
+          "Codebase/mobile/ios/Runner.xcworkspace/xcshareddata/swiftpm/Package.resolved": "standard-toolchain-manifest-name",
+          "Codebase/mobile/ios/ci_scripts/ci_post_clone.sh": "content-qualified-floating-toolchain-clone-script",
+          "Codebase/mobile/ios/fastlane/Appfile": "standard-toolchain-manifest-name",
+          "Codebase/mobile/ios/fastlane/Fastfile": "standard-toolchain-manifest-name",
+          "Codebase/mobile/makefile": "standard-toolchain-manifest-name",
+          "Codebase/mobile/mise.toml": "standard-toolchain-manifest-name",
+          "Codebase/mobile/openapi/.openapi-generator-ignore": "standard-toolchain-manifest-name",
+          "Codebase/mobile/openapi/.openapi-generator/VERSION": "openapi-generator-version-manifest",
+          "Codebase/mobile/openapi/.travis.yml": "content-qualified-travis-toolchain-manifest",
+          "Codebase/mobile/openapi/pubspec.yaml": "pubspec-local-path-dependency",
+          "Codebase/mobile/packages/ui/pubspec.lock": "standard-toolchain-manifest-name",
+          "Codebase/mobile/packages/ui/pubspec.yaml": "pubspec-local-path-dependency",
+          "Codebase/mobile/pubspec.lock": "standard-toolchain-manifest-name",
+          "Codebase/mobile/pubspec.yaml": "pubspec-local-path-dependency",
+          "Codebase/open-api/bin/generate-dart-sdk.sh": "content-qualified-version-bearing-tool-script",
+          "Codebase/open-api/openapitools.json": "standard-toolchain-manifest-name",
+          "Codebase/package.json": "standard-toolchain-manifest-name",
+          "Codebase/packages/cli/.editorconfig": "standard-toolchain-manifest-name",
+          "Codebase/packages/cli/.npmignore": "standard-toolchain-manifest-name",
+          "Codebase/packages/cli/.prettierignore": "standard-toolchain-manifest-name",
+          "Codebase/packages/cli/.prettierrc": "standard-toolchain-manifest-name",
+          "Codebase/packages/cli/Dockerfile": "docker-build-manifest-family",
+          "Codebase/packages/cli/eslint.config.mjs": "node-build-tool-config-family",
+          "Codebase/packages/cli/mise.toml": "standard-toolchain-manifest-name",
+          "Codebase/packages/cli/package.json": "standard-toolchain-manifest-name",
+          "Codebase/packages/cli/tsconfig.json": "node-build-tool-config-family",
+          "Codebase/packages/cli/vite.config.ts": "node-build-tool-config-family",
+          "Codebase/packages/e2e-auth-server/Dockerfile": "docker-build-manifest-family",
+          "Codebase/packages/e2e-auth-server/package.json": "standard-toolchain-manifest-name",
+          "Codebase/packages/plugin-core/.prettierrc": "standard-toolchain-manifest-name",
+          "Codebase/packages/plugin-core/mise.toml": "standard-toolchain-manifest-name",
+          "Codebase/packages/plugin-core/package.json": "standard-toolchain-manifest-name",
+          "Codebase/packages/plugin-core/tsconfig.json": "node-build-tool-config-family",
+          "Codebase/packages/plugin-sdk/package.json": "standard-toolchain-manifest-name",
+          "Codebase/packages/plugin-sdk/tsconfig.json": "node-build-tool-config-family",
+          "Codebase/packages/sdk/.npmignore": "standard-toolchain-manifest-name",
+          "Codebase/packages/sdk/package.json": "standard-toolchain-manifest-name",
+          "Codebase/packages/sdk/tsconfig.json": "node-build-tool-config-family",
+          "Codebase/pnpm-lock.yaml": "standard-toolchain-manifest-name",
+          "Codebase/pnpm-workspace.yaml": "standard-toolchain-manifest-name",
+          "Codebase/renovate.json": "standard-toolchain-manifest-name",
+          "Codebase/server/.npmignore": "standard-toolchain-manifest-name",
+          "Codebase/server/.prettierignore": "standard-toolchain-manifest-name",
+          "Codebase/server/.prettierrc": "standard-toolchain-manifest-name",
+          "Codebase/server/Dockerfile": "docker-build-manifest-family",
+          "Codebase/server/Dockerfile.dev": "docker-build-manifest-family",
+          "Codebase/server/eslint.config.mjs": "node-build-tool-config-family",
+          "Codebase/server/mise.toml": "standard-toolchain-manifest-name",
+          "Codebase/server/package.json": "standard-toolchain-manifest-name",
+          "Codebase/server/test/vitest.config.medium.mjs": "node-build-tool-config-family",
+          "Codebase/server/test/vitest.config.mjs": "node-build-tool-config-family",
+          "Codebase/server/tsconfig.build.json": "node-build-tool-config-family",
+          "Codebase/server/tsconfig.json": "tsconfig-extends-relative",
+          "Codebase/web/.browserslistrc": "standard-toolchain-manifest-name",
+          "Codebase/web/.dockerignore": "standard-toolchain-manifest-name",
+          "Codebase/web/.npmrc": "standard-toolchain-manifest-name",
+          "Codebase/web/.prettierignore": "standard-toolchain-manifest-name",
+          "Codebase/web/.prettierrc": "standard-toolchain-manifest-name",
+          "Codebase/web/eslint.config.js": "node-build-tool-config-family",
+          "Codebase/web/mise.toml": "standard-toolchain-manifest-name",
+          "Codebase/web/package.json": "standard-toolchain-manifest-name",
+          "Codebase/web/svelte.config.js": "node-build-tool-config-family",
+          "Codebase/web/tsconfig.json": "node-build-tool-config-family",
+          "Codebase/web/vite.config.ts": "node-build-tool-config-family"
+        },
+        "referencedManifestPaths": [
+          {
+            "source": "Codebase/.devcontainer/devcontainer.json",
+            "reference": "../docker/docker-compose.dev.yml",
+            "resolvedPath": "Codebase/docker/docker-compose.dev.yml",
+            "mechanism": "referenced-by-devcontainer-dockerComposeFile",
+            "referenceKind": "path",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/.devcontainer/devcontainer.json",
+            "reference": "./server/container-compose-overrides.yml",
+            "resolvedPath": "Codebase/.devcontainer/server/container-compose-overrides.yml",
+            "mechanism": "referenced-by-devcontainer-dockerComposeFile",
+            "referenceKind": "path",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/.devcontainer/mobile/devcontainer.json",
+            "reference": "../../docker/docker-compose.dev.yml",
+            "resolvedPath": "Codebase/docker/docker-compose.dev.yml",
+            "mechanism": "referenced-by-devcontainer-dockerComposeFile",
+            "referenceKind": "path",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/.devcontainer/mobile/devcontainer.json",
+            "reference": "./container-compose-overrides.yml",
+            "resolvedPath": "Codebase/.devcontainer/mobile/container-compose-overrides.yml",
+            "mechanism": "referenced-by-devcontainer-dockerComposeFile",
+            "referenceKind": "path",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/renovate.json",
+            "reference": "local>immich-app/.github:renovate-config",
+            "resolvedPath": "Codebase/${RENOVATE_REMOTE}/immich-app/.github/renovate-config.json",
+            "mechanism": "renovate-remote-config",
+            "referenceKind": "remote",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/docs/tsconfig.json",
+            "reference": "@docusaurus/tsconfig",
+            "resolvedPath": "Codebase/docs/node_modules/@docusaurus/tsconfig/package.json",
+            "mechanism": "tsconfig-extends-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/server/tsconfig.build.json",
+            "reference": "./tsconfig.json",
+            "resolvedPath": "Codebase/server/tsconfig.json",
+            "mechanism": "tsconfig-extends-relative",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/web/tsconfig.json",
+            "reference": "./.svelte-kit/tsconfig.json",
+            "resolvedPath": "Codebase/web/.svelte-kit/tsconfig.json",
+            "mechanism": "tsconfig-extends-relative",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/e2e/docker-compose.dev.yml",
+            "reference": "../docker/docker-compose.dev.yml",
+            "resolvedPath": "Codebase/docker/docker-compose.dev.yml",
+            "mechanism": "compose-extends-file",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/e2e/docker-compose.dev.yml",
+            "reference": "../docker/docker-compose.dev.yml",
+            "resolvedPath": "Codebase/docker/docker-compose.dev.yml",
+            "mechanism": "compose-extends-file",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/e2e/docker-compose.dev.yml",
+            "reference": "../docker/docker-compose.dev.yml",
+            "resolvedPath": "Codebase/docker/docker-compose.dev.yml",
+            "mechanism": "compose-extends-file",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/e2e/docker-compose.dev.yml",
+            "reference": "../docker/docker-compose.dev.yml",
+            "resolvedPath": "Codebase/docker/docker-compose.dev.yml",
+            "mechanism": "compose-extends-file",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/e2e/docker-compose.dev.yml",
+            "reference": "../docker/docker-compose.dev.yml",
+            "resolvedPath": "Codebase/docker/docker-compose.dev.yml",
+            "mechanism": "compose-extends-file",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/e2e/docker-compose.dev.yml",
+            "reference": "../docker/docker-compose.dev.yml",
+            "resolvedPath": "Codebase/docker/docker-compose.dev.yml",
+            "mechanism": "compose-extends-file",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/mobile/openapi/pubspec.yaml",
+            "reference": "../",
+            "resolvedPath": "Codebase/mobile/pubspec.yaml",
+            "mechanism": "pubspec-local-path-dependency",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/mobile/pubspec.yaml",
+            "reference": "./packages/ui",
+            "resolvedPath": "Codebase/mobile/packages/ui/pubspec.yaml",
+            "mechanism": "pubspec-local-path-dependency",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/mobile/pubspec.yaml",
+            "reference": "openapi",
+            "resolvedPath": "Codebase/mobile/openapi/pubspec.yaml",
+            "mechanism": "pubspec-local-path-dependency",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/mobile/analysis_options.yaml",
+            "reference": "package:flutter_lints/flutter.yaml",
+            "resolvedPath": "Codebase/mobile/.dart_tool/package_config.json",
+            "mechanism": "dart-analysis-package-include",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/docs/babel.config.js",
+            "reference": "@docusaurus/core/lib/babel/preset",
+            "resolvedPath": "Codebase/docs/node_modules/@docusaurus/core/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/docs/docusaurus.config.js",
+            "reference": "autoprefixer",
+            "resolvedPath": "Codebase/docs/node_modules/autoprefixer/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/docs/docusaurus.config.js",
+            "reference": "docusaurus-lunr-search",
+            "resolvedPath": "Codebase/docs/node_modules/docusaurus-lunr-search/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/docs/docusaurus.config.js",
+            "reference": "prism-react-renderer",
+            "resolvedPath": "Codebase/docs/node_modules/prism-react-renderer/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/docs/docusaurus.config.js",
+            "reference": "tailwindcss",
+            "resolvedPath": "Codebase/docs/node_modules/tailwindcss/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/e2e/eslint.config.mjs",
+            "reference": "@eslint/js",
+            "resolvedPath": "Codebase/e2e/node_modules/@eslint/js/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/e2e/eslint.config.mjs",
+            "reference": "eslint-plugin-prettier/recommended",
+            "resolvedPath": "Codebase/e2e/node_modules/eslint-plugin-prettier/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/e2e/eslint.config.mjs",
+            "reference": "eslint-plugin-unicorn",
+            "resolvedPath": "Codebase/e2e/node_modules/eslint-plugin-unicorn/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/e2e/eslint.config.mjs",
+            "reference": "globals",
+            "resolvedPath": "Codebase/e2e/node_modules/globals/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/e2e/eslint.config.mjs",
+            "reference": "typescript-eslint",
+            "resolvedPath": "Codebase/e2e/node_modules/typescript-eslint/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/e2e/playwright.config.ts",
+            "reference": "@playwright/test",
+            "resolvedPath": "Codebase/e2e/node_modules/@playwright/test/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/e2e/playwright.config.ts",
+            "reference": "dotenv",
+            "resolvedPath": "Codebase/e2e/node_modules/dotenv/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/e2e/vitest.config.ts",
+            "reference": "vite-tsconfig-paths",
+            "resolvedPath": "Codebase/e2e/node_modules/vite-tsconfig-paths/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/e2e/vitest.config.ts",
+            "reference": "vitest/config",
+            "resolvedPath": "Codebase/e2e/node_modules/vitest/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/e2e/vitest.maintenance.config.ts",
+            "reference": "vite-tsconfig-paths",
+            "resolvedPath": "Codebase/e2e/node_modules/vite-tsconfig-paths/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/e2e/vitest.maintenance.config.ts",
+            "reference": "vitest/config",
+            "resolvedPath": "Codebase/e2e/node_modules/vitest/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/packages/cli/eslint.config.mjs",
+            "reference": "@eslint/js",
+            "resolvedPath": "Codebase/packages/cli/node_modules/@eslint/js/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/packages/cli/eslint.config.mjs",
+            "reference": "eslint-plugin-prettier/recommended",
+            "resolvedPath": "Codebase/packages/cli/node_modules/eslint-plugin-prettier/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/packages/cli/eslint.config.mjs",
+            "reference": "eslint-plugin-unicorn",
+            "resolvedPath": "Codebase/packages/cli/node_modules/eslint-plugin-unicorn/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/packages/cli/eslint.config.mjs",
+            "reference": "globals",
+            "resolvedPath": "Codebase/packages/cli/node_modules/globals/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/packages/cli/eslint.config.mjs",
+            "reference": "typescript-eslint",
+            "resolvedPath": "Codebase/packages/cli/node_modules/typescript-eslint/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/packages/cli/vite.config.ts",
+            "reference": "vite",
+            "resolvedPath": "Codebase/packages/cli/node_modules/vite/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/server/eslint.config.mjs",
+            "reference": "@eslint/js",
+            "resolvedPath": "Codebase/server/node_modules/@eslint/js/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/server/eslint.config.mjs",
+            "reference": "eslint-plugin-prettier/recommended",
+            "resolvedPath": "Codebase/server/node_modules/eslint-plugin-prettier/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/server/eslint.config.mjs",
+            "reference": "eslint-plugin-unicorn",
+            "resolvedPath": "Codebase/server/node_modules/eslint-plugin-unicorn/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/server/eslint.config.mjs",
+            "reference": "globals",
+            "resolvedPath": "Codebase/server/node_modules/globals/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/server/eslint.config.mjs",
+            "reference": "typescript-eslint",
+            "resolvedPath": "Codebase/server/node_modules/typescript-eslint/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/server/test/vitest.config.medium.mjs",
+            "reference": "unplugin-swc",
+            "resolvedPath": "Codebase/server/test/node_modules/unplugin-swc/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/server/test/vitest.config.medium.mjs",
+            "reference": "vite-tsconfig-paths",
+            "resolvedPath": "Codebase/server/test/node_modules/vite-tsconfig-paths/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/server/test/vitest.config.medium.mjs",
+            "reference": "vitest/config",
+            "resolvedPath": "Codebase/server/test/node_modules/vitest/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/server/test/vitest.config.mjs",
+            "reference": "unplugin-swc",
+            "resolvedPath": "Codebase/server/test/node_modules/unplugin-swc/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/server/test/vitest.config.mjs",
+            "reference": "vite-tsconfig-paths",
+            "resolvedPath": "Codebase/server/test/node_modules/vite-tsconfig-paths/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/server/test/vitest.config.mjs",
+            "reference": "vitest/config",
+            "resolvedPath": "Codebase/server/test/node_modules/vitest/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/eslint.config.js",
+            "reference": "@eslint/js",
+            "resolvedPath": "Codebase/web/node_modules/@eslint/js/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/eslint.config.js",
+            "reference": "@koddsson/eslint-plugin-tscompat",
+            "resolvedPath": "Codebase/web/node_modules/@koddsson/eslint-plugin-tscompat/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/eslint.config.js",
+            "reference": "eslint-config-prettier",
+            "resolvedPath": "Codebase/web/node_modules/eslint-config-prettier/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/eslint.config.js",
+            "reference": "eslint-plugin-better-tailwindcss",
+            "resolvedPath": "Codebase/web/node_modules/eslint-plugin-better-tailwindcss/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/eslint.config.js",
+            "reference": "eslint-plugin-compat",
+            "resolvedPath": "Codebase/web/node_modules/eslint-plugin-compat/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/eslint.config.js",
+            "reference": "eslint-plugin-svelte",
+            "resolvedPath": "Codebase/web/node_modules/eslint-plugin-svelte/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/eslint.config.js",
+            "reference": "eslint-plugin-unicorn",
+            "resolvedPath": "Codebase/web/node_modules/eslint-plugin-unicorn/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/eslint.config.js",
+            "reference": "globals",
+            "resolvedPath": "Codebase/web/node_modules/globals/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/eslint.config.js",
+            "reference": "svelte-eslint-parser",
+            "resolvedPath": "Codebase/web/node_modules/svelte-eslint-parser/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/eslint.config.js",
+            "reference": "typescript-eslint",
+            "resolvedPath": "Codebase/web/node_modules/typescript-eslint/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/svelte.config.js",
+            "reference": "@sveltejs/adapter-static",
+            "resolvedPath": "Codebase/web/node_modules/@sveltejs/adapter-static/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/svelte.config.js",
+            "reference": "@sveltejs/vite-plugin-svelte",
+            "resolvedPath": "Codebase/web/node_modules/@sveltejs/vite-plugin-svelte/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/svelte.config.js",
+            "reference": "dotenv",
+            "resolvedPath": "Codebase/web/node_modules/dotenv/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/vite.config.ts",
+            "reference": "@sveltejs/enhanced-img",
+            "resolvedPath": "Codebase/web/node_modules/@sveltejs/enhanced-img/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/vite.config.ts",
+            "reference": "@sveltejs/kit/vite",
+            "resolvedPath": "Codebase/web/node_modules/@sveltejs/kit/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/vite.config.ts",
+            "reference": "@tailwindcss/vite",
+            "resolvedPath": "Codebase/web/node_modules/@tailwindcss/vite/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/vite.config.ts",
+            "reference": "@testing-library/svelte/vite",
+            "resolvedPath": "Codebase/web/node_modules/@testing-library/svelte/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/vite.config.ts",
+            "reference": "rollup-plugin-visualizer",
+            "resolvedPath": "Codebase/web/node_modules/rollup-plugin-visualizer/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/vite.config.ts",
+            "reference": "vite",
+            "resolvedPath": "Codebase/web/node_modules/vite/package.json",
+            "mechanism": "node-tool-config-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/.prettierrc",
+            "reference": "prettier-plugin-sort-json",
+            "resolvedPath": "Codebase/node_modules/prettier-plugin-sort-json/package.json",
+            "mechanism": "prettier-plugin-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/e2e/.prettierrc",
+            "reference": "prettier-plugin-organize-imports",
+            "resolvedPath": "Codebase/e2e/node_modules/prettier-plugin-organize-imports/package.json",
+            "mechanism": "prettier-plugin-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/packages/cli/.prettierrc",
+            "reference": "prettier-plugin-organize-imports",
+            "resolvedPath": "Codebase/packages/cli/node_modules/prettier-plugin-organize-imports/package.json",
+            "mechanism": "prettier-plugin-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/server/.prettierrc",
+            "reference": "prettier-plugin-organize-imports",
+            "resolvedPath": "Codebase/server/node_modules/prettier-plugin-organize-imports/package.json",
+            "mechanism": "prettier-plugin-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/.prettierrc",
+            "reference": "@trivago/prettier-plugin-sort-imports",
+            "resolvedPath": "Codebase/web/node_modules/@trivago/prettier-plugin-sort-imports/package.json",
+            "mechanism": "prettier-plugin-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/.prettierrc",
+            "reference": "prettier-plugin-svelte",
+            "resolvedPath": "Codebase/web/node_modules/prettier-plugin-svelte/package.json",
+            "mechanism": "prettier-plugin-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/web/.prettierrc",
+            "reference": "prettier-plugin-sort-json",
+            "resolvedPath": "Codebase/web/node_modules/prettier-plugin-sort-json/package.json",
+            "mechanism": "prettier-plugin-package",
+            "referenceKind": "package",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Flutter/Debug.xcconfig",
+            "reference": "Generated.xcconfig",
+            "resolvedPath": "Codebase/mobile/ios/Flutter/Generated.xcconfig",
+            "mechanism": "mandatory-xcconfig-include",
+            "referenceKind": "path",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Flutter/Release.xcconfig",
+            "reference": "Generated.xcconfig",
+            "resolvedPath": "Codebase/mobile/ios/Flutter/Generated.xcconfig",
+            "mechanism": "mandatory-xcconfig-include",
+            "referenceKind": "path",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Podfile",
+            "reference": "Flutter/Generated.xcconfig",
+            "resolvedPath": "Codebase/mobile/ios/Flutter/Generated.xcconfig",
+            "mechanism": "podfile-required-generated-xcconfig",
+            "referenceKind": "path",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/android/settings.gradle",
+            "reference": "local.properties",
+            "resolvedPath": "Codebase/mobile/android/local.properties",
+            "mechanism": "gradle-required-local-properties",
+            "referenceKind": "path",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/android/settings.gradle",
+            "reference": "$flutterSdkPath/packages/flutter_tools/gradle",
+            "resolvedPath": "Codebase/mobile/android/${flutterSdkPath}/packages/flutter_tools/gradle",
+            "mechanism": "gradle-include-build",
+            "referenceKind": "variable",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage",
+            "resolvedPath": "Codebase/mobile/ios/Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage/Package.swift",
+            "mechanism": "xcode-local-swift-package-reference",
+            "referenceKind": "path",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "Target Support Files/Pods-ShareExtension/Pods-ShareExtension.release.xcconfig",
+            "resolvedPath": "Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.release.xcconfig",
+            "mechanism": "xcode-base-configuration-reference",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "Flutter/Release.xcconfig",
+            "resolvedPath": "Codebase/mobile/ios/Flutter/Release.xcconfig",
+            "mechanism": "xcode-base-configuration-reference",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "Target Support Files/Pods-ShareExtension/Pods-ShareExtension.debug.xcconfig",
+            "resolvedPath": "Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.debug.xcconfig",
+            "mechanism": "xcode-base-configuration-reference",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "Flutter/Debug.xcconfig",
+            "resolvedPath": "Codebase/mobile/ios/Flutter/Debug.xcconfig",
+            "mechanism": "xcode-base-configuration-reference",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "Target Support Files/Pods-ShareExtension/Pods-ShareExtension.profile.xcconfig",
+            "resolvedPath": "Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.profile.xcconfig",
+            "mechanism": "xcode-base-configuration-reference",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
+            "resolvedPath": "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
+            "mechanism": "xcode-inputFileListPaths",
+            "referenceKind": "variable",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+            "resolvedPath": "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+            "mechanism": "xcode-inputFileListPaths",
+            "referenceKind": "variable",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+            "resolvedPath": "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+            "mechanism": "xcode-outputFileListPaths",
+            "referenceKind": "variable",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+            "resolvedPath": "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+            "mechanism": "xcode-outputFileListPaths",
+            "referenceKind": "variable",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+            "resolvedPath": "Codebase/mobile/ios/Podfile.lock",
+            "mechanism": "xcode-inputPaths",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "${PODS_ROOT}/Manifest.lock",
+            "resolvedPath": "Codebase/mobile/ios/Pods/Manifest.lock",
+            "mechanism": "xcode-inputPaths",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+            "resolvedPath": "Codebase/mobile/ios/Podfile.lock",
+            "mechanism": "xcode-inputPaths",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "AVAILABLE",
+            "reason": null
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "${PODS_ROOT}/Manifest.lock",
+            "resolvedPath": "Codebase/mobile/ios/Pods/Manifest.lock",
+            "mechanism": "xcode-inputPaths",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh",
+            "resolvedPath": "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh",
+            "mechanism": "xcode-pods-shell-script",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh",
+            "resolvedPath": "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources.sh",
+            "mechanism": "xcode-pods-shell-script",
+            "referenceKind": "relative",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          },
+          {
+            "source": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+            "reference": "${FLUTTER_ROOT}/packages/flutter_tools/bin/xcode_backend.sh",
+            "resolvedPath": "Codebase/mobile/ios/${FLUTTER_ROOT}/packages/flutter_tools/bin/xcode_backend.sh",
+            "mechanism": "xcode-flutter-root-shell-script",
+            "referenceKind": "variable",
+            "required": true,
+            "status": "REVIEW_REQUIRED",
+            "reason": "REFERENCED_MANIFEST_UNAVAILABLE"
+          }
+        ],
+        "unavailableReferencedPaths": [
+          "Codebase/${RENOVATE_REMOTE}/immich-app/.github/renovate-config.json",
+          "Codebase/docs/node_modules/@docusaurus/core/package.json",
+          "Codebase/docs/node_modules/@docusaurus/tsconfig/package.json",
+          "Codebase/docs/node_modules/autoprefixer/package.json",
+          "Codebase/docs/node_modules/docusaurus-lunr-search/package.json",
+          "Codebase/docs/node_modules/prism-react-renderer/package.json",
+          "Codebase/docs/node_modules/tailwindcss/package.json",
+          "Codebase/e2e/node_modules/@eslint/js/package.json",
+          "Codebase/e2e/node_modules/@playwright/test/package.json",
+          "Codebase/e2e/node_modules/dotenv/package.json",
+          "Codebase/e2e/node_modules/eslint-plugin-prettier/package.json",
+          "Codebase/e2e/node_modules/eslint-plugin-unicorn/package.json",
+          "Codebase/e2e/node_modules/globals/package.json",
+          "Codebase/e2e/node_modules/prettier-plugin-organize-imports/package.json",
+          "Codebase/e2e/node_modules/typescript-eslint/package.json",
+          "Codebase/e2e/node_modules/vite-tsconfig-paths/package.json",
+          "Codebase/e2e/node_modules/vitest/package.json",
+          "Codebase/mobile/.dart_tool/package_config.json",
+          "Codebase/mobile/android/${flutterSdkPath}/packages/flutter_tools/gradle",
+          "Codebase/mobile/android/local.properties",
+          "Codebase/mobile/ios/${FLUTTER_ROOT}/packages/flutter_tools/bin/xcode_backend.sh",
+          "Codebase/mobile/ios/Flutter/Generated.xcconfig",
+          "Codebase/mobile/ios/Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage/Package.swift",
+          "Codebase/mobile/ios/Pods/Manifest.lock",
+          "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+          "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+          "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh",
+          "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
+          "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+          "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources.sh",
+          "Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.debug.xcconfig",
+          "Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.profile.xcconfig",
+          "Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.release.xcconfig",
+          "Codebase/node_modules/prettier-plugin-sort-json/package.json",
+          "Codebase/packages/cli/node_modules/@eslint/js/package.json",
+          "Codebase/packages/cli/node_modules/eslint-plugin-prettier/package.json",
+          "Codebase/packages/cli/node_modules/eslint-plugin-unicorn/package.json",
+          "Codebase/packages/cli/node_modules/globals/package.json",
+          "Codebase/packages/cli/node_modules/prettier-plugin-organize-imports/package.json",
+          "Codebase/packages/cli/node_modules/typescript-eslint/package.json",
+          "Codebase/packages/cli/node_modules/vite/package.json",
+          "Codebase/server/node_modules/@eslint/js/package.json",
+          "Codebase/server/node_modules/eslint-plugin-prettier/package.json",
+          "Codebase/server/node_modules/eslint-plugin-unicorn/package.json",
+          "Codebase/server/node_modules/globals/package.json",
+          "Codebase/server/node_modules/prettier-plugin-organize-imports/package.json",
+          "Codebase/server/node_modules/typescript-eslint/package.json",
+          "Codebase/server/test/node_modules/unplugin-swc/package.json",
+          "Codebase/server/test/node_modules/vite-tsconfig-paths/package.json",
+          "Codebase/server/test/node_modules/vitest/package.json",
+          "Codebase/web/.svelte-kit/tsconfig.json",
+          "Codebase/web/node_modules/@eslint/js/package.json",
+          "Codebase/web/node_modules/@koddsson/eslint-plugin-tscompat/package.json",
+          "Codebase/web/node_modules/@sveltejs/adapter-static/package.json",
+          "Codebase/web/node_modules/@sveltejs/enhanced-img/package.json",
+          "Codebase/web/node_modules/@sveltejs/kit/package.json",
+          "Codebase/web/node_modules/@sveltejs/vite-plugin-svelte/package.json",
+          "Codebase/web/node_modules/@tailwindcss/vite/package.json",
+          "Codebase/web/node_modules/@testing-library/svelte/package.json",
+          "Codebase/web/node_modules/@trivago/prettier-plugin-sort-imports/package.json",
+          "Codebase/web/node_modules/dotenv/package.json",
+          "Codebase/web/node_modules/eslint-config-prettier/package.json",
+          "Codebase/web/node_modules/eslint-plugin-better-tailwindcss/package.json",
+          "Codebase/web/node_modules/eslint-plugin-compat/package.json",
+          "Codebase/web/node_modules/eslint-plugin-svelte/package.json",
+          "Codebase/web/node_modules/eslint-plugin-unicorn/package.json",
+          "Codebase/web/node_modules/globals/package.json",
+          "Codebase/web/node_modules/prettier-plugin-sort-json/package.json",
+          "Codebase/web/node_modules/prettier-plugin-svelte/package.json",
+          "Codebase/web/node_modules/rollup-plugin-visualizer/package.json",
+          "Codebase/web/node_modules/svelte-eslint-parser/package.json",
+          "Codebase/web/node_modules/typescript-eslint/package.json",
+          "Codebase/web/node_modules/vite/package.json"
+        ],
+        "missingExpectedUnavailableReferences": [],
+        "unreportedUnavailableReferences": [],
+        "missing": [],
+        "status": "PASS"
+      },
+      "gitSubmoduleRevisions": {
+        "records": [
+          {
+            "name": "e2e/test-assets",
+            "path": "Codebase/e2e/test-assets",
+            "url": "https://github.com/immich-app/test-assets",
+            "revision": null,
+            "status": "REVIEW_REQUIRED",
+            "reason": "SUBMODULE_REVISION_UNAVAILABLE",
+            "inspectionCommand": "git ls-files --stage -- Codebase/e2e/test-assets",
+            "exitCode": 0
+          }
+        ],
+        "unreportedUnavailableRevisions": [],
+        "status": "PASS"
+      },
+      "unavailableReferenceCategories": {
+        "representativeExpected": {
+          "Codebase/e2e/node_modules/vitest/package.json": [
+            "node",
+            "package-manager"
+          ],
+          "Codebase/node_modules/prettier-plugin-sort-json/package.json": [
+            "node",
+            "package-manager"
+          ],
+          "Codebase/${RENOVATE_REMOTE}/immich-app/.github/renovate-config.json": [
+            "package-manager"
+          ],
+          "Codebase/mobile/.dart_tool/package_config.json": [
+            "package-manager",
+            "platform"
+          ],
+          "Codebase/mobile/ios/Pods/Manifest.lock": [
+            "package-manager",
+            "platform"
+          ]
+        },
+        "mismatches": {},
+        "status": "PASS"
+      },
+      "expectedManifestPaths": {
+        "missing": [],
+        "status": "PASS"
+      },
+      "expectedVersionDeclarations": {
+        "missing": [],
+        "status": "PASS"
+      },
+      "condaEnvironment": {
+        "manifestPath": "Codebase/machine-learning/ann/export/env.yaml",
+        "hostProbe": {
+          "category": "python",
+          "tool": "conda",
+          "command": "conda --version",
+          "executable": null,
+          "status": "REVIEW_REQUIRED",
+          "reason": "HOST_TOOL_UNAVAILABLE",
+          "exitCode": null,
+          "output": ""
+        },
+        "unavailableProbeUnreported": false,
+        "status": "PASS"
+      },
+      "dcmRangeCompatibility": {
+        "constraints": [
+          ">=1.29.0 <=1.37.0"
+        ],
+        "pins": [
+          "1.37.0"
+        ],
+        "incompatible": [],
+        "status": "PASS"
+      },
+      "flutterRangeCompatibility": {
+        "constraints": [
+          "3.44.0",
+          ">=3.18.0-18.0.pre.54"
+        ],
+        "pins": [
+          "3.35.7",
+          "3.41.9-stable",
+          "3.44.0"
+        ],
+        "incompatible": [
+          {
+            "pin": "3.41.9-stable",
+            "constraint": "3.44.0"
+          },
+          {
+            "pin": "3.35.7",
+            "constraint": "3.44.0"
+          }
+        ],
+        "verdict": "MIXED",
+        "status": "PASS"
+      },
+      "npmCaretRangeCompatibility": {
+        "alignedCases": {
+          "dotenv": [
+            "^17",
+            "^17.2.3"
+          ],
+          "prettier-plugin-sort-json": [
+            "^4.1.1",
+            "^4.2"
+          ],
+          "typescript-eslint": [
+            "^8.28",
+            "^8.45",
+            "^8.58"
+          ],
+          "vite-tsconfig-paths": [
+            "^6",
+            "^6.1.1"
+          ]
+        },
+        "alignedResults": {
+          "dotenv": true,
+          "prettier-plugin-sort-json": true,
+          "typescript-eslint": true,
+          "vite-tsconfig-paths": true
+        },
+        "disjointControl": {
+          "constraints": [
+            "^3",
+            "^4"
+          ],
+          "overlap": false
+        },
+        "status": "PASS"
+      },
+      "contextScopedLanguageTargets": {
+        "typescriptTargetsByPackage": {
+          "e2e": "es2023",
+          "packages/cli": "es2023",
+          "packages/plugin-core": "es2020",
+          "packages/plugin-sdk": "esnext",
+          "packages/sdk": "esnext",
+          "server": "es2022",
+          "web": "es2022"
+        },
+        "distinctTypescriptTargets": [
+          "es2020",
+          "es2022",
+          "es2023",
+          "esnext"
+        ],
+        "vitestConstraintsByPackage": {
+          "e2e": "^4.0.0",
+          "server": "^3.0.0"
+        },
+        "falseRepositoryWideFindings": [],
+        "status": "PASS"
+      },
+      "floatingComposeImages": {
+        "cases": [
+          {
+            "family": "toolchain",
+            "source": "Codebase/.devcontainer/mobile/container-compose-overrides.yml",
+            "key": "compose-image:immich-server-dev",
+            "value": "immich-server-dev:latest",
+            "kind": "reference",
+            "categories": [
+              "platform"
+            ]
+          },
+          {
+            "family": "toolchain",
+            "source": "Codebase/.devcontainer/server/container-compose-overrides.yml",
+            "key": "compose-image:immich-server-dev",
+            "value": "immich-server-dev:latest",
+            "kind": "reference",
+            "categories": [
+              "platform"
+            ]
+          },
+          {
+            "family": "toolchain",
+            "source": "Codebase/docker/docker-compose.dev.yml",
+            "key": "compose-image:immich-machine-learning-dev",
+            "value": "immich-machine-learning-dev:latest",
+            "kind": "reference",
+            "categories": [
+              "platform"
+            ]
+          },
+          {
+            "family": "toolchain",
+            "source": "Codebase/docker/docker-compose.dev.yml",
+            "key": "compose-image:immich-server-dev",
+            "value": "immich-server-dev:latest",
+            "kind": "reference",
+            "categories": [
+              "platform"
+            ]
+          },
+          {
+            "family": "toolchain",
+            "source": "Codebase/docker/docker-compose.dev.yml",
+            "key": "compose-image:immich-web-dev",
+            "value": "immich-web-dev:latest",
+            "kind": "reference",
+            "categories": [
+              "platform"
+            ]
+          },
+          {
+            "family": "toolchain",
+            "source": "Codebase/docker/docker-compose.prod.yml",
+            "key": "compose-image:immich-machine-learning",
+            "value": "immich-machine-learning:latest",
+            "kind": "reference",
+            "categories": [
+              "platform"
+            ]
+          },
+          {
+            "family": "toolchain",
+            "source": "Codebase/docker/docker-compose.prod.yml",
+            "key": "compose-image:immich-server",
+            "value": "immich-server:latest",
+            "kind": "reference",
+            "categories": [
+              "platform"
+            ]
+          },
+          {
+            "family": "toolchain",
+            "source": "Codebase/docker/docker-compose.rootless.yml",
+            "key": "compose-image:ghcr.io/immich-app/immich-machine-learning",
+            "value": "ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}",
+            "kind": "reference",
+            "categories": [
+              "platform"
+            ]
+          },
+          {
+            "family": "toolchain",
+            "source": "Codebase/docker/docker-compose.rootless.yml",
+            "key": "compose-image:ghcr.io/immich-app/immich-server",
+            "value": "ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}",
+            "kind": "reference",
+            "categories": [
+              "platform"
+            ]
+          },
+          {
+            "family": "toolchain",
+            "source": "Codebase/docker/docker-compose.yml",
+            "key": "compose-image:ghcr.io/immich-app/immich-machine-learning",
+            "value": "ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}",
+            "kind": "reference",
+            "categories": [
+              "platform"
+            ]
+          },
+          {
+            "family": "toolchain",
+            "source": "Codebase/docker/docker-compose.yml",
+            "key": "compose-image:ghcr.io/immich-app/immich-server",
+            "value": "ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}",
+            "kind": "reference",
+            "categories": [
+              "platform"
+            ]
+          },
+          {
+            "family": "toolchain",
+            "source": "Codebase/e2e/docker-compose.yml",
+            "key": "compose-image:immich-server",
+            "value": "immich-server:latest",
+            "kind": "reference",
+            "categories": [
+              "platform"
+            ]
+          }
+        ],
+        "misclassified": [],
+        "withoutReviewRequired": [],
+        "supersededPredecessorRowsRemoved": 22,
+        "survivingSupersededPredecessorRows": [],
+        "status": "PASS"
+      },
+      "internalDockerStageAliases": {
+        "predecessorRowsRemoved": [
+          {
+            "family": "toolchain",
+            "source": "Codebase/server/Dockerfile.dev",
+            "key": "FROM dev-container-server (stage dev-container-mobile)",
+            "value": "dev-container-server",
+            "kind": "concrete_unpinned"
+          }
+        ],
+        "survivingRows": [],
+        "status": "PASS"
+      },
+      "categoryMembershipFromContent": {
+        "deploymentMiseCategories": [
+          "platform"
+        ],
+        "pluginCoreMiseCategories": [
+          "package-manager"
+        ]
+      }
+    },
+    "unreportedReviewItems": []
+  },
+  "negative": {
+    "fixtures": [
+      {
+        "fixture": "malformed-prerequisite-json",
+        "rejected": true,
+        "typedError": "InventoryInputError",
+        "message": "probe.json: invalid JSON: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)",
+        "partialCommit": false,
+        "authoritativeStatePreserved": true
+      },
+      {
+        "fixture": "non-allowlisted-command",
+        "rejected": true,
+        "typedError": "CommandProbeRejected",
+        "message": "non-allowlisted probe: not-declared",
+        "partialCommit": false,
+        "authoritativeStatePreserved": true
+      },
+      {
+        "fixture": "parent-traversal-write",
+        "rejected": true,
+        "typedError": "ValueError",
+        "message": "parent traversal rejected: C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\graphify\\13-implementation\\WP-I0-005\\..\\escape.txt",
+        "partialCommit": false,
+        "authoritativeStatePreserved": true
+      },
+      {
+        "fixture": "absolute-write-escape",
+        "rejected": true,
+        "typedError": "ValueError",
+        "message": "write outside Graphify rejected: C:\\escape.txt",
+        "partialCommit": false,
+        "authoritativeStatePreserved": true
+      },
+      {
+        "fixture": "omitted-manifest-detected",
+        "rejected": true,
+        "typedError": "ManifestCoverageError",
+        "message": "required manifest omitted: Codebase/missing-toolchain.manifest",
+        "partialCommit": false,
+        "authoritativeStatePreserved": true
+      }
+    ],
+    "status": "PASS"
+  },
+  "regression": {
+    "prerequisiteSummary": "PASS",
+    "prerequisiteReviewComplete": true,
+    "manifestExtractionErrors": [],
+    "manifestFingerprintBefore": "54974a809e9b641dcfa12c692617232c7b9d82b3926d46f1d321e715f5c39377",
+    "manifestFingerprintAfter": "54974a809e9b641dcfa12c692617232c7b9d82b3926d46f1d321e715f5c39377",
+    "outsideGraphifyBefore": "",
+    "outsideGraphifyAfter": "",
+    "status": "PASS"
+  },
+  "commandAudit": {
+    "networkCommands": [],
+    "installCommands": [],
+    "buildOrProductTestCommands": [],
+    "hostVersionProbes": [
+      "wasm-opt --version",
+      "bun --version",
+      "bundle --version",
+      "cargo --version",
+      "ccache --version",
+      "cmake --version",
+      "conda --version",
+      "corepack --version",
+      "dart --version",
+      "dcm --version",
+      "docker --version",
+      "extism --version",
+      "fastlane --version",
+      "ffmpeg -version",
+      "ffprobe -version",
+      "flutter --version",
+      "g++ --version",
+      "git --version",
+      "gradle --version",
+      "java -version",
+      "mise --version",
+      "ninja --version",
+      "node --version",
+      "npm --version",
+      "oazapfts --version",
+      "openapi-generator-cli version",
+      "pip --version",
+      "pnpm --version",
+      "pod --version",
+      "python --version",
+      "python3 --version",
+      "renovate --version",
+      "ruby --version",
+      "rustc --version",
+      "rustup --version",
+      "swift --version",
+      "terragrunt --version",
+      "tofu --version",
+      "uv --version",
+      "wrangler --version",
+      "xcodebuild -version",
+      "yarn --version"
+    ],
+    "gitCommands": [
+      "git rev-parse HEAD",
+      "git rev-parse origin/main",
+      "git branch --show-current",
+      "git status --porcelain=v1 --untracked-files=all -- . :(exclude)graphify",
+      "git ls-files --stage -- Codebase/e2e/test-assets",
+      "git rev-parse HEAD",
+      "git rev-parse origin/main",
+      "git branch --show-current",
+      "git status --porcelain=v1 --untracked-files=all -- . :(exclude)graphify"
+    ]
+  },
+  "gitState": {
+    "before": {
+      "head": {
+        "command": "git rev-parse HEAD",
+        "exitCode": 0,
+        "output": "ec60527cb8738a60a0eb70087285ec4658d70fb8\n",
+        "stderr": "",
+        "readOnly": true
+      },
+      "originMain": {
+        "command": "git rev-parse origin/main",
+        "exitCode": 0,
+        "output": "ec60527cb8738a60a0eb70087285ec4658d70fb8\n",
+        "stderr": "",
+        "readOnly": true
+      },
+      "branch": {
+        "command": "git branch --show-current",
+        "exitCode": 0,
+        "output": "main\n",
+        "stderr": "",
+        "readOnly": true
+      },
+      "statusOutsideGraphify": {
+        "command": "git status --porcelain=v1 --untracked-files=all -- . :(exclude)graphify",
+        "exitCode": 0,
+        "output": "",
+        "stderr": "",
+        "readOnly": true
+      }
+    },
+    "after": {
+      "head": {
+        "command": "git rev-parse HEAD",
+        "exitCode": 0,
+        "output": "ec60527cb8738a60a0eb70087285ec4658d70fb8\n",
+        "stderr": "",
+        "readOnly": true
+      },
+      "originMain": {
+        "command": "git rev-parse origin/main",
+        "exitCode": 0,
+        "output": "ec60527cb8738a60a0eb70087285ec4658d70fb8\n",
+        "stderr": "",
+        "readOnly": true
+      },
+      "branch": {
+        "command": "git branch --show-current",
+        "exitCode": 0,
+        "output": "main\n",
+        "stderr": "",
+        "readOnly": true
+      },
+      "statusOutsideGraphify": {
+        "command": "git status --porcelain=v1 --untracked-files=all -- . :(exclude)graphify",
+        "exitCode": 0,
+        "output": "",
+        "stderr": "",
+        "readOnly": true
+      }
+    }
+  },
+  "exitGateClauses": [
+    {
+      "clause": "Every discoverable toolchain manifest path and version is recorded in the six required categories",
+      "evidence": "Recorded 189 available manifest files and 744 version declarations; a separately derived 189-path oracle plus source-derived reference resolution recorded 73 unavailable mandatory manifests as REVIEW_REQUIRED; supplemental 31-path/78-declaration fixtures have zero omissions.",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-005/toolchain-inventory.json",
+        "13-implementation/WP-I0-005/verification-report.json"
+      ],
+      "result": "PASS"
+    },
+    {
+      "clause": "Every unavailable or ambiguous version is explicitly REVIEW_REQUIRED",
+      "evidence": "Derived 11 current repository ambiguities, probed 42 baseline/repository-declared tools, recorded 2 unmapped declared tools and 73 unavailable referenced manifests, removed 23 superseded predecessor rows, classified all 12 floating/dynamic compose-image cases as references, and produced 236 explicit REVIEW_REQUIRED entries with zero unreported unavailable items.",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-005/toolchain-inventory.json"
+      ],
+      "result": "PASS"
+    },
+    {
+      "clause": "Inspection is local-only, typed on failure, and preserves authoritative state",
+      "evidence": "All 5 negative fixtures rejected; measured manifest fingerprint and outside-Graphify Git state were identical pre/post; no network/install/build/product-test command ran.",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-005/verification-report.json",
+        "13-implementation/WP-I0-005/artifact-scan.json"
+      ],
+      "result": "PASS"
+    }
+  ],
+  "status": "PASS"
+}

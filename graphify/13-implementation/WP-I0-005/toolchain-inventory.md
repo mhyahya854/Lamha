@@ -1,0 +1,258 @@
+# WP-I0-005 toolchain inventory
+
+Read-only repository and host inspection. No dependency was installed, no build/product test or network command ran, and no `Codebase/` file was modified.
+
+- Available manifest files: **189**
+- Unavailable referenced manifests: **73** (`REVIEW_REQUIRED`)
+- Version declarations: **744**
+- Host probes: **42** (14 available)
+- Derived repository ambiguities: **11**
+- Explicit `REVIEW_REQUIRED` records: **236**
+
+## Categories
+
+- **node** — 52 manifests, 89 versions, 1 probes, 70 review-required
+- **package-manager** — 32 manifests, 222 versions, 6 probes, 80 review-required
+- **rust** — 0 manifests, 0 versions, 3 probes, 2 review-required
+- **python** — 8 manifests, 207 versions, 5 probes, 3 review-required
+- **media** — 7 manifests, 8 versions, 3 probes, 3 review-required
+- **platform** — 122 manifests, 439 versions, 24 probes, 78 review-required
+
+## Review required
+
+- **rust / rust** — `NO_REPOSITORY_MANIFEST` — `REVIEW_REQUIRED`
+- **rust / rust** — `NO_DISCOVERABLE_REPOSITORY_VERSION` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/${RENOVATE_REMOTE}/immich-app/.github/renovate-config.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/docs/node_modules/@docusaurus/core/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/docs/node_modules/@docusaurus/core/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/docs/node_modules/@docusaurus/tsconfig/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/docs/node_modules/@docusaurus/tsconfig/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/docs/node_modules/autoprefixer/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/docs/node_modules/autoprefixer/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/docs/node_modules/docusaurus-lunr-search/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/docs/node_modules/docusaurus-lunr-search/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/docs/node_modules/prism-react-renderer/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/docs/node_modules/prism-react-renderer/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/docs/node_modules/tailwindcss/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/docs/node_modules/tailwindcss/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/e2e/node_modules/@eslint/js/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/e2e/node_modules/@eslint/js/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/e2e/node_modules/@playwright/test/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/e2e/node_modules/@playwright/test/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/e2e/node_modules/dotenv/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/e2e/node_modules/dotenv/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/e2e/node_modules/eslint-plugin-prettier/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/e2e/node_modules/eslint-plugin-prettier/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/e2e/node_modules/eslint-plugin-unicorn/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/e2e/node_modules/eslint-plugin-unicorn/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/e2e/node_modules/globals/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/e2e/node_modules/globals/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/e2e/node_modules/prettier-plugin-organize-imports/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/e2e/node_modules/prettier-plugin-organize-imports/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/e2e/node_modules/typescript-eslint/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/e2e/node_modules/typescript-eslint/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/e2e/node_modules/vite-tsconfig-paths/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/e2e/node_modules/vite-tsconfig-paths/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/e2e/node_modules/vitest/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/e2e/node_modules/vitest/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/mobile/.dart_tool/package_config.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/.dart_tool/package_config.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/android/${flutterSdkPath}/packages/flutter_tools/gradle** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/android/local.properties** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/ios/${FLUTTER_ROOT}/packages/flutter_tools/bin/xcode_backend.sh** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/ios/Flutter/Generated.xcconfig** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/mobile/ios/Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage/Package.swift** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/ios/Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage/Package.swift** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/mobile/ios/Pods/Manifest.lock** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/ios/Pods/Manifest.lock** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources.sh** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources.sh** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.debug.xcconfig** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.debug.xcconfig** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.profile.xcconfig** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.profile.xcconfig** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.release.xcconfig** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.release.xcconfig** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/node_modules/prettier-plugin-sort-json/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/node_modules/prettier-plugin-sort-json/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/packages/cli/node_modules/@eslint/js/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/packages/cli/node_modules/@eslint/js/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/packages/cli/node_modules/eslint-plugin-prettier/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/packages/cli/node_modules/eslint-plugin-prettier/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/packages/cli/node_modules/eslint-plugin-unicorn/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/packages/cli/node_modules/eslint-plugin-unicorn/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/packages/cli/node_modules/globals/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/packages/cli/node_modules/globals/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/packages/cli/node_modules/prettier-plugin-organize-imports/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/packages/cli/node_modules/prettier-plugin-organize-imports/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/packages/cli/node_modules/typescript-eslint/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/packages/cli/node_modules/typescript-eslint/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/packages/cli/node_modules/vite/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/packages/cli/node_modules/vite/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/server/node_modules/@eslint/js/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/server/node_modules/@eslint/js/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/server/node_modules/eslint-plugin-prettier/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/server/node_modules/eslint-plugin-prettier/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/server/node_modules/eslint-plugin-unicorn/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/server/node_modules/eslint-plugin-unicorn/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/server/node_modules/globals/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/server/node_modules/globals/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/server/node_modules/prettier-plugin-organize-imports/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/server/node_modules/prettier-plugin-organize-imports/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/server/node_modules/typescript-eslint/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/server/node_modules/typescript-eslint/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/server/test/node_modules/unplugin-swc/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/server/test/node_modules/unplugin-swc/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/server/test/node_modules/vite-tsconfig-paths/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/server/test/node_modules/vite-tsconfig-paths/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/server/test/node_modules/vitest/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/server/test/node_modules/vitest/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/.svelte-kit/tsconfig.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/@eslint/js/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/@eslint/js/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/@koddsson/eslint-plugin-tscompat/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/@koddsson/eslint-plugin-tscompat/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/@sveltejs/adapter-static/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/@sveltejs/adapter-static/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/@sveltejs/enhanced-img/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/@sveltejs/enhanced-img/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/@sveltejs/kit/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/@sveltejs/kit/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/@sveltejs/vite-plugin-svelte/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/@sveltejs/vite-plugin-svelte/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/@tailwindcss/vite/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/@tailwindcss/vite/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/@testing-library/svelte/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/@testing-library/svelte/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/@trivago/prettier-plugin-sort-imports/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/@trivago/prettier-plugin-sort-imports/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/dotenv/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/dotenv/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/eslint-config-prettier/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/eslint-config-prettier/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/eslint-plugin-better-tailwindcss/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/eslint-plugin-better-tailwindcss/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/eslint-plugin-compat/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/eslint-plugin-compat/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/eslint-plugin-svelte/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/eslint-plugin-svelte/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/eslint-plugin-unicorn/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/eslint-plugin-unicorn/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/globals/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/globals/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/prettier-plugin-sort-json/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/prettier-plugin-sort-json/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/prettier-plugin-svelte/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/prettier-plugin-svelte/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/rollup-plugin-visualizer/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/rollup-plugin-visualizer/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/svelte-eslint-parser/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/svelte-eslint-parser/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/typescript-eslint/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/typescript-eslint/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **node / Codebase/web/node_modules/vite/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / Codebase/web/node_modules/vite/package.json** — `REFERENCED_MANIFEST_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / submodule-revision:Codebase/e2e/test-assets** — `SUBMODULE_REVISION_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/.devcontainer/devcontainer.json#devcontainer-feature:ghcr.io/devcontainers/features/docker-in-docker** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/.devcontainer/mobile/container-compose-overrides.yml#compose-image:busybox** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/.devcontainer/mobile/container-compose-overrides.yml#compose-image:immich-server-dev** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/.devcontainer/server/container-compose-overrides.yml#compose-image:busybox** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/.devcontainer/server/container-compose-overrides.yml#compose-image:immich-server-dev** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/.github/workflows/org-pr-require-conventional-commit.yml#action:immich-app/devtools/.github/workflows/shared-pr-require-conventional-commit.yml** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/.github/workflows/org-zizmor.yml#action:immich-app/devtools/.github/workflows/shared-zizmor.yml** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **package-manager / declaration:Codebase/Makefile#package-manager-tool:renovate** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/docker/docker-compose.dev.yml#compose-image:immich-machine-learning-dev** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/docker/docker-compose.dev.yml#compose-image:immich-server-dev** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/docker/docker-compose.dev.yml#compose-image:immich-web-dev** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/docker/docker-compose.prod.yml#compose-image:immich-machine-learning** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/docker/docker-compose.prod.yml#compose-image:immich-server** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/docker/docker-compose.rootless.yml#compose-image:ghcr.io/immich-app/immich-machine-learning** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/docker/docker-compose.rootless.yml#compose-image:ghcr.io/immich-app/immich-server** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/docker/docker-compose.yml#compose-image:ghcr.io/immich-app/immich-machine-learning** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/docker/docker-compose.yml#compose-image:ghcr.io/immich-app/immich-server** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/docker/example.env#env:immich_version** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/e2e/docker-compose.yml#compose-image:immich-server** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/machine-learning/Dockerfile#docker-tool:ccache** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/machine-learning/Dockerfile#docker-tool:g++** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **package-manager / declaration:Codebase/machine-learning/ann/export/env.yaml#conda-pip-vcs:github.com/fyfrey/tinyneuralnetwork** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/mobile/android/app/build.gradle#compileSdk** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/mobile/android/app/build.gradle#ndkVersion** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/mobile/android/app/build.gradle#targetSdk** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/mobile/ios/ci_scripts/ci_post_clone.sh#script-git:github.com/flutter/flutter** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/mobile/ios/ci_scripts/ci_post_clone.sh#script-package:brew:cocoapods** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **node / declaration:Codebase/packages/plugin-sdk/tsconfig.json#typescript-lib:esnext** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **node / declaration:Codebase/packages/plugin-sdk/tsconfig.json#typescript-target** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **node / declaration:Codebase/packages/sdk/tsconfig.json#typescript-lib:esnext** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **node / declaration:Codebase/packages/sdk/tsconfig.json#typescript-target** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **node / declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:@nestjs/swagger:peerdependencies:typescript** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **package-manager / declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:@photo-sphere-viewer/equirectangular-video-adapter:dependencies:three** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **package-manager / declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:@photo-sphere-viewer/video-plugin:dependencies:three** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **node / declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:bcrypt:dependencies:node-addon-api** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **node / declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:bcrypt:dependencies:node-gyp** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **package-manager / declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:nestjs-kysely:dependencies:tslib** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **package-manager / declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:nestjs-otel:dependencies:tslib** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **node / declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:sharp:dependencies:node-addon-api** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **node / declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:sharp:dependencies:node-gyp** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **package-manager / declaration:Codebase/renovate.json#renovate-extends:line-3** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/server/Dockerfile#docker-tool:corepack** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **media / declaration:Codebase/server/Dockerfile.dev#docker-tool:dcm** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / declaration:Codebase/server/Dockerfile.dev#docker-tool:java** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **node / declaration:Codebase/web/.browserslistrc#browserslist-query:line-1** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **node / declaration:Codebase/web/.browserslistrc#browserslist-query:line-2** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **node / declaration:Codebase/web/.browserslistrc#browserslist-query:line-3** — `VERSION_REFERENCE_UNRESOLVED` — `REVIEW_REQUIRED`
+- **platform / binaryen** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / bun** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / bundler** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / ccache** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / cmake** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **python / conda** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / dart** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **media / dcm** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / docker** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / extism** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / fastlane** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / flutter** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / g++** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / gradle** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / java** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / mise** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / ninja** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / oazapfts** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / openapi-generator-cli** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / pod** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / renovate** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / ruby** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / swift** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / terragrunt** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / tofu** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / wrangler** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / xcodebuild** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **package-manager / yarn** — `HOST_TOOL_UNAVAILABLE` — `REVIEW_REQUIRED`
+- **platform / armnn** — `HOST_PROBE_UNMAPPED` — `REVIEW_REQUIRED`
+- **platform / extism-js-pdk** — `HOST_PROBE_UNMAPPED` — `REVIEW_REQUIRED`
+- **platform / repository-version:armnn** — `AMBIGUOUS_REPOSITORY_VERSION` — `REVIEW_REQUIRED`
+- **platform / repository-version:dart** — `AMBIGUOUS_REPOSITORY_VERSION` — `REVIEW_REQUIRED`
+- **platform / repository-version:docker-release:github.com/intel/compute-runtime** — `AMBIGUOUS_REPOSITORY_VERSION` — `REVIEW_REQUIRED`
+- **platform / repository-version:docker-release:github.com/intel/intel-graphics-compiler** — `AMBIGUOUS_REPOSITORY_VERSION` — `REVIEW_REQUIRED`
+- **platform / repository-version:flutter** — `AMBIGUOUS_REPOSITORY_VERSION` — `REVIEW_REQUIRED`
+- **platform / repository-version:java** — `AMBIGUOUS_REPOSITORY_VERSION` — `REVIEW_REQUIRED`
+- **node / repository-version:node** — `AMBIGUOUS_REPOSITORY_VERSION` — `REVIEW_REQUIRED`
+- **platform / repository-version:openapi-generator-cli** — `AMBIGUOUS_REPOSITORY_VERSION` — `REVIEW_REQUIRED`
+- **package-manager / repository-version:python** — `AMBIGUOUS_REPOSITORY_VERSION` — `REVIEW_REQUIRED`
+- **platform / repository-version:swift-package:grdb.swift** — `AMBIGUOUS_REPOSITORY_VERSION` — `REVIEW_REQUIRED`
+- **platform / repository-version:wrangler** — `AMBIGUOUS_REPOSITORY_VERSION` — `REVIEW_REQUIRED`
+- **media / host-version:ffmpeg** — `HOST_REPOSITORY_VERSION_DIFFERENCE` — `REVIEW_REQUIRED`
+- **node / host-version:node** — `HOST_REPOSITORY_VERSION_DIFFERENCE` — `REVIEW_REQUIRED`
+- **python / host-version:pip** — `HOST_REPOSITORY_VERSION_DIFFERENCE` — `REVIEW_REQUIRED`
+- **package-manager / host-version:pnpm** — `HOST_REPOSITORY_VERSION_DIFFERENCE` — `REVIEW_REQUIRED`
+- **python / host-version:uv** — `HOST_REPOSITORY_VERSION_DIFFERENCE` — `REVIEW_REQUIRED`

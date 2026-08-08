@@ -1,0 +1,66 @@
+{
+  "packageId": "WP-I0-005",
+  "status": "PASS",
+  "failures": [],
+  "collectionWindowUtc": {
+    "start": "2026-08-08T23:28:23+00:00",
+    "end": "2026-08-08T23:28:32+00:00"
+  },
+  "checks": {
+    "categoryCoverage": "PASS",
+    "manifestAndVersionInventory": "PASS",
+    "reviewRequiredClassification": "PASS",
+    "focused": "PASS",
+    "negative": "PASS",
+    "regression": "PASS",
+    "artifactScan": "PASS",
+    "exitGate": "PASS"
+  },
+  "counts": {
+    "categories": 6,
+    "manifestFiles": 189,
+    "versionDeclarations": 744,
+    "hostProbes": 42,
+    "availableHostTools": 14,
+    "repositoryAmbiguities": 11,
+    "unavailableReferencedManifests": 73,
+    "reviewRequired": 236
+  },
+  "evidenceFiles": [
+    "13-implementation/WP-I0-005/artifact-scan.json",
+    "13-implementation/WP-I0-005/completion-evidence.md",
+    "13-implementation/WP-I0-005/package-summary.json",
+    "13-implementation/WP-I0-005/provenance-report.json",
+    "13-implementation/WP-I0-005/toolchain-inventory.json",
+    "13-implementation/WP-I0-005/toolchain-inventory.md",
+    "13-implementation/WP-I0-005/verification-report.json"
+  ],
+  "exitGateClauses": [
+    {
+      "clause": "Every discoverable toolchain manifest path and version is recorded in the six required categories",
+      "evidence": "Recorded 189 available manifest files and 744 version declarations; a separately derived 189-path oracle plus source-derived reference resolution recorded 73 unavailable mandatory manifests as REVIEW_REQUIRED; supplemental 31-path/78-declaration fixtures have zero omissions.",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-005/toolchain-inventory.json",
+        "13-implementation/WP-I0-005/verification-report.json"
+      ],
+      "result": "PASS"
+    },
+    {
+      "clause": "Every unavailable or ambiguous version is explicitly REVIEW_REQUIRED",
+      "evidence": "Derived 11 current repository ambiguities, probed 42 baseline/repository-declared tools, recorded 2 unmapped declared tools and 73 unavailable referenced manifests, removed 23 superseded predecessor rows, classified all 12 floating/dynamic compose-image cases as references, and produced 236 explicit REVIEW_REQUIRED entries with zero unreported unavailable items.",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-005/toolchain-inventory.json"
+      ],
+      "result": "PASS"
+    },
+    {
+      "clause": "Inspection is local-only, typed on failure, and preserves authoritative state",
+      "evidence": "All 5 negative fixtures rejected; measured manifest fingerprint and outside-Graphify Git state were identical pre/post; no network/install/build/product-test command ran.",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-005/verification-report.json",
+        "13-implementation/WP-I0-005/artifact-scan.json"
+      ],
+      "result": "PASS"
+    }
+  ]
+}
