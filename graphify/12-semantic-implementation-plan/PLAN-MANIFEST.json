@@ -2450,8 +2450,8 @@
     },
     {
       "path": "12-validators/adversarial_fixtures.py",
-      "bytes": 83829,
-      "sha256": "1660dd1ce12ef999e1e52a41abb6fcf67d000b0e6d9a5c0e6cd24e3b6d2a05d5"
+      "bytes": 85090,
+      "sha256": "fdc4ea421826f62afc373d53084454cc9a58d4799e1d9ae422a9747a1b5c6fc9"
     },
     {
       "path": "12-validators/packet_smoke_tests.py",
@@ -2511,17 +2511,17 @@
     {
       "path": "13-reports/final-100-percent-certification.json",
       "bytes": 7442,
-      "sha256": "c39098a126015f0e064ff5d8b8da989f5c03a0d0ea0621aaf608947cc11f6ab5"
+      "sha256": "80e2f4897357897e92b08f4941e3f434d8756f2fbf9d5be5a3f8dc6c5b9b3c97"
     },
     {
       "path": "13-reports/final-content-manifest.json",
       "bytes": 104759,
-      "sha256": "e71fd16424e450ac7039ad9abc474f805ad9ec9680d14989da5d370cb4f5f8e6"
+      "sha256": "f2b7f3122acbef4a1b85a48d6bb6238f560c85960a7f9926b32fbdf1164407db"
     },
     {
       "path": "13-reports/final-determinism-proof.json",
       "bytes": 2440,
-      "sha256": "a14ede2278feef93a020e6727d7e3d52f2f06858ab83c0577401dc06080b4f3a"
+      "sha256": "217ef25b812ecbe28bf41d2bd1044d2f7cd0dc175da20b92a0556de10a4ddf4b"
     },
     {
       "path": "13-reports/final-package-determinism.json",
@@ -2536,7 +2536,7 @@
     {
       "path": "13-reports/final-release-envelope.json",
       "bytes": 9214,
-      "sha256": "c3df5614947d59dee2df33f76eb3c82c924f19d940e2d476c35206fa2d2bc182"
+      "sha256": "4b43ea49332d20390061ed11e03ade6e13536aba197b8ea93e67d12bb4f9ed76"
     },
     {
       "path": "13-reports/generated-fragment-disposition-report.csv",
@@ -2560,8 +2560,8 @@
     },
     {
       "path": "13-reports/gpt-5.6-final-authoritative-review.json",
-      "bytes": 3087,
-      "sha256": "7f3a97ebe07661d9706c1a7c01ca2e2b7251badc9338c383f52ac020fef6722e"
+      "bytes": 3272,
+      "sha256": "aa8357e14476285e8004f8b3c0612e529704a833e8b30d344d18d69fb94db7c5"
     },
     {
       "path": "13-reports/independent-final-semantic-audit.csv",
@@ -2745,18 +2745,18 @@
     },
     {
       "path": "13-reports/pass3-external-integrity-report.md",
-      "bytes": 227,
-      "sha256": "748fcb82671c7f19babbb5fa07d3a4b7b8f5449abacad82717a91f6f414e2c69"
+      "bytes": 311,
+      "sha256": "d4999b8e18cc5e49528f2a431f010a823684c58a6c58eaffd84ddc8de2839b43"
     },
     {
       "path": "13-reports/pass3-external-readonly-baseline.json",
-      "bytes": 705640,
-      "sha256": "42e989e3742a66fe6703425fb0573e511d866d36722c52a1cf405878a4e4d478"
+      "bytes": 720618,
+      "sha256": "edc4e5dd2932fc1fa99b10a40196a011b2a848673e06aa42e5a8b96ac1c03572"
     },
     {
       "path": "13-reports/pass3-external-readonly-final.json",
-      "bytes": 705824,
-      "sha256": "c8edff27e50439435abc53824db8c00b05a5032c5557066447b3411cebfabab0"
+      "bytes": 720710,
+      "sha256": "88997037df045be002a2819a699d59d581132b888af129d5ed8fb3beab4fc682"
     },
     {
       "path": "13-reports/pass3-legacy-template-reproduction.csv",
@@ -2936,12 +2936,12 @@
     {
       "path": "14-handoff/GPT-5.6-INDEPENDENT-REVIEW-HANDOFF.md",
       "bytes": 17403,
-      "sha256": "b8f208695c3d8c595dd7c9ce6dc2d9b926ddc52ffcf4d12c78ee01b740d88242"
+      "sha256": "bad9b22b8c139b89567907c1a28e116a15a13dc59c28dfa1a6f6de46f2e08496"
     },
     {
       "path": "14-handoff/gpt-review-counts.json",
       "bytes": 872,
-      "sha256": "030c823abe416faec1bc63ffee15fa46740801174e8761282694a4fd5a7cadd4"
+      "sha256": "da60cdb2acbdd8cae1f10644f1029b56a48ac859ef93f585fff27331fe7cc1be"
     },
     {
       "path": "14-handoff/gpt-review-critical-invariants.json",
@@ -2961,12 +2961,12 @@
     {
       "path": "14-handoff/gpt-review-sha-manifest.json",
       "bytes": 425002,
-      "sha256": "c741802a0d41d1994422f904a78472399ad89d93c74ad37189999aca218bc5e5"
+      "sha256": "cdbd4bda07422c443c33ab4760c88ed2a21b59714d3fccda4d1b8f8dcc7d0f36"
     },
     {
       "path": "14-handoff/gpt-review-validation-commands.json",
       "bytes": 4064,
-      "sha256": "6b041c71c9159eeb8efd2d76c10b0dff1c64587b7ab4772dd166c8abd674d5b4"
+      "sha256": "4d822f9b78f667b433cd552ef963264a2fcbd6def8b31b7c881e0bc948fd711e"
     },
     {
       "path": "14-handoff/START-HERE.md",

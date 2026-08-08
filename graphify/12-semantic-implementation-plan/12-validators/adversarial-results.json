@@ -1,6 +1,6 @@
 {
-  "fixtureCount": 167,
-  "expectedFailuresObserved": 167,
+  "fixtureCount": 168,
+  "expectedFailuresObserved": 168,
   "status": "PASS",
   "fixtures": [
     {
@@ -1973,7 +1973,6 @@
       "fixture": "F128_EXTERNAL_INTEGRITY_MODIFIED",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "external integrity report contains checkout-specific root",
         "external integrity modified is not zero"
       ]
     },
@@ -2270,6 +2269,13 @@
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
         "packet exact rendering differs from authority: WP-I0-001"
+      ]
+    },
+    {
+      "fixture": "F168_CHECKOUT_BYTE_EXTERNAL_BASELINE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "external integrity baseline is checkout-byte-dependent"
       ]
     }
   ]

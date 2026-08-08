@@ -519,14 +519,82 @@ def verify_adversarial_report(report: Any) -> list[str]:
     return errors
 
 
+EXTERNAL_INTEGRITY_ALGORITHM = "Git blob object identity and canonical blob size"
+
+
+def verify_external_integrity_file_rows(rows: Any, label: str) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(rows, list):
+        return [f"external integrity {label} files list missing"]
+    paths: list[str] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            errors.append(f"external integrity {label} file row is malformed")
+            continue
+        path = row.get("path")
+        if not isinstance(path, str) or not path or path.startswith("graphify/"):
+            errors.append(f"external integrity {label} file path is invalid")
+        else:
+            paths.append(path)
+        oid = row.get("gitBlobOid")
+        if not isinstance(oid, str) or re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", oid) is None:
+            errors.append(f"external integrity {label} Git blob identity is invalid: {path}")
+        if not isinstance(row.get("mode"), str) or re.fullmatch(r"[0-7]{6}", row.get("mode", "")) is None:
+            errors.append(f"external integrity {label} Git mode is invalid: {path}")
+        if not isinstance(row.get("size"), int) or int(row.get("size", -1)) < 0:
+            errors.append(f"external integrity {label} canonical blob size is invalid: {path}")
+        if "sha256" in row:
+            errors.append(f"external integrity {label} uses checkout-byte SHA-256: {path}")
+    if len(paths) != len(set(paths)):
+        errors.append(f"external integrity {label} contains duplicate paths")
+    if paths != sorted(paths):
+        errors.append(f"external integrity {label} paths are not deterministically ordered")
+    return errors
+
+
+def verify_external_integrity_baseline(baseline: Any) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(baseline, dict):
+        return ["external integrity baseline report is malformed"]
+    if baseline.get("schema_version") != 2:
+        errors.append("external integrity baseline schema is not checkout-independent v2")
+    if baseline.get("algorithm") != EXTERNAL_INTEGRITY_ALGORITHM:
+        errors.append("external integrity baseline is checkout-byte-dependent")
+    if "verifiedAt" in baseline:
+        errors.append("external integrity baseline contains volatile timestamp")
+    if baseline.get("project_root") != "." or baseline.get("graphify_root") != "graphify":
+        errors.append("external integrity baseline contains checkout-specific root")
+    files = baseline.get("files")
+    errors.extend(verify_external_integrity_file_rows(files, "baseline"))
+    if isinstance(files, list):
+        if baseline.get("file_count") != len(files):
+            errors.append("external integrity baseline file count mismatch")
+        expected_bytes = sum(int(row.get("size", 0)) for row in files if isinstance(row, dict))
+        if baseline.get("byte_count") != expected_bytes:
+            errors.append("external integrity baseline canonical byte count mismatch")
+    return errors
+
+
 def verify_external_integrity_comparison(final: Any) -> list[str]:
     errors: list[str] = []
     if not isinstance(final, dict):
         return ["external integrity report is malformed"]
     if "verifiedAt" in final:
         errors.append("external integrity report contains volatile timestamp")
+    if final.get("schemaVersion") != "2.0":
+        errors.append("external integrity final schema is not checkout-independent v2")
+    if final.get("algorithm") != EXTERNAL_INTEGRITY_ALGORITHM:
+        errors.append("external integrity final is checkout-byte-dependent")
     if final.get("lamhaRoot") != "." or final.get("graphifyRoot") != "graphify":
         errors.append("external integrity report contains checkout-specific root")
+    files = final.get("files")
+    errors.extend(verify_external_integrity_file_rows(files, "final"))
+    if isinstance(files, list):
+        if final.get("fileCount") != len(files):
+            errors.append("external integrity file count mismatch")
+        expected_bytes = sum(int(row.get("size", 0)) for row in files if isinstance(row, dict))
+        if final.get("byteCount") != expected_bytes:
+            errors.append("external integrity final canonical byte count mismatch")
     comparison = final.get("comparison")
     if not isinstance(comparison, dict):
         errors.append("external integrity comparison field missing")
@@ -553,22 +621,17 @@ def verify_external_integrity_report(graphify_root: Path = GRAPHIFY) -> list[str
     final = read_json(final_path)
     errors.extend(verify_external_integrity_comparison(final))
     files = final.get("files")
-    if not isinstance(files, list):
-        errors.append("external integrity files list missing")
-    elif final.get("fileCount") != len(files):
-        errors.append("external integrity file count mismatch")
     if baseline_path.exists():
         baseline = read_json(baseline_path)
-        if "verifiedAt" in baseline:
-            errors.append("external integrity baseline contains volatile timestamp")
-        if baseline.get("project_root") != "." or baseline.get("graphify_root") != "graphify":
-            errors.append("external integrity baseline contains checkout-specific root")
+        errors.extend(verify_external_integrity_baseline(baseline))
         if isinstance(files, list) and baseline.get("file_count") != final.get("fileCount"):
             errors.append("external integrity baseline/final scope counts differ")
         base_paths = {row.get("path") for row in (baseline.get("files") or []) if isinstance(row, dict)}
         final_paths = {row.get("path") for row in (files or []) if isinstance(row, dict)}
         if base_paths and final_paths and base_paths != final_paths:
             errors.append("external integrity baseline/final scopes differ")
+        if baseline.get("files") != files:
+            errors.append("external integrity baseline/final canonical Git trees differ")
         baseline_reference = final.get("baselinePath")
         if baseline_reference and not (graphify_root / str(baseline_reference)).exists():
             errors.append("external integrity baseline path does not resolve")

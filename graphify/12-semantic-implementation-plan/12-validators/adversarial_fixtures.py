@@ -805,6 +805,13 @@ def run() -> dict[str, object]:
 
     # F128: set external integrity modified count to 1.
     external_modified = {
+        "schemaVersion": "2.0",
+        "lamhaRoot": ".",
+        "graphifyRoot": "graphify",
+        "algorithm": gates.EXTERNAL_INTEGRITY_ALGORITHM,
+        "files": [{"path": "Codebase/README.md", "mode": "100644", "size": 1, "gitBlobOid": "a" * 40}],
+        "fileCount": 1,
+        "byteCount": 1,
         "comparison": {"status": "PASS", "added": [], "removed": [], "modified": ["Codebase/README.md"], "renamed": []},
     }
     external_modified_errors = gates.verify_external_integrity_comparison(external_modified)
@@ -1268,12 +1275,30 @@ def run() -> dict[str, object]:
     started_root_errors = gates.verify_implementation_authorization(auth_cert, unsafe_auth_packages)
 
     portable_external = {
+        "schemaVersion": "2.0",
         "lamhaRoot": ".", "graphifyRoot": "graphify",
+        "algorithm": gates.EXTERNAL_INTEGRITY_ALGORITHM,
+        "files": [{"path": "Codebase/README.md", "mode": "100644", "size": 1, "gitBlobOid": "a" * 40}],
+        "fileCount": 1,
+        "byteCount": 1,
         "comparison": {"status": "PASS", "added": [], "removed": [], "modified": [], "renamed": []},
     }
     checkout_specific_external = copy.deepcopy(portable_external)
     checkout_specific_external["lamhaRoot"] = "C:/Users/example/checkout"
     checkout_specific_errors = gates.verify_external_integrity_comparison(checkout_specific_external)
+
+    portable_baseline = {
+        "schema_version": 2,
+        "project_root": ".",
+        "graphify_root": "graphify",
+        "algorithm": gates.EXTERNAL_INTEGRITY_ALGORITHM,
+        "file_count": 1,
+        "byte_count": 1,
+        "files": [{"path": "Codebase/README.md", "mode": "100644", "size": 1, "gitBlobOid": "a" * 40}],
+    }
+    checkout_byte_baseline = copy.deepcopy(portable_baseline)
+    checkout_byte_baseline["algorithm"] = "SHA-256 of working-tree checkout bytes"
+    checkout_byte_errors = gates.verify_external_integrity_baseline(checkout_byte_baseline)
 
     with tempfile.TemporaryDirectory() as tmp_policy:
         policy_root = Path(tmp_policy)
@@ -1316,6 +1341,7 @@ def run() -> dict[str, object]:
         ("F165_CHECKOUT_SPECIFIC_EXTERNAL_EVIDENCE", *contains(checkout_specific_errors, "checkout-specific root")),
         ("F166_GRAPHIFY_LF_POLICY_REMOVED", *contains(line_policy_errors, "Graphify LF rule missing")),
         ("F167_PACKET_OBJECTIVE_DRIFT", *contains(exact_packet_errors, "packet exact rendering differs from authority: WP-I0-001")),
+        ("F168_CHECKOUT_BYTE_EXTERNAL_BASELINE", *contains(checkout_byte_errors, "external integrity baseline is checkout-byte-dependent")),
     ]
 
     cases = [
