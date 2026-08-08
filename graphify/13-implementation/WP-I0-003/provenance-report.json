@@ -1,0 +1,64 @@
+{
+  "packageId": "WP-I0-003",
+  "packetPath": "12-semantic-implementation-plan/04-work-packages/packets/WP-I0-003.md",
+  "packetSha256": "0b73ea4d5233ffe38ed881c38bb2cf0697edf1778fd553bf88149f9a6babb74f",
+  "ownedRequirements": [
+    "CAN-MISSION-I0-003"
+  ],
+  "selection": {
+    "rule": "explicit authorization record from WP-I0-002 transition (AUTHORIZED — NOT_STARTED), confirmed by the deterministic READY-package selector",
+    "readyPackages": [
+      "WP-I0-003",
+      "WP-I0-004",
+      "WP-I0-006",
+      "WP-I0-008",
+      "WP-I0-009",
+      "WP-I0-010",
+      "WP-I0-011",
+      "WP-I1-001"
+    ],
+    "explicitAuthorizationRecordPath": "13-implementation/WP-I0-002/adversarial-review.md",
+    "explicitAuthorizationRecordSha256": "cec18bc1ff9d2c9c00b772122afd7c4eda55fc0c5848ea948b8b42996f9a07a8",
+    "startSha": "d6bb993435fa3fbb2d40ab33469f62977bd9612c"
+  },
+  "prerequisite": {
+    "packageId": "WP-I0-001",
+    "dependencyType": "REQUIRES_PROVENANCE",
+    "completionRecordPath": "13-implementation/WP-I0-001/package-summary.json",
+    "completionRecordSha256": "348b228b42639a6306951e88743ad12eda864e9766694fb0b3fedf50a20bdebc",
+    "completionRecordStatus": "PASS",
+    "reviewRecordPath": "13-implementation/WP-I0-001/adversarial-review.md",
+    "reviewRecordSha256": "807f29479fd18e0432c778b02e364473129588cc8accb3bc6d94a1f5c26e135f"
+  },
+  "roots": {
+    "lamhaRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+    "codebaseRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase",
+    "graphifyRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\graphify",
+    "packageEvidenceDir": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\graphify\\13-implementation\\WP-I0-003"
+  },
+  "scope": {
+    "manifestScope": "Every working-tree file under Codebase/ (the existing repository application corpus; the WP-I0-001 provenance baseline recorded 3697 files there).",
+    "exclusionBoundary": "Inherited from the prerequisite provenance baseline (REQUIRES_PROVENANCE): .git excluded (repository metadata, covered by Git-state inspection WP-I0-002), graphify/ excluded (authority and evidence scope; evidence inside it is written through tools/write_guard only)."
+  },
+  "baselines": {
+    "sha256": {
+      "path": "12-semantic-implementation-plan/13-reports/external-readonly-baseline.json",
+      "sha256": "2c23f8401318d63281045b3d1777aca7390fea65a75eb0df20024cde69826c76"
+    },
+    "gitBlob": {
+      "path": "12-semantic-implementation-plan/13-reports/pass3-external-readonly-baseline.json",
+      "sha256": "edc4e5dd2932fc1fa99b10a40196a011b2a848673e06aa42e5a8b96ac1c03572"
+    }
+  },
+  "environment": {
+    "collectionStartedUtc": "2026-08-08T14:42:09+00:00",
+    "os": "nt",
+    "platform": "win32",
+    "python": "3.11.15",
+    "gitEnvOverrides": {
+      "GIT_OPTIONAL_LOCKS": "0",
+      "core.quotePath": "false"
+    }
+  },
+  "readOnlyGuarantee": "No path outside graphify/ is opened for writing; no archive, backup, or duplicate tree is created — the manifest records path/size/digest facts only; collector writes are restricted to graphify/13-implementation/WP-I0-003/ through tools/write_guard."
+}

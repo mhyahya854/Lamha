@@ -1,0 +1,51 @@
+{
+  "packageId": "WP-I0-003",
+  "status": "PASS",
+  "failures": [],
+  "collectionWindowUtc": {
+    "start": "2026-08-08T14:42:09+00:00",
+    "end": "2026-08-08T14:42:37+00:00"
+  },
+  "checks": {
+    "recomputeComparison": "PASS",
+    "manifestEntryVerification": "PASS",
+    "shaBaselineComparison": "PASS",
+    "gitBlobBaselineComparison": "PASS",
+    "artifactScan": "PASS",
+    "gitMetadataCompare": "PASS",
+    "failureCases": "PASS",
+    "exitGate": "PASS"
+  },
+  "fileCounts": {
+    "manifestEntries": 3697,
+    "trackedOutsideGraphify": 3697
+  },
+  "evidenceFiles": [
+    "13-implementation/WP-I0-003/artifact-scan.json",
+    "13-implementation/WP-I0-003/completion-evidence.md",
+    "13-implementation/WP-I0-003/package-summary.json",
+    "13-implementation/WP-I0-003/provenance-report.json",
+    "13-implementation/WP-I0-003/sha256-manifest.csv",
+    "13-implementation/WP-I0-003/verification-report.json"
+  ],
+  "exitGateClauses": [
+    {
+      "clause": "Every manifest entry verifies",
+      "evidence": "All 3697 manifest entries were re-hashed from the current working tree and verified for path existence, byte size, and SHA-256 digest equality with zero failures; two independent hashing passes produced byte-identical manifests; both planning baselines report zero added/removed/modified/renamed paths.",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-003/sha256-manifest.csv",
+        "13-implementation/WP-I0-003/verification-report.json"
+      ],
+      "result": "PASS"
+    },
+    {
+      "clause": "No archive, backup, copy, or repository mutation exists",
+      "evidence": "Zero paths were added outside Graphify relative to both planning baselines; this package's evidence files match no archive/backup/copy/build/test/cache/package-manager/generated-code pattern (a manifest records path/size/digest facts and never copies file contents); Git metadata is unchanged across the run; every Git command is read-only under the static allowlist with GIT_OPTIONAL_LOCKS=0.",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-003/artifact-scan.json",
+        "13-implementation/WP-I0-003/verification-report.json"
+      ],
+      "result": "PASS"
+    }
+  ]
+}

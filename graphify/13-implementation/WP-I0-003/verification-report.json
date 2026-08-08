@@ -1,0 +1,239 @@
+{
+  "manifest": {
+    "file": "13-implementation/WP-I0-003/sha256-manifest.csv",
+    "entries": 3697,
+    "algorithm": "SHA-256 over raw file bytes; paths repo-relative POSIX; sizes in bytes",
+    "manifestSha256": "58db136b9df3c0c443b52c8d38e263a635d91188c1fce21e11ca94d154340a0e",
+    "scope": "Every working-tree file under Codebase/ (the existing repository application corpus; the WP-I0-001 provenance baseline recorded 3697 files there)."
+  },
+  "recompute": {
+    "method": "two full independent SHA-256 passes over every Codebase/ file inside one run",
+    "pass1ManifestSha256": "58db136b9df3c0c443b52c8d38e263a635d91188c1fce21e11ca94d154340a0e",
+    "pass2ManifestSha256": "58db136b9df3c0c443b52c8d38e263a635d91188c1fce21e11ca94d154340a0e",
+    "status": "PASS"
+  },
+  "entryVerification": {
+    "entries": 3697,
+    "verified": 3697,
+    "failureCount": 0,
+    "failures": [],
+    "status": "PASS"
+  },
+  "baselineComparisons": {
+    "sha256Baseline": {
+      "baselinePath": "12-semantic-implementation-plan/13-reports/external-readonly-baseline.json",
+      "baselineAlgorithm": "SHA-256",
+      "baselineFileCount": 3697,
+      "currentFileCount": 3697,
+      "scope": "Every working-tree file under Codebase/ (outside-Graphify application corpus)",
+      "added": [],
+      "removed": [],
+      "modified": [],
+      "renamed": [],
+      "status": "PASS"
+    },
+    "gitBlobBaseline": {
+      "baselinePath": "12-semantic-implementation-plan/13-reports/pass3-external-readonly-baseline.json",
+      "baselineAlgorithm": "Git blob object identity and canonical blob size",
+      "baselineFileCount": 3697,
+      "currentFileCount": 3697,
+      "added": [],
+      "removed": [],
+      "modified": [],
+      "renamed": [],
+      "status": "PASS"
+    }
+  },
+  "artifactScan": {
+    "addedOutsideGraphify": [],
+    "status": "PASS"
+  },
+  "failureCases": {
+    "unreadableFiles": [],
+    "tamperedManifestProbe": {
+      "probeEntries": 2,
+      "expectedRejection": "both rows rejected with typed errors, no partial commit, no false PASS",
+      "result": {
+        "entries": 2,
+        "verified": 0,
+        "failureCount": 2,
+        "failures": [
+          {
+            "path": "../outside-escape",
+            "typedError": {
+              "type": "InvalidManifestEntry",
+              "partialCommit": false,
+              "authoritativeStatePreserved": true
+            }
+          },
+          {
+            "path": "Codebase/.devcontainer/devcontainer.json",
+            "typedError": {
+              "type": "ManifestEntryMismatch",
+              "recordedSize": 4051,
+              "currentSize": 4050,
+              "recordedSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+              "currentSha256": "ce2f61f3910fba84f2f524332a4db91679066e9ecea9d04a3feb841b9320cd74",
+              "partialCommit": false,
+              "authoritativeStatePreserved": true
+            }
+          }
+        ],
+        "status": "FAIL"
+      },
+      "status": "PASS"
+    },
+    "writeGuardEscapeFixtures": [
+      {
+        "probe": "../escape-outside.txt",
+        "rejected": true
+      },
+      {
+        "probe": "/absolute/escape.txt",
+        "rejected": true
+      }
+    ],
+    "readOnlyCommandAudit": {
+      "commandsExecuted": 9,
+      "nonReadOnlyCommands": [],
+      "status": "PASS"
+    },
+    "gitMetadataAvailable": true,
+    "gitMetadataUnchanged": true
+  },
+  "gitState": {
+    "before": {
+      "head": {
+        "exitCode": 0,
+        "output": "d6bb993435fa3fbb2d40ab33469f62977bd9612c\n"
+      },
+      "origin_main": {
+        "exitCode": 0,
+        "output": "d6bb993435fa3fbb2d40ab33469f62977bd9612c\n"
+      },
+      "branch": {
+        "exitCode": 0,
+        "output": "main\n"
+      },
+      "status_outside_graphify": {
+        "exitCode": 0,
+        "output": ""
+      }
+    },
+    "after": {
+      "head": {
+        "exitCode": 0,
+        "output": "d6bb993435fa3fbb2d40ab33469f62977bd9612c\n"
+      },
+      "origin_main": {
+        "exitCode": 0,
+        "output": "d6bb993435fa3fbb2d40ab33469f62977bd9612c\n"
+      },
+      "branch": {
+        "exitCode": 0,
+        "output": "main\n"
+      },
+      "status_outside_graphify": {
+        "exitCode": 0,
+        "output": ""
+      }
+    },
+    "metadataUnchanged": true,
+    "rawCommands": [
+      {
+        "command": "git rev-parse HEAD",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "d6bb993435fa3fbb2d40ab33469f62977bd9612c\n",
+        "stderr": ""
+      },
+      {
+        "command": "git rev-parse origin/main",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "d6bb993435fa3fbb2d40ab33469f62977bd9612c\n",
+        "stderr": ""
+      },
+      {
+        "command": "git branch --show-current",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "main\n",
+        "stderr": ""
+      },
+      {
+        "command": "git status --porcelain=v1 --untracked-files=all -- . :(exclude)graphify",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": "git ls-tree -r -z -l HEAD",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout_bytes": 851547,
+        "stderr": ""
+      },
+      {
+        "command": "git rev-parse HEAD",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "d6bb993435fa3fbb2d40ab33469f62977bd9612c\n",
+        "stderr": ""
+      },
+      {
+        "command": "git rev-parse origin/main",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "d6bb993435fa3fbb2d40ab33469f62977bd9612c\n",
+        "stderr": ""
+      },
+      {
+        "command": "git branch --show-current",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "main\n",
+        "stderr": ""
+      },
+      {
+        "command": "git status --porcelain=v1 --untracked-files=all -- . :(exclude)graphify",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ]
+  },
+  "tests": {
+    "wp_i0_003_success": "PASS",
+    "wp_i0_003_failure": "PASS"
+  }
+}
