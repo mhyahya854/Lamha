@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/ai.models.estimates.schema.json",
+  "title": "Estimates Request",
+  "description": "Reviewed CAN-LAM-AI-090 request DTO for ai.models.estimates.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "modelId",
+    "variantId",
+    "selectedScope"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "modelId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selectedScope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "ai.models.estimates",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

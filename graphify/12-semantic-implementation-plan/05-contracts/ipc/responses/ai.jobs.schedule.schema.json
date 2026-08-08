@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/ai.jobs.schedule.schema.json",
+  "title": "Schedule Response",
+  "description": "Reviewed CAN-LAM-AI-090 response DTO for ai.jobs.schedule.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "jobId",
+    "status",
+    "revision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "jobId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "const": "SCHEDULED"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "ai.jobs.schedule",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

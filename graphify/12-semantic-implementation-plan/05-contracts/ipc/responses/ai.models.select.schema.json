@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/ai.models.select.schema.json",
+  "title": "Select Response",
+  "description": "Reviewed CAN-LAM-AI-090 response DTO for ai.models.select.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "modelId",
+    "variantId",
+    "modelVersion",
+    "checksum",
+    "licenceId",
+    "provider",
+    "selectionSource",
+    "revision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "modelId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "modelVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checksum": {
+      "type": "string",
+      "minLength": 1
+    },
+    "licenceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provider": {
+      "enum": [
+        "CPU",
+        "CUDA",
+        "DirectML",
+        "CoreML",
+        "ROCm"
+      ]
+    },
+    "selectionSource": {
+      "const": "USER_SELECTION"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "ai.models.select",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "project_root": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
-  "graphify_root": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\graphify",
+  "project_root": ".",
+  "graphify_root": "graphify",
   "algorithm": "SHA-256",
   "exclusion": "Root .git metadata directory excluded; all other files outside Graphify are included.",
   "file_count": 3697,

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/ai.jobs.scope.schema.json",
+  "title": "Scope Response",
+  "description": "Reviewed CAN-LAM-AI-090 response DTO for ai.jobs.scope.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "jobId",
+    "selectedFolders",
+    "revision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "jobId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selectedFolders": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "ai.jobs.scope",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

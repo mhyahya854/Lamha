@@ -5,7 +5,6 @@ from __future__ import annotations
 import hashlib
 import json
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 sys.dont_write_bytecode = True
@@ -55,8 +54,8 @@ def main() -> int:
     if not BASELINE.exists():
         baseline = {
             "schema_version": 1,
-            "project_root": str(LAMHA),
-            "graphify_root": str(GRAPHIFY),
+            "project_root": ".",
+            "graphify_root": "graphify",
             "algorithm": "SHA-256",
             "exclusion": "Root .git metadata directory excluded; all other files outside Graphify are included.",
             "file_count": len(files),
@@ -87,10 +86,9 @@ def main() -> int:
     status = "PASS" if not added and not removed and not modified else "FAIL"
     final = {
         "schemaVersion": "1.0",
-        "verifiedAt": datetime.now(timezone.utc).isoformat(),
         "baselinePath": BASELINE.relative_to(GRAPHIFY).as_posix(),
-        "lamhaRoot": str(LAMHA),
-        "graphifyRoot": str(GRAPHIFY),
+        "lamhaRoot": ".",
+        "graphifyRoot": "graphify",
         "readOnlyScope": "Every Lamha file outside Graphify except the root .git metadata directory",
         "files": files,
         "fileCount": len(files),

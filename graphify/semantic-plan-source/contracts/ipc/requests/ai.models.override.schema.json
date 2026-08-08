@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/ai.models.override.schema.json",
+  "title": "Override Request",
+  "description": "Reviewed CAN-LAM-AI-090 request DTO for ai.models.override.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "modelId",
+    "variantId",
+    "acknowledgedEstimate",
+    "expectedRevision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "modelId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variantId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acknowledgedEstimate": {
+      "type": "boolean",
+      "const": true
+    },
+    "expectedRevision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "ai.models.override",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "review": "GPT-5.6 FINAL AUTHORITATIVE PLANNING REVIEW",
+  "starting_sha": "7ce46ed8dda8e46507c5a68dbabc80fe9cc1600f",
+  "ending_sha": {
+    "status": "RESOLVED_BY_GITHUB_SYNC",
+    "reason": "A commit cannot contain its own Git object ID; final local/remote SHA is recorded by the sync evidence and final automation report."
+  },
+  "authority": "Independent recomputation from semantic-plan-source plus read-only Codebase evidence; no DeepSeek PASS assertion used as proof.",
+  "defects_found": [
+    "Windows line-ending policy absent",
+    "duplicate dependency endpoint pairs hidden by dependency type",
+    "723 membership review rows lacked package surface and shared-test evidence",
+    "independent member evidence covered only 302 of 724 memberships",
+    "generic label acceptance and gate-list verification remained",
+    "CAN-LAM-AI-090 planned commands were absent from the IPC registry",
+    "model-weight licensing was conflated with runtime/code licensing",
+    "IPC/schema duplicate and ownership checks were incomplete",
+    "saved review evidence could self-certify partial coverage",
+    "packet validation accepted partial string presence instead of exact rendering",
+    "external integrity evidence encoded timestamp and absolute checkout path",
+    "final package authorization invariants were not independently enforced"
+  ],
+  "defects_fixed": 12,
+  "reviewed_counts": {
+    "canonical_requirements": 2339,
+    "active_requirements": 1125,
+    "actionable_requirements": 724,
+    "independently_reviewed_actionable": 724,
+    "work_packages": 155,
+    "memberships": 724,
+    "dependencies": 229,
+    "components": 17,
+    "ipc_commands": 124,
+    "schemas": 30
+  },
+  "domain_results": {
+    "requirements": "PASS_AFTER_REPAIR",
+    "packages": "PASS_AFTER_REPAIR",
+    "dependencies": "PASS_AFTER_REPAIR",
+    "components_and_licences": "PASS_AFTER_REPAIR",
+    "contracts_and_schemas": "PASS_AFTER_REPAIR",
+    "sqlite": "PASS",
+    "ai_amendment": "PASS_AFTER_REPAIR",
+    "validator_implementation_audit": "PASS; 24 levels recompute raw authority and reject saved/self-certified evidence",
+    "adversarial": "PASS; 167/167 isolated negative mutations observed their intended failures",
+    "certification": "PASS; provisional state blocks implementation and PASS publishes atomically last",
+    "portability": "PASS_VERIFIED; Graphify-scoped LF policy produces identical canonical bytes for core.autocrlf false and true",
+    "fresh_clones": "PASS_VERIFIED; different-path clones with core.autocrlf false and true reproduce all final hashes",
+    "external_integrity": "PASS_0_0_0_0"
+  },
+  "final_hashes": "Published only by final_certification.py after all gates pass.",
+  "remaining_blockers": [],
+  "wp_i0_001_status": "NOT_STARTED",
+  "automatic_next_package": null,
+  "internal_declaration": "FULL IMPLEMENTATION PLANNING 100% COMPLETE — WP-I0-001 MAY BEGIN",
+  "administrative_declaration": "GPT-5.6 FINAL AUTHORITATIVE PLANNING REVIEW PASS — IMPLEMENTATION MAY BEGIN WITH WP-I0-001 ONLY",
+  "review_revision": "2026-08-08-gpt-5.6-final"
+}

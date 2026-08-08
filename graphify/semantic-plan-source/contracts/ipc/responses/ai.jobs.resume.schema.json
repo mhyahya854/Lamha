@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/ai.jobs.resume.schema.json",
+  "title": "Resume Response",
+  "description": "Reviewed CAN-LAM-AI-090 response DTO for ai.jobs.resume.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "jobId",
+    "status",
+    "resumedFromCheckpointId",
+    "revision"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "jobId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "const": "RUNNING"
+    },
+    "resumedFromCheckpointId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "ai.jobs.resume",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

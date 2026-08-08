@@ -69,6 +69,8 @@ def verify_blocked_record(record: dict[str, object], label: str, strict_provisio
         errors.append(f"{label}: implementation_planning flag is not false")
     if record.get("first_allowed_package") is not None:
         errors.append(f"{label}: first_allowed_package is not null (WP-I0-001 authorized early)")
+    if record.get("automatic_next_package") is not None:
+        errors.append(f"{label}: automatic_next_package is not null")
     blockers = record.get("remaining_blockers")
     if not isinstance(blockers, list) or PROVISIONAL_BLOCKER not in blockers:
         errors.append(f"{label}: final-validation blocker missing")
@@ -93,6 +95,7 @@ def main() -> int:
         "readiness_declaration": initial.get("readiness_declaration"),
         "implementation_planning_100_percent_complete": initial.get("implementation_planning_100_percent_complete"),
         "first_allowed_package": initial.get("first_allowed_package"),
+        "automatic_next_package": initial.get("automatic_next_package"),
         "remaining_blockers": initial.get("remaining_blockers"),
         "wp_i0_001_authorized": False,
         "errors": initial_errors,
@@ -102,6 +105,7 @@ def main() -> int:
         "readiness_declaration": provisional.get("readiness_declaration"),
         "implementation_planning_100_percent_complete": provisional.get("implementation_planning_100_percent_complete"),
         "first_allowed_package": provisional.get("first_allowed_package"),
+        "automatic_next_package": provisional.get("automatic_next_package"),
         "remaining_blockers": provisional.get("remaining_blockers"),
         "certificationGates": provisional.get("certificationGates"),
         "wp_i0_001_authorized": False,
@@ -121,6 +125,8 @@ def main() -> int:
         final_errors.append("final certification implementation_planning flag is not true")
     if final.get("first_allowed_package") != "WP-I0-001":
         final_errors.append("final certification first_allowed_package is not WP-I0-001")
+    if final.get("automatic_next_package") is not None:
+        final_errors.append("final certification automatic_next_package is not null")
     if final.get("remaining_blockers"):
         final_errors.append("final certification still has remaining blockers")
     gates = final.get("certificationGates")
@@ -131,6 +137,7 @@ def main() -> int:
         "readiness_declaration": final.get("readiness_declaration"),
         "implementation_planning_100_percent_complete": final.get("implementation_planning_100_percent_complete"),
         "first_allowed_package": final.get("first_allowed_package"),
+        "automatic_next_package": final.get("automatic_next_package"),
         "remaining_blockers": final.get("remaining_blockers"),
         "certificationGates": gates,
         "wp_i0_001_authorized": final.get("status") == "PASS",

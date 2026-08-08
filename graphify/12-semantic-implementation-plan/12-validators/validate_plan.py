@@ -118,6 +118,10 @@ def check_requirement_records(rows: list[dict[str, str]], mappings: dict[str, di
                 errors.append(f"criterion missing parent: {rid}")
             if not row.get("verification_method"):
                 errors.append(f"missing verification method: {rid}")
+            if row.get("acceptance_criteria", "").startswith("ACCEPT::"):
+                errors.append(f"generic acceptance criterion mirrors requirement label: {rid}")
+            if row.get("verification_method", "").startswith("Gate 1 scope;"):
+                errors.append(f"generic verification gate list: {rid}")
             if rid.startswith("CAN-FAIL-") and (re.search(r"\bFAIL-\d+\s*;|Narrative mentioned|Lacked explicit|Mapped .* tests", statement, re.I) or statement.count(";") > 3):
                 errors.append(f"malformed CAN-FAIL audit paragraph: {rid}")
             if re.search(r"\bfAIL-\d+\b|Lamha must provide do not|BLOCKEDORUNKNOWN", statement):
@@ -419,6 +423,37 @@ def check_sqlite_references(sql: str) -> list[str]:
     return errors
 
 
+def check_sqlite_catalog(connection: sqlite3.Connection) -> list[str]:
+    errors: list[str] = []
+    tables = {
+        row[0] for row in connection.execute(
+            "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'"
+        )
+    }
+    indexes = list(connection.execute(
+        "SELECT name, tbl_name FROM sqlite_master WHERE type='index' AND sql IS NOT NULL"
+    ))
+    index_names = [row[0] for row in indexes]
+    for name, count in Counter(index_names).items():
+        if count != 1:
+            errors.append(f"duplicate SQLite index: {name}")
+    for name, table in indexes:
+        if table not in tables:
+            errors.append(f"SQLite index references missing table: {name} -> {table}")
+    for table in sorted(tables):
+        for foreign_key in connection.execute(f'PRAGMA foreign_key_list("{table}")'):
+            target_table, source_column, target_column = foreign_key[2], foreign_key[3], foreign_key[4]
+            if target_table not in tables:
+                errors.append(f"SQLite foreign key references missing table: {table}.{source_column} -> {target_table}")
+                continue
+            target_columns = {row[1] for row in connection.execute(f'PRAGMA table_info("{target_table}")')}
+            if target_column and target_column not in target_columns:
+                errors.append(
+                    f"SQLite foreign key references missing column: {table}.{source_column} -> {target_table}.{target_column}"
+                )
+    return errors
+
+
 def check_determinism_evidence(first: str, second: str) -> list[str]:
     return [] if first == second else [f"determinism evidence mismatch: {first} != {second}"]
 
@@ -648,6 +683,8 @@ def check_package_records(packages: list[dict[str, object]], membership: list[di
             errors.append(f"mechanical package split flag: {pid}")
         if package.get("reviewer_status") != "REVIEWED":
             errors.append(f"package not reviewed: {pid}")
+        if package.get("status") != "NOT_STARTED":
+            errors.append(f"package implementation status is not NOT_STARTED: {pid}")
         for field in required:
             if not package.get(field):
                 errors.append(f"package missing {field}: {pid}")
@@ -694,12 +731,17 @@ def check_dependency_records(packages: list[dict[str, object]], edges: list[dict
         "REQUIRES_SECURITY_BOUNDARY", "REQUIRES_AUTHORITY_MODEL",
     }
     seen: set[tuple[str, str, str]] = set()
+    seen_pairs: set[tuple[str, str]] = set()
     for edge in edges:
         target, prerequisite, kind = edge.get("work_package_id", ""), edge.get("prerequisite_work_package_id", ""), edge.get("dependency_type", "")
         key = (target, prerequisite, kind)
         if key in seen:
             errors.append(f"duplicate dependency: {key}")
         seen.add(key)
+        pair = (target, prerequisite)
+        if pair in seen_pairs:
+            errors.append(f"duplicate dependency endpoint pair: {target} <- {prerequisite}")
+        seen_pairs.add(pair)
         if target not in nodes or prerequisite not in nodes or target == prerequisite:
             errors.append(f"invalid dependency endpoints: {target} <- {prerequisite}")
             continue
@@ -727,6 +769,8 @@ def check_dependency_records(packages: list[dict[str, object]], edges: list[dict
         errors.append("dependency cycle detected")
     roots = {node for node, degree in indegree.items() if degree == 0} if visited == 0 else {str(package["work_package_id"]) for package in packages} - {edge["work_package_id"] for edge in edges}
     package_by_id = {str(package["work_package_id"]): package for package in packages}
+    if roots != {"WP-I0-001"}:
+        errors.append(f"dependency roots differ from WP-I0-001: {sorted(roots)}")
     for root in roots:
         package = package_by_id[root]
         if package.get("root_status") != "TRUE_ROOT" or not package.get("root_rationale") or not package.get("root_evidence"):
@@ -794,8 +838,16 @@ def check_schema_document(path: Path) -> list[str]:
     return errors
 
 
-def check_command_records(commands: list[dict[str, object]], schema_root: Path | None = None) -> list[str]:
+def check_command_records(
+    commands: list[dict[str, object]],
+    schema_root: Path | None = None,
+    package_ids: set[str] | None = None,
+) -> list[str]:
     errors: list[str] = []
+    command_ids = [str(command.get("commandId", "")) for command in commands]
+    for cid, count in Counter(command_ids).items():
+        if not cid or count != 1:
+            errors.append(f"duplicate or missing command ID: {cid!r} count={count}")
     for command in commands:
         cid = str(command.get("commandId", ""))
         read_only, mutating = command.get("readOnly"), command.get("mutating")
@@ -812,13 +864,26 @@ def check_command_records(commands: list[dict[str, object]], schema_root: Path |
             errors.append(f"command lacks error subset: {cid}")
         if not str(command.get("reviewerStatus", "")).startswith("REVIEWED_"):
             errors.append(f"command flags not reviewed: {cid}")
+        owner = str(command.get("workPackageId", ""))
+        if package_ids is not None and owner not in package_ids:
+            errors.append(f"orphan command owner: {cid} -> {owner}")
+        for field in (
+            "runtimeOwner", "consumer", "transactionBoundary", "recoveryBehaviour",
+            "securityBoundary", "filesystemAuthority", "version",
+        ):
+            if not command.get(field):
+                errors.append(f"command missing {field}: {cid}")
         if schema_root:
             for side in ("requestSchema", "responseSchema"):
                 path = schema_root / str(command.get(side, "")).removeprefix("./")
                 if not path.exists():
                     errors.append(f"missing {side}: {cid} {path}")
                 else:
-                    errors.extend(f"{cid} {side}: {error}" for error in scan_open_objects(read_json(path)))
+                    document = read_json(path)
+                    errors.extend(f"{cid} {side}: {error}" for error in scan_open_objects(document))
+                    review = document.get("x-lamha-review", {}) if isinstance(document, dict) else {}
+                    if review.get("commandId") != cid or review.get("side") != side.removesuffix("Schema"):
+                        errors.append(f"schema review metadata disagrees with command: {cid} {side}")
         pagination = command.get("pagination", {})
         if isinstance(pagination, dict) and pagination.get("supported") and not all(pagination.get(key) for key in ("cursorSchema", "filterSchema", "sortSchema")):
             errors.append(f"pagination structures missing: {cid}")
@@ -856,12 +921,18 @@ def check_component_records(rows: list[dict[str, str]], packages: list[dict[str,
 
 def check_record_schemas(index: list[dict[str, str]], root: Path) -> list[str]:
     errors: list[str] = []
+    schema_paths = [row.get("schema", "") for row in index]
+    for schema_path, count in Counter(schema_paths).items():
+        if not schema_path or count != 1:
+            errors.append(f"duplicate or missing schema index path: {schema_path!r} count={count}")
+    schema_ids: Counter[str] = Counter()
     for row in index:
         path = root / row["schema"]
         if not path.exists():
             errors.append(f"missing record schema: {row['schema']}")
             continue
         schema = read_json(path)
+        schema_ids[str(schema.get("$id", ""))] += 1
         errors.extend(f"{row['schema']}: {error}" for error in scan_open_objects(schema))
         required = set(schema.get("required", [])) if isinstance(schema, dict) else set()
         for field in ("schemaVersion", "id", "revision", "createdAt", "updatedAt", "authority", "privacy", "provenance", "extensions"):
@@ -871,6 +942,9 @@ def check_record_schemas(index: list[dict[str, str]], root: Path) -> list[str]:
         for field in ("authority", "privacyClassification", "timestampSemantics", "unknownFieldPolicy", "migrationPolicy"):
             if not x.get(field):
                 errors.append(f"record metadata missing {field}: {row['schema']}")
+    for schema_id, count in schema_ids.items():
+        if not schema_id or count != 1:
+            errors.append(f"duplicate or missing record schema ID: {schema_id!r} count={count}")
     by_name = {Path(row["schema"]).name: read_json(root / row["schema"]) for row in index}
     asset_fields = set(by_name.get("asset.schema.json", {}).get("properties", {}))
     expected_asset = {"identityId", "rootId", "primaryPath", "originalFilename", "extension", "mediaType", "mimeType", "fileSizeBytes", "contentHash", "captureTime", "filesystemTimes", "dimensions", "durationMs", "camera", "gps", "sidecars", "companions", "eventIds", "visiblePersonIds", "tagIds", "albumIds", "favorite", "rating", "reviewState", "editRecipeId", "derivatives", "integrityState", "provenance", "revision"}
@@ -1034,6 +1108,18 @@ def check_v3_requirement_ledger(
         "IMPLEMENTATION_CONSTRAINT", "ACCEPTANCE_CRITERION", "OPTIONAL_ADAPTER",
         "VERIFICATION_GATE", "REMOVAL_GATE", "RELEASE_GATE", "PROHIBITION",
     }
+    actionable_ids = {
+        row["canonical_id"] for row in requirements
+        if row.get("supersession_status") == "ACTIVE"
+        and row.get("requirement_type") in impl_types
+        and mappings.get(row["canonical_id"], {}).get("primary_implementation_phase")
+    }
+    review_ids = [row.get("Canonical ID", "") for row in v3_rows]
+    for rid, count in Counter(review_ids).items():
+        if not rid or count != 1:
+            errors.append(f"duplicate or missing actionable review ID: {rid!r} count={count}")
+    if set(review_ids) != actionable_ids:
+        errors.append("actionable requirement and v3 review ID sets differ")
     v3_by_id = {row.get("Canonical ID", ""): row for row in v3_rows}
     for row in requirements:
         rid = row["canonical_id"]
@@ -1060,6 +1146,22 @@ def check_v3_requirement_ledger(
             substantive = False
         if not substantive:
             errors.append(f"actionable requirement v3 review lacks substantive fields: {rid}")
+        expected = mappings[rid]
+        agreements = {
+            "Final reviewed statement": row.get("statement", ""),
+            "Requirement type": row.get("requirement_type", ""),
+            "Final capability": row.get("canonical_capability", ""),
+            "Final phase": expected.get("primary_implementation_phase", ""),
+            "Acceptance criteria": row.get("acceptance_criteria", ""),
+            "Verification method": row.get("verification_method", ""),
+        }
+        for field, value in agreements.items():
+            if v3.get(field, "") != value:
+                errors.append(f"actionable requirement review disagrees on {field}: {rid}")
+        if v3.get("Observable result", "").startswith("ACCEPT::"):
+            errors.append(f"actionable requirement review has generic observable result: {rid}")
+        if v3.get("Verification method", "").startswith("Gate 1 scope;"):
+            errors.append(f"actionable requirement review has generic verification method: {rid}")
         rationale = v3.get("Item-specific rationale", "")
         if len(rationale) < 40:
             errors.append(f"actionable requirement v3 rationale too short: {rid}")
@@ -1075,6 +1177,31 @@ def check_pass_b_ledgers(
     dependency_reviews: list[dict[str, str]],
 ) -> list[str]:
     errors: list[str] = []
+    package_ids = {str(package["work_package_id"]) for package in packages}
+    membership_ids = {row["canonical_id"] for row in membership}
+    dependency_keys = {
+        f"{row['work_package_id']}<-{row['prerequisite_work_package_id']}" for row in dependencies
+    }
+    package_review_ids = [row.get("Final package ID", "") for row in package_reviews]
+    membership_review_ids = [row.get("Canonical ID", "") for row in membership_reviews]
+    dependency_review_keys = [
+        f"{row.get('Dependent package','')}<-{row.get('Prerequisite package','')}"
+        for row in dependency_reviews
+    ]
+    for label, values in (
+        ("package", package_review_ids),
+        ("membership", membership_review_ids),
+        ("dependency", dependency_review_keys),
+    ):
+        for value, count in Counter(values).items():
+            if not value or count != 1:
+                errors.append(f"duplicate or missing {label} review key: {value!r} count={count}")
+    if set(package_review_ids) != package_ids:
+        errors.append("package review ID set differs from package registry")
+    if set(membership_review_ids) != membership_ids:
+        errors.append("membership review ID set differs from membership ledger")
+    if set(dependency_review_keys) != dependency_keys:
+        errors.append("dependency review key set differs from dependency ledger")
     package_review_by_id = {row.get("Final package ID", ""): row for row in package_reviews}
     membership_review_by_id = {row.get("Canonical ID", ""): row for row in membership_reviews}
     dependency_review_by_key = {
@@ -1092,11 +1219,22 @@ def check_pass_b_ledgers(
         review = membership_review_by_id.get(row["canonical_id"])
         if not review or review.get("Review status") != "REVIEWED_CONFIRMED":
             errors.append(f"membership Pass B review not confirmed: {row['canonical_id']}")
+        elif any(not review.get(field) for field in (
+            "Package phase", "Requirement phase", "Package surface", "Requirement obligation",
+            "Exact ownership mechanism", "Shared tests", "Item-specific rationale", "Evidence",
+        )):
+            errors.append(f"membership Pass B review lacks substantive ownership/test evidence: {row['canonical_id']}")
+        elif "package-level decision remains pending" in review.get("Item-specific rationale", "").casefold():
+            errors.append(f"membership Pass B review still claims a pending decision: {row['canonical_id']}")
     for edge in dependencies:
         key = f"{edge['work_package_id']}<-{edge['prerequisite_work_package_id']}"
         review = dependency_review_by_key.get(key)
         if not review or review.get("Review status") != "REVIEWED_CONFIRMED":
             errors.append(f"dependency Pass B review not confirmed: {key}")
+        elif review.get("Final dependency type") != edge.get("dependency_type"):
+            errors.append(f"dependency Pass B review type mismatch: {key}")
+        elif not review.get("Item-specific rationale") or not review.get("Evidence"):
+            errors.append(f"dependency Pass B review lacks rationale/evidence: {key}")
     return errors
 
 
@@ -1143,8 +1281,65 @@ def check_pass_b_independent_evidence(
     test_rows: list[dict[str, str]],
     exit_rows: list[dict[str, str]],
     decision_rows: list[dict[str, str]],
+    packages: list[dict[str, object]] | None = None,
+    memberships: list[dict[str, str]] | None = None,
+    commands: list[dict[str, object]] | None = None,
 ) -> list[str]:
     errors: list[str] = []
+    if packages is None or memberships is None or commands is None:
+        groups = [
+            ("member", member_rows), ("contract/schema", contract_rows), ("test", test_rows),
+            ("exit-gate", exit_rows), ("package-decision", decision_rows),
+        ]
+        for label, rows in groups:
+            if not rows:
+                errors.append(f"independent {label} verification ledger is empty")
+            for row in rows:
+                if row.get("Verification status") not in {"VERIFIED", "CORRECTED", "MOVED"}:
+                    errors.append(f"independent {label} row not verified: {row.get('Package ID', row.get('Canonical ID', ''))}")
+                if not (row.get("Evidence sources", "") or row.get("Evidence", "")):
+                    errors.append(f"independent {label} row lacks evidence source: {row.get('Package ID', row.get('Canonical ID', ''))}")
+                if len(row.get("Item-specific rationale", "")) < 40:
+                    errors.append(f"independent {label} row rationale too short: {row.get('Package ID', row.get('Canonical ID', ''))}")
+        return errors
+    package_by_id = {str(row["work_package_id"]): row for row in packages}
+    package_ids = set(package_by_id)
+    expected_members = {(row["work_package_id"], row["canonical_id"]) for row in memberships}
+    actual_members = {(row.get("Package ID", ""), row.get("Canonical ID", "")) for row in member_rows}
+    if actual_members != expected_members or len(actual_members) != len(member_rows):
+        errors.append("independent member verification does not exactly cover membership ledger")
+    for label, rows in (
+        ("contract/schema", contract_rows),
+        ("test", test_rows),
+        ("exit-gate", exit_rows),
+        ("package-decision", decision_rows),
+    ):
+        ids = [row.get("Package ID", "") for row in rows]
+        if set(ids) != package_ids or len(ids) != len(set(ids)):
+            errors.append(f"independent {label} verification does not exactly cover package registry")
+    members_by_package: defaultdict[str, list[str]] = defaultdict(list)
+    for row in memberships:
+        members_by_package[row["work_package_id"]].append(row["canonical_id"])
+    commands_by_package: defaultdict[str, list[str]] = defaultdict(list)
+    for command in commands:
+        commands_by_package[str(command.get("workPackageId", ""))].append(str(command.get("commandId", "")))
+    for row in test_rows:
+        pid = row.get("Package ID", "")
+        actual = {value for value in row.get("Requirement IDs", "").split(";") if value}
+        if actual != set(members_by_package.get(pid, [])):
+            errors.append(f"independent test ledger requirement IDs differ: {pid}")
+    for row in exit_rows:
+        pid = row.get("Package ID", "")
+        package = package_by_id.get(pid, {})
+        if row.get("Exit-gate text") != package.get("exit_gate"):
+            errors.append(f"independent exit-gate text differs from package: {pid}")
+        if row.get("Test evidence required") != package.get("tests"):
+            errors.append(f"independent exit-gate test evidence differs from package: {pid}")
+    for row in contract_rows:
+        pid = row.get("Package ID", "")
+        actual = {value for value in row.get("Commands verified", "").split(";") if value}
+        if actual != set(commands_by_package.get(pid, [])):
+            errors.append(f"independent contract ledger command set differs: {pid}")
     groups = [
         ("member", member_rows),
         ("contract/schema", contract_rows),
@@ -1177,7 +1372,7 @@ def check_component_licence_completeness(
         "PENDING", "PENDING_I0_INVENTORY", "PENDING_REPOSITORY_PROOF", "PENDING_OPTIONAL",
         "OS_COMPONENT_REVIEW_PENDING", "BUILD_ONLY_PENDING", "BUNDLED_SOURCE_PENDING",
     }
-    approved_licences = {"APPROVED", "APPROVED_WITH_NOTICE", "APPROVED_BUILD_ONLY", "PLATFORM_PROVIDED", "OPTIONAL_NOT_BUNDLED", "REJECTED"}
+    approved_licences = {"APPROVED", "APPROVED_WITH_NOTICE", "APPROVED_BUILD_ONLY", "APPROVED_WITH_CHECKPOINT_GATE", "PLATFORM_PROVIDED", "OPTIONAL_NOT_BUNDLED", "REJECTED"}
     edges = {(d["work_package_id"], d["prerequisite_work_package_id"]) for d in dependencies}
     for component in components:
         name = component.get("component", "")
@@ -1187,6 +1382,21 @@ def check_component_licence_completeness(
             errors.append(f"component licence pending or invalid: {name}")
         if not component.get("redistribution_status", ""):
             errors.append(f"component redistribution missing: {name}")
+        for field in (
+            "source_licence", "binary_runtime_licence", "model_weight_licence",
+            "model_redistribution_rights", "commercial_use_rights", "model_card_requirement",
+            "checksum_requirement", "hardware_requirement", "fallback_requirement",
+        ):
+            if not component.get(field, ""):
+                errors.append(f"component licence/model review missing {field}: {name}")
+        if name in {"OCR model/runtime", "Embedding model/runtime", "Face model/runtime"}:
+            if component.get("licence_status") != "APPROVED_WITH_CHECKPOINT_GATE":
+                errors.append(f"model family lacks checkpoint-specific licence gate: {name}")
+            if component.get("redistribution_status") != "CHECKPOINT_BUNDLING_PROHIBITED_UNTIL_VERIFIED":
+                errors.append(f"model family incorrectly authorizes unspecified checkpoint redistribution: {name}")
+            for field in ("model_weight_licence", "model_redistribution_rights", "commercial_use_rights"):
+                if "NOT_AUTHORIZED" not in component.get(field, "") and "MUST_BE_RECORDED" not in component.get(field, ""):
+                    errors.append(f"model family has no explicit unresolved-checkpoint prohibition in {field}: {name}")
         if not component.get("decision_package", ""):
             errors.append(f"component decision package missing: {name}")
         if not component.get("version_rule", ""):
@@ -1232,6 +1442,7 @@ def check_ai_model_override_amendment(
     membership: list[dict[str, str]],
     components: list[dict[str, str]],
     plan_root: Path,
+    registry_commands: list[dict[str, object]] | None = None,
 ) -> list[str]:
     errors: list[str] = []
     rid = "CAN-LAM-AI-090"
@@ -1265,6 +1476,25 @@ def check_ai_model_override_amendment(
     for command in required_commands:
         if command not in commands:
             errors.append(f"ai_model_override_command_missing:{command}")
+    if registry_commands is not None:
+        registry_by_id = {str(command.get("commandId", "")): command for command in registry_commands}
+        expected_owners = {
+            "ai.models.list_compatible": "WP-I10-003", "ai.models.select": "WP-I10-003",
+            "ai.models.estimates": "WP-I10-003", "ai.models.override": "WP-I10-003",
+            "ai.jobs.schedule": "WP-I10-006", "ai.jobs.scope": "WP-I10-006",
+            "ai.jobs.pause": "WP-I10-008", "ai.jobs.resume": "WP-I10-008",
+        }
+        for command, owner in expected_owners.items():
+            record = registry_by_id.get(command)
+            if record is None:
+                errors.append(f"ai_model_override_registry_command_missing:{command}")
+                continue
+            if record.get("workPackageId") != owner:
+                errors.append(f"ai_model_override_registry_command_owner_wrong:{command}")
+            for side in ("requestSchema", "responseSchema"):
+                schema = plan_root / "05-contracts" / str(record.get(side, "")).removeprefix("./")
+                if not schema.exists():
+                    errors.append(f"ai_model_override_registry_schema_missing:{command}:{side}")
     rules = amendment.get("behavioural_rules", {})
     required_rules = ["slow_processing_alone_is_not_a_hard_block","stronger_compatible_model_remains_selectable","recommendation_is_not_prohibition","silent_model_substitution_is_prohibited","quantized_variant_has_distinct_identity","selected_model_provenance_is_persisted","model_change_invalidates_derived_results"]
     for rule in required_rules:
@@ -1301,8 +1531,12 @@ def check_ai_model_override_amendment(
         if "CAN-LAM-AI-090" not in text.split("## Canonical requirements")[0]:
             errors.append("ai_override_packet_objective_missing_requirement")
         contracts_section = text.split("## Contracts and schemas")[1].split("## Delivery and proof")[0] if "## Contracts and schemas" in text and "## Delivery and proof" in text else ""
-        if "CAN-LAM-AI-090" not in contracts_section:
-            errors.append("ai_override_packet_contracts_missing_requirement")
+        for command in ("ai.models.list_compatible", "ai.models.select", "ai.models.estimates", "ai.models.override"):
+            if command not in contracts_section:
+                errors.append(f"ai_override_packet_contract_missing:{command}")
+        for concept in ("compatibility", "estimates", "selection", "provenance", "hard-block"):
+            if concept not in contracts_section.casefold():
+                errors.append(f"ai_override_packet_schema_concept_missing:{concept}")
         delivery_section = text.split("## Delivery and proof")[1].split("Exit gate")[0] if "## Delivery and proof" in text and "Exit gate" in text else ""
         if "CAN-LAM-AI-090" not in delivery_section and "slow-compatible-selectable" not in delivery_section:
             errors.append("ai_override_packet_tests_missing_requirement")
@@ -1407,7 +1641,8 @@ def run() -> dict[str, object]:
     level("L4C_SEMANTIC_CAPABILITY_PHASE_CONSISTENCY", check_semantic_capability_phase_consistency(requirements, mappings, membership, packages, v2_rows, audit_rows) + check_affected_package_quality(packages, affected_package_ids) + check_large_package_review_coverage(packages, package_review_rows))
     level("L5_TECHNICAL_DAG", check_dependency_records(packages, edges))
     level("L6_COMPONENT_DECISIONS", check_component_records(components, packages))
-    contract_errors = check_command_records(commands, PLAN / "05-contracts")
+    package_ids = {str(package["work_package_id"]) for package in packages}
+    contract_errors = check_command_records(commands, PLAN / "05-contracts", package_ids)
     for path in (PLAN / "05-contracts").rglob("*.json"):
         contract_errors.extend(f"{path.relative_to(PLAN)}: {error}" for error in scan_open_objects(read_json(path)))
         contract_errors.extend(check_schema_document(path))
@@ -1420,6 +1655,7 @@ def run() -> dict[str, object]:
     try:
         sqlite_ddl = (PLAN / "07-sqlite" / "001_initial.sql").read_text(encoding="utf-8")
         con.executescript(sqlite_ddl)
+        schema_errors.extend(check_sqlite_catalog(con))
     except sqlite3.Error as error:
         schema_errors.append(f"SQLite DDL execution failed: {error}")
     finally:
@@ -1493,6 +1729,9 @@ def run() -> dict[str, object]:
             v2_rows["independently-verified-package-tests-v2.csv"],
             v2_rows["independently-verified-package-exit-gates-v2.csv"],
             v2_rows["independently-verified-package-decisions-v2.csv"],
+            packages,
+            membership,
+            commands,
         ),
     )
     component_rows = read_csv(PLAN / "10-component-manifest" / "components.csv")
@@ -1505,7 +1744,7 @@ def run() -> dict[str, object]:
         l20_errors = check_final_100_percent_certification(PLAN)
         l20_note = "final_certification_validation_complete"
     level("L20_FINAL_100_PERCENT_PLANNING_CERTIFICATION", l20_errors, note=l20_note)
-    level("L21_AI_MODEL_OVERRIDE_AMENDMENT", check_ai_model_override_amendment(requirements, membership, component_rows, PLAN))
+    level("L21_AI_MODEL_OVERRIDE_AMENDMENT", check_ai_model_override_amendment(requirements, membership, component_rows, PLAN, commands))
     computed = recompute_quality_metrics(requirements, mappings, membership, packages, edges, schema_index, authority)
     metric_report = read_json(PLAN / "13-reports" / "requirement-repair-stats.json")
     level("L10_METRICS_HONESTY", check_metrics_honesty(metric_report, computed, builder_text))

@@ -1,6 +1,6 @@
 {
-  "fixtureCount": 153,
-  "expectedFailuresObserved": 153,
+  "fixtureCount": 167,
+  "expectedFailuresObserved": 167,
   "status": "PASS",
   "fixtures": [
     {
@@ -59,6 +59,7 @@
       "fixture": "F08_UNEXPLAINED_DAG_ROOT",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "dependency roots differ from WP-I0-001: ['WP-FIX-ROOT2']",
         "unexplained root package: WP-FIX-ROOT2",
         "required technical prerequisite absent: WP-I11-002 <- WP-I11-001",
         "required technical prerequisite absent: WP-I11-003 <- WP-I11-001",
@@ -238,6 +239,7 @@
       "validatorErrors": [
         "artificial adjacency dependency: WP-FIX-B <- WP-FIX-A",
         "dependency lacks evidence: WP-FIX-B <- WP-FIX-A",
+        "dependency roots differ from WP-I0-001: ['WP-FIX-A']",
         "unexplained root package: WP-FIX-A",
         "required technical prerequisite absent: WP-I11-002 <- WP-I11-001",
         "required technical prerequisite absent: WP-I11-003 <- WP-I11-001",
@@ -266,6 +268,7 @@
       "fixture": "F29_REQUIRED_SCHEMA_DEPENDENCY_MISSING",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "dependency roots differ from WP-I0-001: ['WP-FIX-ROOT']",
         "unexplained root package: WP-FIX-ROOT",
         "required technical prerequisite absent: WP-I11-002 <- WP-I11-001",
         "required technical prerequisite absent: WP-I11-003 <- WP-I11-001",
@@ -294,6 +297,7 @@
       "fixture": "F30_UNEXPLAINED_ROOT",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "dependency roots differ from WP-I0-001: ['WP-FIX-ROOT2']",
         "unexplained root package: WP-FIX-ROOT2",
         "required technical prerequisite absent: WP-I11-002 <- WP-I11-001",
         "required technical prerequisite absent: WP-I11-003 <- WP-I11-001",
@@ -393,6 +397,7 @@
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
         "dependency cycle detected",
+        "dependency roots differ from WP-I0-001: []",
         "required technical prerequisite absent: WP-I11-002 <- WP-I11-001",
         "required technical prerequisite absent: WP-I11-003 <- WP-I11-001",
         "required technical prerequisite absent: WP-I11-009 <- WP-I11-003",
@@ -482,6 +487,7 @@
       "fixture": "F49_MISSING_V3_REQUIREMENT_REVIEW",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "actionable requirement and v3 review ID sets differ",
         "actionable requirement missing v3 review row: FIX-REQ"
       ]
     },
@@ -489,6 +495,11 @@
       "fixture": "F50_GENERIC_V3_RATIONALE",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "actionable requirement review disagrees on Requirement type: FIX-REQ",
+        "actionable requirement review disagrees on Final capability: FIX-REQ",
+        "actionable requirement review disagrees on Final phase: FIX-REQ",
+        "actionable requirement review disagrees on Acceptance criteria: FIX-REQ",
+        "actionable requirement review disagrees on Verification method: FIX-REQ",
         "actionable requirement v3 rationale too short: FIX-REQ"
       ]
     },
@@ -497,6 +508,11 @@
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
         "actionable requirement v3 review lacks substantive fields: FIX-REQ",
+        "actionable requirement review disagrees on Final reviewed statement: FIX-REQ",
+        "actionable requirement review disagrees on Requirement type: FIX-REQ",
+        "actionable requirement review disagrees on Final capability: FIX-REQ",
+        "actionable requirement review disagrees on Final phase: FIX-REQ",
+        "actionable requirement review disagrees on Verification method: FIX-REQ",
         "actionable requirement v3 rationale too short: FIX-REQ"
       ]
     },
@@ -558,6 +574,15 @@
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
         "component decision pending: FIX-COMP",
+        "component licence/model review missing source_licence: FIX-COMP",
+        "component licence/model review missing binary_runtime_licence: FIX-COMP",
+        "component licence/model review missing model_weight_licence: FIX-COMP",
+        "component licence/model review missing model_redistribution_rights: FIX-COMP",
+        "component licence/model review missing commercial_use_rights: FIX-COMP",
+        "component licence/model review missing model_card_requirement: FIX-COMP",
+        "component licence/model review missing checksum_requirement: FIX-COMP",
+        "component licence/model review missing hardware_requirement: FIX-COMP",
+        "component licence/model review missing fallback_requirement: FIX-COMP",
         "component lists its own decision package as a consumer: FIX-COMP"
       ]
     },
@@ -566,6 +591,15 @@
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
         "component licence pending or invalid: FIX-COMP",
+        "component licence/model review missing source_licence: FIX-COMP",
+        "component licence/model review missing binary_runtime_licence: FIX-COMP",
+        "component licence/model review missing model_weight_licence: FIX-COMP",
+        "component licence/model review missing model_redistribution_rights: FIX-COMP",
+        "component licence/model review missing commercial_use_rights: FIX-COMP",
+        "component licence/model review missing model_card_requirement: FIX-COMP",
+        "component licence/model review missing checksum_requirement: FIX-COMP",
+        "component licence/model review missing hardware_requirement: FIX-COMP",
+        "component licence/model review missing fallback_requirement: FIX-COMP",
         "component lists its own decision package as a consumer: FIX-COMP"
       ]
     },
@@ -574,6 +608,15 @@
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
         "component redistribution missing: FIX-COMP",
+        "component licence/model review missing source_licence: FIX-COMP",
+        "component licence/model review missing binary_runtime_licence: FIX-COMP",
+        "component licence/model review missing model_weight_licence: FIX-COMP",
+        "component licence/model review missing model_redistribution_rights: FIX-COMP",
+        "component licence/model review missing commercial_use_rights: FIX-COMP",
+        "component licence/model review missing model_card_requirement: FIX-COMP",
+        "component licence/model review missing checksum_requirement: FIX-COMP",
+        "component licence/model review missing hardware_requirement: FIX-COMP",
+        "component licence/model review missing fallback_requirement: FIX-COMP",
         "component lists its own decision package as a consumer: FIX-COMP"
       ]
     },
@@ -581,6 +624,15 @@
       "fixture": "F60_COMPONENT_DECISION_PACKAGE_MISSING",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "component licence/model review missing source_licence: FIX-COMP",
+        "component licence/model review missing binary_runtime_licence: FIX-COMP",
+        "component licence/model review missing model_weight_licence: FIX-COMP",
+        "component licence/model review missing model_redistribution_rights: FIX-COMP",
+        "component licence/model review missing commercial_use_rights: FIX-COMP",
+        "component licence/model review missing model_card_requirement: FIX-COMP",
+        "component licence/model review missing checksum_requirement: FIX-COMP",
+        "component licence/model review missing hardware_requirement: FIX-COMP",
+        "component licence/model review missing fallback_requirement: FIX-COMP",
         "component decision package missing: FIX-COMP",
         "component consumer lacks decision dependency: WP-I0-001 -> "
       ]
@@ -589,6 +641,15 @@
       "fixture": "F61_COMPONENT_VERSION_RULE_MISSING",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "component licence/model review missing source_licence: FIX-COMP",
+        "component licence/model review missing binary_runtime_licence: FIX-COMP",
+        "component licence/model review missing model_weight_licence: FIX-COMP",
+        "component licence/model review missing model_redistribution_rights: FIX-COMP",
+        "component licence/model review missing commercial_use_rights: FIX-COMP",
+        "component licence/model review missing model_card_requirement: FIX-COMP",
+        "component licence/model review missing checksum_requirement: FIX-COMP",
+        "component licence/model review missing hardware_requirement: FIX-COMP",
+        "component licence/model review missing fallback_requirement: FIX-COMP",
         "component version rule missing: FIX-COMP",
         "component lists its own decision package as a consumer: FIX-COMP"
       ]
@@ -597,6 +658,15 @@
       "fixture": "F62_COMPONENT_RATIONALE_GENERIC",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "component licence/model review missing source_licence: FIX-COMP",
+        "component licence/model review missing binary_runtime_licence: FIX-COMP",
+        "component licence/model review missing model_weight_licence: FIX-COMP",
+        "component licence/model review missing model_redistribution_rights: FIX-COMP",
+        "component licence/model review missing commercial_use_rights: FIX-COMP",
+        "component licence/model review missing model_card_requirement: FIX-COMP",
+        "component licence/model review missing checksum_requirement: FIX-COMP",
+        "component licence/model review missing hardware_requirement: FIX-COMP",
+        "component licence/model review missing fallback_requirement: FIX-COMP",
         "component rationale generic: FIX-COMP",
         "component lists its own decision package as a consumer: FIX-COMP"
       ]
@@ -605,6 +675,15 @@
       "fixture": "F63_COMPONENT_CONSUMER_MISSING_DEPENDENCY",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "component licence/model review missing source_licence: FIX-COMP",
+        "component licence/model review missing binary_runtime_licence: FIX-COMP",
+        "component licence/model review missing model_weight_licence: FIX-COMP",
+        "component licence/model review missing model_redistribution_rights: FIX-COMP",
+        "component licence/model review missing commercial_use_rights: FIX-COMP",
+        "component licence/model review missing model_card_requirement: FIX-COMP",
+        "component licence/model review missing checksum_requirement: FIX-COMP",
+        "component licence/model review missing hardware_requirement: FIX-COMP",
+        "component licence/model review missing fallback_requirement: FIX-COMP",
         "component consumer lacks decision dependency: WP-I2-001 -> WP-I0-001"
       ]
     },
@@ -612,6 +691,15 @@
       "fixture": "F64_REJECTED_COMPONENT_STILL_CONSUMED",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "component licence/model review missing source_licence: FIX-COMP",
+        "component licence/model review missing binary_runtime_licence: FIX-COMP",
+        "component licence/model review missing model_weight_licence: FIX-COMP",
+        "component licence/model review missing model_redistribution_rights: FIX-COMP",
+        "component licence/model review missing commercial_use_rights: FIX-COMP",
+        "component licence/model review missing model_card_requirement: FIX-COMP",
+        "component licence/model review missing checksum_requirement: FIX-COMP",
+        "component licence/model review missing hardware_requirement: FIX-COMP",
+        "component licence/model review missing fallback_requirement: FIX-COMP",
         "component consumer lacks decision dependency: WP-I2-001 -> WP-I0-001",
         "rejected component still has consumers: FIX-COMP"
       ]
@@ -620,6 +708,15 @@
       "fixture": "F72_COMPONENT_DECISION_SELF_CONSUMER",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "component licence/model review missing source_licence: FIX-COMP",
+        "component licence/model review missing binary_runtime_licence: FIX-COMP",
+        "component licence/model review missing model_weight_licence: FIX-COMP",
+        "component licence/model review missing model_redistribution_rights: FIX-COMP",
+        "component licence/model review missing commercial_use_rights: FIX-COMP",
+        "component licence/model review missing model_card_requirement: FIX-COMP",
+        "component licence/model review missing checksum_requirement: FIX-COMP",
+        "component licence/model review missing hardware_requirement: FIX-COMP",
+        "component licence/model review missing fallback_requirement: FIX-COMP",
         "component lists its own decision package as a consumer: FIX-COMP"
       ]
     },
@@ -635,6 +732,8 @@
       "fixture": "F74_MISSING_DEPENDENCY_REVIEW",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "dependency review key set differs from dependency ledger",
+        "membership Pass B review lacks substantive ownership/test evidence: FIX-MEMBER2",
         "dependency Pass B review not confirmed: WP-FIX-ROOT2<-WP-FIX-PREREQ"
       ]
     },
@@ -642,6 +741,7 @@
       "fixture": "F75_MISSING_MEMBERSHIP_REVIEW",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "membership review ID set differs from membership ledger",
         "membership Pass B review not confirmed: FIX-MEMBER2"
       ]
     },
@@ -926,7 +1026,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_concept_missing:selected_model_id"
+        "ai_model_override_concept_missing:selected_model_id",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -937,7 +1046,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_concept_missing:recommended_model_id"
+        "ai_model_override_concept_missing:recommended_model_id",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -948,7 +1066,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_concept_missing:selection_source"
+        "ai_model_override_concept_missing:selection_source",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -959,7 +1086,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_concept_missing:user_override"
+        "ai_model_override_concept_missing:user_override",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -970,7 +1106,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_concept_missing:compatibility_status"
+        "ai_model_override_concept_missing:compatibility_status",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -981,7 +1126,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_concept_missing:hard_block_reason"
+        "ai_model_override_concept_missing:hard_block_reason",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -992,7 +1146,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_concept_missing:estimated_duration"
+        "ai_model_override_concept_missing:estimated_duration",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1003,7 +1166,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_concept_missing:estimated_memory"
+        "ai_model_override_concept_missing:estimated_memory",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1014,7 +1186,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_concept_missing:estimated_storage"
+        "ai_model_override_concept_missing:estimated_storage",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1025,7 +1206,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_concept_missing:processing_mode"
+        "ai_model_override_concept_missing:processing_mode",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1036,7 +1226,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_concept_missing:scheduled_start"
+        "ai_model_override_concept_missing:scheduled_start",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1047,7 +1246,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_concept_missing:pause_on_battery"
+        "ai_model_override_concept_missing:pause_on_battery",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1058,7 +1266,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_concept_missing:selected_scope"
+        "ai_model_override_concept_missing:selected_scope",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1069,7 +1286,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_command_missing:ai.models.list_compatible"
+        "ai_model_override_command_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1080,7 +1306,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_command_missing:ai.models.select"
+        "ai_model_override_command_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1091,7 +1326,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_command_missing:ai.models.estimates"
+        "ai_model_override_command_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1102,7 +1346,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_command_missing:ai.models.override"
+        "ai_model_override_command_missing:ai.models.override",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1113,7 +1366,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_command_missing:ai.jobs.schedule"
+        "ai_model_override_command_missing:ai.jobs.schedule",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1124,7 +1386,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_command_missing:ai.jobs.pause"
+        "ai_model_override_command_missing:ai.jobs.pause",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1135,7 +1406,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_command_missing:ai.jobs.resume"
+        "ai_model_override_command_missing:ai.jobs.resume",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1146,7 +1426,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_command_missing:ai.jobs.scope"
+        "ai_model_override_command_missing:ai.jobs.scope",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1157,7 +1446,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_rule_missing:slow_processing_alone_is_not_a_hard_block"
+        "ai_model_override_rule_missing:slow_processing_alone_is_not_a_hard_block",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1168,7 +1466,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_rule_missing:stronger_compatible_model_remains_selectable"
+        "ai_model_override_rule_missing:stronger_compatible_model_remains_selectable",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1179,7 +1486,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_rule_missing:recommendation_is_not_prohibition"
+        "ai_model_override_rule_missing:recommendation_is_not_prohibition",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1190,7 +1506,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_rule_missing:silent_model_substitution_is_prohibited"
+        "ai_model_override_rule_missing:silent_model_substitution_is_prohibited",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1201,7 +1526,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_rule_missing:quantized_variant_has_distinct_identity"
+        "ai_model_override_rule_missing:quantized_variant_has_distinct_identity",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1212,7 +1546,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_rule_missing:selected_model_provenance_is_persisted"
+        "ai_model_override_rule_missing:selected_model_provenance_is_persisted",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1223,7 +1566,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_rule_missing:model_change_invalidates_derived_results"
+        "ai_model_override_rule_missing:model_change_invalidates_derived_results",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1234,7 +1586,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_hard_block_reason_missing:insufficient_safe_memory"
+        "ai_model_override_hard_block_reason_missing:insufficient_safe_memory",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1245,7 +1606,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_hard_block_reason_missing:insufficient_storage"
+        "ai_model_override_hard_block_reason_missing:insufficient_storage",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1256,7 +1626,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_hard_block_reason_missing:unsupported_model_operations"
+        "ai_model_override_hard_block_reason_missing:unsupported_model_operations",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1267,7 +1646,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_hard_block_reason_missing:unsupported_runtime_or_provider"
+        "ai_model_override_hard_block_reason_missing:unsupported_runtime_or_provider",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1278,7 +1666,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_hard_block_reason_missing:invalid_or_corrupted_model"
+        "ai_model_override_hard_block_reason_missing:invalid_or_corrupted_model",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1289,7 +1686,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_hard_block_reason_missing:checksum_failure"
+        "ai_model_override_hard_block_reason_missing:checksum_failure",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1300,7 +1706,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_model_override_hard_block_reason_missing:unresolved_licensing_restriction"
+        "ai_model_override_hard_block_reason_missing:unresolved_licensing_restriction",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1311,7 +1726,16 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_override_packet_objective_missing_requirement"
+        "ai_override_packet_objective_missing_requirement",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1322,7 +1746,15 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
-        "ai_override_packet_contracts_missing_requirement"
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block"
       ]
     },
     {
@@ -1333,6 +1765,15 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block",
         "ai_override_packet_tests_missing_requirement"
       ]
     },
@@ -1344,6 +1785,15 @@
         "ai_model_override_phrase_missing:user MUST be allowed",
         "ai_model_override_phrase_missing:hard technical incompatibility",
         "ai_model_override_acceptance_missing",
+        "ai_override_packet_contract_missing:ai.models.list_compatible",
+        "ai_override_packet_contract_missing:ai.models.select",
+        "ai_override_packet_contract_missing:ai.models.estimates",
+        "ai_override_packet_contract_missing:ai.models.override",
+        "ai_override_packet_schema_concept_missing:compatibility",
+        "ai_override_packet_schema_concept_missing:estimates",
+        "ai_override_packet_schema_concept_missing:selection",
+        "ai_override_packet_schema_concept_missing:provenance",
+        "ai_override_packet_schema_concept_missing:hard-block",
         "ai_override_packet_exit_gate_missing_requirement"
       ]
     },
@@ -1358,12 +1808,16 @@
       "fixture": "F117_NONEXISTENT_LAYER3_LIST_ENTRY",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "layer3_canonical_member_missing: .gitattributes",
         "layer3_canonical_member_missing: 12-semantic-implementation-plan/11-model-packets/packet-manifest.json",
         "layer3_canonical_member_missing: 12-semantic-implementation-plan/12-validators/adversarial-results.json",
         "layer3_canonical_member_missing: 12-semantic-implementation-plan/12-validators/validator-results.json",
         "layer3_canonical_member_missing: 12-semantic-implementation-plan/13-reports/final-100-percent-certification.json",
         "layer3_canonical_member_missing: 12-semantic-implementation-plan/13-reports/final-content-manifest.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/13-reports/gpt-5.6-final-authoritative-review.json",
         "layer3_canonical_member_missing: 12-semantic-implementation-plan/13-reports/pass-b-independent-evidence-authenticity.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/13-reports/pass3-external-readonly-baseline.json",
+        "layer3_canonical_member_missing: 12-semantic-implementation-plan/13-reports/pass3-external-readonly-final.json",
         "layer3_canonical_member_missing: 12-semantic-implementation-plan/13-reports/source-of-truth-report.json",
         "layer3_canonical_member_missing: 12-semantic-implementation-plan/14-handoff/GPT-5.6-INDEPENDENT-REVIEW-HANDOFF.md",
         "layer3_canonical_member_missing: 12-semantic-implementation-plan/14-handoff/START-HERE.md",
@@ -1382,6 +1836,9 @@
         "layer3_canonical_member_missing: semantic-plan-source/packages/work-packages.json",
         "layer3_canonical_member_missing: semantic-plan-source/requirements/requirement-mapping.csv",
         "layer3_canonical_member_missing: semantic-plan-source/requirements/requirements.csv",
+        "layer3_canonical_member_missing: semantic-plan-source/reviews/gpt-5.6-final-authoritative-review.json",
+        "layer3_canonical_member_missing: semantic-plan-source/reviews/pass3-external-readonly-baseline.json",
+        "layer3_canonical_member_missing: semantic-plan-source/reviews/pass3-external-readonly-final.json",
         "layer3_canonical_member_missing: semantic-plan-source/reviews/source-of-truth-report.json",
         "layer3_canonical_member_missing: semantic-plan-source/schemas/schema-index.csv",
         "layer3_canonical_member_missing: semantic-plan-source/validators/adversarial_fixtures.py",
@@ -1389,11 +1846,13 @@
         "layer3_canonical_member_missing: tools/certification_gates.py",
         "layer3_canonical_member_missing: tools/final_certification.py",
         "layer3_canonical_member_missing: tools/generate_gpt_handoff.py",
+        "layer3_canonical_member_missing: tools/pass3_external_integrity.py",
+        "layer3_canonical_member_missing: tools/simulate_provisional_certification.py",
         "layer3_unexpected_member: 12-semantic-implementation-plan/does-not-exist.json",
         "layer3_file_order_mismatch: envelope files are not canonical deterministic sorted order",
         "layer3_file_hash_membership_mismatch: fileHashes keys differ from canonical Layer 3 files",
         "layer3_file_hash_membership_mismatch: files and fileHashes keys differ",
-        "layer3_file_count_mismatch: envelope fileCount 1 != canonical 31",
+        "layer3_file_count_mismatch: envelope fileCount 1 != canonical 40",
         "layer 3 listed file missing: 12-semantic-implementation-plan/does-not-exist.json",
         "layer 3 canonical file not hashed: 12-semantic-implementation-plan/13-reports/final-content-manifest.json",
         "layer 3 canonical file not hashed: 12-semantic-implementation-plan/13-reports/final-100-percent-certification.json",
@@ -1401,6 +1860,9 @@
         "layer 3 canonical file not hashed: 12-semantic-implementation-plan/12-validators/adversarial-results.json",
         "layer 3 canonical file not hashed: 12-semantic-implementation-plan/13-reports/pass-b-independent-evidence-authenticity.json",
         "layer 3 canonical file not hashed: 12-semantic-implementation-plan/13-reports/source-of-truth-report.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/13-reports/pass3-external-readonly-baseline.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/13-reports/pass3-external-readonly-final.json",
+        "layer 3 canonical file not hashed: 12-semantic-implementation-plan/13-reports/gpt-5.6-final-authoritative-review.json",
         "layer 3 canonical file not hashed: 12-semantic-implementation-plan/11-model-packets/packet-manifest.json",
         "layer 3 canonical file not hashed: 12-semantic-implementation-plan/14-handoff/START-HERE.md",
         "layer 3 canonical file not hashed: 12-semantic-implementation-plan/14-handoff/GPT-5.6-INDEPENDENT-REVIEW-HANDOFF.md",
@@ -1422,10 +1884,16 @@
         "layer 3 canonical file not hashed: semantic-plan-source/validators/validate_plan.py",
         "layer 3 canonical file not hashed: semantic-plan-source/validators/adversarial_fixtures.py",
         "layer 3 canonical file not hashed: semantic-plan-source/reviews/source-of-truth-report.json",
+        "layer 3 canonical file not hashed: semantic-plan-source/reviews/pass3-external-readonly-baseline.json",
+        "layer 3 canonical file not hashed: semantic-plan-source/reviews/pass3-external-readonly-final.json",
+        "layer 3 canonical file not hashed: semantic-plan-source/reviews/gpt-5.6-final-authoritative-review.json",
+        "layer 3 canonical file not hashed: .gitattributes",
         "layer 3 canonical file not hashed: build_semantic_plan.py",
         "layer 3 canonical file not hashed: tools/final_certification.py",
         "layer 3 canonical file not hashed: tools/certification_gates.py",
+        "layer 3 canonical file not hashed: tools/simulate_provisional_certification.py",
         "layer 3 canonical file not hashed: tools/generate_gpt_handoff.py",
+        "layer 3 canonical file not hashed: tools/pass3_external_integrity.py",
         "layer 3 envelope digest does not match recomputation"
       ]
     },
@@ -1505,6 +1973,7 @@
       "fixture": "F128_EXTERNAL_INTEGRITY_MODIFIED",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
+        "external integrity report contains checkout-specific root",
         "external integrity modified is not zero"
       ]
     },
@@ -1600,7 +2069,7 @@
       "fixture": "F140_LAYER3_CANONICAL_MEMBER_REMOVED",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "layer3_canonical_member_missing: 12-semantic-implementation-plan/11-model-packets/packet-manifest.json",
+        "layer3_canonical_member_missing: .gitattributes",
         "layer3_file_order_mismatch: envelope files are not canonical deterministic sorted order",
         "layer3_file_hash_membership_mismatch: fileHashes keys differ from canonical Layer 3 files"
       ]
@@ -1618,7 +2087,7 @@
       "fixture": "F142_LAYER3_COUNT_OK_BUT_CANONICAL_MEMBER_MISSING",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "layer3_canonical_member_missing: 12-semantic-implementation-plan/11-model-packets/packet-manifest.json",
+        "layer3_canonical_member_missing: .gitattributes",
         "layer3_unexpected_member: 12-semantic-implementation-plan/13-reports/unexpected-layer3.json",
         "layer3_file_order_mismatch: envelope files are not canonical deterministic sorted order",
         "layer3_file_hash_membership_mismatch: fileHashes keys differ from canonical Layer 3 files"
@@ -1636,7 +2105,7 @@
       "fixture": "F144_LAYER3_HASH_WITHOUT_FILE",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "layer3_canonical_member_missing: 12-semantic-implementation-plan/11-model-packets/packet-manifest.json",
+        "layer3_canonical_member_missing: .gitattributes",
         "layer3_file_order_mismatch: envelope files are not canonical deterministic sorted order",
         "layer3_file_hash_membership_mismatch: files and fileHashes keys differ"
       ]
@@ -1702,6 +2171,105 @@
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
         "exclusion_rationale_not_specific: 13-reports/final-100-percent-certification.json"
+      ]
+    },
+    {
+      "fixture": "F154_GENERIC_ACCEPTANCE_LABEL",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "generic acceptance criterion mirrors requirement label: FIX-GENERIC-ACCEPTANCE"
+      ]
+    },
+    {
+      "fixture": "F155_GENERIC_VERIFICATION_GATE_LIST",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "generic verification gate list: FIX-GENERIC-VERIFICATION"
+      ]
+    },
+    {
+      "fixture": "F156_DUPLICATE_DEPENDENCY_ENDPOINT",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "duplicate dependency endpoint pair: WP-I0-002 <- WP-I0-001"
+      ]
+    },
+    {
+      "fixture": "F157_DUPLICATE_IPC_COMMAND_ID",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "duplicate or missing command ID: 'ai.cancel' count=2"
+      ]
+    },
+    {
+      "fixture": "F158_ORPHAN_IPC_COMMAND_OWNER",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "orphan command owner: ai.cancel -> WP-NOT-REAL"
+      ]
+    },
+    {
+      "fixture": "F159_DUPLICATE_RECORD_SCHEMA",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "duplicate or missing schema index path: 'records/ai_candidate.schema.json' count=2",
+        "duplicate or missing record schema ID: 'https://lamha.local/schemas/records/ai_candidate.schema.json' count=2"
+      ]
+    },
+    {
+      "fixture": "F160_PARTIAL_MEMBER_EVIDENCE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "independent member verification does not exactly cover membership ledger"
+      ]
+    },
+    {
+      "fixture": "F161_UNSPECIFIED_MODEL_BUNDLING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "model family incorrectly authorizes unspecified checkpoint redistribution: Embedding model/runtime"
+      ]
+    },
+    {
+      "fixture": "F162_AI_COMMAND_SELF_CERTIFICATION",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "ai_model_override_registry_command_missing:ai.models.list_compatible"
+      ]
+    },
+    {
+      "fixture": "F163_AUTOMATIC_NEXT_PACKAGE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "final certification automatically authorizes a next package"
+      ]
+    },
+    {
+      "fixture": "F164_WP_I0_001_ALREADY_STARTED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "WP-I0-001 status is not NOT_STARTED"
+      ]
+    },
+    {
+      "fixture": "F165_CHECKOUT_SPECIFIC_EXTERNAL_EVIDENCE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "external integrity report contains checkout-specific root"
+      ]
+    },
+    {
+      "fixture": "F166_GRAPHIFY_LF_POLICY_REMOVED",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "Graphify LF rule missing: *.csv text eol=lf"
+      ]
+    },
+    {
+      "fixture": "F167_PACKET_OBJECTIVE_DRIFT",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "packet exact rendering differs from authority: WP-I0-001"
       ]
     }
   ]

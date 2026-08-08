@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/requests/ai.models.list_compatible.schema.json",
+  "title": "List Compatible Request",
+  "description": "Reviewed CAN-LAM-AI-090 request DTO for ai.models.list_compatible.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "hardwareAssessmentId",
+    "selectedScope"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "hardwareAssessmentId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "selectedScope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "ai.models.list_compatible",
+    "side": "request",
+    "openObjectExceptions": []
+  }
+}

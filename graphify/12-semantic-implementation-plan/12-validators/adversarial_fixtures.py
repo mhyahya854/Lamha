@@ -5,6 +5,7 @@ from __future__ import annotations
 import importlib.util
 import copy
 import json
+import shutil
 import sys
 import tempfile
 from pathlib import Path
@@ -662,7 +663,7 @@ def run() -> dict[str, object]:
             (rootp / "13-reports" / "ai-model-override-amendment.json").write_text(json.dumps(valid_amendment()), encoding="utf-8")
             (rootp / "04-work-packages" / "packets" / "WP-I10-003.md").write_text(mutation[1], encoding="utf-8")
             errs = validator.check_ai_model_override_amendment([am_req], am_membership, [{"component":"ONNX Runtime","model_selection_rule":"manually selectable slow"}], rootp)
-            expected = "ai_override_packet_objective_missing_requirement" if mutation[0]=="OBJECTIVE" else "ai_override_packet_contracts_missing_requirement" if mutation[0]=="CONTRACTS" else "ai_override_packet_tests_missing_requirement" if mutation[0]=="TESTS" else "ai_override_packet_exit_gate_missing_requirement"
+            expected = "ai_override_packet_objective_missing_requirement" if mutation[0]=="OBJECTIVE" else "ai_override_packet_contract_missing:ai.models.list_compatible" if mutation[0]=="CONTRACTS" else "ai_override_packet_tests_missing_requirement" if mutation[0]=="TESTS" else "ai_override_packet_exit_gate_missing_requirement"
             amendment_extra.append((f"F{120+idx}_INDEPENDENT_PACKET_{mutation[0]}", *contains(errs, expected)))
 
     # ------------------------------------------------------------------
@@ -1179,6 +1180,144 @@ def run() -> dict[str, object]:
         "exclusion_rationale_not_specific",
     )
 
+    # GPT-5.6 final-review regression fixtures (F154-F165).  Each starts from
+    # the current valid authoritative baseline, applies one isolated mutation,
+    # and invokes the narrow gate that owns the intended failure.
+    generic_acceptance = requirement_row(
+        "FIX-GENERIC-ACCEPTANCE",
+        "When the reviewed fixture executes, the subsystem must return a typed observable result.",
+    )
+    generic_acceptance["acceptance_criteria"] = "ACCEPT:: typed observable result"
+    generic_acceptance_errors = validator.check_requirement_records(
+        [generic_acceptance], {"FIX-GENERIC-ACCEPTANCE": {"primary_implementation_phase": "I5"}}
+    )
+    generic_verification = requirement_row(
+        "FIX-GENERIC-VERIFICATION",
+        "When the reviewed fixture executes, the subsystem must return a typed observable result.",
+    )
+    generic_verification["verification_method"] = "Gate 1 scope; Gate 2; Gate 3"
+    generic_verification_errors = validator.check_requirement_records(
+        [generic_verification], {"FIX-GENERIC-VERIFICATION": {"primary_implementation_phase": "I5"}}
+    )
+
+    plan_root = HERE.parent
+    real_packages = validator.read_json(plan_root / "04-work-packages" / "work-packages.json")
+    real_edges = validator.read_csv(plan_root / "04-work-packages" / "dependencies.csv")
+    duplicate_edge_rows = copy.deepcopy(real_edges)
+    duplicate_edge = copy.deepcopy(duplicate_edge_rows[0])
+    duplicate_edge["dependency_type"] = "REQUIRES_CONTRACT" if duplicate_edge["dependency_type"] != "REQUIRES_CONTRACT" else "REQUIRES_SCHEMA"
+    duplicate_edge_rows.append(duplicate_edge)
+    duplicate_edge_errors = validator.check_dependency_records(real_packages, duplicate_edge_rows)
+
+    real_commands = validator.read_json(plan_root / "05-contracts" / "ipc-command-registry-v3.json")["commands"]
+    real_package_ids = {str(row["work_package_id"]) for row in real_packages}
+    duplicate_commands = copy.deepcopy(real_commands)
+    duplicate_commands.append(copy.deepcopy(duplicate_commands[0]))
+    duplicate_command_errors = validator.check_command_records(duplicate_commands, plan_root / "05-contracts", real_package_ids)
+    orphan_commands = copy.deepcopy(real_commands)
+    orphan_commands[0]["workPackageId"] = "WP-NOT-REAL"
+    orphan_command_errors = validator.check_command_records(orphan_commands, plan_root / "05-contracts", real_package_ids)
+
+    real_schema_index = validator.read_csv(plan_root / "06-schemas" / "schema-index.csv")
+    duplicate_schema_index = copy.deepcopy(real_schema_index)
+    duplicate_schema_index.append(copy.deepcopy(duplicate_schema_index[0]))
+    duplicate_schema_errors = validator.check_record_schemas(duplicate_schema_index, plan_root / "06-schemas")
+
+    real_memberships = validator.read_csv(plan_root / "04-work-packages" / "requirement-membership.csv")
+    real_v2 = {
+        name: validator.read_csv(plan_root / "13-reports" / name)
+        for name in (
+            "independently-verified-package-members-v2.csv",
+            "independently-verified-package-contracts-v2.csv",
+            "independently-verified-package-tests-v2.csv",
+            "independently-verified-package-exit-gates-v2.csv",
+            "independently-verified-package-decisions-v2.csv",
+        )
+    }
+    missing_member_rows = copy.deepcopy(real_v2["independently-verified-package-members-v2.csv"])
+    missing_member_rows.pop()
+    missing_member_exact_errors = validator.check_pass_b_independent_evidence(
+        missing_member_rows,
+        real_v2["independently-verified-package-contracts-v2.csv"],
+        real_v2["independently-verified-package-tests-v2.csv"],
+        real_v2["independently-verified-package-exit-gates-v2.csv"],
+        real_v2["independently-verified-package-decisions-v2.csv"],
+        real_packages, real_memberships, real_commands,
+    )
+
+    real_components = validator.read_csv(plan_root / "10-component-manifest" / "components.csv")
+    unsafe_components = copy.deepcopy(real_components)
+    next(row for row in unsafe_components if row["component"] == "Embedding model/runtime")["redistribution_status"] = "BUNDLED_SOURCE"
+    unsafe_model_errors = validator.check_component_licence_completeness(unsafe_components, real_edges)
+
+    real_requirements = validator.read_csv(plan_root / "02-requirements" / "canonical-registry.csv")
+    missing_ai_registry_command = [
+        copy.deepcopy(row) for row in real_commands if row["commandId"] != "ai.models.list_compatible"
+    ]
+    missing_ai_registry_errors = validator.check_ai_model_override_amendment(
+        real_requirements, real_memberships, real_components, plan_root, missing_ai_registry_command
+    )
+
+    auth_cert = {"automatic_next_package": None}
+    auth_packages = [{"work_package_id": "WP-I0-001", "status": "NOT_STARTED"}]
+    unsafe_auth_cert = copy.deepcopy(auth_cert)
+    unsafe_auth_cert["automatic_next_package"] = "WP-I0-002"
+    automatic_next_errors = gates.verify_implementation_authorization(unsafe_auth_cert, auth_packages)
+    unsafe_auth_packages = copy.deepcopy(auth_packages)
+    unsafe_auth_packages[0]["status"] = "IN_PROGRESS"
+    started_root_errors = gates.verify_implementation_authorization(auth_cert, unsafe_auth_packages)
+
+    portable_external = {
+        "lamhaRoot": ".", "graphifyRoot": "graphify",
+        "comparison": {"status": "PASS", "added": [], "removed": [], "modified": [], "renamed": []},
+    }
+    checkout_specific_external = copy.deepcopy(portable_external)
+    checkout_specific_external["lamhaRoot"] = "C:/Users/example/checkout"
+    checkout_specific_errors = gates.verify_external_integrity_comparison(checkout_specific_external)
+
+    with tempfile.TemporaryDirectory() as tmp_policy:
+        policy_root = Path(tmp_policy)
+        valid_policy = (gates.GRAPHIFY / ".gitattributes").read_text(encoding="utf-8")
+        (policy_root / ".gitattributes").write_text(
+            valid_policy.replace("*.csv text eol=lf\n", "", 1), encoding="utf-8", newline="\n"
+        )
+        line_policy_errors = gates.verify_line_ending_policy(policy_root)
+
+    with tempfile.TemporaryDirectory() as tmp_packet:
+        packet_root = Path(tmp_packet)
+        for source_rel in (
+            "semantic-plan-source/packages", "semantic-plan-source/requirements",
+            "12-semantic-implementation-plan/04-work-packages/packets",
+            "12-semantic-implementation-plan/11-model-packets",
+        ):
+            shutil.copytree(gates.GRAPHIFY / source_rel, packet_root / source_rel)
+        registry_target = packet_root / "semantic-plan-source/contracts/ipc-command-registry-v3.json"
+        registry_target.parent.mkdir(parents=True)
+        shutil.copy2(gates.GRAPHIFY / "semantic-plan-source/contracts/ipc-command-registry-v3.json", registry_target)
+        packet_target = packet_root / "12-semantic-implementation-plan/04-work-packages/packets/WP-I0-001.md"
+        packet_target.write_text(
+            packet_target.read_text(encoding="utf-8").replace("- Objective:", "- Objective: tampered ", 1),
+            encoding="utf-8", newline="\n",
+        )
+        exact_packet_errors = gates.verify_packet_semantic_agreement(packet_root)
+
+    final_review_regressions = [
+        ("F154_GENERIC_ACCEPTANCE_LABEL", *contains(generic_acceptance_errors, "generic acceptance criterion mirrors requirement label")),
+        ("F155_GENERIC_VERIFICATION_GATE_LIST", *contains(generic_verification_errors, "generic verification gate list")),
+        ("F156_DUPLICATE_DEPENDENCY_ENDPOINT", *contains(duplicate_edge_errors, "duplicate dependency endpoint pair")),
+        ("F157_DUPLICATE_IPC_COMMAND_ID", *contains(duplicate_command_errors, "duplicate or missing command ID")),
+        ("F158_ORPHAN_IPC_COMMAND_OWNER", *contains(orphan_command_errors, "orphan command owner")),
+        ("F159_DUPLICATE_RECORD_SCHEMA", *contains(duplicate_schema_errors, "duplicate or missing schema index path")),
+        ("F160_PARTIAL_MEMBER_EVIDENCE", *contains(missing_member_exact_errors, "does not exactly cover membership ledger")),
+        ("F161_UNSPECIFIED_MODEL_BUNDLING", *contains(unsafe_model_errors, "incorrectly authorizes unspecified checkpoint redistribution")),
+        ("F162_AI_COMMAND_SELF_CERTIFICATION", *contains(missing_ai_registry_errors, "ai_model_override_registry_command_missing:ai.models.list_compatible")),
+        ("F163_AUTOMATIC_NEXT_PACKAGE", *contains(automatic_next_errors, "automatically authorizes a next package")),
+        ("F164_WP_I0_001_ALREADY_STARTED", *contains(started_root_errors, "status is not NOT_STARTED")),
+        ("F165_CHECKOUT_SPECIFIC_EXTERNAL_EVIDENCE", *contains(checkout_specific_errors, "checkout-specific root")),
+        ("F166_GRAPHIFY_LF_POLICY_REMOVED", *contains(line_policy_errors, "Graphify LF rule missing")),
+        ("F167_PACKET_OBJECTIVE_DRIFT", *contains(exact_packet_errors, "packet exact rendering differs from authority: WP-I0-001")),
+    ]
+
     cases = [
         ("F01_GENERATED_REPORT_FALSELY_MANUAL", *contains(manual_errors, "automatically generated report labelled manual")),
         ("F02_BLANKET_REVIEW_CERTIFICATION", *contains(blanket_errors, "blanket script marks every row reviewed")),
@@ -1257,7 +1396,7 @@ def run() -> dict[str, object]:
         ("F70_AMENDMENT_ARTIFACT_MISSING", *contains(am_missing_artifact, "ai_model_override_amendment_artifact_missing")),
         ("F71_AMENDMENT_COMPONENT_RULE_MISSING", *contains(am_missing_component_rule, "component_model_selection_rule_missing")),
     ]
-    cases = cases + amendment_extra + cert_fixture_errors + cert_integrity_fixture_errors
+    cases = cases + amendment_extra + cert_fixture_errors + cert_integrity_fixture_errors + final_review_regressions
     results = [
         {
             "fixture": name,

@@ -1,0 +1,16 @@
+# Graphify planning and evidence text must have identical committed and
+# checked-out bytes on every platform. The one UTF-16 PowerShell transcript
+# is intentionally binary and must not be line-ending converted.
+.gitattributes text eol=lf
+*.csv text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.log text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.sql text eol=lf
+*.txt text eol=lf
+graphify-run-log.txt -text
+graphify-out/.graphify_python text eol=lf
+graphify-out/cache/last_query_stamp text eol=lf

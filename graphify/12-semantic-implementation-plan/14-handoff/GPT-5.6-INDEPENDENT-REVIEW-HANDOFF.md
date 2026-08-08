@@ -19,11 +19,11 @@ review.
 
 - 2,339 canonical requirement rows, of which 1,125 are active and 724 are
   actionable implementation records, each individually reviewed.
-- 155 work packages, 724 reviewed requirement memberships, and a reviewed
-  dependency DAG with exactly one root (`WP-I0-001`) and zero cycles.
+- 155 work packages, 724 reviewed requirement memberships, and 229 reviewed
+  unique dependency edges with exactly one root (`WP-I0-001`) and zero cycles.
 - 17 component and licence decisions, all final, with version rules and
   redistribution status.
-- 116 planned IPC commands, 30 schemas, and an executable SQLite DDL plan.
+- 124 planned IPC commands, 30 record schemas, and an executable SQLite DDL plan.
 - The AI model override amendment `CAN-LAM-AI-090`: stronger compatible
   models remain manually selectable on weaker hardware; slow estimates alone
   never block; hard incompatibilities block with exact reasons; no silent
@@ -43,7 +43,7 @@ full mapping and `gpt-review-counts.json` for the recomputed counts.
 
 ```powershell
 $env:PYTHONDONTWRITEBYTECODE = "1"
-Set-Location "C:\Users\mhyah\Downloads\Code\Lamha"
+Set-Location "<REPOSITORY_ROOT>"
 python graphify\build_semantic_plan.py
 ```
 
@@ -248,7 +248,7 @@ Three remaining certification-integrity weaknesses were found and closed:
    exclusion must carry a non-empty, specific rationale
    (`exclusion_rationale_missing` / `exclusion_rationale_not_specific`).
 
-The adversarial suite now contains 153 fixtures (F01-F153), including
+The adversarial suite now contains 167 fixtures (F01-F167), including
 independent one-mutation fixtures for the provisional/crash state, exact
 Layer 3 membership, and strict exclusion sets.
 
@@ -278,7 +278,7 @@ Layer 3 membership, and strict exclusion sets.
 - No builds, installs, lockfile changes, backups, archives, Git rewrites, or
   force pushes.
 - Implementation must not start. The administrative review status is
-  `DEEPSEEK PRE-GPT PLANNING REVIEW COMPLETE — AWAITING GPT-5.6 INDEPENDENT REVIEW`,
+  `GPT-5.6 FINAL AUTHORITATIVE PLANNING REVIEW PASS — IMPLEMENTATION MAY BEGIN WITH WP-I0-001 ONLY`,
   which blocks implementation pending this review.
 
 ## Instructions to the reviewer
@@ -332,5 +332,5 @@ FULL IMPLEMENTATION PLANNING 100% COMPLETE — WP-I0-001 MAY BEGIN
 The administrative handoff declaration is:
 
 ```text
-DEEPSEEK PRE-GPT PLANNING REVIEW COMPLETE — AWAITING GPT-5.6 INDEPENDENT REVIEW
+GPT-5.6 FINAL AUTHORITATIVE PLANNING REVIEW PASS — IMPLEMENTATION MAY BEGIN WITH WP-I0-001 ONLY
 ```

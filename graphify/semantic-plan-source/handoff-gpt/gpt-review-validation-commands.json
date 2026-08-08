@@ -1,6 +1,6 @@
 {
   "environment": {
-    "powershell": "$env:PYTHONDONTWRITEBYTECODE = \"1\"; Set-Location 'C:\\Users\\mhyah\\Downloads\\Code\\Lamha'",
+    "powershell": "$env:PYTHONDONTWRITEBYTECODE = \"1\"; Set-Location '<REPOSITORY_ROOT>'",
     "notes": "Only graphify/ is writable. Codebase/ is read-only. No installs, builds of the product, lockfile changes, backups, or archives."
   },
   "commands": [
@@ -17,7 +17,7 @@
     {
       "step": "Run the adversarial suite",
       "command": "python graphify\\12-semantic-implementation-plan\\12-validators\\adversarial_fixtures.py",
-      "expect": "status PASS; 153 fixtures; every fixture EXPECTED_FAILURE_OBSERVED"
+      "expect": "status PASS; 167 fixtures; every fixture EXPECTED_FAILURE_OBSERVED"
     },
     {
       "step": "Run pre-certification validation",

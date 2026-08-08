@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lamha.local/schemas/ipc/responses/ai.models.estimates.schema.json",
+  "title": "Estimates Response",
+  "description": "Reviewed CAN-LAM-AI-090 response DTO for ai.models.estimates.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "estimatedDurationSeconds",
+    "estimatedMemoryBytes",
+    "estimatedStorageBytes",
+    "provider",
+    "compatible",
+    "hardBlockReason"
+  ],
+  "properties": {
+    "contractVersion": {
+      "const": "1.0.0"
+    },
+    "estimatedDurationSeconds": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "estimatedMemoryBytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "estimatedStorageBytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "provider": {
+      "enum": [
+        "CPU",
+        "CUDA",
+        "DirectML",
+        "CoreML",
+        "ROCm"
+      ]
+    },
+    "compatible": {
+      "type": "boolean"
+    },
+    "hardBlockReason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "x-lamha-review": {
+    "status": "REVIEWED",
+    "commandId": "ai.models.estimates",
+    "side": "response",
+    "openObjectExceptions": []
+  }
+}

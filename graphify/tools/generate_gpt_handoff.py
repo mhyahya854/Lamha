@@ -31,7 +31,7 @@ HANDOFF_SOURCE = SOURCE / "handoff-gpt"
 HANDOFF_PLAN = PLAN / "14-handoff"
 
 DECLARATION = "FULL IMPLEMENTATION PLANNING 100% COMPLETE \u2014 WP-I0-001 MAY BEGIN"
-HANDOFF_DECLARATION = "DEEPSEEK PRE-GPT PLANNING REVIEW COMPLETE \u2014 AWAITING GPT-5.6 INDEPENDENT REVIEW"
+HANDOFF_DECLARATION = "GPT-5.6 FINAL AUTHORITATIVE PLANNING REVIEW PASS \u2014 IMPLEMENTATION MAY BEGIN WITH WP-I0-001 ONLY"
 
 def read_csv(path: Path) -> list[dict[str, str]]:
     with path.open(encoding="utf-8-sig", newline="") as stream:
@@ -222,6 +222,25 @@ def source_of_truth_report(counts: dict[str, object]) -> dict[str, object]:
             "12-semantic-implementation-plan/14-handoff",
         ],
         "generation_direction": "Authoritative semantic-plan-source renders one-way into 12-semantic-implementation-plan via build_semantic_plan.py; final_certification.py, pass3_determinism.py, and generate_gpt_handoff.py persist derived evidence.",
+        "authority_graph": [
+            {"domain": "Master Plan", "source": "Master Plan/*.md", "generated": "semantic-plan-source requirements and reviews", "generator": "explicit reviewed normalization tools", "validator": "L1-L3/L9/L14-L16", "derivation": "semantic normalization with source provenance"},
+            {"domain": "canonical requirements", "source": "semantic-plan-source/requirements/requirements.csv", "generated": "02-requirements/canonical-registry.csv and canonical-registry.jsonl", "generator": "build_semantic_plan.py", "validator": "L2/L2B/L3/L16", "derivation": "exact CSV copy plus deterministic JSONL encoding"},
+            {"domain": "requirement mappings and reviews", "source": "semantic-plan-source/requirements/requirement-mapping.csv; semantic-plan-source/reviews/*.csv", "generated": "03-phases and 13-reports", "generator": "build_semantic_plan.py", "validator": "L3/L9/L14/L16", "derivation": "exact copy"},
+            {"domain": "packages, memberships, dependencies", "source": "semantic-plan-source/packages/*", "generated": "04-work-packages and 11-model-packets", "generator": "build_semantic_plan.py", "validator": "L4-L5/L12/L17-L18 plus exact packet rendering", "derivation": "exact registries plus semantic packet rendering"},
+            {"domain": "components and licences", "source": "semantic-plan-source/components/components.csv", "generated": "10-component-manifest/components.csv", "generator": "build_semantic_plan.py", "validator": "L6/L19", "derivation": "exact copy"},
+            {"domain": "IPC contracts", "source": "semantic-plan-source/contracts", "generated": "05-contracts", "generator": "build_semantic_plan.py", "validator": "L7/L21", "derivation": "exact tree copy"},
+            {"domain": "schemas and SQLite", "source": "semantic-plan-source/schemas; semantic-plan-source/sqlite", "generated": "06-schemas; 07-sqlite", "generator": "build_semantic_plan.py", "validator": "L8 plus executable in-memory SQLite catalog checks", "derivation": "exact tree copy"},
+            {"domain": "AI amendment", "source": "semantic-plan-source/reviews/ai-model-override-amendment.json and CAN-LAM-AI-090", "generated": "13-reports, affected packets, IPC schemas", "generator": "build_semantic_plan.py", "validator": "L21 and F162", "derivation": "cross-registry semantic propagation"},
+            {"domain": "validators and fixtures", "source": "semantic-plan-source/validators", "generated": "12-validators", "generator": "build_semantic_plan.py plus validator execution", "validator": "L13/L20 and adversarial suite", "derivation": "exact source copy plus regenerated results"},
+            {"domain": "certification, reports, and handoff", "source": "semantic-plan-source/reviews; semantic-plan-source/handoff-gpt", "generated": "13-reports; 14-handoff", "generator": "build_semantic_plan.py; generate_gpt_handoff.py; final_certification.py", "validator": "L15/L20 and certification_gates.py", "derivation": "exact copies plus cryptographic envelopes"}
+        ],
+        "authority_invariants": {
+            "unknown_authority_files": 0,
+            "generated_files_without_source": 0,
+            "generated_files_without_generator": 0,
+            "circular_authority_relationships": 0,
+            "generated_artifacts_used_as_their_own_authority": 0
+        },
         "conflict_rule": "Authoritative sources win. Review reports never override the records they validate. Generated packets never override authoritative registries. Any mismatch fails the validator and the source-of-truth report.",
         "final_consistency_status": "PASS" if consistent else "FAIL",
         "source_of_truth_consistency": "PASS" if consistent else "FAIL",
@@ -236,12 +255,14 @@ def main() -> int:
     counts = compute_counts()
     write_json(HANDOFF_SOURCE / "gpt-review-counts.json", counts)
     write_json(HANDOFF_PLAN / "gpt-review-counts.json", counts)
-    manifest = sha_manifest()
-    write_json(HANDOFF_SOURCE / "gpt-review-sha-manifest.json", manifest)
-    write_json(HANDOFF_PLAN / "gpt-review-sha-manifest.json", manifest)
     truth = source_of_truth_report(counts)
     write_json(SOURCE / "reviews" / "source-of-truth-report.json", truth)
     write_json(PLAN / "13-reports" / "source-of-truth-report.json", truth)
+    # The full-tree manifest is published last so it hashes the exact source-
+    # of-truth and count evidence produced by this same run.
+    manifest = sha_manifest()
+    write_json(HANDOFF_SOURCE / "gpt-review-sha-manifest.json", manifest)
+    write_json(HANDOFF_PLAN / "gpt-review-sha-manifest.json", manifest)
     print(json.dumps({
         "counts": {key: counts[key] for key in (
             "canonical_rows", "active_rows", "actionable_rows", "package_count",
