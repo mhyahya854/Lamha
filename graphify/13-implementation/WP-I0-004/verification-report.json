@@ -1,0 +1,434 @@
+{
+  "fixtures": {
+    "total": 10,
+    "verdicts": {
+      "node-runtime-alignment": "MIXED",
+      "node-engine-range-compatibility": "ALIGNED",
+      "pnpm-manager-alignment": "ALIGNED",
+      "python-toolchain-alignment": "MIXED",
+      "flutter-version-alignment": "MIXED",
+      "dart-sdk-constraint-diversity": "MIXED",
+      "workspace-package-version-diversity": "RECORD_ONLY",
+      "generated-client-version-record": "RECORD_ONLY",
+      "lockfile-tool-version-record": "RECORD_ONLY",
+      "mise-pin-lock-consistency": "MIXED"
+    },
+    "mixedVersionFindings": [
+      "node-runtime-alignment",
+      "python-toolchain-alignment",
+      "flutter-version-alignment",
+      "dart-sdk-constraint-diversity",
+      "mise-pin-lock-consistency"
+    ]
+  },
+  "prePostManifestHashes": {
+    "filesHashed": 54,
+    "changedDuringInvestigation": [],
+    "hashes": {
+      ".github/mise.toml": {
+        "size": 233,
+        "sha256": "a7401eebd80fb3ffaf749f9d9e2888fc1bdc4c44505ce16882d3f6c6460bd589"
+      },
+      ".github/package.json": {
+        "size": 184,
+        "sha256": "957402b6854678f12eeec4d57aadacad572d8d7434777009378a9d9125f924c8"
+      },
+      ".github/workflows/build-mobile.yml": {
+        "size": 11632,
+        "sha256": "c0a0a3456802c092d126210708885724674937a75b6f4ad992d1d5fd57ff1e9e"
+      },
+      ".github/workflows/check-openapi.yml": {
+        "size": 853,
+        "sha256": "2b9e6531eb5d2e0325a09cc5dde8ba52bcd7102605e0391d21da369a2ed1b3b8"
+      },
+      ".github/workflows/test.yml": {
+        "size": 29830,
+        "sha256": "a96fea575d228418bcf0502fcc767a9fe0cfa7a806b9ab0b760502752e670b43"
+      },
+      ".nvmrc": {
+        "size": 8,
+        "sha256": "b911698dc3cf3227d34d0ad6727f1c4408791203c9665de99ab959331a1fb07d"
+      },
+      "deployment/mise.lock": {
+        "size": 3526,
+        "sha256": "508ae91b62689f637574bee457d9327f186d3aed6e050489220b75f0392e8a9e"
+      },
+      "deployment/mise.toml": {
+        "size": 404,
+        "sha256": "269706a79bee170b22a7a66f8fec2cf6d56e666c29386b1f7d1e17bd8856b495"
+      },
+      "docker/docker-compose.dev.yml": {
+        "size": 6351,
+        "sha256": "5a3a3b44c9649af0c9b1dedccfd0b81de7b20215e06168519284408f64669991"
+      },
+      "docker/docker-compose.prod.yml": {
+        "size": 3168,
+        "sha256": "f31dde8561a1126f8099bf3d746c3f1bdb47d3f19a7d81b5d70ac59908bfc38a"
+      },
+      "docker/docker-compose.rootless.yml": {
+        "size": 3307,
+        "sha256": "3721b37c3744f64259c220a604f5309e9223fd9144474c88c2913ef0177008cf"
+      },
+      "docker/docker-compose.yml": {
+        "size": 2829,
+        "sha256": "e9c4ec7a75c14e0221d302c7fec8c13d27d1dbf2be7b4d8f8b35eab1224b5408"
+      },
+      "docs/mise.lock": {
+        "size": 167,
+        "sha256": "b9c89e4e4f2a01c858bc40c4d73f26800867468777c08ef227bc22d258ee6cf4"
+      },
+      "docs/mise.toml": {
+        "size": 707,
+        "sha256": "661dd1f8ab1f914642e49a56c1cb44109a9808161df1ece482be73c3ad8a3e5f"
+      },
+      "docs/package.json": {
+        "size": 1730,
+        "sha256": "f7cd981977792077b215337c0f82ef3bac81d148331185e25bf7c4836346d3a3"
+      },
+      "e2e/docker-compose.dev.yml": {
+        "size": 2308,
+        "sha256": "9c9f60b677a7aaf1bf57890f66ec14761aa0433d454edb76b9581adcdd3e40b8"
+      },
+      "e2e/docker-compose.yml": {
+        "size": 2154,
+        "sha256": "4ae909e65c5261f500a9930a836338fae56b37f57ce22f209fbbd162c18dbba6"
+      },
+      "e2e/mise.toml": {
+        "size": 1200,
+        "sha256": "4cc84e13f5b983dcd228cd4a847df6a8efb85fabaea9ba2b4822600e31c1909b"
+      },
+      "e2e/package.json": {
+        "size": 2055,
+        "sha256": "3e8e288e10a22d6af6fd8106ff16f1dec552a8b93707d9e7e30e53f6fbfcf4e7"
+      },
+      "machine-learning/.python-version": {
+        "size": 5,
+        "sha256": "02e735b3dfe1c32833eb550b7ff8ffa17f5f2bc3fa1e7bae61a8f5a3883ce398"
+      },
+      "machine-learning/Dockerfile": {
+        "size": 6952,
+        "sha256": "c76d033696e2e91aaba70a86676fc48e3d0f8676da54373aae831150bb0a7ae6"
+      },
+      "machine-learning/mise.lock": {
+        "size": 4057,
+        "sha256": "d59134539a53f82ddd79bfc49bef2b7e47d40b861159d676e24c53ec08f55916"
+      },
+      "machine-learning/mise.toml": {
+        "size": 639,
+        "sha256": "cf56f2b23e60d984f115174d49db99db2274dece5609d6902fa18a66ee471c38"
+      },
+      "machine-learning/pyproject.toml": {
+        "size": 2298,
+        "sha256": "c6a8ffda884eeb779648307f629957c4fbfffc618edb35b866f75556f91e540c"
+      },
+      "machine-learning/uv.lock": {
+        "size": 591115,
+        "sha256": "17532732880dc66bdc90916288e371d8ceca49187c37b35755d4300212b2d0bd"
+      },
+      "mise.lock": {
+        "size": 20311,
+        "sha256": "4867c8d9275ca38ca7c51e005e67955e45ac57ae68413b7ee6c6c85a68729596"
+      },
+      "mise.toml": {
+        "size": 4798,
+        "sha256": "e43d50f33c1214030daea77ffed0e807d0fcf018e382b26952f8da96be35c2f6"
+      },
+      "mobile/android/gradle/wrapper/gradle-wrapper.properties": {
+        "size": 251,
+        "sha256": "4566bdfe046c74dd7aa93fa2494e914d29b7b14c86064c2c35885c3603bf117d"
+      },
+      "mobile/mise.toml": {
+        "size": 3793,
+        "sha256": "6248f8ed1da3649f65c9c6c0d46f8e7de0be665d26c49f3a0e6e2d54a1f67dd9"
+      },
+      "mobile/openapi/.openapi-generator/VERSION": {
+        "size": 6,
+        "sha256": "58107d9d880c145cfa5d4f58a668db201647283d86aa04b4c75a6e25339041ed"
+      },
+      "mobile/openapi/pubspec.yaml": {
+        "size": 309,
+        "sha256": "d90170423ad10e6a51dd1c927a4536b6fbea34a6aad19d713cec56bf9a144ed3"
+      },
+      "mobile/packages/ui/pubspec.lock": {
+        "size": 5380,
+        "sha256": "2e94a53f6a1adbd6e40b4e0eac5474f21b5ebee404b1d1fafaed39b9e4ec0f31"
+      },
+      "mobile/packages/ui/pubspec.yaml": {
+        "size": 205,
+        "sha256": "0765307c0c6da2f7bb85276dbb9fd8349fe6945eefa97cad7498ce68262e3bfd"
+      },
+      "mobile/pubspec.lock": {
+        "size": 61976,
+        "sha256": "7a7c1a8b9675009f0f2ee13f5966da4a9c58aad3af2344dc089e612f81b6d5cb"
+      },
+      "mobile/pubspec.yaml": {
+        "size": 4054,
+        "sha256": "bf75388d7571f0211608d5ecdd91a31a0336ddec7b39051606828d37de6fe924"
+      },
+      "open-api/immich-openapi-specs.json": {
+        "size": 721928,
+        "sha256": "6036291e3d41fb87b6a31f7cb26a307e14832edb651903813a89495a1e8719af"
+      },
+      "package.json": {
+        "size": 559,
+        "sha256": "eb0cddc0eceb01675e7083845d077409b2d9080504feff4a8e6387fefc260535"
+      },
+      "packages/cli/Dockerfile": {
+        "size": 432,
+        "sha256": "9ae2bcc59d74ab56087a3ec3b24b24434b375f71508e20db0ab1646b389fbdb4"
+      },
+      "packages/cli/mise.toml": {
+        "size": 1006,
+        "sha256": "d3a2450dd496065cb6be821a4dc27d56132ecabc7acf295117f6053b4fb60fca"
+      },
+      "packages/cli/package.json": {
+        "size": 1924,
+        "sha256": "7729d5e2cc7e8f39265ec099de3c289c7ba0dc98e29199cfa57a98a896898a7d"
+      },
+      "packages/e2e-auth-server/Dockerfile": {
+        "size": 203,
+        "sha256": "d933a6a060009bba1c5ccb75a91965402588835a0f22fcc02fe34d450196e275"
+      },
+      "packages/e2e-auth-server/package.json": {
+        "size": 355,
+        "sha256": "035c878b72ea16f3c943a8c53cda01f354e518b86b2a23f66d5d96904e5dafc4"
+      },
+      "packages/plugin-core/mise.toml": {
+        "size": 168,
+        "sha256": "347277db865fb2f21f68ae1451d3e268de3e77af140a5a9fee6ce53c201ba061"
+      },
+      "packages/plugin-core/package.json": {
+        "size": 556,
+        "sha256": "aae14a8429e24bae63f0d74a8bbcd5ffe7856cf294239714cb406d7892d98911"
+      },
+      "packages/plugin-sdk/package.json": {
+        "size": 939,
+        "sha256": "25662a15644363a34b963fa819d41b67ed0763378b0a9833de1ede506229f0ea"
+      },
+      "packages/sdk/package.json": {
+        "size": 689,
+        "sha256": "24bf50e67427e8df6b0ea6776b44695fe74c0fb23b7dc75c40da82a3fc68a25c"
+      },
+      "packages/sdk/src/fetch-client.ts": {
+        "size": 195226,
+        "sha256": "07f7662da5cdd57023c9afbef660a3ede658e2997057f751a8b2c82fa5aeeef7"
+      },
+      "pnpm-lock.yaml": {
+        "size": 931974,
+        "sha256": "b917b023945688a33ac7f92d862ac54fa8f9265882893d29c12142b92384f7fe"
+      },
+      "server/Dockerfile": {
+        "size": 4968,
+        "sha256": "b32020fdb0dc1a59d1c01cd1e8155eede0a1feec8c39966c5ecf4ca93cf9c120"
+      },
+      "server/Dockerfile.dev": {
+        "size": 2913,
+        "sha256": "9d2890fa15ab008672c75111729bbe3e6a29ece5c09fc194868a8c848dd13ac8"
+      },
+      "server/mise.toml": {
+        "size": 1729,
+        "sha256": "3cb3168e213c07a8d582c5ec70be75b0b3f6be4d9a6e7dc9a7dfd81d80871b98"
+      },
+      "server/package.json": {
+        "size": 6156,
+        "sha256": "4f5304d1b65084bd1c806cc78e9f3a0895a379d856f1e460fa48427121478fe0"
+      },
+      "web/mise.toml": {
+        "size": 1040,
+        "sha256": "fde15e7ed96bb467d4fb395f313fa55f487ad38ef5e2f6669f0d162231e29994"
+      },
+      "web/package.json": {
+        "size": 4155,
+        "sha256": "b5c856798b6276703b76b3bf3e297382d3a8d30f1a05c7a811a3db14e1366776"
+      }
+    },
+    "status": "PASS"
+  },
+  "failureCases": {
+    "probes": [
+      {
+        "probe": "invalid-json-manifest",
+        "rejected": true,
+        "typedError": {
+          "type": "ManifestParseError",
+          "message": "probe.json: invalid JSON: Expecting value: line 1 column 25 (char 24)",
+          "partialCommit": false,
+          "authoritativeStatePreserved": true
+        }
+      },
+      {
+        "probe": "invalid-toml-manifest",
+        "rejected": true,
+        "typedError": {
+          "type": "ManifestParseError",
+          "message": "probe.toml: invalid TOML: Cannot overwrite a value (at end of document)",
+          "partialCommit": false,
+          "authoritativeStatePreserved": true
+        }
+      },
+      {
+        "probe": "invalid-version-string",
+        "rejected": true,
+        "typedError": {
+          "type": "VersionParseError",
+          "message": "probe: cannot parse version 'not-a-version'",
+          "partialCommit": false,
+          "authoritativeStatePreserved": true
+        }
+      },
+      {
+        "probe": "unsupported-range-syntax",
+        "rejected": true,
+        "note": "an out-of-grammar range must be UNVERIFIABLE (None), never silently accepted",
+        "typedError": null
+      }
+    ],
+    "writeGuardEscapeFixtures": [
+      {
+        "probe": "../escape-outside.txt",
+        "rejected": true
+      },
+      {
+        "probe": "/absolute/escape.txt",
+        "rejected": true
+      }
+    ],
+    "readOnlyCommandAudit": {
+      "commandsExecuted": 8,
+      "nonReadOnlyCommands": [],
+      "status": "PASS"
+    },
+    "gitMetadataAvailable": true,
+    "gitMetadataUnchanged": true,
+    "outsideGraphifyMembership": {
+      "added": [],
+      "removed": [],
+      "status": "PASS"
+    }
+  },
+  "gitState": {
+    "before": {
+      "head": {
+        "exitCode": 0,
+        "output": "757f1d6d58ca707edc9f312558e02851316b4772\n"
+      },
+      "origin_main": {
+        "exitCode": 0,
+        "output": "757f1d6d58ca707edc9f312558e02851316b4772\n"
+      },
+      "branch": {
+        "exitCode": 0,
+        "output": "main\n"
+      },
+      "status_outside_graphify": {
+        "exitCode": 0,
+        "output": ""
+      }
+    },
+    "after": {
+      "head": {
+        "exitCode": 0,
+        "output": "757f1d6d58ca707edc9f312558e02851316b4772\n"
+      },
+      "origin_main": {
+        "exitCode": 0,
+        "output": "757f1d6d58ca707edc9f312558e02851316b4772\n"
+      },
+      "branch": {
+        "exitCode": 0,
+        "output": "main\n"
+      },
+      "status_outside_graphify": {
+        "exitCode": 0,
+        "output": ""
+      }
+    },
+    "metadataUnchanged": true,
+    "rawCommands": [
+      {
+        "command": "git rev-parse HEAD",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "757f1d6d58ca707edc9f312558e02851316b4772\n",
+        "stderr": ""
+      },
+      {
+        "command": "git rev-parse origin/main",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "757f1d6d58ca707edc9f312558e02851316b4772\n",
+        "stderr": ""
+      },
+      {
+        "command": "git branch --show-current",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "main\n",
+        "stderr": ""
+      },
+      {
+        "command": "git status --porcelain=v1 --untracked-files=all -- . :(exclude)graphify",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": "git rev-parse HEAD",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "757f1d6d58ca707edc9f312558e02851316b4772\n",
+        "stderr": ""
+      },
+      {
+        "command": "git rev-parse origin/main",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "757f1d6d58ca707edc9f312558e02851316b4772\n",
+        "stderr": ""
+      },
+      {
+        "command": "git branch --show-current",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "main\n",
+        "stderr": ""
+      },
+      {
+        "command": "git status --porcelain=v1 --untracked-files=all -- . :(exclude)graphify",
+        "env": {
+          "GIT_OPTIONAL_LOCKS": "0"
+        },
+        "allowlistedReadOnly": true,
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ]
+  },
+  "tests": {
+    "wp_i0_004_success": "PASS",
+    "wp_i0_004_failure": "PASS"
+  }
+}

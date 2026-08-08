@@ -1,0 +1,49 @@
+{
+  "packageId": "WP-I0-004",
+  "packetPath": "12-semantic-implementation-plan/04-work-packages/packets/WP-I0-004.md",
+  "packetSha256": "2557edd2018f689a4dd8967f2e26bbb2ff4d191d4502ff33292648d1fc8916bf",
+  "ownedRequirements": [
+    "CAN-MISSION-I0-004"
+  ],
+  "selection": {
+    "rule": "explicit authorization record from WP-I0-003 transition (AUTHORIZED — NOT_STARTED), confirmed by the deterministic READY-package selector",
+    "readyPackages": [
+      "WP-I0-004",
+      "WP-I0-006",
+      "WP-I0-008",
+      "WP-I0-009",
+      "WP-I0-010",
+      "WP-I0-011",
+      "WP-I1-001"
+    ],
+    "explicitAuthorizationRecordPath": "13-implementation/WP-I0-003/adversarial-review.md",
+    "explicitAuthorizationRecordSha256": "10cdf5d1b1fa2c73f7bad2c5c22c4210c62ac79dac675dbedc482660db5708ab",
+    "startSha": "757f1d6d58ca707edc9f312558e02851316b4772"
+  },
+  "prerequisite": {
+    "packageId": "WP-I0-001",
+    "dependencyType": "REQUIRES_PROVENANCE",
+    "completionRecordPath": "13-implementation/WP-I0-001/package-summary.json",
+    "completionRecordSha256": "348b228b42639a6306951e88743ad12eda864e9766694fb0b3fedf50a20bdebc",
+    "completionRecordStatus": "PASS",
+    "reviewRecordPath": "13-implementation/WP-I0-001/adversarial-review.md",
+    "reviewRecordSha256": "807f29479fd18e0432c778b02e364473129588cc8accb3bc6d94a1f5c26e135f"
+  },
+  "roots": {
+    "lamhaRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+    "codebaseRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase",
+    "graphifyRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\graphify",
+    "packageEvidenceDir": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\graphify\\13-implementation\\WP-I0-004"
+  },
+  "environment": {
+    "collectionStartedUtc": "2026-08-08T15:23:13+00:00",
+    "os": "nt",
+    "platform": "win32",
+    "python": "3.11.15",
+    "gitEnvOverrides": {
+      "GIT_OPTIONAL_LOCKS": "0",
+      "core.quotePath": "false"
+    }
+  },
+  "readOnlyGuarantee": "No path outside graphify/ is opened for writing; the investigation parses manifests only and records findings; collector writes are restricted to graphify/13-implementation/WP-I0-004/ through tools/write_guard."
+}

@@ -1,0 +1,41 @@
+{
+  "scanWindow": "package collection run",
+  "scope": "paths added outside Graphify relative to the planning baseline, plus this package's evidence files",
+  "addedOutsideGraphify": [],
+  "removedOutsideGraphify": [],
+  "evidenceFiles": [
+    "13-implementation/WP-I0-004/artifact-scan.json",
+    "13-implementation/WP-I0-004/completion-evidence.md",
+    "13-implementation/WP-I0-004/mixed-version-investigation.json",
+    "13-implementation/WP-I0-004/package-summary.json",
+    "13-implementation/WP-I0-004/provenance-report.json",
+    "13-implementation/WP-I0-004/verification-report.json"
+  ],
+  "evidenceFileClasses": [
+    {
+      "path": "13-implementation/WP-I0-004/artifact-scan.json",
+      "classes": []
+    },
+    {
+      "path": "13-implementation/WP-I0-004/completion-evidence.md",
+      "classes": []
+    },
+    {
+      "path": "13-implementation/WP-I0-004/mixed-version-investigation.json",
+      "classes": []
+    },
+    {
+      "path": "13-implementation/WP-I0-004/package-summary.json",
+      "classes": []
+    },
+    {
+      "path": "13-implementation/WP-I0-004/provenance-report.json",
+      "classes": []
+    },
+    {
+      "path": "13-implementation/WP-I0-004/verification-report.json",
+      "classes": []
+    }
+  ],
+  "status": "PASS"
+}

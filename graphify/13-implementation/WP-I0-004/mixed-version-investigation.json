@@ -1,0 +1,2023 @@
+{
+  "packageId": "WP-I0-004",
+  "objective": "Investigate and record mixed-version package, lockfile, generated-client, and toolchain manifests.",
+  "families": {
+    "package manifests": 36,
+    "lockfiles": 22,
+    "generated-client manifests": 5,
+    "toolchain manifests": 58
+  },
+  "declarationCount": 121,
+  "declarations": [
+    {
+      "family": "toolchain",
+      "source": "Codebase/.nvmrc",
+      "key": "node",
+      "value": "24.15.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/deployment/mise.toml",
+      "key": "opentofu",
+      "value": "1.11.6",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/deployment/mise.toml",
+      "key": "terragrunt",
+      "value": "1.0.3",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docs/mise.toml",
+      "key": "wrangler",
+      "value": "4.91.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/machine-learning/mise.toml",
+      "key": "python",
+      "value": "3.11",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/machine-learning/mise.toml",
+      "key": "uv",
+      "value": "0.8.15",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mise.toml",
+      "key": "aqua:flutter/flutter",
+      "value": "3.44.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mise.toml",
+      "key": "github:CQLabs/homebrew-dcm",
+      "value": "1.37.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mise.toml",
+      "key": "github:CQLabs/homebrew-dcm (full spec)",
+      "value": {
+        "version": "1.37.0",
+        "bin": "dcm",
+        "postinstall": "chmod +x \"$MISE_TOOL_INSTALL_PATH/dcm\" || true",
+        "platforms": {
+          "linux-x64": {
+            "asset_pattern": "dcm-linux-x64-release.zip"
+          },
+          "linux-arm64": {
+            "asset_pattern": "dcm-linux-arm-release.zip"
+          },
+          "macos-x64": {
+            "asset_pattern": "dcm-macos-x64-release.zip"
+          },
+          "macos-arm64": {
+            "asset_pattern": "dcm-macos-arm-release.zip"
+          },
+          "windows-x64": {
+            "asset_pattern": "dcm-windows-release.zip"
+          }
+        }
+      },
+      "kind": "observed"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mise.toml",
+      "key": "github:extism/cli",
+      "value": "1.6.3",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mise.toml",
+      "key": "github:extism/js-pdk",
+      "value": "1.6.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mise.toml",
+      "key": "github:jellyfin/jellyfin-ffmpeg",
+      "value": "7.1.3-6",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mise.toml",
+      "key": "github:jellyfin/jellyfin-ffmpeg (full spec)",
+      "value": {
+        "version": "7.1.3-6",
+        "platforms": {
+          "linux-x64": {
+            "asset_pattern": "jellyfin-ffmpeg_*_portable_linux64-gpl.tar.xz"
+          },
+          "linux-arm64": {
+            "asset_pattern": "jellyfin-ffmpeg_*_portable_linuxarm64-gpl.tar.xz"
+          },
+          "macos-x64": {
+            "asset_pattern": "jellyfin-ffmpeg_*_portable_mac64-gpl.tar.xz"
+          },
+          "macos-arm64": {
+            "asset_pattern": "jellyfin-ffmpeg_*_portable_macarm64-gpl.tar.xz"
+          }
+        }
+      },
+      "kind": "observed"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mise.toml",
+      "key": "github:webassembly/binaryen",
+      "value": "version_124",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mise.toml",
+      "key": "java",
+      "value": "21.0.2",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mise.toml",
+      "key": "node",
+      "value": "24.15.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mise.toml",
+      "key": "npm:oazapfts",
+      "value": "7.5.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mise.toml",
+      "key": "opentofu",
+      "value": "1.11.6",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mise.toml",
+      "key": "pnpm",
+      "value": "10.33.4",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mise.toml",
+      "key": "terragrunt",
+      "value": "1.0.3",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/deployment/mise.lock",
+      "key": "opentofu",
+      "value": "1.11.6",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/deployment/mise.lock",
+      "key": "terragrunt",
+      "value": "1.0.3",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/docs/mise.lock",
+      "key": "wrangler",
+      "value": "4.66.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/machine-learning/mise.lock",
+      "key": "python",
+      "value": "3.11.15",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/machine-learning/mise.lock",
+      "key": "uv",
+      "value": "0.8.15",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mise.lock",
+      "key": "aqua:flutter/flutter",
+      "value": "3.44.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mise.lock",
+      "key": "flutter",
+      "value": "3.41.9-stable",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mise.lock",
+      "key": "github:CQLabs/homebrew-dcm",
+      "value": "1.37.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mise.lock",
+      "key": "github:extism/cli",
+      "value": "1.6.3",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mise.lock",
+      "key": "github:extism/js-pdk",
+      "value": "1.6.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mise.lock",
+      "key": "github:jellyfin/jellyfin-ffmpeg",
+      "value": "7.1.3-6",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mise.lock",
+      "key": "github:webassembly/binaryen",
+      "value": "version_124",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mise.lock",
+      "key": "java",
+      "value": "21.0.2",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mise.lock",
+      "key": "node",
+      "value": "24.15.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mise.lock",
+      "key": "npm:oazapfts",
+      "value": "7.5.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mise.lock",
+      "key": "opentofu",
+      "value": "1.11.6",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mise.lock",
+      "key": "pnpm",
+      "value": "10.33.4",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mise.lock",
+      "key": "terragrunt",
+      "value": "1.0.3",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/docs/package.json",
+      "key": "name",
+      "value": "documentation",
+      "kind": "identity"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/docs/package.json",
+      "key": "version",
+      "value": "0.0.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/docs/package.json",
+      "key": "engines.node",
+      "value": ">=20",
+      "kind": "range"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/e2e/package.json",
+      "key": "name",
+      "value": "immich-e2e",
+      "kind": "identity"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/e2e/package.json",
+      "key": "version",
+      "value": "2.7.5",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/package.json",
+      "key": "name",
+      "value": "immich-monorepo",
+      "kind": "identity"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/package.json",
+      "key": "version",
+      "value": "2.7.5",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/package.json",
+      "key": "packageManager",
+      "value": "pnpm@10.33.4+sha512.1c67b3b359b2d408119ba1ed289f34b8fc3c6873412bec6fd264fbdc82489e510fcbecb9ce9d22dae7f3b76269d8441046014bdca53b9979cd7a561ad631b800",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/package.json",
+      "key": "engines.pnpm",
+      "value": ">=10.0.0",
+      "kind": "range"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/packages/cli/package.json",
+      "key": "name",
+      "value": "@immich/cli",
+      "kind": "identity"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/packages/cli/package.json",
+      "key": "version",
+      "value": "2.7.5",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/packages/cli/package.json",
+      "key": "engines.node",
+      "value": ">=20.0.0",
+      "kind": "range"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/packages/e2e-auth-server/package.json",
+      "key": "name",
+      "value": "@immich/e2e-auth-server",
+      "kind": "identity"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/packages/e2e-auth-server/package.json",
+      "key": "version",
+      "value": "0.1.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/packages/e2e-auth-server/package.json",
+      "key": "packageManager",
+      "value": "pnpm@10.33.4",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/packages/plugin-core/package.json",
+      "key": "name",
+      "value": "@immich/plugin-core",
+      "kind": "identity"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/packages/plugin-core/package.json",
+      "key": "version",
+      "value": "1.0.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/packages/plugin-sdk/package.json",
+      "key": "name",
+      "value": "@immich/plugin-sdk",
+      "kind": "identity"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/packages/plugin-sdk/package.json",
+      "key": "version",
+      "value": "0.0.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/packages/plugin-sdk/package.json",
+      "key": "packageManager",
+      "value": "pnpm@10.33.4",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/packages/sdk/package.json",
+      "key": "name",
+      "value": "@immich/sdk",
+      "kind": "identity"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/packages/sdk/package.json",
+      "key": "version",
+      "value": "2.7.5",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/server/package.json",
+      "key": "name",
+      "value": "immich",
+      "kind": "identity"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/server/package.json",
+      "key": "version",
+      "value": "3.0.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/web/package.json",
+      "key": "name",
+      "value": "immich-web",
+      "kind": "identity"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/web/package.json",
+      "key": "version",
+      "value": "2.7.5",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/pnpm-lock.yaml",
+      "key": "lockfileVersion",
+      "value": "9.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/machine-learning/.python-version",
+      "key": "python",
+      "value": "3.13",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/machine-learning/pyproject.toml",
+      "key": "requires-python",
+      "value": ">=3.11,<4.0",
+      "kind": "range"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/machine-learning/uv.lock",
+      "key": "requires-python",
+      "value": ">=3.11, <4.0",
+      "kind": "range"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/machine-learning/Dockerfile",
+      "key": "FROM python:3.11-bookworm (stage builder-cpu)",
+      "value": "python:3.11-bookworm@sha256:970c99f886b839fc8829289040c1845dadaf2cae46b37acc7710333158ec29b4",
+      "kind": "concrete_digest_pinned"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/machine-learning/Dockerfile",
+      "key": "FROM python:3.13-slim-trixie (stage builder-openvino)",
+      "value": "python:3.13-slim-trixie@sha256:d168b8d9eb761f4d3fe305ebd04aeb7e7f2de0297cec5fb2f8f6403244621664",
+      "kind": "concrete_digest_pinned"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/machine-learning/Dockerfile",
+      "key": "FROM rocm/dev-ubuntu-24.04:7.2-complete (stage builder-rocm)",
+      "value": "rocm/dev-ubuntu-24.04:7.2-complete@sha256:86e11093b4a7ec2a79b1b6701d10e840a6994f21c7e05929b51eb9be361c683a",
+      "kind": "concrete_digest_pinned"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/machine-learning/Dockerfile",
+      "key": "FROM python:3.11-slim-bookworm (stage prod-cpu)",
+      "value": "python:3.11-slim-bookworm@sha256:9c6f90801e6b68e772b7c0ca74260cbf7af9f320acec894e26fccdaccfbe3b47",
+      "kind": "concrete_digest_pinned"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/machine-learning/Dockerfile",
+      "key": "FROM nvidia/cuda:12.2.2-runtime-ubuntu22.04 (stage prod-cuda)",
+      "value": "nvidia/cuda:12.2.2-runtime-ubuntu22.04@sha256:94c1577b2cd9dd6c0312dc04dff9cb2fdce2b268018abc3d7c2dbcacf1155000",
+      "kind": "concrete_digest_pinned"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/packages/cli/Dockerfile",
+      "key": "FROM node:24.1.0-alpine3.20 (stage core)",
+      "value": "node:24.1.0-alpine3.20@sha256:8fe019e0d57dbdce5f5c27c0b63d2775cf34b00e3755a7dea969802d7e0c2b25",
+      "kind": "concrete_digest_pinned"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/packages/e2e-auth-server/Dockerfile",
+      "key": "FROM node:24.1.0-alpine3.20",
+      "value": "node:24.1.0-alpine3.20@sha256:8fe019e0d57dbdce5f5c27c0b63d2775cf34b00e3755a7dea969802d7e0c2b25",
+      "kind": "concrete_digest_pinned"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/server/Dockerfile",
+      "key": "FROM ghcr.io/immich-app/base-server-dev:202605051129 (stage builder)",
+      "value": "ghcr.io/immich-app/base-server-dev:202605051129@sha256:d07d8fcdb7e9f3ac22a811e87761ebf341ed0bb91956b89097540c2ed3fb9ca3",
+      "kind": "concrete_digest_pinned"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/server/Dockerfile",
+      "key": "FROM ghcr.io/immich-app/base-server-prod:202605051129",
+      "value": "ghcr.io/immich-app/base-server-prod:202605051129@sha256:50f7ffe4ed31e360c90c4905bd5f6658f2a121297544e3fe9368e338b3f76bcd",
+      "kind": "concrete_digest_pinned"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/server/Dockerfile.dev",
+      "key": "FROM ghcr.io/immich-app/base-server-dev:202605051129 (stage dev)",
+      "value": "ghcr.io/immich-app/base-server-dev:202605051129@sha256:d07d8fcdb7e9f3ac22a811e87761ebf341ed0bb91956b89097540c2ed3fb9ca3",
+      "kind": "concrete_digest_pinned"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/server/Dockerfile.dev",
+      "key": "FROM dev-container-server (stage dev-container-mobile)",
+      "value": "dev-container-server",
+      "kind": "concrete_unpinned"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.dev.yml",
+      "key": "image docker.io/valkey/valkey",
+      "value": "docker.io/valkey/valkey:9@sha256:8436e10bc65c94886a91d4415b6a6dfa9cb5a306fb3b996e5bb67cd2b4854193",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.dev.yml",
+      "key": "image ghcr.io/immich-app/postgres",
+      "value": "ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.dev.yml",
+      "key": "image immich-machine-learning-dev",
+      "value": "immich-machine-learning-dev:latest",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.dev.yml",
+      "key": "image immich-server-dev",
+      "value": "immich-server-dev:latest",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.dev.yml",
+      "key": "image immich-web-dev",
+      "value": "immich-web-dev:latest",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.prod.yml",
+      "key": "image docker.io/valkey/valkey",
+      "value": "docker.io/valkey/valkey:9@sha256:8436e10bc65c94886a91d4415b6a6dfa9cb5a306fb3b996e5bb67cd2b4854193",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.prod.yml",
+      "key": "image ghcr.io/immich-app/postgres",
+      "value": "ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.prod.yml",
+      "key": "image grafana/grafana",
+      "value": "grafana/grafana:12.4.3-ubuntu@sha256:ca3f764fdc48cebdf22dd206f33ecb0795a9a7210eacd1b5c02204aebd78b223",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.prod.yml",
+      "key": "image immich-machine-learning",
+      "value": "immich-machine-learning:latest",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.prod.yml",
+      "key": "image immich-server",
+      "value": "immich-server:latest",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.prod.yml",
+      "key": "image prom/prometheus@sha256",
+      "value": "prom/prometheus@sha256:e4254400b85610324913f0dc4acf92603d9984e7519414c5a12811aa6146acc3",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.rootless.yml",
+      "key": "image docker.io/valkey/valkey",
+      "value": "docker.io/valkey/valkey:9@sha256:8436e10bc65c94886a91d4415b6a6dfa9cb5a306fb3b996e5bb67cd2b4854193",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.rootless.yml",
+      "key": "image ghcr.io/immich-app/immich-machine-learning",
+      "value": "ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.rootless.yml",
+      "key": "image ghcr.io/immich-app/immich-server",
+      "value": "ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.rootless.yml",
+      "key": "image ghcr.io/immich-app/postgres",
+      "value": "ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.yml",
+      "key": "image docker.io/valkey/valkey",
+      "value": "docker.io/valkey/valkey:9@sha256:8436e10bc65c94886a91d4415b6a6dfa9cb5a306fb3b996e5bb67cd2b4854193",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.yml",
+      "key": "image ghcr.io/immich-app/immich-machine-learning",
+      "value": "ghcr.io/immich-app/immich-machine-learning:${IMMICH_VERSION:-release}",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.yml",
+      "key": "image ghcr.io/immich-app/immich-server",
+      "value": "ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/docker/docker-compose.yml",
+      "key": "image ghcr.io/immich-app/postgres",
+      "value": "ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/e2e/docker-compose.yml",
+      "key": "image docker.io/valkey/valkey",
+      "value": "docker.io/valkey/valkey:9@sha256:8436e10bc65c94886a91d4415b6a6dfa9cb5a306fb3b996e5bb67cd2b4854193",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/e2e/docker-compose.yml",
+      "key": "image ghcr.io/immich-app/postgres",
+      "value": "ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/e2e/docker-compose.yml",
+      "key": "image immich-server",
+      "value": "immich-server:latest",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/mobile/android/gradle/wrapper/gradle-wrapper.properties",
+      "key": "gradle",
+      "value": "8.14",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/mobile/openapi/pubspec.yaml",
+      "key": "name",
+      "value": "openapi",
+      "kind": "identity"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/mobile/openapi/pubspec.yaml",
+      "key": "version",
+      "value": "1.0.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/mobile/openapi/pubspec.yaml",
+      "key": "environment.sdk",
+      "value": ">=2.12.0 <4.0.0",
+      "kind": "range"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/mobile/packages/ui/pubspec.yaml",
+      "key": "name",
+      "value": "immich_ui",
+      "kind": "identity"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/mobile/packages/ui/pubspec.yaml",
+      "key": "environment.sdk",
+      "value": ">=3.12.0 <4.0.0",
+      "kind": "range"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/mobile/pubspec.yaml",
+      "key": "name",
+      "value": "immich_mobile",
+      "kind": "identity"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/mobile/pubspec.yaml",
+      "key": "version",
+      "value": "3.0.0+3047",
+      "kind": "concrete"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/mobile/pubspec.yaml",
+      "key": "environment.sdk",
+      "value": ">=3.12.0 <4.0.0",
+      "kind": "range"
+    },
+    {
+      "family": "package",
+      "source": "Codebase/mobile/pubspec.yaml",
+      "key": "environment.flutter",
+      "value": "3.44.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mobile/pubspec.lock",
+      "key": "sdks.dart",
+      "value": ">=3.12.0 <4.0.0",
+      "kind": "range"
+    },
+    {
+      "family": "lockfile",
+      "source": "Codebase/mobile/pubspec.lock",
+      "key": "sdks.flutter",
+      "value": "3.44.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "generated-client",
+      "source": "Codebase/mobile/openapi/.openapi-generator/VERSION",
+      "key": "openapi-generator",
+      "value": "7.8.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "generated-client",
+      "source": "Codebase/mise.toml",
+      "key": "npm:oazapfts (web/sdk client generator)",
+      "value": "7.5.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "generated-client",
+      "source": "Codebase/packages/sdk/src/fetch-client.ts",
+      "key": "generator marker",
+      "value": {
+        "present": true,
+        "embeddedVersion": null
+      },
+      "kind": "observed"
+    },
+    {
+      "family": "generated-client",
+      "source": "Codebase/open-api/immich-openapi-specs.json",
+      "key": "info.version",
+      "value": "3.0.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "generated-client",
+      "source": "Codebase/open-api/immich-openapi-specs.json",
+      "key": "openapi",
+      "value": "3.0.0",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/.github/workflows/build-mobile.yml",
+      "key": "use-mise-action",
+      "value": "use-mise-action-v2.0.2",
+      "kind": "concrete"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/.github/workflows/test.yml",
+      "key": "node source",
+      "value": "node-version-file:.nvmrc referenced by setup-node steps",
+      "kind": "observed"
+    },
+    {
+      "family": "toolchain",
+      "source": "Codebase/.github/workflows/check-openapi.yml",
+      "key": "oasdiff-action",
+      "value": "v0.0.47",
+      "kind": "concrete"
+    }
+  ],
+  "extractionErrors": [],
+  "comparisonFixtures": [
+    {
+      "rule": "node-runtime-alignment",
+      "family": "toolchain",
+      "declarations": [
+        {
+          "family": "toolchain",
+          "source": "Codebase/.nvmrc",
+          "key": "node",
+          "value": "24.15.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "toolchain",
+          "source": "Codebase/mise.toml",
+          "key": "node",
+          "value": "24.15.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "toolchain",
+          "source": "Codebase/packages/cli/Dockerfile",
+          "key": "FROM node:24.1.0-alpine3.20 (stage core)",
+          "value": "node:24.1.0-alpine3.20@sha256:8fe019e0d57dbdce5f5c27c0b63d2775cf34b00e3755a7dea969802d7e0c2b25",
+          "kind": "concrete_digest_pinned"
+        },
+        {
+          "family": "toolchain",
+          "source": "Codebase/packages/e2e-auth-server/Dockerfile",
+          "key": "FROM node:24.1.0-alpine3.20",
+          "value": "node:24.1.0-alpine3.20@sha256:8fe019e0d57dbdce5f5c27c0b63d2775cf34b00e3755a7dea969802d7e0c2b25",
+          "kind": "concrete_digest_pinned"
+        }
+      ],
+      "verdict": "MIXED",
+      "rationale": "distinct concrete Node versions declared: ['24.1.0', '24.15.0']"
+    },
+    {
+      "rule": "node-engine-range-compatibility",
+      "family": "package",
+      "declarations": [
+        {
+          "family": "package",
+          "source": "Codebase/docs/package.json",
+          "key": "engines.node",
+          "value": ">=20",
+          "kind": "range"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/packages/cli/package.json",
+          "key": "engines.node",
+          "value": ">=20.0.0",
+          "kind": "range"
+        }
+      ],
+      "verdict": "ALIGNED",
+      "rationale": "every declared engines.node range admits the pinned toolchain Node"
+    },
+    {
+      "rule": "pnpm-manager-alignment",
+      "family": "package",
+      "declarations": [
+        {
+          "family": "toolchain",
+          "source": "Codebase/mise.toml",
+          "key": "pnpm",
+          "value": "10.33.4",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "pnpm",
+          "value": "10.33.4",
+          "kind": "concrete"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/package.json",
+          "key": "engines.pnpm",
+          "value": ">=10.0.0",
+          "kind": "range"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/pnpm-lock.yaml",
+          "key": "lockfileVersion",
+          "value": "9.0",
+          "kind": "concrete"
+        }
+      ],
+      "verdict": "ALIGNED",
+      "rationale": "single concrete pnpm version family ['10.33.4']; lockfileVersion ['9.0'] is the pnpm-9/10 lock format; the declared engines.pnpm range >=10.0.0 admits the pinned version: True"
+    },
+    {
+      "rule": "python-toolchain-alignment",
+      "family": "toolchain",
+      "declarations": [
+        {
+          "family": "toolchain",
+          "source": "Codebase/machine-learning/mise.toml",
+          "key": "python",
+          "value": "3.11",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/machine-learning/mise.lock",
+          "key": "python",
+          "value": "3.11.15",
+          "kind": "concrete"
+        },
+        {
+          "family": "toolchain",
+          "source": "Codebase/machine-learning/.python-version",
+          "key": "python",
+          "value": "3.13",
+          "kind": "concrete"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/machine-learning/pyproject.toml",
+          "key": "requires-python",
+          "value": ">=3.11,<4.0",
+          "kind": "range"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/machine-learning/uv.lock",
+          "key": "requires-python",
+          "value": ">=3.11, <4.0",
+          "kind": "range"
+        },
+        {
+          "family": "toolchain",
+          "source": "Codebase/machine-learning/Dockerfile",
+          "key": "FROM python:3.11-bookworm (stage builder-cpu)",
+          "value": "python:3.11-bookworm@sha256:970c99f886b839fc8829289040c1845dadaf2cae46b37acc7710333158ec29b4",
+          "kind": "concrete_digest_pinned"
+        },
+        {
+          "family": "toolchain",
+          "source": "Codebase/machine-learning/Dockerfile",
+          "key": "FROM python:3.13-slim-trixie (stage builder-openvino)",
+          "value": "python:3.13-slim-trixie@sha256:d168b8d9eb761f4d3fe305ebd04aeb7e7f2de0297cec5fb2f8f6403244621664",
+          "kind": "concrete_digest_pinned"
+        },
+        {
+          "family": "toolchain",
+          "source": "Codebase/machine-learning/Dockerfile",
+          "key": "FROM python:3.11-slim-bookworm (stage prod-cpu)",
+          "value": "python:3.11-slim-bookworm@sha256:9c6f90801e6b68e772b7c0ca74260cbf7af9f320acec894e26fccdaccfbe3b47",
+          "kind": "concrete_digest_pinned"
+        }
+      ],
+      "verdict": "MIXED",
+      "rationale": "distinct Python minor lines declared across toolchain manifests: ['3.11', '3.13'] (machine-learning/.python-version=3.13 vs machine-learning/mise.toml python=3.11; Docker base images split between python:3.11-bookworm and python:3.13-slim-trixie; requires-python range results per minor line: [{'source': 'Codebase/machine-learning/pyproject.toml', 'range': '>=3.11,<4.0', 'results': {'3.11': True, '3.13': True}}, {'source': 'Codebase/machine-learning/uv.lock', 'range': '>=3.11, <4.0', 'results': {'3.11': True, '3.13': True}}])"
+    },
+    {
+      "rule": "flutter-version-alignment",
+      "family": "package",
+      "declarations": [
+        {
+          "family": "toolchain",
+          "source": "Codebase/mise.toml",
+          "key": "aqua:flutter/flutter",
+          "value": "3.44.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "aqua:flutter/flutter",
+          "value": "3.44.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "flutter",
+          "value": "3.41.9-stable",
+          "kind": "concrete"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/mobile/pubspec.yaml",
+          "key": "environment.flutter",
+          "value": "3.44.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mobile/pubspec.lock",
+          "key": "sdks.dart",
+          "value": ">=3.12.0 <4.0.0",
+          "kind": "range"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mobile/pubspec.lock",
+          "key": "sdks.flutter",
+          "value": "3.44.0",
+          "kind": "concrete"
+        }
+      ],
+      "verdict": "MIXED",
+      "rationale": "distinct Flutter versions declared: ['3.41.9-stable', '3.44.0'] — sources: ['Codebase/mise.lock=3.41.9-stable', 'Codebase/mise.lock=3.44.0', 'Codebase/mise.toml=3.44.0', 'Codebase/mobile/pubspec.lock=3.44.0', 'Codebase/mobile/pubspec.yaml=3.44.0']"
+    },
+    {
+      "rule": "dart-sdk-constraint-diversity",
+      "family": "package",
+      "declarations": [
+        {
+          "family": "package",
+          "source": "Codebase/mobile/openapi/pubspec.yaml",
+          "key": "environment.sdk",
+          "value": ">=2.12.0 <4.0.0",
+          "kind": "range"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/mobile/packages/ui/pubspec.yaml",
+          "key": "environment.sdk",
+          "value": ">=3.12.0 <4.0.0",
+          "kind": "range"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/mobile/pubspec.yaml",
+          "key": "environment.sdk",
+          "value": ">=3.12.0 <4.0.0",
+          "kind": "range"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mobile/pubspec.lock",
+          "key": "sdks.dart",
+          "value": ">=3.12.0 <4.0.0",
+          "kind": "range"
+        }
+      ],
+      "verdict": "MIXED",
+      "rationale": "distinct Dart SDK constraints across pubspec manifests: ['Codebase/mobile/openapi/pubspec.yaml=>=2.12.0 <4.0.0', 'Codebase/mobile/packages/ui/pubspec.yaml=>=3.12.0 <4.0.0', 'Codebase/mobile/pubspec.lock=>=3.12.0 <4.0.0', 'Codebase/mobile/pubspec.yaml=>=3.12.0 <4.0.0']"
+    },
+    {
+      "rule": "workspace-package-version-diversity",
+      "family": "package",
+      "declarations": [
+        {
+          "family": "package",
+          "source": "Codebase/docs/package.json",
+          "key": "name",
+          "value": "documentation",
+          "kind": "identity"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/docs/package.json",
+          "key": "version",
+          "value": "0.0.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/e2e/package.json",
+          "key": "name",
+          "value": "immich-e2e",
+          "kind": "identity"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/e2e/package.json",
+          "key": "version",
+          "value": "2.7.5",
+          "kind": "concrete"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/package.json",
+          "key": "name",
+          "value": "immich-monorepo",
+          "kind": "identity"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/package.json",
+          "key": "version",
+          "value": "2.7.5",
+          "kind": "concrete"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/packages/cli/package.json",
+          "key": "name",
+          "value": "@immich/cli",
+          "kind": "identity"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/packages/cli/package.json",
+          "key": "version",
+          "value": "2.7.5",
+          "kind": "concrete"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/packages/e2e-auth-server/package.json",
+          "key": "name",
+          "value": "@immich/e2e-auth-server",
+          "kind": "identity"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/packages/e2e-auth-server/package.json",
+          "key": "version",
+          "value": "0.1.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/packages/plugin-core/package.json",
+          "key": "name",
+          "value": "@immich/plugin-core",
+          "kind": "identity"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/packages/plugin-core/package.json",
+          "key": "version",
+          "value": "1.0.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/packages/plugin-sdk/package.json",
+          "key": "name",
+          "value": "@immich/plugin-sdk",
+          "kind": "identity"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/packages/plugin-sdk/package.json",
+          "key": "version",
+          "value": "0.0.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/packages/sdk/package.json",
+          "key": "name",
+          "value": "@immich/sdk",
+          "kind": "identity"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/packages/sdk/package.json",
+          "key": "version",
+          "value": "2.7.5",
+          "kind": "concrete"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/server/package.json",
+          "key": "name",
+          "value": "immich",
+          "kind": "identity"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/server/package.json",
+          "key": "version",
+          "value": "3.0.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/web/package.json",
+          "key": "name",
+          "value": "immich-web",
+          "kind": "identity"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/web/package.json",
+          "key": "version",
+          "value": "2.7.5",
+          "kind": "concrete"
+        }
+      ],
+      "verdict": "RECORD_ONLY",
+      "rationale": "workspace package identities/versions recorded verbatim across 10 package.json files; distinct declared versions ['0.0.0', '0.1.0', '1.0.0', '2.7.5', '3.0.0'] — notably server/package.json is version 3.0.0 while the monorepo root is 2.7.5"
+    },
+    {
+      "rule": "generated-client-version-record",
+      "family": "generated-client",
+      "declarations": [
+        {
+          "family": "generated-client",
+          "source": "Codebase/mobile/openapi/.openapi-generator/VERSION",
+          "key": "openapi-generator",
+          "value": "7.8.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "generated-client",
+          "source": "Codebase/mise.toml",
+          "key": "npm:oazapfts (web/sdk client generator)",
+          "value": "7.5.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "generated-client",
+          "source": "Codebase/packages/sdk/src/fetch-client.ts",
+          "key": "generator marker",
+          "value": {
+            "present": true,
+            "embeddedVersion": null
+          },
+          "kind": "observed"
+        },
+        {
+          "family": "generated-client",
+          "source": "Codebase/open-api/immich-openapi-specs.json",
+          "key": "info.version",
+          "value": "3.0.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "generated-client",
+          "source": "Codebase/open-api/immich-openapi-specs.json",
+          "key": "openapi",
+          "value": "3.0.0",
+          "kind": "concrete"
+        }
+      ],
+      "verdict": "RECORD_ONLY",
+      "rationale": "two distinct generator ecosystems are pinned: openapi-generator 7.8.0 produces the mobile/openapi client and oazapfts produces the web/sdk fetch client; both pins are recorded verbatim with their owning manifests"
+    },
+    {
+      "rule": "lockfile-tool-version-record",
+      "family": "lockfile",
+      "declarations": [
+        {
+          "family": "lockfile",
+          "source": "Codebase/deployment/mise.lock",
+          "key": "opentofu",
+          "value": "1.11.6",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/deployment/mise.lock",
+          "key": "terragrunt",
+          "value": "1.0.3",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/docs/mise.lock",
+          "key": "wrangler",
+          "value": "4.66.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/machine-learning/mise.lock",
+          "key": "python",
+          "value": "3.11.15",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/machine-learning/mise.lock",
+          "key": "uv",
+          "value": "0.8.15",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "aqua:flutter/flutter",
+          "value": "3.44.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "flutter",
+          "value": "3.41.9-stable",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "github:CQLabs/homebrew-dcm",
+          "value": "1.37.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "github:extism/cli",
+          "value": "1.6.3",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "github:extism/js-pdk",
+          "value": "1.6.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "github:jellyfin/jellyfin-ffmpeg",
+          "value": "7.1.3-6",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "github:webassembly/binaryen",
+          "value": "version_124",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "java",
+          "value": "21.0.2",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "node",
+          "value": "24.15.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "npm:oazapfts",
+          "value": "7.5.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "opentofu",
+          "value": "1.11.6",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "pnpm",
+          "value": "10.33.4",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "terragrunt",
+          "value": "1.0.3",
+          "kind": "concrete"
+        }
+      ],
+      "verdict": "RECORD_ONLY",
+      "rationale": "lock-resolved tool versions recorded verbatim from mise.lock files; machine-learning/mise.lock resolves the python=3.11 pin"
+    },
+    {
+      "rule": "mise-pin-lock-consistency",
+      "family": "lockfile",
+      "declarations": [
+        {
+          "family": "lockfile",
+          "source": "Codebase/deployment/mise.toml+mise.lock",
+          "key": "opentofu",
+          "value": {
+            "pin": "1.11.6",
+            "lock": "1.11.6"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/deployment/mise.toml+mise.lock",
+          "key": "terragrunt",
+          "value": {
+            "pin": "1.0.3",
+            "lock": "1.0.3"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/docs/mise.toml+mise.lock",
+          "key": "wrangler",
+          "value": {
+            "pin": "4.91.0",
+            "lock": "4.66.0"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/machine-learning/mise.toml+mise.lock",
+          "key": "python",
+          "value": {
+            "pin": "3.11",
+            "lock": "3.11.15"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/machine-learning/mise.toml+mise.lock",
+          "key": "uv",
+          "value": {
+            "pin": "0.8.15",
+            "lock": "0.8.15"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "aqua:flutter/flutter",
+          "value": {
+            "pin": "3.44.0",
+            "lock": "3.44.0"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "github:CQLabs/homebrew-dcm",
+          "value": {
+            "pin": "1.37.0",
+            "lock": "1.37.0"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "github:extism/cli",
+          "value": {
+            "pin": "1.6.3",
+            "lock": "1.6.3"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "github:extism/js-pdk",
+          "value": {
+            "pin": "1.6.0",
+            "lock": "1.6.0"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "github:jellyfin/jellyfin-ffmpeg",
+          "value": {
+            "pin": "7.1.3-6",
+            "lock": "7.1.3-6"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "github:webassembly/binaryen",
+          "value": {
+            "pin": "version_124",
+            "lock": "version_124"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "java",
+          "value": {
+            "pin": "21.0.2",
+            "lock": "21.0.2"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "node",
+          "value": {
+            "pin": "24.15.0",
+            "lock": "24.15.0"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "npm:oazapfts",
+          "value": {
+            "pin": "7.5.0",
+            "lock": "7.5.0"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "opentofu",
+          "value": {
+            "pin": "1.11.6",
+            "lock": "1.11.6"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "pnpm",
+          "value": {
+            "pin": "10.33.4",
+            "lock": "10.33.4"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "terragrunt",
+          "value": {
+            "pin": "1.0.3",
+            "lock": "1.0.3"
+          },
+          "kind": "derived_pair"
+        }
+      ],
+      "verdict": "MIXED",
+      "rationale": "mise pin/lock drift in 1 tool(s): ['wrangler pin=4.91.0 lock=4.66.0 (Codebase/docs/)']"
+    }
+  ],
+  "mixedVersionFindings": [
+    {
+      "rule": "node-runtime-alignment",
+      "family": "toolchain",
+      "declarations": [
+        {
+          "family": "toolchain",
+          "source": "Codebase/.nvmrc",
+          "key": "node",
+          "value": "24.15.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "toolchain",
+          "source": "Codebase/mise.toml",
+          "key": "node",
+          "value": "24.15.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "toolchain",
+          "source": "Codebase/packages/cli/Dockerfile",
+          "key": "FROM node:24.1.0-alpine3.20 (stage core)",
+          "value": "node:24.1.0-alpine3.20@sha256:8fe019e0d57dbdce5f5c27c0b63d2775cf34b00e3755a7dea969802d7e0c2b25",
+          "kind": "concrete_digest_pinned"
+        },
+        {
+          "family": "toolchain",
+          "source": "Codebase/packages/e2e-auth-server/Dockerfile",
+          "key": "FROM node:24.1.0-alpine3.20",
+          "value": "node:24.1.0-alpine3.20@sha256:8fe019e0d57dbdce5f5c27c0b63d2775cf34b00e3755a7dea969802d7e0c2b25",
+          "kind": "concrete_digest_pinned"
+        }
+      ],
+      "rationale": "distinct concrete Node versions declared: ['24.1.0', '24.15.0']"
+    },
+    {
+      "rule": "python-toolchain-alignment",
+      "family": "toolchain",
+      "declarations": [
+        {
+          "family": "toolchain",
+          "source": "Codebase/machine-learning/mise.toml",
+          "key": "python",
+          "value": "3.11",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/machine-learning/mise.lock",
+          "key": "python",
+          "value": "3.11.15",
+          "kind": "concrete"
+        },
+        {
+          "family": "toolchain",
+          "source": "Codebase/machine-learning/.python-version",
+          "key": "python",
+          "value": "3.13",
+          "kind": "concrete"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/machine-learning/pyproject.toml",
+          "key": "requires-python",
+          "value": ">=3.11,<4.0",
+          "kind": "range"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/machine-learning/uv.lock",
+          "key": "requires-python",
+          "value": ">=3.11, <4.0",
+          "kind": "range"
+        },
+        {
+          "family": "toolchain",
+          "source": "Codebase/machine-learning/Dockerfile",
+          "key": "FROM python:3.11-bookworm (stage builder-cpu)",
+          "value": "python:3.11-bookworm@sha256:970c99f886b839fc8829289040c1845dadaf2cae46b37acc7710333158ec29b4",
+          "kind": "concrete_digest_pinned"
+        },
+        {
+          "family": "toolchain",
+          "source": "Codebase/machine-learning/Dockerfile",
+          "key": "FROM python:3.13-slim-trixie (stage builder-openvino)",
+          "value": "python:3.13-slim-trixie@sha256:d168b8d9eb761f4d3fe305ebd04aeb7e7f2de0297cec5fb2f8f6403244621664",
+          "kind": "concrete_digest_pinned"
+        },
+        {
+          "family": "toolchain",
+          "source": "Codebase/machine-learning/Dockerfile",
+          "key": "FROM python:3.11-slim-bookworm (stage prod-cpu)",
+          "value": "python:3.11-slim-bookworm@sha256:9c6f90801e6b68e772b7c0ca74260cbf7af9f320acec894e26fccdaccfbe3b47",
+          "kind": "concrete_digest_pinned"
+        }
+      ],
+      "rationale": "distinct Python minor lines declared across toolchain manifests: ['3.11', '3.13'] (machine-learning/.python-version=3.13 vs machine-learning/mise.toml python=3.11; Docker base images split between python:3.11-bookworm and python:3.13-slim-trixie; requires-python range results per minor line: [{'source': 'Codebase/machine-learning/pyproject.toml', 'range': '>=3.11,<4.0', 'results': {'3.11': True, '3.13': True}}, {'source': 'Codebase/machine-learning/uv.lock', 'range': '>=3.11, <4.0', 'results': {'3.11': True, '3.13': True}}])"
+    },
+    {
+      "rule": "flutter-version-alignment",
+      "family": "package",
+      "declarations": [
+        {
+          "family": "toolchain",
+          "source": "Codebase/mise.toml",
+          "key": "aqua:flutter/flutter",
+          "value": "3.44.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "aqua:flutter/flutter",
+          "value": "3.44.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.lock",
+          "key": "flutter",
+          "value": "3.41.9-stable",
+          "kind": "concrete"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/mobile/pubspec.yaml",
+          "key": "environment.flutter",
+          "value": "3.44.0",
+          "kind": "concrete"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mobile/pubspec.lock",
+          "key": "sdks.dart",
+          "value": ">=3.12.0 <4.0.0",
+          "kind": "range"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mobile/pubspec.lock",
+          "key": "sdks.flutter",
+          "value": "3.44.0",
+          "kind": "concrete"
+        }
+      ],
+      "rationale": "distinct Flutter versions declared: ['3.41.9-stable', '3.44.0'] — sources: ['Codebase/mise.lock=3.41.9-stable', 'Codebase/mise.lock=3.44.0', 'Codebase/mise.toml=3.44.0', 'Codebase/mobile/pubspec.lock=3.44.0', 'Codebase/mobile/pubspec.yaml=3.44.0']"
+    },
+    {
+      "rule": "dart-sdk-constraint-diversity",
+      "family": "package",
+      "declarations": [
+        {
+          "family": "package",
+          "source": "Codebase/mobile/openapi/pubspec.yaml",
+          "key": "environment.sdk",
+          "value": ">=2.12.0 <4.0.0",
+          "kind": "range"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/mobile/packages/ui/pubspec.yaml",
+          "key": "environment.sdk",
+          "value": ">=3.12.0 <4.0.0",
+          "kind": "range"
+        },
+        {
+          "family": "package",
+          "source": "Codebase/mobile/pubspec.yaml",
+          "key": "environment.sdk",
+          "value": ">=3.12.0 <4.0.0",
+          "kind": "range"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mobile/pubspec.lock",
+          "key": "sdks.dart",
+          "value": ">=3.12.0 <4.0.0",
+          "kind": "range"
+        }
+      ],
+      "rationale": "distinct Dart SDK constraints across pubspec manifests: ['Codebase/mobile/openapi/pubspec.yaml=>=2.12.0 <4.0.0', 'Codebase/mobile/packages/ui/pubspec.yaml=>=3.12.0 <4.0.0', 'Codebase/mobile/pubspec.lock=>=3.12.0 <4.0.0', 'Codebase/mobile/pubspec.yaml=>=3.12.0 <4.0.0']"
+    },
+    {
+      "rule": "mise-pin-lock-consistency",
+      "family": "lockfile",
+      "declarations": [
+        {
+          "family": "lockfile",
+          "source": "Codebase/deployment/mise.toml+mise.lock",
+          "key": "opentofu",
+          "value": {
+            "pin": "1.11.6",
+            "lock": "1.11.6"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/deployment/mise.toml+mise.lock",
+          "key": "terragrunt",
+          "value": {
+            "pin": "1.0.3",
+            "lock": "1.0.3"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/docs/mise.toml+mise.lock",
+          "key": "wrangler",
+          "value": {
+            "pin": "4.91.0",
+            "lock": "4.66.0"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/machine-learning/mise.toml+mise.lock",
+          "key": "python",
+          "value": {
+            "pin": "3.11",
+            "lock": "3.11.15"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/machine-learning/mise.toml+mise.lock",
+          "key": "uv",
+          "value": {
+            "pin": "0.8.15",
+            "lock": "0.8.15"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "aqua:flutter/flutter",
+          "value": {
+            "pin": "3.44.0",
+            "lock": "3.44.0"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "github:CQLabs/homebrew-dcm",
+          "value": {
+            "pin": "1.37.0",
+            "lock": "1.37.0"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "github:extism/cli",
+          "value": {
+            "pin": "1.6.3",
+            "lock": "1.6.3"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "github:extism/js-pdk",
+          "value": {
+            "pin": "1.6.0",
+            "lock": "1.6.0"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "github:jellyfin/jellyfin-ffmpeg",
+          "value": {
+            "pin": "7.1.3-6",
+            "lock": "7.1.3-6"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "github:webassembly/binaryen",
+          "value": {
+            "pin": "version_124",
+            "lock": "version_124"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "java",
+          "value": {
+            "pin": "21.0.2",
+            "lock": "21.0.2"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "node",
+          "value": {
+            "pin": "24.15.0",
+            "lock": "24.15.0"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "npm:oazapfts",
+          "value": {
+            "pin": "7.5.0",
+            "lock": "7.5.0"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "opentofu",
+          "value": {
+            "pin": "1.11.6",
+            "lock": "1.11.6"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "pnpm",
+          "value": {
+            "pin": "10.33.4",
+            "lock": "10.33.4"
+          },
+          "kind": "derived_pair"
+        },
+        {
+          "family": "lockfile",
+          "source": "Codebase/mise.toml+mise.lock",
+          "key": "terragrunt",
+          "value": {
+            "pin": "1.0.3",
+            "lock": "1.0.3"
+          },
+          "kind": "derived_pair"
+        }
+      ],
+      "rationale": "mise pin/lock drift in 1 tool(s): ['wrangler pin=4.91.0 lock=4.66.0 (Codebase/docs/)']"
+    }
+  ],
+  "recordOnlyFindings": [
+    "workspace-package-version-diversity",
+    "generated-client-version-record",
+    "lockfile-tool-version-record"
+  ],
+  "alignedFixtures": [
+    "node-engine-range-compatibility",
+    "pnpm-manager-alignment"
+  ]
+}

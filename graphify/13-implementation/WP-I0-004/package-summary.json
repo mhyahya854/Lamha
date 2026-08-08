@@ -1,0 +1,60 @@
+{
+  "packageId": "WP-I0-004",
+  "status": "PASS",
+  "failures": [],
+  "collectionWindowUtc": {
+    "start": "2026-08-08T15:23:13+00:00",
+    "end": "2026-08-08T15:23:14+00:00"
+  },
+  "checks": {
+    "familyCoverage": "PASS",
+    "comparisonFixtures": "PASS",
+    "prePostManifestHashes": "PASS",
+    "gitMetadataCompare": "PASS",
+    "artifactScan": "PASS",
+    "failureCases": "PASS",
+    "exitGate": "PASS"
+  },
+  "counts": {
+    "declarations": 121,
+    "fixtures": 10,
+    "mixedVersionFindings": 5,
+    "inspectedManifests": 54
+  },
+  "evidenceFiles": [
+    "13-implementation/WP-I0-004/artifact-scan.json",
+    "13-implementation/WP-I0-004/completion-evidence.md",
+    "13-implementation/WP-I0-004/mixed-version-investigation.json",
+    "13-implementation/WP-I0-004/mixed-version-investigation.md",
+    "13-implementation/WP-I0-004/package-summary.json",
+    "13-implementation/WP-I0-004/provenance-report.json",
+    "13-implementation/WP-I0-004/verification-report.json"
+  ],
+  "exitGateClauses": [
+    {
+      "clause": "All four manifest families are investigated and recorded",
+      "evidence": "Captured 121 version declarations: 36 package-manifest, 22 lockfile, 5 generated-client, 58 toolchain declarations, each with source path, key, kind, and raw value in mixed-version-investigation.json.",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-004/mixed-version-investigation.json"
+      ],
+      "result": "PASS"
+    },
+    {
+      "clause": "Every reviewed comparison fixture produced a typed verdict and mixed-version findings are recorded",
+      "evidence": "10 comparison fixtures executed with typed verdicts {'node-runtime-alignment': 'MIXED', 'node-engine-range-compatibility': 'ALIGNED', 'pnpm-manager-alignment': 'ALIGNED', 'python-toolchain-alignment': 'MIXED', 'flutter-version-alignment': 'MIXED', 'dart-sdk-constraint-diversity': 'MIXED', 'workspace-package-version-diversity': 'RECORD_ONLY', 'generated-client-version-record': 'RECORD_ONLY', 'lockfile-tool-version-record': 'RECORD_ONLY', 'mise-pin-lock-consistency': 'MIXED'}; mixed-version findings recorded with the exact conflicting declarations: ['node-runtime-alignment', 'python-toolchain-alignment', 'flutter-version-alignment', 'dart-sdk-constraint-diversity', 'mise-pin-lock-consistency'].",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-004/mixed-version-investigation.json"
+      ],
+      "result": "PASS"
+    },
+    {
+      "clause": "Failures are typed and no unrelated authoritative state changed",
+      "evidence": "4 invalid-input probes returned typed errors with no partial commit; write-guard escape probes rejected; all 54 inspected manifest files hash-identical before/after; Git metadata unchanged; zero paths added/removed outside Graphify; every Git command read-only with GIT_OPTIONAL_LOCKS=0.",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-004/verification-report.json",
+        "13-implementation/WP-I0-004/artifact-scan.json"
+      ],
+      "result": "PASS"
+    }
+  ]
+}
