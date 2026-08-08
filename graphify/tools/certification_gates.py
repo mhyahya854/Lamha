@@ -20,6 +20,7 @@ import csv
 import hashlib
 import json
 import re
+import subprocess
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -575,6 +576,64 @@ def verify_external_integrity_baseline(baseline: Any) -> list[str]:
     return errors
 
 
+def compute_external_git_snapshot(graphify_root: Path = GRAPHIFY) -> list[dict[str, object]]:
+    """Independently recompute the canonical committed tree outside Graphify."""
+    repository = graphify_root.resolve().parent
+    payload = subprocess.run(
+        ["git", "-c", "core.quotePath=false", "ls-tree", "-r", "-z", "-l", "HEAD"],
+        cwd=repository,
+        check=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    ).stdout
+    rows: list[dict[str, object]] = []
+    for raw in payload.split(b"\0"):
+        if not raw:
+            continue
+        metadata, raw_path = raw.split(b"\t", 1)
+        mode, object_type, object_id, size = metadata.decode("ascii").split()
+        path = raw_path.decode("utf-8", errors="surrogateescape")
+        if path == "graphify" or path.startswith("graphify/"):
+            continue
+        if object_type != "blob":
+            raise RuntimeError(f"unsupported external Git object type for {path}: {object_type}")
+        rows.append({"path": path, "mode": mode, "size": int(size), "gitBlobOid": object_id})
+    return sorted(rows, key=lambda row: str(row["path"]))
+
+
+def verify_external_integrity_git_tree(
+    graphify_root: Path,
+    saved_files: Any,
+    label: str = "saved",
+) -> list[str]:
+    """Reject saved evidence that does not equal Git's current object tree."""
+    if not isinstance(saved_files, list):
+        return [f"external integrity {label} files list missing"]
+    try:
+        actual = compute_external_git_snapshot(graphify_root)
+    except (OSError, subprocess.SubprocessError, RuntimeError, ValueError) as exc:
+        return [f"external integrity Git tree recomputation failed: {exc}"]
+    if saved_files != actual:
+        return [f"external integrity {label} saved Git tree differs from repository"]
+    repository = graphify_root.resolve().parent
+    try:
+        status = subprocess.run(
+            [
+                "git", "status", "--porcelain=v1", "-z", "--untracked-files=all",
+                "--", ".", ":(exclude)graphify",
+            ],
+            cwd=repository,
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        ).stdout
+    except (OSError, subprocess.SubprocessError) as exc:
+        return [f"external integrity Git status recomputation failed: {exc}"]
+    if status:
+        return ["external integrity outside-Graphify working tree differs from HEAD"]
+    return []
+
+
 def verify_external_integrity_comparison(final: Any) -> list[str]:
     errors: list[str] = []
     if not isinstance(final, dict):
@@ -621,9 +680,11 @@ def verify_external_integrity_report(graphify_root: Path = GRAPHIFY) -> list[str
     final = read_json(final_path)
     errors.extend(verify_external_integrity_comparison(final))
     files = final.get("files")
+    errors.extend(verify_external_integrity_git_tree(graphify_root, files, "final"))
     if baseline_path.exists():
         baseline = read_json(baseline_path)
         errors.extend(verify_external_integrity_baseline(baseline))
+        errors.extend(verify_external_integrity_git_tree(graphify_root, baseline.get("files"), "baseline"))
         if isinstance(files, list) and baseline.get("file_count") != final.get("fileCount"):
             errors.append("external integrity baseline/final scope counts differ")
         base_paths = {row.get("path") for row in (baseline.get("files") or []) if isinstance(row, dict)}

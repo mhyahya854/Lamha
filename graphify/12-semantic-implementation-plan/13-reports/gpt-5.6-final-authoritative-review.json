@@ -20,9 +20,10 @@
     "external integrity evidence encoded timestamp and absolute checkout path",
     "final package authorization invariants were not independently enforced",
     "Graphify line-ending policy initially omitted normalization of its own .gitattributes file",
-    "external integrity used working-tree byte hashes that change with core.autocrlf"
+    "external integrity used working-tree byte hashes that change with core.autocrlf",
+    "certification compared saved external-integrity copies without independently recomputing the Git tree"
   ],
-  "defects_fixed": 14,
+  "defects_fixed": 15,
   "reviewed_counts": {
     "canonical_requirements": 2339,
     "active_requirements": 1125,
@@ -44,7 +45,7 @@
     "sqlite": "PASS",
     "ai_amendment": "PASS_AFTER_REPAIR",
     "validator_implementation_audit": "PASS; 24 levels recompute raw authority and reject saved/self-certified evidence",
-    "adversarial": "PASS; 168/168 isolated negative mutations observed their intended failures",
+    "adversarial": "PASS; 169/169 isolated negative mutations observed their intended failures",
     "certification": "PASS; provisional state blocks implementation and PASS publishes atomically last",
     "portability": "PASS_VERIFIED; Graphify-scoped LF policy produces identical canonical bytes for core.autocrlf false and true",
     "fresh_clones": "PASS_VERIFIED; different-path clones with core.autocrlf false and true reproduce all final hashes",

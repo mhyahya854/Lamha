@@ -248,7 +248,7 @@ Three remaining certification-integrity weaknesses were found and closed:
    exclusion must carry a non-empty, specific rationale
    (`exclusion_rationale_missing` / `exclusion_rationale_not_specific`).
 
-The adversarial suite now contains 168 fixtures (F01-F168), including
+The adversarial suite now contains 169 fixtures (F01-F169), including
 independent one-mutation fixtures for the provisional/crash state, exact
 Layer 3 membership, and strict exclusion sets.
 

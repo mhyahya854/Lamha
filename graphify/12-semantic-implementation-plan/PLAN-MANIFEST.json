@@ -2450,8 +2450,8 @@
     },
     {
       "path": "12-validators/adversarial_fixtures.py",
-      "bytes": 85090,
-      "sha256": "fdc4ea421826f62afc373d53084454cc9a58d4799e1d9ae422a9747a1b5c6fc9"
+      "bytes": 85511,
+      "sha256": "48fdb279768d0654a2eb3b0057aa58c5a48f7e7aaf396da2d306c3294bbdce76"
     },
     {
       "path": "12-validators/packet_smoke_tests.py",
@@ -2511,17 +2511,17 @@
     {
       "path": "13-reports/final-100-percent-certification.json",
       "bytes": 7442,
-      "sha256": "4faad28720819c3c9563286293b28ff4abb49e2b8cab0ad3800ae56d9f62d323"
+      "sha256": "9b91c2e9d5d561a85e32acb0a397dc46c7f431ef55f9380f972f6aeded6c794c"
     },
     {
       "path": "13-reports/final-content-manifest.json",
       "bytes": 104759,
-      "sha256": "9e2b495dbfe964bcf1ca12ff7a58398dfc5178e0728e841bf1452f7095f56175"
+      "sha256": "14238e4cca1cde212bc1071ae5ba7d08121b01d2fc526eb4ae49d525436aeb85"
     },
     {
       "path": "13-reports/final-determinism-proof.json",
       "bytes": 2440,
-      "sha256": "a68ea84d2041265f8bf496fc613276a0a333f45c6d5b5193c6f024b9be6d1251"
+      "sha256": "5cde4dfdfeaab50e6dfb6883a747331505b3535a8a7d4ea2e195652a3a809c8f"
     },
     {
       "path": "13-reports/final-package-determinism.json",
@@ -2536,7 +2536,7 @@
     {
       "path": "13-reports/final-release-envelope.json",
       "bytes": 9214,
-      "sha256": "c4533353a4c6f1b076ff3e8f87c3b5dc26b2282b272a2112de8e6fa9978e0126"
+      "sha256": "465e6d5b1f03146d77750dc0b5172eccd46d605444e2384ca26eac4cf1fb63d8"
     },
     {
       "path": "13-reports/generated-fragment-disposition-report.csv",
@@ -2560,8 +2560,8 @@
     },
     {
       "path": "13-reports/gpt-5.6-final-authoritative-review.json",
-      "bytes": 3272,
-      "sha256": "aa8357e14476285e8004f8b3c0612e529704a833e8b30d344d18d69fb94db7c5"
+      "bytes": 3381,
+      "sha256": "0c9f6e580eaec7590d49a3bd29538222b7e40c1b4c3911bc89d6b27162c9429a"
     },
     {
       "path": "13-reports/independent-final-semantic-audit.csv",
@@ -2936,12 +2936,12 @@
     {
       "path": "14-handoff/GPT-5.6-INDEPENDENT-REVIEW-HANDOFF.md",
       "bytes": 17403,
-      "sha256": "bad9b22b8c139b89567907c1a28e116a15a13dc59c28dfa1a6f6de46f2e08496"
+      "sha256": "f60a3490e521fd71db49b1a40f668244a53a19cbde4096c362be92b78d2ef7fa"
     },
     {
       "path": "14-handoff/gpt-review-counts.json",
       "bytes": 872,
-      "sha256": "da60cdb2acbdd8cae1f10644f1029b56a48ac859ef93f585fff27331fe7cc1be"
+      "sha256": "61b164479392189d3e2678cbca09ecb11f552787f344b41be481765bb645a8db"
     },
     {
       "path": "14-handoff/gpt-review-critical-invariants.json",
@@ -2961,12 +2961,12 @@
     {
       "path": "14-handoff/gpt-review-sha-manifest.json",
       "bytes": 425002,
-      "sha256": "cdbd4bda07422c443c33ab4760c88ed2a21b59714d3fccda4d1b8f8dcc7d0f36"
+      "sha256": "c6af5ca6240b3aee2ea474105b39f4c8c3ac8fa900d5adfd220483a50488f2a6"
     },
     {
       "path": "14-handoff/gpt-review-validation-commands.json",
       "bytes": 4064,
-      "sha256": "4d822f9b78f667b433cd552ef963264a2fcbd6def8b31b7c881e0bc948fd711e"
+      "sha256": "e51dc25f8d09f4d89364fb7300b29438f9d698b604e9b128b25ab06462e54814"
     },
     {
       "path": "14-handoff/START-HERE.md",

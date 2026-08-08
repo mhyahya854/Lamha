@@ -1,6 +1,6 @@
 {
-  "fixtureCount": 168,
-  "expectedFailuresObserved": 168,
+  "fixtureCount": 169,
+  "expectedFailuresObserved": 169,
   "status": "PASS",
   "fixtures": [
     {
@@ -2276,6 +2276,13 @@
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
         "external integrity baseline is checkout-byte-dependent"
+      ]
+    },
+    {
+      "fixture": "F169_FORGED_EXTERNAL_GIT_TREE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "external integrity fixture saved Git tree differs from repository"
       ]
     }
   ]

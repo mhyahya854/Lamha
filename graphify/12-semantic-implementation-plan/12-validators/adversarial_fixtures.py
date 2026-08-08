@@ -1300,6 +1300,12 @@ def run() -> dict[str, object]:
     checkout_byte_baseline["algorithm"] = "SHA-256 of working-tree checkout bytes"
     checkout_byte_errors = gates.verify_external_integrity_baseline(checkout_byte_baseline)
 
+    forged_git_tree = copy.deepcopy(gates.compute_external_git_snapshot(validator.GRAPHIFY))
+    forged_git_tree[0]["gitBlobOid"] = "0" * 40
+    forged_git_tree_errors = gates.verify_external_integrity_git_tree(
+        validator.GRAPHIFY, forged_git_tree, "fixture"
+    )
+
     with tempfile.TemporaryDirectory() as tmp_policy:
         policy_root = Path(tmp_policy)
         valid_policy = (gates.GRAPHIFY / ".gitattributes").read_text(encoding="utf-8")
@@ -1342,6 +1348,7 @@ def run() -> dict[str, object]:
         ("F166_GRAPHIFY_LF_POLICY_REMOVED", *contains(line_policy_errors, "Graphify LF rule missing")),
         ("F167_PACKET_OBJECTIVE_DRIFT", *contains(exact_packet_errors, "packet exact rendering differs from authority: WP-I0-001")),
         ("F168_CHECKOUT_BYTE_EXTERNAL_BASELINE", *contains(checkout_byte_errors, "external integrity baseline is checkout-byte-dependent")),
+        ("F169_FORGED_EXTERNAL_GIT_TREE", *contains(forged_git_tree_errors, "external integrity fixture saved Git tree differs from repository")),
     ]
 
     cases = [
