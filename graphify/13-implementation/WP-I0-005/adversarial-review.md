@@ -32,6 +32,13 @@ The final package survived independent checks for manifest/version completeness;
 
 ## Transition verification
 
-- Package implementation commit: pending final bounded commit.
-- GitHub verification: pending push and one-to-one local/remote SHA verification.
-- Final package status: pending GitHub verification.
+- Package implementation commit: `e411b1120dc2bd6d9ad20219839819d19166c8b8` (`Complete WP-I0-005: toolchain inventory`).
+- GitHub push: `ec60527..e411b11  main -> main` — exit 0.
+- GitHub 1:1 verification: `HEAD == origin/main == e411b1120dc2bd6d9ad20219839819d19166c8b8`; `git diff --exit-code HEAD origin/main` clean; worktree clean.
+- Post-push committed-state verification: package summary PASS with empty failures; focused, negative, regression, artifact, and all three exit-gate clauses PASS; certification PASS; validator 24/24; missing/unexpected/mismatched files 0.
+- Unauthorized changed paths: 0.
+- Final package status: COMPLETE and GitHub-verified.
+- READY set after completion: `WP-I0-006`, `WP-I0-007`, `WP-I0-008`, `WP-I0-009`, `WP-I0-010`, `WP-I0-011`, `WP-I1-001`, `WP-I2-001`, `WP-I2-002`, `WP-I10-003`, `WP-I15-006`.
+- Deterministic next-package selection (phase, package ordinal, ID): `WP-I0-006`.
+- `WP-I0-006` status: AUTHORIZED — NOT_STARTED.
+- Next-package implementation changes: 0; no `WP-I0-006` implementation, tests, dependencies, or scaffolding were created.

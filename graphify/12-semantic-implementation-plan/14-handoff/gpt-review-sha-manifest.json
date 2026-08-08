@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "algorithm": "SHA-256",
-  "digest": "241e2faa484e2da61517189a9757d6f6c227038da49bfc1d69649e523e9a4416",
+  "digest": "6f8ed633c24f01f2869057dcf9f4552032b141ed9508e6f62fd7ebcc6bcac8bb",
   "file_count": 2652,
   "files": {
     ".gitattributes": "0ee461b1fdd4820070bb46655efd2a953a7d65fca14940223f635331cbff883b",
@@ -786,7 +786,7 @@
     "13-implementation/WP-I0-004/package-summary.json": "e452d635d61470ec51fa5d29df5db16574d93d461acd922d68b44a4ed7c77397",
     "13-implementation/WP-I0-004/provenance-report.json": "1a3478a81a275266f5cb93308231c5f5eecd34e1b1daecc01057e606eb6ea613",
     "13-implementation/WP-I0-004/verification-report.json": "896849fe716ee0dae5c701783927e9ac1ee4d32234fb6aef60b8d1b6fb19ea70",
-    "13-implementation/WP-I0-005/adversarial-review.md": "6096acba8c1d2ac84c45aace104a34d8491329300d8421871b3368ca826167d6",
+    "13-implementation/WP-I0-005/adversarial-review.md": "d2e96f02e7868c1e024420a65f405db0866ac692e7ce00eaf54c2dc26ffaaa00",
     "13-implementation/WP-I0-005/artifact-scan.json": "e26c2a3c2f4c88a618c184ec96100061b14a28dc6e7050ec14c6bcd7e3eccc2b",
     "13-implementation/WP-I0-005/collect_evidence.py": "ac616683ab49690ee0b23c1d0de608e305187ce546923a9ae552a7d2cd277f91",
     "13-implementation/WP-I0-005/completion-evidence.md": "0a5cd0f557c559e92a49f76db50c83fdf58d7b66979a9aa23c334172c1e218d4",
