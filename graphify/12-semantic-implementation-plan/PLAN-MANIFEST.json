@@ -2511,17 +2511,17 @@
     {
       "path": "13-reports/final-100-percent-certification.json",
       "bytes": 7442,
-      "sha256": "80e2f4897357897e92b08f4941e3f434d8756f2fbf9d5be5a3f8dc6c5b9b3c97"
+      "sha256": "4faad28720819c3c9563286293b28ff4abb49e2b8cab0ad3800ae56d9f62d323"
     },
     {
       "path": "13-reports/final-content-manifest.json",
       "bytes": 104759,
-      "sha256": "f2b7f3122acbef4a1b85a48d6bb6238f560c85960a7f9926b32fbdf1164407db"
+      "sha256": "9e2b495dbfe964bcf1ca12ff7a58398dfc5178e0728e841bf1452f7095f56175"
     },
     {
       "path": "13-reports/final-determinism-proof.json",
       "bytes": 2440,
-      "sha256": "217ef25b812ecbe28bf41d2bd1044d2f7cd0dc175da20b92a0556de10a4ddf4b"
+      "sha256": "a68ea84d2041265f8bf496fc613276a0a333f45c6d5b5193c6f024b9be6d1251"
     },
     {
       "path": "13-reports/final-package-determinism.json",
@@ -2536,7 +2536,7 @@
     {
       "path": "13-reports/final-release-envelope.json",
       "bytes": 9214,
-      "sha256": "4b43ea49332d20390061ed11e03ade6e13536aba197b8ea93e67d12bb4f9ed76"
+      "sha256": "c4533353a4c6f1b076ff3e8f87c3b5dc26b2282b272a2112de8e6fa9978e0126"
     },
     {
       "path": "13-reports/generated-fragment-disposition-report.csv",
