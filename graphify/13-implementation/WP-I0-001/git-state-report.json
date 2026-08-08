@@ -1,0 +1,258 @@
+{
+  "collectionMethod": "read-only git plumbing/porcelain with GIT_OPTIONAL_LOCKS=0 and core.quotePath=false",
+  "gitAvailable": true,
+  "before": {
+    "head": {
+      "exitCode": 0,
+      "output": "001244ed63f76f1f1e486cfe3bc289c4e815f0e6\n"
+    },
+    "origin_main": {
+      "exitCode": 0,
+      "output": "001244ed63f76f1f1e486cfe3bc289c4e815f0e6\n"
+    },
+    "branch": {
+      "exitCode": 0,
+      "output": "main\n"
+    },
+    "remotes": {
+      "exitCode": 0,
+      "output": "origin\thttps://github.com/mhyahya854/Lamha.git (fetch)\norigin\thttps://github.com/mhyahya854/Lamha.git (push)\n"
+    },
+    "status_porcelain": {
+      "exitCode": 0,
+      "output": " M graphify/12-semantic-implementation-plan/12-validators/adversarial-results.json\n M graphify/12-semantic-implementation-plan/13-reports/final-100-percent-certification.json\n M graphify/12-semantic-implementation-plan/13-reports/final-content-manifest.json\n M graphify/12-semantic-implementation-plan/13-reports/final-determinism-proof.json\n M graphify/12-semantic-implementation-plan/13-reports/final-release-envelope.json\n M graphify/12-semantic-implementation-plan/14-handoff/gpt-review-sha-manifest.json\n M graphify/12-semantic-implementation-plan/PLAN-MANIFEST.json\n M graphify/semantic-plan-source/handoff-gpt/gpt-review-sha-manifest.json\n M graphify/semantic-plan-source/reviews/final-100-percent-certification.json\n M graphify/semantic-plan-source/reviews/final-content-manifest.json\n M graphify/semantic-plan-source/reviews/final-determinism-proof.json\n M graphify/semantic-plan-source/reviews/final-release-envelope.json\n?? graphify/13-implementation/WP-I0-001/artifact-scan.json\n?? graphify/13-implementation/WP-I0-001/baseline-comparison.json\n?? graphify/13-implementation/WP-I0-001/collect_evidence.py\n?? graphify/13-implementation/WP-I0-001/completion-evidence.md\n?? graphify/13-implementation/WP-I0-001/file-inventory.csv\n?? graphify/13-implementation/WP-I0-001/git-state-report.json\n?? graphify/13-implementation/WP-I0-001/package-summary.json\n?? graphify/13-implementation/WP-I0-001/provenance-report.json\n?? graphify/13-implementation/WP-I0-001/sha256-manifest.csv\n?? graphify/13-implementation/WP-I0-001/toolchain-manifest-analysis.json\n?? graphify/13-implementation/WP-I0-001/toolchain-manifest-analysis.md\n?? graphify/13-implementation/WP-I0-001/verification-results.json\n"
+    },
+    "status_outside_graphify": {
+      "exitCode": 0,
+      "output": ""
+    },
+    "submodule_status": {
+      "exitCode": 0,
+      "output": ""
+    },
+    "core_autocrlf": {
+      "exitCode": 0,
+      "output": "true\n"
+    },
+    "core_eol": {
+      "exitCode": 1,
+      "output": ""
+    }
+  },
+  "after": {
+    "head": {
+      "exitCode": 0,
+      "output": "001244ed63f76f1f1e486cfe3bc289c4e815f0e6\n"
+    },
+    "origin_main": {
+      "exitCode": 0,
+      "output": "001244ed63f76f1f1e486cfe3bc289c4e815f0e6\n"
+    },
+    "branch": {
+      "exitCode": 0,
+      "output": "main\n"
+    },
+    "remotes": {
+      "exitCode": 0,
+      "output": "origin\thttps://github.com/mhyahya854/Lamha.git (fetch)\norigin\thttps://github.com/mhyahya854/Lamha.git (push)\n"
+    },
+    "status_porcelain": {
+      "exitCode": 0,
+      "output": " M graphify/12-semantic-implementation-plan/12-validators/adversarial-results.json\n M graphify/12-semantic-implementation-plan/13-reports/final-100-percent-certification.json\n M graphify/12-semantic-implementation-plan/13-reports/final-content-manifest.json\n M graphify/12-semantic-implementation-plan/13-reports/final-determinism-proof.json\n M graphify/12-semantic-implementation-plan/13-reports/final-release-envelope.json\n M graphify/12-semantic-implementation-plan/14-handoff/gpt-review-sha-manifest.json\n M graphify/12-semantic-implementation-plan/PLAN-MANIFEST.json\n M graphify/semantic-plan-source/handoff-gpt/gpt-review-sha-manifest.json\n M graphify/semantic-plan-source/reviews/final-100-percent-certification.json\n M graphify/semantic-plan-source/reviews/final-content-manifest.json\n M graphify/semantic-plan-source/reviews/final-determinism-proof.json\n M graphify/semantic-plan-source/reviews/final-release-envelope.json\n?? graphify/13-implementation/WP-I0-001/artifact-scan.json\n?? graphify/13-implementation/WP-I0-001/baseline-comparison.json\n?? graphify/13-implementation/WP-I0-001/collect_evidence.py\n?? graphify/13-implementation/WP-I0-001/completion-evidence.md\n?? graphify/13-implementation/WP-I0-001/file-inventory.csv\n?? graphify/13-implementation/WP-I0-001/git-state-report.json\n?? graphify/13-implementation/WP-I0-001/package-summary.json\n?? graphify/13-implementation/WP-I0-001/provenance-report.json\n?? graphify/13-implementation/WP-I0-001/sha256-manifest.csv\n?? graphify/13-implementation/WP-I0-001/toolchain-manifest-analysis.json\n?? graphify/13-implementation/WP-I0-001/toolchain-manifest-analysis.md\n?? graphify/13-implementation/WP-I0-001/verification-results.json\n"
+    },
+    "status_outside_graphify": {
+      "exitCode": 0,
+      "output": ""
+    },
+    "submodule_status": {
+      "exitCode": 0,
+      "output": ""
+    },
+    "core_autocrlf": {
+      "exitCode": 0,
+      "output": "true\n"
+    },
+    "core_eol": {
+      "exitCode": 1,
+      "output": ""
+    }
+  },
+  "metadataUnchanged": true,
+  "trackedTreeOutsideGraphify": {
+    "fileCount": 3697
+  },
+  "codebaseGitNote": "Codebase/ is an unpacked source snapshot without its own .git directory; Codebase/.gitmodules declares the e2e/test-assets submodule (not initialized; no gitlink present in the tracked tree).",
+  "rawCommands": [
+    {
+      "command": "git rev-parse HEAD",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": "001244ed63f76f1f1e486cfe3bc289c4e815f0e6\n",
+      "stderr": ""
+    },
+    {
+      "command": "git rev-parse origin/main",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": "001244ed63f76f1f1e486cfe3bc289c4e815f0e6\n",
+      "stderr": ""
+    },
+    {
+      "command": "git branch --show-current",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": "main\n",
+      "stderr": ""
+    },
+    {
+      "command": "git remote -v",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": "origin\thttps://github.com/mhyahya854/Lamha.git (fetch)\norigin\thttps://github.com/mhyahya854/Lamha.git (push)\n",
+      "stderr": ""
+    },
+    {
+      "command": "git status --porcelain=v1 --untracked-files=all",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": " M graphify/12-semantic-implementation-plan/12-validators/adversarial-results.json\n M graphify/12-semantic-implementation-plan/13-reports/final-100-percent-certification.json\n M graphify/12-semantic-implementation-plan/13-reports/final-content-manifest.json\n M graphify/12-semantic-implementation-plan/13-reports/final-determinism-proof.json\n M graphify/12-semantic-implementation-plan/13-reports/final-release-envelope.json\n M graphify/12-semantic-implementation-plan/14-handoff/gpt-review-sha-manifest.json\n M graphify/12-semantic-implementation-plan/PLAN-MANIFEST.json\n M graphify/semantic-plan-source/handoff-gpt/gpt-review-sha-manifest.json\n M graphify/semantic-plan-source/reviews/final-100-percent-certification.json\n M graphify/semantic-plan-source/reviews/final-content-manifest.json\n M graphify/semantic-plan-source/reviews/final-determinism-proof.json\n M graphify/semantic-plan-source/reviews/final-release-envelope.json\n?? graphify/13-implementation/WP-I0-001/artifact-scan.json\n?? graphify/13-implementation/WP-I0-001/baseline-comparison.json\n?? graphify/13-implementation/WP-I0-001/collect_evidence.py\n?? graphify/13-implementation/WP-I0-001/completion-evidence.md\n?? graphify/13-implementation/WP-I0-001/file-inventory.csv\n?? graphify/13-implementation/WP-I0-001/git-state-report.json\n?? graphify/13-implementation/WP-I0-001/package-summary.json\n?? graphify/13-implementation/WP-I0-001/provenance-report.json\n?? graphify/13-implementation/WP-I0-001/sha256-manifest.csv\n?? graphify/13-implementation/WP-I0-001/toolchain-manifest-analysis.json\n?? graphify/13-implementation/WP-I0-001/toolchain-manifest-analysis.md\n?? graphify/13-implementation/WP-I0-001/verification-results.json\n",
+      "stderr": ""
+    },
+    {
+      "command": "git status --porcelain=v1 --untracked-files=all -- . :(exclude)graphify",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "git submodule status",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "git config --get core.autocrlf",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": "true\n",
+      "stderr": ""
+    },
+    {
+      "command": "git config --get core.eol",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "git ls-tree -r -z -l HEAD",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout_bytes": 849126,
+      "stderr": ""
+    },
+    {
+      "command": "git rev-parse HEAD",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": "001244ed63f76f1f1e486cfe3bc289c4e815f0e6\n",
+      "stderr": ""
+    },
+    {
+      "command": "git rev-parse origin/main",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": "001244ed63f76f1f1e486cfe3bc289c4e815f0e6\n",
+      "stderr": ""
+    },
+    {
+      "command": "git branch --show-current",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": "main\n",
+      "stderr": ""
+    },
+    {
+      "command": "git remote -v",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": "origin\thttps://github.com/mhyahya854/Lamha.git (fetch)\norigin\thttps://github.com/mhyahya854/Lamha.git (push)\n",
+      "stderr": ""
+    },
+    {
+      "command": "git status --porcelain=v1 --untracked-files=all",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": " M graphify/12-semantic-implementation-plan/12-validators/adversarial-results.json\n M graphify/12-semantic-implementation-plan/13-reports/final-100-percent-certification.json\n M graphify/12-semantic-implementation-plan/13-reports/final-content-manifest.json\n M graphify/12-semantic-implementation-plan/13-reports/final-determinism-proof.json\n M graphify/12-semantic-implementation-plan/13-reports/final-release-envelope.json\n M graphify/12-semantic-implementation-plan/14-handoff/gpt-review-sha-manifest.json\n M graphify/12-semantic-implementation-plan/PLAN-MANIFEST.json\n M graphify/semantic-plan-source/handoff-gpt/gpt-review-sha-manifest.json\n M graphify/semantic-plan-source/reviews/final-100-percent-certification.json\n M graphify/semantic-plan-source/reviews/final-content-manifest.json\n M graphify/semantic-plan-source/reviews/final-determinism-proof.json\n M graphify/semantic-plan-source/reviews/final-release-envelope.json\n?? graphify/13-implementation/WP-I0-001/artifact-scan.json\n?? graphify/13-implementation/WP-I0-001/baseline-comparison.json\n?? graphify/13-implementation/WP-I0-001/collect_evidence.py\n?? graphify/13-implementation/WP-I0-001/completion-evidence.md\n?? graphify/13-implementation/WP-I0-001/file-inventory.csv\n?? graphify/13-implementation/WP-I0-001/git-state-report.json\n?? graphify/13-implementation/WP-I0-001/package-summary.json\n?? graphify/13-implementation/WP-I0-001/provenance-report.json\n?? graphify/13-implementation/WP-I0-001/sha256-manifest.csv\n?? graphify/13-implementation/WP-I0-001/toolchain-manifest-analysis.json\n?? graphify/13-implementation/WP-I0-001/toolchain-manifest-analysis.md\n?? graphify/13-implementation/WP-I0-001/verification-results.json\n",
+      "stderr": ""
+    },
+    {
+      "command": "git status --porcelain=v1 --untracked-files=all -- . :(exclude)graphify",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "git submodule status",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "git config --get core.autocrlf",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 0,
+      "stdout": "true\n",
+      "stderr": ""
+    },
+    {
+      "command": "git config --get core.eol",
+      "env": {
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

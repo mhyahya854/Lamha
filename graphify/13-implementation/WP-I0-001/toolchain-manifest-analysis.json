@@ -1,0 +1,178 @@
+{
+  "manifests": {
+    "Codebase/.nvmrc": {
+      "node": "24.15.0"
+    },
+    "Codebase/package.json": {
+      "name": "immich-monorepo",
+      "version": "2.7.5",
+      "packageManager": "pnpm@10.33.4+sha512.1c67b3b359b2d408119ba1ed289f34b8fc3c6873412bec6fd264fbdc82489e510fcbecb9ce9d22dae7f3b76269d8441046014bdca53b9979cd7a561ad631b800",
+      "engines": {
+        "pnpm": ">=10.0.0"
+      }
+    },
+    "Codebase/mise.toml": {
+      "pinned_tools": {
+        "node": "24.15.0",
+        "aqua:flutter/flutter": "3.44.0",
+        "pnpm": "10.33.4",
+        "terragrunt": "1.0.3",
+        "opentofu": "1.11.6",
+        "java": "21.0.2",
+        "npm:oazapfts": "7.5.0",
+        "github:extism/cli": "1.6.3",
+        "github:webassembly/binaryen": "version_124",
+        "github:extism/js-pdk": "1.6.0"
+      }
+    },
+    "Codebase/machine-learning/pyproject.toml": {
+      "requires_python": ">=3.11,<4.0"
+    },
+    "Codebase/machine-learning/.python-version": {
+      "python": "3.13"
+    },
+    "Codebase/mobile/pubspec.yaml": {
+      "environment": {
+        "sdk": ">=3.12.0 <4.0.0",
+        "flutter": "3.44.0"
+      }
+    },
+    "Codebase/.gitmodules": {
+      "submodules": [
+        [
+          "e2e/test-assets",
+          "e2e/test-assets",
+          "https://github.com/immich-app/test-assets"
+        ]
+      ]
+    }
+  },
+  "counts": {
+    "package_json": {
+      "count": 11,
+      "paths": [
+        "package.json",
+        ".github/package.json",
+        "docs/package.json",
+        "e2e/package.json",
+        "packages/cli/package.json",
+        "packages/e2e-auth-server/package.json",
+        "packages/plugin-core/package.json",
+        "packages/plugin-sdk/package.json",
+        "packages/sdk/package.json",
+        "server/package.json",
+        "web/package.json"
+      ]
+    },
+    "pnpm_lock": {
+      "count": 1,
+      "paths": [
+        "pnpm-lock.yaml"
+      ]
+    },
+    "pubspec": {
+      "count": 5,
+      "paths": [
+        "mobile/pubspec.lock",
+        "mobile/pubspec.yaml",
+        "mobile/openapi/pubspec.yaml",
+        "mobile/packages/ui/pubspec.lock",
+        "mobile/packages/ui/pubspec.yaml"
+      ]
+    },
+    "docker_compose": {
+      "count": 6,
+      "paths": [
+        "docker/docker-compose.dev.yml",
+        "docker/docker-compose.prod.yml",
+        "docker/docker-compose.rootless.yml",
+        "docker/docker-compose.yml",
+        "e2e/docker-compose.dev.yml",
+        "e2e/docker-compose.yml"
+      ]
+    },
+    "dockerfile": {
+      "count": 5,
+      "paths": [
+        "machine-learning/Dockerfile",
+        "packages/cli/Dockerfile",
+        "packages/e2e-auth-server/Dockerfile",
+        "server/Dockerfile",
+        "server/Dockerfile.dev"
+      ]
+    },
+    "ci_workflows": {
+      "count": 23,
+      "paths": [
+        ".github/workflows/auto-close.yml",
+        ".github/workflows/build-mobile.yml",
+        ".github/workflows/cache-cleanup.yml",
+        ".github/workflows/check-openapi.yml",
+        ".github/workflows/cli.yml",
+        ".github/workflows/close-duplicates.yml",
+        ".github/workflows/codeql-analysis.yml",
+        ".github/workflows/docker.yml",
+        ".github/workflows/docs-build.yml",
+        ".github/workflows/docs-deploy.yml",
+        ".github/workflows/docs-destroy.yml",
+        ".github/workflows/fix-format.yml",
+        ".github/workflows/merge-translations.yml",
+        ".github/workflows/org-pr-require-conventional-commit.yml",
+        ".github/workflows/org-zizmor.yml",
+        ".github/workflows/pr-label-validation.yml",
+        ".github/workflows/pr-labeler.yml",
+        ".github/workflows/prepare-release.yml",
+        ".github/workflows/preview-label.yaml",
+        ".github/workflows/sdk.yml",
+        ".github/workflows/static_analysis.yml",
+        ".github/workflows/test.yml",
+        ".github/workflows/weblate-lock.yml"
+      ]
+    },
+    "makefiles": {
+      "count": 2,
+      "paths": [
+        "Makefile",
+        "mobile/makefile"
+      ]
+    },
+    "cmakelists": {
+      "count": 1,
+      "paths": [
+        "mobile/android/app/CMakeLists.txt"
+      ]
+    },
+    "mise": {
+      "count": 15,
+      "paths": [
+        "mise.lock",
+        "mise.toml",
+        ".github/mise.toml",
+        "deployment/mise.lock",
+        "deployment/mise.toml",
+        "docs/mise.lock",
+        "docs/mise.toml",
+        "e2e/mise.toml",
+        "machine-learning/mise.lock",
+        "machine-learning/mise.toml",
+        "mobile/mise.toml",
+        "packages/cli/mise.toml",
+        "packages/plugin-core/mise.toml",
+        "server/mise.toml",
+        "web/mise.toml"
+      ]
+    },
+    "python_version_files": {
+      "count": 1,
+      "paths": [
+        "machine-learning/.python-version"
+      ]
+    },
+    "nvmrc": {
+      "count": 1,
+      "paths": [
+        ".nvmrc"
+      ]
+    }
+  }
+}

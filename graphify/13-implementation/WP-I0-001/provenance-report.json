@@ -1,0 +1,47 @@
+{
+  "packageId": "WP-I0-001",
+  "packetPath": "12-semantic-implementation-plan/04-work-packages/packets/WP-I0-001.md",
+  "packetSha256": "ce5a8b3245eed9ac79ea8af9c5942a4e372f5a0aae3d47ab0e6ed1b4574764ba",
+  "ownedRequirements": [
+    "CAN-LAM-GOV-292",
+    "CAN-MISSION-I0-001"
+  ],
+  "authorizationSource": {
+    "certificationPath": "12-semantic-implementation-plan/13-reports/final-100-percent-certification.json",
+    "certificationSha256": "0d64d56bf2a29354287543e044556b321f96153ad283955e8a36d152faa21200",
+    "firstAllowedPackage": "WP-I0-001",
+    "automaticNextPackage": null,
+    "status": "PASS"
+  },
+  "roots": {
+    "lamhaRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+    "codebaseRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase",
+    "graphifyRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\graphify",
+    "packageEvidenceDir": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\graphify\\13-implementation\\WP-I0-001"
+  },
+  "scope": {
+    "inventoryScope": "Every working-tree file under Codebase/ (the tracked outside-Graphify application corpus; 3697 files at the planning baseline).",
+    "excluded": ".git (repository metadata, covered by the Git-state report), graphify (authority and evidence scope), .agents (empty host directory, zero files)."
+  },
+  "baselines": {
+    "sha256": {
+      "path": "12-semantic-implementation-plan/13-reports/external-readonly-baseline.json",
+      "sha256": "2c23f8401318d63281045b3d1777aca7390fea65a75eb0df20024cde69826c76"
+    },
+    "gitBlob": {
+      "path": "12-semantic-implementation-plan/13-reports/pass3-external-readonly-baseline.json",
+      "sha256": "edc4e5dd2932fc1fa99b10a40196a011b2a848673e06aa42e5a8b96ac1c03572"
+    }
+  },
+  "environment": {
+    "collectionStartedUtc": "2026-08-08T11:31:14+00:00",
+    "os": "nt",
+    "platform": "win32",
+    "python": "3.11.15"
+  },
+  "rootListingOutsideGraphify": [
+    ".agents",
+    "Codebase"
+  ],
+  "readOnlyGuarantee": "No path outside graphify/ is opened for writing; collector writes are restricted to graphify/13-implementation/WP-I0-001/ through tools/write_guard."
+}

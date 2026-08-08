@@ -1,0 +1,25 @@
+{
+  "sha256Baseline": {
+    "baselinePath": "12-semantic-implementation-plan/13-reports/external-readonly-baseline.json",
+    "baselineAlgorithm": "SHA-256",
+    "baselineFileCount": 3697,
+    "currentFileCount": 3697,
+    "scope": "Every working-tree file under Codebase/ (outside-Graphify application corpus)",
+    "added": [],
+    "removed": [],
+    "modified": [],
+    "renamed": [],
+    "status": "PASS"
+  },
+  "gitBlobBaseline": {
+    "baselinePath": "12-semantic-implementation-plan/13-reports/pass3-external-readonly-baseline.json",
+    "baselineAlgorithm": "Git blob object identity and canonical blob size",
+    "baselineFileCount": 3697,
+    "currentFileCount": 3697,
+    "added": [],
+    "removed": [],
+    "modified": [],
+    "renamed": [],
+    "status": "PASS"
+  }
+}

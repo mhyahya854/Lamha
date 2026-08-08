@@ -1,0 +1,51 @@
+{
+  "scanWindow": "package collection run",
+  "scope": "paths added outside Graphify relative to both planning baselines, plus this package's own evidence files",
+  "addedOutsideGraphify": [],
+  "newArtifactCandidates": [],
+  "evidenceFiles": [
+    "13-implementation/WP-I0-001/baseline-comparison.json",
+    "13-implementation/WP-I0-001/file-inventory.csv",
+    "13-implementation/WP-I0-001/git-state-report.json",
+    "13-implementation/WP-I0-001/provenance-report.json",
+    "13-implementation/WP-I0-001/sha256-manifest.csv",
+    "13-implementation/WP-I0-001/toolchain-manifest-analysis.json",
+    "13-implementation/WP-I0-001/toolchain-manifest-analysis.md",
+    "13-implementation/WP-I0-001/verification-results.json"
+  ],
+  "evidenceFileClasses": [
+    {
+      "path": "13-implementation/WP-I0-001/baseline-comparison.json",
+      "classes": []
+    },
+    {
+      "path": "13-implementation/WP-I0-001/file-inventory.csv",
+      "classes": []
+    },
+    {
+      "path": "13-implementation/WP-I0-001/git-state-report.json",
+      "classes": []
+    },
+    {
+      "path": "13-implementation/WP-I0-001/provenance-report.json",
+      "classes": []
+    },
+    {
+      "path": "13-implementation/WP-I0-001/sha256-manifest.csv",
+      "classes": []
+    },
+    {
+      "path": "13-implementation/WP-I0-001/toolchain-manifest-analysis.json",
+      "classes": []
+    },
+    {
+      "path": "13-implementation/WP-I0-001/toolchain-manifest-analysis.md",
+      "classes": []
+    },
+    {
+      "path": "13-implementation/WP-I0-001/verification-results.json",
+      "classes": []
+    }
+  ],
+  "status": "PASS"
+}

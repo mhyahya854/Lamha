@@ -1,0 +1,68 @@
+{
+  "packageId": "WP-I0-001",
+  "status": "PASS",
+  "failures": [],
+  "collectionWindowUtc": {
+    "start": "2026-08-08T11:31:14+00:00",
+    "end": "2026-08-08T11:32:37+00:00"
+  },
+  "checks": {
+    "recomputeComparison": "PASS",
+    "gitMetadataCompare": "PASS",
+    "shaBaselineComparison": "PASS",
+    "gitBlobBaselineComparison": "PASS",
+    "artifactScan": "PASS",
+    "failureCases": "PASS",
+    "exitGate": "PASS"
+  },
+  "fileCounts": {
+    "codebaseFiles": 3697,
+    "trackedOutsideGraphify": 3697
+  },
+  "evidenceFiles": [
+    "13-implementation/WP-I0-001/artifact-scan.json",
+    "13-implementation/WP-I0-001/baseline-comparison.json",
+    "13-implementation/WP-I0-001/completion-evidence.md",
+    "13-implementation/WP-I0-001/file-inventory.csv",
+    "13-implementation/WP-I0-001/git-state-report.json",
+    "13-implementation/WP-I0-001/package-summary.json",
+    "13-implementation/WP-I0-001/provenance-report.json",
+    "13-implementation/WP-I0-001/sha256-manifest.csv",
+    "13-implementation/WP-I0-001/toolchain-manifest-analysis.json",
+    "13-implementation/WP-I0-001/toolchain-manifest-analysis.md",
+    "13-implementation/WP-I0-001/verification-results.json"
+  ],
+  "exitGateClauses": [
+    {
+      "clause": "All provenance evidence is inside Graphify",
+      "evidence": "Every generated evidence path resolves inside graphify/ via tools/write_guard.guard_write_path; traversal and absolute-escape probes were rejected.",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-001/artifact-scan.json",
+        "13-implementation/WP-I0-001/baseline-comparison.json",
+        "13-implementation/WP-I0-001/file-inventory.csv",
+        "13-implementation/WP-I0-001/git-state-report.json",
+        "13-implementation/WP-I0-001/provenance-report.json",
+        "13-implementation/WP-I0-001/sha256-manifest.csv",
+        "13-implementation/WP-I0-001/toolchain-manifest-analysis.json",
+        "13-implementation/WP-I0-001/toolchain-manifest-analysis.md",
+        "13-implementation/WP-I0-001/verification-results.json"
+      ],
+      "result": "PASS"
+    },
+    {
+      "clause": "No archive or backup exists",
+      "evidence": "Zero paths were added outside Graphify relative to both planning baselines; this package's evidence files match no archive/backup/copy/build/test/cache/package-manager/generated-code pattern; no archive or backup was created.",
+      "result": "PASS"
+    },
+    {
+      "clause": "No application file or Git state changed",
+      "evidence": "Before/after Git metadata (HEAD, origin/main, branch, remotes, outside-Graphify working-tree/index status, submodule status) are identical and both outside-Graphify baseline comparisons report zero added/removed/modified/renamed paths. The package's only writes are evidence files inside Graphify.",
+      "result": "PASS"
+    },
+    {
+      "clause": "The final outside-Graphify comparison reports zero changes",
+      "evidence": "SHA-256 working-tree comparison and Git-blob committed-tree comparison both report zero added/removed/modified/renamed paths.",
+      "result": "PASS"
+    }
+  ]
+}

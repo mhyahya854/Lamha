@@ -1,0 +1,29 @@
+{
+  "recompute": {
+    "method": "two full independent SHA-256 passes over every Codebase/ file inside one run",
+    "pass1FileCount": 3697,
+    "pass2FileCount": 3697,
+    "pass1ManifestSha256": "58db136b9df3c0c443b52c8d38e263a635d91188c1fce21e11ca94d154340a0e",
+    "pass2ManifestSha256": "58db136b9df3c0c443b52c8d38e263a635d91188c1fce21e11ca94d154340a0e",
+    "unstableFiles": [],
+    "status": "PASS"
+  },
+  "failureCases": {
+    "unreadableFiles": [],
+    "unstableFiles": [],
+    "reparsePoints": [],
+    "reparsePointEscapes": [],
+    "gitMetadataAvailable": true,
+    "gitMetadataUnchanged": true,
+    "writeGuardEscapeFixtures": [
+      {
+        "probe": "../escape-outside.txt",
+        "rejected": true
+      },
+      {
+        "probe": "/absolute/escape.txt",
+        "rejected": true
+      }
+    ]
+  }
+}

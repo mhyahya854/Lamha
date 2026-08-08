@@ -1,0 +1,106 @@
+# WP-I0-001 toolchain and manifest analysis
+
+Read-only extraction from the existing Codebase snapshot. No manifest was modified, no dependency was installed, no build or test of the product was executed.
+
+## Declared toolchains
+
+- Node: `24.15.0` (`.nvmrc`); mise pins `node = 24.15.0`
+- `aqua:flutter/flutter` = `3.44.0` (mise)
+- `github:extism/cli` = `1.6.3` (mise)
+- `github:extism/js-pdk` = `1.6.0` (mise)
+- `github:webassembly/binaryen` = `version_124` (mise)
+- `java` = `21.0.2` (mise)
+- `node` = `24.15.0` (mise)
+- `npm:oazapfts` = `7.5.0` (mise)
+- `opentofu` = `1.11.6` (mise)
+- `pnpm` = `10.33.4` (mise)
+- `terragrunt` = `1.0.3` (mise)
+- Root package: `immich-monorepo@2.7.5`, packageManager `pnpm@10.33.4+sha512.1c67b3b359b2d408119ba1ed289f34b8fc3c6873412bec6fd264fbdc82489e510fcbecb9ce9d22dae7f3b76269d8441046014bdca53b9979cd7a561ad631b800`, engines `{'pnpm': '>=10.0.0'}`
+- Python (machine-learning): requires `>=3.11,<4.0`, pinned `3.13`
+- Flutter/Dart (mobile): `{'sdk': '>=3.12.0 <4.0.0', 'flutter': '3.44.0'}`
+- Submodules declared: `[('e2e/test-assets', 'e2e/test-assets', 'https://github.com/immich-app/test-assets')]`
+
+## Manifest inventory counts
+
+- package_json: 11
+  - `Codebase/package.json`
+  - `Codebase/.github/package.json`
+  - `Codebase/docs/package.json`
+  - `Codebase/e2e/package.json`
+  - `Codebase/packages/cli/package.json`
+  - `Codebase/packages/e2e-auth-server/package.json`
+  - `Codebase/packages/plugin-core/package.json`
+  - `Codebase/packages/plugin-sdk/package.json`
+  - `Codebase/packages/sdk/package.json`
+  - `Codebase/server/package.json`
+  - `Codebase/web/package.json`
+- pnpm_lock: 1
+  - `Codebase/pnpm-lock.yaml`
+- pubspec: 5
+  - `Codebase/mobile/pubspec.lock`
+  - `Codebase/mobile/pubspec.yaml`
+  - `Codebase/mobile/openapi/pubspec.yaml`
+  - `Codebase/mobile/packages/ui/pubspec.lock`
+  - `Codebase/mobile/packages/ui/pubspec.yaml`
+- docker_compose: 6
+  - `Codebase/docker/docker-compose.dev.yml`
+  - `Codebase/docker/docker-compose.prod.yml`
+  - `Codebase/docker/docker-compose.rootless.yml`
+  - `Codebase/docker/docker-compose.yml`
+  - `Codebase/e2e/docker-compose.dev.yml`
+  - `Codebase/e2e/docker-compose.yml`
+- dockerfile: 5
+  - `Codebase/machine-learning/Dockerfile`
+  - `Codebase/packages/cli/Dockerfile`
+  - `Codebase/packages/e2e-auth-server/Dockerfile`
+  - `Codebase/server/Dockerfile`
+  - `Codebase/server/Dockerfile.dev`
+- ci_workflows: 23
+  - `Codebase/.github/workflows/auto-close.yml`
+  - `Codebase/.github/workflows/build-mobile.yml`
+  - `Codebase/.github/workflows/cache-cleanup.yml`
+  - `Codebase/.github/workflows/check-openapi.yml`
+  - `Codebase/.github/workflows/cli.yml`
+  - `Codebase/.github/workflows/close-duplicates.yml`
+  - `Codebase/.github/workflows/codeql-analysis.yml`
+  - `Codebase/.github/workflows/docker.yml`
+  - `Codebase/.github/workflows/docs-build.yml`
+  - `Codebase/.github/workflows/docs-deploy.yml`
+  - `Codebase/.github/workflows/docs-destroy.yml`
+  - `Codebase/.github/workflows/fix-format.yml`
+  - `Codebase/.github/workflows/merge-translations.yml`
+  - `Codebase/.github/workflows/org-pr-require-conventional-commit.yml`
+  - `Codebase/.github/workflows/org-zizmor.yml`
+  - `Codebase/.github/workflows/pr-label-validation.yml`
+  - `Codebase/.github/workflows/pr-labeler.yml`
+  - `Codebase/.github/workflows/prepare-release.yml`
+  - `Codebase/.github/workflows/preview-label.yaml`
+  - `Codebase/.github/workflows/sdk.yml`
+  - `Codebase/.github/workflows/static_analysis.yml`
+  - `Codebase/.github/workflows/test.yml`
+  - `Codebase/.github/workflows/weblate-lock.yml`
+- makefiles: 2
+  - `Codebase/Makefile`
+  - `Codebase/mobile/makefile`
+- cmakelists: 1
+  - `Codebase/mobile/android/app/CMakeLists.txt`
+- mise: 15
+  - `Codebase/mise.lock`
+  - `Codebase/mise.toml`
+  - `Codebase/.github/mise.toml`
+  - `Codebase/deployment/mise.lock`
+  - `Codebase/deployment/mise.toml`
+  - `Codebase/docs/mise.lock`
+  - `Codebase/docs/mise.toml`
+  - `Codebase/e2e/mise.toml`
+  - `Codebase/machine-learning/mise.lock`
+  - `Codebase/machine-learning/mise.toml`
+  - `Codebase/mobile/mise.toml`
+  - `Codebase/packages/cli/mise.toml`
+  - `Codebase/packages/plugin-core/mise.toml`
+  - `Codebase/server/mise.toml`
+  - `Codebase/web/mise.toml`
+- python_version_files: 1
+  - `Codebase/machine-learning/.python-version`
+- nvmrc: 1
+  - `Codebase/.nvmrc`
