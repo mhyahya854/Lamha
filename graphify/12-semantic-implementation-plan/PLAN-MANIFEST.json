@@ -2511,17 +2511,17 @@
     {
       "path": "13-reports/final-100-percent-certification.json",
       "bytes": 7442,
-      "sha256": "d26038d374fdfe7f75ff399c4d0374f4412ed3390d959b2db2734c12fda1da59"
+      "sha256": "2ab9d6428203b4ca677627d2dfc1dbf5f2616416b8b520de7d8687148f21114d"
     },
     {
       "path": "13-reports/final-content-manifest.json",
       "bytes": 104759,
-      "sha256": "8b780743328ec5bbda61e445be26225bee7fc880e35d56d5d9a40faa199528bc"
+      "sha256": "4a75f594c52780a7fe229a565ebe70cfd0a4d04834c98c5c12d6b2b82d291573"
     },
     {
       "path": "13-reports/final-determinism-proof.json",
       "bytes": 2440,
-      "sha256": "68060ca80275efad4da59d6d92ca4fc02111029254582f4acee76602c29a6f4f"
+      "sha256": "61b0fcc4fa2f6d1b3b1e1821c78655f20d810d13a2ef4286d559aeea0e9e0ee1"
     },
     {
       "path": "13-reports/final-package-determinism.json",
@@ -2536,7 +2536,7 @@
     {
       "path": "13-reports/final-release-envelope.json",
       "bytes": 9214,
-      "sha256": "117072f85d55f73dbb46a86867bba266a569acab098dfd4590790b94151b4377"
+      "sha256": "6f744e333a9b5f0d44758588520f094b5b1af1bd4414561d370fb13e6cd2ac76"
     },
     {
       "path": "13-reports/generated-fragment-disposition-report.csv",
@@ -2960,8 +2960,8 @@
     },
     {
       "path": "14-handoff/gpt-review-sha-manifest.json",
-      "bytes": 426645,
-      "sha256": "76a0cd4a18c584b399e6370b7e4ed4ea423a0c0bfe78df911a0531ec2c8a5fb6"
+      "bytes": 427398,
+      "sha256": "bd328465b67e441a07f3760f15915a7106986dcf2955421762c50c87ab9a8ab7"
     },
     {
       "path": "14-handoff/gpt-review-validation-commands.json",

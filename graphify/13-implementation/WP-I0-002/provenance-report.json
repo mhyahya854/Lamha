@@ -1,0 +1,50 @@
+{
+  "packageId": "WP-I0-002",
+  "packetPath": "12-semantic-implementation-plan/04-work-packages/packets/WP-I0-002.md",
+  "packetSha256": "886fc2b0c558a1520c80e68677c9328095da6fc646073bf09ba6a04f9e5acc75",
+  "ownedRequirements": [
+    "CAN-MISSION-I0-002"
+  ],
+  "selection": {
+    "rule": "deterministic READY-package selector (phase, major, minor, ID order) over packages whose prerequisites are COMPLETE with PASS exit gates",
+    "readyPackages": [
+      "WP-I0-002",
+      "WP-I0-003",
+      "WP-I0-004",
+      "WP-I0-006",
+      "WP-I0-008",
+      "WP-I0-009",
+      "WP-I0-010",
+      "WP-I0-011",
+      "WP-I1-001"
+    ],
+    "explicitAuthorizationRecordFound": false,
+    "startSha": "e8bd87320268121ed819c0e45ad200221af8f61e"
+  },
+  "prerequisite": {
+    "packageId": "WP-I0-001",
+    "dependencyType": "REQUIRES_PROVENANCE",
+    "completionRecordPath": "13-implementation/WP-I0-001/package-summary.json",
+    "completionRecordSha256": "348b228b42639a6306951e88743ad12eda864e9766694fb0b3fedf50a20bdebc",
+    "completionRecordStatus": "PASS",
+    "reviewRecordPath": "13-implementation/WP-I0-001/adversarial-review.md",
+    "reviewRecordSha256": "807f29479fd18e0432c778b02e364473129588cc8accb3bc6d94a1f5c26e135f"
+  },
+  "roots": {
+    "lamhaRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+    "gitDir": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\.git",
+    "graphifyRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\graphify",
+    "packageEvidenceDir": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\graphify\\13-implementation\\WP-I0-002"
+  },
+  "environment": {
+    "collectionStartedUtc": "2026-08-08T13:37:56+00:00",
+    "os": "nt",
+    "platform": "win32",
+    "python": "3.11.15",
+    "gitEnvOverrides": {
+      "GIT_OPTIONAL_LOCKS": "0",
+      "core.quotePath": "false"
+    }
+  },
+  "readOnlyGuarantee": "No Git mutation command was executed (static allowlist audit); every Git command ran with GIT_OPTIONAL_LOCKS=0; the package's only writes are evidence files inside graphify/13-implementation/WP-I0-002/ through tools/write_guard."
+}

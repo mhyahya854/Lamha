@@ -1,0 +1,42 @@
+{
+  "recompute": {
+    "method": "two full independent read-only Git-state inspection passes inside one run",
+    "unstableFields": [],
+    "status": "PASS"
+  },
+  "failureCases": {
+    "invalidTargetProbe": {
+      "target": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\no-such-repository-target",
+      "exitCode": null,
+      "typedError": {
+        "type": "GitInspectionTargetUnavailable",
+        "message": "[WinError 267] The directory name is invalid",
+        "partialCommit": false,
+        "gitStateMutated": false,
+        "evidenceWritesDuringProbe": 0
+      }
+    },
+    "writeGuardEscapeFixtures": [
+      {
+        "probe": "../escape-outside.txt",
+        "rejected": true
+      },
+      {
+        "probe": "/absolute/escape.txt",
+        "rejected": true
+      }
+    ],
+    "readOnlyCommandAudit": {
+      "commandsExecuted": 55,
+      "nonReadOnlyCommands": [],
+      "status": "PASS"
+    },
+    "gitMetadataAvailable": true,
+    "gitMetadataUnchanged": true,
+    "gitDirFingerprintUnchanged": true
+  },
+  "tests": {
+    "wp_i0_002_success": "PASS",
+    "wp_i0_002_failure": "PASS"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "packageId": "WP-I0-002",
+  "status": "PASS",
+  "failures": [],
+  "collectionWindowUtc": {
+    "start": "2026-08-08T13:37:56+00:00",
+    "end": "2026-08-08T13:38:00+00:00"
+  },
+  "checks": {
+    "recomputeComparison": "PASS",
+    "gitMetadataCompare": "PASS",
+    "gitDirFingerprintCompare": "PASS",
+    "readOnlyCommandAudit": "PASS",
+    "failureCases": "PASS",
+    "exitGate": "PASS"
+  },
+  "counts": {
+    "refsRecorded": 3,
+    "gitDirFiles": 423,
+    "gitCommandsExecuted": 55
+  },
+  "evidenceFiles": [
+    "13-implementation/WP-I0-002/completion-evidence.md",
+    "13-implementation/WP-I0-002/git-state-report.json",
+    "13-implementation/WP-I0-002/package-summary.json",
+    "13-implementation/WP-I0-002/provenance-report.json",
+    "13-implementation/WP-I0-002/verification-results.json"
+  ],
+  "exitGateClauses": [
+    {
+      "clause": "Existing Git state is recorded",
+      "evidence": "git-state-report.json captures HEAD, current branch, remotes, every ref (branches/tags/stash ref with OIDs), stash list, worktree list, submodule status, local configuration, index stage digest, tracked-tree digest, object statistics, HEAD reflog, and porcelain status — all via read-only commands with GIT_OPTIONAL_LOCKS=0; two independent passes agree.",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-002/git-state-report.json"
+      ],
+      "result": "PASS"
+    },
+    {
+      "clause": "Before/after metadata integrity is identical",
+      "evidence": "19 compared metadata fields (HEAD, refs, stash, worktrees, config, index digest, tracked-tree digest, object statistics, reflog, status) are byte-identical before and after the collection run, and the complete .git directory content fingerprint is unchanged.",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-002/git-state-report.json"
+      ],
+      "result": "PASS"
+    },
+    {
+      "clause": "No Git mutation occurred",
+      "evidence": "Static read-only command audit passes (every executed command matches the declared read-only prefix allowlist; a non-read-only command is rejected with a typed error without execution); GIT_OPTIONAL_LOCKS=0 everywhere; .git byte-content fingerprint before and after the run is identical, so no commit, branch, tag, stash, worktree, index, or configuration mutation occurred.",
+      "evidenceFiles": [
+        "13-implementation/WP-I0-002/git-state-report.json",
+        "13-implementation/WP-I0-002/verification-results.json"
+      ],
+      "result": "PASS"
+    }
+  ]
+}
