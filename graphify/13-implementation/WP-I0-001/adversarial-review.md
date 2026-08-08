@@ -22,6 +22,15 @@
 13. CONCERN (non-blocking) — the collector was run more than once in-session (idempotent authorized re-runs); before/after Git equality still holds.
 14. CONCERN (non-blocking) — `provenance-report.json` cites the certification hash of an intermediate in-session regeneration; the cited file still declared `first_allowed_package: WP-I0-001` and `status: PASS`, so authorization provenance is valid.
 
+## Verification and status record
+
+- Package implementation commit: `fb2d32286f9ce3a8525137a2e92fa6aa2c098c75` (`Complete WP-I0-001`)
+- GitHub push: `001244e..fb2d322  main -> main` — push exit 0
+- GitHub 1:1 verification: `HEAD == origin/main == fb2d32286f9ce3a8525137a2e92fa6aa2c098c75`; `git diff --exit-code HEAD origin/main` clean; remote missing/unexpected/mismatched files = 0
+- Post-push verification of the committed state: package-summary `status: PASS`, all seven checks PASS, all four exit-gate clauses PASS; committed certification `status: PASS` with all nine gates PASS; SHA manifest binds 2619 files including all 13 evidence artifacts
+- Unauthorized changed paths: 0
+- Final package status: COMPLETE and GitHub-verified
+
 ## Verdict
 
 PACKAGE REVIEW PASS — zero defects; the three concerns are point-in-time traceability notes, not correctness failures. Both owned requirements are satisfied as verified against raw artifacts, all exit-gate clauses are evidenced, and no unauthorized scope change exists.

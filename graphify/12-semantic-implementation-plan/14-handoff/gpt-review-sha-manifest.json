@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "algorithm": "SHA-256",
-  "digest": "69e94ac6caeff598b3e019ac4f16aed8727640912fd7b941bd15b1ecd4781221",
+  "digest": "fe08cc0033fd4cdde6c3ade35e59e1e624f44a97667819f0a91f87d418438418",
   "file_count": 2619,
   "files": {
     ".gitattributes": "0ee461b1fdd4820070bb46655efd2a953a7d65fca14940223f635331cbff883b",
@@ -749,7 +749,7 @@
     "12-semantic-implementation-plan/14-handoff/gpt-review-validation-commands.json": "e51dc25f8d09f4d89364fb7300b29438f9d698b604e9b128b25ab06462e54814",
     "12-semantic-implementation-plan/14-handoff/START-HERE.md": "8cae7c58475a7d82c5b3541c81284e71d73ebe0a0e09adc033b37dc968d48428",
     "12-semantic-implementation-plan/README.md": "a493f6de9b70e7c7b820e938a6cb865255845b39bf25026a26baa5d83feb0fdd",
-    "13-implementation/WP-I0-001/adversarial-review.md": "bea5bf7771362131ef473d336d0c30c2a5f03e73071fb4ae70275b7b756493c7",
+    "13-implementation/WP-I0-001/adversarial-review.md": "807f29479fd18e0432c778b02e364473129588cc8accb3bc6d94a1f5c26e135f",
     "13-implementation/WP-I0-001/artifact-scan.json": "091d837e286d9c23b7732752fd56c18b7dd1e7796e199a5e86a4adb932e60cbd",
     "13-implementation/WP-I0-001/baseline-comparison.json": "1edbc40829b489915b9a4753aff7f40985289bdde8e70f3e77229394ae131b63",
     "13-implementation/WP-I0-001/collect_evidence.py": "86200884ff8777788dc39ccf37bbd39d400432c1852b644d2e4ad8637c68469d",
