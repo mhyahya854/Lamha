@@ -1,6 +1,6 @@
 {
   "layer": 1,
-  "sha256": "12788b8f6105727206abfba8ab0f4d09d44ad7bfc1a8aaf1a975302cf692d223",
+  "sha256": "655da13a0313683c4a143f14eef3580b256d1754e6fd0d9d5228da56639ffe2c",
   "fileCount": 590,
   "files": [
     "00-constitution/GLOBAL-CONSTITUTION.md",
@@ -1181,7 +1181,7 @@
     "14-handoff/gpt-review-critical-invariants.json": "dae279d1705d92d848d29fe132eee7e5f15bbc368afc8e97de77ef93e6262f4c",
     "14-handoff/gpt-review-file-index.json": "0ade93d817e351c3ec6ff117fd87d14823c7234c23d60eab3fe1ceb48a69bbee",
     "14-handoff/gpt-review-known-risk-areas.json": "ca857bf7bd35ac07743f34930a2aeffa8a7490181c819e17df1ede936703a385",
-    "14-handoff/gpt-review-sha-manifest.json": "f3b1de39c895d9dcb582e32f563f430283e914e158dd565e770aee0fbe7bce38",
+    "14-handoff/gpt-review-sha-manifest.json": "216a32cf44aed41773b2b8d3663ed69499fb2b2baa904b7f1a25da98b8e142a9",
     "14-handoff/gpt-review-validation-commands.json": "e51dc25f8d09f4d89364fb7300b29438f9d698b604e9b128b25ab06462e54814",
     "14-handoff/START-HERE.md": "8cae7c58475a7d82c5b3541c81284e71d73ebe0a0e09adc033b37dc968d48428",
     "README.md": "a493f6de9b70e7c7b820e938a6cb865255845b39bf25026a26baa5d83feb0fdd"
