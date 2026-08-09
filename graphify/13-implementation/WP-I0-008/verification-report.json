@@ -1,0 +1,222 @@
+{
+  "packageId": "WP-I0-008",
+  "checks": {
+    "strictUpstreamSchemas": "PASS",
+    "missingObservationCompleteness": "PASS",
+    "classificationFieldCompleteness": "PASS",
+    "statusVocabulary": "PASS",
+    "noSupplyAction": "PASS",
+    "negativeFixtures": "PASS",
+    "codebaseBaselineBefore": "PASS",
+    "codebaseBaselineAfter": "PASS",
+    "codebaseUnchangedDuringCollection": "PASS"
+  },
+  "negativeFixtures": [
+    {
+      "fixture": "toolchain-wrong-root-type",
+      "expected": "SCHEMA_TYPE",
+      "actual": "SCHEMA_TYPE",
+      "result": "PASS"
+    },
+    {
+      "fixture": "baseline-wrong-attempts-type",
+      "expected": "SCHEMA_TYPE",
+      "actual": "SCHEMA_TYPE",
+      "result": "PASS"
+    },
+    {
+      "fixture": "attempt-boolean-string",
+      "expected": "SCHEMA_TYPE",
+      "actual": "SCHEMA_TYPE",
+      "result": "PASS"
+    },
+    {
+      "fixture": "source-path-traversal",
+      "expected": "SOURCE_PATH_INVALID",
+      "actual": "SOURCE_PATH_INVALID",
+      "result": "PASS"
+    },
+    {
+      "fixture": "unknown-blocker",
+      "expected": "UNCLASSIFIED_BLOCKER",
+      "actual": "UNCLASSIFIED_BLOCKER",
+      "result": "PASS"
+    },
+    {
+      "fixture": "toolchain-count-mismatch",
+      "expected": "UPSTREAM_COUNT_MISMATCH",
+      "actual": "UPSTREAM_COUNT_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "fixture": "attempt-count-mismatch",
+      "expected": "UPSTREAM_COUNT_MISMATCH",
+      "actual": "UPSTREAM_COUNT_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "fixture": "blocked-exit-code-contradiction",
+      "expected": "UPSTREAM_CONTRADICTION",
+      "actual": "UPSTREAM_CONTRADICTION",
+      "result": "PASS"
+    },
+    {
+      "fixture": "toolchain-sources-wrong-type",
+      "expected": "SCHEMA_TYPE",
+      "actual": "SCHEMA_TYPE",
+      "result": "PASS"
+    },
+    {
+      "fixture": "unknown-toolchain-reason",
+      "expected": "UNCLASSIFIED_REASON",
+      "actual": "UNCLASSIFIED_REASON",
+      "result": "PASS"
+    },
+    {
+      "fixture": "coherently-truncated-toolchain",
+      "expected": "UPSTREAM_COUNT_MISMATCH",
+      "actual": "UPSTREAM_COUNT_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "fixture": "coherently-truncated-baseline",
+      "expected": "UPSTREAM_COUNT_MISMATCH",
+      "actual": "UPSTREAM_COUNT_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "fixture": "unexpected-toolchain-field",
+      "expected": "SCHEMA_FIELDS",
+      "actual": "SCHEMA_FIELDS",
+      "result": "PASS"
+    },
+    {
+      "fixture": "unexpected-baseline-field",
+      "expected": "SCHEMA_FIELDS",
+      "actual": "SCHEMA_FIELDS",
+      "result": "PASS"
+    },
+    {
+      "fixture": "coherent-content-replacement",
+      "expected": "UPSTREAM_CONTENT_MISMATCH",
+      "actual": "UPSTREAM_CONTENT_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "fixture": "duplicate-key",
+      "expected": "JSON_DUPLICATE_KEY",
+      "actual": "JSON_DUPLICATE_KEY",
+      "result": "PASS"
+    },
+    {
+      "fixture": "malformed-json",
+      "expected": "JSON_MALFORMED",
+      "actual": "JSON_MALFORMED",
+      "result": "PASS"
+    },
+    {
+      "fixture": "nonfinite-json",
+      "expected": "JSON_NONFINITE_NUMBER",
+      "actual": "JSON_NONFINITE_NUMBER",
+      "result": "PASS"
+    },
+    {
+      "fixture": "invalid-utf8",
+      "expected": "JSON_INVALID_UTF8",
+      "actual": "JSON_INVALID_UTF8",
+      "result": "PASS"
+    },
+    {
+      "fixture": "unpaired-surrogate",
+      "expected": "JSON_INVALID_STRING",
+      "actual": "JSON_INVALID_STRING",
+      "result": "PASS"
+    },
+    {
+      "fixture": "deep-json",
+      "expected": "JSON_TOO_DEEP",
+      "actual": "JSON_TOO_DEEP",
+      "result": "PASS"
+    },
+    {
+      "fixture": "large-integer",
+      "expected": "JSON_INTEGER_TOO_LARGE",
+      "actual": "JSON_INTEGER_TOO_LARGE",
+      "result": "PASS"
+    },
+    {
+      "fixture": "cocoapods-generated-path-family",
+      "expected": "GENERATED_ARTIFACT",
+      "actual": "GENERATED_ARTIFACT",
+      "result": "PASS"
+    },
+    {
+      "fixture": "semantic-host-tool-deduplication",
+      "expected": "ONE_BLOCKED_RECORD",
+      "actual": "ONE_BLOCKED_RECORD",
+      "result": "PASS"
+    },
+    {
+      "fixture": "host-tool-consumer-linkage",
+      "expected": "Codebase/mobile/android/app/CMakeLists.txt",
+      "actual": "Codebase/mobile/android/app/CMakeLists.txt",
+      "result": "PASS"
+    },
+    {
+      "fixture": "host-tool-consumer-linkage-g++",
+      "expected": "Codebase/machine-learning/Dockerfile",
+      "actual": "Codebase/machine-learning/Dockerfile",
+      "result": "PASS"
+    },
+    {
+      "fixture": "host-tool-consumer-linkage-extism-js-pdk",
+      "expected": "Codebase/mise.toml",
+      "actual": "Codebase/mise.toml",
+      "result": "PASS"
+    },
+    {
+      "fixture": "devcontainer-mobile-surface",
+      "expected": "mobile",
+      "actual": "mobile",
+      "result": "PASS"
+    },
+    {
+      "fixture": "devcontainer-server-surface",
+      "expected": "server",
+      "actual": "server",
+      "result": "PASS"
+    },
+    {
+      "fixture": "workflow-mobile-surface",
+      "expected": "mobile",
+      "actual": "mobile",
+      "result": "PASS"
+    },
+    {
+      "fixture": "pseudo-package-context-rejection",
+      "expected": "ALL_REJECTED",
+      "actual": "ALL_REJECTED",
+      "result": "PASS"
+    }
+  ],
+  "preservation": {
+    "before": {
+      "expectedFiles": 3697,
+      "currentFiles": 3697,
+      "missing": [],
+      "unexpected": [],
+      "mismatched": [],
+      "result": "PASS"
+    },
+    "after": {
+      "expectedFiles": 3697,
+      "currentFiles": 3697,
+      "missing": [],
+      "unexpected": [],
+      "mismatched": [],
+      "result": "PASS"
+    },
+    "unchanged": true
+  },
+  "result": "PASS"
+}

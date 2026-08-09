@@ -1,0 +1,15 @@
+{
+  "packageId": "WP-I0-008",
+  "assertions": {
+    "classificationCountMatches": true,
+    "categoryCountMatches": true,
+    "statusCountMatches": true,
+    "everyRecordHasEvidence": true,
+    "everyRecordHasBlockingEffect": true,
+    "everyRecordNamesAffectedPackages": true,
+    "everyNonSuccessAttemptCovered": true,
+    "noSupplyActionPerformed": true,
+    "codebasePreserved": true
+  },
+  "result": "PASS"
+}

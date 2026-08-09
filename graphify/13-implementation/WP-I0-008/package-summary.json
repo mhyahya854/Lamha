@@ -1,0 +1,62 @@
+{
+  "packageId": "WP-I0-008",
+  "status": "PASS",
+  "failures": [],
+  "collectionWindowUtc": {
+    "start": "2026-08-09T06:26:01.092443+00:00",
+    "end": "2026-08-09T06:26:14.104155+00:00"
+  },
+  "checks": {
+    "classification": "PASS",
+    "focused": "PASS",
+    "negative": "PASS",
+    "regression": "PASS",
+    "artifactScan": "PASS",
+    "evidenceConsistency": "PASS",
+    "exitGate": "PASS"
+  },
+  "counts": {
+    "records": 187,
+    "byCategory": {
+      "CREDENTIAL": 21,
+      "DEPENDENCY": 110,
+      "ENVIRONMENT_PREREQUISITE": 41,
+      "FIXTURE": 1,
+      "GENERATED_ARTIFACT": 14
+    },
+    "byStatus": {
+      "BLOCKED": 13,
+      "REVIEW_REQUIRED": 174
+    },
+    "supplyActions": {
+      "NOT_PERFORMED": 187
+    }
+  },
+  "evidenceFiles": [
+    "13-implementation/WP-I0-008/artifact-scan.json",
+    "13-implementation/WP-I0-008/authoring-incident.md",
+    "13-implementation/WP-I0-008/completion-evidence.md",
+    "13-implementation/WP-I0-008/evidence-consistency.json",
+    "13-implementation/WP-I0-008/missing-prerequisite-classification.json",
+    "13-implementation/WP-I0-008/package-summary.json",
+    "13-implementation/WP-I0-008/provenance-report.json",
+    "13-implementation/WP-I0-008/verification-report.json"
+  ],
+  "exitGateClauses": [
+    {
+      "clause": "Every missing prerequisite observed by completed read-only I0 inspection is classified",
+      "evidence": "220 toolchain missing-observation rows and all 50 non-success baseline attempts reconcile to 187 deduplicated typed records.",
+      "result": "PASS"
+    },
+    {
+      "clause": "Every record names evidence, affected packages, blocking effect, and REVIEW_REQUIRED or BLOCKED status",
+      "evidence": "All 187 records satisfy the required fields and status vocabulary.",
+      "result": "PASS"
+    },
+    {
+      "clause": "No missing item is generated, installed, supplied, or written into Codebase",
+      "evidence": "All 187 supply actions are NOT_PERFORMED; 3697 Codebase files match the authoritative manifest before and after.",
+      "result": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,5363 @@
+{
+  "packageId": "WP-I0-008",
+  "requirementId": "CAN-MISSION-I0-008",
+  "objective": "Classify each missing prerequisite observed during completed read-only I0 inspection without supplying it.",
+  "collectionWindowUtc": {
+    "start": "2026-08-09T06:26:01.092443+00:00",
+    "end": "2026-08-09T06:26:14.104155+00:00"
+  },
+  "sourceEvidence": [
+    {
+      "path": "graphify/13-implementation/WP-I0-005/toolchain-inventory.json",
+      "sha256": "ada9fdcea124b09f4278743cf593a39e5a7821d00ca9c1fe97d0f57c066005fe"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I0-007/baseline-attempts.json",
+      "sha256": "a65e6729cb00715b32949793a8c7e1209ef91553c8a0d2fa87c0cb117c100261"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I0-001/sha256-manifest.csv",
+      "sha256": "4a07283b51356533febf10df680052529a9e76deeb2c4ca0e7734c7c7dd7ce17"
+    }
+  ],
+  "categoryDefinitions": {
+    "FIXTURE": "Missing test or sample corpus content or provenance.",
+    "GENERATED_ARTIFACT": "Missing derived configuration or generated build metadata.",
+    "DEPENDENCY": "Missing, floating, or unresolved package, manifest, revision, or dependency reference.",
+    "CREDENTIAL": "Missing credential or secret required by an observed surface.",
+    "ENVIRONMENT_PREREQUISITE": "Missing host tool, platform, network capability, or safe output-isolation proof."
+  },
+  "classifications": [
+    {
+      "classificationId": "missing-1dd3018a2dda0550",
+      "category": "CREDENTIAL",
+      "item": "Codebase/docker/.env#DB_PASSWORD",
+      "status": "BLOCKED",
+      "reasons": [
+        "CREDENTIAL_VALUE_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A declared credential value is absent with its required Compose environment file."
+      ],
+      "evidenceSources": [
+        "Codebase/docker/example.env:17;Codebase/docker/docker-compose.dev.yml:120;Codebase/docker/docker-compose.dev.yml:148;Codebase/docker/docker-compose.dev.yml:165;Codebase/docker/docker-compose.dev.yml:78;Codebase/docker/docker-compose.prod.yml:26;Codebase/docker/docker-compose.prod.yml:52;Codebase/docker/docker-compose.prod.yml:68;Codebase/docker/docker-compose.rootless.yml:29;Codebase/docker/docker-compose.rootless.yml:57;Codebase/docker/docker-compose.yml:24;Codebase/docker/docker-compose.yml:45"
+      ],
+      "sourcePaths": [
+        "Codebase/docker/docker-compose.dev.yml",
+        "Codebase/docker/docker-compose.prod.yml",
+        "Codebase/docker/docker-compose.rootless.yml",
+        "Codebase/docker/docker-compose.yml",
+        "Codebase/docker/example.env"
+      ],
+      "attemptIds": [
+        "docker-dev-scale-build",
+        "docker-dev-update-build",
+        "docker-prod-build",
+        "docker-prod-scale-build"
+      ],
+      "affectedPackages": [
+        "docker"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-007"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-7f755634e6ec2f96",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:ALIAS",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/build-mobile.yml:140;Codebase/.github/workflows/prepare-release.yml:98"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml",
+        "Codebase/.github/workflows/prepare-release.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-563323a97c80e785",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:ANDROID_KEY_PASSWORD",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/build-mobile.yml:141;Codebase/.github/workflows/prepare-release.yml:99"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml",
+        "Codebase/.github/workflows/prepare-release.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-ba3d535c4d1a3054",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:ANDROID_STORE_PASSWORD",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/build-mobile.yml:142;Codebase/.github/workflows/prepare-release.yml:100"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml",
+        "Codebase/.github/workflows/prepare-release.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-b743be74bcaac58d",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:APP_STORE_CONNECT_API_KEY",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/build-mobile.yml:253;Codebase/.github/workflows/prepare-release.yml:104"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml",
+        "Codebase/.github/workflows/prepare-release.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-d59568391d8d9cde",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:APP_STORE_CONNECT_API_KEY_ID",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/build-mobile.yml:251;Codebase/.github/workflows/build-mobile.yml:292;Codebase/.github/workflows/prepare-release.yml:102"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml",
+        "Codebase/.github/workflows/prepare-release.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-2f30ba31658b9ac6",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:APP_STORE_CONNECT_API_KEY_ISSUER_ID",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/build-mobile.yml:252;Codebase/.github/workflows/build-mobile.yml:293;Codebase/.github/workflows/prepare-release.yml:103"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml",
+        "Codebase/.github/workflows/prepare-release.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-4a09e515c25661f9",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:CLOUDFLARE_ACCOUNT_ID",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "CREDENTIAL_REFERENCE_UNRESOLVED",
+        "ENVIRONMENT_REFERENCE_UNRESOLVED",
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied.",
+        "The committed manifest contains only an external credential reference; the credential value was not resolved or supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/docs-deploy.yml:176;Codebase/.github/workflows/docs-deploy.yml:187;Codebase/.github/workflows/docs-deploy.yml:200;Codebase/.github/workflows/docs-deploy.yml:210;Codebase/.github/workflows/docs-destroy.yml:41;Codebase/deployment/state.hcl:2",
+        "Codebase/deployment/.env:1"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/docs-deploy.yml",
+        "Codebase/.github/workflows/docs-destroy.yml",
+        "Codebase/deployment/.env",
+        "Codebase/deployment/state.hcl"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "deployment",
+        "docs"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-73c0cce882c7f901",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:CLOUDFLARE_API_TOKEN",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "CREDENTIAL_REFERENCE_UNRESOLVED",
+        "ENVIRONMENT_REFERENCE_UNRESOLVED",
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied.",
+        "The committed manifest contains only an external credential reference; the credential value was not resolved or supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/docs-deploy.yml:175;Codebase/.github/workflows/docs-deploy.yml:186;Codebase/.github/workflows/docs-deploy.yml:209;Codebase/.github/workflows/docs-destroy.yml:40;Codebase/deployment/state.hcl:3",
+        "Codebase/deployment/.env:2"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/docs-deploy.yml",
+        "Codebase/.github/workflows/docs-destroy.yml",
+        "Codebase/deployment/.env",
+        "Codebase/deployment/state.hcl"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "deployment",
+        "docs"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-c06f5ff32e800e9d",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:CLOUDFLARE_API_TOKEN_PAGES_UPLOAD",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/docs-deploy.yml:199"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/docs-deploy.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "deployment",
+        "docs"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-319778621c6c0977",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:DOCKERHUB_TOKEN",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/docker.yml:142;Codebase/.github/workflows/docker.yml:165"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/docker.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docker",
+        "machine-learning",
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-7d5fce72573763a0",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:DOCKERHUB_USERNAME",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/docker.yml:141;Codebase/.github/workflows/docker.yml:164"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/docker.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docker",
+        "machine-learning",
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-ee2027057ed82313",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:FASTLANE_TEAM_ID",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/build-mobile.yml:288;Codebase/.github/workflows/prepare-release.yml:107"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml",
+        "Codebase/.github/workflows/prepare-release.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-2a3489a28e3568d3",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:GITHUB_TOKEN",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE",
+        "GITHUB_ACTIONS_TOKEN_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/auto-close.yml:119;Codebase/.github/workflows/auto-close.yml:126;Codebase/.github/workflows/auto-close.yml:136;Codebase/.github/workflows/auto-close.yml:49;Codebase/.github/workflows/auto-close.yml:72;Codebase/.github/workflows/auto-close.yml:84;Codebase/.github/workflows/cli.yml:87;Codebase/.github/workflows/close-duplicates.yml:60;Codebase/.github/workflows/close-duplicates.yml:86;Codebase/.github/workflows/docker.yml:67;Codebase/.github/workflows/docker.yml:97"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/auto-close.yml",
+        "Codebase/.github/workflows/cli.yml",
+        "Codebase/.github/workflows/close-duplicates.yml",
+        "Codebase/.github/workflows/docker.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docker",
+        "machine-learning",
+        "packages/cli",
+        "repository",
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-53b75b125df98445",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:IOS_CERTIFICATE_P12",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/build-mobile.yml:261;Codebase/.github/workflows/prepare-release.yml:105"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml",
+        "Codebase/.github/workflows/prepare-release.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-b808147a2c2e2226",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:IOS_CERTIFICATE_PASSWORD",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/build-mobile.yml:269;Codebase/.github/workflows/build-mobile.yml:270;Codebase/.github/workflows/build-mobile.yml:289;Codebase/.github/workflows/build-mobile.yml:291;Codebase/.github/workflows/prepare-release.yml:106"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml",
+        "Codebase/.github/workflows/prepare-release.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-ba7935488f4870af",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:KEY_JKS",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/build-mobile.yml:101;Codebase/.github/workflows/prepare-release.yml:97"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml",
+        "Codebase/.github/workflows/prepare-release.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-18e1dc07b6f6594e",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:PUSH_O_MATIC_APP_CLIENT_ID",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/build-mobile.yml:206;Codebase/.github/workflows/build-mobile.yml:56;Codebase/.github/workflows/build-mobile.yml:84;Codebase/.github/workflows/cache-cleanup.yml:24;Codebase/.github/workflows/cli.yml:36;Codebase/.github/workflows/cli.yml:66;Codebase/.github/workflows/codeql-analysis.yml:49;Codebase/.github/workflows/docker.yml:28;Codebase/.github/workflows/docs-build.yml:26;Codebase/.github/workflows/docs-build.yml:59;Codebase/.github/workflows/docs-deploy.yml:124;Codebase/.github/workflows/docs-deploy.yml:25;Codebase/.github/workflows/docs-destroy.yml:22;Codebase/.github/workflows/fix-format.yml:20;Codebase/.github/workflows/merge-translations.yml:36;Codebase/.github/workflows/pr-label-validation.yml:19;Codebase/.github/workflows/pr-labeler.yml:17;Codebase/.github/workflows/prepare-release.yml:124;Codebase/.github/workflows/prepare-release.yml:39;Codebase/.github/workflows/prepare-release.yml:54;Codebase/.github/workflows/preview-label.yaml:19;Codebase/.github/workflows/preview-label.yaml:37;Codebase/.github/workflows/sdk.yml:21;Codebase/.github/workflows/static_analysis.yml:25;Codebase/.github/workflows/static_analysis.yml:54;Codebase/.github/workflows/test.yml:107;Codebase/.github/workflows/test.yml:138;Codebase/.github/workflows/test.yml:182;Codebase/.github/workflows/test.yml:22;Codebase/.github/workflows/test.yml:220;Codebase/.github/workflows/test.yml:248;Codebase/.github/workflows/test.yml:298;Codebase/.github/workflows/test.yml:330;Codebase/.github/workflows/test.yml:366;Codebase/.github/workflows/test.yml:443;Codebase/.github/workflows/test.yml:551;Codebase/.github/workflows/test.yml:588;Codebase/.github/workflows/test.yml:618;Codebase/.github/workflows/test.yml:648;Codebase/.github/workflows/test.yml:669;Codebase/.github/workflows/test.yml:727;Codebase/.github/workflows/test.yml:76;Codebase/.github/workflows/weblate-lock.yml:29;Codebase/.github/workflows/weblate-lock.yml:52"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml",
+        "Codebase/.github/workflows/cache-cleanup.yml",
+        "Codebase/.github/workflows/cli.yml",
+        "Codebase/.github/workflows/codeql-analysis.yml",
+        "Codebase/.github/workflows/docker.yml",
+        "Codebase/.github/workflows/docs-build.yml",
+        "Codebase/.github/workflows/docs-deploy.yml",
+        "Codebase/.github/workflows/docs-destroy.yml",
+        "Codebase/.github/workflows/fix-format.yml",
+        "Codebase/.github/workflows/merge-translations.yml",
+        "Codebase/.github/workflows/pr-label-validation.yml",
+        "Codebase/.github/workflows/pr-labeler.yml",
+        "Codebase/.github/workflows/prepare-release.yml",
+        "Codebase/.github/workflows/preview-label.yaml",
+        "Codebase/.github/workflows/sdk.yml",
+        "Codebase/.github/workflows/static_analysis.yml",
+        "Codebase/.github/workflows/test.yml",
+        "Codebase/.github/workflows/weblate-lock.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "deployment",
+        "docker",
+        "docs",
+        "i18n",
+        "machine-learning",
+        "mobile",
+        "packages/cli",
+        "repository",
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-e50883a710cc89fe",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:PUSH_O_MATIC_APP_KEY",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/build-mobile.yml:207;Codebase/.github/workflows/build-mobile.yml:57;Codebase/.github/workflows/build-mobile.yml:85;Codebase/.github/workflows/cache-cleanup.yml:25;Codebase/.github/workflows/cli.yml:37;Codebase/.github/workflows/cli.yml:67;Codebase/.github/workflows/codeql-analysis.yml:50;Codebase/.github/workflows/docker.yml:29;Codebase/.github/workflows/docs-build.yml:27;Codebase/.github/workflows/docs-build.yml:60;Codebase/.github/workflows/docs-deploy.yml:125;Codebase/.github/workflows/docs-deploy.yml:26;Codebase/.github/workflows/docs-destroy.yml:23;Codebase/.github/workflows/fix-format.yml:21;Codebase/.github/workflows/merge-translations.yml:37;Codebase/.github/workflows/pr-label-validation.yml:20;Codebase/.github/workflows/pr-labeler.yml:18;Codebase/.github/workflows/prepare-release.yml:125;Codebase/.github/workflows/prepare-release.yml:40;Codebase/.github/workflows/prepare-release.yml:55;Codebase/.github/workflows/preview-label.yaml:20;Codebase/.github/workflows/preview-label.yaml:38;Codebase/.github/workflows/sdk.yml:22;Codebase/.github/workflows/static_analysis.yml:26;Codebase/.github/workflows/static_analysis.yml:55;Codebase/.github/workflows/test.yml:108;Codebase/.github/workflows/test.yml:139;Codebase/.github/workflows/test.yml:183;Codebase/.github/workflows/test.yml:221;Codebase/.github/workflows/test.yml:23;Codebase/.github/workflows/test.yml:249;Codebase/.github/workflows/test.yml:299;Codebase/.github/workflows/test.yml:331;Codebase/.github/workflows/test.yml:367;Codebase/.github/workflows/test.yml:444;Codebase/.github/workflows/test.yml:552;Codebase/.github/workflows/test.yml:589;Codebase/.github/workflows/test.yml:619;Codebase/.github/workflows/test.yml:649;Codebase/.github/workflows/test.yml:670;Codebase/.github/workflows/test.yml:728;Codebase/.github/workflows/test.yml:77;Codebase/.github/workflows/weblate-lock.yml:30;Codebase/.github/workflows/weblate-lock.yml:53"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml",
+        "Codebase/.github/workflows/cache-cleanup.yml",
+        "Codebase/.github/workflows/cli.yml",
+        "Codebase/.github/workflows/codeql-analysis.yml",
+        "Codebase/.github/workflows/docker.yml",
+        "Codebase/.github/workflows/docs-build.yml",
+        "Codebase/.github/workflows/docs-deploy.yml",
+        "Codebase/.github/workflows/docs-destroy.yml",
+        "Codebase/.github/workflows/fix-format.yml",
+        "Codebase/.github/workflows/merge-translations.yml",
+        "Codebase/.github/workflows/pr-label-validation.yml",
+        "Codebase/.github/workflows/pr-labeler.yml",
+        "Codebase/.github/workflows/prepare-release.yml",
+        "Codebase/.github/workflows/preview-label.yaml",
+        "Codebase/.github/workflows/sdk.yml",
+        "Codebase/.github/workflows/static_analysis.yml",
+        "Codebase/.github/workflows/test.yml",
+        "Codebase/.github/workflows/weblate-lock.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "deployment",
+        "docker",
+        "docs",
+        "i18n",
+        "machine-learning",
+        "mobile",
+        "packages/cli",
+        "repository",
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-4818c38b196a163a",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:TF_STATE_POSTGRES_CONN_STR",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "CREDENTIAL_REFERENCE_UNRESOLVED",
+        "ENVIRONMENT_REFERENCE_UNRESOLVED",
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied.",
+        "The committed manifest contains only an external credential reference; the credential value was not resolved or supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/docs-deploy.yml:177;Codebase/.github/workflows/docs-deploy.yml:188;Codebase/.github/workflows/docs-deploy.yml:211;Codebase/.github/workflows/docs-destroy.yml:42;Codebase/deployment/modules/cloudflare/docs-release/terragrunt.hcl:17;Codebase/deployment/modules/cloudflare/docs/terragrunt.hcl:21;Codebase/deployment/state.hcl:5",
+        "Codebase/deployment/.env:3"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/docs-deploy.yml",
+        "Codebase/.github/workflows/docs-destroy.yml",
+        "Codebase/deployment/.env",
+        "Codebase/deployment/modules/cloudflare/docs-release/terragrunt.hcl",
+        "Codebase/deployment/modules/cloudflare/docs/terragrunt.hcl",
+        "Codebase/deployment/state.hcl"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "deployment",
+        "docs"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-b2e8be6a5dfac371",
+      "category": "CREDENTIAL",
+      "item": "credential-reference:WEBLATE_TOKEN",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "GITHUB_ACTIONS_SECRET_REFERENCE"
+      ],
+      "blockingEffects": [
+        "A committed workflow or deployment manifest references a credential whose value is intentionally absent from the repository and was not supplied."
+      ],
+      "evidenceSources": [
+        "Codebase/.github/workflows/merge-translations.yml:122;Codebase/.github/workflows/merge-translations.yml:69;Codebase/.github/workflows/merge-translations.yml:76;Codebase/.github/workflows/prepare-release.yml:41"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/merge-translations.yml",
+        "Codebase/.github/workflows/prepare-release.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "i18n",
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-83cb784975f5475d",
+      "category": "DEPENDENCY",
+      "item": "Codebase/${RENOVATE_REMOTE}/immich-app/.github/renovate-config.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[2]"
+      ],
+      "sourcePaths": [
+        "Codebase/renovate.json"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-82b38254fed94616",
+      "category": "DEPENDENCY",
+      "item": "Codebase/docs/node_modules/@docusaurus/core/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[3]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[4]"
+      ],
+      "sourcePaths": [
+        "Codebase/docs/babel.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docs"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-18a453a7701a359a",
+      "category": "DEPENDENCY",
+      "item": "Codebase/docs/node_modules/@docusaurus/tsconfig/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[5]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[6]"
+      ],
+      "sourcePaths": [
+        "Codebase/docs/tsconfig.json"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docs"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-2a73c28a46b4d6c6",
+      "category": "DEPENDENCY",
+      "item": "Codebase/docs/node_modules/autoprefixer/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[7]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[8]"
+      ],
+      "sourcePaths": [
+        "Codebase/docs/docusaurus.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docs"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-fedb28f2bfe932ad",
+      "category": "DEPENDENCY",
+      "item": "Codebase/docs/node_modules/docusaurus-lunr-search/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[10]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[9]"
+      ],
+      "sourcePaths": [
+        "Codebase/docs/docusaurus.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docs"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-c8ae2caf534a9719",
+      "category": "DEPENDENCY",
+      "item": "Codebase/docs/node_modules/prism-react-renderer/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[11]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[12]"
+      ],
+      "sourcePaths": [
+        "Codebase/docs/docusaurus.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docs"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-5a3151755c4cb75c",
+      "category": "DEPENDENCY",
+      "item": "Codebase/docs/node_modules/tailwindcss/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[13]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[14]"
+      ],
+      "sourcePaths": [
+        "Codebase/docs/docusaurus.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docs"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-b0485711a9792e57",
+      "category": "DEPENDENCY",
+      "item": "Codebase/e2e/node_modules/@eslint/js/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[15]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[16]"
+      ],
+      "sourcePaths": [
+        "Codebase/e2e/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "e2e"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-8cb1ee1739e25894",
+      "category": "DEPENDENCY",
+      "item": "Codebase/e2e/node_modules/@playwright/test/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[17]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[18]"
+      ],
+      "sourcePaths": [
+        "Codebase/e2e/playwright.config.ts"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "e2e"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-a8882192cee42617",
+      "category": "DEPENDENCY",
+      "item": "Codebase/e2e/node_modules/dotenv/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[19]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[20]"
+      ],
+      "sourcePaths": [
+        "Codebase/e2e/playwright.config.ts"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "e2e"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-f904a9785f155927",
+      "category": "DEPENDENCY",
+      "item": "Codebase/e2e/node_modules/eslint-plugin-prettier/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[21]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[22]"
+      ],
+      "sourcePaths": [
+        "Codebase/e2e/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "e2e"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-2ab524de1ddaf5d3",
+      "category": "DEPENDENCY",
+      "item": "Codebase/e2e/node_modules/eslint-plugin-unicorn/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[23]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[24]"
+      ],
+      "sourcePaths": [
+        "Codebase/e2e/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "e2e"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-b894a29f77c74986",
+      "category": "DEPENDENCY",
+      "item": "Codebase/e2e/node_modules/globals/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[25]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[26]"
+      ],
+      "sourcePaths": [
+        "Codebase/e2e/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "e2e"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-96ef171deecaf025",
+      "category": "DEPENDENCY",
+      "item": "Codebase/e2e/node_modules/prettier-plugin-organize-imports/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[27]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[28]"
+      ],
+      "sourcePaths": [
+        "Codebase/e2e/.prettierrc"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "e2e"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-4f7e256a953ffb84",
+      "category": "DEPENDENCY",
+      "item": "Codebase/e2e/node_modules/typescript-eslint/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[29]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[30]"
+      ],
+      "sourcePaths": [
+        "Codebase/e2e/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "e2e"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-29e9364c6eb0c4df",
+      "category": "DEPENDENCY",
+      "item": "Codebase/e2e/node_modules/vite-tsconfig-paths/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[31]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[32]"
+      ],
+      "sourcePaths": [
+        "Codebase/e2e/vitest.config.ts",
+        "Codebase/e2e/vitest.maintenance.config.ts"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "e2e"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-abc4812b3e61a609",
+      "category": "DEPENDENCY",
+      "item": "Codebase/e2e/node_modules/vitest/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[33]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[34]"
+      ],
+      "sourcePaths": [
+        "Codebase/e2e/vitest.config.ts",
+        "Codebase/e2e/vitest.maintenance.config.ts"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "e2e"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-600f1991c821861d",
+      "category": "DEPENDENCY",
+      "item": "Codebase/mobile/android/${flutterSdkPath}/packages/flutter_tools/gradle",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[37]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/android/settings.gradle"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-1a7f0464f3c218de",
+      "category": "DEPENDENCY",
+      "item": "Codebase/mobile/ios/${FLUTTER_ROOT}/packages/flutter_tools/bin/xcode_backend.sh",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[39]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-a798ac33c43a7ab5",
+      "category": "DEPENDENCY",
+      "item": "Codebase/mobile/ios/Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage/Package.swift",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[41]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[42]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-77955fdb74e6d173",
+      "category": "DEPENDENCY",
+      "item": "Codebase/node_modules",
+      "status": "BLOCKED",
+      "reasons": [
+        "CONTAINER_RUNTIME_AND_PROJECT_DEPENDENCIES_UNAVAILABLE",
+        "PROJECT_DEPENDENCIES_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "Required workspace dependencies are absent."
+      ],
+      "evidenceSources": [
+        "WP-I0-007/baseline-attempts.json#attempts[0]",
+        "WP-I0-007/baseline-attempts.json#attempts[10]",
+        "WP-I0-007/baseline-attempts.json#attempts[11]",
+        "WP-I0-007/baseline-attempts.json#attempts[12]",
+        "WP-I0-007/baseline-attempts.json#attempts[13]",
+        "WP-I0-007/baseline-attempts.json#attempts[14]",
+        "WP-I0-007/baseline-attempts.json#attempts[15]",
+        "WP-I0-007/baseline-attempts.json#attempts[16]",
+        "WP-I0-007/baseline-attempts.json#attempts[17]",
+        "WP-I0-007/baseline-attempts.json#attempts[18]",
+        "WP-I0-007/baseline-attempts.json#attempts[19]",
+        "WP-I0-007/baseline-attempts.json#attempts[1]",
+        "WP-I0-007/baseline-attempts.json#attempts[20]",
+        "WP-I0-007/baseline-attempts.json#attempts[21]",
+        "WP-I0-007/baseline-attempts.json#attempts[22]",
+        "WP-I0-007/baseline-attempts.json#attempts[23]",
+        "WP-I0-007/baseline-attempts.json#attempts[25]",
+        "WP-I0-007/baseline-attempts.json#attempts[26]",
+        "WP-I0-007/baseline-attempts.json#attempts[27]",
+        "WP-I0-007/baseline-attempts.json#attempts[2]",
+        "WP-I0-007/baseline-attempts.json#attempts[3]",
+        "WP-I0-007/baseline-attempts.json#attempts[4]",
+        "WP-I0-007/baseline-attempts.json#attempts[5]",
+        "WP-I0-007/baseline-attempts.json#attempts[6]",
+        "WP-I0-007/baseline-attempts.json#attempts[7]",
+        "WP-I0-007/baseline-attempts.json#attempts[8]",
+        "WP-I0-007/baseline-attempts.json#attempts[9]"
+      ],
+      "sourcePaths": [
+        "Codebase/docs/package.json",
+        "Codebase/e2e/mise.toml",
+        "Codebase/e2e/package.json",
+        "Codebase/packages/cli/package.json",
+        "Codebase/packages/plugin-core/package.json",
+        "Codebase/packages/plugin-sdk/package.json",
+        "Codebase/packages/sdk/package.json",
+        "Codebase/server/package.json",
+        "Codebase/web/package.json"
+      ],
+      "attemptIds": [
+        "mise-e2e-build",
+        "mise-e2e-test",
+        "mise-e2e-test-web",
+        "node-docs-build",
+        "node-e2e-test",
+        "node-e2e-test-maintenance",
+        "node-e2e-test-web",
+        "node-e2e-test-web-maintenance",
+        "node-e2e-test-web-ui",
+        "node-packages-cli-build",
+        "node-packages-cli-build-dev",
+        "node-packages-cli-test",
+        "node-packages-cli-test-cov",
+        "node-packages-plugin-core-build",
+        "node-packages-plugin-core-build-tsc",
+        "node-packages-plugin-core-build-wasm",
+        "node-packages-plugin-sdk-build",
+        "node-packages-plugin-sdk-test",
+        "node-packages-sdk-build",
+        "node-server-build",
+        "node-server-test",
+        "node-server-test-cov",
+        "node-server-test-medium",
+        "node-web-build",
+        "node-web-build-stats",
+        "node-web-test",
+        "node-web-test-cov"
+      ],
+      "affectedPackages": [
+        "docs",
+        "e2e",
+        "packages/cli",
+        "packages/plugin-core",
+        "packages/plugin-sdk",
+        "packages/sdk",
+        "server",
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-007"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-93840c7c0ac8061a",
+      "category": "DEPENDENCY",
+      "item": "Codebase/node_modules/prettier-plugin-sort-json/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[63]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[64]"
+      ],
+      "sourcePaths": [
+        "Codebase/.prettierrc"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-091c1d7aa2960d8f",
+      "category": "DEPENDENCY",
+      "item": "Codebase/packages/cli/node_modules/@eslint/js/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[65]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[66]"
+      ],
+      "sourcePaths": [
+        "Codebase/packages/cli/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "packages/cli"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-fb590b1919b66dc6",
+      "category": "DEPENDENCY",
+      "item": "Codebase/packages/cli/node_modules/eslint-plugin-prettier/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[67]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[68]"
+      ],
+      "sourcePaths": [
+        "Codebase/packages/cli/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "packages/cli"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-43973a7486b5054c",
+      "category": "DEPENDENCY",
+      "item": "Codebase/packages/cli/node_modules/eslint-plugin-unicorn/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[69]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[70]"
+      ],
+      "sourcePaths": [
+        "Codebase/packages/cli/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "packages/cli"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-1007fe0e7c7fddda",
+      "category": "DEPENDENCY",
+      "item": "Codebase/packages/cli/node_modules/globals/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[71]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[72]"
+      ],
+      "sourcePaths": [
+        "Codebase/packages/cli/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "packages/cli"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-c825675fdce641b4",
+      "category": "DEPENDENCY",
+      "item": "Codebase/packages/cli/node_modules/prettier-plugin-organize-imports/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[73]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[74]"
+      ],
+      "sourcePaths": [
+        "Codebase/packages/cli/.prettierrc"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "packages/cli"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-c76e29f2ece36a45",
+      "category": "DEPENDENCY",
+      "item": "Codebase/packages/cli/node_modules/typescript-eslint/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[75]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[76]"
+      ],
+      "sourcePaths": [
+        "Codebase/packages/cli/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "packages/cli"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-edb9c219193f409f",
+      "category": "DEPENDENCY",
+      "item": "Codebase/packages/cli/node_modules/vite/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[77]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[78]"
+      ],
+      "sourcePaths": [
+        "Codebase/packages/cli/vite.config.ts"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "packages/cli"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-822493f863741b13",
+      "category": "DEPENDENCY",
+      "item": "Codebase/server/node_modules/@eslint/js/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[79]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[80]"
+      ],
+      "sourcePaths": [
+        "Codebase/server/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-f2578c1812db1b26",
+      "category": "DEPENDENCY",
+      "item": "Codebase/server/node_modules/eslint-plugin-prettier/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[81]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[82]"
+      ],
+      "sourcePaths": [
+        "Codebase/server/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-23b8deaaccc8f9fb",
+      "category": "DEPENDENCY",
+      "item": "Codebase/server/node_modules/eslint-plugin-unicorn/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[83]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[84]"
+      ],
+      "sourcePaths": [
+        "Codebase/server/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-1ce9d3bc77e67cb4",
+      "category": "DEPENDENCY",
+      "item": "Codebase/server/node_modules/globals/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[85]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[86]"
+      ],
+      "sourcePaths": [
+        "Codebase/server/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-376aa432ac23dab3",
+      "category": "DEPENDENCY",
+      "item": "Codebase/server/node_modules/prettier-plugin-organize-imports/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[87]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[88]"
+      ],
+      "sourcePaths": [
+        "Codebase/server/.prettierrc"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-57cfa90698f4546f",
+      "category": "DEPENDENCY",
+      "item": "Codebase/server/node_modules/typescript-eslint/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[89]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[90]"
+      ],
+      "sourcePaths": [
+        "Codebase/server/eslint.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-d10190bc3cf9c7af",
+      "category": "DEPENDENCY",
+      "item": "Codebase/server/test/node_modules/unplugin-swc/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[91]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[92]"
+      ],
+      "sourcePaths": [
+        "Codebase/server/test/vitest.config.medium.mjs",
+        "Codebase/server/test/vitest.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-de603be8e16f0e55",
+      "category": "DEPENDENCY",
+      "item": "Codebase/server/test/node_modules/vite-tsconfig-paths/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[93]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[94]"
+      ],
+      "sourcePaths": [
+        "Codebase/server/test/vitest.config.medium.mjs",
+        "Codebase/server/test/vitest.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-d98c71bde75454ff",
+      "category": "DEPENDENCY",
+      "item": "Codebase/server/test/node_modules/vitest/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[95]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[96]"
+      ],
+      "sourcePaths": [
+        "Codebase/server/test/vitest.config.medium.mjs",
+        "Codebase/server/test/vitest.config.mjs"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-f47e3117e745e14f",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/@eslint/js/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[98]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[99]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/eslint.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-ff63d8ed92c68d7f",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/@koddsson/eslint-plugin-tscompat/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[100]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[101]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/eslint.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-296fb06935bdb89b",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/@sveltejs/adapter-static/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[102]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[103]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/svelte.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-6c4b1b9018d5c242",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/@sveltejs/enhanced-img/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[104]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[105]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/vite.config.ts"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-8b0637d0b27583ee",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/@sveltejs/kit/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[106]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[107]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/vite.config.ts"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-5c403755499cb854",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/@sveltejs/vite-plugin-svelte/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[108]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[109]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/svelte.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-610b41f9280bbfbd",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/@tailwindcss/vite/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[110]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[111]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/vite.config.ts"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-43c9eb348090c56b",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/@testing-library/svelte/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[112]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[113]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/vite.config.ts"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-87274f1f765ec745",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/@trivago/prettier-plugin-sort-imports/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[114]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[115]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/.prettierrc"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-f6f4f5567b282c5f",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/dotenv/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[116]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[117]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/svelte.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-d6cb046bca7bc4cb",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/eslint-config-prettier/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[118]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[119]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/eslint.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-9598052fb835d44d",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/eslint-plugin-better-tailwindcss/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[120]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[121]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/eslint.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-e7dd3508f3d35ecd",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/eslint-plugin-compat/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[122]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[123]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/eslint.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-935bb312e3182b58",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/eslint-plugin-svelte/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[124]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[125]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/eslint.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-b000e76e8faaabcd",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/eslint-plugin-unicorn/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[126]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[127]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/eslint.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-215ce8589932669c",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/globals/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[128]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[129]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/eslint.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-fc999bd66ccad8ae",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/prettier-plugin-sort-json/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[130]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[131]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/.prettierrc"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-544023f1b263b4b8",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/prettier-plugin-svelte/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[132]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[133]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/.prettierrc"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-e785e242f09391e8",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/rollup-plugin-visualizer/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[134]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[135]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/vite.config.ts"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-1e555c6babec8193",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/svelte-eslint-parser/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[136]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[137]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/eslint.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-e9561a1c99325b00",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/typescript-eslint/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[138]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[139]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/eslint.config.js"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-187cc9f0f7685bfc",
+      "category": "DEPENDENCY",
+      "item": "Codebase/web/node_modules/vite/package.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[140]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[141]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/vite.config.ts"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-b738907a982b0cdd",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/.devcontainer/devcontainer.json#devcontainer-feature:ghcr.io/devcontainers/features/docker-in-docker",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[143]"
+      ],
+      "sourcePaths": [
+        "Codebase/.devcontainer/devcontainer.json"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "repository"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-08ae7caa696a095a",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/.devcontainer/mobile/container-compose-overrides.yml#compose-image:busybox",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[144]"
+      ],
+      "sourcePaths": [
+        "Codebase/.devcontainer/mobile/container-compose-overrides.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-dde696146a5c73bd",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/.devcontainer/mobile/container-compose-overrides.yml#compose-image:immich-server-dev",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[145]"
+      ],
+      "sourcePaths": [
+        "Codebase/.devcontainer/mobile/container-compose-overrides.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-5b12215a2679f48f",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/.devcontainer/server/container-compose-overrides.yml#compose-image:busybox",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[146]"
+      ],
+      "sourcePaths": [
+        "Codebase/.devcontainer/server/container-compose-overrides.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-85d335ee5d3e83d1",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/.devcontainer/server/container-compose-overrides.yml#compose-image:immich-server-dev",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[147]"
+      ],
+      "sourcePaths": [
+        "Codebase/.devcontainer/server/container-compose-overrides.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-e195e9f173557708",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/.github/workflows/org-pr-require-conventional-commit.yml#action:immich-app/devtools/.github/workflows/shared-pr-require-conventional-commit.yml",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[148]"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/org-pr-require-conventional-commit.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "repository"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-49455d4d7109ad5f",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/.github/workflows/org-zizmor.yml#action:immich-app/devtools/.github/workflows/shared-zizmor.yml",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[149]"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/org-zizmor.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "repository"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-4e155307d1542f0c",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/Makefile#package-manager-tool:renovate",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[150]"
+      ],
+      "sourcePaths": [
+        "Codebase/Makefile"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-5e73bc4c0e901a19",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/docker/docker-compose.dev.yml#compose-image:immich-machine-learning-dev",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[151]"
+      ],
+      "sourcePaths": [
+        "Codebase/docker/docker-compose.dev.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docker"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-df34fc69f5521344",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/docker/docker-compose.dev.yml#compose-image:immich-server-dev",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[152]"
+      ],
+      "sourcePaths": [
+        "Codebase/docker/docker-compose.dev.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docker"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-a5a402b9ed082185",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/docker/docker-compose.dev.yml#compose-image:immich-web-dev",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[153]"
+      ],
+      "sourcePaths": [
+        "Codebase/docker/docker-compose.dev.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docker"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-d8a7f2208f999553",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/docker/docker-compose.prod.yml#compose-image:immich-machine-learning",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[154]"
+      ],
+      "sourcePaths": [
+        "Codebase/docker/docker-compose.prod.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docker"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-c9651b8ff955fc49",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/docker/docker-compose.prod.yml#compose-image:immich-server",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[155]"
+      ],
+      "sourcePaths": [
+        "Codebase/docker/docker-compose.prod.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docker"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-7d6e35d0314f0451",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/docker/docker-compose.rootless.yml#compose-image:ghcr.io/immich-app/immich-machine-learning",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[156]"
+      ],
+      "sourcePaths": [
+        "Codebase/docker/docker-compose.rootless.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docker"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-ab23aef4e8994e4c",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/docker/docker-compose.rootless.yml#compose-image:ghcr.io/immich-app/immich-server",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[157]"
+      ],
+      "sourcePaths": [
+        "Codebase/docker/docker-compose.rootless.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docker"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-b12ee12cd049e95b",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/docker/docker-compose.yml#compose-image:ghcr.io/immich-app/immich-machine-learning",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[158]"
+      ],
+      "sourcePaths": [
+        "Codebase/docker/docker-compose.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docker"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-e48226913babf979",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/docker/docker-compose.yml#compose-image:ghcr.io/immich-app/immich-server",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[159]"
+      ],
+      "sourcePaths": [
+        "Codebase/docker/docker-compose.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docker"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-83f4f85c9e4c85ef",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/docker/example.env#env:immich_version",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[160]"
+      ],
+      "sourcePaths": [
+        "Codebase/docker/example.env"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docker"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-3b3d4442e79834f6",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/e2e/docker-compose.yml#compose-image:immich-server",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[161]"
+      ],
+      "sourcePaths": [
+        "Codebase/e2e/docker-compose.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "e2e"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-dfe2fefe74c81095",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/machine-learning/Dockerfile#docker-tool:ccache",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[162]"
+      ],
+      "sourcePaths": [
+        "Codebase/machine-learning/Dockerfile"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "machine-learning"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-189f17cb7341dae8",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/machine-learning/Dockerfile#docker-tool:g++",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[163]"
+      ],
+      "sourcePaths": [
+        "Codebase/machine-learning/Dockerfile"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "machine-learning"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-70f7e599a31b82b3",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/machine-learning/ann/export/env.yaml#conda-pip-vcs:github.com/fyfrey/tinyneuralnetwork",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[164]"
+      ],
+      "sourcePaths": [
+        "Codebase/machine-learning/ann/export/env.yaml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "machine-learning"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-4cf5fb7890d133e8",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/mobile/android/app/build.gradle#compileSdk",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[165]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/android/app/build.gradle"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-3cdf13180fe93c07",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/mobile/android/app/build.gradle#ndkVersion",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[166]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/android/app/build.gradle"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-5eab54fc2473d376",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/mobile/android/app/build.gradle#targetSdk",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[167]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/android/app/build.gradle"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-93c0110b81ec240f",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/mobile/ios/ci_scripts/ci_post_clone.sh#script-git:github.com/flutter/flutter",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[168]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/ci_scripts/ci_post_clone.sh"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-cad0f001157c8734",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/mobile/ios/ci_scripts/ci_post_clone.sh#script-package:brew:cocoapods",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[169]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/ci_scripts/ci_post_clone.sh"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-00d6abb7f0203b27",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/packages/plugin-sdk/tsconfig.json#typescript-lib:esnext",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[170]"
+      ],
+      "sourcePaths": [
+        "Codebase/packages/plugin-sdk/tsconfig.json"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "packages/plugin-sdk"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-4d5937d6d8aa2f07",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/packages/plugin-sdk/tsconfig.json#typescript-target",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[171]"
+      ],
+      "sourcePaths": [
+        "Codebase/packages/plugin-sdk/tsconfig.json"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "packages/plugin-sdk"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-304f4cff363953cd",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/packages/sdk/tsconfig.json#typescript-lib:esnext",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[172]"
+      ],
+      "sourcePaths": [
+        "Codebase/packages/sdk/tsconfig.json"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "packages/sdk"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-8f259cf6f1173fb2",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/packages/sdk/tsconfig.json#typescript-target",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[173]"
+      ],
+      "sourcePaths": [
+        "Codebase/packages/sdk/tsconfig.json"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "packages/sdk"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-60f9360a26e76da4",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:@nestjs/swagger:peerdependencies:typescript",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[174]"
+      ],
+      "sourcePaths": [
+        "Codebase/pnpm-workspace.yaml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-c49217655c48b8e0",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:@photo-sphere-viewer/equirectangular-video-adapter:dependencies:three",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[175]"
+      ],
+      "sourcePaths": [
+        "Codebase/pnpm-workspace.yaml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-49fd42fa2aad1306",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:@photo-sphere-viewer/video-plugin:dependencies:three",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[176]"
+      ],
+      "sourcePaths": [
+        "Codebase/pnpm-workspace.yaml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-04909e07498997fc",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:bcrypt:dependencies:node-addon-api",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[177]"
+      ],
+      "sourcePaths": [
+        "Codebase/pnpm-workspace.yaml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-cebb8c739530861f",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:bcrypt:dependencies:node-gyp",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[178]"
+      ],
+      "sourcePaths": [
+        "Codebase/pnpm-workspace.yaml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-d60002b900fd24e6",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:nestjs-kysely:dependencies:tslib",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[179]"
+      ],
+      "sourcePaths": [
+        "Codebase/pnpm-workspace.yaml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-328f8302bbc4be64",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:nestjs-otel:dependencies:tslib",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[180]"
+      ],
+      "sourcePaths": [
+        "Codebase/pnpm-workspace.yaml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-c285e721d5093cee",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:sharp:dependencies:node-addon-api",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[181]"
+      ],
+      "sourcePaths": [
+        "Codebase/pnpm-workspace.yaml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-6c029804454756c2",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/pnpm-workspace.yaml#pnpm-package-extension:sharp:dependencies:node-gyp",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[182]"
+      ],
+      "sourcePaths": [
+        "Codebase/pnpm-workspace.yaml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-dad875ad5990c143",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/renovate.json#renovate-extends:line-3",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[183]"
+      ],
+      "sourcePaths": [
+        "Codebase/renovate.json"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-9fe0395a9cf7e3fe",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/server/Dockerfile#docker-tool:corepack",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[184]"
+      ],
+      "sourcePaths": [
+        "Codebase/server/Dockerfile"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-d1f27458bb2aa248",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/server/Dockerfile.dev#docker-tool:dcm",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[185]"
+      ],
+      "sourcePaths": [
+        "Codebase/server/Dockerfile.dev"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-742f933c572855ee",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/server/Dockerfile.dev#docker-tool:java",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[186]"
+      ],
+      "sourcePaths": [
+        "Codebase/server/Dockerfile.dev"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-696d3e09fef4ce55",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/web/.browserslistrc#browserslist-query:line-1",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[187]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/.browserslistrc"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-8a3ef7d9ece0363c",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/web/.browserslistrc#browserslist-query:line-2",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[188]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/.browserslistrc"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-3f9f384839620863",
+      "category": "DEPENDENCY",
+      "item": "declaration:Codebase/web/.browserslistrc#browserslist-query:line-3",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "VERSION_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "The dependency/tool reference is floating or unresolved and cannot be reproduced exactly."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[189]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/.browserslistrc"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-49dae0ce9f8eb4bc",
+      "category": "DEPENDENCY",
+      "item": "python-package:hatchling",
+      "status": "BLOCKED",
+      "reasons": [
+        "COMMAND_EXIT_NONZERO"
+      ],
+      "blockingEffects": [
+        "Required Python build backend is absent from the authorized offline cache."
+      ],
+      "evidenceSources": [
+        "WP-I0-007/baseline-attempts.json#attempts[46]"
+      ],
+      "sourcePaths": [
+        "Codebase/machine-learning/pyproject.toml"
+      ],
+      "attemptIds": [
+        "ml-package-build"
+      ],
+      "affectedPackages": [
+        "machine-learning"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-007"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-ccaedbd1354c7d22",
+      "category": "DEPENDENCY",
+      "item": "python-package:opencv-python-headless==4.13.0.92",
+      "status": "BLOCKED",
+      "reasons": [
+        "COMMAND_EXIT_NONZERO"
+      ],
+      "blockingEffects": [
+        "Required Python wheel is absent from the authorized offline cache."
+      ],
+      "evidenceSources": [
+        "WP-I0-007/baseline-attempts.json#attempts[28]"
+      ],
+      "sourcePaths": [
+        "Codebase/machine-learning/mise.toml"
+      ],
+      "attemptIds": [
+        "ml-unit-test"
+      ],
+      "affectedPackages": [
+        "machine-learning"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-007"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-8b461fd0d681d9fd",
+      "category": "DEPENDENCY",
+      "item": "rust",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "NO_DISCOVERABLE_REPOSITORY_VERSION",
+        "NO_REPOSITORY_MANIFEST"
+      ],
+      "blockingEffects": [
+        "No repository manifest establishes the required toolchain.",
+        "No repository version can be selected safely."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[0]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[1]"
+      ],
+      "sourcePaths": [],
+      "attemptIds": [],
+      "affectedPackages": [
+        "repository"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-1f6c2c659b907d0d",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "Codebase/docker/.env",
+      "status": "BLOCKED",
+      "reasons": [
+        "COMPOSE_ENV_FILE_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory Compose environment file is absent, so affected container surfaces cannot resolve required configuration."
+      ],
+      "evidenceSources": [
+        "Codebase/docker/docker-compose.dev.yml:120;Codebase/docker/docker-compose.dev.yml:148;Codebase/docker/docker-compose.dev.yml:165;Codebase/docker/docker-compose.dev.yml:78;Codebase/docker/docker-compose.prod.yml:26;Codebase/docker/docker-compose.prod.yml:52;Codebase/docker/docker-compose.prod.yml:68;Codebase/docker/docker-compose.rootless.yml:29;Codebase/docker/docker-compose.rootless.yml:57;Codebase/docker/docker-compose.yml:24;Codebase/docker/docker-compose.yml:45"
+      ],
+      "sourcePaths": [
+        "Codebase/docker/docker-compose.dev.yml",
+        "Codebase/docker/docker-compose.prod.yml",
+        "Codebase/docker/docker-compose.rootless.yml",
+        "Codebase/docker/docker-compose.yml"
+      ],
+      "attemptIds": [
+        "docker-dev-scale-build",
+        "docker-dev-update-build",
+        "docker-prod-build",
+        "docker-prod-scale-build"
+      ],
+      "affectedPackages": [
+        "docker"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-007"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-23d5ad395fe8e144",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "build-output-redirection-proof",
+      "status": "BLOCKED",
+      "reasons": [
+        "DECLARED_BUILD_OUTPUT_REDIRECTION_UNPROVEN"
+      ],
+      "blockingEffects": [
+        "Declared build outputs cannot yet be proven external to Codebase."
+      ],
+      "evidenceSources": [
+        "WP-I0-007/baseline-attempts.json#attempts[24]",
+        "WP-I0-007/baseline-attempts.json#attempts[36]",
+        "WP-I0-007/baseline-attempts.json#attempts[38]",
+        "WP-I0-007/baseline-attempts.json#attempts[39]",
+        "WP-I0-007/baseline-attempts.json#attempts[42]",
+        "WP-I0-007/baseline-attempts.json#attempts[43]"
+      ],
+      "sourcePaths": [
+        "Codebase/docs/mise.toml",
+        "Codebase/packages/cli/mise.toml",
+        "Codebase/packages/plugin-core/mise.toml",
+        "Codebase/server/mise.toml",
+        "Codebase/web/mise.toml"
+      ],
+      "attemptIds": [
+        "mise-docs-build",
+        "mise-packages-cli-build",
+        "mise-packages-plugin-core-build",
+        "mise-server-build",
+        "mise-web-build",
+        "mise-web-build-stats"
+      ],
+      "affectedPackages": [
+        "docs",
+        "packages/cli",
+        "packages/plugin-core",
+        "server",
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-007"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-15f5fb6ae08ab45e",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "container-volume-write-isolation",
+      "status": "BLOCKED",
+      "reasons": [
+        "CONTAINER_RUNTIME_AND_VOLUME_WRITES_UNAVAILABLE",
+        "CONTAINER_RUNTIME_VOLUME_AND_NETWORK_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "Safe external volume-write isolation is unavailable."
+      ],
+      "evidenceSources": [
+        "WP-I0-007/baseline-attempts.json#attempts[29]",
+        "WP-I0-007/baseline-attempts.json#attempts[30]",
+        "WP-I0-007/baseline-attempts.json#attempts[31]",
+        "WP-I0-007/baseline-attempts.json#attempts[32]",
+        "WP-I0-007/baseline-attempts.json#attempts[33]",
+        "WP-I0-007/baseline-attempts.json#attempts[50]"
+      ],
+      "sourcePaths": [
+        "Codebase/mise.toml"
+      ],
+      "attemptIds": [
+        "docker-dev-scale-build",
+        "docker-dev-update-build",
+        "docker-e2e-test",
+        "docker-e2e-update-build",
+        "docker-prod-build",
+        "docker-prod-scale-build"
+      ],
+      "affectedPackages": [
+        "docker-e2e",
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-007"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-3832b373e7071d20",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "environment-variable:ENVIRONMENT",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "ENVIRONMENT_VALUE_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The committed manifest references an environment value that was not present or supplied during read-only inspection."
+      ],
+      "evidenceSources": [
+        "Codebase/deployment/.env:4"
+      ],
+      "sourcePaths": [
+        "Codebase/deployment/.env"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "deployment"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-fbe287d98526a342",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "environment-variable:TF_VAR_prefix_name",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "ENVIRONMENT_REFERENCE_UNRESOLVED"
+      ],
+      "blockingEffects": [
+        "A committed deployment manifest references an environment value that was not supplied during read-only inspection."
+      ],
+      "evidenceSources": [
+        "Codebase/deployment/modules/cloudflare/docs/terragrunt.hcl:14"
+      ],
+      "sourcePaths": [
+        "Codebase/deployment/modules/cloudflare/docs/terragrunt.hcl"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "deployment"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-70aa8b4b482bc6e7",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "flutter-output-redirection-proof",
+      "status": "BLOCKED",
+      "reasons": [
+        "FLUTTER_OUTPUT_REDIRECTION_UNPROVEN"
+      ],
+      "blockingEffects": [
+        "Flutter build/test side effects cannot yet be proven external to Codebase."
+      ],
+      "evidenceSources": [
+        "WP-I0-007/baseline-attempts.json#attempts[34]",
+        "WP-I0-007/baseline-attempts.json#attempts[35]",
+        "WP-I0-007/baseline-attempts.json#attempts[47]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/mise.toml",
+        "Codebase/mobile/packages/ui/test"
+      ],
+      "attemptIds": [
+        "mobile-android-build",
+        "mobile-ui-unit-test",
+        "mobile-unit-test"
+      ],
+      "affectedPackages": [
+        "mobile",
+        "mobile-ui"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-007"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-d9d5185f7b99637e",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "generated-source-redirection-proof",
+      "status": "BLOCKED",
+      "reasons": [
+        "GENERATED_SOURCE_REDIRECTION_UNPROVEN"
+      ],
+      "blockingEffects": [
+        "Generated source cannot yet be proven external to Codebase."
+      ],
+      "evidenceSources": [
+        "WP-I0-007/baseline-attempts.json#attempts[48]"
+      ],
+      "sourcePaths": [
+        "Codebase/mise.toml"
+      ],
+      "attemptIds": [
+        "open-api-dart-build"
+      ],
+      "affectedPackages": [
+        "open-api-dart"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-007"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-929562a56886af5f",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-platform:xcode",
+      "status": "BLOCKED",
+      "reasons": [
+        "PLATFORM_AND_DERIVED_DATA_REDIRECTION_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The required Apple build platform and safe derived-data redirection are unavailable."
+      ],
+      "evidenceSources": [
+        "WP-I0-007/baseline-attempts.json#attempts[49]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj"
+      ],
+      "attemptIds": [
+        "ios-build"
+      ],
+      "affectedPackages": [
+        "ios"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-007"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-4e0c29463650965c",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:armnn",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_PROBE_UNMAPPED"
+      ],
+      "blockingEffects": [
+        "Host availability cannot be established by a safe mapped probe."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[218]"
+      ],
+      "sourcePaths": [
+        "Codebase/machine-learning/Dockerfile",
+        "Codebase/machine-learning/ann/export/build-converter.sh",
+        "Codebase/machine-learning/ann/export/download-armnn.sh"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "machine-learning"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-67e2d0eed17aef23",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:binaryen",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[190]"
+      ],
+      "sourcePaths": [
+        "Codebase/mise.lock",
+        "Codebase/mise.toml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-17eb1e5b31edd741",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:bun",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[191]"
+      ],
+      "sourcePaths": [],
+      "attemptIds": [],
+      "affectedPackages": [
+        "repository"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-62d70396d8a51e42",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:bundler",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[192]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/android/Gemfile.lock"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-a1169b96ac0c9b4b",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:ccache",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[193]"
+      ],
+      "sourcePaths": [
+        "Codebase/machine-learning/Dockerfile"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "machine-learning"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-57aee137bce24841",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:cmake",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[194]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/android/app/CMakeLists.txt"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-9dcc4e8f1665eb39",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:conda",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[195]"
+      ],
+      "sourcePaths": [
+        "Codebase/machine-learning/ann/export/env.yaml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "machine-learning"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-5a751d951a8549b9",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:dart",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[196]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/openapi/.travis.yml",
+        "Codebase/mobile/packages/ui/pubspec.lock",
+        "Codebase/mobile/pubspec.lock"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile",
+        "mobile/packages/ui"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-517523812440d704",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:dcm",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[197]"
+      ],
+      "sourcePaths": [
+        "Codebase/mise.lock",
+        "Codebase/mise.toml",
+        "Codebase/mobile/dcm_global.yaml",
+        "Codebase/server/Dockerfile.dev"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile",
+        "root",
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-b9e42fe632d02749",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:docker",
+      "status": "BLOCKED",
+      "reasons": [
+        "CONTAINER_RUNTIME_AND_PROJECT_DEPENDENCIES_UNAVAILABLE",
+        "CONTAINER_RUNTIME_AND_VOLUME_WRITES_UNAVAILABLE",
+        "CONTAINER_RUNTIME_VOLUME_AND_NETWORK_UNAVAILABLE",
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A usable container runtime is unavailable.",
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[198]",
+        "WP-I0-007/baseline-attempts.json#attempts[25]",
+        "WP-I0-007/baseline-attempts.json#attempts[26]",
+        "WP-I0-007/baseline-attempts.json#attempts[27]",
+        "WP-I0-007/baseline-attempts.json#attempts[29]",
+        "WP-I0-007/baseline-attempts.json#attempts[30]",
+        "WP-I0-007/baseline-attempts.json#attempts[31]",
+        "WP-I0-007/baseline-attempts.json#attempts[32]",
+        "WP-I0-007/baseline-attempts.json#attempts[33]",
+        "WP-I0-007/baseline-attempts.json#attempts[50]"
+      ],
+      "sourcePaths": [
+        "Codebase/.devcontainer/devcontainer.json",
+        "Codebase/.devcontainer/mobile/container-compose-overrides.yml",
+        "Codebase/.devcontainer/server/container-compose-overrides.yml",
+        "Codebase/docker/docker-compose.dev.yml",
+        "Codebase/docker/docker-compose.prod.yml",
+        "Codebase/docker/docker-compose.rootless.yml",
+        "Codebase/docker/docker-compose.yml",
+        "Codebase/e2e/docker-compose.yml",
+        "Codebase/e2e/mise.toml",
+        "Codebase/machine-learning/Dockerfile",
+        "Codebase/mise.toml",
+        "Codebase/packages/cli/Dockerfile",
+        "Codebase/packages/e2e-auth-server/Dockerfile",
+        "Codebase/server/Dockerfile",
+        "Codebase/server/Dockerfile.dev"
+      ],
+      "attemptIds": [
+        "docker-dev-scale-build",
+        "docker-dev-update-build",
+        "docker-e2e-test",
+        "docker-e2e-update-build",
+        "docker-prod-build",
+        "docker-prod-scale-build",
+        "mise-e2e-build",
+        "mise-e2e-test",
+        "mise-e2e-test-web"
+      ],
+      "affectedPackages": [
+        "docker",
+        "docker-e2e",
+        "e2e",
+        "machine-learning",
+        "mobile",
+        "packages/cli",
+        "packages/e2e-auth-server",
+        "repository",
+        "root",
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005",
+        "WP-I0-007"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-067aef91339e444e",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:extism",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[199]"
+      ],
+      "sourcePaths": [
+        "Codebase/mise.lock",
+        "Codebase/mise.toml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-c3124df69a3d2bfb",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:extism-js-pdk",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_PROBE_UNMAPPED"
+      ],
+      "blockingEffects": [
+        "Host availability cannot be established by a safe mapped probe."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[219]"
+      ],
+      "sourcePaths": [
+        "Codebase/mise.lock",
+        "Codebase/mise.toml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-2c7a04144ad0d57b",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:fastlane",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[200]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/android/Gemfile.lock"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-55760ecd1b1b55ee",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:flutter",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[201]"
+      ],
+      "sourcePaths": [
+        "Codebase/mise.lock",
+        "Codebase/mise.toml",
+        "Codebase/mobile/.metadata",
+        "Codebase/mobile/android/app/build.gradle",
+        "Codebase/mobile/android/settings.gradle",
+        "Codebase/mobile/ios/Podfile.lock",
+        "Codebase/mobile/ios/ci_scripts/ci_post_clone.sh",
+        "Codebase/mobile/packages/ui/pubspec.lock",
+        "Codebase/mobile/pubspec.lock",
+        "Codebase/mobile/pubspec.yaml",
+        "Codebase/server/Dockerfile.dev"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile",
+        "mobile/packages/ui",
+        "root",
+        "server"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-ffaada28ad3fee12",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:g++",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[202]"
+      ],
+      "sourcePaths": [
+        "Codebase/machine-learning/Dockerfile",
+        "Codebase/machine-learning/ann/build.sh",
+        "Codebase/machine-learning/ann/export/build-converter.sh"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "machine-learning"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-b4eae3b52d3d2678",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:gradle",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[203]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/android/gradle/wrapper/gradle-wrapper.properties",
+        "Codebase/mobile/android/settings.gradle"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-4648c5162d738f78",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:java",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[204]"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml",
+        "Codebase/mobile/android/app/build.gradle"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-dfbf6d509b52860b",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:mise",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[205]"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-f9a4068b392c438f",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:ninja",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[206]"
+      ],
+      "sourcePaths": [],
+      "attemptIds": [],
+      "affectedPackages": [
+        "repository"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-c74d27656e02c1aa",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:oazapfts",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[207]"
+      ],
+      "sourcePaths": [
+        "Codebase/mise.lock",
+        "Codebase/mise.toml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-904ddb4ee23fbc8b",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:op",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "CREDENTIAL_RESOLVER_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The 1Password CLI required by committed op:// credential references is unavailable on this host."
+      ],
+      "evidenceSources": [
+        "Codebase/deployment/.env:1;Codebase/deployment/.env:2;Codebase/deployment/.env:3"
+      ],
+      "sourcePaths": [
+        "Codebase/deployment/.env"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "deployment"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-c5c00d0813bed600",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:openapi-generator-cli",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[208]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/openapi/.openapi-generator/VERSION",
+        "Codebase/open-api/openapitools.json"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile",
+        "open-api"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-279326e63a37d841",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:pod",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[209]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Podfile.lock",
+        "Codebase/mobile/ios/ci_scripts/ci_post_clone.sh"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-7fa5920fb15dc5cf",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:renovate",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[210]"
+      ],
+      "sourcePaths": [
+        "Codebase/Makefile",
+        "Codebase/renovate.json"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-42693aa4e01325aa",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:ruby",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[211]"
+      ],
+      "sourcePaths": [
+        "Codebase/.github/workflows/build-mobile.yml",
+        "Codebase/renovate.json"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile",
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-88ecf71f23c56173",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:swift",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[212]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+        "Codebase/mobile/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved",
+        "Codebase/mobile/ios/Runner.xcworkspace/xcshareddata/swiftpm/Package.resolved"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-5a8737353e4e0f66",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:terragrunt",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[213]"
+      ],
+      "sourcePaths": [
+        "Codebase/deployment/mise.lock",
+        "Codebase/deployment/mise.toml",
+        "Codebase/mise.lock",
+        "Codebase/mise.toml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "deployment",
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-2cd00118fecb3bfa",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:tofu",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[214]"
+      ],
+      "sourcePaths": [
+        "Codebase/deployment/mise.lock",
+        "Codebase/deployment/mise.toml",
+        "Codebase/deployment/modules/cloudflare/docs-release/.terraform.lock.hcl",
+        "Codebase/deployment/modules/cloudflare/docs-release/config.tf",
+        "Codebase/deployment/modules/cloudflare/docs/.terraform.lock.hcl",
+        "Codebase/deployment/modules/cloudflare/docs/config.tf",
+        "Codebase/mise.lock",
+        "Codebase/mise.toml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "deployment",
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-fb0f9c274e009f3f",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:wrangler",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[215]"
+      ],
+      "sourcePaths": [
+        "Codebase/docs/mise.lock",
+        "Codebase/docs/mise.toml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "docs"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-69bc8d9106747241",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:xcodebuild",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[216]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Podfile"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-9a4702c02f334467",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "host-tool:yarn",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "HOST_TOOL_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The declared host tool cannot be used on this host."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[217]"
+      ],
+      "sourcePaths": [],
+      "attemptIds": [],
+      "affectedPackages": [
+        "repository"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-fca97d7935987c90",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "network-connectivity",
+      "status": "BLOCKED",
+      "reasons": [
+        "CONTAINER_RUNTIME_VOLUME_AND_NETWORK_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "Network-dependent resolution is unavailable in the authorized boundary."
+      ],
+      "evidenceSources": [
+        "WP-I0-007/baseline-attempts.json#attempts[29]",
+        "WP-I0-007/baseline-attempts.json#attempts[30]",
+        "WP-I0-007/baseline-attempts.json#attempts[31]",
+        "WP-I0-007/baseline-attempts.json#attempts[32]",
+        "WP-I0-007/baseline-attempts.json#attempts[33]"
+      ],
+      "sourcePaths": [
+        "Codebase/mise.toml"
+      ],
+      "attemptIds": [
+        "docker-dev-scale-build",
+        "docker-dev-update-build",
+        "docker-e2e-update-build",
+        "docker-prod-build",
+        "docker-prod-scale-build"
+      ],
+      "affectedPackages": [
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-007"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-f6b6cd8f88083c37",
+      "category": "ENVIRONMENT_PREREQUISITE",
+      "item": "test-side-effect-redirection-proof",
+      "status": "BLOCKED",
+      "reasons": [
+        "TEST_SIDE_EFFECT_REDIRECTION_UNPROVEN"
+      ],
+      "blockingEffects": [
+        "Test side effects cannot yet be proven external to Codebase."
+      ],
+      "evidenceSources": [
+        "WP-I0-007/baseline-attempts.json#attempts[37]",
+        "WP-I0-007/baseline-attempts.json#attempts[40]",
+        "WP-I0-007/baseline-attempts.json#attempts[41]",
+        "WP-I0-007/baseline-attempts.json#attempts[44]"
+      ],
+      "sourcePaths": [
+        "Codebase/packages/cli/mise.toml",
+        "Codebase/server/mise.toml",
+        "Codebase/web/mise.toml"
+      ],
+      "attemptIds": [
+        "mise-packages-cli-test",
+        "mise-server-test",
+        "mise-server-test-medium",
+        "mise-web-test"
+      ],
+      "affectedPackages": [
+        "packages/cli",
+        "server",
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-007"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-3e7d0f5e1b5a5541",
+      "category": "FIXTURE",
+      "item": "submodule-revision:Codebase/e2e/test-assets",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "SUBMODULE_REVISION_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "The fixture submodule revision is absent, so fixture contents are not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[142]"
+      ],
+      "sourcePaths": [
+        "Codebase/.gitmodules"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "e2e",
+        "root"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-b934e98eb0bd559a",
+      "category": "GENERATED_ARTIFACT",
+      "item": "Codebase/mobile/.dart_tool/package_config.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[35]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[36]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/analysis_options.yaml"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-c6fd740f4edbec8e",
+      "category": "GENERATED_ARTIFACT",
+      "item": "Codebase/mobile/android/local.properties",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[38]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/android/settings.gradle"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-146b028cd916a8d9",
+      "category": "GENERATED_ARTIFACT",
+      "item": "Codebase/mobile/ios/Flutter/Generated.xcconfig",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[40]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Flutter/Debug.xcconfig",
+        "Codebase/mobile/ios/Flutter/Release.xcconfig",
+        "Codebase/mobile/ios/Podfile"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-aaad27623d53bf50",
+      "category": "GENERATED_ARTIFACT",
+      "item": "Codebase/mobile/ios/Pods/Manifest.lock",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[43]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[44]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-5b295383df379aa3",
+      "category": "GENERATED_ARTIFACT",
+      "item": "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[45]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[46]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-69a5fa53f9bc8728",
+      "category": "GENERATED_ARTIFACT",
+      "item": "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[47]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[48]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-67462e60bcc329d8",
+      "category": "GENERATED_ARTIFACT",
+      "item": "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[49]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[50]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-f4585332af9113db",
+      "category": "GENERATED_ARTIFACT",
+      "item": "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[51]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[52]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-d12c278e94c4d5cf",
+      "category": "GENERATED_ARTIFACT",
+      "item": "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[53]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[54]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-ee4d35bef146914a",
+      "category": "GENERATED_ARTIFACT",
+      "item": "Codebase/mobile/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-resources.sh",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[55]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[56]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-5da5fc030a85c8a2",
+      "category": "GENERATED_ARTIFACT",
+      "item": "Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.debug.xcconfig",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[57]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[58]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-940b9d2f14b29fe4",
+      "category": "GENERATED_ARTIFACT",
+      "item": "Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.profile.xcconfig",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[59]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[60]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-1cadce6a419dc8fd",
+      "category": "GENERATED_ARTIFACT",
+      "item": "Codebase/mobile/ios/Pods/Target Support Files/Pods-ShareExtension/Pods-ShareExtension.release.xcconfig",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[61]",
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[62]"
+      ],
+      "sourcePaths": [
+        "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "mobile"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    },
+    {
+      "classificationId": "missing-8b892ab81aad3394",
+      "category": "GENERATED_ARTIFACT",
+      "item": "Codebase/web/.svelte-kit/tsconfig.json",
+      "status": "REVIEW_REQUIRED",
+      "reasons": [
+        "REFERENCED_MANIFEST_UNAVAILABLE"
+      ],
+      "blockingEffects": [
+        "A mandatory referenced manifest is absent, so its consumer is not reproducible."
+      ],
+      "evidenceSources": [
+        "WP-I0-005/toolchain-inventory.json#reviewRequired[97]"
+      ],
+      "sourcePaths": [
+        "Codebase/web/tsconfig.json"
+      ],
+      "attemptIds": [],
+      "affectedPackages": [
+        "web"
+      ],
+      "affectedWorkPackages": [
+        "WP-I0-005"
+      ],
+      "supplyAction": "NOT_PERFORMED"
+    }
+  ],
+  "counts": {
+    "records": 187,
+    "byCategory": {
+      "CREDENTIAL": 21,
+      "DEPENDENCY": 110,
+      "ENVIRONMENT_PREREQUISITE": 41,
+      "FIXTURE": 1,
+      "GENERATED_ARTIFACT": 14
+    },
+    "byStatus": {
+      "BLOCKED": 13,
+      "REVIEW_REQUIRED": 174
+    },
+    "supplyActions": {
+      "NOT_PERFORMED": 187
+    }
+  },
+  "oracle": {
+    "toolchainReviewRows": 236,
+    "includedMissingRows": 220,
+    "excludedNonMissingRows": 16,
+    "excludedReasons": [
+      "AMBIGUOUS_REPOSITORY_VERSION",
+      "HOST_REPOSITORY_VERSION_DIFFERENCE"
+    ],
+    "baselineAttempts": 51,
+    "successfulAttemptsNotMissing": 1,
+    "nonSuccessAttempts": 50,
+    "coveredNonSuccessAttempts": 50,
+    "unclassifiedToolchainReasons": [],
+    "unclassifiedBaselineBlockers": [],
+    "independentlyDiscoveredMissingEnvFiles": 1,
+    "independentlyDiscoveredMissingCredentials": 1,
+    "independentlyDiscoveredUnresolvedEnvValues": 4,
+    "independentlyDiscoveredManifestReferences": 21,
+    "credentialResolverUnavailable": true,
+    "result": "PASS"
+  },
+  "status": "PASS",
+  "failures": []
+}

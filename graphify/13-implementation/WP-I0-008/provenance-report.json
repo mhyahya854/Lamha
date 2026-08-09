@@ -1,0 +1,19 @@
+{
+  "packageId": "WP-I0-008",
+  "requirementId": "CAN-MISSION-I0-008",
+  "repositoryRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+  "codebaseRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase",
+  "classificationSources": [
+    "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\graphify\\13-implementation\\WP-I0-005\\toolchain-inventory.json",
+    "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\graphify\\13-implementation\\WP-I0-007\\baseline-attempts.json"
+  ],
+  "authoritativeBaseline": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\graphify\\13-implementation\\WP-I0-001\\sha256-manifest.csv",
+  "networkUsed": false,
+  "dependenciesInstalled": false,
+  "fixturesGenerated": false,
+  "credentialsSupplied": false,
+  "environmentPrerequisitesSupplied": false,
+  "codebaseMutationAuthorized": false,
+  "outputBoundary": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\graphify\\13-implementation\\WP-I0-008",
+  "result": "PASS"
+}
