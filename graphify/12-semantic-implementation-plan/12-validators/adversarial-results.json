@@ -2002,7 +2002,6 @@
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
         "full Graphify SHA manifest digest does not match recomputation",
-        "full Graphify SHA manifest file count does not match recomputation",
         "full Graphify SHA manifest file hashes do not match recomputation"
       ]
     },

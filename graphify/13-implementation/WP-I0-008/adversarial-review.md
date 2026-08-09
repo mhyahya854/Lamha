@@ -23,3 +23,17 @@ Superseded candidates were rejected until the collector and evidence repaired:
 - Preservation: 3,697/3,697 Codebase paths and SHA-256 values matched WP-I0-001; no reparse point, cache, temporary artifact, or out-of-scope tracked change existed.
 
 The reviewer retained one nonblocking observation: rust, bun, ninja, and yarn use repository-wide attribution because authoritative upstream evidence contains no concrete consumer declaration.
+
+## Transition verification
+
+- Package implementation commit: `acb4377ab127eaeff381663348ed0cc3a1b12a15` (`Complete WP-I0-008: classify missing prerequisites`).
+- GitHub push: `a3fd4ea..acb4377  main -> main` — exit 0.
+- GitHub 1:1 verification: `HEAD == origin/main == acb4377ab127eaeff381663348ed0cc3a1b12a15`; `git diff --exit-code HEAD origin/main` clean; worktree clean.
+- Post-push committed-state verification: package summary PASS with empty failures; 187 classifications reconcile; 31/31 focused/negative fixtures PASS; all three exit-gate clauses PASS; validator 24/24 PASS.
+- Unauthorized changed paths: 0.
+- Final package status: COMPLETE and GitHub-verified.
+- Completed package set: `WP-I0-001` through `WP-I0-008` (8/155).
+- READY set after completion: `WP-I0-009`, `WP-I0-010`, `WP-I0-011`, `WP-I1-001`, `WP-I2-001`, `WP-I2-002`, `WP-I10-003`, `WP-I14-001`, `WP-I15-006`.
+- Deterministic next-package selection (phase, package ordinal, ID): `WP-I0-009`.
+- `WP-I0-009` status: AUTHORIZED — NOT_STARTED.
+- Next-package implementation changes: 0; no WP-I0-009 implementation, tests, dependencies, scaffolding, or implementation commands were created or run.
