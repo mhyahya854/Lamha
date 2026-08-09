@@ -1,0 +1,1728 @@
+{
+  "packageId": "WP-I0-007",
+  "requirementId": "CAN-MISSION-I0-007",
+  "runId": "run-20260809-019",
+  "collectionWindowUtc": {
+    "start": "2026-08-09T02:17:00+00:00",
+    "end": "2026-08-09T02:17:24+00:00"
+  },
+  "authorization": {
+    "schemaVersion": 1,
+    "packageId": "WP-I0-007",
+    "requirementId": "CAN-MISSION-I0-007",
+    "runId": "run-20260809-019",
+    "startSha": "026cb579976ae42ce6183d919be202c832ff664f",
+    "resolvedAbsoluteOutputRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha-isolated-output\\WP-I0-007\\run-20260809-019",
+    "sourceWorkspace": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+    "outputClasses": {
+      "build": "build",
+      "test": "test",
+      "cache": "cache",
+      "generated": "generated",
+      "package-manager": "package-manager",
+      "temporary": "temporary"
+    },
+    "networkAuthorized": false,
+    "repositoryCopyAuthorized": false,
+    "cleanupPolicy": "record inventory, then delete the run root",
+    "fixtureCommands": [
+      "cmd.exe /d /c mklink /J ${OUTPUT_ROOT}/test/scanner-fixture/linked-dir ${OUTPUT_ROOT}/test/scanner-fixture/target-dir"
+    ],
+    "commands": [
+      {
+        "id": "node-docs-build",
+        "command": "pnpm --dir Codebase/docs run build"
+      },
+      {
+        "id": "node-e2e-test",
+        "command": "pnpm --dir Codebase/e2e run test"
+      },
+      {
+        "id": "node-e2e-test-maintenance",
+        "command": "pnpm --dir Codebase/e2e run test:maintenance"
+      },
+      {
+        "id": "node-e2e-test-web",
+        "command": "pnpm --dir Codebase/e2e run test:web"
+      },
+      {
+        "id": "node-e2e-test-web-maintenance",
+        "command": "pnpm --dir Codebase/e2e run test:web:maintenance"
+      },
+      {
+        "id": "node-e2e-test-web-ui",
+        "command": "pnpm --dir Codebase/e2e run test:web:ui"
+      },
+      {
+        "id": "node-packages-cli-build",
+        "command": "pnpm --dir Codebase/packages/cli run build"
+      },
+      {
+        "id": "node-packages-cli-build-dev",
+        "command": "pnpm --dir Codebase/packages/cli run build:dev"
+      },
+      {
+        "id": "node-packages-cli-test",
+        "command": "pnpm --dir Codebase/packages/cli run test"
+      },
+      {
+        "id": "node-packages-cli-test-cov",
+        "command": "pnpm --dir Codebase/packages/cli run test:cov"
+      },
+      {
+        "id": "node-packages-plugin-core-build",
+        "command": "pnpm --dir Codebase/packages/plugin-core run build"
+      },
+      {
+        "id": "node-packages-plugin-core-build-tsc",
+        "command": "pnpm --dir Codebase/packages/plugin-core run build:tsc"
+      },
+      {
+        "id": "node-packages-plugin-core-build-wasm",
+        "command": "pnpm --dir Codebase/packages/plugin-core run build:wasm"
+      },
+      {
+        "id": "node-packages-plugin-sdk-build",
+        "command": "pnpm --dir Codebase/packages/plugin-sdk run build"
+      },
+      {
+        "id": "node-packages-plugin-sdk-test",
+        "command": "pnpm --dir Codebase/packages/plugin-sdk run test"
+      },
+      {
+        "id": "node-packages-sdk-build",
+        "command": "pnpm --dir Codebase/packages/sdk run build"
+      },
+      {
+        "id": "node-server-build",
+        "command": "pnpm --dir Codebase/server run build"
+      },
+      {
+        "id": "node-server-test",
+        "command": "pnpm --dir Codebase/server run test"
+      },
+      {
+        "id": "node-server-test-cov",
+        "command": "pnpm --dir Codebase/server run test:cov"
+      },
+      {
+        "id": "node-server-test-medium",
+        "command": "pnpm --dir Codebase/server run test:medium"
+      },
+      {
+        "id": "node-web-build",
+        "command": "pnpm --dir Codebase/web run build"
+      },
+      {
+        "id": "node-web-build-stats",
+        "command": "pnpm --dir Codebase/web run build:stats"
+      },
+      {
+        "id": "node-web-test",
+        "command": "pnpm --dir Codebase/web run test"
+      },
+      {
+        "id": "node-web-test-cov",
+        "command": "pnpm --dir Codebase/web run test:cov"
+      },
+      {
+        "id": "docker-dev-scale-build",
+        "command": "mise run dev-scale"
+      },
+      {
+        "id": "docker-dev-update-build",
+        "command": "mise run dev-update"
+      },
+      {
+        "id": "docker-e2e-update-build",
+        "command": "mise run e2e-update"
+      },
+      {
+        "id": "docker-prod-build",
+        "command": "mise run prod"
+      },
+      {
+        "id": "docker-prod-scale-build",
+        "command": "mise run prod-scale"
+      },
+      {
+        "id": "mise-docs-build",
+        "command": "mise run build"
+      },
+      {
+        "id": "mise-e2e-build",
+        "command": "mise run build"
+      },
+      {
+        "id": "mise-e2e-test",
+        "command": "mise run test"
+      },
+      {
+        "id": "mise-e2e-test-web",
+        "command": "mise run test-web"
+      },
+      {
+        "id": "ml-unit-test",
+        "command": "uv run --offline --frozen pytest --cov=immich_ml --cov-report term-missing --basetemp=${OUTPUT_ROOT}/test/pytest-temp -o cache_dir=${OUTPUT_ROOT}/cache/pytest"
+      },
+      {
+        "id": "mobile-unit-test",
+        "command": "mise run test"
+      },
+      {
+        "id": "mise-packages-cli-build",
+        "command": "mise run build"
+      },
+      {
+        "id": "mise-packages-cli-test",
+        "command": "mise run test"
+      },
+      {
+        "id": "mise-packages-plugin-core-build",
+        "command": "mise run build"
+      },
+      {
+        "id": "mise-server-build",
+        "command": "mise run build"
+      },
+      {
+        "id": "mise-server-test",
+        "command": "mise run test"
+      },
+      {
+        "id": "mise-server-test-medium",
+        "command": "mise run test-medium"
+      },
+      {
+        "id": "mise-web-build",
+        "command": "mise run build"
+      },
+      {
+        "id": "mise-web-build-stats",
+        "command": "mise run build-stats"
+      },
+      {
+        "id": "mise-web-test",
+        "command": "mise run test"
+      },
+      {
+        "id": "ml-bytecode-build",
+        "command": "python -m compileall -q Codebase/machine-learning/immich_ml"
+      },
+      {
+        "id": "ml-package-build",
+        "command": "uv build --project Codebase/machine-learning --out-dir ${OUTPUT_ROOT}/build/machine-learning --offline"
+      },
+      {
+        "id": "mobile-android-build",
+        "command": "mise run build:android"
+      },
+      {
+        "id": "mobile-ui-unit-test",
+        "command": "flutter test"
+      },
+      {
+        "id": "open-api-dart-build",
+        "command": "bash ./bin/generate-dart-sdk.sh"
+      },
+      {
+        "id": "ios-build",
+        "command": "xcodebuild -project Runner.xcodeproj -scheme Runner build"
+      },
+      {
+        "id": "docker-e2e-test",
+        "command": "docker compose -f ./docker-compose.yml up --remove-orphans"
+      }
+    ]
+  },
+  "attempts": [
+    {
+      "id": "node-docs-build",
+      "surface": "docs",
+      "kind": "build",
+      "sourcePath": "Codebase/docs/package.json",
+      "sourceCommand": "pnpm run copy:openapi && docusaurus build",
+      "declaredCommand": "pnpm --dir Codebase/docs run build",
+      "isolatedCommand": "pnpm --dir Codebase/docs run build",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-e2e-test",
+      "surface": "e2e",
+      "kind": "test",
+      "sourcePath": "Codebase/e2e/package.json",
+      "sourceCommand": "vitest --run",
+      "declaredCommand": "pnpm --dir Codebase/e2e run test",
+      "isolatedCommand": "pnpm --dir Codebase/e2e run test",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-e2e-test-maintenance",
+      "surface": "e2e",
+      "kind": "test",
+      "sourcePath": "Codebase/e2e/package.json",
+      "sourceCommand": "vitest --run --config vitest.maintenance.config.ts",
+      "declaredCommand": "pnpm --dir Codebase/e2e run test:maintenance",
+      "isolatedCommand": "pnpm --dir Codebase/e2e run test:maintenance",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-e2e-test-web",
+      "surface": "e2e",
+      "kind": "test",
+      "sourcePath": "Codebase/e2e/package.json",
+      "sourceCommand": "pnpm exec playwright test --project=web",
+      "declaredCommand": "pnpm --dir Codebase/e2e run test:web",
+      "isolatedCommand": "pnpm --dir Codebase/e2e run test:web",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-e2e-test-web-maintenance",
+      "surface": "e2e",
+      "kind": "test",
+      "sourcePath": "Codebase/e2e/package.json",
+      "sourceCommand": "pnpm exec playwright test --project=maintenance",
+      "declaredCommand": "pnpm --dir Codebase/e2e run test:web:maintenance",
+      "isolatedCommand": "pnpm --dir Codebase/e2e run test:web:maintenance",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-e2e-test-web-ui",
+      "surface": "e2e",
+      "kind": "test",
+      "sourcePath": "Codebase/e2e/package.json",
+      "sourceCommand": "pnpm exec playwright test --project=ui",
+      "declaredCommand": "pnpm --dir Codebase/e2e run test:web:ui",
+      "isolatedCommand": "pnpm --dir Codebase/e2e run test:web:ui",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-packages-cli-build",
+      "surface": "packages/cli",
+      "kind": "build",
+      "sourcePath": "Codebase/packages/cli/package.json",
+      "sourceCommand": "vite build",
+      "declaredCommand": "pnpm --dir Codebase/packages/cli run build",
+      "isolatedCommand": "pnpm --dir Codebase/packages/cli run build",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-packages-cli-build-dev",
+      "surface": "packages/cli",
+      "kind": "build",
+      "sourcePath": "Codebase/packages/cli/package.json",
+      "sourceCommand": "vite build --sourcemap true",
+      "declaredCommand": "pnpm --dir Codebase/packages/cli run build:dev",
+      "isolatedCommand": "pnpm --dir Codebase/packages/cli run build:dev",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-packages-cli-test",
+      "surface": "packages/cli",
+      "kind": "test",
+      "sourcePath": "Codebase/packages/cli/package.json",
+      "sourceCommand": "vitest",
+      "declaredCommand": "pnpm --dir Codebase/packages/cli run test",
+      "isolatedCommand": "pnpm --dir Codebase/packages/cli run test",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-packages-cli-test-cov",
+      "surface": "packages/cli",
+      "kind": "test",
+      "sourcePath": "Codebase/packages/cli/package.json",
+      "sourceCommand": "vitest --coverage",
+      "declaredCommand": "pnpm --dir Codebase/packages/cli run test:cov",
+      "isolatedCommand": "pnpm --dir Codebase/packages/cli run test:cov",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-packages-plugin-core-build",
+      "surface": "packages/plugin-core",
+      "kind": "build",
+      "sourcePath": "Codebase/packages/plugin-core/package.json",
+      "sourceCommand": "pnpm build:tsc && pnpm build:wasm",
+      "declaredCommand": "pnpm --dir Codebase/packages/plugin-core run build",
+      "isolatedCommand": "pnpm --dir Codebase/packages/plugin-core run build",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-packages-plugin-core-build-tsc",
+      "surface": "packages/plugin-core",
+      "kind": "build",
+      "sourcePath": "Codebase/packages/plugin-core/package.json",
+      "sourceCommand": "tsc --noEmit && node esbuild.js",
+      "declaredCommand": "pnpm --dir Codebase/packages/plugin-core run build:tsc",
+      "isolatedCommand": "pnpm --dir Codebase/packages/plugin-core run build:tsc",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-packages-plugin-core-build-wasm",
+      "surface": "packages/plugin-core",
+      "kind": "build",
+      "sourcePath": "Codebase/packages/plugin-core/package.json",
+      "sourceCommand": "extism-js dist/index.js -i src/index.d.ts -o dist/plugin.wasm",
+      "declaredCommand": "pnpm --dir Codebase/packages/plugin-core run build:wasm",
+      "isolatedCommand": "pnpm --dir Codebase/packages/plugin-core run build:wasm",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-packages-plugin-sdk-build",
+      "surface": "packages/plugin-sdk",
+      "kind": "build",
+      "sourcePath": "Codebase/packages/plugin-sdk/package.json",
+      "sourceCommand": "node esbuild.js && tsc --emitDeclarationOnly && tsc-alias",
+      "declaredCommand": "pnpm --dir Codebase/packages/plugin-sdk run build",
+      "isolatedCommand": "pnpm --dir Codebase/packages/plugin-sdk run build",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-packages-plugin-sdk-test",
+      "surface": "packages/plugin-sdk",
+      "kind": "test",
+      "sourcePath": "Codebase/packages/plugin-sdk/package.json",
+      "sourceCommand": "echo \"Error: no test specified\" && exit 1",
+      "declaredCommand": "pnpm --dir Codebase/packages/plugin-sdk run test",
+      "isolatedCommand": "pnpm --dir Codebase/packages/plugin-sdk run test",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-packages-sdk-build",
+      "surface": "packages/sdk",
+      "kind": "build",
+      "sourcePath": "Codebase/packages/sdk/package.json",
+      "sourceCommand": "tsc",
+      "declaredCommand": "pnpm --dir Codebase/packages/sdk run build",
+      "isolatedCommand": "pnpm --dir Codebase/packages/sdk run build",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-server-build",
+      "surface": "server",
+      "kind": "build",
+      "sourcePath": "Codebase/server/package.json",
+      "sourceCommand": "nest build",
+      "declaredCommand": "pnpm --dir Codebase/server run build",
+      "isolatedCommand": "pnpm --dir Codebase/server run build",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-server-test",
+      "surface": "server",
+      "kind": "test",
+      "sourcePath": "Codebase/server/package.json",
+      "sourceCommand": "vitest --config test/vitest.config.mjs",
+      "declaredCommand": "pnpm --dir Codebase/server run test",
+      "isolatedCommand": "pnpm --dir Codebase/server run test",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-server-test-cov",
+      "surface": "server",
+      "kind": "test",
+      "sourcePath": "Codebase/server/package.json",
+      "sourceCommand": "vitest --config test/vitest.config.mjs --coverage",
+      "declaredCommand": "pnpm --dir Codebase/server run test:cov",
+      "isolatedCommand": "pnpm --dir Codebase/server run test:cov",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-server-test-medium",
+      "surface": "server",
+      "kind": "test",
+      "sourcePath": "Codebase/server/package.json",
+      "sourceCommand": "vitest --config test/vitest.config.medium.mjs",
+      "declaredCommand": "pnpm --dir Codebase/server run test:medium",
+      "isolatedCommand": "pnpm --dir Codebase/server run test:medium",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-web-build",
+      "surface": "web",
+      "kind": "build",
+      "sourcePath": "Codebase/web/package.json",
+      "sourceCommand": "vite build",
+      "declaredCommand": "pnpm --dir Codebase/web run build",
+      "isolatedCommand": "pnpm --dir Codebase/web run build",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-web-build-stats",
+      "surface": "web",
+      "kind": "build",
+      "sourcePath": "Codebase/web/package.json",
+      "sourceCommand": "BUILD_STATS=true vite build",
+      "declaredCommand": "pnpm --dir Codebase/web run build:stats",
+      "isolatedCommand": "pnpm --dir Codebase/web run build:stats",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-web-test",
+      "surface": "web",
+      "kind": "test",
+      "sourcePath": "Codebase/web/package.json",
+      "sourceCommand": "vitest",
+      "declaredCommand": "pnpm --dir Codebase/web run test",
+      "isolatedCommand": "pnpm --dir Codebase/web run test",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "node-web-test-cov",
+      "surface": "web",
+      "kind": "test",
+      "sourcePath": "Codebase/web/package.json",
+      "sourceCommand": "vitest --coverage",
+      "declaredCommand": "pnpm --dir Codebase/web run test:cov",
+      "isolatedCommand": "pnpm --dir Codebase/web run test:cov",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "Codebase/node_modules is absent; no install or network resolution is authorized.",
+      "durationMs": 0
+    },
+    {
+      "id": "mise-docs-build",
+      "surface": "docs",
+      "kind": "build",
+      "sourcePath": "Codebase/docs/mise.toml",
+      "sourceCommand": "jq -c < ../open-api/immich-openapi-specs.json > ./static/openapi.json || exit 0 && docusaurus build",
+      "declaredCommand": "mise run build",
+      "isolatedCommand": "mise run build",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\docs",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "DECLARED_BUILD_OUTPUT_REDIRECTION_UNPROVEN",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "mise-e2e-build",
+      "surface": "e2e",
+      "kind": "build",
+      "sourcePath": "Codebase/e2e/mise.toml",
+      "sourceCommand": "docker compose build",
+      "declaredCommand": "mise run build",
+      "isolatedCommand": "mise run build",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\e2e",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "CONTAINER_RUNTIME_AND_PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "mise-e2e-test",
+      "surface": "e2e",
+      "kind": "test",
+      "sourcePath": "Codebase/e2e/mise.toml",
+      "sourceCommand": "vitest --run",
+      "declaredCommand": "mise run test",
+      "isolatedCommand": "mise run test",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\e2e",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "CONTAINER_RUNTIME_AND_PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "mise-e2e-test-web",
+      "surface": "e2e",
+      "kind": "test",
+      "sourcePath": "Codebase/e2e/mise.toml",
+      "sourceCommand": "playwright test",
+      "declaredCommand": "mise run test-web",
+      "isolatedCommand": "mise run test-web",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\e2e",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "CONTAINER_RUNTIME_AND_PROJECT_DEPENDENCIES_UNAVAILABLE",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "ml-unit-test",
+      "surface": "machine-learning",
+      "kind": "test",
+      "sourcePath": "Codebase/machine-learning/mise.toml",
+      "sourceCommand": "uv run pytest --cov=immich_ml --cov-report term-missing",
+      "declaredCommand": "uv run --offline --frozen pytest --cov=immich_ml --cov-report term-missing --basetemp=${OUTPUT_ROOT}/test/pytest-temp -o cache_dir=${OUTPUT_ROOT}/cache/pytest",
+      "isolatedCommand": "uv run --offline --frozen pytest --cov=immich_ml --cov-report term-missing --basetemp=C:\\Users\\mhyah\\Downloads\\Code\\Lamha-isolated-output\\WP-I0-007\\run-20260809-019\\test\\pytest-temp -o cache_dir=C:\\Users\\mhyah\\Downloads\\Code\\Lamha-isolated-output\\WP-I0-007\\run-20260809-019\\cache\\pytest",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\machine-learning",
+      "executed": true,
+      "status": "FAILURE",
+      "exitCode": 1,
+      "blocker": "COMMAND_EXIT_NONZERO",
+      "output": "Using CPython 3.13.8\nCreating virtual environment at: C:\\Users\\mhyah\\Downloads\\Code\\Lamha-isolated-output\\WP-I0-007\\run-20260809-019\\generated\\machine-learning-venv\n  × Failed to download `opencv-python-headless==4.13.0.92`\n  ╰─▶ Network connectivity is disabled, but the\n      requested data wasn't found in the cache for:\n      `https://files.pythonhosted.org/packages/4a/90/b338326131ccb2aaa3c2c85d00f41822c0050139a4bfe723cfd95455bd2d/opencv_python_headless-4.13.0.92-cp37-abi3-win_amd64.whl`\n\nhint: `opencv-python-headless` (v4.13.0.92) was included because `immich-ml` (v2.7.5) depends on `opencv-python-headless`",
+      "durationMs": 359
+    },
+    {
+      "id": "docker-dev-scale-build",
+      "surface": "root",
+      "kind": "build",
+      "sourcePath": "Codebase/mise.toml",
+      "sourceCommand": "mise run //:dev --build -V --scale immich-server=3",
+      "declaredCommand": "mise run dev-scale",
+      "isolatedCommand": "mise run dev-scale",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "CONTAINER_RUNTIME_VOLUME_AND_NETWORK_UNAVAILABLE",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "docker-dev-update-build",
+      "surface": "root",
+      "kind": "build",
+      "sourcePath": "Codebase/mise.toml",
+      "sourceCommand": "mise run //:dev --build -V",
+      "declaredCommand": "mise run dev-update",
+      "isolatedCommand": "mise run dev-update",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "CONTAINER_RUNTIME_VOLUME_AND_NETWORK_UNAVAILABLE",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "docker-e2e-update-build",
+      "surface": "root",
+      "kind": "build",
+      "sourcePath": "Codebase/mise.toml",
+      "sourceCommand": "mise run //:e2e --build -V",
+      "declaredCommand": "mise run e2e-update",
+      "isolatedCommand": "mise run e2e-update",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "CONTAINER_RUNTIME_VOLUME_AND_NETWORK_UNAVAILABLE",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "docker-prod-build",
+      "surface": "root",
+      "kind": "build",
+      "sourcePath": "Codebase/mise.toml",
+      "sourceCommand": "docker compose -f ./docker-compose.prod.yml up --build --remove-orphans",
+      "declaredCommand": "mise run prod",
+      "isolatedCommand": "mise run prod",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "CONTAINER_RUNTIME_VOLUME_AND_NETWORK_UNAVAILABLE",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "docker-prod-scale-build",
+      "surface": "root",
+      "kind": "build",
+      "sourcePath": "Codebase/mise.toml",
+      "sourceCommand": "mise run //:prod --build -V --scale immich-server=3 --scale immich-microservices",
+      "declaredCommand": "mise run prod-scale",
+      "isolatedCommand": "mise run prod-scale",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "CONTAINER_RUNTIME_VOLUME_AND_NETWORK_UNAVAILABLE",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "mobile-android-build",
+      "surface": "mobile",
+      "kind": "build",
+      "sourcePath": "Codebase/mobile/mise.toml",
+      "sourceCommand": "flutter build appbundle",
+      "declaredCommand": "mise run build:android",
+      "isolatedCommand": "mise run build:android",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\mobile",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "FLUTTER_OUTPUT_REDIRECTION_UNPROVEN",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "mobile-unit-test",
+      "surface": "mobile",
+      "kind": "test",
+      "sourcePath": "Codebase/mobile/mise.toml",
+      "sourceCommand": "flutter test",
+      "declaredCommand": "mise run test",
+      "isolatedCommand": "mise run test",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\mobile",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "FLUTTER_OUTPUT_REDIRECTION_UNPROVEN",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "mise-packages-cli-build",
+      "surface": "packages/cli",
+      "kind": "build",
+      "sourcePath": "Codebase/packages/cli/mise.toml",
+      "sourceCommand": "vite build",
+      "declaredCommand": "mise run build",
+      "isolatedCommand": "mise run build",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\packages\\cli",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "DECLARED_BUILD_OUTPUT_REDIRECTION_UNPROVEN",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "mise-packages-cli-test",
+      "surface": "packages/cli",
+      "kind": "test",
+      "sourcePath": "Codebase/packages/cli/mise.toml",
+      "sourceCommand": "vitest",
+      "declaredCommand": "mise run test",
+      "isolatedCommand": "mise run test",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\packages\\cli",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "TEST_SIDE_EFFECT_REDIRECTION_UNPROVEN",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "mise-packages-plugin-core-build",
+      "surface": "packages/plugin-core",
+      "kind": "build",
+      "sourcePath": "Codebase/packages/plugin-core/mise.toml",
+      "sourceCommand": "pnpm --filter @immich/plugin-sdk --filter @immich/plugin-core build",
+      "declaredCommand": "mise run build",
+      "isolatedCommand": "mise run build",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\packages\\plugin-core",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "DECLARED_BUILD_OUTPUT_REDIRECTION_UNPROVEN",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "mise-server-build",
+      "surface": "server",
+      "kind": "build",
+      "sourcePath": "Codebase/server/mise.toml",
+      "sourceCommand": "nest build",
+      "declaredCommand": "mise run build",
+      "isolatedCommand": "mise run build",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\server",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "DECLARED_BUILD_OUTPUT_REDIRECTION_UNPROVEN",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "mise-server-test",
+      "surface": "server",
+      "kind": "test",
+      "sourcePath": "Codebase/server/mise.toml",
+      "sourceCommand": "vitest --config test/vitest.config.mjs",
+      "declaredCommand": "mise run test",
+      "isolatedCommand": "mise run test",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\server",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "TEST_SIDE_EFFECT_REDIRECTION_UNPROVEN",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "mise-server-test-medium",
+      "surface": "server",
+      "kind": "test",
+      "sourcePath": "Codebase/server/mise.toml",
+      "sourceCommand": "vitest --config test/vitest.config.medium.mjs",
+      "declaredCommand": "mise run test-medium",
+      "isolatedCommand": "mise run test-medium",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\server",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "TEST_SIDE_EFFECT_REDIRECTION_UNPROVEN",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "mise-web-build",
+      "surface": "web",
+      "kind": "build",
+      "sourcePath": "Codebase/web/mise.toml",
+      "sourceCommand": "pnpm run build",
+      "declaredCommand": "mise run build",
+      "isolatedCommand": "mise run build",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\web",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "DECLARED_BUILD_OUTPUT_REDIRECTION_UNPROVEN",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "mise-web-build-stats",
+      "surface": "web",
+      "kind": "build",
+      "sourcePath": "Codebase/web/mise.toml",
+      "sourceCommand": "pnpm run build:stats",
+      "declaredCommand": "mise run build-stats",
+      "isolatedCommand": "mise run build-stats",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\web",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "DECLARED_BUILD_OUTPUT_REDIRECTION_UNPROVEN",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "mise-web-test",
+      "surface": "web",
+      "kind": "test",
+      "sourcePath": "Codebase/web/mise.toml",
+      "sourceCommand": "pnpm run test",
+      "declaredCommand": "mise run test",
+      "isolatedCommand": "mise run test",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\web",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "TEST_SIDE_EFFECT_REDIRECTION_UNPROVEN",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "ml-bytecode-build",
+      "surface": "machine-learning",
+      "kind": "build",
+      "sourcePath": "Codebase/machine-learning/pyproject.toml",
+      "sourceCommand": "Python source bytecode compilation",
+      "declaredCommand": "python -m compileall -q Codebase/machine-learning/immich_ml",
+      "isolatedCommand": "C:\\Users\\mhyah\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe -m compileall -q Codebase/machine-learning/immich_ml",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": true,
+      "status": "SUCCESS",
+      "exitCode": 0,
+      "blocker": null,
+      "output": "",
+      "durationMs": 312
+    },
+    {
+      "id": "ml-package-build",
+      "surface": "machine-learning",
+      "kind": "build",
+      "sourcePath": "Codebase/machine-learning/pyproject.toml",
+      "sourceCommand": "[build-system] package build",
+      "declaredCommand": "uv build --project Codebase/machine-learning --out-dir ${OUTPUT_ROOT}/build/machine-learning --offline",
+      "isolatedCommand": "uv build --project Codebase/machine-learning --out-dir C:\\Users\\mhyah\\Downloads\\Code\\Lamha-isolated-output\\WP-I0-007\\run-20260809-019\\build\\machine-learning --offline",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha",
+      "executed": true,
+      "status": "FAILURE",
+      "exitCode": 2,
+      "blocker": "COMMAND_EXIT_NONZERO",
+      "output": "Building source distribution...\nerror: Failed to build `C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\machine-learning`\n  Caused by: Failed to resolve requirements from `build-system.requires`\n  Caused by: No solution found when resolving: `hatchling`\n  Caused by: Because hatchling was not found in the cache and you require hatchling, we can conclude that your requirements are unsatisfiable.\n\nhint: Packages were unavailable because the network was disabled. When the network is disabled, registry packages may only be read from the cache.",
+      "durationMs": 63
+    },
+    {
+      "id": "mobile-ui-unit-test",
+      "surface": "mobile-ui",
+      "kind": "test",
+      "sourcePath": "Codebase/mobile/packages/ui/test",
+      "sourceCommand": "flutter test",
+      "declaredCommand": "flutter test",
+      "isolatedCommand": "flutter test",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\mobile\\packages\\ui",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "FLUTTER_OUTPUT_REDIRECTION_UNPROVEN",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "open-api-dart-build",
+      "surface": "open-api-dart",
+      "kind": "build",
+      "sourcePath": "Codebase/mise.toml",
+      "sourceCommand": "[tasks.open-api-dart] bash ./bin/generate-dart-sdk.sh",
+      "declaredCommand": "bash ./bin/generate-dart-sdk.sh",
+      "isolatedCommand": "bash ./bin/generate-dart-sdk.sh",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\open-api",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "GENERATED_SOURCE_REDIRECTION_UNPROVEN",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "ios-build",
+      "surface": "ios",
+      "kind": "build",
+      "sourcePath": "Codebase/mobile/ios/Runner.xcodeproj/project.pbxproj",
+      "sourceCommand": "Xcode Runner build",
+      "declaredCommand": "xcodebuild -project Runner.xcodeproj -scheme Runner build",
+      "isolatedCommand": "xcodebuild -project Runner.xcodeproj -scheme Runner build",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\mobile\\ios",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "PLATFORM_AND_DERIVED_DATA_REDIRECTION_UNAVAILABLE",
+      "output": "",
+      "durationMs": 0
+    },
+    {
+      "id": "docker-e2e-test",
+      "surface": "docker-e2e",
+      "kind": "test",
+      "sourcePath": "Codebase/mise.toml",
+      "sourceCommand": "[tasks.e2e] docker compose -f ./docker-compose.yml up --remove-orphans",
+      "declaredCommand": "docker compose -f ./docker-compose.yml up --remove-orphans",
+      "isolatedCommand": "docker compose -f ./docker-compose.yml up --remove-orphans",
+      "workingDirectory": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha\\Codebase\\e2e",
+      "executed": false,
+      "status": "BLOCKED",
+      "exitCode": null,
+      "blocker": "CONTAINER_RUNTIME_AND_VOLUME_WRITES_UNAVAILABLE",
+      "output": "",
+      "durationMs": 0
+    }
+  ],
+  "attemptCounts": {
+    "SUCCESS": 1,
+    "FAILURE": 2,
+    "BLOCKED": 48
+  },
+  "surfaceOracle": {
+    "nodeManifestSurfaceCount": 24,
+    "miseManifestSurfaceCount": 21,
+    "mandatorySurfaceCount": 6,
+    "expectedIds": [
+      "docker-dev-scale-build",
+      "docker-dev-update-build",
+      "docker-e2e-test",
+      "docker-e2e-update-build",
+      "docker-prod-build",
+      "docker-prod-scale-build",
+      "ios-build",
+      "mise-docs-build",
+      "mise-e2e-build",
+      "mise-e2e-test",
+      "mise-e2e-test-web",
+      "mise-packages-cli-build",
+      "mise-packages-cli-test",
+      "mise-packages-plugin-core-build",
+      "mise-server-build",
+      "mise-server-test",
+      "mise-server-test-medium",
+      "mise-web-build",
+      "mise-web-build-stats",
+      "mise-web-test",
+      "ml-bytecode-build",
+      "ml-package-build",
+      "ml-unit-test",
+      "mobile-android-build",
+      "mobile-ui-unit-test",
+      "mobile-unit-test",
+      "node-docs-build",
+      "node-e2e-test",
+      "node-e2e-test-maintenance",
+      "node-e2e-test-web",
+      "node-e2e-test-web-maintenance",
+      "node-e2e-test-web-ui",
+      "node-packages-cli-build",
+      "node-packages-cli-build-dev",
+      "node-packages-cli-test",
+      "node-packages-cli-test-cov",
+      "node-packages-plugin-core-build",
+      "node-packages-plugin-core-build-tsc",
+      "node-packages-plugin-core-build-wasm",
+      "node-packages-plugin-sdk-build",
+      "node-packages-plugin-sdk-test",
+      "node-packages-sdk-build",
+      "node-server-build",
+      "node-server-test",
+      "node-server-test-cov",
+      "node-server-test-medium",
+      "node-web-build",
+      "node-web-build-stats",
+      "node-web-test",
+      "node-web-test-cov",
+      "open-api-dart-build"
+    ],
+    "missing": [],
+    "unexpected": [],
+    "mismatched": [],
+    "result": "PASS"
+  },
+  "scannerFixture": {
+    "reparseCreated": true,
+    "reparseError": null,
+    "junctionValidatorExpected": "OUTPUT_ROOT_REPARSE",
+    "junctionValidatorActual": "OUTPUT_ROOT_REPARSE",
+    "forbiddenArtifacts": [
+      "nested/node_modules"
+    ],
+    "reparsePoints": [
+      "linked-dir"
+    ],
+    "result": "PASS"
+  },
+  "externalOutputInventoryBeforeCleanup": {
+    "files": [
+      {
+        "path": "build/machine-learning/.gitignore",
+        "size": 1,
+        "sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/__init__.cpython-311.pyc",
+        "size": 156,
+        "sha256": "dbb66bfb8148136b93e381385d456ea3eff703c832cce9392f7c38b9196f0613"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/__main__.cpython-311.pyc",
+        "size": 2423,
+        "sha256": "53c4df87d217448a6d6ca7b1348fcb1f8cf65950fb2ecaff797d33c16996d9a2"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/config.cpython-311.pyc",
+        "size": 10353,
+        "sha256": "8f420c1b8109b94300842ff566df2010ac2f8ea0c40020f19591e91077f940ce"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/gunicorn_conf.cpython-311.pyc",
+        "size": 1011,
+        "sha256": "e3c134dc7d8319a12185392cce1b77ba4139977706746bb9cd4b2a0280a19c5e"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/main.cpython-311.pyc",
+        "size": 16081,
+        "sha256": "576943c56fbdb766cef9b8e7b7dd08400ac27d28b3251afd8d00d127a2aea4c5"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/models/__init__.cpython-311.pyc",
+        "size": 3836,
+        "sha256": "ecbbc1f2d51a5a0ecfa92ccc209ca9d994ba42f5c7a7c79b0c35df95a18df3e8"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/models/base.cpython-311.pyc",
+        "size": 10745,
+        "sha256": "c6e0fe67480aef44df4b7eb9a80e9ccb90ab39fd5a3a1c8ccf0f9a74b0ba9a85"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/models/cache.cpython-311.pyc",
+        "size": 3973,
+        "sha256": "6a07b7fdca26315b14be330ae0ba9b588efbb64ab72e60e781efdafd2b194d86"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/models/clip/textual.cpython-311.pyc",
+        "size": 9607,
+        "sha256": "03415aef9aa3590229aa84678f3240bfb01088185a6890938bb97a6168456858"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/models/clip/visual.cpython-311.pyc",
+        "size": 6029,
+        "sha256": "b75e327da2ac77d3666d574d0788d3d9c4252181c4dca2de13ad1864a6c5960a"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/models/constants.cpython-311.pyc",
+        "size": 5032,
+        "sha256": "255cc04b2bffcb213fc39d5035b88d197dab119c4c8c06e049d13041426d630e"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/models/facial_recognition/detection.cpython-311.pyc",
+        "size": 3404,
+        "sha256": "61038d63c8d7aec0e7d4c05630973397cba939f1a3dd0b849c503890672a4322"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/models/facial_recognition/recognition.cpython-311.pyc",
+        "size": 8189,
+        "sha256": "0588703a0616d28e5f221597f62589858dbe00812d57307c39cb6e1b8b482fe5"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/models/ocr/detection.cpython-311.pyc",
+        "size": 8498,
+        "sha256": "2f7d0748a5058cfac0cb8ac5d50fa462a9840164bcb1bd40028c70e9d18426f1"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/models/ocr/recognition.cpython-311.pyc",
+        "size": 11742,
+        "sha256": "bd5ad9c568a3178302098fbee7e0efddc1148b4b94feb19ee0b9e1f5441799a8"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/models/ocr/schemas.cpython-311.pyc",
+        "size": 2213,
+        "sha256": "33dddb5a7b3b685fee7435d55c93347c4984dfdc803ceabeac323188585a3293"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/models/transforms.cpython-311.pyc",
+        "size": 5782,
+        "sha256": "2c8c8a60ab9039d5813552959ec3f7ac26822822148b4980ae3ac595b9a99204"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/schemas.cpython-311.pyc",
+        "size": 7002,
+        "sha256": "d7522b2e596bc64fba26108493c357383c29ae25de227d78aca762d00a5edf34"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/sessions/__init__.cpython-311.pyc",
+        "size": 165,
+        "sha256": "9588771a7f568ab84e40c328dd0b5d3e986a44b6c517736e03f1174e2d5852b2"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/sessions/ann/__init__.cpython-311.pyc",
+        "size": 4593,
+        "sha256": "1d8dc3f6b0c7f5369153955bb011ba10f2b9f31424940c323988e06555f30a30"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/sessions/ann/loader.cpython-311.pyc",
+        "size": 11578,
+        "sha256": "cac97a1b5c21924583ed9b1a5fa457165ec87a7003e98b53210c24b9417ef6c0"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/sessions/ort.cpython-311.pyc",
+        "size": 12639,
+        "sha256": "86ee63d0c67e9abf11baae82a18f09dfd8afd92f0adc7a270bf820e95fd99679"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/sessions/rknn/__init__.cpython-311.pyc",
+        "size": 5265,
+        "sha256": "456eb9381265b916c3dbfbd69ec56ec33ce275876b28a650d7c1b4a95e823904"
+      },
+      {
+        "path": "cache/python/Users/mhyah/Downloads/Code/Lamha/Codebase/machine-learning/immich_ml/sessions/rknn/rknnpool.cpython-311.pyc",
+        "size": 5930,
+        "sha256": "8592117399b89d294cb4718c99627ab7ee858478363054abf478958ce1959027"
+      },
+      {
+        "path": "cache/uv/.gitignore",
+        "size": 1,
+        "sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1"
+      },
+      {
+        "path": "cache/uv/.lock",
+        "size": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "cache/uv/CACHEDIR.TAG",
+        "size": 43,
+        "sha256": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae"
+      },
+      {
+        "path": "cache/uv/interpreter-v4/2f8a8d68d05c453f/6211f575068542c2.msgpack",
+        "size": 1973,
+        "sha256": "99d8917fba55555528f296970dc9422402e0b50c9014ab0426048a88ec5aac3c"
+      },
+      {
+        "path": "cache/uv/sdists-v9/.git",
+        "size": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "cache/uv/sdists-v9/.gitignore",
+        "size": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "cache/uv/sdists-v9/editable/7ca706ed22daff1d/.lock",
+        "size": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "cache/uv/simple-v22/pypi/hatchling.lock",
+        "size": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "cache/uv/wheels-v6/pypi/opencv-python-headless/opencv_python_headless-4.13.0.92-cp37-abi3-win_amd64.lock",
+        "size": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "generated/machine-learning-venv/.gitignore",
+        "size": 1,
+        "sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1"
+      },
+      {
+        "path": "generated/machine-learning-venv/.lock",
+        "size": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "generated/machine-learning-venv/CACHEDIR.TAG",
+        "size": 43,
+        "sha256": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae"
+      },
+      {
+        "path": "generated/machine-learning-venv/Lib/site-packages/_virtualenv.pth",
+        "size": 18,
+        "sha256": "69ac3d8f27e679c81b94ab30b3b56e9cd138219b1ba94a1fa3606d5a76a1433d"
+      },
+      {
+        "path": "generated/machine-learning-venv/Lib/site-packages/_virtualenv.py",
+        "size": 5246,
+        "sha256": "cfb3db86aaa53bb62b5ff764970bec2d71c9228590a0ebec57f6ec926cc0bf1a"
+      },
+      {
+        "path": "generated/machine-learning-venv/pyvenv.cfg",
+        "size": 195,
+        "sha256": "b22ded932b3b13c122569a8b53ca74bed7f1fa12d86649a67c6dcb1a3ab6b9cc"
+      },
+      {
+        "path": "generated/machine-learning-venv/Scripts/activate",
+        "size": 4185,
+        "sha256": "78c128bfc714f13bb51c71599a607a37a3edfabb9ff1d75ad40e0662a2fc0733"
+      },
+      {
+        "path": "generated/machine-learning-venv/Scripts/activate.bat",
+        "size": 2756,
+        "sha256": "1d33524280e9e91cdd35859f9088b574b160f42ecbac9b5affe81ce1c77701c3"
+      },
+      {
+        "path": "generated/machine-learning-venv/Scripts/activate.csh",
+        "size": 2715,
+        "sha256": "29ba722dae5895a5a5be6b1f7f1d7f06eadabd439990ec324f7b34604e55727d"
+      },
+      {
+        "path": "generated/machine-learning-venv/Scripts/activate.fish",
+        "size": 4426,
+        "sha256": "ca36bf164dddafb279f3e3f9fdd9dc47a060398a09912a2e95d9a253c5f27438"
+      },
+      {
+        "path": "generated/machine-learning-venv/Scripts/activate.nu",
+        "size": 4041,
+        "sha256": "6301eb4c190d90658d6b622e8511757aa9ef9052cf12acfb8cf592049391b270"
+      },
+      {
+        "path": "generated/machine-learning-venv/Scripts/activate.ps1",
+        "size": 2786,
+        "sha256": "461171d4714030cfb68f1190ab386de8546d34ddcdadacf0c2708a093e8b5ee2"
+      },
+      {
+        "path": "generated/machine-learning-venv/Scripts/activate_this.py",
+        "size": 2387,
+        "sha256": "52febbb157d83ae8a8c1013456fc96912b58f34e57becd9799303e77e555343e"
+      },
+      {
+        "path": "generated/machine-learning-venv/Scripts/deactivate.bat",
+        "size": 1730,
+        "sha256": "13ea86073a9ee43a66e3549312599dd47ff315758b4ca5a0406faf041fb82300"
+      },
+      {
+        "path": "generated/machine-learning-venv/Scripts/pydoc.bat",
+        "size": 1219,
+        "sha256": "09f9608d478fa48a9e49af8f413cfeaab47773effd185433088b7688ce75890e"
+      },
+      {
+        "path": "generated/machine-learning-venv/Scripts/python.exe",
+        "size": 45568,
+        "sha256": "81b6aa6afdba1f238c4be0ad6075f4dbfb8b9e1fbb5dff9134d94c72feaa769e"
+      },
+      {
+        "path": "generated/machine-learning-venv/Scripts/pythonw.exe",
+        "size": 45568,
+        "sha256": "81b6aa6afdba1f238c4be0ad6075f4dbfb8b9e1fbb5dff9134d94c72feaa769e"
+      },
+      {
+        "path": "temporary/uv-bc090c8e37809d5d.lock",
+        "size": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "test/scanner-fixture/linked-dir/value.txt",
+        "size": 6,
+        "sha256": "34a04005bcaf206eec990bd9637d9fdb6725e0a0c0d4aebf003f17f4c956eb5c"
+      },
+      {
+        "path": "test/scanner-fixture/nested/node_modules/value.txt",
+        "size": 7,
+        "sha256": "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d"
+      },
+      {
+        "path": "test/scanner-fixture/target-dir/value.txt",
+        "size": 6,
+        "sha256": "34a04005bcaf206eec990bd9637d9fdb6725e0a0c0d4aebf003f17f4c956eb5c"
+      }
+    ],
+    "countsByClass": {
+      "build": 1,
+      "test": 3,
+      "cache": 33,
+      "generated": 17,
+      "package-manager": 0,
+      "temporary": 1
+    },
+    "fileCount": 55
+  },
+  "cleanup": {
+    "attempted": true,
+    "succeeded": true,
+    "rootAbsentAfterCleanup": true,
+    "templateParentsCreated": {
+      "C:\\Users\\mhyah\\Downloads\\Code\\Lamha-isolated-output\\WP-I0-007": true,
+      "C:\\Users\\mhyah\\Downloads\\Code\\Lamha-isolated-output": true
+    },
+    "templateParentCleanupErrors": [],
+    "createdTemplateParentsAbsentAfterCleanup": true
+  },
+  "negativeFixtures": [
+    {
+      "name": "missing_package",
+      "expected": "AUTHORIZATION_FIELD_MISSING",
+      "actual": "AUTHORIZATION_FIELD_MISSING",
+      "result": "PASS"
+    },
+    {
+      "name": "wrong_package",
+      "expected": "PACKAGE_ID_MISMATCH",
+      "actual": "PACKAGE_ID_MISMATCH",
+      "result": "PASS"
+    },
+    {
+      "name": "inside_repository",
+      "expected": "OUTPUT_ROOT_NOT_EXTERNAL",
+      "actual": "OUTPUT_ROOT_NOT_EXTERNAL",
+      "result": "PASS"
+    },
+    {
+      "name": "mismatched_run_root",
+      "expected": "OUTPUT_ROOT_TEMPLATE_INVALID",
+      "actual": "OUTPUT_ROOT_TEMPLATE_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "mismatched_package_root",
+      "expected": "OUTPUT_ROOT_TEMPLATE_INVALID",
+      "actual": "OUTPUT_ROOT_TEMPLATE_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "arbitrary_safe_root",
+      "expected": "OUTPUT_ROOT_TEMPLATE_INVALID",
+      "actual": "OUTPUT_ROOT_TEMPLATE_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "duplicate_child",
+      "expected": "OUTPUT_CHILD_COLLISION",
+      "actual": "OUTPUT_CHILD_COLLISION",
+      "result": "PASS"
+    },
+    {
+      "name": "network_enabled",
+      "expected": "UNSAFE_AUTHORIZATION",
+      "actual": "UNSAFE_AUTHORIZATION",
+      "result": "PASS"
+    },
+    {
+      "name": "command_removed",
+      "expected": "COMMAND_SET_INVALID",
+      "actual": "COMMAND_SET_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "existing_file_root",
+      "expected": "OUTPUT_ROOT_NOT_DIRECTORY",
+      "actual": "OUTPUT_ROOT_NOT_DIRECTORY",
+      "result": "PASS"
+    },
+    {
+      "name": "wrong_source_type",
+      "expected": "SOURCE_WORKSPACE_INVALID",
+      "actual": "SOURCE_WORKSPACE_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "wrong_output_type",
+      "expected": "OUTPUT_ROOT_TYPE_INVALID",
+      "actual": "OUTPUT_ROOT_TYPE_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "reserved_output_component",
+      "expected": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "actual": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "reserved_superscript_com_component",
+      "expected": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "actual": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "reserved_superscript_lpt_component",
+      "expected": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "actual": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "reserved_conin_component",
+      "expected": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "actual": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "reserved_conout_component",
+      "expected": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "actual": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "overlong_output_component",
+      "expected": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "actual": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "extended_namespace_repository_alias",
+      "expected": "OUTPUT_ROOT_NAMESPACE_INVALID",
+      "actual": "OUTPUT_ROOT_NAMESPACE_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "forward_extended_namespace_repository_alias",
+      "expected": "OUTPUT_ROOT_NAMESPACE_INVALID",
+      "actual": "OUTPUT_ROOT_NAMESPACE_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "localhost_unc_repository_alias",
+      "expected": "OUTPUT_ROOT_UNC_FORBIDDEN",
+      "actual": "OUTPUT_ROOT_UNC_FORBIDDEN",
+      "result": "PASS"
+    },
+    {
+      "name": "loopback_unc_repository_alias",
+      "expected": "OUTPUT_ROOT_UNC_FORBIDDEN",
+      "actual": "OUTPUT_ROOT_UNC_FORBIDDEN",
+      "result": "PASS"
+    },
+    {
+      "name": "alternate_data_stream_output",
+      "expected": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "actual": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "trailing_dot_output",
+      "expected": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "actual": "OUTPUT_ROOT_COMPONENT_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "noncanonical_separator_output",
+      "expected": "OUTPUT_ROOT_NOT_CANONICAL",
+      "actual": "OUTPUT_ROOT_NOT_CANONICAL",
+      "result": "PASS"
+    },
+    {
+      "name": "invalid_run_id",
+      "expected": "RUN_ID_INVALID",
+      "actual": "RUN_ID_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "unexpected_field",
+      "expected": "AUTHORIZATION_FIELD_UNEXPECTED",
+      "actual": "AUTHORIZATION_FIELD_UNEXPECTED",
+      "result": "PASS"
+    },
+    {
+      "name": "duplicate_command",
+      "expected": "COMMAND_DUPLICATE",
+      "actual": "COMMAND_DUPLICATE",
+      "result": "PASS"
+    },
+    {
+      "name": "generated_dependency_tree",
+      "expected": "FORBIDDEN_ARTIFACT",
+      "actual": "FORBIDDEN_ARTIFACT",
+      "result": "PASS"
+    },
+    {
+      "name": "package_prefix_sibling",
+      "expected": "REJECTED",
+      "actual": "REJECTED",
+      "result": "PASS"
+    },
+    {
+      "name": "raw_duplicate_key",
+      "expected": "AUTHORIZATION_DUPLICATE_KEY",
+      "actual": "AUTHORIZATION_DUPLICATE_KEY",
+      "result": "PASS"
+    },
+    {
+      "name": "raw_malformed_json",
+      "expected": "AUTHORIZATION_JSON_INVALID",
+      "actual": "AUTHORIZATION_JSON_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "raw_nul_source_path",
+      "expected": "SOURCE_WORKSPACE_INVALID",
+      "actual": "SOURCE_WORKSPACE_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "raw_nul_output_path",
+      "expected": "OUTPUT_ROOT_TYPE_INVALID",
+      "actual": "OUTPUT_ROOT_TYPE_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "raw_floating_schema_version",
+      "expected": "AUTHORIZATION_VERSION_INVALID",
+      "actual": "AUTHORIZATION_VERSION_INVALID",
+      "result": "PASS"
+    },
+    {
+      "name": "mid_setup_failure_recovery",
+      "expected": "INJECTED_OUTPUT_SETUP_FAILURE_AND_CLEAN",
+      "actual": "INJECTED_OUTPUT_SETUP_FAILURE_AND_CLEAN",
+      "result": "PASS",
+      "cleanup": {
+        "attempted": true,
+        "succeeded": true,
+        "rootAbsentAfterCleanup": true,
+        "templateParentsCreated": {
+          "C:\\Users\\mhyah\\Downloads\\Code\\Lamha-isolated-output\\WP-I0-007": true,
+          "C:\\Users\\mhyah\\Downloads\\Code\\Lamha-isolated-output": true
+        },
+        "templateParentCleanupErrors": [],
+        "createdTemplateParentsAbsentAfterCleanup": true
+      }
+    },
+    {
+      "name": "nested_ignored_and_reparse_scanner",
+      "expected": "PASS",
+      "actual": "PASS",
+      "result": "PASS"
+    }
+  ],
+  "recoveredIncidents": [
+    {
+      "runId": "authoring",
+      "code": "UNAUTHORIZED_AUTHORING_CACHE",
+      "status": "RECOVERED",
+      "evidence": "authoring-incident.md"
+    },
+    {
+      "runId": "run-20260809-001",
+      "code": "WINDOWS_COMMAND_LAUNCHER_DEFECT",
+      "status": "SUPERSEDED",
+      "evidence": "authoring-incident.md"
+    },
+    {
+      "runId": "run-20260809-002",
+      "code": "ISOLATION_VIOLATION",
+      "status": "RECOVERED_AND_REJECTED",
+      "evidence": "authoring-incident.md"
+    }
+  ],
+  "preservation": {
+    "codebaseBefore": {
+      "expectedFiles": 3697,
+      "currentFiles": 3697,
+      "missing": [],
+      "unexpected": [],
+      "mismatched": [],
+      "forbiddenArtifacts": [],
+      "reparsePoints": [],
+      "result": "PASS"
+    },
+    "codebaseAfter": {
+      "expectedFiles": 3697,
+      "currentFiles": 3697,
+      "missing": [],
+      "unexpected": [],
+      "mismatched": [],
+      "forbiddenArtifacts": [],
+      "reparsePoints": [],
+      "result": "PASS"
+    },
+    "protectedRepository": {
+      "beforeFileCount": 6367,
+      "afterFileCount": 6367,
+      "beforeDigest": "d99f457d7ec8a9b4af9c63d0117e74fef74d20835e8921f2e47c2462f7e894d4",
+      "afterDigest": "d99f457d7ec8a9b4af9c63d0117e74fef74d20835e8921f2e47c2462f7e894d4",
+      "added": [],
+      "removed": [],
+      "modified": [],
+      "reparseBefore": [],
+      "reparseAfter": [],
+      "result": "PASS"
+    },
+    "unauthorizedGitStatusBefore": [],
+    "unauthorizedGitStatusAfter": []
+  },
+  "status": "PASS",
+  "failures": []
+}

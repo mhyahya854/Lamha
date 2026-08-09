@@ -1,0 +1,47 @@
+{
+  "packageId": "WP-I0-007",
+  "runId": "run-20260809-019",
+  "outputRoot": "C:\\Users\\mhyah\\Downloads\\Code\\Lamha-isolated-output\\WP-I0-007\\run-20260809-019",
+  "status": "PASS",
+  "failures": [],
+  "checks": {
+    "authorization": "PASS",
+    "attemptCoverage": "PASS",
+    "focused": "PASS",
+    "negative": "PASS",
+    "regression": "PASS",
+    "artifactScan": "PASS",
+    "evidenceConsistency": "PASS",
+    "exitGate": "PASS"
+  },
+  "counts": {
+    "plannedAttempts": 51,
+    "SUCCESS": 1,
+    "FAILURE": 2,
+    "BLOCKED": 48,
+    "externalFilesBeforeCleanup": 55,
+    "recoveredIncidents": 3
+  },
+  "exitGateClauses": [
+    {
+      "clause": "One separately authorized external run root contains every writable output class",
+      "evidence": "Authorization names run-20260809-019, the canonical external root, all six output classes, and 51 commands; network and repository copies are forbidden.",
+      "result": "PASS"
+    },
+    {
+      "clause": "Every source-derived baseline build/test surface is faithfully represented or receives an exact pre-execution blocker",
+      "evidence": "The independent package/mise source oracle and manual platform list report missing=0, unexpected=0, mismatched=0; 51 attempts record 1 successes, 2 executed failures, and 48 typed blockers without substituting source commands.",
+      "result": "PASS"
+    },
+    {
+      "clause": "The corrected run and recorded recovery leave all protected repository content unchanged and remove the disposable root",
+      "evidence": "Run-002 is rejected as an ISOLATION_VIOLATION. Current run run-20260809-019 has Codebase PASS/PASS across 3697 files, protected repository result PASS across 6367 files, empty unauthorized Git status, scanner fixture PASS, and cleanupSucceeded=True.",
+      "result": "PASS"
+    },
+    {
+      "clause": "Invalid authorizations fail with typed errors and no partial execution",
+      "evidence": "37/37 pure negative fixtures returned their expected typed errors, including an existing file-valued root and raw duplicate/malformed JSON.",
+      "result": "PASS"
+    }
+  ]
+}

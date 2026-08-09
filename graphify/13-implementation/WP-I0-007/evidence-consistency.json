@@ -1,0 +1,15 @@
+{
+  "packageId": "WP-I0-007",
+  "runId": "run-20260809-019",
+  "checkedFiles": [
+    "baseline-attempts.json",
+    "verification-report.json",
+    "package-summary.json",
+    "provenance-report.json",
+    "artifact-scan.json",
+    "baseline-attempts.md",
+    "completion-evidence.md"
+  ],
+  "mismatches": [],
+  "result": "PASS"
+}
