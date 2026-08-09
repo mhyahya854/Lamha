@@ -32,4 +32,15 @@ The prior attempt created and deleted an external self-test stdout capture. It w
 
 **PACKAGE REVIEW PASS**
 
-Current package completion remains pending final certification, commit, push, and GitHub 1:1 verification.
+## Transition verification
+
+- Package implementation commit: `6e91e4b9108c591d6908833b2c2f48162bbe95c6` (`Complete WP-I0-006: build-output isolation decision`).
+- GitHub push: `82dfd9e..6e91e4b  main -> main` — exit 0.
+- GitHub 1:1 verification: `HEAD == origin/main == 6e91e4b9108c591d6908833b2c2f48162bbe95c6`; `git diff --exit-code HEAD origin/main` clean; worktree clean.
+- Post-push verification: committed package summary PASS with empty failures; focused decision validation PASS; 31/31 negative cases PASS; regression and artifact scans PASS; all four exit-gate clauses PASS; certification PASS; validator 24/24.
+- Unauthorized changed paths: 0.
+- Final package status: COMPLETE and GitHub-verified.
+- READY set after completion: `WP-I0-007`, `WP-I0-008`, `WP-I0-009`, `WP-I0-010`, `WP-I0-011`, `WP-I1-001`, `WP-I2-001`, `WP-I2-002`, `WP-I10-003`, `WP-I15-006`.
+- Deterministic next-package selection (phase, package ordinal, ID): `WP-I0-007`.
+- `WP-I0-007` status: AUTHORIZED — NOT_STARTED.
+- Next-package implementation changes: 0; no WP-I0-007 implementation, tests, dependencies, scaffolding, or implementation commands were created or run.
