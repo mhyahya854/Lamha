@@ -1,0 +1,54 @@
+{
+  "packageId": "WP-I0-006",
+  "status": "PASS",
+  "failures": [],
+  "collectionWindowUtc": {
+    "start": "2026-08-09T00:20:58+00:00",
+    "end": "2026-08-09T00:21:05+00:00"
+  },
+  "checks": {
+    "decisionValidation": "PASS",
+    "negativeValidation": "PASS",
+    "regressionValidation": "PASS",
+    "artifactScan": "PASS",
+    "exitGate": "PASS"
+  },
+  "counts": {
+    "ownedRequirements": 1,
+    "futureOutputClasses": 6,
+    "negativeProbes": 31,
+    "codebaseFilesVerified": 3697,
+    "forbiddenArtifacts": 0
+  },
+  "evidenceFiles": [
+    "13-implementation/WP-I0-006/artifact-scan.json",
+    "13-implementation/WP-I0-006/build-output-isolation-decision.json",
+    "13-implementation/WP-I0-006/completion-evidence.md",
+    "13-implementation/WP-I0-006/prior-failed-run-incident.md",
+    "13-implementation/WP-I0-006/package-summary.json",
+    "13-implementation/WP-I0-006/provenance-report.json",
+    "13-implementation/WP-I0-006/verification-report.json"
+  ],
+  "exitGateClauses": [
+    {
+      "clause": "The later writable boundary is explicit",
+      "evidence": "The decision requires a separately authorized, run-scoped absolute output root outside the repository and maps all six output classes to unique children.",
+      "result": "PASS"
+    },
+    {
+      "clause": "No workspace, repository copy, build, test, cache, generated-code, package-manager, or temporary output was created",
+      "evidence": "The isolated output environment is unbound; output execution and workspace creation are false; the recursive artifact scan reports zero forbidden classes and zero outside-Graphify changes for this invocation.",
+      "result": "PASS"
+    },
+    {
+      "clause": "Invalid input returns typed errors with no partial authoritative state",
+      "evidence": "All 31 invalid decisions returned their expected typed errors and the before/after repository fingerprints match.",
+      "result": "PASS"
+    },
+    {
+      "clause": "The verified read-only provenance baseline remains intact",
+      "evidence": "All 3697 Codebase files match the WP-I0-001 path, size, and SHA-256 manifest; WP-I0-001 status and exit gate remain PASS.",
+      "result": "PASS"
+    }
+  ]
+}

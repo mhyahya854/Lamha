@@ -1,0 +1,176 @@
+{
+  "packageId": "WP-I0-006",
+  "gitStatusPaths": [
+    "graphify/13-implementation/WP-I0-006/adversarial-review.md",
+    "graphify/13-implementation/WP-I0-006/artifact-scan.json",
+    "graphify/13-implementation/WP-I0-006/build-output-isolation-decision.json",
+    "graphify/13-implementation/WP-I0-006/collect_evidence.py",
+    "graphify/13-implementation/WP-I0-006/completion-evidence.md",
+    "graphify/13-implementation/WP-I0-006/package-summary.json",
+    "graphify/13-implementation/WP-I0-006/prior-failed-run-incident.md",
+    "graphify/13-implementation/WP-I0-006/provenance-report.json",
+    "graphify/13-implementation/WP-I0-006/verification-report.json"
+  ],
+  "outsideGraphifyChanges": [],
+  "unauthorizedGraphifyChangesAtCollection": [],
+  "unexpectedPackageFiles": [],
+  "unexpectedPackageEntries": [],
+  "unexpectedGraphifyDirectories": [],
+  "ignoredUntrackedPaths": [],
+  "recursiveInventory": {
+    "packageFiles": 9,
+    "packageDirectories": 0,
+    "packageReparsePaths": [],
+    "packageSpecialPaths": [],
+    "codebaseFiles": 3697,
+    "codebaseDirectories": 578,
+    "codebaseReparsePaths": [],
+    "codebaseSpecialPaths": [],
+    "graphifyFiles": 2682,
+    "graphifyDirectories": 71,
+    "graphifyReparsePaths": [],
+    "graphifySpecialPaths": [],
+    "agentsFiles": 0,
+    "agentsDirectories": 0,
+    "agentsReparsePaths": [],
+    "agentsSpecialPaths": []
+  },
+  "topLevelEntries": [
+    ".agents",
+    ".git",
+    "Codebase",
+    "graphify"
+  ],
+  "unexpectedTopLevelEntries": [],
+  "isolatedOutputRootEnvironmentBound": false,
+  "codebaseComparison": {
+    "baselinePackage": "WP-I0-001",
+    "baselineManifest": "13-implementation/WP-I0-001/sha256-manifest.csv",
+    "expectedFiles": 3697,
+    "currentFiles": 3697,
+    "added": [],
+    "removed": [],
+    "modified": [],
+    "currentDirectories": 578,
+    "baselineRepresentedDirectories": 577,
+    "unrepresentedDirectories": [
+      "Codebase/e2e/test-assets"
+    ],
+    "verifiedBaselineEmptyDirectories": [
+      "Codebase/e2e/test-assets"
+    ],
+    "baselineEmptyDirectoryEvidence": {
+      "Codebase/e2e/test-assets": true
+    },
+    "unexpectedDirectories": [],
+    "reparsePaths": [],
+    "specialPaths": [],
+    "artifactMatchesFromBaselineDelta": {
+      "workspace": [],
+      "repositoryCopy": [],
+      "build": [],
+      "test": [],
+      "cache": [],
+      "generatedCode": [],
+      "packageManager": [],
+      "temporary": []
+    },
+    "result": "PASS"
+  },
+  "forbiddenArtifactClasses": {
+    "workspace": 0,
+    "repositoryCopy": 0,
+    "build": 0,
+    "test": 0,
+    "cache": 0,
+    "generatedCode": 0,
+    "packageManager": 0,
+    "temporary": 0
+  },
+  "forbiddenArtifactPaths": {
+    "workspace": [],
+    "repositoryCopy": [],
+    "build": [],
+    "test": [],
+    "cache": [],
+    "generatedCode": [],
+    "packageManager": [],
+    "temporary": []
+  },
+  "classifierFixtures": {
+    "cases": [
+      {
+        "path": "graphify/13-implementation/WP-I0-006/workspace/run",
+        "expectedClass": "workspace",
+        "actualClasses": [
+          "workspace"
+        ],
+        "result": "PASS"
+      },
+      {
+        "path": "graphify/13-implementation/WP-I0-006/repo-copy/Codebase",
+        "expectedClass": "repositoryCopy",
+        "actualClasses": [
+          "repositoryCopy"
+        ],
+        "result": "PASS"
+      },
+      {
+        "path": "graphify/13-implementation/WP-I0-006/nested/build/output.bin",
+        "expectedClass": "build",
+        "actualClasses": [
+          "build"
+        ],
+        "result": "PASS"
+      },
+      {
+        "path": "graphify/13-implementation/WP-I0-006/nested/coverage/result.json",
+        "expectedClass": "test",
+        "actualClasses": [
+          "test"
+        ],
+        "result": "PASS"
+      },
+      {
+        "path": "graphify/13-implementation/WP-I0-006/nested/__pycache__/value.pyc",
+        "expectedClass": "cache",
+        "actualClasses": [
+          "cache"
+        ],
+        "result": "PASS"
+      },
+      {
+        "path": "graphify/13-implementation/WP-I0-006/nested/generated/value.rs",
+        "expectedClass": "generatedCode",
+        "actualClasses": [
+          "generatedCode"
+        ],
+        "result": "PASS"
+      },
+      {
+        "path": "graphify/13-implementation/WP-I0-006/nested/node_modules/pkg/index.js",
+        "expectedClass": "packageManager",
+        "actualClasses": [
+          "packageManager"
+        ],
+        "result": "PASS"
+      },
+      {
+        "path": "graphify/13-implementation/WP-I0-006/nested/temp/value.tmp",
+        "expectedClass": "temporary",
+        "actualClasses": [
+          "temporary"
+        ],
+        "result": "PASS"
+      },
+      {
+        "path": "graphify/13-implementation/WP-I0-006/verification-report.json",
+        "expectedClass": null,
+        "actualClasses": [],
+        "result": "PASS"
+      }
+    ],
+    "result": "PASS"
+  },
+  "result": "PASS"
+}

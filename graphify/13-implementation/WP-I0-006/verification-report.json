@@ -1,0 +1,418 @@
+{
+  "packageId": "WP-I0-006",
+  "requirementId": "CAN-MISSION-I0-005",
+  "collectionWindowUtc": {
+    "start": "2026-08-09T00:20:58+00:00",
+    "end": "2026-08-09T00:21:05+00:00"
+  },
+  "focusedValidation": {
+    "decision": {
+      "status": "VALID",
+      "packageId": "WP-I0-006",
+      "requirementId": "CAN-MISSION-I0-005"
+    },
+    "result": "PASS"
+  },
+  "negativeValidation": {
+    "probes": [
+      {
+        "name": "missing_field",
+        "expectedCode": "DECISION_FIELD_MISSING",
+        "actualCode": "DECISION_FIELD_MISSING",
+        "field": "futureWorkspace",
+        "result": "PASS"
+      },
+      {
+        "name": "current_activation",
+        "expectedCode": "CURRENT_INVOCATION_OUTPUT_FORBIDDEN",
+        "actualCode": "CURRENT_INVOCATION_OUTPUT_FORBIDDEN",
+        "field": "decisionInvocation",
+        "result": "PASS"
+      },
+      {
+        "name": "missing_authorization",
+        "expectedCode": "WORKSPACE_AUTHORIZATION_REQUIRED",
+        "actualCode": "WORKSPACE_AUTHORIZATION_REQUIRED",
+        "field": "futureWorkspace.separatePackageAuthorizationRequired",
+        "result": "PASS"
+      },
+      {
+        "name": "repository_overlap",
+        "expectedCode": "OUTPUT_ROOT_MUST_BE_EXTERNAL",
+        "actualCode": "OUTPUT_ROOT_MUST_BE_EXTERNAL",
+        "field": "futureWorkspace.rootConstraints",
+        "result": "PASS"
+      },
+      {
+        "name": "unmapped_output",
+        "expectedCode": "OUTPUT_CLASS_SET_INVALID",
+        "actualCode": "OUTPUT_CLASS_SET_INVALID",
+        "field": "futureWorkspace.outputClassPaths",
+        "result": "PASS"
+      },
+      {
+        "name": "traversal_child",
+        "expectedCode": "OUTPUT_CHILD_INVALID",
+        "actualCode": "OUTPUT_CHILD_INVALID",
+        "field": "futureWorkspace.outputClassPaths.test",
+        "result": "PASS"
+      },
+      {
+        "name": "duplicate_tree",
+        "expectedCode": "DUPLICATE_TREE_FORBIDDEN",
+        "actualCode": "DUPLICATE_TREE_FORBIDDEN",
+        "field": "forbiddenOperations",
+        "result": "PASS"
+      },
+      {
+        "name": "malformed_type",
+        "expectedCode": "DECISION_FIELD_MISSING",
+        "actualCode": "DECISION_FIELD_MISSING",
+        "field": "forbiddenOperations",
+        "result": "PASS"
+      },
+      {
+        "name": "unexpected_nested_authorization",
+        "expectedCode": "DECISION_FIELD_UNEXPECTED",
+        "actualCode": "DECISION_FIELD_UNEXPECTED",
+        "field": "decisionInvocation",
+        "result": "PASS"
+      },
+      {
+        "name": "contradictory_failure_behavior",
+        "expectedCode": "CURRENT_INVOCATION_OUTPUT_FORBIDDEN",
+        "actualCode": "CURRENT_INVOCATION_OUTPUT_FORBIDDEN",
+        "field": "failurePolicy.behavior",
+        "result": "PASS"
+      },
+      {
+        "name": "reserved_child",
+        "expectedCode": "OUTPUT_CHILD_INVALID",
+        "actualCode": "OUTPUT_CHILD_INVALID",
+        "field": "futureWorkspace.outputClassPaths.test",
+        "result": "PASS"
+      },
+      {
+        "name": "alternate_stream_child",
+        "expectedCode": "OUTPUT_CHILD_INVALID",
+        "actualCode": "OUTPUT_CHILD_INVALID",
+        "field": "futureWorkspace.outputClassPaths.test",
+        "result": "PASS"
+      },
+      {
+        "name": "whitespace_child",
+        "expectedCode": "OUTPUT_CHILD_INVALID",
+        "actualCode": "OUTPUT_CHILD_INVALID",
+        "field": "futureWorkspace.outputClassPaths.test",
+        "result": "PASS"
+      },
+      {
+        "name": "trailing_dot_child",
+        "expectedCode": "OUTPUT_CHILD_INVALID",
+        "actualCode": "OUTPUT_CHILD_INVALID",
+        "field": "futureWorkspace.outputClassPaths.test",
+        "result": "PASS"
+      },
+      {
+        "name": "control_child",
+        "expectedCode": "OUTPUT_CHILD_INVALID",
+        "actualCode": "OUTPUT_CHILD_INVALID",
+        "field": "futureWorkspace.outputClassPaths.test",
+        "result": "PASS"
+      },
+      {
+        "name": "casefold_child_collision",
+        "expectedCode": "OUTPUT_CHILD_INVALID",
+        "actualCode": "OUTPUT_CHILD_INVALID",
+        "field": "futureWorkspace.outputClassPaths",
+        "result": "PASS"
+      },
+      {
+        "name": "contradictory_extra_rule",
+        "expectedCode": "OUTPUT_ROOT_MUST_BE_EXTERNAL",
+        "actualCode": "OUTPUT_ROOT_MUST_BE_EXTERNAL",
+        "field": "futureWorkspace.commandRules",
+        "result": "PASS"
+      },
+      {
+        "name": "boolean_schema_version",
+        "expectedCode": "DECISION_FIELD_MISSING",
+        "actualCode": "DECISION_FIELD_MISSING",
+        "field": "schemaVersion",
+        "result": "PASS"
+      },
+      {
+        "name": "contradictory_source_workspace",
+        "expectedCode": "DUPLICATE_TREE_FORBIDDEN",
+        "actualCode": "DUPLICATE_TREE_FORBIDDEN",
+        "field": "futureWorkspace.sourceWorkspace",
+        "result": "PASS"
+      },
+      {
+        "name": "unexpected_future_field",
+        "expectedCode": "DECISION_FIELD_UNEXPECTED",
+        "actualCode": "DECISION_FIELD_UNEXPECTED",
+        "field": "futureWorkspace",
+        "result": "PASS"
+      },
+      {
+        "name": "unexpected_failure_field",
+        "expectedCode": "DECISION_FIELD_UNEXPECTED",
+        "actualCode": "DECISION_FIELD_UNEXPECTED",
+        "field": "failurePolicy",
+        "result": "PASS"
+      },
+      {
+        "name": "overlong_child",
+        "expectedCode": "OUTPUT_CHILD_INVALID",
+        "actualCode": "OUTPUT_CHILD_INVALID",
+        "field": "futureWorkspace.outputClassPaths.test",
+        "result": "PASS"
+      },
+      {
+        "name": "surrogate_child",
+        "expectedCode": "OUTPUT_CHILD_INVALID",
+        "actualCode": "OUTPUT_CHILD_INVALID",
+        "field": "futureWorkspace.outputClassPaths.test",
+        "result": "PASS"
+      },
+      {
+        "name": "bidi_override_child",
+        "expectedCode": "OUTPUT_CHILD_INVALID",
+        "actualCode": "OUTPUT_CHILD_INVALID",
+        "field": "futureWorkspace.outputClassPaths.test",
+        "result": "PASS"
+      },
+      {
+        "name": "raw_duplicate_authorization_key",
+        "boundary": "raw-json",
+        "expectedCode": "DECISION_JSON_DUPLICATE_KEY",
+        "actualCode": "DECISION_JSON_DUPLICATE_KEY",
+        "field": "outputExecutionAuthorized",
+        "result": "PASS"
+      },
+      {
+        "name": "raw_malformed_json",
+        "boundary": "raw-json",
+        "expectedCode": "DECISION_JSON_INVALID",
+        "actualCode": "DECISION_JSON_INVALID",
+        "field": "$:95:1",
+        "result": "PASS"
+      },
+      {
+        "name": "raw_nonstandard_constant",
+        "boundary": "raw-json",
+        "expectedCode": "DECISION_JSON_NONSTANDARD_CONSTANT",
+        "actualCode": "DECISION_JSON_NONSTANDARD_CONSTANT",
+        "field": "$",
+        "result": "PASS"
+      },
+      {
+        "name": "raw_invalid_utf8",
+        "boundary": "raw-json",
+        "expectedCode": "DECISION_JSON_INVALID",
+        "actualCode": "DECISION_JSON_INVALID",
+        "field": "$",
+        "result": "PASS"
+      },
+      {
+        "name": "raw_excessive_nesting",
+        "boundary": "raw-json",
+        "expectedCode": "DECISION_JSON_INVALID",
+        "actualCode": "DECISION_JSON_INVALID",
+        "field": "$",
+        "result": "PASS"
+      },
+      {
+        "name": "raw_oversized_integer",
+        "boundary": "raw-json",
+        "expectedCode": "DECISION_JSON_INVALID",
+        "actualCode": "DECISION_JSON_INVALID",
+        "field": "$",
+        "result": "PASS"
+      },
+      {
+        "name": "raw_oversized_document",
+        "boundary": "raw-json",
+        "expectedCode": "DECISION_JSON_INVALID",
+        "actualCode": "DECISION_JSON_INVALID",
+        "field": "$",
+        "result": "PASS"
+      }
+    ],
+    "repositoryFingerprintBefore": {
+      "head": "82dfd9e8e2b3a826d5728cc3b2290b3aedb3e50c",
+      "status": "?? graphify/13-implementation/WP-I0-006/adversarial-review.md\n?? graphify/13-implementation/WP-I0-006/artifact-scan.json\n?? graphify/13-implementation/WP-I0-006/build-output-isolation-decision.json\n?? graphify/13-implementation/WP-I0-006/collect_evidence.py\n?? graphify/13-implementation/WP-I0-006/completion-evidence.md\n?? graphify/13-implementation/WP-I0-006/package-summary.json\n?? graphify/13-implementation/WP-I0-006/prior-failed-run-incident.md\n?? graphify/13-implementation/WP-I0-006/provenance-report.json\n?? graphify/13-implementation/WP-I0-006/verification-report.json",
+      "codebaseComparison": {
+        "baselinePackage": "WP-I0-001",
+        "baselineManifest": "13-implementation/WP-I0-001/sha256-manifest.csv",
+        "expectedFiles": 3697,
+        "currentFiles": 3697,
+        "added": [],
+        "removed": [],
+        "modified": [],
+        "currentDirectories": 578,
+        "baselineRepresentedDirectories": 577,
+        "unrepresentedDirectories": [
+          "Codebase/e2e/test-assets"
+        ],
+        "verifiedBaselineEmptyDirectories": [
+          "Codebase/e2e/test-assets"
+        ],
+        "baselineEmptyDirectoryEvidence": {
+          "Codebase/e2e/test-assets": true
+        },
+        "unexpectedDirectories": [],
+        "reparsePaths": [],
+        "specialPaths": [],
+        "artifactMatchesFromBaselineDelta": {
+          "workspace": [],
+          "repositoryCopy": [],
+          "build": [],
+          "test": [],
+          "cache": [],
+          "generatedCode": [],
+          "packageManager": [],
+          "temporary": []
+        },
+        "result": "PASS"
+      },
+      "sha256": "47908532b92fa3878a0a21be61124a4d152c379173d8debf848b1b8edbd4fcf5"
+    },
+    "repositoryFingerprintAfter": {
+      "head": "82dfd9e8e2b3a826d5728cc3b2290b3aedb3e50c",
+      "status": "?? graphify/13-implementation/WP-I0-006/adversarial-review.md\n?? graphify/13-implementation/WP-I0-006/artifact-scan.json\n?? graphify/13-implementation/WP-I0-006/build-output-isolation-decision.json\n?? graphify/13-implementation/WP-I0-006/collect_evidence.py\n?? graphify/13-implementation/WP-I0-006/completion-evidence.md\n?? graphify/13-implementation/WP-I0-006/package-summary.json\n?? graphify/13-implementation/WP-I0-006/prior-failed-run-incident.md\n?? graphify/13-implementation/WP-I0-006/provenance-report.json\n?? graphify/13-implementation/WP-I0-006/verification-report.json",
+      "codebaseComparison": {
+        "baselinePackage": "WP-I0-001",
+        "baselineManifest": "13-implementation/WP-I0-001/sha256-manifest.csv",
+        "expectedFiles": 3697,
+        "currentFiles": 3697,
+        "added": [],
+        "removed": [],
+        "modified": [],
+        "currentDirectories": 578,
+        "baselineRepresentedDirectories": 577,
+        "unrepresentedDirectories": [
+          "Codebase/e2e/test-assets"
+        ],
+        "verifiedBaselineEmptyDirectories": [
+          "Codebase/e2e/test-assets"
+        ],
+        "baselineEmptyDirectoryEvidence": {
+          "Codebase/e2e/test-assets": true
+        },
+        "unexpectedDirectories": [],
+        "reparsePaths": [],
+        "specialPaths": [],
+        "artifactMatchesFromBaselineDelta": {
+          "workspace": [],
+          "repositoryCopy": [],
+          "build": [],
+          "test": [],
+          "cache": [],
+          "generatedCode": [],
+          "packageManager": [],
+          "temporary": []
+        },
+        "result": "PASS"
+      },
+      "sha256": "47908532b92fa3878a0a21be61124a4d152c379173d8debf848b1b8edbd4fcf5"
+    },
+    "statePreserved": true,
+    "result": "PASS"
+  },
+  "regressionValidation": {
+    "authority": {
+      "packetNamesPackage": true,
+      "packetNamesRequirement": true,
+      "registryPackageMatches": true,
+      "membershipMatches": true,
+      "dependencyMatches": true,
+      "testMatrixMatches": true,
+      "prerequisiteSummaryPass": true,
+      "prerequisiteExitGatePass": true,
+      "prerequisiteCompleteAndGitHubVerified": true,
+      "contractsOwned": 0,
+      "schemasOwned": 0,
+      "componentsOwned": 0,
+      "result": "PASS"
+    },
+    "codebaseComparison": {
+      "baselinePackage": "WP-I0-001",
+      "baselineManifest": "13-implementation/WP-I0-001/sha256-manifest.csv",
+      "expectedFiles": 3697,
+      "currentFiles": 3697,
+      "added": [],
+      "removed": [],
+      "modified": [],
+      "currentDirectories": 578,
+      "baselineRepresentedDirectories": 577,
+      "unrepresentedDirectories": [
+        "Codebase/e2e/test-assets"
+      ],
+      "verifiedBaselineEmptyDirectories": [
+        "Codebase/e2e/test-assets"
+      ],
+      "baselineEmptyDirectoryEvidence": {
+        "Codebase/e2e/test-assets": true
+      },
+      "unexpectedDirectories": [],
+      "reparsePaths": [],
+      "specialPaths": [],
+      "artifactMatchesFromBaselineDelta": {
+        "workspace": [],
+        "repositoryCopy": [],
+        "build": [],
+        "test": [],
+        "cache": [],
+        "generatedCode": [],
+        "packageManager": [],
+        "temporary": []
+      },
+      "result": "PASS"
+    },
+    "result": "PASS"
+  },
+  "commandPolicy": {
+    "commandsExecutedByCollector": [
+      "read decision and authority",
+      "read-only git inspection",
+      "SHA-256 compare Codebase to WP-I0-001 baseline",
+      "pure in-memory negative probes"
+    ],
+    "buildCommands": 0,
+    "testCommandsThatRunProductCode": 0,
+    "packageManagerCommands": 0,
+    "networkCommands": 0,
+    "workspaceOrCopyCommands": 0
+  },
+  "failureRecovery": "Decision validation is pure. Invalid candidates return typed errors before any command or write; before/after repository fingerprints are identical.",
+  "exitGateClauses": [
+    {
+      "clause": "The later writable boundary is explicit",
+      "evidence": "The decision requires a separately authorized, run-scoped absolute output root outside the repository and maps all six output classes to unique children.",
+      "result": "PASS"
+    },
+    {
+      "clause": "No workspace, repository copy, build, test, cache, generated-code, package-manager, or temporary output was created",
+      "evidence": "The isolated output environment is unbound; output execution and workspace creation are false; the recursive artifact scan reports zero forbidden classes and zero outside-Graphify changes for this invocation.",
+      "result": "PASS"
+    },
+    {
+      "clause": "Invalid input returns typed errors with no partial authoritative state",
+      "evidence": "All 31 invalid decisions returned their expected typed errors and the before/after repository fingerprints match.",
+      "result": "PASS"
+    },
+    {
+      "clause": "The verified read-only provenance baseline remains intact",
+      "evidence": "All 3697 Codebase files match the WP-I0-001 path, size, and SHA-256 manifest; WP-I0-001 status and exit gate remain PASS.",
+      "result": "PASS"
+    }
+  ],
+  "priorFailedInvocation": {
+    "recorded": true,
+    "evidencePath": "13-implementation/WP-I0-006/prior-failed-run-incident.md",
+    "effectOnCurrentInvocation": "history only; current invocation is independently validated"
+  },
+  "result": "PASS"
+}
