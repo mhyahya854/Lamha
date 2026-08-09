@@ -1,0 +1,31 @@
+{
+  "packageId": "WP-I0-009",
+  "generationId": "11fa8e5669c06aac1685a4a4205953660f4062f4796ba445a20a9eac4943e06f",
+  "requirementIds": [
+    "CAN-MISSION-I0-009"
+  ],
+  "status": "PASS",
+  "counts": {
+    "sourceFiles": 736,
+    "textScannedFiles": 711,
+    "couplings": 1976,
+    "linked": 1560,
+    "reviewRequired": 416,
+    "byCategory": {
+      "AUTHENTICATION": 305,
+      "GENERATED_CLIENT": 810,
+      "RUNTIME_HOST": 101,
+      "SERVER_OWNED_STATE": 559,
+      "SERVER_ROUTE": 201
+    }
+  },
+  "artifacts": [
+    "frontend-coupling-inventory.json",
+    "verification-report.json",
+    "evidence-consistency.json",
+    "provenance-report.json",
+    "artifact-scan.json",
+    "completion-evidence.md"
+  ],
+  "failures": []
+}

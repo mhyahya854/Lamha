@@ -1,0 +1,390 @@
+{
+  "packageId": "WP-I0-009",
+  "generationId": "11fa8e5669c06aac1685a4a4205953660f4062f4796ba445a20a9eac4943e06f",
+  "status": "PASS",
+  "acceptanceCriterion": "Every discovered frontend coupling has source evidence, a dependency category, and one reviewed owner; unresolved ownership is REVIEW_REQUIRED.",
+  "checks": {
+    "completeRecursiveSourceOracle": true,
+    "allFiveCategoriesPresent": true,
+    "allRecordsHaveExactSourceEvidence": true,
+    "everyLinkedOwnerExistsInReviewedDecisionMatrix": true,
+    "everyUnresolvedOwnerIsReviewRequired": true,
+    "negativeParserFixturesPass": true,
+    "codebaseMatchesWP_I0_001": true
+  },
+  "negativeFixtures": [
+    {
+      "id": "multiline-sdk-import",
+      "expected": [
+        [
+          2,
+          "AssetResponseDto"
+        ],
+        [
+          3,
+          "getAssetInfo"
+        ]
+      ],
+      "actual": [
+        [
+          2,
+          "AssetResponseDto"
+        ],
+        [
+          3,
+          "getAssetInfo"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "namespace-sdk-import",
+      "expected": [
+        [
+          1,
+          "namespace:sdk"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "namespace:sdk"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "dynamic-sdk-import",
+      "expected": [
+        [
+          1,
+          "dynamic-module"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "dynamic-module"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "mock-sdk-module",
+      "expected": [
+        [
+          1,
+          "mock-module"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "mock-module"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "vitest-mock-sdk-module",
+      "expected": [
+        [
+          1,
+          "mock-module"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "mock-module"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "comment-not-import",
+      "expected": [],
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "id": "string-not-import",
+      "expected": [],
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "id": "runtime-host-positive-negative",
+      "expected": [
+        [
+          1,
+          "globalThis.location.href"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "globalThis.location.href"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "literal-runtime-host-positive-negative",
+      "expected": [
+        [
+          1,
+          "literal-host:docs.immich.app"
+        ],
+        [
+          2,
+          "literal-host:www.gstatic.com"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "literal-host:docs.immich.app"
+        ],
+        [
+          2,
+          "literal-host:www.gstatic.com"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "dynamic-template-runtime-host",
+      "expected": [
+        [
+          1,
+          "template-host:docs.${info.version}.archive.immich.app"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "template-host:docs.${info.version}.archive.immich.app"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "dynamic-template-host-review-required",
+      "expected": true,
+      "actual": true,
+      "status": "PASS"
+    },
+    {
+      "id": "qualified-url-object-not-arbitrary-properties",
+      "expected": [
+        [
+          2,
+          "fullUrl.origin"
+        ]
+      ],
+      "actual": [
+        [
+          2,
+          "fullUrl.origin"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "unshadowed-global-location",
+      "expected": [
+        [
+          1,
+          "location"
+        ],
+        [
+          2,
+          "location"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "location"
+        ],
+        [
+          2,
+          "location"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "shadowed-location-not-global",
+      "expected": [],
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "id": "xhr-open-positive-negative",
+      "expected": [
+        [
+          2,
+          "'POST', url);"
+        ]
+      ],
+      "actual": [
+        [
+          2,
+          "'POST', url);"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "oauth-symbol-qualified",
+      "expected": [
+        [
+          1,
+          "oauth"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "oauth"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "sveltekit-load-data-import",
+      "expected": [
+        [
+          1,
+          "PageData"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "PageData"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "sveltekit-runtime-page-data",
+      "expected": [
+        [
+          2,
+          "asset"
+        ]
+      ],
+      "actual": [
+        [
+          2,
+          "asset"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "route-wrapper-symbol-reachability",
+      "expected": [
+        "save"
+      ],
+      "actual": [
+        "save"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "server-auth-cookie-coupling",
+      "expected": [
+        [
+          1,
+          "document.cookie"
+        ],
+        [
+          2,
+          "cookie:immich_is_authenticated"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "document.cookie"
+        ],
+        [
+          2,
+          "cookie:immich_is_authenticated"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "server-event-client-import",
+      "expected": [
+        [
+          1,
+          "Socket"
+        ],
+        [
+          1,
+          "io"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "Socket"
+        ],
+        [
+          1,
+          "io"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "database-backup-route-owner",
+      "expected": "Administration",
+      "actual": "Administration",
+      "status": "PASS"
+    },
+    {
+      "id": "url-search-property-not-domain-owner",
+      "expected": null,
+      "actual": null,
+      "status": "PASS"
+    },
+    {
+      "id": "location-property-not-map-owner",
+      "expected": null,
+      "actual": null,
+      "status": "PASS"
+    },
+    {
+      "id": "failed-validation-preserves-all-artifacts",
+      "expected": {
+        "published": false,
+        "allArtifactsByteIdentical": true
+      },
+      "actual": {
+        "published": false,
+        "allArtifactsByteIdentical": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "mid-publication-failure-restores-all-artifacts",
+      "expected": {
+        "failedAsExpected": true,
+        "allArtifactsByteIdentical": true
+      },
+      "actual": {
+        "failedAsExpected": true,
+        "allArtifactsByteIdentical": true
+      },
+      "status": "PASS"
+    }
+  ],
+  "failures": []
+}

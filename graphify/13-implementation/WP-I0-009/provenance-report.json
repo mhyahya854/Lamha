@@ -1,0 +1,14 @@
+{
+  "packageId": "WP-I0-009",
+  "generationId": "11fa8e5669c06aac1685a4a4205953660f4062f4796ba445a20a9eac4943e06f",
+  "generatedAtUtc": "2026-08-09T14:24:27.229345+00:00",
+  "method": "Local-only static source inspection; no product code imported or executed.",
+  "inputs": [
+    "Codebase/web/** (full frontend corpus; content-qualified runtime/config text)",
+    "graphify/05-keep-port-rewrite-remove/DECISION_MATRIX.md",
+    "graphify/01-current-architecture/FRONTEND_ARCHITECTURE.md",
+    "graphify/03-dependency-graphs/FRONTEND_TO_API_MAP.md",
+    "graphify/13-implementation/WP-I0-001/sha256-manifest.csv"
+  ],
+  "codebaseReadOnly": true
+}
