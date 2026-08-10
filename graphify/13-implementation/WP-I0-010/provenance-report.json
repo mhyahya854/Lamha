@@ -1,0 +1,11 @@
+{
+  "packageId": "WP-I0-010",
+  "generationId": "3848217d732741f2efb63a3637f422d8d006fc42a3501d6698d8ce765c0c81a9",
+  "generatedAtUtc": "2026-08-10T07:49:15.717367+00:00",
+  "method": "Local-only static source inspection; no product code imported or executed; no outbound network access.",
+  "inputs": [
+    "Codebase/** (complete committed corpus; content-qualified text scanning)",
+    "graphify/13-implementation/WP-I0-001/sha256-manifest.csv"
+  ],
+  "codebaseReadOnly": true
+}

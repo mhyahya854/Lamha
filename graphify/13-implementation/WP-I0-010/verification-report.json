@@ -1,0 +1,381 @@
+{
+  "packageId": "WP-I0-010",
+  "generationId": "3848217d732741f2efb63a3637f422d8d006fc42a3501d6698d8ce765c0c81a9",
+  "status": "PASS",
+  "acceptanceCriterion": "Every committed Codebase surface is fingerprinted, every discovered outbound host, telemetry surface, update check, cloud service, commercial integration, and remote model path is recorded with exact source evidence, and unresolved disposition is explicitly REVIEW_REQUIRED.",
+  "checks": {
+    "completeRecursiveCorpusOracle": true,
+    "allSixCategoriesPresent": true,
+    "allRecordsHaveExactSourceEvidence": true,
+    "everyDependencyReconcilesWithEvidence": true,
+    "everyRecordIsExplicitlyReviewRequired": true,
+    "exclusionClassesDocumented": true,
+    "negativeParserFixturesPass": true,
+    "codebaseMatchesWP_I0_001": true
+  },
+  "negativeFixtures": [
+    {
+      "id": "cstyle-comments-masked",
+      "expected": [
+        "api.example-domain.com",
+        "events.immich.cloud"
+      ],
+      "actual": [
+        "api.example-domain.com",
+        "events.immich.cloud"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "hash-comments-masked",
+      "expected": [
+        "hash-visible.test-resource.com"
+      ],
+      "actual": [
+        "hash-visible.test-resource.com"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "hash-fragment-survives",
+      "expected": true,
+      "actual": true,
+      "status": "PASS"
+    },
+    {
+      "id": "html-comments-masked",
+      "expected": [
+        "markup-visible.test-anchor.com"
+      ],
+      "actual": [
+        "markup-visible.test-anchor.com"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "authority-userinfo-port",
+      "expected": "data.immich.cloud",
+      "actual": "data.immich.cloud",
+      "status": "PASS"
+    },
+    {
+      "id": "authority-ipv6-loopback-excluded",
+      "expected": "loopback-or-private-address",
+      "actual": "loopback-or-private-address",
+      "status": "PASS"
+    },
+    {
+      "id": "authority-private-ipv4-excluded",
+      "expected": "loopback-or-private-address",
+      "actual": "loopback-or-private-address",
+      "status": "PASS"
+    },
+    {
+      "id": "authority-public-ipv4-kept",
+      "expected": null,
+      "actual": null,
+      "status": "PASS"
+    },
+    {
+      "id": "single-label-excluded",
+      "expected": "single-label-internal-address",
+      "actual": "single-label-internal-address",
+      "status": "PASS"
+    },
+    {
+      "id": "placeholder-excluded",
+      "expected": "rfc-2606-placeholder-host",
+      "actual": "rfc-2606-placeholder-host",
+      "status": "PASS"
+    },
+    {
+      "id": "namespace-uri-excluded",
+      "expected": "namespace-uri-identifier",
+      "actual": "namespace-uri-identifier",
+      "status": "PASS"
+    },
+    {
+      "id": "subdomain-w3-not-namespace",
+      "expected": null,
+      "actual": null,
+      "status": "PASS"
+    },
+    {
+      "id": "classifier-update-check-exact",
+      "expected": [
+        "CLOUD_SERVICE",
+        "UPDATE_CHECK"
+      ],
+      "actual": [
+        "CLOUD_SERVICE",
+        "UPDATE_CHECK"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "classifier-update-check-dev",
+      "expected": [
+        "CLOUD_SERVICE",
+        "UPDATE_CHECK"
+      ],
+      "actual": [
+        "CLOUD_SERVICE",
+        "UPDATE_CHECK"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "classifier-not-version-prefix",
+      "expected": [
+        "CLOUD_SERVICE"
+      ],
+      "actual": [
+        "CLOUD_SERVICE"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "classifier-commercial-exact",
+      "expected": [
+        "COMMERCIAL_INTEGRATION"
+      ],
+      "actual": [
+        "COMMERCIAL_INTEGRATION"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "classifier-commercial-boundary",
+      "expected": [],
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "id": "classifier-cloud-suffix",
+      "expected": [
+        "CLOUD_SERVICE"
+      ],
+      "actual": [
+        "CLOUD_SERVICE"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "classifier-remote-model-suffix",
+      "expected": [
+        "REMOTE_MODEL_PATH"
+      ],
+      "actual": [
+        "REMOTE_MODEL_PATH"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "classifier-remote-model-boundary",
+      "expected": [],
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "id": "classifier-plain-external",
+      "expected": [],
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "id": "classifier-template-host-preserved",
+      "expected": [
+        "CLOUD_SERVICE",
+        "UPDATE_CHECK"
+      ],
+      "actual": [
+        "CLOUD_SERVICE",
+        "UPDATE_CHECK"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "dtd-namespace-excluded",
+      "expected": "namespace-uri-identifier",
+      "actual": "namespace-uri-identifier",
+      "status": "PASS"
+    },
+    {
+      "id": "subdomain-apple-not-namespace",
+      "expected": null,
+      "actual": null,
+      "status": "PASS"
+    },
+    {
+      "id": "jsx-text-node-url-not-comment",
+      "expected": [
+        "jsx-visible.immich-cloud-test.com"
+      ],
+      "actual": [
+        "jsx-visible.immich-cloud-test.com"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "bare_known_host_skips_scheme_qualified",
+      "expected": [
+        "version.immich.cloud"
+      ],
+      "actual": [
+        "version.immich.cloud"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "container-image-registry-prefix",
+      "expected": [
+        "docker.io:docker.io/valkey/valkey",
+        "ghcr.io:ghcr.io/immich-app/postgres"
+      ],
+      "actual": [
+        "docker.io:docker.io/valkey/valkey",
+        "ghcr.io:ghcr.io/immich-app/postgres"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "container-image-implicit-registry",
+      "expected": [
+        "docker.io-or-local:postgres"
+      ],
+      "actual": [
+        "docker.io-or-local:postgres"
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "telemetry-sdk-import-multiline",
+      "expected": [
+        [
+          2,
+          "@opentelemetry/api",
+          "MetricOptions"
+        ]
+      ],
+      "actual": [
+        [
+          2,
+          "@opentelemetry/api",
+          "MetricOptions"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "hf-client-import",
+      "expected": [
+        [
+          1,
+          "huggingface_hub",
+          "snapshot_download"
+        ],
+        [
+          2,
+          "huggingface_hub.fake",
+          "nope"
+        ]
+      ],
+      "actual": [
+        [
+          1,
+          "huggingface_hub",
+          "snapshot_download"
+        ],
+        [
+          2,
+          "huggingface_hub.fake",
+          "nope"
+        ]
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "hf-module-predicate",
+      "expected": [
+        true,
+        true,
+        false
+      ],
+      "actual": [
+        true,
+        true,
+        false
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "declared-dependency-classification",
+      "expected": [
+        [
+          "TELEMETRY"
+        ],
+        [
+          "TELEMETRY"
+        ],
+        [
+          "REMOTE_MODEL_PATH"
+        ],
+        [
+          "CLOUD_SERVICE"
+        ],
+        []
+      ],
+      "actual": [
+        [
+          "TELEMETRY"
+        ],
+        [
+          "TELEMETRY"
+        ],
+        [
+          "REMOTE_MODEL_PATH"
+        ],
+        [
+          "CLOUD_SERVICE"
+        ],
+        []
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "hf-snapshot-download-callsite",
+      "expected": [
+        3
+      ],
+      "actual": [
+        3
+      ],
+      "status": "PASS"
+    },
+    {
+      "id": "failed-validation-preserves-all-artifacts",
+      "expected": {
+        "published": false,
+        "allArtifactsByteIdentical": true
+      },
+      "actual": {
+        "published": false,
+        "allArtifactsByteIdentical": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "mid-publication-failure-restores-all-artifacts",
+      "expected": {
+        "failedAsExpected": true,
+        "allArtifactsByteIdentical": true
+      },
+      "actual": {
+        "failedAsExpected": true,
+        "allArtifactsByteIdentical": true
+      },
+      "status": "PASS"
+    }
+  ],
+  "failures": []
+}

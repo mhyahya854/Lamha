@@ -1,0 +1,17 @@
+{
+  "packageId": "WP-I0-010",
+  "generationId": "3848217d732741f2efb63a3637f422d8d006fc42a3501d6698d8ce765c0c81a9",
+  "status": "PASS",
+  "allowedRoot": "graphify/13-implementation/WP-I0-010",
+  "codebaseChanged": false,
+  "generatedArtifacts": [
+    "outbound-integration-inventory.json",
+    "verification-report.json",
+    "evidence-consistency.json",
+    "provenance-report.json",
+    "artifact-scan.json",
+    "completion-evidence.md",
+    "package-summary.json"
+  ],
+  "failures": []
+}

@@ -1,0 +1,15 @@
+{
+  "packageId": "WP-I0-010",
+  "generationId": "3848217d732741f2efb63a3637f422d8d006fc42a3501d6698d8ce765c0c81a9",
+  "status": "PASS",
+  "inventorySemanticSha256": "23dc49d722715c0cb2dde3cad17f0155805a7f97f833c7425032d03e8f5c98e5",
+  "sourceCorpusSemanticSha256": "9d823d21372ce58090b848659147fc66193655feb596d1bc12ddd965e5609d89",
+  "recordsSemanticSha256": "e6d071a4b467d6d942d6240ea484a68a79d69ff2bdabcaffb8c3ea6457b31333",
+  "exclusionsSemanticSha256": "5436081130eaf3b3009195e88fa65f76b5619e686b8c32bda44e3f60e3de9dc1",
+  "baselineFileCount": 3697,
+  "beforeFileCount": 3697,
+  "afterFileCount": 3697,
+  "baselineSemanticSha256": "0772515eb09895114e98b1503f17d6ac53ba8512b099fd0e642e198ff68d2b30",
+  "beforeSemanticSha256": "0772515eb09895114e98b1503f17d6ac53ba8512b099fd0e642e198ff68d2b30",
+  "afterSemanticSha256": "0772515eb09895114e98b1503f17d6ac53ba8512b099fd0e642e198ff68d2b30"
+}

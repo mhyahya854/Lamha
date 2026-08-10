@@ -1,0 +1,51 @@
+{
+  "packageId": "WP-I0-010",
+  "generationId": "3848217d732741f2efb63a3637f422d8d006fc42a3501d6698d8ce765c0c81a9",
+  "requirementIds": [
+    "CAN-MISSION-I0-010"
+  ],
+  "status": "PASS",
+  "counts": {
+    "sourceFiles": 3697,
+    "textScannedFiles": 3181,
+    "records": 2993,
+    "byCategory": {
+      "CLOUD_SERVICE": 84,
+      "COMMERCIAL_INTEGRATION": 27,
+      "OUTBOUND_HOST": 2825,
+      "REMOTE_MODEL_PATH": 8,
+      "TELEMETRY": 44,
+      "UPDATE_CHECK": 5
+    },
+    "byMechanism": {
+      "bare-known-integration-host": 126,
+      "container-image-implicit-registry": 39,
+      "container-image-reference": 19,
+      "hf-client-import": 1,
+      "hf-repo-scope": 1,
+      "hf-snapshot-download": 1,
+      "hf-snapshot-download-stub-definition": 1,
+      "literal-external-host": 2757,
+      "sdk-dependency": 16,
+      "telemetry-module-import": 14,
+      "telemetry-sdk-import": 18
+    },
+    "exclusions": {
+      "dynamic-userinfo-expression": 1,
+      "loopback-or-private-address": 22,
+      "namespace-uri-identifier": 91,
+      "rfc-2606-placeholder-host": 10,
+      "single-label-internal-address": 102,
+      "unrecorded-scheme": 31
+    }
+  },
+  "artifacts": [
+    "outbound-integration-inventory.json",
+    "verification-report.json",
+    "evidence-consistency.json",
+    "provenance-report.json",
+    "artifact-scan.json",
+    "completion-evidence.md"
+  ],
+  "failures": []
+}
