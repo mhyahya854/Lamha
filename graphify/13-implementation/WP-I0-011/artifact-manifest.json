@@ -1,23 +1,23 @@
 {
   "packageId": "WP-I0-011",
-  "generationId": "adc02ea8adc8652fa2046fbe00c90cc3604f16b5323d41243e2701433cd8c927",
+  "generationId": "465a19a1b20ef26a02217da94c84a25dbdcec7fa26320d4fb1a8d1b8844fe692",
   "status": "PASS",
   "files": {
-    "adversarial-review.md": "9ff3cb8fbe3ba2af60464944d7a9234d8caeefba8c8bcfad0657c044d1cdba34",
-    "artifact-scan.json": "3ef614acdd20bda88b50b79b89f271b22b3e8cfb4394a17260c312c68d3fe0ce",
+    "adversarial-review.md": "8ba027dcb949891155a78331ae3c51930e389132ba6de61618e00de135ad8741",
+    "artifact-scan.json": "ba130c0c88c06646fe6edd4f6bf07ab5aa5ebf60c134001592b4912ea063ddba",
     "blocker-record.schema.json": "9134aa312902a795c95c3824ed597ab188d79a2cd0dfa22d5390ea0bb4f3fb5e",
-    "bottom-up-audit.json": "75a26376713337e5ad80281971ef886c93669e6bf4344d4dd322e0e25aba5443",
-    "collect_evidence.py": "6b77e4cb1a04b37b94273854594de78a71396c7cfb6e7d0252e1d4cae90207a5",
-    "completion-evidence.md": "fde7d6968c0803730d6701e257e5a0ab7bd96206167136e339f5c26b7057b215",
-    "evidence-consistency.json": "92e653771dffab236408d021e45eb07acc951ea6d6cf8a962c3a11d5ec451ec9",
+    "bottom-up-audit.json": "037f2e3875c9506015a0686e637eb7ff88274009346afc551bf6e32b8ac545d9",
+    "collect_evidence.py": "ffa7931aafab93af6500b483da9b904cb99b1974432b2ce334d998ecd0a5459f",
+    "completion-evidence.md": "230a638f459888e5899afe41dc5e68876619aa996384e3370256e20f5e6c49e0",
+    "evidence-consistency.json": "1edd44a2755f1b4d46c862256440f0df223f07a797d8481c047db1b31e3fb3c6",
     "governance.py": "46695dc91ba0fbbdc32c88bd97e48f60eb689658e54905c799120971a3f77680",
-    "implementation-state.json": "ae041d1be2299adf89ad0b9a379793442aa8153ffd587839ab44b238a4324748",
-    "package-summary.json": "a32314747657e0c69b3ed98c700e8890a0145f789c0e315e3334ae4eb860af79",
-    "planning-governance-report.json": "a9c722237d00c566d7aa0eb2b58d87b1a5b2ea40c7a9b9e7bce3231e8f20eeb4",
-    "provenance-report.json": "d776497e169272ad7ea6ac29d04a236eb8f877024dfc8038ea6e6a3f0de4a8a0",
+    "implementation-state.json": "0a477ac37d32a772044e902ef86295ecea1cbfa6f375d9f3e3e5265ca90e6286",
+    "package-summary.json": "21ef27256e840d164928a3a109e79bd0a2d71ced3979fb35cb7b5dd818faa24e",
+    "planning-governance-report.json": "f877553f0be890fc6654c7b0be35dab836966286cc5948e5d8666e3e0f307428",
+    "provenance-report.json": "761934234ba8c579115fb22a031f4474a8b31764d675d47df62949b5d71e11a8",
     "risk_governance_test.py": "eb63ff606b82a420dd58cf45fbe2b8951121f5b2d8e02fa11ab7d928895b9163",
-    "verification-report.json": "1646b437cb114d8e99e9a85ac10e719a5b2fa14fb7633777b8ac691670ba926e",
-    "verify_evidence.py": "33c0c48aedf251716e9cdce1916de72a5549da8ec27654290184c902c8295b55"
+    "verification-report.json": "28e6cd3be008525074275d8a7d2d6a1c98131661858757d16b91993d0fb638bf",
+    "verify_evidence.py": "d4afb504eb43676294498608a882dffab8bcf52f368c48090079938513acf12c"
   },
   "selfExcluded": "artifact-manifest.json cannot contain its own SHA-256; the package completion commit will bind these exact manifest bytes and post-push verification will prove origin/main reachability."
 }

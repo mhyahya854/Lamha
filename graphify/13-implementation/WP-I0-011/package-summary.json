@@ -1,6 +1,6 @@
 {
   "packageId": "WP-I0-011",
-  "generationId": "adc02ea8adc8652fa2046fbe00c90cc3604f16b5323d41243e2701433cd8c927",
+  "generationId": "465a19a1b20ef26a02217da94c84a25dbdcec7fa26320d4fb1a8d1b8844fe692",
   "requirementIds": [
     "CAN-FAIL-02",
     "CAN-FAIL-19",
@@ -27,9 +27,9 @@
   ],
   "status": "PASS",
   "counts": {
-    "trackerRevisions": 47,
-    "completedPackages": 10,
-    "readyPackages": 7,
+    "trackerRevisions": 92,
+    "completedPackages": 11,
+    "readyPackages": 6,
     "planningRequirements": 756,
     "bottomUpRecords": 756,
     "riskLinks": 32,

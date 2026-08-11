@@ -1,6 +1,6 @@
 {
   "packageId": "WP-I0-011",
-  "generationId": "adc02ea8adc8652fa2046fbe00c90cc3604f16b5323d41243e2701433cd8c927",
+  "generationId": "465a19a1b20ef26a02217da94c84a25dbdcec7fa26320d4fb1a8d1b8844fe692",
   "status": "PASS",
   "records": [
     {
@@ -33939,7 +33939,7 @@
       ],
       "retainedBehavior": "The WP-I0-011 exit gate must run and pass the R-30 'Per-phase simplicity review' failure or boundary test for Over-engineering stalls delivery, preserve raw evidence tied to the executing package and commit, and block both WP-I0-011:EXIT and I15:RELEASE when the evidence is absent, stale, mismatched, or failing.",
       "classification": "TARGET_ONLY",
-      "sourceEvidence": "ABSENT_NEW_WORK",
+      "sourceEvidence": "graphify/13-implementation/WP-I0-011/verification-report.json;graphify/13-implementation/WP-I0-011/completion-evidence.md;graphify/13-implementation/WP-I0-011/adversarial-review.md",
       "targetOwner": "WP-I0-011",
       "verification": "Execute Per-phase simplicity review at WP-I0-011:EXIT and retain raw package/commit evidence.",
       "packageTestObligation": "Per-phase simplicity review with raw evidence bound to WP-I0-011 and its commit.",
@@ -33981,7 +33981,7 @@
       ],
       "retainedBehavior": "The WP-I0-011 exit gate must run and pass the R-32 'Audit prompt/output' failure or boundary test for Unknown implementation discovery is guessed, preserve raw evidence tied to the executing package and commit, and block both WP-I0-011:EXIT and I15:RELEASE when the evidence is absent, stale, mismatched, or failing.",
       "classification": "TARGET_ONLY",
-      "sourceEvidence": "ABSENT_NEW_WORK",
+      "sourceEvidence": "graphify/13-implementation/WP-I0-011/verification-report.json;graphify/13-implementation/WP-I0-011/completion-evidence.md;graphify/13-implementation/WP-I0-011/adversarial-review.md",
       "targetOwner": "WP-I0-011",
       "verification": "Execute Audit prompt/output at WP-I0-011:EXIT and retain raw package/commit evidence.",
       "packageTestObligation": "Audit prompt/output with raw evidence bound to WP-I0-011 and its commit.",

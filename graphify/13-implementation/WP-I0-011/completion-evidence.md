@@ -4,10 +4,10 @@
 
 - Status: **PASS**
 - Requirements: 22 canonical IDs owned by `WP-I0-011`
-- Evidence generation: `adc02ea8adc8652fa2046fbe00c90cc3604f16b5323d41243e2701433cd8c927`
-- Tracker revisions: `47`
-- Completed packages imported from committed evidence: `10`
-- READY packages reconstructed: `7`
+- Evidence generation: `465a19a1b20ef26a02217da94c84a25dbdcec7fa26320d4fb1a8d1b8844fe692`
+- Tracker revisions: `92`
+- Completed packages imported from committed evidence: `11`
+- READY packages reconstructed: `6`
 - Governance fixtures: `82/82` PASS
 - Codebase files preserved: `3697`
 

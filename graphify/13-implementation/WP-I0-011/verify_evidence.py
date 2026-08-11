@@ -65,6 +65,19 @@ CERTIFICATION_MIRRORS = {
     "graphify/semantic-plan-source/reviews/final-determinism-proof.json",
     "graphify/semantic-plan-source/reviews/final-release-envelope.json",
 }
+TRANSITION_PLANNING_FILES = {
+    "graphify/semantic-plan-source/risks/risk-test-ownership.json",
+    "graphify/semantic-plan-source/risks/high-critical-risk-register.csv",
+    "graphify/semantic-plan-source/requirements/requirements.csv",
+    "graphify/semantic-plan-source/reviews/independently-verified-package-members-v2.csv",
+    "graphify/semantic-plan-source/reviews/reviewed-actionable-requirements-v3.csv",
+    "graphify/12-semantic-implementation-plan/09-risks/risk-test-ownership.json",
+    "graphify/12-semantic-implementation-plan/09-risks/risk-register.csv",
+    "graphify/12-semantic-implementation-plan/02-requirements/canonical-registry.csv",
+    "graphify/12-semantic-implementation-plan/02-requirements/canonical-registry.jsonl",
+    "graphify/12-semantic-implementation-plan/13-reports/independently-verified-package-members-v2.csv",
+    "graphify/12-semantic-implementation-plan/13-reports/reviewed-actionable-requirements-v3.csv",
+}
 
 
 class VerificationError(ValueError):
@@ -728,7 +741,11 @@ def main() -> int:
         for path in package_dir.iterdir() if path.is_file()
     )
     package_prefix = f"graphify/13-implementation/{PACKAGE_ID}/"
-    authorized = {path for path in observed if path.startswith(package_prefix) or path in CERTIFICATION_MIRRORS}
+    transition_files = TRANSITION_PLANNING_FILES if artifacts["tracker"]["current"].get(f"PACKAGE:{PACKAGE_ID}") == "COMPLETE" else set()
+    authorized = {
+        path for path in observed
+        if path.startswith(package_prefix) or path in CERTIFICATION_MIRRORS or path in transition_files
+    }
     unauthorized = observed - authorized
     forbidden_names = {".git", "__pycache__", "node_modules", ".pnpm-store", ".cache", "cache", "dist", "build", "target"}
     forbidden = {

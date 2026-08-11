@@ -549,9 +549,13 @@
       "testTarget": "bounded work-package cohesion and per-phase simplicity review enforcement",
       "testClass": "GOVERNANCE_MITIGATION_BOUNDARY",
       "rationale": "Over-engineering is a planning-governance risk; WP-I0-011 can genuinely demonstrate its mitigation by rejecting unbounded or mechanically split packages.",
-      "verificationStatus": "PENDING",
-      "runtimeEvidence": [],
-      "implementationCommit": "",
+      "verificationStatus": "VERIFIED",
+      "runtimeEvidence": [
+        "graphify/13-implementation/WP-I0-011/verification-report.json",
+        "graphify/13-implementation/WP-I0-011/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-011/adversarial-review.md"
+      ],
+      "implementationCommit": "86facbd8535f7ea52f8acb896abe5efe33475a58",
       "blockingPackageGate": "WP-I0-011:EXIT",
       "blockingReleaseGate": "I15:RELEASE"
     },
@@ -589,9 +593,13 @@
       "testTarget": "blocked-item protocol under unknown path, field, schema, or ownership evidence",
       "testClass": "GOVERNANCE_MITIGATION_BOUNDARY",
       "rationale": "Unknown-discovery handling is the WP-I0-011 governance surface and is genuinely tested by attempted guesses that must become typed blockers.",
-      "verificationStatus": "PENDING",
-      "runtimeEvidence": [],
-      "implementationCommit": "",
+      "verificationStatus": "VERIFIED",
+      "runtimeEvidence": [
+        "graphify/13-implementation/WP-I0-011/verification-report.json",
+        "graphify/13-implementation/WP-I0-011/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-011/adversarial-review.md"
+      ],
+      "implementationCommit": "86facbd8535f7ea52f8acb896abe5efe33475a58",
       "blockingPackageGate": "WP-I0-011:EXIT",
       "blockingReleaseGate": "I15:RELEASE"
     }

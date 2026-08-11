@@ -70,6 +70,19 @@ CERTIFICATION_MIRRORS = {
     "graphify/semantic-plan-source/reviews/final-determinism-proof.json",
     "graphify/semantic-plan-source/reviews/final-release-envelope.json",
 }
+TRANSITION_PLANNING_FILES = {
+    "graphify/semantic-plan-source/risks/risk-test-ownership.json",
+    "graphify/semantic-plan-source/risks/high-critical-risk-register.csv",
+    "graphify/semantic-plan-source/requirements/requirements.csv",
+    "graphify/semantic-plan-source/reviews/independently-verified-package-members-v2.csv",
+    "graphify/semantic-plan-source/reviews/reviewed-actionable-requirements-v3.csv",
+    "graphify/12-semantic-implementation-plan/09-risks/risk-test-ownership.json",
+    "graphify/12-semantic-implementation-plan/09-risks/risk-register.csv",
+    "graphify/12-semantic-implementation-plan/02-requirements/canonical-registry.csv",
+    "graphify/12-semantic-implementation-plan/02-requirements/canonical-registry.jsonl",
+    "graphify/12-semantic-implementation-plan/13-reports/independently-verified-package-members-v2.csv",
+    "graphify/12-semantic-implementation-plan/13-reports/reviewed-actionable-requirements-v3.csv",
+}
 
 
 def git(root: Path, *args: str) -> str:
@@ -112,10 +125,12 @@ def changed_paths(root: Path) -> list[str]:
     return sorted(path.replace("\\", "/") for path in paths)
 
 
-def scope_audit(root: Path, paths: list[str], next_package: str | None) -> dict[str, Any]:
+def scope_audit(root: Path, paths: list[str], next_package: str | None, allow_transition: bool = False) -> dict[str, Any]:
     package_prefix = f"graphify/13-implementation/{PACKAGE_ID}/"
+    transition_files = TRANSITION_PLANNING_FILES if allow_transition else set()
     authorized = [
-        path for path in paths if path.startswith(package_prefix) or path in CERTIFICATION_MIRRORS
+        path for path in paths
+        if path.startswith(package_prefix) or path in CERTIFICATION_MIRRORS or path in transition_files
     ]
     unauthorized = sorted(set(paths) - set(authorized))
     forbidden_names = {".git", "__pycache__", "node_modules", ".pnpm-store", ".cache", "cache", "dist", "build", "target"}
@@ -1072,7 +1087,7 @@ def main() -> int:
         for name in PACKAGE_FILES
         if name != "adversarial-review.md" or (package_dir / name).exists()
     )
-    scope = scope_audit(root, sorted(observed_paths), next_package)
+    scope = scope_audit(root, sorted(observed_paths), next_package, PACKAGE_ID in state["completed"])
 
     generation_basis = {
         "packageId": PACKAGE_ID,
