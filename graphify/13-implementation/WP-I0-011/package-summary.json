@@ -1,0 +1,40 @@
+{
+  "packageId": "WP-I0-011",
+  "generationId": "adc02ea8adc8652fa2046fbe00c90cc3604f16b5323d41243e2701433cd8c927",
+  "requirementIds": [
+    "CAN-FAIL-02",
+    "CAN-FAIL-19",
+    "CAN-FAIL-23",
+    "CAN-FAIL-24",
+    "CAN-FAIL-27",
+    "CAN-FAIL-32",
+    "CAN-LAM-ARCH-444",
+    "CAN-LAM-GOV-052",
+    "CAN-LAM-GOV-054",
+    "CAN-LAM-GOV-165",
+    "CAN-LAM-GOV-179",
+    "CAN-LAM-GOV-180",
+    "CAN-LAM-GOV-264",
+    "CAN-LAM-GOV-265",
+    "CAN-LAM-GOV-266",
+    "CAN-LAM-GOV-270",
+    "CAN-LAM-GOV-273",
+    "CAN-LAM-RISK-TEST-030",
+    "CAN-LAM-RISK-TEST-032",
+    "CAN-LAM-TEST-020",
+    "CAN-LAM-TEST-021",
+    "CAN-MISSION-I0-011"
+  ],
+  "status": "PASS",
+  "counts": {
+    "trackerRevisions": 47,
+    "completedPackages": 10,
+    "readyPackages": 7,
+    "planningRequirements": 756,
+    "bottomUpRecords": 756,
+    "riskLinks": 32,
+    "fixtures": 82,
+    "codebaseFiles": 3697
+  },
+  "failures": []
+}

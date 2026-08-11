@@ -1,0 +1,1156 @@
+{
+  "packageId": "WP-I0-011",
+  "generationId": "adc02ea8adc8652fa2046fbe00c90cc3604f16b5323d41243e2701433cd8c927",
+  "status": "PASS",
+  "planningPasses": {
+    "pass1": {
+      "status": "PASS",
+      "missing": 0,
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/reviews/reviewed-actionable-requirements-v3.csv"
+      ]
+    },
+    "pass2": {
+      "status": "PASS",
+      "missing": 0,
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/reviews/pass-b-codebase-map-verification.json",
+        "graphify/semantic-plan-source/reviews/reviewed-package-memberships-v3.csv"
+      ]
+    },
+    "pass3": {
+      "status": "PASS",
+      "missing": 0,
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/reviews/pass-c-final-report.json"
+      ]
+    },
+    "doubleCheck": {
+      "status": "PASS",
+      "missing": 0,
+      "evidenceLinks": [
+        "graphify/12-semantic-implementation-plan/13-reports/final-100-percent-certification.json"
+      ]
+    },
+    "validator": {
+      "status": "PASS",
+      "missing": 0,
+      "levelCount": 24,
+      "evidenceLinks": [
+        "graphify/12-semantic-implementation-plan/12-validators/validator-results.json"
+      ]
+    },
+    "canonicalIdCoverage": {
+      "actionable": 756,
+      "memberships": 756,
+      "unique": 756
+    },
+    "bottomUpCoverage": {
+      "records": 756,
+      "missing": 0
+    }
+  },
+  "bottomUpAudit": {
+    "records": 756,
+    "missing": 0
+  },
+  "riskGateLinks": [
+    {
+      "riskId": "R-01",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-001",
+      "mitigationOwnerPackages": [
+        "WP-I3-014"
+      ],
+      "testOwnerPackage": "WP-I3-014",
+      "requiredAfterPackages": [],
+      "testTarget": "filesystem transaction journal and crash-recovery state machine",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I3-014 owns crash recovery and can inject interruption at each durable transaction state before its exit gate.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I3-014:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Failure injection at every state",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-01",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I3-014.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I3-014",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I3-014.md",
+        "tests": "Run reviewed fixtures for requirements CAN-FAIL-20, CAN-LAM-ARCH-282; verification methods include Failure-injection and crash-recovery gate.; Sidecar-repair fixture.. Risk-gate obligations: R-01/CAN-LAM-RISK-TEST-001 executes 'Failure injection at every state'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-FAIL-20, CAN-LAM-ARCH-282 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I3-014 and its implementation commit is required for R-01; absence or failure blocks WP-I3-014:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-02",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-002",
+      "mitigationOwnerPackages": [
+        "WP-I3-015"
+      ],
+      "testOwnerPackage": "WP-I3-015",
+      "requiredAfterPackages": [],
+      "testTarget": "directional authority and revision-conflict resolution",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I3-015 owns revision and concurrency preconditions and can execute golden authority-conflict fixtures.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I3-015:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Golden conflict fixtures",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-02",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I3-015.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I3-015",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I3-015.md",
+        "tests": "Run reviewed fixtures for requirements CAN-LAM-ARCH-184, CAN-LAM-META-016, CAN-LAM-META-077; verification methods include Gate 1 scope; Gate 2 compile/build; Gate 3 focused/regressio; XMP-sidecar fixture with alignment checks.; JSON/XMP conflict fixture.. Risk-gate obligations: R-02/CAN-LAM-RISK-TEST-002 executes 'Golden conflict fixtures'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-LAM-ARCH-184, CAN-LAM-META-016, CAN-LAM-META-077 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I3-015 and its implementation commit is required for R-02; absence or failure blocks WP-I3-015:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-03",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-003",
+      "mitigationOwnerPackages": [
+        "WP-I3-004"
+      ],
+      "testOwnerPackage": "WP-I3-004",
+      "requiredAfterPackages": [],
+      "testTarget": "authorized-root canonicalization across symlink, junction, and reparse boundaries",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I3-004 owns path normalization and escape protection and can run the cross-platform escape corpus.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I3-004:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Cross-platform escape corpus",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-03",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I3-004.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I3-004",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I3-004.md",
+        "tests": "Run reviewed fixtures for requirements CAN-LAM-EDGE-14; verification methods include Reparse-escape fixture with traversal-stop assertion.. Risk-gate obligations: R-03/CAN-LAM-RISK-TEST-003 executes 'Cross-platform escape corpus'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-LAM-EDGE-14 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I3-004 and its implementation commit is required for R-03; absence or failure blocks WP-I3-004:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-04",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-004",
+      "mitigationOwnerPackages": [
+        "WP-I15-015"
+      ],
+      "testOwnerPackage": "WP-I15-015",
+      "requiredAfterPackages": [],
+      "testTarget": "replacement-verified legacy removal and absence scan",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I15-015 is the removal package and may delete legacy code only after focused replacement and absence tests pass.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I15-015:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Focused+absence tests",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-04",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I15-015.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I15-015",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I15-015.md",
+        "tests": "Focused replacement parity, affected regression, clean-package launch, dependency scan, runtime listener scan, and installer inspection. Risk-gate obligations: R-04/CAN-LAM-RISK-TEST-004 executes 'Focused+absence tests'.",
+        "exitGate": "No retained feature imports, starts, packages, configures, or depends on the removed set and all replacement/parity gates pass. Risk-gate exit: raw PASS evidence tied to WP-I15-015 and its implementation commit is required for R-04; absence or failure blocks WP-I15-015:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-05",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-005",
+      "mitigationOwnerPackages": [
+        "WP-I0-004"
+      ],
+      "testOwnerPackage": "WP-I0-007",
+      "requiredAfterPackages": [
+        "WP-I0-004"
+      ],
+      "testTarget": "immutable mixed-version provenance and disposable baseline build",
+      "testClass": "BASELINE_REAL_EXECUTION",
+      "verificationStatus": "VERIFIED",
+      "runtimeEvidence": [
+        "graphify/13-implementation/WP-I0-007/baseline-attempts.json",
+        "graphify/13-implementation/WP-I0-007/verification-report.json",
+        "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-007/adversarial-review.md"
+      ],
+      "implementationCommit": "48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2",
+      "rationale": "WP-I0-004 establishes mixed-version provenance; WP-I0-007 subsequently executed the source-derived disposable baseline build/test matrix.",
+      "blockingPackageGate": "WP-I0-007:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Disposable baseline build",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-05",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-007.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I0-007",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-007.md",
+        "tests": "Run reviewed fixtures for requirements CAN-MISSION-I0-007; verification methods include Work-package evidence plus phase exit gate. Risk-gate obligations: R-05/CAN-LAM-RISK-TEST-005 executes 'Disposable baseline build'; R-29/CAN-LAM-RISK-TEST-029 executes 'Baseline execution'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-MISSION-I0-007 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I0-007 and its implementation commit is required for R-05; R-29; absence or failure blocks WP-I0-007:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-06",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-006",
+      "mitigationOwnerPackages": [
+        "WP-I10-002"
+      ],
+      "testOwnerPackage": "WP-I10-002",
+      "requiredAfterPackages": [],
+      "testTarget": "private framed AI-worker transport, listener prohibition, and write authority",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I10-002 owns private worker transport and must prove no listener and rejected worker write attempts.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I10-002:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "No-listener and write-attempt tests",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-06",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I10-002.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I10-002",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I10-002.md",
+        "tests": "Run reviewed fixtures for requirements CAN-FAIL-07, CAN-LAM-AI-028, CAN-LAM-AI-046, CAN-LAM-INV-AI-02-B; verification methods include Private worker transport and listener-isolation gate.; AI-status fixture with no-mutation assertion.; AI-reuse fixture with gate checks.; Gate 1 scope; Gate 2 compile/build; Gate 3 focused/regressio. Risk-gate obligations: R-06/CAN-LAM-RISK-TEST-006 executes 'No-listener and write-attempt tests'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-FAIL-07, CAN-LAM-AI-028, CAN-LAM-AI-046, CAN-LAM-INV-AI-02-B pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I10-002 and its implementation commit is required for R-06; absence or failure blocks WP-I10-002:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-07",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-007",
+      "mitigationOwnerPackages": [
+        "WP-I4-008",
+        "WP-I10-002",
+        "WP-I11-012"
+      ],
+      "testOwnerPackage": "WP-I15-008",
+      "requiredAfterPackages": [
+        "WP-I4-008",
+        "WP-I10-002",
+        "WP-I11-012"
+      ],
+      "testTarget": "integrated hostile media, sidecar, AI-worker, and editing input boundary",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "The exploit boundary spans parsing, worker isolation, and mutation recovery; WP-I15-008 runs the integrated retained-feature parity test after all three owners.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I15-008:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Malformed corpus/fuzzing",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-07",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I15-008.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I15-008",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I15-008.md",
+        "tests": "Run reviewed fixtures for requirements CAN-LAM-AI-082; verification methods include Bundled-AI packaging gate.. Risk-gate obligations: R-07/CAN-LAM-RISK-TEST-007 executes 'Malformed corpus/fuzzing'; R-31/CAN-LAM-RISK-TEST-031 executes 'Kill-before-commit E2E'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-LAM-AI-082 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I15-008 and its implementation commit is required for R-07; R-31; absence or failure blocks WP-I15-008:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-08",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-008",
+      "mitigationOwnerPackages": [
+        "WP-I3-007"
+      ],
+      "testOwnerPackage": "WP-I3-007",
+      "requiredAfterPackages": [],
+      "testTarget": "future-version and corrupt authoritative schema open/migration path",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I3-007 owns authoritative schema migrations and must preserve bytes in read-only future/corrupt-schema fixtures.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I3-007:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Schema fixtures",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-08",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I3-007.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I3-007",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I3-007.md",
+        "tests": "Run reviewed fixtures for requirements ; verification methods include . Risk-gate obligations: R-08/CAN-LAM-RISK-TEST-008 executes 'Schema fixtures'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements  pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I3-007 and its implementation commit is required for R-08; absence or failure blocks WP-I3-007:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-09",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-009",
+      "mitigationOwnerPackages": [
+        "WP-I13-009"
+      ],
+      "testOwnerPackage": "WP-I13-009",
+      "requiredAfterPackages": [],
+      "testTarget": "deterministic SQLite deletion and rebuild from authoritative records",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I13-009 owns SQLite index rebuild and must demonstrate that deleting the database loses no durable knowledge.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I13-009:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Deterministic rebuild suite",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-09",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I13-009.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I13-009",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I13-009.md",
+        "tests": "Run reviewed fixtures for requirements CAN-LAM-BACKUP-021, CAN-LAM-META-050, CAN-LAM-META-074; verification methods include Index-rebuild fixture.; SQLite-rebuild benchmark.; SQLite-rebuild safety proof.. Risk-gate obligations: R-09/CAN-LAM-RISK-TEST-009 executes 'Deterministic rebuild suite'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-LAM-BACKUP-021, CAN-LAM-META-050, CAN-LAM-META-074 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I13-009 and its implementation commit is required for R-09; absence or failure blocks WP-I13-009:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-10",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-010",
+      "mitigationOwnerPackages": [
+        "WP-I12-007",
+        "WP-I12-009"
+      ],
+      "testOwnerPackage": "WP-I12-009",
+      "requiredAfterPackages": [
+        "WP-I12-007"
+      ],
+      "testTarget": "cross-drive copy, verification, disconnect, and deterministic recovery",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I12-007 implements copy-and-verify; WP-I12-009 runs interruption recovery after that prerequisite.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I12-009:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Cross-drive failure injection",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-10",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I12-009.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I12-009",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I12-009.md",
+        "tests": "Fixture suite covering interrupted cross-drive recovery, sidecar restore from journaled backup, and partial-hash review routing. Risk-gate obligations: R-10/CAN-LAM-RISK-TEST-010 executes 'Cross-drive failure injection'.",
+        "exitGate": "Drive transaction recovery fixture suite passes. Risk-gate exit: raw PASS evidence tied to WP-I12-009 and its implementation commit is required for R-10; absence or failure blocks WP-I12-009:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-11",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-011",
+      "mitigationOwnerPackages": [
+        "WP-I12-001"
+      ],
+      "testOwnerPackage": "WP-I12-001",
+      "requiredAfterPackages": [],
+      "testTarget": "external-drive identity collision, replacement, and confirmation matrix",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I12-001 owns durable drive identity and must execute the multi-signal drive fixture matrix.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I12-001:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P1",
+      "requiredTest": "Drive fixture matrix",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-11",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I12-001.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I12-001",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I12-001.md",
+        "tests": "Fixture suite covering registration, disconnect, sidecar change/missing detection, and reconciliation without fabricating values. Risk-gate obligations: R-11/CAN-LAM-RISK-TEST-011 executes 'Drive fixture matrix'.",
+        "exitGate": "External-drive registry fixture suite passes. Risk-gate exit: raw PASS evidence tied to WP-I12-001 and its implementation commit is required for R-11; absence or failure blocks WP-I12-001:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-12",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-012",
+      "mitigationOwnerPackages": [
+        "WP-I3-002",
+        "WP-I4-006"
+      ],
+      "testOwnerPackage": "WP-I4-006",
+      "requiredAfterPackages": [
+        "WP-I3-002"
+      ],
+      "testTarget": "stable companion-set identity and missing/partial companion handling",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "Stable identity is established by WP-I3-002; WP-I4-006 then owns companion detection and its missing/partial fixtures.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I4-006:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Missing/partial companion tests",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-12",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I4-006.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I4-006",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I4-006.md",
+        "tests": "Run reviewed fixtures for requirements CAN-LAM-ARCH-284, CAN-LAM-ASSET-128, CAN-LAM-FOLDER-042; verification methods include Orphan-sidecar fixture.; Date-consistency fixture.; Year/date consistency fixture.. Risk-gate obligations: R-12/CAN-LAM-RISK-TEST-012 executes 'Missing/partial companion tests'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-LAM-ARCH-284, CAN-LAM-ASSET-128, CAN-LAM-FOLDER-042 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I4-006 and its implementation commit is required for R-12; absence or failure blocks WP-I4-006:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-13",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-013",
+      "mitigationOwnerPackages": [
+        "WP-I7-008",
+        "WP-I8-005"
+      ],
+      "testOwnerPackage": "WP-I8-005",
+      "requiredAfterPackages": [
+        "WP-I7-008"
+      ],
+      "testTarget": "effective-dated face/group and relationship history corrections",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I7-008 establishes temporal memberships; WP-I8-005 owns multi-edge relationship history and runs the downstream temporal fixtures.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I8-005:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P1",
+      "requiredTest": "Temporal fixtures",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-13",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I8-005.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I8-005",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I8-005.md",
+        "tests": "Run reviewed fixtures for requirements CAN-LAM-ASSET-026, CAN-LAM-INV-PERSON-02, CAN-LAM-PERSON-002; verification methods include Given current and historical relationship intervals, when th; Given overlapping, ended, and custom relationships, when his; Gate 1 scope; Gate 2 compile/build; Gate 3 focused/regressio. Risk-gate obligations: R-13/CAN-LAM-RISK-TEST-013 executes 'Temporal fixtures'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-LAM-ASSET-026, CAN-LAM-INV-PERSON-02, CAN-LAM-PERSON-002 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I8-005 and its implementation commit is required for R-13; absence or failure blocks WP-I8-005:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-14",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-014",
+      "mitigationOwnerPackages": [
+        "WP-I10-013"
+      ],
+      "testOwnerPackage": "WP-I10-013",
+      "requiredAfterPackages": [],
+      "testTarget": "AI candidate rejection, suppression, fingerprint, and reconsideration lifecycle",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I10-013 owns AI review suppression and invalidation and must run the suppression lifecycle fixtures.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I10-013:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P1",
+      "requiredTest": "Suppression lifecycle tests",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-14",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I10-013.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I10-013",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I10-013.md",
+        "tests": "Run reviewed fixtures for requirements CAN-FAIL-18; verification methods include Suppression and controlled-reconsideration gate; CAN-LAM-AI-090 compatible-stronger-model, slow-estimate, exact-hard-block, no-silent-fallback, quantized-identity, provenance, scheduling/scope, pause/resume, and invalidation fixtures; CAN-LAM-AI-090 compatible-stronger-model, slow-estimate, exact-hard-block, no-silent-fallback, quantized-identity, provenance, scheduling/scope, pause/resume, and invalidation fixtures; CAN-LAM-AI-090 compatible-stronger-model, slow-estimate, exact-hard-block, no-silent-fallback, quantized-identity, provenance, scheduling/scope, pause/resume, and invalidation fixtures; CAN-LAM-AI-090 compatible-stronger-model, slow-estimate, exact-hard-block, no-silent-fallback, quantized-identity, provenance, scheduling/scope, pause/resume, and invalidation fixtures. Risk-gate obligations: R-14/CAN-LAM-RISK-TEST-014 executes 'Suppression lifecycle tests'; R-25/CAN-LAM-RISK-TEST-025 executes 'Invalidation race tests'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-FAIL-18 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I10-013 and its implementation commit is required for R-14; R-25; absence or failure blocks WP-I10-013:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-15",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-015",
+      "mitigationOwnerPackages": [
+        "WP-I15-006"
+      ],
+      "testOwnerPackage": "WP-I15-006",
+      "requiredAfterPackages": [],
+      "testTarget": "runtime model/codec component inventory and licence decision gate",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I15-006 owns runtime component licence decisions and blocks distribution on an unresolved inventory audit.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I15-006:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Package inventory audit",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-15",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I15-006.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I15-006",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I15-006.md",
+        "tests": "Run reviewed fixtures for requirements CAN-LAM-GOV-069; verification methods include Gate 1 scope; Gate 2 compile/build; Gate 3 focused/regressio. Risk-gate obligations: R-15/CAN-LAM-RISK-TEST-015 executes 'Package inventory audit'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-LAM-GOV-069 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I15-006 and its implementation commit is required for R-15; absence or failure blocks WP-I15-006:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-16",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-016",
+      "mitigationOwnerPackages": [
+        "WP-I10-002",
+        "WP-I15-001"
+      ],
+      "testOwnerPackage": "WP-I15-001",
+      "requiredAfterPackages": [
+        "WP-I10-002"
+      ],
+      "testTarget": "signed clean-machine AI-worker packaging and OS launch",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I10-002 supplies the worker transport; WP-I15-001 packages it and runs cross-platform clean-machine smoke tests.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I15-001:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P1",
+      "requiredTest": "OS smoke tests",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-16",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I15-001.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I15-001",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I15-001.md",
+        "tests": "Fixture suite covering clean-machine install/launch on all three platforms and no-server requirement assertions. Risk-gate obligations: R-16/CAN-LAM-RISK-TEST-016 executes 'OS smoke tests'.",
+        "exitGate": "Clean-machine package fixture suite passes. Risk-gate exit: raw PASS evidence tied to WP-I15-001 and its implementation commit is required for R-16; absence or failure blocks WP-I15-001:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-17",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-017",
+      "mitigationOwnerPackages": [
+        "WP-I2-002",
+        "WP-I5-012"
+      ],
+      "testOwnerPackage": "WP-I5-012",
+      "requiredAfterPackages": [
+        "WP-I2-002"
+      ],
+      "testTarget": "static frontend routes with per-screen real local data and no server dependency",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I2-002 proves static packaging; WP-I5-012 owns offline library parity and can run per-screen real-data E2E afterward.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I5-012:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P1",
+      "requiredTest": "Per-screen real-data E2E",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-17",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I5-012.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I5-012",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I5-012.md",
+        "tests": "Run reviewed fixtures for requirements CAN-LAM-ARCH-333; verification methods include Viewer-component fixture.. Risk-gate obligations: R-17/CAN-LAM-RISK-TEST-017 executes 'Per-screen real-data E2E'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-LAM-ARCH-333 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I5-012 and its implementation commit is required for R-17; absence or failure blocks WP-I5-012:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-18",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-018",
+      "mitigationOwnerPackages": [
+        "WP-I2-004"
+      ],
+      "testOwnerPackage": "WP-I2-004",
+      "requiredAfterPackages": [],
+      "testTarget": "Tauri capability allowlist and negative command authorization",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I2-004 owns Tauri capabilities and permissions and must reject over-scoped commands.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I2-004:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Negative command tests",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-18",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I2-004.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I2-004",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I2-004.md",
+        "tests": "Run reviewed fixtures for requirements ; verification methods include . Risk-gate obligations: R-18/CAN-LAM-RISK-TEST-018 executes 'Negative command tests'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements  pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I2-004 and its implementation commit is required for R-18; absence or failure blocks WP-I2-004:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-19",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-019",
+      "mitigationOwnerPackages": [
+        "WP-I14-005"
+      ],
+      "testOwnerPackage": "WP-I14-005",
+      "requiredAfterPackages": [],
+      "testTarget": "large-library scan, queue, memory, and UI performance budgets",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I14-005 owns large-library benchmarks and blocks release when scale or memory budgets fail.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I14-005:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P1",
+      "requiredTest": "Scale fixtures",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-19",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I14-005.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I14-005",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I14-005.md",
+        "tests": "Benchmark fixtures for each declared workload and memory profile. Risk-gate obligations: R-19/CAN-LAM-RISK-TEST-019 executes 'Scale fixtures'.",
+        "exitGate": "Large-library and memory budget benchmarks pass with every required metric recorded. Risk-gate exit: raw PASS evidence tied to WP-I14-005 and its implementation commit is required for R-19; absence or failure blocks WP-I14-005:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-20",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-020",
+      "mitigationOwnerPackages": [
+        "WP-I4-002"
+      ],
+      "testOwnerPackage": "WP-I4-002",
+      "requiredAfterPackages": [],
+      "testTarget": "watcher event loss/duplication and periodic reconciliation",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I4-002 owns watcher reconciliation and must execute stress fixtures for misses and duplicates.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I4-002:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P1",
+      "requiredTest": "Watcher stress tests",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-20",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I4-002.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I4-002",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I4-002.md",
+        "tests": "Run reviewed fixtures for requirements CAN-LAM-ARCH-084, CAN-LAM-ARCH-085, CAN-LAM-ARCH-086, CAN-LAM-ARCH-375, CAN-LAM-EVENT-060; verification methods include Incremental-rescan fixture.; File-watch fixture.; External-change detection fixture.; Watcher fixture.. Risk-gate obligations: R-20/CAN-LAM-RISK-TEST-020 executes 'Watcher stress tests'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-LAM-ARCH-084, CAN-LAM-ARCH-085, CAN-LAM-ARCH-086, CAN-LAM-ARCH-375, CAN-LAM-EVENT-060 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I4-002 and its implementation commit is required for R-20; absence or failure blocks WP-I4-002:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-21",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-021",
+      "mitigationOwnerPackages": [
+        "WP-I3-003",
+        "WP-I3-010"
+      ],
+      "testOwnerPackage": "WP-I3-010",
+      "requiredAfterPackages": [
+        "WP-I3-003"
+      ],
+      "testTarget": "single-root mutation lease under concurrent Lamha instances",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I3-003 establishes authorized roots; WP-I3-010 owns mutation journaling and runs the concurrent-instance E2E gate.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I3-010:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Concurrency E2E",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-21",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I3-010.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I3-010",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I3-010.md",
+        "tests": "Run reviewed fixtures for requirements CAN-LAM-ASSET-125, CAN-LAM-GOV-257, CAN-LAM-TRANSACTION-001, CAN-LAM-TRANSACTION-002; verification methods include Bundle-move fixture.; Transaction validation must reject unsupported operation typ; Gate 1 scope; Gate 2 compile/build; Gate 3 focused/regressio; Operation-journal fixture with commit checks.. Risk-gate obligations: R-21/CAN-LAM-RISK-TEST-021 executes 'Concurrency E2E'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-LAM-ASSET-125, CAN-LAM-GOV-257, CAN-LAM-TRANSACTION-001, CAN-LAM-TRANSACTION-002 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I3-010 and its implementation commit is required for R-21; absence or failure blocks WP-I3-010:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-22",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-022",
+      "mitigationOwnerPackages": [
+        "WP-I13-003"
+      ],
+      "testOwnerPackage": "WP-I13-003",
+      "requiredAfterPackages": [],
+      "testTarget": "backup manifest checksums, corruption detection, and verify stage",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I13-003 owns backup verification and must reject incomplete or corrupt backups.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I13-003:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Backup corruption tests",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-22",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I13-003.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I13-003",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I13-003.md",
+        "tests": "Run reviewed fixtures for requirements CAN-LAM-ARCH-405; verification methods include Sidecar-verification fixture.. Risk-gate obligations: R-22/CAN-LAM-RISK-TEST-022 executes 'Backup corruption tests'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-LAM-ARCH-405 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I13-003 and its implementation commit is required for R-22; absence or failure blocks WP-I13-003:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-23",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-023",
+      "mitigationOwnerPackages": [
+        "WP-I13-006"
+      ],
+      "testOwnerPackage": "WP-I13-006",
+      "requiredAfterPackages": [],
+      "testTarget": "complete-bundle trash, restore, grace, and permanent-delete semantics",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I13-006 owns reversible trash and purge behavior and must run trash/restore/delete boundaries.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I13-006:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Trash/restore/delete tests",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-23",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I13-006.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I13-006",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I13-006.md",
+        "tests": "Trash, collision, no-purge, bundle, and restore fixtures. Risk-gate obligations: R-23/CAN-LAM-RISK-TEST-023 executes 'Trash/restore/delete tests'.",
+        "exitGate": "Reversible-trash and no-auto-purge fixtures pass with reference preservation. Risk-gate exit: raw PASS evidence tied to WP-I13-006 and its implementation commit is required for R-23; absence or failure blocks WP-I13-006:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-24",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-024",
+      "mitigationOwnerPackages": [
+        "WP-I11-009"
+      ],
+      "testOwnerPackage": "WP-I11-009",
+      "requiredAfterPackages": [],
+      "testTarget": "privacy-clean export allowlist and post-export metadata inspection",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I11-009 owns privacy export recipes and must execute a golden privacy corpus.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I11-009:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Golden privacy corpus",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-24",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I11-009.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I11-009",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I11-009.md",
+        "tests": "Run reviewed fixtures for requirements CAN-LAM-EDIT-001, CAN-LAM-EDIT-013; verification methods include Privacy-export fixture with omission checks.; Privacy-export fixture.. Risk-gate obligations: R-24/CAN-LAM-RISK-TEST-024 executes 'Golden privacy corpus'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-LAM-EDIT-001, CAN-LAM-EDIT-013 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I11-009 and its implementation commit is required for R-24; absence or failure blocks WP-I11-009:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-25",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-025",
+      "mitigationOwnerPackages": [
+        "WP-I10-013"
+      ],
+      "testOwnerPackage": "WP-I10-013",
+      "requiredAfterPackages": [],
+      "testTarget": "AI result fingerprint invalidation and approval race",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I10-013 owns invalidation and must prove stale results cannot be approved in race fixtures.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I10-013:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P1",
+      "requiredTest": "Invalidation race tests",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-25",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I10-013.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I10-013",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I10-013.md",
+        "tests": "Run reviewed fixtures for requirements CAN-FAIL-18; verification methods include Suppression and controlled-reconsideration gate; CAN-LAM-AI-090 compatible-stronger-model, slow-estimate, exact-hard-block, no-silent-fallback, quantized-identity, provenance, scheduling/scope, pause/resume, and invalidation fixtures; CAN-LAM-AI-090 compatible-stronger-model, slow-estimate, exact-hard-block, no-silent-fallback, quantized-identity, provenance, scheduling/scope, pause/resume, and invalidation fixtures; CAN-LAM-AI-090 compatible-stronger-model, slow-estimate, exact-hard-block, no-silent-fallback, quantized-identity, provenance, scheduling/scope, pause/resume, and invalidation fixtures; CAN-LAM-AI-090 compatible-stronger-model, slow-estimate, exact-hard-block, no-silent-fallback, quantized-identity, provenance, scheduling/scope, pause/resume, and invalidation fixtures. Risk-gate obligations: R-14/CAN-LAM-RISK-TEST-014 executes 'Suppression lifecycle tests'; R-25/CAN-LAM-RISK-TEST-025 executes 'Invalidation race tests'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-FAIL-18 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I10-013 and its implementation commit is required for R-14; R-25; absence or failure blocks WP-I10-013:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-26",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-026",
+      "mitigationOwnerPackages": [
+        "WP-I2-007"
+      ],
+      "testOwnerPackage": "WP-I2-007",
+      "requiredAfterPackages": [],
+      "testTarget": "versioned IPC envelope and generated DTO compatibility",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I2-007 owns IPC envelope versioning and must run drift and compatibility fixtures before consumers advance.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I2-007:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P1",
+      "requiredTest": "Compatibility fixtures",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-26",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I2-007.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I2-007",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I2-007.md",
+        "tests": "Run reviewed fixtures for requirements CAN-LAM-ARCH-335; verification methods include UI-to-core IPC fixture.. Risk-gate obligations: R-26/CAN-LAM-RISK-TEST-026 executes 'Compatibility fixtures'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-LAM-ARCH-335 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I2-007 and its implementation commit is required for R-26; absence or failure blocks WP-I2-007:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-27",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-027",
+      "mitigationOwnerPackages": [
+        "WP-I14-013"
+      ],
+      "testOwnerPackage": "WP-I14-013",
+      "requiredAfterPackages": [],
+      "testTarget": "graph UI list/tree alternative, keyboard operation, focus, and screen-reader semantics",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I14-013 owns accessibility semantics and non-visual alternatives and runs the accessibility scenarios.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I14-013:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P1",
+      "requiredTest": "Accessibility scenarios",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-27",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I14-013.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I14-013",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I14-013.md",
+        "tests": "Keyboard-only and screen-reader fixtures for every reviewed surface. Risk-gate obligations: R-27/CAN-LAM-RISK-TEST-027 executes 'Accessibility scenarios'.",
+        "exitGate": "Accessibility fixture suite passes for all reviewed surfaces. Risk-gate exit: raw PASS evidence tied to WP-I14-013 and its implementation commit is required for R-27; absence or failure blocks WP-I14-013:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-28",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-028",
+      "mitigationOwnerPackages": [
+        "WP-I15-014"
+      ],
+      "testOwnerPackage": "WP-I15-014",
+      "requiredAfterPackages": [],
+      "testTarget": "clean-machine outbound network and listener observation",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I15-014 owns final outbound verification and blocks release on any automatic communication.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I15-014:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Clean-machine network test",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-28",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I15-014.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I15-014",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I15-014.md",
+        "tests": "Fixture suite covering package inspection, network-listener absence, and local-only operation on each platform. Risk-gate obligations: R-28/CAN-LAM-RISK-TEST-028 executes 'Clean-machine network test'.",
+        "exitGate": "Final outbound-traffic fixture suite passes. Risk-gate exit: raw PASS evidence tied to WP-I15-014 and its implementation commit is required for R-28; absence or failure blocks WP-I15-014:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-29",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-029",
+      "mitigationOwnerPackages": [
+        "WP-I0-006"
+      ],
+      "testOwnerPackage": "WP-I0-007",
+      "requiredAfterPackages": [
+        "WP-I0-006"
+      ],
+      "testTarget": "source-derived baseline build/test execution with typed missing-prerequisite evidence",
+      "testClass": "BASELINE_REAL_EXECUTION",
+      "verificationStatus": "VERIFIED",
+      "runtimeEvidence": [
+        "graphify/13-implementation/WP-I0-007/baseline-attempts.json",
+        "graphify/13-implementation/WP-I0-007/verification-report.json",
+        "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-007/adversarial-review.md"
+      ],
+      "implementationCommit": "48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2",
+      "rationale": "WP-I0-006 authorizes isolated output; WP-I0-007 then executes every available baseline surface or records an exact typed blocker.",
+      "blockingPackageGate": "WP-I0-007:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P1",
+      "requiredTest": "Baseline execution",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-29",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-007.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I0-007",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-007.md",
+        "tests": "Run reviewed fixtures for requirements CAN-MISSION-I0-007; verification methods include Work-package evidence plus phase exit gate. Risk-gate obligations: R-05/CAN-LAM-RISK-TEST-005 executes 'Disposable baseline build'; R-29/CAN-LAM-RISK-TEST-029 executes 'Baseline execution'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-MISSION-I0-007 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I0-007 and its implementation commit is required for R-05; R-29; absence or failure blocks WP-I0-007:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-30",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-030",
+      "mitigationOwnerPackages": [
+        "WP-I0-011"
+      ],
+      "testOwnerPackage": "WP-I0-011",
+      "requiredAfterPackages": [],
+      "testTarget": "bounded work-package cohesion and per-phase simplicity review enforcement",
+      "testClass": "GOVERNANCE_MITIGATION_BOUNDARY",
+      "rationale": "Over-engineering is a planning-governance risk; WP-I0-011 can genuinely demonstrate its mitigation by rejecting unbounded or mechanically split packages.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I0-011:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P1",
+      "requiredTest": "Per-phase simplicity review",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-30",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I0-011",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md",
+        "tests": "Fixture suite asserting requirement/package status transitions require evidence, tracker revisions are preserved, planning passes reject incomplete maps, and stubs cannot satisfy gates. Risk-gate obligations: R-30/CAN-LAM-RISK-TEST-030 executes 'Per-phase simplicity review'; R-32/CAN-LAM-RISK-TEST-032 executes 'Audit prompt/output'.",
+        "exitGate": "Every fixture passes and no requirement/package status can advance without recorded gate evidence. Risk-gate exit: raw PASS evidence tied to WP-I0-011 and its implementation commit is required for R-30; R-32; absence or failure blocks WP-I0-011:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-31",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-031",
+      "mitigationOwnerPackages": [
+        "WP-I3-010",
+        "WP-I5-017",
+        "WP-I13-011"
+      ],
+      "testOwnerPackage": "WP-I15-008",
+      "requiredAfterPackages": [
+        "WP-I3-010",
+        "WP-I5-017",
+        "WP-I13-011"
+      ],
+      "testTarget": "integrated UI operation state versus durable commit and recovery events",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "The boundary spans journal commit, viewer mutations, and disaster recovery; WP-I15-008 runs the integrated kill-before-commit parity E2E after those owners.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I15-008:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Kill-before-commit E2E",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-31",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I15-008.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I15-008",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I15-008.md",
+        "tests": "Run reviewed fixtures for requirements CAN-LAM-AI-082; verification methods include Bundled-AI packaging gate.. Risk-gate obligations: R-07/CAN-LAM-RISK-TEST-007 executes 'Malformed corpus/fuzzing'; R-31/CAN-LAM-RISK-TEST-031 executes 'Kill-before-commit E2E'.",
+        "exitGate": "Exit only when the reviewed fixtures for requirements CAN-LAM-AI-082 pass and completion evidence is recorded. Risk-gate exit: raw PASS evidence tied to WP-I15-008 and its implementation commit is required for R-07; R-31; absence or failure blocks WP-I15-008:EXIT and I15:RELEASE."
+      }
+    },
+    {
+      "riskId": "R-32",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-032",
+      "mitigationOwnerPackages": [
+        "WP-I0-011"
+      ],
+      "testOwnerPackage": "WP-I0-011",
+      "requiredAfterPackages": [],
+      "testTarget": "blocked-item protocol under unknown path, field, schema, or ownership evidence",
+      "testClass": "GOVERNANCE_MITIGATION_BOUNDARY",
+      "rationale": "Unknown-discovery handling is the WP-I0-011 governance surface and is genuinely tested by attempted guesses that must become typed blockers.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I0-011:EXIT",
+      "blockingReleaseGate": "I15:RELEASE",
+      "severity": "P0",
+      "requiredTest": "Audit prompt/output",
+      "prerequisitesSatisfied": true,
+      "governanceCheck": "python graphify/13-implementation/WP-I0-011/risk_governance_test.py --risk R-32",
+      "governanceCheckType": "MAPPING_ENFORCEMENT_NOT_PRODUCT_TEST",
+      "mappingEvidence": [
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md",
+        "graphify/semantic-plan-source/risks/risk-test-ownership.json"
+      ],
+      "packageGateContract": {
+        "packageId": "WP-I0-011",
+        "packet": "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md",
+        "tests": "Fixture suite asserting requirement/package status transitions require evidence, tracker revisions are preserved, planning passes reject incomplete maps, and stubs cannot satisfy gates. Risk-gate obligations: R-30/CAN-LAM-RISK-TEST-030 executes 'Per-phase simplicity review'; R-32/CAN-LAM-RISK-TEST-032 executes 'Audit prompt/output'.",
+        "exitGate": "Every fixture passes and no requirement/package status can advance without recorded gate evidence. Risk-gate exit: raw PASS evidence tied to WP-I0-011 and its implementation commit is required for R-30; R-32; absence or failure blocks WP-I0-011:EXIT and I15:RELEASE."
+      }
+    }
+  ],
+  "canonicalRegistry": {
+    "canonicalIds": 2371,
+    "packageIds": 155,
+    "memberships": 756,
+    "ownedRequirements": [
+      "CAN-FAIL-02",
+      "CAN-FAIL-19",
+      "CAN-FAIL-23",
+      "CAN-FAIL-24",
+      "CAN-FAIL-27",
+      "CAN-FAIL-32",
+      "CAN-LAM-ARCH-444",
+      "CAN-LAM-GOV-052",
+      "CAN-LAM-GOV-054",
+      "CAN-LAM-GOV-165",
+      "CAN-LAM-GOV-179",
+      "CAN-LAM-GOV-180",
+      "CAN-LAM-GOV-264",
+      "CAN-LAM-GOV-265",
+      "CAN-LAM-GOV-266",
+      "CAN-LAM-GOV-270",
+      "CAN-LAM-GOV-273",
+      "CAN-LAM-RISK-TEST-030",
+      "CAN-LAM-RISK-TEST-032",
+      "CAN-LAM-TEST-020",
+      "CAN-LAM-TEST-021",
+      "CAN-MISSION-I0-011"
+    ]
+  }
+}

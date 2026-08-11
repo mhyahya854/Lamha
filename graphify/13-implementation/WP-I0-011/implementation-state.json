@@ -1,0 +1,3151 @@
+{
+  "schemaVersion": 2,
+  "packageId": "WP-I0-011",
+  "startingSha": "ef1cdd4a5755e813a650aa6f0988d84b82e1085c",
+  "adoptionTimestamp": "2026-08-11T07:40:19+00:00",
+  "repositoryHead": "ef1cdd4a5755e813a650aa6f0988d84b82e1085c",
+  "explicitAuthorizedPackage": "WP-I0-011",
+  "selectedPackage": "WP-I0-011",
+  "readyPackages": [
+    "WP-I0-011",
+    "WP-I1-001",
+    "WP-I2-001",
+    "WP-I2-002",
+    "WP-I10-003",
+    "WP-I14-001",
+    "WP-I15-006"
+  ],
+  "completedPackages": [
+    "WP-I0-001",
+    "WP-I0-002",
+    "WP-I0-003",
+    "WP-I0-004",
+    "WP-I0-005",
+    "WP-I0-006",
+    "WP-I0-007",
+    "WP-I0-008",
+    "WP-I0-009",
+    "WP-I0-010"
+  ],
+  "importedBaselines": [
+    {
+      "subjectType": "PACKAGE",
+      "subjectId": "WP-I0-001",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "fb2d32286f9ce3a8525137a2e92fa6aa2c098c75",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-001/package-summary.json",
+        "graphify/13-implementation/WP-I0-001/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-001/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-001/verification-results.json",
+        "git-origin:fb2d32286f9ce3a8525137a2e92fa6aa2c098c75"
+      ],
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-001/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "negative_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "negative fixtures PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-001/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "regression_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "affected regression checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-001/package-summary.json",
+            "graphify/13-implementation/WP-I0-001/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-001/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-001/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "recovery_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "recovery/preservation evidence recorded",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-001/package-summary.json",
+            "graphify/13-implementation/WP-I0-001/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-001/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-001/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "independent_review",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "independent review PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-001/adversarial-review.md"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "package exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-001/package-summary.json",
+            "graphify/13-implementation/WP-I0-001/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-001/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-001/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "reviewed package commit fb2d32286f9ce3a8525137a2e92fa6aa2c098c75 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:fb2d32286f9ce3a8525137a2e92fa6aa2c098c75"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported current committed state; no unobserved historical transitions were invented."
+    },
+    {
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-292",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "fb2d32286f9ce3a8525137a2e92fa6aa2c098c75",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-001/package-summary.json",
+        "graphify/13-implementation/WP-I0-001/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-001/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-001/verification-results.json",
+        "git-origin:fb2d32286f9ce3a8525137a2e92fa6aa2c098c75",
+        "graphify/semantic-plan-source/requirements/requirements.csv"
+      ],
+      "canonicalVerification": "Given the initial outside-Graphify SHA-256 inventory, when planning validation finishes, then a fresh inventory reports zero added, removed, modified, or renamed application paths and the write-guard escape fixtures fail.",
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-001 focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-001/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "preservation_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-001 preservation evidence PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-001/package-summary.json",
+            "graphify/13-implementation/WP-I0-001/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-001/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-001/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "package_exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-001 exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-001/package-summary.json",
+            "graphify/13-implementation/WP-I0-001/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-001/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-001/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "fb2d32286f9ce3a8525137a2e92fa6aa2c098c75 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:fb2d32286f9ce3a8525137a2e92fa6aa2c098c75"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported from the owning package's committed, reviewed, GitHub-reachable evidence."
+    },
+    {
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-MISSION-I0-001",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "fb2d32286f9ce3a8525137a2e92fa6aa2c098c75",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-001/package-summary.json",
+        "graphify/13-implementation/WP-I0-001/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-001/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-001/verification-results.json",
+        "git-origin:fb2d32286f9ce3a8525137a2e92fa6aa2c098c75",
+        "graphify/semantic-plan-source/requirements/requirements.csv"
+      ],
+      "canonicalVerification": "Given the existing Lamha repository, when WP-I0-001 records provenance, then every evidence file is inside Graphify, the outside-Graphify hash comparison reports zero changes, and no archive, backup, copy, build output, cache, or Git mutation exists.",
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-001 focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-001/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "preservation_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-001 preservation evidence PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-001/package-summary.json",
+            "graphify/13-implementation/WP-I0-001/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-001/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-001/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "package_exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-001 exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-001/package-summary.json",
+            "graphify/13-implementation/WP-I0-001/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-001/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-001/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "fb2d32286f9ce3a8525137a2e92fa6aa2c098c75 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:fb2d32286f9ce3a8525137a2e92fa6aa2c098c75"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported from the owning package's committed, reviewed, GitHub-reachable evidence."
+    },
+    {
+      "subjectType": "PACKAGE",
+      "subjectId": "WP-I0-002",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "92bb3ee3650441bdd3b2aeb360ae4d1eeceae790",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-002/package-summary.json",
+        "graphify/13-implementation/WP-I0-002/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-002/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-002/verification-results.json",
+        "git-origin:92bb3ee3650441bdd3b2aeb360ae4d1eeceae790"
+      ],
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-002/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "negative_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "negative fixtures PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-002/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "regression_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "affected regression checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-002/package-summary.json",
+            "graphify/13-implementation/WP-I0-002/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-002/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-002/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "recovery_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "recovery/preservation evidence recorded",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-002/package-summary.json",
+            "graphify/13-implementation/WP-I0-002/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-002/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-002/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "independent_review",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "independent review PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-002/adversarial-review.md"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "package exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-002/package-summary.json",
+            "graphify/13-implementation/WP-I0-002/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-002/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-002/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "reviewed package commit 92bb3ee3650441bdd3b2aeb360ae4d1eeceae790 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:92bb3ee3650441bdd3b2aeb360ae4d1eeceae790"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported current committed state; no unobserved historical transitions were invented."
+    },
+    {
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-MISSION-I0-002",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "92bb3ee3650441bdd3b2aeb360ae4d1eeceae790",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-002/package-summary.json",
+        "graphify/13-implementation/WP-I0-002/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-002/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-002/verification-results.json",
+        "git-origin:92bb3ee3650441bdd3b2aeb360ae4d1eeceae790",
+        "graphify/semantic-plan-source/requirements/requirements.csv"
+      ],
+      "canonicalVerification": "Given a Lamha Git repository, when WP-I0-002 inspects repository state, then the report records the observed branch, HEAD, and working-tree state while before-and-after Git metadata hashes remain identical.",
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-002 focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-002/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "preservation_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-002 preservation evidence PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-002/package-summary.json",
+            "graphify/13-implementation/WP-I0-002/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-002/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-002/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "package_exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-002 exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-002/package-summary.json",
+            "graphify/13-implementation/WP-I0-002/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-002/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-002/verification-results.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "92bb3ee3650441bdd3b2aeb360ae4d1eeceae790 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:92bb3ee3650441bdd3b2aeb360ae4d1eeceae790"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported from the owning package's committed, reviewed, GitHub-reachable evidence."
+    },
+    {
+      "subjectType": "PACKAGE",
+      "subjectId": "WP-I0-003",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "1475b25de7aa54928c8101bed08ffe178f0acbea",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-003/package-summary.json",
+        "graphify/13-implementation/WP-I0-003/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-003/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-003/verification-report.json",
+        "git-origin:1475b25de7aa54928c8101bed08ffe178f0acbea"
+      ],
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-003/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "negative_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "negative fixtures PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-003/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "regression_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "affected regression checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-003/package-summary.json",
+            "graphify/13-implementation/WP-I0-003/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-003/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-003/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "recovery_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "recovery/preservation evidence recorded",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-003/package-summary.json",
+            "graphify/13-implementation/WP-I0-003/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-003/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-003/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "independent_review",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "independent review PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-003/adversarial-review.md"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "package exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-003/package-summary.json",
+            "graphify/13-implementation/WP-I0-003/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-003/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-003/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "reviewed package commit 1475b25de7aa54928c8101bed08ffe178f0acbea is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:1475b25de7aa54928c8101bed08ffe178f0acbea"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported current committed state; no unobserved historical transitions were invented."
+    },
+    {
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-MISSION-I0-003",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "1475b25de7aa54928c8101bed08ffe178f0acbea",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-003/package-summary.json",
+        "graphify/13-implementation/WP-I0-003/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-003/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-003/verification-report.json",
+        "git-origin:1475b25de7aa54928c8101bed08ffe178f0acbea",
+        "graphify/semantic-plan-source/requirements/requirements.csv"
+      ],
+      "canonicalVerification": "Given the existing repository files, when WP-I0-003 calculates and rechecks the manifest, then every listed path, byte size, and digest matches and all evidence remains inside Graphify.",
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-003 focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-003/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "preservation_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-003 preservation evidence PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-003/package-summary.json",
+            "graphify/13-implementation/WP-I0-003/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-003/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-003/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "package_exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-003 exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-003/package-summary.json",
+            "graphify/13-implementation/WP-I0-003/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-003/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-003/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "1475b25de7aa54928c8101bed08ffe178f0acbea is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:1475b25de7aa54928c8101bed08ffe178f0acbea"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported from the owning package's committed, reviewed, GitHub-reachable evidence."
+    },
+    {
+      "subjectType": "PACKAGE",
+      "subjectId": "WP-I0-004",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "98fb36f3fde9dd5cec70ed434a5362b76ab99488",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-004/package-summary.json",
+        "graphify/13-implementation/WP-I0-004/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-004/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-004/verification-report.json",
+        "git-origin:98fb36f3fde9dd5cec70ed434a5362b76ab99488"
+      ],
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-004/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "negative_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "negative fixtures PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-004/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "regression_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "affected regression checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-004/package-summary.json",
+            "graphify/13-implementation/WP-I0-004/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-004/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-004/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "recovery_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "recovery/preservation evidence recorded",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-004/package-summary.json",
+            "graphify/13-implementation/WP-I0-004/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-004/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-004/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "independent_review",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "independent review PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-004/adversarial-review.md"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "package exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-004/package-summary.json",
+            "graphify/13-implementation/WP-I0-004/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-004/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-004/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "reviewed package commit 98fb36f3fde9dd5cec70ed434a5362b76ab99488 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:98fb36f3fde9dd5cec70ed434a5362b76ab99488"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported current committed state; no unobserved historical transitions were invented."
+    },
+    {
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-MISSION-I0-004",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "98fb36f3fde9dd5cec70ed434a5362b76ab99488",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-004/package-summary.json",
+        "graphify/13-implementation/WP-I0-004/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-004/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-004/verification-report.json",
+        "git-origin:98fb36f3fde9dd5cec70ed434a5362b76ab99488",
+        "graphify/semantic-plan-source/requirements/requirements.csv"
+      ],
+      "canonicalVerification": "Execute the focused WP-I0-004 success, boundary, negative, preservation, and recovery checks for CAN-MISSION-I0-004; include the package test obligation 'Run reviewed fixtures for requirements CAN-MISSION-I0-004; verification methods include Work-package evidence plus phase exit gate.' and record the exact command, fixture, result, state revision, and pre/post hashes at the package exit gate.",
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-004 focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-004/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "preservation_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-004 preservation evidence PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-004/package-summary.json",
+            "graphify/13-implementation/WP-I0-004/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-004/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-004/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "package_exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-004 exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-004/package-summary.json",
+            "graphify/13-implementation/WP-I0-004/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-004/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-004/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "98fb36f3fde9dd5cec70ed434a5362b76ab99488 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:98fb36f3fde9dd5cec70ed434a5362b76ab99488"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported from the owning package's committed, reviewed, GitHub-reachable evidence."
+    },
+    {
+      "subjectType": "PACKAGE",
+      "subjectId": "WP-I0-005",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "e411b1120dc2bd6d9ad20219839819d19166c8b8",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-005/package-summary.json",
+        "graphify/13-implementation/WP-I0-005/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-005/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-005/verification-report.json",
+        "git-origin:e411b1120dc2bd6d9ad20219839819d19166c8b8"
+      ],
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-005/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "negative_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "negative fixtures PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-005/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "regression_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "affected regression checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-005/package-summary.json",
+            "graphify/13-implementation/WP-I0-005/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-005/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-005/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "recovery_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "recovery/preservation evidence recorded",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-005/package-summary.json",
+            "graphify/13-implementation/WP-I0-005/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-005/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-005/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "independent_review",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "independent review PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-005/adversarial-review.md"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "package exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-005/package-summary.json",
+            "graphify/13-implementation/WP-I0-005/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-005/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-005/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "reviewed package commit e411b1120dc2bd6d9ad20219839819d19166c8b8 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:e411b1120dc2bd6d9ad20219839819d19166c8b8"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported current committed state; no unobserved historical transitions were invented."
+    },
+    {
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-MISSION-I0-006",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "e411b1120dc2bd6d9ad20219839819d19166c8b8",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-005/package-summary.json",
+        "graphify/13-implementation/WP-I0-005/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-005/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-005/verification-report.json",
+        "git-origin:e411b1120dc2bd6d9ad20219839819d19166c8b8",
+        "graphify/semantic-plan-source/requirements/requirements.csv"
+      ],
+      "canonicalVerification": "Given the existing repository and host, when toolchain inspection runs, then every discoverable version and manifest path is recorded inside Graphify and every unavailable item is explicitly marked REVIEW_REQUIRED.",
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-005 focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-005/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "preservation_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-005 preservation evidence PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-005/package-summary.json",
+            "graphify/13-implementation/WP-I0-005/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-005/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-005/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "package_exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-005 exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-005/package-summary.json",
+            "graphify/13-implementation/WP-I0-005/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-005/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-005/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "e411b1120dc2bd6d9ad20219839819d19166c8b8 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:e411b1120dc2bd6d9ad20219839819d19166c8b8"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported from the owning package's committed, reviewed, GitHub-reachable evidence."
+    },
+    {
+      "subjectType": "PACKAGE",
+      "subjectId": "WP-I0-006",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "6e91e4b9108c591d6908833b2c2f48162bbe95c6",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-006/package-summary.json",
+        "graphify/13-implementation/WP-I0-006/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-006/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-006/verification-report.json",
+        "git-origin:6e91e4b9108c591d6908833b2c2f48162bbe95c6"
+      ],
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-006/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "negative_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "negative fixtures PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-006/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "regression_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "affected regression checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-006/package-summary.json",
+            "graphify/13-implementation/WP-I0-006/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-006/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-006/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "recovery_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "recovery/preservation evidence recorded",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-006/package-summary.json",
+            "graphify/13-implementation/WP-I0-006/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-006/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-006/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "independent_review",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "independent review PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-006/adversarial-review.md"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "package exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-006/package-summary.json",
+            "graphify/13-implementation/WP-I0-006/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-006/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-006/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "reviewed package commit 6e91e4b9108c591d6908833b2c2f48162bbe95c6 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:6e91e4b9108c591d6908833b2c2f48162bbe95c6"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported current committed state; no unobserved historical transitions were invented."
+    },
+    {
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-MISSION-I0-005",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "6e91e4b9108c591d6908833b2c2f48162bbe95c6",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-006/package-summary.json",
+        "graphify/13-implementation/WP-I0-006/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-006/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-006/verification-report.json",
+        "git-origin:6e91e4b9108c591d6908833b2c2f48162bbe95c6",
+        "graphify/semantic-plan-source/requirements/requirements.csv"
+      ],
+      "canonicalVerification": "Given the read-only provenance baseline, when WP-I0-006 documents build isolation, then no build, test, cache, generated-code, package-manager, or duplicate-tree artifact is created and the later writable workspace requirement is explicit.",
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-006 focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-006/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "preservation_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-006 preservation evidence PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-006/package-summary.json",
+            "graphify/13-implementation/WP-I0-006/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-006/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-006/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "package_exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-006 exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-006/package-summary.json",
+            "graphify/13-implementation/WP-I0-006/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-006/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-006/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "6e91e4b9108c591d6908833b2c2f48162bbe95c6 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:6e91e4b9108c591d6908833b2c2f48162bbe95c6"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported from the owning package's committed, reviewed, GitHub-reachable evidence."
+    },
+    {
+      "subjectType": "PACKAGE",
+      "subjectId": "WP-I0-007",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-007/package-summary.json",
+        "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-007/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-007/verification-report.json",
+        "git-origin:48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2"
+      ],
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "negative_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "negative fixtures PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "regression_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "affected regression checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/package-summary.json",
+            "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-007/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-007/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "recovery_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "recovery/preservation evidence recorded",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/package-summary.json",
+            "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-007/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-007/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "independent_review",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "independent review PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/adversarial-review.md"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "package exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/package-summary.json",
+            "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-007/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-007/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "reviewed package commit 48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported current committed state; no unobserved historical transitions were invented."
+    },
+    {
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-MISSION-I0-007",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-007/package-summary.json",
+        "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-007/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-007/verification-report.json",
+        "git-origin:48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2",
+        "graphify/semantic-plan-source/requirements/requirements.csv"
+      ],
+      "canonicalVerification": "Execute the focused WP-I0-007 success, boundary, negative, preservation, and recovery checks for CAN-MISSION-I0-007; include the package test obligation 'Run reviewed fixtures for requirements CAN-MISSION-I0-007; verification methods include Work-package evidence plus phase exit gate.' and record the exact command, fixture, result, state revision, and pre/post hashes at the package exit gate.",
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-007 focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "preservation_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-007 preservation evidence PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/package-summary.json",
+            "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-007/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-007/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "package_exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-007 exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/package-summary.json",
+            "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-007/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-007/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported from the owning package's committed, reviewed, GitHub-reachable evidence."
+    },
+    {
+      "subjectType": "PACKAGE",
+      "subjectId": "WP-I0-008",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "acb4377ab127eaeff381663348ed0cc3a1b12a15",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-008/package-summary.json",
+        "graphify/13-implementation/WP-I0-008/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-008/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-008/verification-report.json",
+        "git-origin:acb4377ab127eaeff381663348ed0cc3a1b12a15"
+      ],
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-008/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "negative_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "negative fixtures PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-008/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "regression_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "affected regression checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-008/package-summary.json",
+            "graphify/13-implementation/WP-I0-008/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-008/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-008/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "recovery_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "recovery/preservation evidence recorded",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-008/package-summary.json",
+            "graphify/13-implementation/WP-I0-008/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-008/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-008/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "independent_review",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "independent review PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-008/adversarial-review.md"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "package exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-008/package-summary.json",
+            "graphify/13-implementation/WP-I0-008/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-008/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-008/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "reviewed package commit acb4377ab127eaeff381663348ed0cc3a1b12a15 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:acb4377ab127eaeff381663348ed0cc3a1b12a15"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported current committed state; no unobserved historical transitions were invented."
+    },
+    {
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-MISSION-I0-008",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "acb4377ab127eaeff381663348ed0cc3a1b12a15",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-008/package-summary.json",
+        "graphify/13-implementation/WP-I0-008/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-008/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-008/verification-report.json",
+        "git-origin:acb4377ab127eaeff381663348ed0cc3a1b12a15",
+        "graphify/semantic-plan-source/requirements/requirements.csv"
+      ],
+      "canonicalVerification": "Given a missing prerequisite, when classification runs, then a Graphify record names its category, evidence, affected packages, and REVIEW_REQUIRED or BLOCKED status while the repository remains unchanged.",
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-008 focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-008/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "preservation_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-008 preservation evidence PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-008/package-summary.json",
+            "graphify/13-implementation/WP-I0-008/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-008/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-008/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "package_exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-008 exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-008/package-summary.json",
+            "graphify/13-implementation/WP-I0-008/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-008/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-008/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "acb4377ab127eaeff381663348ed0cc3a1b12a15 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:acb4377ab127eaeff381663348ed0cc3a1b12a15"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported from the owning package's committed, reviewed, GitHub-reachable evidence."
+    },
+    {
+      "subjectType": "PACKAGE",
+      "subjectId": "WP-I0-009",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "53b9441d64429bc23ca0e306416785d8d3054bbc",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-009/package-summary.json",
+        "graphify/13-implementation/WP-I0-009/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-009/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-009/verification-report.json",
+        "git-origin:53b9441d64429bc23ca0e306416785d8d3054bbc"
+      ],
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-009/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "negative_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "negative fixtures PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-009/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "regression_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "affected regression checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-009/package-summary.json",
+            "graphify/13-implementation/WP-I0-009/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-009/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-009/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "recovery_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "recovery/preservation evidence recorded",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-009/package-summary.json",
+            "graphify/13-implementation/WP-I0-009/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-009/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-009/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "independent_review",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "independent review PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-009/adversarial-review.md"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "package exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-009/package-summary.json",
+            "graphify/13-implementation/WP-I0-009/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-009/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-009/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "reviewed package commit 53b9441d64429bc23ca0e306416785d8d3054bbc is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:53b9441d64429bc23ca0e306416785d8d3054bbc"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported current committed state; no unobserved historical transitions were invented."
+    },
+    {
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-MISSION-I0-009",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "53b9441d64429bc23ca0e306416785d8d3054bbc",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-009/package-summary.json",
+        "graphify/13-implementation/WP-I0-009/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-009/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-009/verification-report.json",
+        "git-origin:53b9441d64429bc23ca0e306416785d8d3054bbc",
+        "graphify/semantic-plan-source/requirements/requirements.csv"
+      ],
+      "canonicalVerification": "Given the frontend source, when coupling inspection runs, then every discovered coupling has source evidence, a dependency category, and one owning reviewed decision or package, with unresolved ownership reported as REVIEW_REQUIRED.",
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-009 focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-009/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "preservation_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-009 preservation evidence PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-009/package-summary.json",
+            "graphify/13-implementation/WP-I0-009/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-009/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-009/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "package_exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-009 exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-009/package-summary.json",
+            "graphify/13-implementation/WP-I0-009/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-009/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-009/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "53b9441d64429bc23ca0e306416785d8d3054bbc is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:53b9441d64429bc23ca0e306416785d8d3054bbc"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported from the owning package's committed, reviewed, GitHub-reachable evidence."
+    },
+    {
+      "subjectType": "PACKAGE",
+      "subjectId": "WP-I0-010",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "1fb2740fff3bd2eb4e4092047366912445f96515",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-010/package-summary.json",
+        "graphify/13-implementation/WP-I0-010/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-010/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-010/verification-report.json",
+        "git-origin:1fb2740fff3bd2eb4e4092047366912445f96515"
+      ],
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-010/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "negative_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "negative fixtures PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-010/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "regression_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "affected regression checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-010/package-summary.json",
+            "graphify/13-implementation/WP-I0-010/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-010/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-010/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "recovery_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "recovery/preservation evidence recorded",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-010/package-summary.json",
+            "graphify/13-implementation/WP-I0-010/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-010/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-010/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "independent_review",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "independent review PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-010/adversarial-review.md"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "package exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-010/package-summary.json",
+            "graphify/13-implementation/WP-I0-010/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-010/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-010/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "reviewed package commit 1fb2740fff3bd2eb4e4092047366912445f96515 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:1fb2740fff3bd2eb4e4092047366912445f96515"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported current committed state; no unobserved historical transitions were invented."
+    },
+    {
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-MISSION-I0-010",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T07:40:19+00:00",
+      "sourceCommit": "1fb2740fff3bd2eb4e4092047366912445f96515",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-010/package-summary.json",
+        "graphify/13-implementation/WP-I0-010/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-010/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-010/verification-report.json",
+        "git-origin:1fb2740fff3bd2eb4e4092047366912445f96515",
+        "graphify/semantic-plan-source/requirements/requirements.csv"
+      ],
+      "canonicalVerification": "Execute the focused WP-I0-010 success, boundary, negative, preservation, and recovery checks for CAN-MISSION-I0-010; include the package test obligation 'Run reviewed fixtures for requirements CAN-MISSION-I0-010; verification methods include Work-package evidence plus phase exit gate.' and record the exact command, fixture, result, state revision, and pre/post hashes at the package exit gate.",
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-010 focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-010/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "preservation_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-010 preservation evidence PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-010/package-summary.json",
+            "graphify/13-implementation/WP-I0-010/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-010/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-010/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "package_exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-010 exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-010/package-summary.json",
+            "graphify/13-implementation/WP-I0-010/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-010/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-010/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "1fb2740fff3bd2eb4e4092047366912445f96515 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:1fb2740fff3bd2eb4e4092047366912445f96515"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Imported from the owning package's committed, reviewed, GitHub-reachable evidence."
+    },
+    {
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-RISK-TEST-005",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T09:29:02+00:00",
+      "sourceCommit": "48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-007/package-summary.json",
+        "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-007/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-007/verification-report.json",
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "git-origin:48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2"
+      ],
+      "canonicalVerification": "Execute Disposable baseline build at WP-I0-007:EXIT and retain raw package/commit evidence.",
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-007 focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "preservation_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-007 preservation evidence PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/package-summary.json",
+            "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-007/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-007/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "package_exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-007 exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/package-summary.json",
+            "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-007/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-007/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Post-adoption canonical child reconciled to its owner's already committed, reviewed, GitHub-reachable completion evidence."
+    },
+    {
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-RISK-TEST-029",
+      "status": "COMPLETE",
+      "importedAt": "2026-08-11T09:29:02+00:00",
+      "sourceCommit": "48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-007/package-summary.json",
+        "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-007/adversarial-review.md",
+        "graphify/13-implementation/WP-I0-007/verification-report.json",
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "git-origin:48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2"
+      ],
+      "canonicalVerification": "Execute Baseline execution at WP-I0-007:EXIT and retain raw package/commit evidence.",
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-007 focused checks PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "preservation_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-007 preservation evidence PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/package-summary.json",
+            "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-007/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-007/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "package_exit_gate",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "WP-I0-007 exit gate PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-007/package-summary.json",
+            "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+            "graphify/13-implementation/WP-I0-007/adversarial-review.md",
+            "graphify/13-implementation/WP-I0-007/verification-report.json"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "github_verification",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "inspection of committed package evidence",
+          "exitCode": 0,
+          "observableOutput": "48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2 is an ancestor of origin/main",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "git-origin:48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "provenanceNote": "Post-adoption canonical child reconciled to its owner's already committed, reviewed, GitHub-reachable completion evidence."
+    }
+  ],
+  "revisions": [
+    {
+      "revisionId": "PACKAGE-WP-I0-011-01",
+      "subjectType": "PACKAGE",
+      "subjectId": "WP-I0-011",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:19+00:00",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-011/verification-report.json",
+        "graphify/13-implementation/WP-I0-011/completion-evidence.md",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "049b6936ebc68ea1a701a6d15b92c21b26d9bcb9cda6c78ba0ae9a319299481e"
+    },
+    {
+      "revisionId": "PACKAGE-WP-I0-011-02",
+      "subjectType": "PACKAGE",
+      "subjectId": "WP-I0-011",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:20+00:00",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-011/verification-report.json",
+        "graphify/13-implementation/WP-I0-011/completion-evidence.md",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "049b6936ebc68ea1a701a6d15b92c21b26d9bcb9cda6c78ba0ae9a319299481e",
+      "revisionHash": "34cd484c556243526e1264c217d3dcf68d58a4cd8006be35376fe870829b2770"
+    },
+    {
+      "revisionId": "PACKAGE-WP-I0-011-03",
+      "subjectType": "PACKAGE",
+      "subjectId": "WP-I0-011",
+      "fromStatus": "IN_PROGRESS",
+      "toStatus": "REVIEW_PENDING",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:21+00:00",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-011/verification-report.json",
+        "graphify/13-implementation/WP-I0-011/completion-evidence.md",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [
+        {
+          "gate": "focused_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "python graphify/13-implementation/WP-I0-011/collect_evidence.py",
+          "exitCode": 0,
+          "observableOutput": "collector fixtures PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-011/verification-report.json",
+            "graphify/13-implementation/WP-I0-011/completion-evidence.md",
+            "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "negative_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "python graphify/13-implementation/WP-I0-011/collect_evidence.py",
+          "exitCode": 0,
+          "observableOutput": "23 negative/boundary fixtures PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-011/verification-report.json",
+            "graphify/13-implementation/WP-I0-011/completion-evidence.md",
+            "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "regression_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "python graphify/12-semantic-implementation-plan/12-validators/validate_plan.py --pre-certification",
+          "exitCode": 0,
+          "observableOutput": "planning gates and 3,697-file Codebase baseline PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-011/verification-report.json",
+            "graphify/13-implementation/WP-I0-011/completion-evidence.md",
+            "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        },
+        {
+          "gate": "recovery_validation",
+          "status": "PASS",
+          "method": "repository evidence inspection",
+          "commandOrInspection": "python graphify/13-implementation/WP-I0-011/collect_evidence.py",
+          "exitCode": 0,
+          "observableOutput": "mid-publication rollback and path-escape rejection PASS",
+          "changedSymbols": [],
+          "evidenceLinks": [
+            "graphify/13-implementation/WP-I0-011/verification-report.json",
+            "graphify/13-implementation/WP-I0-011/completion-evidence.md",
+            "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+          ],
+          "changedSymbolsNotApplicableReason": "Read-only validation/inspection gate; no production symbol mutation applies."
+        }
+      ],
+      "previousRevisionHash": "34cd484c556243526e1264c217d3dcf68d58a4cd8006be35376fe870829b2770",
+      "revisionHash": "9b56e9e81b5f8c7972a8d9989c995be6e574f0d28952745a1f5b94dd77aeb8a8"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-FAIL-02-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-FAIL-02",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:22+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "21dc3ffdb1340e65b3d9fe3b14a696e18c53c0541918e5b088b3c36bc996919a"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-FAIL-02-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-FAIL-02",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:42+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "21dc3ffdb1340e65b3d9fe3b14a696e18c53c0541918e5b088b3c36bc996919a",
+      "revisionHash": "0ca55071ee685370176a9396f62e4479e651d27ac30fd3052f81c33db4c06111"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-FAIL-19-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-FAIL-19",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:23+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "dc278f1372e6eaf07193ab39128e2ce6a6ebac24bf8a18a439dd83a8fa3b7c71"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-FAIL-19-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-FAIL-19",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:43+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "dc278f1372e6eaf07193ab39128e2ce6a6ebac24bf8a18a439dd83a8fa3b7c71",
+      "revisionHash": "7c2e5094061f0b50989cf34d9e3a98698bb3825d38df7711e1b602903b2ec6a0"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-FAIL-23-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-FAIL-23",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:24+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "259bc16f4a6796b13e923d22c7b0749e7e3d00c7ace0ebd64b171fbf8ee56ac9"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-FAIL-23-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-FAIL-23",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:44+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "259bc16f4a6796b13e923d22c7b0749e7e3d00c7ace0ebd64b171fbf8ee56ac9",
+      "revisionHash": "f7ff9ee86bbb2300c5e57decc5edebf9b6fbc11827835b437e5bf739a9bb107e"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-FAIL-24-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-FAIL-24",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:25+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "5d39a8e2b6d60c1b0e23b1c1b9febf682e7f81a35505cb09a212eebcccb13aa6"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-FAIL-24-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-FAIL-24",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:45+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "5d39a8e2b6d60c1b0e23b1c1b9febf682e7f81a35505cb09a212eebcccb13aa6",
+      "revisionHash": "47a9091e71df1e74e5bdc4f5a27dec0c4c9fa26eae6128b49f8e9451c0c3ae6f"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-FAIL-27-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-FAIL-27",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:26+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "11a92651e25aa6fb168937582f24aacfbb28e48a36272c0b24f40984e469614c"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-FAIL-27-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-FAIL-27",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:46+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "11a92651e25aa6fb168937582f24aacfbb28e48a36272c0b24f40984e469614c",
+      "revisionHash": "33ddf43e594d171ee8fee7cd6906f41819c47e3623a19364597b18e86e51a75a"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-FAIL-32-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-FAIL-32",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:27+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "5fd2f361a86e9a6bcf4bffdfe470519ad00095a0a534fc254e04c80109517339"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-FAIL-32-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-FAIL-32",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:47+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "5fd2f361a86e9a6bcf4bffdfe470519ad00095a0a534fc254e04c80109517339",
+      "revisionHash": "fa7bf9a2c1e906cd4df00393ddeddc2c3bbbcdad28faed3d9df95c5040c0d9c1"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-ARCH-444-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-ARCH-444",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:28+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "eae75e3c74fda7a7ba6359ad509a323bcb98b50aaf8f3879de505372ddfe28f6"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-ARCH-444-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-ARCH-444",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:48+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "eae75e3c74fda7a7ba6359ad509a323bcb98b50aaf8f3879de505372ddfe28f6",
+      "revisionHash": "fe341f01011180cc6c291041a404277a99d4bad754b6a96c4f28fbcf686efa3a"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-052-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-052",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:29+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "a2fbc8481c9d227726c006615b83b6b516e79b53778ec29be004a46ca7fb8367"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-052-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-052",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:49+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "a2fbc8481c9d227726c006615b83b6b516e79b53778ec29be004a46ca7fb8367",
+      "revisionHash": "a6ad4f660aa2591cd1f5c4c6ddb570351b753388f21eb0b1d0f97e498a45410e"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-054-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-054",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:30+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "6d98e500b02b0b12516ff210afa0003ba174e7102a009da999c9651352804973"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-054-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-054",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:50+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "6d98e500b02b0b12516ff210afa0003ba174e7102a009da999c9651352804973",
+      "revisionHash": "16eaad3da8b3cfdee3744430566ec27bbc825e687f13817a7ea8533d46db8856"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-165-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-165",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:31+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "3f751eea8143b889c8fcebbbd9068a34b214c3bcdf51a95a263a3f37785f6185"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-165-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-165",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:51+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "3f751eea8143b889c8fcebbbd9068a34b214c3bcdf51a95a263a3f37785f6185",
+      "revisionHash": "086e5e45c9638fd0e5567248ab71964c7a8200f1a1ec87e717d0dc159cb75424"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-179-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-179",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:32+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "d52abe8132f3614a8f594576d9a63ae95c75a74a472f718af3933eaa8dadd7b8"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-179-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-179",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:52+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "d52abe8132f3614a8f594576d9a63ae95c75a74a472f718af3933eaa8dadd7b8",
+      "revisionHash": "12426e9cab9a39293c3656c9a3b5afddb40442c6587c15626b449c35e03732d1"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-180-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-180",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:33+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "c7b2aeb6cd5ab29dc1c74ec4edaf2d527516828bef0bb6c2548743ba4d829812"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-180-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-180",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:53+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "c7b2aeb6cd5ab29dc1c74ec4edaf2d527516828bef0bb6c2548743ba4d829812",
+      "revisionHash": "bfaf027594c504ce13665f3703cff5afa2eca64a7ace1789e551c9bd9ffba709"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-264-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-264",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:34+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "0d6c602b632412671d38d409f218dba60a54ee01731245dac0e32f1e8d977355"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-264-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-264",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:54+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "0d6c602b632412671d38d409f218dba60a54ee01731245dac0e32f1e8d977355",
+      "revisionHash": "a6d8b9883c6d989286e44c28ad6eee90b8b0731ece00ac6815010fafd56327c1"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-265-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-265",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:35+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "b63369b37bb1e7bb9f919404bafdbbd024f8a01f5391de4c9262d0b07f3d2faa"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-265-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-265",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:55+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "b63369b37bb1e7bb9f919404bafdbbd024f8a01f5391de4c9262d0b07f3d2faa",
+      "revisionHash": "4816fd989b1c4548afcddd2db7751f25f224e04e7e195ed07afc721526e759f7"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-266-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-266",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:36+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "debf8f87b49c770927d4d82722af2417e67da0739f2d8d93de1a50926ae3286b"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-266-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-266",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:56+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "debf8f87b49c770927d4d82722af2417e67da0739f2d8d93de1a50926ae3286b",
+      "revisionHash": "527397f98b03fcd3fde1d36544c5c47be1809d3a90739893c5ab7bfdc332a672"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-270-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-270",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:37+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "6ea4d02418f35ca34a3a6557de5cd4320ad6926cdc3b6b8dfd7e820ad79e4346"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-270-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-270",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:57+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "6ea4d02418f35ca34a3a6557de5cd4320ad6926cdc3b6b8dfd7e820ad79e4346",
+      "revisionHash": "8120672ae424c76e9414bede001c61874aaebf48a9b15f34e925a6a130b5bebc"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-273-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-273",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:38+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "8edfdec32253cdd67811be62e4f2533f88807150fc564c04c38884e8cf11f373"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-GOV-273-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-GOV-273",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:58+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "8edfdec32253cdd67811be62e4f2533f88807150fc564c04c38884e8cf11f373",
+      "revisionHash": "58fdc66f5a7c57c5ed428158c74f80aac260406e67a14105b44174a738b6af82"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-TEST-020-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-TEST-020",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:39+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "ccd11eb85067b89d5a35429029aa07d79abf073f9b3423dfedaea05cb95d80bc"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-TEST-020-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-TEST-020",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:59+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "ccd11eb85067b89d5a35429029aa07d79abf073f9b3423dfedaea05cb95d80bc",
+      "revisionHash": "9e47b36035cd89c5e816327137ec10f27dae1cfcab3c3c80d9ce043cb442c517"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-TEST-021-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-TEST-021",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:40+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "58d6c3150d0c982ef7590ff8768d367ea56181b01b8b2983b2f96db30537a0be"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-TEST-021-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-TEST-021",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:41:00+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "58d6c3150d0c982ef7590ff8768d367ea56181b01b8b2983b2f96db30537a0be",
+      "revisionHash": "701d7bd7c8c31003ad574d94abf4339bdf63ef6cfa65c7f94af44f50fcb17685"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-MISSION-I0-011-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-MISSION-I0-011",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:40:41+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "808121e4c1a5b8b8148b3904c72fad8cad7c4c3c8e72a9476859039eb4d7a601"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-MISSION-I0-011-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-MISSION-I0-011",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T07:41:01+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "808121e4c1a5b8b8148b3904c72fad8cad7c4c3c8e72a9476859039eb4d7a601",
+      "revisionHash": "9877025f3ffd70158f7eb7bf6a1f6db034d47c26c2f69b4770f248519a907699"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-RISK-TEST-030-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-RISK-TEST-030",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T09:29:19+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "f6f0d3704fca8a890c713ed829571d5b30e2d30a69acdd1778568785c7ae2de2"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-RISK-TEST-030-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-RISK-TEST-030",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T09:29:41+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "f6f0d3704fca8a890c713ed829571d5b30e2d30a69acdd1778568785c7ae2de2",
+      "revisionHash": "fabc73c77d705bb9937212dba286a3437c6ebfce5da45b5b3a27ebb3ebbeeb3b"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-RISK-TEST-032-01",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-RISK-TEST-032",
+      "fromStatus": "NOT_STARTED",
+      "toStatus": "SELECTED",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T09:29:20+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "GENESIS",
+      "revisionHash": "e71116b5dc768e6e96bb94260faa929de0de04cde83260195590800ae41b4548"
+    },
+    {
+      "revisionId": "REQUIREMENT-CAN-LAM-RISK-TEST-032-02",
+      "subjectType": "REQUIREMENT",
+      "subjectId": "CAN-LAM-RISK-TEST-032",
+      "fromStatus": "SELECTED",
+      "toStatus": "IN_PROGRESS",
+      "actor": "codex-package-agent",
+      "timestamp": "2026-08-11T09:29:42+00:00",
+      "evidenceLinks": [
+        "graphify/semantic-plan-source/requirements/requirements.csv",
+        "graphify/semantic-plan-source/packages/requirement-membership.csv",
+        "graphify/12-semantic-implementation-plan/04-work-packages/packets/WP-I0-011.md"
+      ],
+      "applicableGates": [],
+      "previousRevisionHash": "e71116b5dc768e6e96bb94260faa929de0de04cde83260195590800ae41b4548",
+      "revisionHash": "7366c0f789f7185f037ad0eba7944914a4df69a6a5c4228620596d1ec7c23080"
+    }
+  ],
+  "current": {
+    "PACKAGE:WP-I0-001": "COMPLETE",
+    "REQUIREMENT:CAN-LAM-GOV-292": "COMPLETE",
+    "REQUIREMENT:CAN-MISSION-I0-001": "COMPLETE",
+    "PACKAGE:WP-I0-002": "COMPLETE",
+    "REQUIREMENT:CAN-MISSION-I0-002": "COMPLETE",
+    "PACKAGE:WP-I0-003": "COMPLETE",
+    "REQUIREMENT:CAN-MISSION-I0-003": "COMPLETE",
+    "PACKAGE:WP-I0-004": "COMPLETE",
+    "REQUIREMENT:CAN-MISSION-I0-004": "COMPLETE",
+    "PACKAGE:WP-I0-005": "COMPLETE",
+    "REQUIREMENT:CAN-MISSION-I0-006": "COMPLETE",
+    "PACKAGE:WP-I0-006": "COMPLETE",
+    "REQUIREMENT:CAN-MISSION-I0-005": "COMPLETE",
+    "PACKAGE:WP-I0-007": "COMPLETE",
+    "REQUIREMENT:CAN-MISSION-I0-007": "COMPLETE",
+    "PACKAGE:WP-I0-008": "COMPLETE",
+    "REQUIREMENT:CAN-MISSION-I0-008": "COMPLETE",
+    "PACKAGE:WP-I0-009": "COMPLETE",
+    "REQUIREMENT:CAN-MISSION-I0-009": "COMPLETE",
+    "PACKAGE:WP-I0-010": "COMPLETE",
+    "REQUIREMENT:CAN-MISSION-I0-010": "COMPLETE",
+    "REQUIREMENT:CAN-LAM-RISK-TEST-005": "COMPLETE",
+    "REQUIREMENT:CAN-LAM-RISK-TEST-029": "COMPLETE",
+    "PACKAGE:WP-I0-011": "REVIEW_PENDING",
+    "REQUIREMENT:CAN-FAIL-02": "IN_PROGRESS",
+    "REQUIREMENT:CAN-FAIL-19": "IN_PROGRESS",
+    "REQUIREMENT:CAN-FAIL-23": "IN_PROGRESS",
+    "REQUIREMENT:CAN-FAIL-24": "IN_PROGRESS",
+    "REQUIREMENT:CAN-FAIL-27": "IN_PROGRESS",
+    "REQUIREMENT:CAN-FAIL-32": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-ARCH-444": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-GOV-052": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-GOV-054": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-GOV-165": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-GOV-179": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-GOV-180": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-GOV-264": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-GOV-265": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-GOV-266": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-GOV-270": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-GOV-273": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-TEST-020": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-TEST-021": "IN_PROGRESS",
+    "REQUIREMENT:CAN-MISSION-I0-011": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-RISK-TEST-030": "IN_PROGRESS",
+    "REQUIREMENT:CAN-LAM-RISK-TEST-032": "IN_PROGRESS"
+  },
+  "runtimeRiskEvidence": [
+    {
+      "riskId": "R-05",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-005",
+      "testOwnerPackage": "WP-I0-007",
+      "status": "PASS",
+      "synthetic": false,
+      "evidenceKind": "REAL_PRODUCT_RISK_TEST",
+      "implementationCommit": "48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-007/baseline-attempts.json",
+        "graphify/13-implementation/WP-I0-007/verification-report.json",
+        "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-007/adversarial-review.md"
+      ],
+      "rawEvidencePath": "graphify/13-implementation/WP-I0-007/baseline-attempts.json",
+      "rawEvidenceSha256": "a65e6729cb00715b32949793a8c7e1209ef91553c8a0d2fa87c0cb117c100261"
+    },
+    {
+      "riskId": "R-29",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-029",
+      "testOwnerPackage": "WP-I0-007",
+      "status": "PASS",
+      "synthetic": false,
+      "evidenceKind": "REAL_PRODUCT_RISK_TEST",
+      "implementationCommit": "48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2",
+      "evidenceLinks": [
+        "graphify/13-implementation/WP-I0-007/baseline-attempts.json",
+        "graphify/13-implementation/WP-I0-007/verification-report.json",
+        "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-007/adversarial-review.md"
+      ],
+      "rawEvidencePath": "graphify/13-implementation/WP-I0-007/baseline-attempts.json",
+      "rawEvidenceSha256": "a65e6729cb00715b32949793a8c7e1209ef91553c8a0d2fa87c0cb117c100261"
+    }
+  ],
+  "runtimeRiskEvidenceAggregationPolicy": "Later package collectors import VERIFIED ownership rows plus each completed owner's committed raw evidence; I15:RELEASE requires one independently revalidated row for every R-01..R-32.",
+  "generationId": "adc02ea8adc8652fa2046fbe00c90cc3604f16b5323d41243e2701433cd8c927"
+}

@@ -1,0 +1,488 @@
+{
+  "packageId": "WP-I0-011",
+  "generationId": "adc02ea8adc8652fa2046fbe00c90cc3604f16b5323d41243e2701433cd8c927",
+  "status": "PASS",
+  "checks": {
+    "canonicalReferencesOnly": true,
+    "revisionHashChainsValid": true,
+    "completionGatesEnforced": true,
+    "blockerFormatValidated": true,
+    "planningPassesComplete": true,
+    "bottomUpCoverageComplete": true,
+    "riskGateLinksComplete": true,
+    "productionPlaceholderGateEnabled": true,
+    "productProductionPathChanges": 0,
+    "productPlaceholderGateNotApplicableReason": "WP-I0-011 authorizes Graphify governance only; scope audit proves zero Codebase production changes.",
+    "publicationRollbackVerified": true,
+    "codebaseMatchesWP_I0_001": true
+  },
+  "fixtures": [
+    {
+      "id": "valid-evidence-gate",
+      "status": "PASS",
+      "observed": "accepted"
+    },
+    {
+      "id": "valid-blocker",
+      "status": "PASS",
+      "observed": "accepted"
+    },
+    {
+      "id": "valid-planning-passes",
+      "status": "PASS",
+      "observed": "accepted"
+    },
+    {
+      "id": "valid-bottom-up",
+      "status": "PASS",
+      "observed": "accepted"
+    },
+    {
+      "id": "valid-risk-link",
+      "status": "PASS",
+      "observed": "accepted"
+    },
+    {
+      "id": "valid-binding-edge",
+      "status": "PASS",
+      "observed": "accepted"
+    },
+    {
+      "id": "missing-gate-output",
+      "status": "PASS",
+      "observed": "GATE_FIELD_MISSING"
+    },
+    {
+      "id": "gate-field-wrong-type",
+      "status": "PASS",
+      "observed": "GATE_FIELD_TYPE"
+    },
+    {
+      "id": "gate-empty-changed-symbol",
+      "status": "PASS",
+      "observed": "GATE_CHANGED_SYMBOLS_INVALID"
+    },
+    {
+      "id": "gate-evidence-target-missing",
+      "status": "PASS",
+      "observed": "GATE_EVIDENCE_MISSING"
+    },
+    {
+      "id": "generic-na-rationale",
+      "status": "PASS",
+      "observed": "GATE_NA_RATIONALE_MISSING"
+    },
+    {
+      "id": "blocker-known-facts-missing",
+      "status": "PASS",
+      "observed": "BLOCKER_FIELD_MISSING"
+    },
+    {
+      "id": "blocker-known-facts-wrong-type",
+      "status": "PASS",
+      "observed": "BLOCKER_FIELD_TYPE"
+    },
+    {
+      "id": "blocker-guessed-path",
+      "status": "PASS",
+      "observed": "BLOCKER_GUESS_PROHIBITED"
+    },
+    {
+      "id": "unknown-canonical-edge",
+      "status": "PASS",
+      "observed": "EDGE_CASE_CANONICAL_RECORD_MISSING"
+    },
+    {
+      "id": "unrelated-canonical-edge",
+      "status": "PASS",
+      "observed": "EDGE_CASE_MEMBERSHIP_MISMATCH"
+    },
+    {
+      "id": "canonical-content-mismatch",
+      "status": "PASS",
+      "observed": "EDGE_CASE_CANONICAL_CONTENT_MISMATCH"
+    },
+    {
+      "id": "compound-edge-not-split",
+      "status": "PASS",
+      "observed": "COMPOUND_REQUIREMENT_NOT_SPLIT"
+    },
+    {
+      "id": "pass1-incomplete",
+      "status": "PASS",
+      "observed": "PLANNING_PASS_INCOMPLETE"
+    },
+    {
+      "id": "pass2-missing-flow",
+      "status": "PASS",
+      "observed": "PLANNING_PASS_GAP"
+    },
+    {
+      "id": "planning-pass-evidence-missing",
+      "status": "PASS",
+      "observed": "PLANNING_PASS_EVIDENCE_MISSING"
+    },
+    {
+      "id": "bottom-up-missing-symbol",
+      "status": "PASS",
+      "observed": "BOTTOM_UP_FIELD_MISSING"
+    },
+    {
+      "id": "bottom-up-unknown-id",
+      "status": "PASS",
+      "observed": "BOTTOM_UP_CANONICAL_ID_MISSING"
+    },
+    {
+      "id": "bottom-up-nonexistent-path",
+      "status": "PASS",
+      "observed": "BOTTOM_UP_PATH_MISSING"
+    },
+    {
+      "id": "bottom-up-bogus-path-text",
+      "status": "PASS",
+      "observed": "BOTTOM_UP_PATH_TEXT_INVALID"
+    },
+    {
+      "id": "risk-missing-test",
+      "status": "PASS",
+      "observed": "RISK_TEST_MISSING"
+    },
+    {
+      "id": "risk-missing-governance-check",
+      "status": "PASS",
+      "observed": "RISK_GOVERNANCE_CHECK_INVALID"
+    },
+    {
+      "id": "risk-missing-package-gate",
+      "status": "PASS",
+      "observed": "RISK_PACKAGE_GATE_INVALID"
+    },
+    {
+      "id": "risk-missing-release-gate",
+      "status": "PASS",
+      "observed": "RISK_RELEASE_GATE_INVALID"
+    },
+    {
+      "id": "planning-write-outside-graphify",
+      "status": "PASS",
+      "observed": "WRITE_OUTSIDE_GRAPHIFY"
+    },
+    {
+      "id": "graphify-dotdot-codebase",
+      "status": "PASS",
+      "observed": "WRITE_OUTSIDE_GRAPHIFY"
+    },
+    {
+      "id": "graphify-dotdot-git",
+      "status": "PASS",
+      "observed": "WRITE_OUTSIDE_GRAPHIFY"
+    },
+    {
+      "id": "package-local-git",
+      "status": "PASS",
+      "observed": "FORBIDDEN_ARTIFACT_PATH"
+    },
+    {
+      "id": "package-local-cache",
+      "status": "PASS",
+      "observed": "FORBIDDEN_ARTIFACT_PATH"
+    },
+    {
+      "id": "package-local-node-modules",
+      "status": "PASS",
+      "observed": "FORBIDDEN_ARTIFACT_PATH"
+    },
+    {
+      "id": "master-plan-expansion",
+      "status": "PASS",
+      "observed": "MASTER_PLAN_EXPANSION"
+    },
+    {
+      "id": "production-todo",
+      "status": "PASS",
+      "observed": "PRODUCTION_PLACEHOLDER"
+    },
+    {
+      "id": "production-empty-success",
+      "status": "PASS",
+      "observed": "EMPTY_SUCCESS_RETURN"
+    },
+    {
+      "id": "production-mock-dataset",
+      "status": "PASS",
+      "observed": "PRODUCTION_MOCK_DATA"
+    },
+    {
+      "id": "self-transition-rejected",
+      "status": "PASS",
+      "observed": "STATUS_TRANSITION_INVALID"
+    },
+    {
+      "id": "revision-evidence-required",
+      "status": "PASS",
+      "observed": "REVISION_EVIDENCE_MISSING"
+    },
+    {
+      "id": "revision-timestamp-required",
+      "status": "PASS",
+      "observed": "REVISION_TIMESTAMP_INVALID"
+    },
+    {
+      "id": "revision-timezone-required",
+      "status": "PASS",
+      "observed": "REVISION_TIMESTAMP_INVALID"
+    },
+    {
+      "id": "blocker-resolution-required",
+      "status": "PASS",
+      "observed": "BLOCKER_RESOLUTION_MISSING"
+    },
+    {
+      "id": "blocker-resolution-id-match",
+      "status": "PASS",
+      "observed": "BLOCKER_RESOLUTION_ID_MISMATCH"
+    },
+    {
+      "id": "baseline-subject-type-rejected",
+      "status": "PASS",
+      "observed": "BASELINE_SUBJECT_TYPE"
+    },
+    {
+      "id": "tracker-owned-coverage-required",
+      "status": "PASS",
+      "observed": "TRACKER_OWNED_COVERAGE_MISSING"
+    },
+    {
+      "id": "tracker-completed-set-exact",
+      "status": "PASS",
+      "observed": "TRACKER_COMPLETED_PACKAGES_MISMATCH"
+    },
+    {
+      "id": "tracker-risk-context-fail-closed",
+      "status": "PASS",
+      "observed": "RISK_ENFORCEMENT_CONTEXT_MISSING"
+    },
+    {
+      "id": "qualified-review-rejected",
+      "status": "PASS",
+      "observed": "rejected"
+    },
+    {
+      "id": "negated-review-rejected",
+      "status": "PASS",
+      "observed": "rejected"
+    },
+    {
+      "id": "forbidden-phrase-review-rejected",
+      "status": "PASS",
+      "observed": "rejected"
+    },
+    {
+      "id": "mixed-review-rejected",
+      "status": "PASS",
+      "observed": "rejected"
+    },
+    {
+      "id": "mid-publication-rollback",
+      "status": "PASS",
+      "observed": "byte-for-byte restored"
+    },
+    {
+      "id": "publication-path-traversal",
+      "status": "PASS",
+      "observed": "PUBLICATION_PATH_ESCAPE"
+    },
+    {
+      "id": "risk-all-32-mappings-valid",
+      "status": "PASS",
+      "observed": "accepted"
+    },
+    {
+      "id": "risk-R-30-per-phase-simplicity-real-test",
+      "status": "PASS",
+      "observed": "155 packages across 16 phases accepted"
+    },
+    {
+      "id": "risk-R-32-blocked-protocol-real-test",
+      "status": "PASS",
+      "observed": "unknown path/field/schema/ownership audit produced typed blocker"
+    },
+    {
+      "id": "risk-high-critical-risk-no-test-owner",
+      "status": "PASS",
+      "observed": "RISK_TEST_OWNER_INVALID"
+    },
+    {
+      "id": "risk-high-critical-risk-nonexistent-owner",
+      "status": "PASS",
+      "observed": "RISK_TEST_OWNER_INVALID"
+    },
+    {
+      "id": "risk-test-owner-earlier-than-mitigation",
+      "status": "PASS",
+      "observed": "RISK_TEST_OWNER_UPSTREAM"
+    },
+    {
+      "id": "risk-omitted-mitigation-prerequisite",
+      "status": "PASS",
+      "observed": "RISK_PREREQUISITE_INVALID"
+    },
+    {
+      "id": "risk-unrelated-canonical-risk-requirement",
+      "status": "PASS",
+      "observed": "RISK_REQUIREMENT_BINDING_INVALID"
+    },
+    {
+      "id": "risk-missing-blocking-package-gate",
+      "status": "PASS",
+      "observed": "RISK_PACKAGE_GATE_INVALID"
+    },
+    {
+      "id": "risk-metadata-only-fake-product-test",
+      "status": "PASS",
+      "observed": "RISK_RUNTIME_SYNTHETIC_EVIDENCE"
+    },
+    {
+      "id": "risk-package-complete-risk-test-absent",
+      "status": "PASS",
+      "observed": "RISK_RUNTIME_EVIDENCE_MISSING"
+    },
+    {
+      "id": "risk-package-complete-risk-test-fail",
+      "status": "PASS",
+      "observed": "RISK_RUNTIME_TEST_NOT_PASS"
+    },
+    {
+      "id": "risk-release-pass-high-critical-risk-unresolved",
+      "status": "PASS",
+      "observed": "RISK_RELEASE_UNRESOLVED"
+    },
+    {
+      "id": "risk-duplicate-conflicting-risk-test-owner",
+      "status": "PASS",
+      "observed": "RISK_COVERAGE_INVALID"
+    },
+    {
+      "id": "risk-test-evidence-wrong-risk",
+      "status": "PASS",
+      "observed": "RISK_RUNTIME_WRONG_RISK"
+    },
+    {
+      "id": "risk-test-evidence-wrong-commit-package",
+      "status": "PASS",
+      "observed": "RISK_RUNTIME_WRONG_PACKAGE"
+    },
+    {
+      "id": "risk-test-evidence-wrong-commit",
+      "status": "PASS",
+      "observed": "RISK_RUNTIME_COMMIT_INVALID"
+    },
+    {
+      "id": "risk-synthetic-governance-fixture-as-runtime-evidence",
+      "status": "PASS",
+      "observed": "RISK_RUNTIME_SYNTHETIC_EVIDENCE"
+    },
+    {
+      "id": "risk-unrelated-owner-document-as-raw-evidence",
+      "status": "PASS",
+      "observed": "RISK_RUNTIME_RAW_EVIDENCE_INVALID"
+    },
+    {
+      "id": "risk-future-product-raw-evidence-schema-valid",
+      "status": "PASS",
+      "observed": "accepted"
+    },
+    {
+      "id": "risk-future-product-metadata-only-rejected",
+      "status": "PASS",
+      "observed": "RISK_RUNTIME_RAW_EVIDENCE_INVALID"
+    },
+    {
+      "id": "risk-R-30-mechanical-split-rejected",
+      "status": "PASS",
+      "observed": "SIMPLICITY_MECHANICAL_SPLIT"
+    },
+    {
+      "id": "risk-R-30-other-phase-violation-rejected",
+      "status": "PASS",
+      "observed": "SIMPLICITY_BOUNDARY_MISSING"
+    },
+    {
+      "id": "risk-R-32-guessed-path-rejected",
+      "status": "PASS",
+      "observed": "BLOCKER_GUESS_PROHIBITED"
+    },
+    {
+      "id": "risk-R-32-guessed-field-rejected",
+      "status": "PASS",
+      "observed": "BLOCKER_GUESS_PROHIBITED"
+    },
+    {
+      "id": "risk-R-32-guessed-schema-rejected",
+      "status": "PASS",
+      "observed": "BLOCKER_GUESS_PROHIBITED"
+    },
+    {
+      "id": "risk-R-32-guessed-ownership-rejected",
+      "status": "PASS",
+      "observed": "BLOCKER_GUESS_PROHIBITED"
+    }
+  ],
+  "governanceMitigationEvidence": [
+    {
+      "riskId": "R-30",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-030",
+      "testOwnerPackage": "WP-I0-011",
+      "status": "PASS",
+      "synthetic": false,
+      "commandOrInspection": "validate_simplicity_review over every canonical work package grouped by implementation_phase",
+      "observedOutput": {
+        "phaseCount": 16,
+        "packageCount": 155,
+        "phasePackageCounts": {
+          "I0": 11,
+          "I1": 5,
+          "I10": 13,
+          "I11": 9,
+          "I12": 7,
+          "I13": 9,
+          "I14": 10,
+          "I15": 7,
+          "I2": 9,
+          "I3": 15,
+          "I4": 12,
+          "I5": 16,
+          "I6": 10,
+          "I7": 10,
+          "I8": 8,
+          "I9": 4
+        }
+      }
+    },
+    {
+      "riskId": "R-32",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-032",
+      "testOwnerPackage": "WP-I0-011",
+      "status": "PASS",
+      "synthetic": false,
+      "commandOrInspection": "validate_blocker positive audit plus path/field/schema/ownership guess rejection",
+      "observedOutput": {
+        "typedBlockerAccepted": true,
+        "guessDimensionsRejected": [
+          "path",
+          "field",
+          "schema",
+          "ownership"
+        ]
+      }
+    }
+  ],
+  "fixtureCount": 82,
+  "codebaseFiles": 3697,
+  "codebaseDifferences": {
+    "added": 0,
+    "removed": 0,
+    "modified": 0,
+    "renamed": 0
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "packageId": "WP-I0-011",
+  "generationId": "adc02ea8adc8652fa2046fbe00c90cc3604f16b5323d41243e2701433cd8c927",
+  "status": "PASS",
+  "semanticHashes": {
+    "implementationState": "3df2a2008694c10708380655d49eb157496605fc542e2574ba58ecee443ccb56",
+    "planningGovernance": "bfea49205e810f15e5d2cac838ac941b6e2f252264775d6949648bcd271649d0",
+    "verification": "3be2b91d19ad8c3f70dded954432ffb585de53bb8d6c6b29d3fdb1558f5b862a",
+    "packageSummary": "874e8474682497fb07d78afc94ca81087e32abd15c0a949a8adb38b554e7945a",
+    "provenance": "4b35108f3e197460bc66cf1e1c45318d8493973a8d5025a52ca4bac695e8c69c",
+    "artifactScan": "4912ae812c8226f821559bbf62f152b22d08a450ab227e6af6609bb688e5d08d",
+    "bottomUpAudit": "ee4c19cd3160b50f72a24acdd7589a0b974e47aab8609052d6d2783ce6e7fae1",
+    "blockerSchema": "941b7c71ed0a1450061b1d5e6284c8ad0a21cefab50bb1e83b783840f9f599be"
+  }
+}

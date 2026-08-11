@@ -1,0 +1,14 @@
+{
+  "packageId": "WP-I0-011",
+  "generationId": "adc02ea8adc8652fa2046fbe00c90cc3604f16b5323d41243e2701433cd8c927",
+  "startingSha": "ef1cdd4a5755e813a650aa6f0988d84b82e1085c",
+  "headSha": "ef1cdd4a5755e813a650aa6f0988d84b82e1085c",
+  "originMainSha": "ef1cdd4a5755e813a650aa6f0988d84b82e1085c",
+  "headEqualsOriginMain": true,
+  "branch": "main",
+  "remote": "https://github.com/mhyahya854/Lamha.git",
+  "selectionRule": "explicit authorization when READY; otherwise phase, package major, package minor, full ID",
+  "selectedPackage": "WP-I0-011",
+  "authorizedWriteRoot": "graphify/13-implementation/WP-I0-011/",
+  "readOnlyRoot": "Codebase/"
+}
