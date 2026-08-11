@@ -401,6 +401,8 @@ def main() -> None:
     migration_stats = read_json(SOURCE / "reviews" / "migration-candidate-stats.json")
     contract_stats = read_json(SOURCE / "reviews" / "contract-schema-candidate-stats.json")
     legacy_disposition = read_csv(SOURCE / "reviews" / "legacy-package-disposition.csv")
+    high_critical_risks = read_csv(SOURCE / "risks" / "high-critical-risk-register.csv")
+    risk_test_ownership = read_json(SOURCE / "risks" / "risk-test-ownership.json")
     require_reviewed_source(requirements, mappings, memberships, dependencies, packages, components, commands, schema_index)
 
     requirement_by_id = {row["canonical_id"]: row for row in requirements}
@@ -494,13 +496,8 @@ Each work package supplies focused success, boundary, invalid-input, authorizati
         "success_and_boundary_tests": row["tests"], "failure_cases": row["failure_cases"],
         "recovery_proof": row["rollback_or_recovery"], "exit_gate": row["exit_gate"],
     } for row in packages])
-    write_csv(PLAN / "09-risks" / "risk-register.csv", [
-        {"risk_id": "RISK-001", "risk": "A component/version/licence choice is assumed before I0 evidence.", "owner": "WP-I0-004", "mitigation": "Resolve component rows and record pinned evidence before dependent work.", "gate": "I0"},
-        {"risk_id": "RISK-002", "risk": "A privileged mutation bypasses Rust validation or recovery.", "owner": "WP-I3-010", "mitigation": "Typed plan/commit contracts, capability checks, journal, and failure injection.", "gate": "I3"},
-        {"risk_id": "RISK-003", "risk": "Derived SQLite data becomes the only durable knowledge copy.", "owner": "WP-I3-004", "mitigation": "Enforce entity authority and rebuild tests from versioned records.", "gate": "I3"},
-        {"risk_id": "RISK-004", "risk": "Media support is deferred to the desktop shell or release packaging.", "owner": "WP-I4-004", "mitigation": "Implement decode/metadata/preview/companion behavior in I4 and verify again in I15.", "gate": "I4"},
-        {"risk_id": "RISK-005", "risk": "Stale generated packets contradict reviewed source.", "owner": "WP-I0-001", "mitigation": "Deterministic clean rendering, manifest hashes, and reference validation.", "gate": "I0"},
-    ])
+    write_csv(PLAN / "09-risks" / "risk-register.csv", high_critical_risks, list(high_critical_risks[0]))
+    write_json(PLAN / "09-risks" / "risk-test-ownership.json", risk_test_ownership)
 
     write_csv(PLAN / "10-component-manifest" / "components.csv", components, list(components[0]))
     write_text(PLAN / "10-component-manifest" / "README.md", """# Component decision manifest

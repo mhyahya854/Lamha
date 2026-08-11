@@ -1,0 +1,599 @@
+{
+  "schemaVersion": 1,
+  "sourceRiskRegister": "graphify/11-implementation-ready-plan/19-RISK-REGISTER-EXPANDED.md",
+  "governanceRequirementId": "CAN-LAM-TEST-020",
+  "blockingReleaseGate": "I15:RELEASE",
+  "reviewStatus": "REVIEWED_CORRECTED",
+  "reviewRevision": "2026-08-11-wp-i0-011-ownership-repair",
+  "evidencePolicy": "PENDING records carry no runtime PASS evidence. VERIFIED records require raw executing-package evidence and the exact origin-visible implementation commit; governance mapping fixtures never satisfy a product mitigation test.",
+  "records": [
+    {
+      "riskId": "R-01",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-001",
+      "mitigationOwnerPackages": [
+        "WP-I3-014"
+      ],
+      "testOwnerPackage": "WP-I3-014",
+      "requiredAfterPackages": [],
+      "testTarget": "filesystem transaction journal and crash-recovery state machine",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I3-014 owns crash recovery and can inject interruption at each durable transaction state before its exit gate.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I3-014:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-02",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-002",
+      "mitigationOwnerPackages": [
+        "WP-I3-015"
+      ],
+      "testOwnerPackage": "WP-I3-015",
+      "requiredAfterPackages": [],
+      "testTarget": "directional authority and revision-conflict resolution",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I3-015 owns revision and concurrency preconditions and can execute golden authority-conflict fixtures.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I3-015:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-03",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-003",
+      "mitigationOwnerPackages": [
+        "WP-I3-004"
+      ],
+      "testOwnerPackage": "WP-I3-004",
+      "requiredAfterPackages": [],
+      "testTarget": "authorized-root canonicalization across symlink, junction, and reparse boundaries",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I3-004 owns path normalization and escape protection and can run the cross-platform escape corpus.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I3-004:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-04",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-004",
+      "mitigationOwnerPackages": [
+        "WP-I15-015"
+      ],
+      "testOwnerPackage": "WP-I15-015",
+      "requiredAfterPackages": [],
+      "testTarget": "replacement-verified legacy removal and absence scan",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I15-015 is the removal package and may delete legacy code only after focused replacement and absence tests pass.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I15-015:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-05",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-005",
+      "mitigationOwnerPackages": [
+        "WP-I0-004"
+      ],
+      "testOwnerPackage": "WP-I0-007",
+      "requiredAfterPackages": [
+        "WP-I0-004"
+      ],
+      "testTarget": "immutable mixed-version provenance and disposable baseline build",
+      "testClass": "BASELINE_REAL_EXECUTION",
+      "verificationStatus": "VERIFIED",
+      "runtimeEvidence": [
+        "graphify/13-implementation/WP-I0-007/baseline-attempts.json",
+        "graphify/13-implementation/WP-I0-007/verification-report.json",
+        "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-007/adversarial-review.md"
+      ],
+      "implementationCommit": "48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2",
+      "rationale": "WP-I0-004 establishes mixed-version provenance; WP-I0-007 subsequently executed the source-derived disposable baseline build/test matrix.",
+      "blockingPackageGate": "WP-I0-007:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-06",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-006",
+      "mitigationOwnerPackages": [
+        "WP-I10-002"
+      ],
+      "testOwnerPackage": "WP-I10-002",
+      "requiredAfterPackages": [],
+      "testTarget": "private framed AI-worker transport, listener prohibition, and write authority",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I10-002 owns private worker transport and must prove no listener and rejected worker write attempts.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I10-002:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-07",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-007",
+      "mitigationOwnerPackages": [
+        "WP-I4-008",
+        "WP-I10-002",
+        "WP-I11-012"
+      ],
+      "testOwnerPackage": "WP-I15-008",
+      "requiredAfterPackages": [
+        "WP-I4-008",
+        "WP-I10-002",
+        "WP-I11-012"
+      ],
+      "testTarget": "integrated hostile media, sidecar, AI-worker, and editing input boundary",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "The exploit boundary spans parsing, worker isolation, and mutation recovery; WP-I15-008 runs the integrated retained-feature parity test after all three owners.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I15-008:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-08",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-008",
+      "mitigationOwnerPackages": [
+        "WP-I3-007"
+      ],
+      "testOwnerPackage": "WP-I3-007",
+      "requiredAfterPackages": [],
+      "testTarget": "future-version and corrupt authoritative schema open/migration path",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I3-007 owns authoritative schema migrations and must preserve bytes in read-only future/corrupt-schema fixtures.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I3-007:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-09",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-009",
+      "mitigationOwnerPackages": [
+        "WP-I13-009"
+      ],
+      "testOwnerPackage": "WP-I13-009",
+      "requiredAfterPackages": [],
+      "testTarget": "deterministic SQLite deletion and rebuild from authoritative records",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I13-009 owns SQLite index rebuild and must demonstrate that deleting the database loses no durable knowledge.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I13-009:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-10",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-010",
+      "mitigationOwnerPackages": [
+        "WP-I12-007",
+        "WP-I12-009"
+      ],
+      "testOwnerPackage": "WP-I12-009",
+      "requiredAfterPackages": [
+        "WP-I12-007"
+      ],
+      "testTarget": "cross-drive copy, verification, disconnect, and deterministic recovery",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I12-007 implements copy-and-verify; WP-I12-009 runs interruption recovery after that prerequisite.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I12-009:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-11",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-011",
+      "mitigationOwnerPackages": [
+        "WP-I12-001"
+      ],
+      "testOwnerPackage": "WP-I12-001",
+      "requiredAfterPackages": [],
+      "testTarget": "external-drive identity collision, replacement, and confirmation matrix",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I12-001 owns durable drive identity and must execute the multi-signal drive fixture matrix.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I12-001:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-12",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-012",
+      "mitigationOwnerPackages": [
+        "WP-I3-002",
+        "WP-I4-006"
+      ],
+      "testOwnerPackage": "WP-I4-006",
+      "requiredAfterPackages": [
+        "WP-I3-002"
+      ],
+      "testTarget": "stable companion-set identity and missing/partial companion handling",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "Stable identity is established by WP-I3-002; WP-I4-006 then owns companion detection and its missing/partial fixtures.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I4-006:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-13",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-013",
+      "mitigationOwnerPackages": [
+        "WP-I7-008",
+        "WP-I8-005"
+      ],
+      "testOwnerPackage": "WP-I8-005",
+      "requiredAfterPackages": [
+        "WP-I7-008"
+      ],
+      "testTarget": "effective-dated face/group and relationship history corrections",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I7-008 establishes temporal memberships; WP-I8-005 owns multi-edge relationship history and runs the downstream temporal fixtures.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I8-005:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-14",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-014",
+      "mitigationOwnerPackages": [
+        "WP-I10-013"
+      ],
+      "testOwnerPackage": "WP-I10-013",
+      "requiredAfterPackages": [],
+      "testTarget": "AI candidate rejection, suppression, fingerprint, and reconsideration lifecycle",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I10-013 owns AI review suppression and invalidation and must run the suppression lifecycle fixtures.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I10-013:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-15",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-015",
+      "mitigationOwnerPackages": [
+        "WP-I15-006"
+      ],
+      "testOwnerPackage": "WP-I15-006",
+      "requiredAfterPackages": [],
+      "testTarget": "runtime model/codec component inventory and licence decision gate",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I15-006 owns runtime component licence decisions and blocks distribution on an unresolved inventory audit.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I15-006:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-16",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-016",
+      "mitigationOwnerPackages": [
+        "WP-I10-002",
+        "WP-I15-001"
+      ],
+      "testOwnerPackage": "WP-I15-001",
+      "requiredAfterPackages": [
+        "WP-I10-002"
+      ],
+      "testTarget": "signed clean-machine AI-worker packaging and OS launch",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I10-002 supplies the worker transport; WP-I15-001 packages it and runs cross-platform clean-machine smoke tests.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I15-001:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-17",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-017",
+      "mitigationOwnerPackages": [
+        "WP-I2-002",
+        "WP-I5-012"
+      ],
+      "testOwnerPackage": "WP-I5-012",
+      "requiredAfterPackages": [
+        "WP-I2-002"
+      ],
+      "testTarget": "static frontend routes with per-screen real local data and no server dependency",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I2-002 proves static packaging; WP-I5-012 owns offline library parity and can run per-screen real-data E2E afterward.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I5-012:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-18",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-018",
+      "mitigationOwnerPackages": [
+        "WP-I2-004"
+      ],
+      "testOwnerPackage": "WP-I2-004",
+      "requiredAfterPackages": [],
+      "testTarget": "Tauri capability allowlist and negative command authorization",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I2-004 owns Tauri capabilities and permissions and must reject over-scoped commands.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I2-004:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-19",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-019",
+      "mitigationOwnerPackages": [
+        "WP-I14-005"
+      ],
+      "testOwnerPackage": "WP-I14-005",
+      "requiredAfterPackages": [],
+      "testTarget": "large-library scan, queue, memory, and UI performance budgets",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I14-005 owns large-library benchmarks and blocks release when scale or memory budgets fail.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I14-005:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-20",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-020",
+      "mitigationOwnerPackages": [
+        "WP-I4-002"
+      ],
+      "testOwnerPackage": "WP-I4-002",
+      "requiredAfterPackages": [],
+      "testTarget": "watcher event loss/duplication and periodic reconciliation",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I4-002 owns watcher reconciliation and must execute stress fixtures for misses and duplicates.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I4-002:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-21",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-021",
+      "mitigationOwnerPackages": [
+        "WP-I3-003",
+        "WP-I3-010"
+      ],
+      "testOwnerPackage": "WP-I3-010",
+      "requiredAfterPackages": [
+        "WP-I3-003"
+      ],
+      "testTarget": "single-root mutation lease under concurrent Lamha instances",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I3-003 establishes authorized roots; WP-I3-010 owns mutation journaling and runs the concurrent-instance E2E gate.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I3-010:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-22",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-022",
+      "mitigationOwnerPackages": [
+        "WP-I13-003"
+      ],
+      "testOwnerPackage": "WP-I13-003",
+      "requiredAfterPackages": [],
+      "testTarget": "backup manifest checksums, corruption detection, and verify stage",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I13-003 owns backup verification and must reject incomplete or corrupt backups.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I13-003:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-23",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-023",
+      "mitigationOwnerPackages": [
+        "WP-I13-006"
+      ],
+      "testOwnerPackage": "WP-I13-006",
+      "requiredAfterPackages": [],
+      "testTarget": "complete-bundle trash, restore, grace, and permanent-delete semantics",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I13-006 owns reversible trash and purge behavior and must run trash/restore/delete boundaries.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I13-006:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-24",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-024",
+      "mitigationOwnerPackages": [
+        "WP-I11-009"
+      ],
+      "testOwnerPackage": "WP-I11-009",
+      "requiredAfterPackages": [],
+      "testTarget": "privacy-clean export allowlist and post-export metadata inspection",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I11-009 owns privacy export recipes and must execute a golden privacy corpus.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I11-009:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-25",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-025",
+      "mitigationOwnerPackages": [
+        "WP-I10-013"
+      ],
+      "testOwnerPackage": "WP-I10-013",
+      "requiredAfterPackages": [],
+      "testTarget": "AI result fingerprint invalidation and approval race",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I10-013 owns invalidation and must prove stale results cannot be approved in race fixtures.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I10-013:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-26",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-026",
+      "mitigationOwnerPackages": [
+        "WP-I2-007"
+      ],
+      "testOwnerPackage": "WP-I2-007",
+      "requiredAfterPackages": [],
+      "testTarget": "versioned IPC envelope and generated DTO compatibility",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I2-007 owns IPC envelope versioning and must run drift and compatibility fixtures before consumers advance.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I2-007:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-27",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-027",
+      "mitigationOwnerPackages": [
+        "WP-I14-013"
+      ],
+      "testOwnerPackage": "WP-I14-013",
+      "requiredAfterPackages": [],
+      "testTarget": "graph UI list/tree alternative, keyboard operation, focus, and screen-reader semantics",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I14-013 owns accessibility semantics and non-visual alternatives and runs the accessibility scenarios.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I14-013:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-28",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-028",
+      "mitigationOwnerPackages": [
+        "WP-I15-014"
+      ],
+      "testOwnerPackage": "WP-I15-014",
+      "requiredAfterPackages": [],
+      "testTarget": "clean-machine outbound network and listener observation",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "WP-I15-014 owns final outbound verification and blocks release on any automatic communication.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I15-014:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-29",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-029",
+      "mitigationOwnerPackages": [
+        "WP-I0-006"
+      ],
+      "testOwnerPackage": "WP-I0-007",
+      "requiredAfterPackages": [
+        "WP-I0-006"
+      ],
+      "testTarget": "source-derived baseline build/test execution with typed missing-prerequisite evidence",
+      "testClass": "BASELINE_REAL_EXECUTION",
+      "verificationStatus": "VERIFIED",
+      "runtimeEvidence": [
+        "graphify/13-implementation/WP-I0-007/baseline-attempts.json",
+        "graphify/13-implementation/WP-I0-007/verification-report.json",
+        "graphify/13-implementation/WP-I0-007/completion-evidence.md",
+        "graphify/13-implementation/WP-I0-007/adversarial-review.md"
+      ],
+      "implementationCommit": "48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2",
+      "rationale": "WP-I0-006 authorizes isolated output; WP-I0-007 then executes every available baseline surface or records an exact typed blocker.",
+      "blockingPackageGate": "WP-I0-007:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-30",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-030",
+      "mitigationOwnerPackages": [
+        "WP-I0-011"
+      ],
+      "testOwnerPackage": "WP-I0-011",
+      "requiredAfterPackages": [],
+      "testTarget": "bounded work-package cohesion and per-phase simplicity review enforcement",
+      "testClass": "GOVERNANCE_MITIGATION_BOUNDARY",
+      "rationale": "Over-engineering is a planning-governance risk; WP-I0-011 can genuinely demonstrate its mitigation by rejecting unbounded or mechanically split packages.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I0-011:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-31",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-031",
+      "mitigationOwnerPackages": [
+        "WP-I3-010",
+        "WP-I5-017",
+        "WP-I13-011"
+      ],
+      "testOwnerPackage": "WP-I15-008",
+      "requiredAfterPackages": [
+        "WP-I3-010",
+        "WP-I5-017",
+        "WP-I13-011"
+      ],
+      "testTarget": "integrated UI operation state versus durable commit and recovery events",
+      "testClass": "PRODUCT_FAILURE_BOUNDARY",
+      "rationale": "The boundary spans journal commit, viewer mutations, and disaster recovery; WP-I15-008 runs the integrated kill-before-commit parity E2E after those owners.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I15-008:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    },
+    {
+      "riskId": "R-32",
+      "runtimeRequirementId": "CAN-LAM-RISK-TEST-032",
+      "mitigationOwnerPackages": [
+        "WP-I0-011"
+      ],
+      "testOwnerPackage": "WP-I0-011",
+      "requiredAfterPackages": [],
+      "testTarget": "blocked-item protocol under unknown path, field, schema, or ownership evidence",
+      "testClass": "GOVERNANCE_MITIGATION_BOUNDARY",
+      "rationale": "Unknown-discovery handling is the WP-I0-011 governance surface and is genuinely tested by attempted guesses that must become typed blockers.",
+      "verificationStatus": "PENDING",
+      "runtimeEvidence": [],
+      "implementationCommit": "",
+      "blockingPackageGate": "WP-I0-011:EXIT",
+      "blockingReleaseGate": "I15:RELEASE"
+    }
+  ]
+}

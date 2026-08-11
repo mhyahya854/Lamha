@@ -5,6 +5,7 @@ import json
 import re
 import sqlite3
 import stat
+import subprocess
 import sys
 from collections import Counter, defaultdict, deque
 from pathlib import Path
@@ -650,6 +651,157 @@ def check_mapping_records(rows: list[dict[str, str]]) -> list[str]:
     for rid in ("CAN-FAIL-01", "CAN-LAM-ASSET-004"):
         if rid not in known or known[rid].get("primary_implementation_phase") != "I4":
             errors.append(f"known media mapping not corrected: {rid}")
+    return errors
+
+
+def check_risk_test_ownership(
+    requirements: list[dict[str, str]],
+    mappings: dict[str, dict[str, str]],
+    membership: list[dict[str, str]],
+    packages: list[dict[str, object]],
+    edges: list[dict[str, str]],
+    risk_rows: list[dict[str, str]] | None = None,
+    ownership_doc: dict[str, object] | None = None,
+) -> list[str]:
+    """Enforce reviewed risk ownership without treating mapping metadata as product test proof."""
+    errors: list[str] = []
+    register_path = PLAN / "09-risks" / "risk-register.csv"
+    ownership_path = PLAN / "09-risks" / "risk-test-ownership.json"
+    if risk_rows is None and not register_path.exists() or ownership_doc is None and not ownership_path.exists():
+        return ["P0/P1 risk register or risk-test ownership registry is missing"]
+    risks = risk_rows if risk_rows is not None else read_csv(register_path)
+    ownership = ownership_doc if ownership_doc is not None else read_json(ownership_path)
+    records = ownership.get("records", []) if isinstance(ownership, dict) else []
+    expected_risks = {f"R-{index:02d}" for index in range(1, 33)}
+    risk_ids = [row.get("risk_id", "") for row in risks]
+    owner_risk_ids = [str(row.get("riskId", "")) for row in records]
+    if set(risk_ids) != expected_risks or len(risk_ids) != len(set(risk_ids)):
+        errors.append("high/critical risk register must contain R-01 through R-32 exactly once")
+    if set(owner_risk_ids) != expected_risks or len(owner_risk_ids) != len(set(owner_risk_ids)):
+        errors.append("risk-test ownership must map R-01 through R-32 exactly once")
+    if any(row.get("severity") not in {"P0", "P1"} for row in risks):
+        errors.append("risk-test ownership register contains a non-P0/P1 severity")
+    if not isinstance(ownership, dict) or ownership.get("governanceRequirementId") != "CAN-LAM-TEST-020":
+        errors.append("risk-test ownership has the wrong governance parent")
+    if ownership.get("blockingReleaseGate") != "I15:RELEASE":
+        errors.append("risk-test ownership has the wrong release gate")
+    if ownership.get("reviewStatus") != "REVIEWED_CORRECTED" or not ownership.get("reviewRevision"):
+        errors.append("risk-test ownership lacks an explicit corrected review")
+
+    requirement_by_id = {row["canonical_id"]: row for row in requirements}
+    member_by_id = {row["canonical_id"]: row for row in membership}
+    package_by_id = {str(row["work_package_id"]): row for row in packages}
+    risk_by_id = {row["risk_id"]: row for row in risks}
+    adjacency: defaultdict[str, set[str]] = defaultdict(set)
+    for edge in edges:
+        adjacency[edge["prerequisite_work_package_id"]].add(edge["work_package_id"])
+
+    def reachable(start: str, target: str) -> bool:
+        queue = deque([start])
+        seen = {start}
+        while queue:
+            node = queue.popleft()
+            if node == target:
+                return True
+            for nxt in adjacency.get(node, set()):
+                if nxt not in seen:
+                    seen.add(nxt)
+                    queue.append(nxt)
+        return False
+
+    runtime_ids: list[str] = []
+    for record in records:
+        risk_id = str(record.get("riskId", ""))
+        risk = risk_by_id.get(risk_id, {})
+        rid = str(record.get("runtimeRequirementId", ""))
+        runtime_ids.append(rid)
+        test_owner = str(record.get("testOwnerPackage", ""))
+        mitigation_owners = record.get("mitigationOwnerPackages", [])
+        required_after = record.get("requiredAfterPackages", [])
+        test_class = str(record.get("testClass", ""))
+        if not re.fullmatch(r"CAN-LAM-RISK-TEST-\d{3}", rid):
+            errors.append(f"invalid risk runtime requirement ID: {risk_id} -> {rid}")
+        requirement = requirement_by_id.get(rid)
+        mapping = mappings.get(rid)
+        member = member_by_id.get(rid)
+        package = package_by_id.get(test_owner)
+        if not requirement or requirement.get("parent_requirement_id") != "CAN-LAM-TEST-020" or requirement.get("requirement_type") != "VERIFICATION_GATE":
+            errors.append(f"risk child requirement is missing or malformed: {risk_id} -> {rid}")
+        if not mapping or not package or mapping.get("primary_implementation_phase") != str((package or {}).get("implementation_phase", "")):
+            errors.append(f"risk child phase/test-owner mapping is invalid: {risk_id} -> {test_owner}")
+        if not member or member.get("work_package_id") != test_owner:
+            errors.append(f"risk child membership does not equal test owner: {risk_id} -> {test_owner}")
+        if not isinstance(mitigation_owners, list) or not mitigation_owners or any(owner not in package_by_id for owner in mitigation_owners):
+            errors.append(f"risk mitigation ownership is missing or invalid: {risk_id}")
+        if not isinstance(required_after, list) or any(owner not in mitigation_owners for owner in required_after):
+            errors.append(f"risk requiredAfterPackages is not a mitigation-owner subset: {risk_id}")
+        for prerequisite in required_after if isinstance(required_after, list) else []:
+            if not reachable(prerequisite, test_owner):
+                errors.append(f"risk test owner is not downstream of mitigation owner: {risk_id} {test_owner} <- {prerequisite}")
+        if record.get("blockingPackageGate") != f"{test_owner}:EXIT" or record.get("blockingReleaseGate") != "I15:RELEASE":
+            errors.append(f"risk gate binding is invalid: {risk_id}")
+        if risk and (
+            risk.get("runtime_requirement_id") != rid
+            or risk.get("test_owner_package") != test_owner
+            or risk.get("package_gate") != f"{test_owner}:EXIT"
+            or risk.get("release_gate") != "I15:RELEASE"
+            or risk.get("required_test") == ""
+            or risk.get("verification_status") != str(record.get("verificationStatus", ""))
+            or risk.get("runtime_evidence") != ";".join(str(value) for value in record.get("runtimeEvidence", []))
+            or risk.get("implementation_commit") != str(record.get("implementationCommit", ""))
+        ):
+            errors.append(f"normalized risk register disagrees with ownership: {risk_id}")
+        if test_owner == "WP-I0-011" and test_class != "GOVERNANCE_MITIGATION_BOUNDARY":
+            errors.append(f"product mitigation test is falsely owned by WP-I0-011: {risk_id}")
+        if package and (risk_id not in str(package.get("tests", "")) or risk_id not in str(package.get("exit_gate", ""))):
+            errors.append(f"owning package does not bind risk in tests and exit gate: {risk_id} -> {test_owner}")
+
+        status = str(record.get("verificationStatus", ""))
+        evidence = record.get("runtimeEvidence", [])
+        commit = str(record.get("implementationCommit", ""))
+        if status == "PENDING":
+            if evidence or commit:
+                errors.append(f"pending risk carries runtime PASS evidence: {risk_id}")
+        elif status == "VERIFIED":
+            if not isinstance(evidence, list) or not evidence or not re.fullmatch(r"[0-9a-f]{40}", commit):
+                errors.append(f"verified risk lacks raw evidence or exact implementation commit: {risk_id}")
+            elif subprocess.run(
+                ["git", "cat-file", "-e", f"{commit}^{{commit}}"], cwd=GRAPHIFY.parent,
+                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False,
+            ).returncode != 0:
+                errors.append(f"verified risk references an unknown implementation commit: {risk_id}")
+            elif subprocess.run(
+                ["git", "merge-base", "--is-ancestor", commit, "origin/main"], cwd=GRAPHIFY.parent,
+                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False,
+            ).returncode != 0:
+                errors.append(f"verified risk implementation commit is not on origin/main: {risk_id}")
+            else:
+                subject = subprocess.run(
+                    ["git", "show", "-s", "--format=%s", commit], cwd=GRAPHIFY.parent,
+                    capture_output=True, text=True, encoding="utf-8", errors="replace", check=False,
+                ).stdout.strip()
+                if not subject.startswith(f"Complete {test_owner}"):
+                    errors.append(f"verified risk commit is not the executing package completion commit: {risk_id}")
+            for relative in evidence if isinstance(evidence, list) else []:
+                if "risk-test-ownership" in str(relative) or "risk_boundary_test" in str(relative):
+                    errors.append(f"governance metadata is used as product test evidence: {risk_id}")
+                path = GRAPHIFY.parent / str(relative)
+                if not path.is_file():
+                    errors.append(f"verified risk evidence is missing: {risk_id} {relative}")
+                    continue
+                relative_git = str(relative).replace("\\", "/")
+                saved = subprocess.run(
+                    ["git", "show", f"{commit}:{relative_git}"], cwd=GRAPHIFY.parent,
+                    capture_output=True, text=True, encoding="utf-8", errors="replace", check=False,
+                )
+                if saved.returncode != 0:
+                    errors.append(f"verified risk evidence was not committed by the implementation commit: {risk_id} {relative}")
+                elif test_owner not in saved.stdout:
+                    errors.append(f"verified risk evidence is not bound to the executing package: {risk_id} {relative}")
+        else:
+            errors.append(f"invalid risk verification status: {risk_id} {status}")
+    if len(runtime_ids) != len(set(runtime_ids)):
+        errors.append("multiple risks share one runtime test requirement")
     return errors
 
 
@@ -1630,6 +1782,7 @@ def run() -> dict[str, object]:
     mapping_errors = check_mapping_records(mappings_list)
     if set(mappings) != {row["canonical_id"] for row in requirements}:
         mapping_errors.append("requirement/mapping ID sets differ")
+    mapping_errors.extend(check_risk_test_ownership(requirements, mappings, membership, packages, edges))
     level("L3_EXPLICIT_SEMANTIC_MAPPING", mapping_errors)
     active_ids = {row["canonical_id"] for row in requirements if mappings[row["canonical_id"]]["primary_implementation_phase"] and row["requirement_type"] in IMPLEMENTATION_TYPES and row["supersession_status"] == "ACTIVE"}
     level("L4_WORK_PACKAGES", check_package_records(packages, membership, active_ids) + check_phase_package_consistency(requirements, mappings, packages, membership))

@@ -24,7 +24,7 @@
     "total_record_schemas": 23
   },
   "dependencyNodes": 155,
-  "dependencyEdges": 229,
+  "dependencyEdges": 237,
   "dependencyTypes": {
     "REQUIRES_AI_WORKER": 4,
     "REQUIRES_AUTHORITY_MODEL": 1,
@@ -44,7 +44,7 @@
     "REQUIRES_RELEASE_GATE": 10,
     "REQUIRES_REPLACEMENT_VERIFIED": 1,
     "REQUIRES_REVIEW_PROTOCOL": 5,
-    "REQUIRES_RUNTIME": 3,
+    "REQUIRES_RUNTIME": 11,
     "REQUIRES_SCANNER": 2,
     "REQUIRES_SCHEMA": 40,
     "REQUIRES_SECURITY_BOUNDARY": 7,

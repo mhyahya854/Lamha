@@ -248,9 +248,11 @@ Three remaining certification-integrity weaknesses were found and closed:
    exclusion must carry a non-empty, specific rationale
    (`exclusion_rationale_missing` / `exclusion_rationale_not_specific`).
 
-The adversarial suite now contains 169 fixtures (F01-F169), including
+The adversarial suite now contains 181 fixtures (F01-F181), including
 independent one-mutation fixtures for the provisional/crash state, exact
-Layer 3 membership, and strict exclusion sets.
+Layer 3 membership, strict exclusion sets, and twelve risk-test ownership
+attacks covering missing/duplicate mappings, wrong or upstream owners, invalid
+package/release gates, stale or synthetic evidence, and saved PASS claims.
 
 ## Amendments added
 
@@ -259,6 +261,10 @@ Layer 3 membership, and strict exclusion sets.
   exact block reasons; estimates, scheduling, selected-folder scope,
   pause/resume, no silent substitution, distinct quantized variants, and
   provenance are planned obligations.
+- `CAN-LAM-TEST-020` (risk-test ownership): WP-I0-011 owns mapping and gate
+  enforcement; 32 child verification requirements assign each P0/P1 risk's
+  real mitigation test to the package that can execute it (or a reviewed
+  downstream integrator), with package-exit and `I15:RELEASE` blocking.
 
 ## Claims intentionally deferred
 

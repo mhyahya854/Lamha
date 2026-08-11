@@ -1332,6 +1332,64 @@ def run() -> dict[str, object]:
         )
         exact_packet_errors = gates.verify_packet_semantic_agreement(packet_root)
 
+    risk_requirements = validator.read_csv(validator.PLAN / "02-requirements/canonical-registry.csv")
+    risk_mappings = {
+        row["canonical_id"]: row
+        for row in validator.read_csv(validator.PLAN / "03-phases/reviewed-requirement-mapping.csv")
+    }
+    risk_membership = validator.read_csv(validator.PLAN / "04-work-packages/requirement-membership.csv")
+    risk_packages = validator.read_json(validator.PLAN / "04-work-packages/work-packages.json")
+    risk_edges = validator.read_csv(validator.PLAN / "04-work-packages/dependencies.csv")
+    risk_rows = validator.read_csv(validator.PLAN / "09-risks/risk-register.csv")
+    risk_ownership = validator.read_json(validator.PLAN / "09-risks/risk-test-ownership.json")
+
+    def risk_probe(change) -> list[str]:
+        reqs = copy.deepcopy(risk_requirements)
+        maps = copy.deepcopy(risk_mappings)
+        members = copy.deepcopy(risk_membership)
+        packages = copy.deepcopy(risk_packages)
+        edges = copy.deepcopy(risk_edges)
+        rows = copy.deepcopy(risk_rows)
+        ownership = copy.deepcopy(risk_ownership)
+        change(reqs, maps, members, packages, edges, rows, ownership)
+        return validator.check_risk_test_ownership(reqs, maps, members, packages, edges, rows, ownership)
+
+    def record(doc: dict[str, object], risk_id: str) -> dict[str, object]:
+        return next(row for row in doc["records"] if row["riskId"] == risk_id)
+
+    missing_risk_errors = risk_probe(lambda reqs, maps, members, packages, edges, rows, ownership: ownership["records"].pop())
+    wrong_owner_errors = risk_probe(lambda reqs, maps, members, packages, edges, rows, ownership: record(ownership, "R-01").update(testOwnerPackage="WP-I0-011"))
+    wrong_phase_errors = risk_probe(lambda reqs, maps, members, packages, edges, rows, ownership: maps["CAN-LAM-RISK-TEST-001"].update(primary_implementation_phase="I9"))
+    upstream_errors = risk_probe(lambda reqs, maps, members, packages, edges, rows, ownership: edges.clear())
+    duplicate_runtime_errors = risk_probe(lambda reqs, maps, members, packages, edges, rows, ownership: record(ownership, "R-02").update(runtimeRequirementId="CAN-LAM-RISK-TEST-001"))
+    package_gate_errors = risk_probe(lambda reqs, maps, members, packages, edges, rows, ownership: record(ownership, "R-01").update(blockingPackageGate="WP-I9-999:EXIT"))
+    release_gate_errors = risk_probe(lambda reqs, maps, members, packages, edges, rows, ownership: record(ownership, "R-01").update(blockingReleaseGate="I14:RELEASE"))
+    verified_without_evidence_errors = risk_probe(lambda reqs, maps, members, packages, edges, rows, ownership: record(ownership, "R-01").update(verificationStatus="VERIFIED", runtimeEvidence=[], implementationCommit="0" * 40))
+    stale_evidence_errors = risk_probe(lambda reqs, maps, members, packages, edges, rows, ownership: record(ownership, "R-01").update(verificationStatus="VERIFIED", runtimeEvidence=["graphify/13-implementation/WP-I3-014/missing.json"], implementationCommit="48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2"))
+    product_owned_by_governance_errors = risk_probe(lambda reqs, maps, members, packages, edges, rows, ownership: record(ownership, "R-01").update(testOwnerPackage="WP-I0-011", testClass="PRODUCT_FAILURE_BOUNDARY"))
+    synthetic_evidence_errors = risk_probe(lambda reqs, maps, members, packages, edges, rows, ownership: record(ownership, "R-01").update(verificationStatus="VERIFIED", runtimeEvidence=["graphify/12-semantic-implementation-plan/09-risks/risk-test-ownership.json"], implementationCommit="48d583804c24765e75d3ebdf3f0cd20bfe8ee7d2"))
+    def forge_saved_pass_with_unrelated_known_commit(reqs, maps, members, packages, edges, rows, ownership) -> None:
+        unrelated_commit = "21cfc7e861a5caacebb40099e5043b3b7458958e"
+        record(ownership, "R-05")["implementationCommit"] = unrelated_commit
+        next(row for row in rows if row["risk_id"] == "R-05")["implementation_commit"] = unrelated_commit
+
+    saved_pass_errors = risk_probe(forge_saved_pass_with_unrelated_known_commit)
+
+    risk_ownership_regressions = [
+        ("F170_MISSING_HIGH_CRITICAL_RISK", *contains(missing_risk_errors, "must map R-01 through R-32 exactly once")),
+        ("F171_WRONG_RISK_TEST_OWNER", *contains(wrong_owner_errors, "membership does not equal test owner")),
+        ("F172_WRONG_RISK_OWNER_PHASE", *contains(wrong_phase_errors, "phase/test-owner mapping is invalid")),
+        ("F173_UPSTREAM_INCOMPATIBLE_TEST_PACKAGE", *contains(upstream_errors, "test owner is not downstream")),
+        ("F174_DUPLICATE_RUNTIME_TEST_REQUIREMENT", *contains(duplicate_runtime_errors, "multiple risks share one runtime test requirement")),
+        ("F175_INVALID_PACKAGE_GATE_BINDING", *contains(package_gate_errors, "risk gate binding is invalid")),
+        ("F176_INVALID_RELEASE_GATE_BINDING", *contains(release_gate_errors, "risk gate binding is invalid")),
+        ("F177_VERIFIED_WITHOUT_REAL_TEST_EVIDENCE", *contains(verified_without_evidence_errors, "lacks raw evidence")),
+        ("F178_STALE_OR_WRONG_TEST_EVIDENCE", *contains(stale_evidence_errors, "evidence is missing")),
+        ("F179_PRODUCT_TEST_MAPPED_TO_WP_I0_011", *contains(product_owned_by_governance_errors, "falsely owned by WP-I0-011")),
+        ("F180_SYNTHETIC_FIXTURE_AS_PRODUCT_EVIDENCE", *contains(synthetic_evidence_errors, "governance metadata is used as product test evidence")),
+        ("F181_SAVED_PASS_WITH_UNRELATED_KNOWN_COMMIT", *contains(saved_pass_errors, "not the executing package completion commit")),
+    ]
+
     final_review_regressions = [
         ("F154_GENERIC_ACCEPTANCE_LABEL", *contains(generic_acceptance_errors, "generic acceptance criterion mirrors requirement label")),
         ("F155_GENERIC_VERIFICATION_GATE_LIST", *contains(generic_verification_errors, "generic verification gate list")),
@@ -1429,7 +1487,7 @@ def run() -> dict[str, object]:
         ("F70_AMENDMENT_ARTIFACT_MISSING", *contains(am_missing_artifact, "ai_model_override_amendment_artifact_missing")),
         ("F71_AMENDMENT_COMPONENT_RULE_MISSING", *contains(am_missing_component_rule, "component_model_selection_rule_missing")),
     ]
-    cases = cases + amendment_extra + cert_fixture_errors + cert_integrity_fixture_errors + final_review_regressions
+    cases = cases + amendment_extra + cert_fixture_errors + cert_integrity_fixture_errors + final_review_regressions + risk_ownership_regressions
     results = [
         {
             "fixture": name,

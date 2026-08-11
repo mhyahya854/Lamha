@@ -1,6 +1,6 @@
 {
-  "fixtureCount": 169,
-  "expectedFailuresObserved": 169,
+  "fixtureCount": 181,
+  "expectedFailuresObserved": 181,
   "status": "PASS",
   "fixtures": [
     {
@@ -2001,8 +2001,7 @@
       "fixture": "F132_GPT_MANIFEST_RECOMPUTE_MISMATCH",
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
-        "full Graphify SHA manifest digest does not match recomputation",
-        "full Graphify SHA manifest file hashes do not match recomputation"
+        "full Graphify SHA manifest digest does not match recomputation"
       ]
     },
     {
@@ -2284,6 +2283,121 @@
       "status": "EXPECTED_FAILURE_OBSERVED",
       "validatorErrors": [
         "external integrity fixture saved Git tree differs from repository"
+      ]
+    },
+    {
+      "fixture": "F170_MISSING_HIGH_CRITICAL_RISK",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "risk-test ownership must map R-01 through R-32 exactly once"
+      ]
+    },
+    {
+      "fixture": "F171_WRONG_RISK_TEST_OWNER",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "risk child phase/test-owner mapping is invalid: R-01 -> WP-I0-011",
+        "risk child membership does not equal test owner: R-01 -> WP-I0-011",
+        "risk gate binding is invalid: R-01",
+        "normalized risk register disagrees with ownership: R-01",
+        "product mitigation test is falsely owned by WP-I0-011: R-01",
+        "owning package does not bind risk in tests and exit gate: R-01 -> WP-I0-011"
+      ]
+    },
+    {
+      "fixture": "F172_WRONG_RISK_OWNER_PHASE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "risk child phase/test-owner mapping is invalid: R-01 -> WP-I3-014"
+      ]
+    },
+    {
+      "fixture": "F173_UPSTREAM_INCOMPATIBLE_TEST_PACKAGE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "risk test owner is not downstream of mitigation owner: R-05 WP-I0-007 <- WP-I0-004",
+        "risk test owner is not downstream of mitigation owner: R-07 WP-I15-008 <- WP-I4-008",
+        "risk test owner is not downstream of mitigation owner: R-07 WP-I15-008 <- WP-I10-002",
+        "risk test owner is not downstream of mitigation owner: R-07 WP-I15-008 <- WP-I11-012",
+        "risk test owner is not downstream of mitigation owner: R-10 WP-I12-009 <- WP-I12-007",
+        "risk test owner is not downstream of mitigation owner: R-12 WP-I4-006 <- WP-I3-002",
+        "risk test owner is not downstream of mitigation owner: R-13 WP-I8-005 <- WP-I7-008",
+        "risk test owner is not downstream of mitigation owner: R-16 WP-I15-001 <- WP-I10-002",
+        "risk test owner is not downstream of mitigation owner: R-17 WP-I5-012 <- WP-I2-002",
+        "risk test owner is not downstream of mitigation owner: R-21 WP-I3-010 <- WP-I3-003",
+        "risk test owner is not downstream of mitigation owner: R-29 WP-I0-007 <- WP-I0-006",
+        "risk test owner is not downstream of mitigation owner: R-31 WP-I15-008 <- WP-I3-010",
+        "risk test owner is not downstream of mitigation owner: R-31 WP-I15-008 <- WP-I5-017",
+        "risk test owner is not downstream of mitigation owner: R-31 WP-I15-008 <- WP-I13-011"
+      ]
+    },
+    {
+      "fixture": "F174_DUPLICATE_RUNTIME_TEST_REQUIREMENT",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "risk child membership does not equal test owner: R-02 -> WP-I3-015",
+        "normalized risk register disagrees with ownership: R-02",
+        "multiple risks share one runtime test requirement"
+      ]
+    },
+    {
+      "fixture": "F175_INVALID_PACKAGE_GATE_BINDING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "risk gate binding is invalid: R-01"
+      ]
+    },
+    {
+      "fixture": "F176_INVALID_RELEASE_GATE_BINDING",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "risk gate binding is invalid: R-01"
+      ]
+    },
+    {
+      "fixture": "F177_VERIFIED_WITHOUT_REAL_TEST_EVIDENCE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "normalized risk register disagrees with ownership: R-01",
+        "verified risk lacks raw evidence or exact implementation commit: R-01"
+      ]
+    },
+    {
+      "fixture": "F178_STALE_OR_WRONG_TEST_EVIDENCE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "normalized risk register disagrees with ownership: R-01",
+        "verified risk commit is not the executing package completion commit: R-01",
+        "verified risk evidence is missing: R-01 graphify/13-implementation/WP-I3-014/missing.json"
+      ]
+    },
+    {
+      "fixture": "F179_PRODUCT_TEST_MAPPED_TO_WP_I0_011",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "risk child phase/test-owner mapping is invalid: R-01 -> WP-I0-011",
+        "risk child membership does not equal test owner: R-01 -> WP-I0-011",
+        "risk gate binding is invalid: R-01",
+        "normalized risk register disagrees with ownership: R-01",
+        "product mitigation test is falsely owned by WP-I0-011: R-01",
+        "owning package does not bind risk in tests and exit gate: R-01 -> WP-I0-011"
+      ]
+    },
+    {
+      "fixture": "F180_SYNTHETIC_FIXTURE_AS_PRODUCT_EVIDENCE",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "normalized risk register disagrees with ownership: R-01",
+        "verified risk commit is not the executing package completion commit: R-01",
+        "governance metadata is used as product test evidence: R-01",
+        "verified risk evidence was not committed by the implementation commit: R-01 graphify/12-semantic-implementation-plan/09-risks/risk-test-ownership.json"
+      ]
+    },
+    {
+      "fixture": "F181_SAVED_PASS_WITH_UNRELATED_KNOWN_COMMIT",
+      "status": "EXPECTED_FAILURE_OBSERVED",
+      "validatorErrors": [
+        "verified risk commit is not the executing package completion commit: R-05"
       ]
     }
   ]
