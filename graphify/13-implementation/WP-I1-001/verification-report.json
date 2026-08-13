@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "packageId": "WP-I1-001",
+  "status": "PASS",
+  "passes": [
+    {
+      "name": "top-down-authority",
+      "status": "PASS",
+      "requirements": [
+        "CAN-LAM-ARCH-001",
+        "CAN-LAM-ARCH-368",
+        "CAN-LAM-ARCH-434",
+        "CAN-LAM-ARCH-439",
+        "CAN-LAM-ARCH-442",
+        "CAN-LAM-ARCH-443",
+        "CAN-LAM-LEGAL-010"
+      ]
+    },
+    {
+      "name": "bottom-up-all-files",
+      "status": "PASS",
+      "files": 3697,
+      "surfaces": 13885
+    },
+    {
+      "name": "semantic-completeness",
+      "status": "PASS",
+      "unclassified": 0,
+      "unowned": 0,
+      "unsafeLegalDeletion": 0
+    }
+  ],
+  "requirementResults": {
+    "CAN-LAM-ARCH-001": "PASS",
+    "CAN-LAM-ARCH-368": "PASS",
+    "CAN-LAM-ARCH-434": "PASS",
+    "CAN-LAM-ARCH-439": "PASS",
+    "CAN-LAM-ARCH-442": "PASS",
+    "CAN-LAM-ARCH-443": "PASS",
+    "CAN-LAM-LEGAL-010": "PASS"
+  },
+  "knownSurfaceResults": {
+    "user-visible-inventory.json": "PASS",
+    "package-bundle-inventory.json": "PASS",
+    "app-data-inventory.json": "PASS",
+    "brand-asset-inventory.json": "PASS",
+    "font-inventory.json": "PASS",
+    "legal-attribution-inventory.json": "PASS",
+    "bundled-binary-inventory.json": "PASS"
+  },
+  "negativeFixtures": {
+    "passed": 109,
+    "total": 109,
+    "status": "PASS"
+  },
+  "codebaseIntegrity": {
+    "status": "PASS",
+    "baseline": "graphify/13-implementation/WP-I0-001/sha256-manifest.csv",
+    "expectedFiles": 3697,
+    "observedFiles": 3697,
+    "added": [],
+    "removed": [],
+    "modified": [],
+    "renamed": []
+  }
+}

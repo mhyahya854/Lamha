@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "changedPaths": [
+    "graphify/13-implementation/WP-I1-001/app-data-inventory.json",
+    "graphify/13-implementation/WP-I1-001/artifact-manifest.json",
+    "graphify/13-implementation/WP-I1-001/brand-asset-inventory.json",
+    "graphify/13-implementation/WP-I1-001/bundled-binary-inventory.json",
+    "graphify/13-implementation/WP-I1-001/codebase-integrity.json",
+    "graphify/13-implementation/WP-I1-001/completion-evidence.md",
+    "graphify/13-implementation/WP-I1-001/font-inventory.json",
+    "graphify/13-implementation/WP-I1-001/generator-contracts.json",
+    "graphify/13-implementation/WP-I1-001/identity-inventory.json",
+    "graphify/13-implementation/WP-I1-001/inventory.py",
+    "graphify/13-implementation/WP-I1-001/legal-attribution-inventory.json",
+    "graphify/13-implementation/WP-I1-001/negative-fixture-results.json",
+    "graphify/13-implementation/WP-I1-001/package-bundle-inventory.json",
+    "graphify/13-implementation/WP-I1-001/package-summary.json",
+    "graphify/13-implementation/WP-I1-001/risk-register.json",
+    "graphify/13-implementation/WP-I1-001/scope-audit.json",
+    "graphify/13-implementation/WP-I1-001/user-visible-inventory.json",
+    "graphify/13-implementation/WP-I1-001/verification-report.json",
+    "graphify/13-implementation/WP-I1-001/verify_evidence.py"
+  ],
+  "outsidePackage": [],
+  "codebaseChanges": []
+}

@@ -1,0 +1,751 @@
+{
+  "status": "PASS",
+  "passed": 109,
+  "total": 109,
+  "results": [
+    {
+      "fixtureId": "F01_UNCLASSIFIED",
+      "expectedError": "UNCLASSIFIED",
+      "observedErrors": [
+        "UNCLASSIFIED:ID-3B468364CD058B98",
+        "IDENTITY_CLASSIFICATION_DRIFT:ID-3B468364CD058B98"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F02_INVALID_SURFACE_TYPE",
+      "expectedError": "INVALID_SURFACE_TYPE",
+      "observedErrors": [
+        "INVALID_SURFACE_TYPE:ID-3B468364CD058B98",
+        "IDENTITY_CLASSIFICATION_DRIFT:ID-3B468364CD058B98"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F03_UNOWNED_RENAME",
+      "expectedError": "UNOWNED_TRANSFORMATION",
+      "observedErrors": [
+        "UNOWNED_TRANSFORMATION:ID-3B468364CD058B98",
+        "IDENTITY_CLASSIFICATION_DRIFT:ID-3B468364CD058B98"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F04_UNKNOWN_OWNER",
+      "expectedError": "UNOWNED_TRANSFORMATION",
+      "observedErrors": [
+        "UNOWNED_TRANSFORMATION:ID-3B468364CD058B98",
+        "IDENTITY_CLASSIFICATION_DRIFT:ID-3B468364CD058B98"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F05_DUPLICATE_ID",
+      "expectedError": "DUPLICATE_SURFACE_ID",
+      "observedErrors": [
+        "DUPLICATE_SURFACE_ID"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F06_FONT_STATUS_MISSING",
+      "expectedError": "FONT_LEGAL_STATUS_MISSING",
+      "observedErrors": [
+        "FONT_LEGAL_STATUS_MISSING:ID-FBDABB5B8E73A8B7",
+        "FONT_PAYLOAD_DRIFT:ID-FBDABB5B8E73A8B7"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F07_FONT_STATUS_GUESSED",
+      "expectedError": "FONT_LEGAL_STATUS_MISSING",
+      "observedErrors": [
+        "FONT_LEGAL_STATUS_MISSING:ID-FBDABB5B8E73A8B7",
+        "FONT_PAYLOAD_DRIFT:ID-FBDABB5B8E73A8B7"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F08_LEGAL_RENAME",
+      "expectedError": "UNSAFE_LEGAL_DELETION",
+      "observedErrors": [
+        "UNSAFE_LEGAL_DELETION:ID-3E44FFB9BFC7D56C"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F09_ATTRIBUTION_REMOVE",
+      "expectedError": "UNSAFE_LEGAL_DELETION",
+      "observedErrors": [
+        "UNSAFE_LEGAL_DELETION:ID-3E44FFB9BFC7D56C"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F10_GENERATED_SOURCE_MISSING",
+      "expectedError": "GENERATED_SOURCE_MISSING",
+      "observedErrors": [
+        "GENERATED_SOURCE_MISSING:ID-D4B7DB5D0D151E92"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F11_SOURCE_PATH_MISSING",
+      "expectedError": "MISSING_SOURCE_PATH",
+      "observedErrors": [
+        "MISSING_SOURCE_PATH:ID-3B468364CD058B98"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F12_NON_PRODUCT_OWNER",
+      "expectedError": "NON_PRODUCT_HAS_OWNER",
+      "observedErrors": [
+        "NON_PRODUCT_HAS_OWNER:ID-3B468364CD058B98",
+        "IDENTITY_CLASSIFICATION_DRIFT:ID-3B468364CD058B98"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F13_UNOWNED_ASSET",
+      "expectedError": "UNOWNED_TRANSFORMATION",
+      "observedErrors": [
+        "UNOWNED_TRANSFORMATION:ID-3B468364CD058B98",
+        "IDENTITY_CLASSIFICATION_DRIFT:ID-3B468364CD058B98"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F14_UNOWNED_COMPATIBILITY",
+      "expectedError": "UNOWNED_TRANSFORMATION",
+      "observedErrors": [
+        "UNOWNED_TRANSFORMATION:ID-3B468364CD058B98",
+        "IDENTITY_CLASSIFICATION_DRIFT:ID-3B468364CD058B98"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F15_LEGAL_ASSET_REPLACE",
+      "expectedError": "UNSAFE_LEGAL_DELETION",
+      "observedErrors": [
+        "UNSAFE_LEGAL_DELETION:ID-3E44FFB9BFC7D56C"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F16_INVALID_DISPOSITION_CASE",
+      "expectedError": "UNCLASSIFIED",
+      "observedErrors": [
+        "UNCLASSIFIED:ID-3B468364CD058B98",
+        "IDENTITY_CLASSIFICATION_DRIFT:ID-3B468364CD058B98"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F17_INVENTED_GENERATOR_CONTRACT",
+      "expectedError": "GENERATED_SOURCE_INVALID",
+      "observedErrors": [
+        "GENERATED_SOURCE_INVALID:ID-D4B7DB5D0D151E92"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F18_STRUCTURAL_VALUE_FORGED",
+      "expectedError": "STRUCTURAL_VALUE_DRIFT",
+      "observedErrors": [
+        "STRUCTURAL_VALUE_DRIFT:ID-4D2E2CC28A65B55E"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F19_MISSED_PBXPROJ_IDENTITY",
+      "expectedError": "MISSING_DISCOVERED_SURFACE",
+      "observedErrors": [
+        "MISSING_DISCOVERED_SURFACE:ID-F1D3A2C69BA775B4"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F20_MISSED_GENERIC_LAUNCHER_ASSET",
+      "expectedError": "MISSING_DISCOVERED_SURFACE",
+      "observedErrors": [
+        "MISSING_DISCOVERED_SURFACE:ID-180E5B9ECDE69480"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F21_MISSED_APP_DATA_ACCESS",
+      "expectedError": "MISSING_DISCOVERED_SURFACE",
+      "observedErrors": [
+        "MISSING_DISCOVERED_SURFACE:ID-304E0E0168ECBC23"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F22_DOMAIN_IS_NOT_APP_DATA",
+      "expectedError": "DOMAIN_NOT_FILESYSTEM_DATA_PATH",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F23_MISSED_DOCKER_BINARY_DECLARATION",
+      "expectedError": "MISSING_DISCOVERED_SURFACE",
+      "observedErrors": [
+        "MISSING_DISCOVERED_SURFACE:ID-9B1D6D625FA7DDC7"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F24_VISIBLE_MANIFEST_WRONG_OWNER",
+      "expectedError": "VISIBLE_MANIFEST_OWNER_INVALID",
+      "observedErrors": [
+        "VISIBLE_MANIFEST_OWNER_INVALID:ID-52222112112F75C0",
+        "IDENTITY_CLASSIFICATION_DRIFT:ID-52222112112F75C0"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F25_AUTHORIZATION_IS_NOT_LEGAL",
+      "expectedError": "AUTHORIZATION_NOT_LEGAL",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F26_PRODUCT_PROSE_NOT_UPSTREAM_ATTRIBUTION",
+      "expectedError": "VISIBLE_DOC_RENAME",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F27_SYMBOL_IS_NOT_USER_VISIBLE",
+      "expectedError": "SYMBOL_INTERNAL",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F28_VISIBLE_TEST_FOLLOWS_UI_OWNER",
+      "expectedError": "VISIBLE_TEST_OWNER",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F29_MISSED_STRUCTURAL_BUNDLE_EXECUTABLE",
+      "expectedError": "MISSING_DISCOVERED_SURFACE",
+      "observedErrors": [
+        "MISSING_DISCOVERED_SURFACE:ID-4D2E2CC28A65B55E"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F30_MISSED_PERSISTENCE_DECLARATION",
+      "expectedError": "MISSING_DISCOVERED_SURFACE",
+      "observedErrors": [
+        "MISSING_DISCOVERED_SURFACE:ID-8A46E91073BEB21D"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F31_MISSED_FUTO_IDENTITY",
+      "expectedError": "MISSING_DISCOVERED_SURFACE",
+      "observedErrors": [
+        "MISSING_DISCOVERED_SURFACE:ID-91AB0F2126EE54CD"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F32_MANIFEST_OMITS_REQUIRED_ARTIFACT",
+      "expectedError": "MANIFEST_PATH_SET",
+      "observedErrors": [
+        "MANIFEST_PATH_SET"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F33_LONG_STYLE_TOKEN_IS_INTERNAL",
+      "expectedError": "STYLE_TOKEN_INTERNAL",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F34_FORGED_ASSET_CONSUMER",
+      "expectedError": "ASSET_CONSUMER_INVALID",
+      "observedErrors": [
+        "ASSET_CONSUMER_INVALID:ID-DE006651B3EF9739"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F35_TEMP_DATA_MARKED_DURABLE",
+      "expectedError": "APP_DATA_SEMANTICS",
+      "observedErrors": [
+        "APP_DATA_SEMANTICS:ID-D9694A9193F3CDF0:persistentData"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F36_OMITTED_ASSET_CONSUMER",
+      "expectedError": "ASSET_CONSUMER_SET",
+      "observedErrors": [
+        "ASSET_CONSUMER_SET:ID-DE006651B3EF9739"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F37_FORGED_ASSET_DIMENSIONS",
+      "expectedError": "ASSET_DIMENSION_DRIFT",
+      "observedErrors": [
+        "ASSET_DIMENSION_DRIFT:ID-180E5B9ECDE69480"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F38_SWAPPED_IDENTITY_CLASSIFICATION",
+      "expectedError": "IDENTITY_CLASSIFICATION_DRIFT",
+      "observedErrors": [
+        "IDENTITY_CLASSIFICATION_DRIFT:ID-B890415BCB92EA9F"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F39_FORGED_DATA_DECLARATION_SEMANTICS",
+      "expectedError": "APP_DATA_DECLARATION_SEMANTICS",
+      "observedErrors": [
+        "APP_DATA_DECLARATION_SEMANTICS:ID-8A46E91073BEB21D:persistentData"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F40_FORGED_PATH_CLASSIFICATION",
+      "expectedError": "PATH_CLASSIFICATION_DRIFT",
+      "observedErrors": [
+        "PATH_CLASSIFICATION_DRIFT:ID-7663A1B9CAC858A3"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F41_FORGED_EXECUTABLE_CLASSIFICATION",
+      "expectedError": "EXECUTABLE_CLASSIFICATION_DRIFT",
+      "observedErrors": [
+        "EXECUTABLE_CLASSIFICATION_DRIFT:ID-0FAE06B9835E1CDC"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F42_FORGED_BINARY_PAYLOAD",
+      "expectedError": "BINARY_DECLARATION_PAYLOAD_DRIFT",
+      "observedErrors": [
+        "BINARY_DECLARATION_PAYLOAD_DRIFT:ID-9B1D6D625FA7DDC7"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F43_FORGED_FONT_PAYLOAD",
+      "expectedError": "FONT_PAYLOAD_DRIFT",
+      "observedErrors": [
+        "FONT_PAYLOAD_DRIFT:ID-FBDABB5B8E73A8B7"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F44_FORGED_LEGAL_PAYLOAD",
+      "expectedError": "LEGAL_PAYLOAD_DRIFT",
+      "observedErrors": [
+        "LEGAL_PAYLOAD_DRIFT:ID-3A4B190C206D33A4"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F45_INTEGRATION_TEST_IS_TEST_ONLY",
+      "expectedError": "INTEGRATION_TEST_CLASSIFIED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F46_LOWER_CAMEL_SYMBOL_IS_INTERNAL",
+      "expectedError": "LOWER_CAMEL_INTERNAL",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F47_ENVIRONMENT_NAME_IS_COMPATIBILITY",
+      "expectedError": "ENVIRONMENT_CONTRACT_COMPATIBILITY",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F48_MODULE_SPECIFIER_IS_PACKAGE_IDENTITY",
+      "expectedError": "MODULE_SPECIFIER_PACKAGE_IDENTITY",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F49_TEST_MODULE_REMAINS_TEST_ONLY",
+      "expectedError": "TEST_MODULE_WRAPPED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F50_TEST_STYLE_REMAINS_TEST_ONLY",
+      "expectedError": "TEST_STYLE_WRAPPED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F51_NAMED_VOLUME_IS_APP_DATA",
+      "expectedError": "NAMED_VOLUME_APP_DATA",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F52_FULL_NAMED_VOLUME_SPAN",
+      "expectedError": "FULL_IDENTITY_SPAN",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F53_FULL_MODULE_SPECIFIER_SPAN",
+      "expectedError": "FULL_IDENTITY_SPAN",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F54_FULL_NAMESPACE_SPAN",
+      "expectedError": "FULL_IDENTITY_SPAN",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F55_FULL_UPSTREAM_URL_SPAN",
+      "expectedError": "FULL_IDENTITY_SPAN",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F56_FULL_REVERSE_DNS_SPAN",
+      "expectedError": "FULL_IDENTITY_SPAN",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F57_URI_SCHEME_IS_COMPATIBILITY",
+      "expectedError": "URI_SCHEME_COMPATIBILITY",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F58_MIXED_DOC_PROSE_IS_VISIBLE",
+      "expectedError": "DOC_PROSE_VISIBLE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F59_PROSE_FROM_IS_NOT_MODULE_IMPORT",
+      "expectedError": "VISIBLE_EMAIL_COPY",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F60_RENDERED_HTML_BEATS_COMPAT_WORD",
+      "expectedError": "VISIBLE_HTML_COPY",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F61_PRIVACY_POLICY_IS_LEGAL_DOCUMENT",
+      "expectedError": "LEGAL_DOCUMENT_DETECTED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F62_ISSUE_TEMPLATE_IS_VISIBLE",
+      "expectedError": "PUBLISHED_COPY_VISIBLE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F63_STORE_METADATA_IS_VISIBLE",
+      "expectedError": "PUBLISHED_COPY_VISIBLE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F64_INSTALL_OUTPUT_IS_VISIBLE",
+      "expectedError": "PUBLISHED_COPY_VISIBLE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F65_ENV_COMMENT_IS_DOCUMENTATION",
+      "expectedError": "OPERATOR_INSTRUCTION_VISIBLE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F66_CLI_HELP_IS_VISIBLE",
+      "expectedError": "OCCURRENCE_CONTEXT_CLASSIFIED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F67_WIDGET_COPY_IS_VISIBLE",
+      "expectedError": "OCCURRENCE_CONTEXT_CLASSIFIED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F68_WORKFLOW_NAME_IS_VISIBLE",
+      "expectedError": "OCCURRENCE_CONTEXT_CLASSIFIED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F69_CANONICAL_API_DESCRIPTION_IS_DOCUMENTATION",
+      "expectedError": "OCCURRENCE_CONTEXT_CLASSIFIED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F70_EXPORTED_VISIBLE_STRING_IS_NOT_MODULE",
+      "expectedError": "OCCURRENCE_CONTEXT_CLASSIFIED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F71_FULL_SHARED_PREFERENCE_NAME",
+      "expectedError": "FULL_PERSISTED_VALUE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F72_FULL_MEDIA_DESTINATION_PATH",
+      "expectedError": "FULL_PERSISTED_VALUE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F73_UPPERCASE_INTERNAL_CONSTANT_NOT_ENV",
+      "expectedError": "INTERNAL_CONSTANT",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F74_GENERATOR_TEMPLATE_IS_CANONICAL",
+      "expectedError": "TEMPLATE_NOT_GENERATED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F75_IDENTITY_IMAGE_IS_ASSET",
+      "expectedError": "IDENTITY_ASSET_DISCOVERED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F76_BUSINESS_LICENSE_NOT_LEGAL",
+      "expectedError": "NOT_LEGAL_NOTICE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F77_PLUGIN_AUTHOR_NOT_LEGAL",
+      "expectedError": "NOT_LEGAL_NOTICE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F78_CLI_AUTHOR_FLAG_NOT_LEGAL",
+      "expectedError": "NOT_LEGAL_NOTICE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F79_CONTRADICTORY_SEMANTICS_REJECTED",
+      "expectedError": "SEMANTIC_CONFLICT",
+      "observedErrors": [
+        "SEMANTIC_CONFLICT",
+        "IDENTITY_CLASSIFICATION_DRIFT:ID-FORGED-CONFLICT"
+      ],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F80_DOC_CODE_IDENTIFIER_NOT_PRODUCT_PROSE",
+      "expectedError": "TECHNICAL_DOC_COMPATIBILITY",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F81_FULL_CONFIG_PATH_IS_APP_DATA",
+      "expectedError": "FULL_CONFIG_PATH",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F82_LEGAL_EMAIL_IS_PRESERVED",
+      "expectedError": "LEGAL_CONTACT_PRESERVED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F83_FULL_PROCESS_ENV_SPAN",
+      "expectedError": "FULL_ENVIRONMENT_SPAN",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F84_TEST_SYMBOL_NOT_ENV_COMPATIBILITY",
+      "expectedError": "TEST_SYMBOL_MIGRATES",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F85_PROSE_PUNCTUATION_NOT_IN_IDENTIFIER",
+      "expectedError": "TRIM_PROSE_PUNCTUATION",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F86_HEREDOC_SUCCESS_IS_VISIBLE",
+      "expectedError": "VISIBLE_CANONICAL_CONTEXT",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F87_WORKFLOW_COMMENT_IS_VISIBLE",
+      "expectedError": "VISIBLE_CANONICAL_CONTEXT",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F88_MOBILE_SHARE_TEXT_IS_VISIBLE",
+      "expectedError": "VISIBLE_CANONICAL_CONTEXT",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F89_CANONICAL_DTO_TEXT_IS_DOCUMENTATION",
+      "expectedError": "VISIBLE_CANONICAL_CONTEXT",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F90_FULL_DEEP_LINK_SCHEME",
+      "expectedError": "FULL_COMPATIBILITY_VALUE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F91_DOT_MARKER_IS_APP_DATA",
+      "expectedError": "FULL_COMPATIBILITY_VALUE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F92_PERSISTED_KEY_IS_APP_DATA",
+      "expectedError": "FULL_COMPATIBILITY_VALUE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F93_COMPOSE_PROJECT_NAME_STRUCTURAL",
+      "expectedError": "STRUCTURAL_IDENTITY_DISCOVERED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F94_PUBSPEC_DESCRIPTION_VISIBLE",
+      "expectedError": "STRUCTURAL_IDENTITY_DISCOVERED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F95_API_TAG_DESCRIPTION_VISIBLE",
+      "expectedError": "PUBLISHED_CONTEXT_VISIBLE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F96_COMPOSE_COMMENT_VISIBLE",
+      "expectedError": "PUBLISHED_CONTEXT_VISIBLE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F97_SHELL_LOG_VISIBLE_WITH_ENV",
+      "expectedError": "PUBLISHED_CONTEXT_VISIBLE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F98_BARE_DEEP_LINK_SCHEME_COMPATIBILITY",
+      "expectedError": "BARE_SCHEME_COMPATIBILITY",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F99_WELL_KNOWN_ROUTE_IS_COMPATIBILITY",
+      "expectedError": "WELL_KNOWN_ROUTE_COMPATIBILITY",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F100_I18N_PRECEDENCE_IS_VISIBLE",
+      "expectedError": "I18N_VISIBLE",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F101_BUILD_PATH_NOT_APP_DATA",
+      "expectedError": "BUILD_PATH_CLASSIFIED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F102_DOT_MARKER_BOUNDARY",
+      "expectedError": "DOT_MARKER_BOUNDARY",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F103_CLOSING_TAG_NOT_APP_DATA",
+      "expectedError": "CLOSING_TAG_SYMBOL",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F104_DART_IMPORT_NOT_APP_DATA",
+      "expectedError": "MODULE_IMPORT_NOT_PATH",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F105_WEBLATE_COMPONENT_NOT_APP_DATA",
+      "expectedError": "EXTERNAL_COMPONENT_NOT_PATH",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F106_SCHEDULER_KEYS_ARE_APP_DATA",
+      "expectedError": "SCHEDULER_KEYS_PERSISTED",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F107_CODEGEN_OUTPUT_PATH_IS_BUILD",
+      "expectedError": "MOBILE_TECHNICAL_CONTEXT",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F108_APP_STORE_URL_IS_COMPATIBILITY",
+      "expectedError": "MOBILE_TECHNICAL_CONTEXT",
+      "observedErrors": [],
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "F109_USER_AGENT_IS_COMPATIBILITY",
+      "expectedError": "MOBILE_TECHNICAL_CONTEXT",
+      "observedErrors": [],
+      "status": "PASS"
+    }
+  ]
+}

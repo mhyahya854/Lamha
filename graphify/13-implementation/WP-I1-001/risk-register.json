@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "packageId": "WP-I1-001",
+  "status": "PASS_WITH_OWNED_REVIEWS",
+  "risks": [
+    {
+      "riskId": "WP-I1-001-RISK-FONT-LICENSING",
+      "status": "REVIEW_REQUIRED",
+      "owner": "WP-I1-005",
+      "blocks": [
+        "WP-I1-005 completion",
+        "I1 release gate"
+      ],
+      "affectedDistributedFontFiles": 19,
+      "affectedReferenceSurfaces": 78,
+      "families": [
+        "GoogleSans",
+        "GoogleSansCode",
+        "Inconsolata",
+        "Overpass",
+        "OverpassMono"
+      ],
+      "evidence": "font-inventory.json",
+      "statement": "No package-local licence record was found for the bundled font bytes; redistribution permission and attribution must be established, not assumed."
+    },
+    {
+      "riskId": "WP-I1-001-RISK-BINARY-NOTICES",
+      "status": "REVIEW_REQUIRED",
+      "owner": "WP-I1-005",
+      "blocks": [
+        "WP-I1-005 completion",
+        "I1 release gate"
+      ],
+      "affectedBinarySurfaces": 585,
+      "evidence": "bundled-binary-inventory.json",
+      "statement": "Base images, copied executables/shared libraries, installed runtime components, and vendored binary tools require reviewed licence and attribution notices before Lamha distribution."
+    },
+    {
+      "riskId": "WP-I1-001-RISK-FUTO-COBRANDING",
+      "status": "REVIEW_REQUIRED",
+      "owner": "WP-I1-005",
+      "coordinationOwner": "WP-I1-004",
+      "blocks": [
+        "WP-I1-004 co-branded asset replacement",
+        "I1 release gate"
+      ],
+      "affectedAssetSurfaces": 2,
+      "evidence": "brand-asset-inventory.json",
+      "statement": "FUTO co-branding must not be silently removed or altered during Lamha asset replacement without the reviewed legal/attribution decision."
+    }
+  ]
+}

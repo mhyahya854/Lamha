@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "packageId": "WP-I1-001",
+  "files": [
+    {
+      "path": "graphify/13-implementation/WP-I1-001/app-data-inventory.json",
+      "size": 115128,
+      "sha256": "703ab1c1191b65e46b97e193df5dd40efd5012ef63bdca98092ef678f7b20b55"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/brand-asset-inventory.json",
+      "size": 258625,
+      "sha256": "5559743a2bff19cca9e624cd347292ed92a4592b9ad8d2c45ac8485d70018d67"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/bundled-binary-inventory.json",
+      "size": 734276,
+      "sha256": "45e4323559098a1e873ecdbaf8e74dd578ec5f2c47b9308556158136a08923a4"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/codebase-integrity.json",
+      "size": 224,
+      "sha256": "6987d8373f1da200e0320b3791760408bf59e374076f0cfae16de0a2dbe4fdca"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/completion-evidence.md",
+      "size": 1174,
+      "sha256": "c8f5102c608f3e34c2d9e1c04b18c6b7e24a2498d8e4e787c9f2a10915e4fd18"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/font-inventory.json",
+      "size": 120298,
+      "sha256": "c9dd4b1890f1969c91e9190c64efa50b30db197181764c0286003b0ce1124ef7"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/generator-contracts.json",
+      "size": 1115,
+      "sha256": "27aeda6db383dfe810310ecb0ad2e315906bf1c17b911a864333b8323fdb9f44"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/identity-inventory.json",
+      "size": 16712935,
+      "sha256": "156b4c851299bd6742bfdc80863f035d76edad37c06f132f793b2a7d71c10d6e"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/inventory.py",
+      "size": 130494,
+      "sha256": "258711b9f6564cfc3f85a9dbd329e1a832e16ebccca56d7e3f29868ba40fd514"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/legal-attribution-inventory.json",
+      "size": 669202,
+      "sha256": "bdc8ced17b41ea3cbffecdabd57c9421b3f077a48c031c52b00a7d3b3fcfe2c6"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/negative-fixture-results.json",
+      "size": 22012,
+      "sha256": "1b052bcf33192522cf97ce1ff4fea0ecd39289a7ff14bb4d4b5d123f3d7ea84d"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/package-bundle-inventory.json",
+      "size": 11153143,
+      "sha256": "32415c4a274a7258959a1a509eb88fe5c13cf2936bb7ed5da2078647857d3da3"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/package-summary.json",
+      "size": 2079,
+      "sha256": "8db1f1407c61bad1a0e56f5c001a323e835b22a2b9bbdc5412351890800648dc"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/risk-register.json",
+      "size": 1813,
+      "sha256": "ebcb947eec575f641f6517798f3ce169908777cd4344611d16a130b301e7f995"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/scope-audit.json",
+      "size": 1413,
+      "sha256": "09535e60b4c80218f1efb6b6da9d91d7b125fb5200a6e3fdcda023e2efb45009"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/user-visible-inventory.json",
+      "size": 4397508,
+      "sha256": "1be0bf3d57b0403cf113e944bb0a466e6f48159803e870d629fecfc182e47f85"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/verification-report.json",
+      "size": 1655,
+      "sha256": "d9444f7f561a821f0f2b3b8602e228eec70130b37f2a7ccca324092989611571"
+    },
+    {
+      "path": "graphify/13-implementation/WP-I1-001/verify_evidence.py",
+      "size": 73867,
+      "sha256": "cdf5a3db5ef35f7efe8152fd0b879978eba889c33a1b0d50baa66de823d8046e"
+    }
+  ],
+  "selfExcluded": "artifact-manifest.json is bound by the exact Git completion commit and independently rehashed after commit.",
+  "reviewExcluded": "adversarial-review.md is written by the independent reviewer after generation and bound by the exact Git completion commit."
+}

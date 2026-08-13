@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "packageId": "WP-I1-001",
+  "contracts": [
+    {
+      "id": "generator-contract:openapi",
+      "outputRoots": [
+        "Codebase/open-api/immich-openapi-specs.json",
+        "Codebase/mobile/openapi",
+        "Codebase/packages/sdk/src/fetch-client.ts"
+      ],
+      "sourceRoots": [
+        "Codebase/server/src",
+        "Codebase/open-api/bin",
+        "Codebase/open-api/templates",
+        "Codebase/open-api/patch",
+        "Codebase/open-api/openapitools.json"
+      ],
+      "rule": "OpenAPI outputs are regenerated from server controllers/DTOs through repository OpenAPI tooling; edit canonical server source, never generated clients directly."
+    },
+    {
+      "id": "generator-contract:dart-codegen",
+      "outputPatterns": [
+        "*.g.dart",
+        "*.freezed.dart"
+      ],
+      "sourceRule": "The adjacent .dart source is canonical when present; otherwise repository Dart code-generation configuration is required.",
+      "sourceRoots": [
+        "Codebase/mobile/lib",
+        "Codebase/mobile/openapi/lib"
+      ]
+    }
+  ]
+}
