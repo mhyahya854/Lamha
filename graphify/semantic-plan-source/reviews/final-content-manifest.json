@@ -1,6 +1,6 @@
 {
   "layer": 1,
-  "sha256": "88847a0b972bac68234ab09e9c57d9e91866dac8a93bee5884ddffb17515d817",
+  "sha256": "31e60d87e034e15098f10ed41d99b71332642364da3eb44eba150acc29e411df",
   "fileCount": 591,
   "files": [
     "00-constitution/GLOBAL-CONSTITUTION.md",
@@ -1085,7 +1085,7 @@
     "11-model-packets/phases/I9.md": "dd1e8fb51f6f813ace8ab98df2af913cab2832994e6e97fdd0ec86a47cf8e46f",
     "11-model-packets/plan_cli.py": "480c6b99621bf2ef0173274eb429752332a65149c319c560c36c9904d8a4936c",
     "11-model-packets/README.md": "b99af0745e12a1b90307260fd244e9a8ff9674b3806c2eda6f6b17fa48fa68a3",
-    "12-validators/adversarial-results.json": "1e1e017b50883867b1a9cbe7e2799a9264c95a6556cd400c987900a4a3ab8741",
+    "12-validators/adversarial-results.json": "5e944349e09794036d46af0dfe0f50ac451bd05b7c65717a14434fd7e7222729",
     "12-validators/adversarial_fixtures.py": "67d8dae01d1770ddd1fc2bfc75ac6003a1c692d307dc1cab71adf7ea9a002c6c",
     "12-validators/packet_smoke_tests.py": "c1035d54906242d8f33c04d84b882212a57617984243a21dd99c8cfe79558da7",
     "12-validators/validate_plan.py": "c10765ed123cc95d79b58b852bea1d930ef461c628e20bb7034ec59426b5f96d",
@@ -1183,7 +1183,7 @@
     "14-handoff/gpt-review-critical-invariants.json": "dae279d1705d92d848d29fe132eee7e5f15bbc368afc8e97de77ef93e6262f4c",
     "14-handoff/gpt-review-file-index.json": "0ade93d817e351c3ec6ff117fd87d14823c7234c23d60eab3fe1ceb48a69bbee",
     "14-handoff/gpt-review-known-risk-areas.json": "ca857bf7bd35ac07743f34930a2aeffa8a7490181c819e17df1ede936703a385",
-    "14-handoff/gpt-review-sha-manifest.json": "bd4c92ca8fba65b2936f518fac4843ae96f008faa56582a817019762d8972559",
+    "14-handoff/gpt-review-sha-manifest.json": "a99389ed7e38b1fdd2d07797aabe8fa4fabb721d8bc07cbb8d6d4c648fa1f434",
     "14-handoff/gpt-review-validation-commands.json": "bf007423360b13588fb21873354bde46c41800815bcbd04edeb7492ac15273ef",
     "14-handoff/START-HERE.md": "8cae7c58475a7d82c5b3541c81284e71d73ebe0a0e09adc033b37dc968d48428",
     "README.md": "a493f6de9b70e7c7b820e938a6cb865255845b39bf25026a26baa5d83feb0fdd"

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "completedPackage": "WP-I1-001",
+  "githubVerifiedCommit": "2f368b59905a92f0df76978b1536c26c133a8241",
+  "completedRequirements": [
+    "CAN-LAM-ARCH-001",
+    "CAN-LAM-ARCH-368",
+    "CAN-LAM-ARCH-434",
+    "CAN-LAM-ARCH-439",
+    "CAN-LAM-ARCH-442",
+    "CAN-LAM-ARCH-443",
+    "CAN-LAM-LEGAL-010"
+  ],
+  "readyPackages": [
+    "WP-I1-002",
+    "WP-I1-003",
+    "WP-I1-004",
+    "WP-I1-005",
+    "WP-I2-001",
+    "WP-I2-002",
+    "WP-I10-003",
+    "WP-I14-001",
+    "WP-I15-006"
+  ],
+  "selectionRule": "phase, package major, package minor, full ID",
+  "selectedPackage": "WP-I1-002",
+  "selectedPackageStatus": "NOT_STARTED",
+  "completedPackages": 12,
+  "totalPackages": 155,
+  "completedActionableRequirements": 42,
+  "totalActionableRequirements": 1157,
+  "nextPackageImplementationChanges": 0,
+  "codebaseChanges": {
+    "added": 0,
+    "removed": 0,
+    "modified": 0,
+    "renamed": 0
+  },
+  "stateGenerationId": "7cd79d9c43ea343474a1f786e062aa58e84924ca2b45a4783393a395d7cdf5aa"
+}
